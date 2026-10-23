@@ -472,6 +472,69 @@ class AudioEngine {
 export const audio = new AudioEngine();
 
 // ------------------------------------------------------------
+// Chữ: font pixel Handjet (giấy phép OFL, xem assets/fonts/OFL.txt)
+// Vẽ theo kiểu bitmap: khử răng cưa bằng ngưỡng alpha cho chữ sắc nét.
+// ------------------------------------------------------------
+export const FONT_STACK = '"Handjet", "Courier New", "Lucida Console", monospace';
+// Handjet có ô chữ nhỏ hơn monospace cùng cỡ, phóng lên cho khớp bố cục cũ
+export const TEXT_SCALE = 1.35;
+const AA_THRESHOLD = 128;
+const MASK_LIMIT = 1200;
+const masks = new Map();
+let maskCtx = null;
+
+/** Nạp font pixel trước khi vào game (lỗi thì chạy tiếp bằng font dự phòng). */
+export async function loadFonts() {
+  if (!document.fonts) return false;
+  const sample = 'Hầm Tro ấm — Đom ở Rêu Xanh';
+  try {
+    await Promise.all([
+      document.fonts.load('700 20px Handjet', sample).catch(() => null),
+      document.fonts.load('20px Handjet', sample).catch(() => null),
+    ]);
+    await document.fonts.ready;
+  } catch {
+    return false;
+  }
+  return document.fonts.check('700 20px Handjet', sample);
+}
+
+/** Bản "mặt nạ" của một dòng chữ: chỉ gồm 1 màu, alpha 0/255. */
+function maskOf(text, font, color, size, spacing) {
+  const key = `${font}|${color}|${size}|${spacing}|${text}`;
+  const hit = masks.get(key);
+  if (hit) return hit;
+  if (masks.size > MASK_LIMIT) masks.clear();
+  if (!maskCtx) maskCtx = document.createElement('canvas').getContext('2d');
+  const setFont = (g) => {
+    g.font = font;
+    if (spacing && 'letterSpacing' in g) g.letterSpacing = `${spacing}px`;
+  };
+  setFont(maskCtx);
+  const met = maskCtx.measureText(text);
+  const asc = met.fontBoundingBoxAscent || size * 0.78;
+  const desc = met.fontBoundingBoxDescent || size * 0.24;
+  const pad = 3;
+  const w = Math.max(1, Math.ceil(met.width) + pad * 2);
+  const h = Math.max(1, Math.ceil(asc + desc) + pad * 2);
+  const cv = document.createElement('canvas');
+  cv.width = w;
+  cv.height = h;
+  const g = cv.getContext('2d');
+  setFont(g);
+  g.fillStyle = color;
+  g.textBaseline = 'alphabetic';
+  g.fillText(text, pad, pad + asc);
+  const img = g.getImageData(0, 0, w, h);
+  const d = img.data;
+  for (let i = 3; i < d.length; i += 4) d[i] = d[i] > AA_THRESHOLD ? 255 : 0;
+  g.putImageData(img, 0, 0);
+  const rec = { cv, pad, asc, desc, width: met.width };
+  masks.set(key, rec);
+  return rec;
+}
+
+// ------------------------------------------------------------
 // Vẽ
 // ------------------------------------------------------------
 class Renderer {
@@ -511,7 +574,7 @@ class Renderer {
     c.fillRect(x, y, w, h);
   }
 
-  /** Vẽ chữ với bóng đổ. Trả về chiều cao đã dùng. */
+  /** Vẽ chữ pixel (sắc nét) kèm bóng đổ. Trả về chiều cao đã dùng. */
   text(str, x, y, o = {}) {
     const {
       size = 16,
@@ -523,27 +586,53 @@ class Renderer {
       bold = false,
       alpha = 1,
       spacing = 0,
-      font = '"Courier New", "Lucida Console", monospace',
+      font = FONT_STACK,
+      pixel = true,
     } = o;
     const c = this.ctx;
-    c.save();
-    c.globalAlpha = alpha;
-    c.font = `${italic ? 'italic ' : ''}${bold ? 'bold ' : ''}${size}px ${font}`;
-    if (spacing && 'letterSpacing' in c) c.letterSpacing = `${spacing}px`;
-    c.textAlign = align;
-    c.textBaseline = baseline;
     const lh = Math.round(size * 1.34);
     const lines = String(str).split('\n');
+    if (!pixel) {
+      c.save();
+      c.globalAlpha = alpha;
+      c.font = `${italic ? 'italic ' : ''}${bold ? 'bold ' : ''}${size}px ${font}`;
+      if (spacing && 'letterSpacing' in c) c.letterSpacing = `${spacing}px`;
+      c.textAlign = align;
+      c.textBaseline = baseline;
+      lines.forEach((line, i) => {
+        const ly = y + i * lh;
+        if (shadow) {
+          c.globalAlpha = alpha * 0.8;
+          c.fillStyle = '#000';
+          c.fillText(line, x + 2, ly + 2);
+          c.globalAlpha = alpha;
+        }
+        c.fillStyle = color;
+        c.fillText(line, x, ly);
+      });
+      c.restore();
+      return lines.length * lh;
+    }
+    const px = Math.round(size * TEXT_SCALE);
+    const fontStr = `${italic ? 'italic ' : ''}${bold ? 'bold ' : ''}${px}px ${font}`;
+    c.save();
     lines.forEach((line, i) => {
       const ly = y + i * lh;
+      const rec = maskOf(line, fontStr, color, px, spacing);
+      const emTop = baseline === 'middle'
+        ? -(rec.asc + rec.desc) / 2
+        : baseline === 'alphabetic' ? -rec.asc
+          : baseline === 'bottom' ? -(rec.asc + rec.desc) : 0;
+      const bx = align === 'center' ? x - rec.width / 2 : align === 'right' ? x - rec.width : x;
+      const dx = Math.round(bx - rec.pad);
+      const dy = Math.round(ly + emTop - rec.pad);
       if (shadow) {
+        const sh = maskOf(line, fontStr, '#000', px, spacing);
         c.globalAlpha = alpha * 0.8;
-        c.fillStyle = '#000';
-        c.fillText(line, x + 2, ly + 2);
-        c.globalAlpha = alpha;
+        c.drawImage(sh.cv, dx + 2, dy + 2);
       }
-      c.fillStyle = color;
-      c.fillText(line, x, ly);
+      c.globalAlpha = alpha;
+      c.drawImage(rec.cv, dx, dy);
     });
     c.restore();
     return lines.length * lh;
@@ -552,10 +641,32 @@ class Renderer {
   measure(str, size = 16, bold = false) {
     const c = this.ctx;
     c.save();
-    c.font = `${bold ? 'bold ' : ''}${size}px "Courier New", "Lucida Console", monospace`;
+    c.font = `${bold ? 'bold ' : ''}${Math.round(size * TEXT_SCALE)}px ${FONT_STACK}`;
     const w = c.measureText(str).width;
     c.restore();
     return w;
+  }
+
+  /** Tam giác nhỏ thay cho ký tự ▼ ▶ (font pixel không có các ký tự này). */
+  triangle(x, y, size = 10, dir = 'down', color = '#ffd166', alpha = 1) {
+    const c = this.ctx;
+    const h = size / 2;
+    c.save();
+    c.globalAlpha = alpha;
+    c.fillStyle = color;
+    c.beginPath();
+    if (dir === 'down') {
+      c.moveTo(x - h, y - h * 0.6);
+      c.lineTo(x + h, y - h * 0.6);
+      c.lineTo(x, y + h * 0.8);
+    } else {
+      c.moveTo(x - h * 0.5, y - h);
+      c.lineTo(x + h * 0.7, y);
+      c.lineTo(x - h * 0.5, y + h);
+    }
+    c.closePath();
+    c.fill();
+    c.restore();
   }
 
   /** Ngắt dòng theo bề rộng tối đa. Tôn trọng ký tự \n. */
@@ -601,6 +712,21 @@ class Renderer {
       c.strokeStyle = border;
       c.lineWidth = lw;
       c.stroke();
+    }
+    c.restore();
+  }
+
+  /** Khung kiểu Undertale: viền đặc màu sáng, ruột đen, góc vuông, sắc nét. */
+  frame(x, y, w, h, o = {}) {
+    const { border = '#f2eee4', fill = '#000', lw = 3, alpha = 1 } = o;
+    const c = this.ctx;
+    c.save();
+    c.globalAlpha = alpha;
+    c.fillStyle = border;
+    c.fillRect(x, y, w, h);
+    if (fill) {
+      c.fillStyle = fill;
+      c.fillRect(x + lw, y + lw, w - lw * 2, h - lw * 2);
     }
     c.restore();
   }
@@ -777,42 +903,38 @@ export class Dialogue {
     const boxW = 600;
     const boxH = 112;
     const portrait = line.portrait;
-    R.box(boxX, boxY, boxW, boxH, { fill: 'rgba(6,6,12,0.95)' });
+    R.frame(boxX, boxY, boxW, boxH, { border: '#f2eee4', fill: '#000000', lw: 3 });
 
     if (speaker) {
       const label = ` ${speaker} `;
       const tw = R.measure(label, 15, true);
-      R.box(boxX + 16, boxY - 15, tw + 12, 26, {
-        fill: '#0b0b13',
-        border: SPEAKER_COLORS[speaker] ?? '#f2eee4',
-        cut: 2,
-      });
-      R.text(label, boxX + 22, boxY - 10, { size: 15, bold: true, color: SPEAKER_COLORS[speaker] ?? '#f2eee4' });
+      const tw2 = tw + 14;
+      R.frame(boxX + 14, boxY - 17, tw2, 28, { border: SPEAKER_COLORS[speaker] ?? '#f2eee4', fill: '#000', lw: 2 });
+      R.text(label, boxX + 21, boxY - 11, { size: 15, bold: true, color: SPEAKER_COLORS[speaker] ?? '#f2eee4' });
     }
 
-    let textX = boxX + 26;
+    let textX = boxX + 22;
     if (portrait) {
       const sizes = { dom: 4, baMoc: 2.4, nhim: 2.6, king: 1.8, sentinel: 2, moss: 2.4, shroom: 2.4, bird: 2.4 };
       const scale = sizes[portrait] ?? 2.4;
       R.glow(boxX + 60, boxY + 58, 46, '#ffb066', 0.2);
       R.sprite(portrait, boxX + 60, boxY + 94, scale, { anchor: 'bottom-center' });
-      textX = boxX + 118;
+      textX = boxX + 120;
     }
 
-    const maxW = boxX + boxW - 30 - textX;
+    const maxW = boxX + boxW - 34 - (textX + 18);
     const size = isNarration ? 17 : 18;
     const lines = R.wrap(this.typer.visible, maxW, size);
+    const color = isNarration ? SPEAKER_COLORS.narration : '#f2eee4';
     lines.forEach((l, i) => {
-      R.text(l, textX, boxY + 24 + i * 25, {
-        size,
-        italic: isNarration,
-        color: isNarration ? SPEAKER_COLORS.narration : '#f2eee4',
-      });
+      const ly = boxY + 26 + i * 27;
+      R.text('*', textX, ly, { size, color });
+      R.text(l, textX + 18, ly, { size, color });
     });
 
     if (this.typer.done) {
       const a = 0.35 + 0.65 * Math.abs(Math.sin(this.blink));
-      R.text('▼', boxX + boxW - 34, boxY + boxH - 32, { size: 16, color: '#ffd166', alpha: a });
+      R.triangle(boxX + boxW - 26, boxY + boxH - 22, 12, 'down', '#ffd166', a);
     }
   }
 }

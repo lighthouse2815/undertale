@@ -47,13 +47,30 @@ Chrome; chơi game không cần cài gì cả.)
 
 Trên điện thoại/máy tính bảng có sẵn các nút cảm ứng ở dưới màn hình.
 
+## Giao diện
+
+Phần nhìn và cảm giác được làm theo tinh thần RPG dưới lòng đất kiểu cổ điển:
+
+- **Chữ pixel** — font [Handjet](https://github.com/rosettatype/Handjet) (giấy phép
+  SIL Open Font License 1.1, xem `assets/fonts/OFL.txt`), vẽ trong canvas ở chế độ
+  khử răng cưa bằng ngưỡng alpha nên chữ sắc như font bitmap. Đây là font pixel
+  hiếm hoi có đủ dấu tiếng Việt.
+- **Phòng tối gần như đen** — sáu khu vực chỉ khác nhau ở sắc độ rất nhẹ, ánh sáng
+  đến từ ngôi sao lưu game, đèn, và các hạt tro bay.
+- **Hộp thoại viền trắng đặc**, mỗi dòng bắt đầu bằng dấu `*`, tên người nói nằm
+  trong khung nhỏ phía trên.
+- **Panel trận đấu** là khung trắng: HP / LV / TRO ở trên, nội dung ở giữa, hàng
+  lệnh **ĐÁNH · NÓI · ĐỒ · THA** ở dưới, con trỏ là trái tim đỏ.
+- **Điểm lưu** là ngôi sao vàng (thay cho đèn lồng trước đây) — chạm vào để hồi
+  máu đầy và ghi lại hành trình.
+
 ## Cách chơi
 
 **Khám phá.** Đi qua sáu khu vực của Hầm Tro: Rêu Xanh → Hành Lang Tro →
-Cầu Tro → Rừng Tro → Chợ Tro → Ngai Tro. Trong phòng có đèn lồng (hồi máu và
-lưu game), rương đồ, biển chỉ dẫn, suối nước ấm trong Rừng Tro, và những người
-bạn nói chuyện được: **Đom** (đom đóm dẫn đường), **Bà Mốc**, **Nhím** (chủ tiệm —
-bán bánh mì tro, kẹo rêu, trà tro, mật đom).
+Cầu Tro → Rừng Tro → Chợ Tro → Ngai Tro. Trong phòng có ngôi sao lưu game (hồi
+máu và ghi lại hành trình), rương đồ, biển chỉ dẫn, suối nước ấm trong Rừng Tro,
+và những người bạn nói chuyện được: **Đom** (đom đóm dẫn đường), **Bà Mốc**,
+**Nhím** (chủ tiệm — bán bánh mì tro, kẹo rêu, trà tro, mật đom).
 
 **Trận đánh.** Mỗi lượt bạn chọn một trong bốn hành động:
 
@@ -94,6 +111,7 @@ src/
   battle.js         hệ thống trận đấu và các kiểu đạn
   main.js           màn hình chính, cảnh mở đầu, cảnh kết thúc, vòng lặp game
   style.css         giao diện trang
+assets/fonts/       font pixel Handjet (woff2) + giấy phép OFL
 ```
 
 Không có bước build: trình duyệt chạy trực tiếp các ES module trong `src/`.
@@ -103,5 +121,7 @@ Không có bước build: trình duyệt chạy trực tiếp các ES module tro
 - Game này là **sáng tác nguyên bản**, chỉ lấy cảm hứng từ *thể loại* RPG
   dưới lòng đất + né đạn.
 - Không có asset (hình, âm thanh, chữ) nào được sao chép từ trò chơi khác.
+  Font Handjet trong `assets/fonts/` là phần mềm tự do theo SIL Open Font
+  License 1.1 (xem `assets/fonts/OFL.txt`), không liên quan tới trò chơi nào.
 - Thư mục `Undertale-AnkerGames/` (bản game gốc để tham khảo cục bộ) **không**
   được đưa lên kho git — xem `.gitignore`.

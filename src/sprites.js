@@ -435,6 +435,26 @@ export const SPRITES = {
       '................',
     ],
   },
+  // ngôi sao vàng — điểm lưu
+  star: {
+    palette: { y: '#c98a2a', Y: '#ffd166', W: '#fff8e0' },
+    rows: [
+      '................',
+      '.......YY.......',
+      '.......YY.......',
+      '......yYYy......',
+      '......yYYy......',
+      '.....yyYYyy.....',
+      '....yyyYYyyy....',
+      '.yyyyyYWWYyyyyy.',
+      '.yyyyyYWWYyyyyy.',
+      '....yyyYYyyy....',
+      '...yyyYYYYyyy...',
+      '..yyy.YYYY.yyy..',
+      '.yy....YY....yy.',
+      'y......YY......y',
+    ],
+  },
   sign: {
     palette: { w: '#8a5c34', W: '#c1893f', k: '#3a2a1c', l: '#e8d9b0' },
     rows: [

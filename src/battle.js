@@ -876,7 +876,7 @@ export class Battle {
 
   drawPanel() {
     const ctx = R.ctx;
-    R.box(PANEL.x, PANEL.y, PANEL.w, PANEL.h, { fill: 'rgba(5,5,10,0.96)' });
+    R.frame(PANEL.x, PANEL.y, PANEL.w, PANEL.h, { border: '#f2eee4', fill: 'rgba(0,0,0,0.94)', lw: 3 });
 
     // dòng trạng thái
     const p = this.player;
@@ -903,16 +903,18 @@ export class Battle {
     const text = line ? line.text : this.flavor;
     const color = line?.color ?? '#f2eee4';
     const content = this.typer ? this.typer.visible : text;
+    const maxLines = this.phase === 'menu' ? 2 : 3;
     const lines = R.wrap(content, PANEL.w - 70, 18);
-    lines.slice(0, 3).forEach((l, i) => {
+    lines.slice(0, maxLines).forEach((l, i) => {
       R.text(`* ${i === 0 ? l : l}`, PANEL.x + 28, PANEL.y + 44 + i * 24, { size: 18, color: line ? color : '#e8e2d4' });
     });
     if (this.typer && this.typer.done) {
       const a = 0.4 + 0.6 * Math.abs(Math.sin(this.time * 4));
-      R.text('▼', PANEL.x + PANEL.w - 36, PANEL.y + PANEL.h - 74, { size: 15, color: '#ffd166', alpha: a });
+      if (this.phase === 'menu') R.triangle(PANEL.x + PANEL.w - 26, PANEL.y + PANEL.h - 20, 12, 'down', '#ffd166', a);
+      else R.triangle(PANEL.x + PANEL.w - 26, PANEL.y + PANEL.h - 26, 12, 'down', '#ffd166', a);
     }
     if (!line) {
-      R.text('Z: chọn · X: túi đồ', PANEL.x + PANEL.w - 190, PANEL.y + PANEL.h - 68, { size: 12, color: '#6f6a60' });
+      R.text('Z: chọn · X: túi đồ', PANEL.x + PANEL.w - 210, PANEL.y + 12, { size: 12, color: '#6f6a60' });
     }
   }
 
@@ -942,22 +944,22 @@ export class Battle {
   }
 
   drawButtons() {
-    const y = PANEL.y + 88;
+    const y = PANEL.y + 94;
     BUTTONS.forEach((b, i) => {
       const x = 38 + i * 143;
       const selected = i === this.menuIndex;
       const ready = b.key === 'mercy' && this.warmth >= this.enemy.mercyAt;
-      R.box(x, y, 134, 46, {
+      R.box(x, y, 134, 44, {
         fill: selected ? 'rgba(255,150,70,0.20)' : 'rgba(12,12,20,0.9)',
         border: ready ? '#ffd166' : selected ? '#ffb347' : '#4a4550',
         lw: selected || ready ? 2 : 1,
       });
       const color = selected ? '#fff' : ready ? '#ffd166' : '#b8b2a6';
-      R.text(b.label, x + 62, y + 12, { size: 19, bold: true, align: 'center', color, spacing: 2 });
-      if (selected) R.heart(x + 12, y + 18, 2, '#ffd166', true);
+      R.text(b.label, x + 62, y + 10, { size: 19, bold: true, align: 'center', color, spacing: 2 });
+      if (selected) R.heart(x + 12, y + 16, 2, '#ffd166', true);
       if (ready && b.key === 'mercy') {
         const pulse = 0.4 + 0.6 * Math.sin(this.time * 6);
-        R.glow(x + 67, y + 23, 60, '#ffd166', pulse * 0.25);
+        R.glow(x + 67, y + 22, 60, '#ffd166', pulse * 0.25);
       }
     });
   }

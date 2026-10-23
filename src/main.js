@@ -1,7 +1,7 @@
 // ============================================================
 //  DƯỚI ĐẤT — điểm khởi động, các cảnh, vòng lặp chính
 // ============================================================
-import { R, W, H, Input, audio, Embers, Save, clamp, rand, hash2, pick } from './core.js';
+import { R, W, H, Input, audio, Embers, Save, clamp, rand, hash2, pick, loadFonts } from './core.js';
 import { drawSprite } from './sprites.js';
 import { ROOMS, ENEMIES } from './data.js';
 import { World } from './world.js';
@@ -358,10 +358,10 @@ function drawTitle(dt) {
 
 function drawHelp() {
   R.fade(0.72);
-  R.box(60, 40, 520, 400, { fill: 'rgba(6,6,12,0.97)' });
-  R.text('HƯỚNG DẪN', W / 2, 60, { size: 24, bold: true, align: 'center', spacing: 5 });
+  R.frame(60, 40, 520, 400, { border: '#f2eee4', fill: 'rgba(0,0,0,0.97)', lw: 3 });
+  R.text('HƯỚNG DẪN', W / 2, 58, { size: 24, bold: true, align: 'center', spacing: 5 });
   const rows = [
-    ['↑ ↓ ← → / WASD', 'Đi lại, chọn mục'],
+    ['MŨI TÊN / WASD', 'Đi lại, chọn mục'],
     ['Z / Enter / Space', 'Trò chuyện, xác nhận, vung tay'],
     ['X / Esc', 'Mở túi đồ, quay lại'],
     ['M', 'Bật / tắt âm thanh'],
@@ -374,18 +374,18 @@ function drawHelp() {
     ['THA', 'Tha mạng khi HƠI ẤM đã đầy'],
   ];
   rows.forEach(([keys, desc], i) => {
-    const y = 108 + i * 26;
+    const y = 104 + i * 24;
     if (!keys && !desc) return;
     R.text(keys, 96, y, { size: 15, bold: true, color: '#ffd166' });
     R.text(desc, 300, y, { size: 15, color: '#d8d2c4' });
   });
-  R.text('Bạn có thể đi hết hành trình mà không giết ai cả.', W / 2, 404, {
+  R.text('Bạn có thể đi hết hành trình mà không giết ai cả.', W / 2, 386, {
     size: 13,
     align: 'center',
     italic: true,
     color: '#9fd48c',
   });
-  R.text('Z hoặc X để đóng', W / 2, 424, { size: 12, align: 'center', color: '#6f6a60' });
+  R.text('Z hoặc X để đóng', W / 2, 412, { size: 12, align: 'center', color: '#8d877c' });
 }
 
 // ------------------------------------------------------------
@@ -776,6 +776,11 @@ function boot() {
   const canvas = document.getElementById('game');
   R.init(canvas);
   Input.attach(document);
+
+  // nạp font pixel trước khi vẽ để chữ không bị đổi giữa chừng
+  loadFonts().then((ok) => {
+    if (!ok) console.warn('Không nạp được font pixel, dùng font dự phòng.');
+  });
 
   const overlay = document.getElementById('boot');
   const start = () => {

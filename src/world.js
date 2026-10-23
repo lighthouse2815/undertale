@@ -12,12 +12,12 @@ const SOLID = new Set(['#', '~', 'w', 'O', 'T', 'b', '|']);
 const INTERACTIVE = new Set(['sign', 'chest', 'lamp', 'npc', 'spring', 'boss']);
 
 const THEMES = {
-  moss: { sky: '#081009', floor: ['#16221a', '#1b2a20', '#132019'], dot: '#23382a', wall: '#0f1a14', wallTop: '#33502f', wallLine: '#1a2c20', grass: '#2f5230', grassHi: '#4d7a3c', accent: '#8fd36a', chasm: '#04060a', water: '#1e4a44', glow: '#a8e26b', ember: '#ffcf7a' },
-  hall: { sky: '#0a0b12', floor: ['#181a24', '#1d2029', '#151720'], dot: '#272b38', wall: '#12141c', wallTop: '#3a4054', wallLine: '#202634', grass: '#243028', grassHi: '#33493a', accent: '#8fa8d8', chasm: '#04050a', water: '#1e3a52', glow: '#a9c4ff', ember: '#9fc6ff' },
-  ash: { sky: '#0c0908', floor: ['#201a18', '#251d1b', '#1b1615'], dot: '#2f2523', wall: '#131010', wallTop: '#443430', wallLine: '#241b19', grass: '#2b2420', grassHi: '#3f332c', accent: '#ff9a4d', chasm: '#030204', water: '#33241d', glow: '#ffb066', ember: '#ff9a4d' },
-  forest: { sky: '#0a0b0a', floor: ['#1a1a18', '#201f1c', '#161715'], dot: '#2a2824', wall: '#101010', wallTop: '#3a3730', wallLine: '#1e1c18', grass: '#2e3222', grassHi: '#47502f', accent: '#c9d16a', chasm: '#040405', water: '#25423c', glow: '#e0e08a', ember: '#d8d08a' },
-  market: { sky: '#100c0a', floor: ['#241d18', '#2a211b', '#1e1814'], dot: '#352a22', wall: '#171210', wallTop: '#4a3a2c', wallLine: '#261d16', grass: '#2a241c', grassHi: '#3d3326', accent: '#ffb347', chasm: '#050404', water: '#33261e', glow: '#ffc46b', ember: '#ffab5c' },
-  throne: { sky: '#08060b', floor: ['#16121b', '#1b1620', '#120f16'], dot: '#251d2c', wall: '#0e0b12', wallTop: '#3a2c44', wallLine: '#1c1622', grass: '#241d28', grassHi: '#33283a', accent: '#ff7a4d', chasm: '#030206', water: '#2a1c2c', glow: '#ff8a5c', ember: '#ff8a5c' },
+  moss: { sky: '#010301', floor: ['#0a0e0b', '#0c110d', '#080c09'], dot: '#101a13', wall: '#040705', wallTop: '#16231a', wallLine: '#0b120d', grass: '#1b3320', grassHi: '#2b4a28', accent: '#8fd36a', chasm: '#010204', water: '#123028', glow: '#a8e26b', ember: '#ffcf7a' },
+  hall: { sky: '#020206', floor: ['#0a0b12', '#0c0e16', '#080910'], dot: '#131624', wall: '#05060c', wallTop: '#1b2130', wallLine: '#0c0f1a', grass: '#101a16', grassHi: '#1c2b22', accent: '#8fa8d8', chasm: '#010104', water: '#0e2233', glow: '#a9c4ff', ember: '#9fc6ff' },
+  ash: { sky: '#040302', floor: ['#100c0b', '#130f0e', '#0c0908'], dot: '#1b1514', wall: '#070505', wallTop: '#241b18', wallLine: '#110d0c', grass: '#161311', grassHi: '#241d1a', accent: '#ff9a4d', chasm: '#020103', water: '#1d1411', glow: '#ffb066', ember: '#ff9a4d' },
+  forest: { sky: '#020302', floor: ['#0c0c0a', '#0f0f0d', '#090a08'], dot: '#16150f', wall: '#050505', wallTop: '#1e1c17', wallLine: '#0e0d0b', grass: '#1d2216', grassHi: '#2d3320', accent: '#c9d16a', chasm: '#020202', water: '#142a26', glow: '#e0e08a', ember: '#d8d08a' },
+  market: { sky: '#040302', floor: ['#120e0b', '#150f0c', '#0d0a08'], dot: '#1d1611', wall: '#070504', wallTop: '#2a1f16', wallLine: '#130e0a', grass: '#15120e', grassHi: '#221c14', accent: '#ffb347', chasm: '#020202', water: '#1d1611', glow: '#ffc46b', ember: '#ffab5c' },
+  throne: { sky: '#020104', floor: ['#0b090e', '#0e0b12', '#08070b'], dot: '#141021', wall: '#040309', wallTop: '#1f1829', wallLine: '#0c0913', grass: '#100c17', grassHi: '#1a1422', accent: '#ff7a4d', chasm: '#010103', water: '#160f18', glow: '#ff8a5c', ember: '#ff8a5c' },
 };
 
 export class World {
@@ -576,7 +576,7 @@ export class World {
         const healed = this.game.healFull();
         this.save();
         this.openDialogue([
-          { text: 'Ngọn lửa nhỏ bùng lên khi bạn lại gần. Hơi ấm quấn quanh vai bạn.' },
+          { text: 'Ngôi sao vàng bùng sáng khi bạn lại gần. Hơi ấm quấn quanh vai bạn.' },
           { text: healed > 0 ? `HP đã hồi phục hoàn toàn (+${healed}). Hành trình đã được ghi lại.` : 'Hành trình đã được ghi lại.' },
           { speaker: 'Đom', portrait: 'dom', text: 'Tôi thích chỗ này. Sáng, ấm, và không có ai giẫm lên tôi.' },
         ]);
@@ -723,26 +723,37 @@ export class World {
   drawShop() {
     const shop = this.shop;
     const player = this.game.player;
-    R.box(120, 100, 400, 292, { fill: 'rgba(6,6,12,0.96)' });
-    R.text('CHỢ TRO', 320, 118, { size: 22, bold: true, align: 'center', color: '#ffb347', spacing: 3 });
-    R.text(`Túi của bạn: ${player.gold} tro`, 320, 148, { size: 15, align: 'center', color: '#ffd166' });
+    R.frame(120, 96, 400, 300, { border: '#f2eee4', fill: '#000000', lw: 3 });
+    R.text('CHỢ TRO', 320, 110, { size: 22, bold: true, align: 'center', color: '#ffb347', spacing: 3 });
+    R.text(`Túi của bạn: ${player.gold} tro`, 320, 140, { size: 15, align: 'center', color: '#ffd166' });
 
     shop.items.forEach((id, i) => {
       const item = ITEMS[id];
-      const y = 178 + i * 46;
+      const y = 170 + i * 38;
       const selected = i === shop.index;
       if (selected) {
-        R.box(140, y - 6, 360, 36, { fill: 'rgba(255,150,70,0.12)', border: '#ffb347', lw: 1, cut: 2 });
-        R.heart(154, y + 2, 2, '#ffd166');
+        R.box(136, y - 6, 368, 32, { fill: 'rgba(255,150,70,0.12)', border: '#ffb347', lw: 1, cut: 2 });
+        R.heart(150, y + 2, 2, '#ffd166');
       }
       const owned = player.items[id] ?? 0;
-      R.text(`${item.name}`, 184, y, { size: 17, color: selected ? '#fff' : '#d8d2c4' });
-      R.text(`${item.price} tro`, 420, y, { size: 16, align: 'right', color: player.gold >= item.price ? '#9fd48c' : '#c46a6a' });
-      R.text(`đang có ${owned}`, 494, y + 2, { size: 12, color: '#8d877c' });
-      if (selected) R.text(item.desc, 184, y + 21, { size: 12, color: '#a8a294' });
+      const name = item.name;
+      R.text(name, 180, y, { size: 17, color: selected ? '#fff' : '#d8d2c4' });
+      if (owned > 0) {
+        R.text(`×${owned}`, 180 + R.measure(name, 17) + 10, y + 4, { size: 12, color: '#8d877c' });
+      }
+      R.text(`${item.price} tro`, 496, y, { size: 16, align: 'right', color: player.gold >= item.price ? '#9fd48c' : '#c46a6a' });
     });
 
-    R.text(shop.message || 'Z: mua · X: rời đi', 320, 372, { size: 14, align: 'center', color: shop.message ? '#ffd166' : '#8d877c' });
+    // mô tả vật phẩm đang chọn — để dưới danh sách cho khỏi đè chữ
+    const sel = ITEMS[shop.items[shop.index]];
+    if (sel) {
+      const lines = R.wrap(sel.desc, 330, 14);
+      lines.slice(0, 2).forEach((l, i) => {
+        R.text(l, 320, 314 + i * 20, { size: 14, align: 'center', color: '#a8a294' });
+      });
+    }
+
+    R.text(shop.message || 'Z: mua · X: rời đi', 320, 362, { size: 14, align: 'center', color: shop.message ? '#ffd166' : '#8d877c' });
   }
 
   // ----------------------------------------------------------
@@ -786,7 +797,7 @@ export class World {
   drawPause() {
     const player = this.game.player;
     R.fade(0.6);
-    R.box(70, 44, 500, 392, { fill: 'rgba(6,6,12,0.97)' });
+    R.frame(70, 44, 500, 392, { border: '#f2eee4', fill: 'rgba(0,0,0,0.97)', lw: 3 });
     R.text('TÚI ĐỒ', 320, 60, { size: 24, bold: true, align: 'center', spacing: 4, color: '#f2eee4' });
 
     R.text(`LV ${player.lv}`, 110, 104, { size: 17, color: '#ffd166' });
@@ -805,7 +816,6 @@ export class World {
         const selected = i === this.pauseIndex;
         if (selected) {
           R.heart(118, y + 2, 2, '#ffd166');
-          R.text('▸', 112, y, { size: 14, color: '#ffb347' });
         }
         R.text(`${item.name} ×${player.items[id]}`, 146, y, { size: 17, color: selected ? '#fff' : '#d8d2c4' });
         if (selected) R.text(item.desc, 146, y + 20, { size: 12, color: '#a8a294' });
@@ -912,8 +922,22 @@ export class World {
     const bob = o.bob ? Math.sin(this.time * 2.2 + o.x) * 3 : 0;
     switch (o.type) {
       case 'lamp': {
-        R.glow(x, y - 20, 74 + Math.sin(this.time * 3) * 6, '#ffa84d', 0.35);
-        drawSprite('lamp', x, y + 12, 2, {});
+        const pulse = 0.4 + Math.sin(this.time * 2.6) * 0.12;
+        R.glow(x, y - 16, 60 + pulse * 20, '#ffd166', 0.30);
+        drawSprite('star', x, y + 12, 2.4, {});
+        // tia sáng xoay quanh ngôi sao
+        const c = R.ctx;
+        c.save();
+        c.globalCompositeOperation = 'lighter';
+        for (let i = 0; i < 4; i++) {
+          const a = this.time * 1.2 + (i * Math.PI) / 2;
+          const rx = x + Math.cos(a) * 22;
+          const ry = y - 16 + Math.sin(a) * 10;
+          c.globalAlpha = 0.25 + 0.35 * Math.abs(Math.sin(this.time * 3 + i));
+          c.fillStyle = '#fff8e0';
+          c.fillRect(Math.round(rx) - 1, Math.round(ry) - 1, 3, 3);
+        }
+        c.restore();
         break;
       }
       case 'chest': {
