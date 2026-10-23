@@ -1,0 +1,274 @@
+:root {
+  --ink: #f2eee4;
+  --dim: #8d877c;
+  --ember: #ff8a3d;
+  --bg: #05050a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #020204;
+  color: var(--ink);
+  overflow: hidden;
+  font-family: "Courier New", "Lucida Console", monospace;
+  -webkit-font-smoothing: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 50% 20%, #17110f 0%, #06060a 45%, #020204 100%);
+}
+
+#stage {
+  position: relative;
+  width: min(100vw, calc(100vh * 4 / 3));
+  height: min(100vh, calc(100vw * 3 / 4));
+  max-width: 1280px;
+  max-height: 960px;
+  background: #000;
+  box-shadow:
+    0 0 0 1px rgba(255, 180, 120, 0.12),
+    0 0 70px rgba(255, 120, 50, 0.10),
+    0 24px 80px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  touch-action: none;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: #000;
+  outline: none;
+}
+
+#scanlines,
+#vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.16) 0px,
+    rgba(0, 0, 0, 0.16) 1px,
+    rgba(255, 255, 255, 0.012) 2px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+#vignette {
+  background: radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.58) 100%);
+}
+
+/* ---------- Boot / permission overlay ---------- */
+.boot {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 62%, rgba(255, 122, 48, 0.14), transparent 42%),
+    linear-gradient(180deg, #07070d 0%, #0b090b 55%, #050407 100%);
+  z-index: 30;
+  transition: opacity 0.9s ease, visibility 0.9s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.boot.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-glow {
+  position: absolute;
+  width: 54%;
+  padding-bottom: 54%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 140, 60, 0.20), rgba(255, 90, 30, 0.05) 45%, transparent 70%);
+  filter: blur(6px);
+  animation: breathe 4s ease-in-out infinite;
+  top: 54%;
+  transform: translateY(-50%);
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.65; transform: translateY(-50%) scale(0.96); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.04); }
+}
+
+.boot-inner {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  padding: 24px;
+  animation: rise 1.4s ease-out both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+.boot-kicker {
+  font-size: clamp(9px, 1.2vw, 13px);
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: #b6a895;
+  margin-bottom: 14px;
+}
+
+.boot-title {
+  margin: 0;
+  font-size: clamp(58px, 12vw, 132px);
+  line-height: 0.82;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: #f6efe2;
+  text-shadow:
+    0 0 28px rgba(255, 145, 70, 0.45),
+    0 0 80px rgba(255, 110, 40, 0.20),
+    4px 4px 0 #2a0f08;
+}
+
+.boot-inner button {
+  margin-top: 34px;
+  padding: 13px 44px;
+  font-family: inherit;
+  font-size: clamp(12px, 1.6vw, 16px);
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  color: #1a0c06;
+  background: linear-gradient(180deg, #ffc27e, #ff8a3d);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(255, 210, 160, 0.55), 0 0 30px rgba(255, 120, 40, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.boot-inner button:hover,
+.boot-inner button:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 0 0 1px rgba(255, 230, 190, 0.9), 0 0 44px rgba(255, 130, 50, 0.5);
+}
+
+.boot-hint {
+  margin: 26px 0 0;
+  font-size: clamp(10px, 1.15vw, 12px);
+  color: #9c927f;
+  letter-spacing: 0.06em;
+}
+
+.boot-note {
+  margin: 18px auto 0;
+  max-width: 460px;
+  font-size: clamp(9px, 1vw, 11px);
+  line-height: 1.7;
+  color: #5f584e;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Touch controls ---------- */
+.touch {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.tbtn {
+  pointer-events: auto;
+  touch-action: none;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 235, 205, 0.20);
+  background: rgba(8, 8, 14, 0.42);
+  color: rgba(255, 240, 220, 0.72);
+  font-family: inherit;
+  font-size: 15px;
+  backdrop-filter: blur(2px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tbtn:active,
+.tbtn.held {
+  background: rgba(255, 138, 61, 0.28);
+  border-color: rgba(255, 190, 130, 0.6);
+  color: #fff;
+}
+
+.dpad {
+  position: absolute;
+  left: max(14px, env(safe-area-inset-left));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: repeat(3, 54px);
+  grid-template-rows: repeat(2, 54px);
+  gap: 6px;
+  pointer-events: none;
+}
+
+.dpad .up { grid-column: 2; grid-row: 1; }
+.dpad .left { grid-column: 1; grid-row: 2; }
+.dpad .down { grid-column: 2; grid-row: 2; }
+.dpad .right { grid-column: 3; grid-row: 2; }
+
+.tactions {
+  position: absolute;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.tbtn.round {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 19px;
+}
+
+.tbtn.round.b { transform: translateY(-18px); }
+
+@media (pointer: coarse) {
+  .touch { display: block; }
+}
+
+@media (max-width: 640px) {
+  .tbtn { width: 46px; height: 46px; font-size: 13px; }
+  .dpad { grid-template-columns: repeat(3, 46px); grid-template-rows: repeat(2, 46px); gap: 5px; }
+  .tbtn.round { width: 52px; height: 52px; }
+  .boot-note { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-glow, .boot-inner { animation: none; }
+}

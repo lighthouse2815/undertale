@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07070c" />
+  <meta name="description" content="Dưới Đất — một câu chuyện dưới tầng tro. Game nhập vai né đạn lấy cảm hứng từ thể loại RPG dưới lòng đất." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2307070c'/%3E%3Cpath d='M8 13C6 11 3 9 3 6.2 3 4.5 4.4 3.4 6 3.4c1 0 1.7.5 2 1.1.3-.6 1-1.1 2-1.1 1.6 0 3 1.1 3 2.8C13 9 10 11 8 13z' fill='%23e5484d'/%3E%3C/svg%3E" />
+  <title>DƯỚI ĐẤT — một câu chuyện dưới tầng tro</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <main id="app">
+    <div id="stage">
+      <canvas id="game" width="640" height="480" aria-label="Màn hình trò chơi Dưới Đất"></canvas>
+      <div id="scanlines" aria-hidden="true"></div>
+      <div id="vignette" aria-hidden="true"></div>
+
+      <div id="boot" class="boot">
+        <div class="boot-glow" aria-hidden="true"></div>
+        <div class="boot-inner">
+          <div class="boot-kicker">một câu chuyện dưới tầng tro</div>
+          <h1 class="boot-title">DƯỚI<br />ĐẤT</h1>
+          <button id="bootBtn" type="button">THẮP LỬA</button>
+          <p class="boot-hint">Nhấn phím bất kỳ hoặc chạm để bắt đầu · Dùng tai nghe để có trải nghiệm tốt nhất</p>
+          <p class="boot-note">Tác phẩm nguyên bản lấy cảm hứng từ thể loại RPG dưới lòng đất.<br />Không sử dụng tài sản của Undertale.</p>
+        </div>
+      </div>
+
+      <div id="touch" class="touch" aria-hidden="true">
+        <div class="dpad">
+          <button class="tbtn up" data-input="up" aria-label="Lên">▲</button>
+          <button class="tbtn left" data-input="left" aria-label="Trái">◀</button>
+          <button class="tbtn down" data-input="down" aria-label="Xuống">▼</button>
+          <button class="tbtn right" data-input="right" aria-label="Phải">▶</button>
+        </div>
+        <div class="tactions">
+          <button class="tbtn round b" data-input="cancel" aria-label="Quay lại">B</button>
+          <button class="tbtn round a" data-input="confirm" aria-label="Chọn">A</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <noscript>Trò chơi cần JavaScript để chạy.</noscript>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "duoi-dat",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dưới Đất — game nhập vai né đạn trên web, lấy cảm hứng từ thể loại RPG dưới lòng đất.",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1"
+  }
+}
