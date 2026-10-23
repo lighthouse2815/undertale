@@ -1,6 +1,13 @@
 # Game gốc / asset lớn - không đưa lên GitHub
 Undertale-AnkerGames/
 
+# Phụ thuộc
+node_modules/
+
+# File tạm khi phát triển
+dev-*.html
+dev-*.*
+
 # Build & cache
 build/
 dist/
