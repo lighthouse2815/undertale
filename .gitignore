@@ -1,0 +1,23 @@
+# Game gốc / asset lớn - không đưa lên GitHub
+Undertale-AnkerGames/
+
+# Build & cache
+build/
+dist/
+cache/
+*.log
+*.tmp
+*.temp
+
+# Hệ điều hành
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Môi trường & bí mật
+.env
+.env.*
+!.env.example
