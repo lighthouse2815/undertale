@@ -186,6 +186,42 @@ try {
   assert.equal(saveResult.accepted, true);
   assert.match(saveResult.failure, /Không lưu được hành trình/);
   assert.doesNotMatch(saveResult.failure, /Hành trình đã được ghi lại/);
+  const autosaveResult = await page.evaluate(async () => {
+    const { ROOMS } = await import('/src/data.js');
+    const { Save } = await import('/src/core.js');
+    const game = window.__duoidat;
+    const original = Storage.prototype.setItem;
+    const previousSave = localStorage.getItem('duoidat.save.v1');
+    let introFailure, roomFailure, previousSaveKept;
+    try {
+      Storage.prototype.setItem = () => { throw new DOMException('Hết dung lượng', 'QuotaExceededError'); };
+      game.startNewGame();
+      game.enterRoom('wake');
+      game.world.openIntroDialogue();
+      game.world.dialogue.onDone();
+      introFailure = game.toastText;
+      game.toastText = '';
+      game.player.hp = 1;
+      game.enterRoom(Object.values(ROOMS).find((room) => room.autosave).id);
+      roomFailure = game.toastText;
+      previousSaveKept = localStorage.getItem('duoidat.save.v1') === previousSave;
+    } finally {
+      Storage.prototype.setItem = original;
+    }
+    const healed = game.player.hp === game.player.maxHp;
+    game.startNewGame();
+    game.enterRoom('wake');
+    game.world.openIntroDialogue();
+    game.world.dialogue.onDone();
+    return { introFailure, roomFailure, previousSaveKept, healed,
+      success: game.toastText, savedIntro: Save.read()?.flags.intro_seen };
+  });
+  assert.match(autosaveResult.introFailure, /Không lưu được/);
+  assert.match(autosaveResult.roomFailure, /Không lưu được/);
+  assert.equal(autosaveResult.previousSaveKept, true);
+  assert.equal(autosaveResult.healed, true);
+  assert.match(autosaveResult.success, /Đã lưu hành trình/);
+  assert.equal(autosaveResult.savedIntro, true);
   const roomReset = await page.evaluate(() => {
     const game = window.__duoidat;
     game.flags = {};
@@ -509,6 +545,7 @@ try {
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
   console.log('✓ vị trí vào phòng, điểm lưu và tọa độ sau khi tải lại');
   console.log('✓ dữ liệu lưu hợp lệ, tám trường hợp lưu hỏng và bộ nhớ bị chặn');
+  console.log('✓ tự lưu báo đúng khi hết dung lượng, giữ điểm lưu cũ và lưu lại khi bộ nhớ hoạt động');
   console.log('✓ cuộn túi đồ, giữ lựa chọn khi còn vật phẩm và cập nhật khi dùng hết');
   console.log('✓ toàn bộ kẻ địch, các mẫu đạn, tuyến tha và cả ba kết thúc');
   console.log('✓ thua trận, tải điểm lưu, từ chối tiếp tục khi chưa lưu và chơi lại');

@@ -91,7 +91,7 @@ export class World {
     if (room.music) audio.playMusic(room.music, room.id);
     if (room.autosave) {
       this.game.healFull();
-      this.save(true);
+      this.save();
     }
     if (roomId === 'wake' && !this.flags.intro_seen) {
       this.queueIntro();
@@ -117,8 +117,7 @@ export class World {
     this.flags.met_dom = true;
     this.companion.active = true;
     this.openDialogue(lines, () => {
-      this.save(true);
-      this.game.toast('Đã lưu hành trình vào điểm lửa');
+      if (this.save()) this.game.toast('Đã lưu hành trình vào điểm lửa');
     });
   }
 
