@@ -5,7 +5,7 @@ import { R, W, H, Input, Dialogue, Embers, audio, clamp, rand, hash2, pick, Save
 import { drawSprite, drawLocal, drawParts } from './sprites.js';
 import { art, PLAYER_ART, PROP_ART, NPC_ART, BAMOC_ART, KING_ART } from './localassets.js';
 import {
-  ROOMS, ITEMS, ENEMIES, NPC_TALK, SPRING_LINES, BOSS_INTRO, BOSS_OUTRO, SHOP_STOCK,
+  ROOMS, ITEMS, ENEMIES, NPC_TALK, SPRING_LINES, BOSS_INTRO, BOSS_OUTRO, BOSS_KILL_OUTRO, SHOP_STOCK,
 } from './data.js';
 
 export const TILE = 32;
@@ -689,6 +689,7 @@ export class World {
     let bestDist = 62;
     for (const o of this.objects) {
       if (!INTERACTIVE.has(o.type)) continue;
+      if (o.type === 'boss' && this.flags[`${o.flag}_method`] === 'kill') continue;
       const d = Math.hypot(p.x - o.x * TILE, p.y - (o.y * TILE - 10));
       if (d < bestDist) {
         bestDist = d;
@@ -765,6 +766,7 @@ export class World {
         break;
       }
       case 'boss': {
+        if (this.flags[`${o.flag}_method`] === 'kill') return;
         if (o.done) {
           const outro = BOSS_OUTRO[o.enemy];
           if (outro) this.openDialogue(outro);
@@ -833,7 +835,7 @@ export class World {
         this.game.finishGame(result);
         return;
       }
-      const outro = BOSS_OUTRO[enemyId] ?? [];
+      const outro = (result === 'kill' ? BOSS_KILL_OUTRO : BOSS_OUTRO)[enemyId] ?? [];
       const healAmount = Math.round(this.game.player.maxHp * 0.4);
       const healed = this.game.heal(healAmount);
       this.openDialogue(
@@ -1117,6 +1119,7 @@ export class World {
   }
 
   drawObject(o) {
+    if (o.type === 'boss' && this.flags[`${o.flag}_method`] === 'kill') return;
     const x = o.x * TILE;
     const y = o.y * TILE;
     const bob = o.bob ? Math.sin(this.time * 2.2 + o.x) * 3 : 0;

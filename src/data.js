@@ -723,7 +723,7 @@ export const NPC_TALK = {
     return {
       lines: [
         { speaker: 'Bà Mốc', portrait: 'baMoc', text: 'Quay lại rồi à. Ngồi xuống đây, bà hâm lại chút trà.' },
-        { speaker: 'Bà Mốc', portrait: 'baMoc', text: flags.boss_bridge ? 'Người gác cầu đã yên lòng. Bà nghe tiếng giáo của nó gõ xuống cầu — lần đầu tiên nhẹ nhõm như vậy.' : 'Đi đường cẩn thận nhé. Cầu Tro có người gác.' },
+        { speaker: 'Bà Mốc', portrait: 'baMoc', text: flags.boss_bridge_method === 'kill' ? 'Bà không còn nghe tiếng giáo trên cầu nữa. Sự im lặng ấy lạnh quá, cháu à.' : flags.boss_bridge ? 'Người gác cầu đã yên lòng. Bà nghe tiếng giáo của nó gõ xuống cầu — lần đầu tiên nhẹ nhõm như vậy.' : 'Đi đường cẩn thận nhé. Cầu Tro có người gác.' },
       ],
       reward: { heal: true },
     };
@@ -742,7 +742,7 @@ export const NPC_TALK = {
         reward: { flag: 'met_nhim', openShop: true },
       };
     }
-    return { lines: [{ speaker: 'Nhím', portrait: 'nhim', text: 'Vẫn còn sống à? Tốt. Mua gì thì nói.' }], reward: {} };
+    return { lines: [{ speaker: 'Nhím', portrait: 'nhim', text: 'Vẫn còn sống à? Tốt. Mua gì thì nói.' }], reward: { openShop: true } };
   },
 
   kem(ctx) {
@@ -763,7 +763,9 @@ export const NPC_TALK = {
         {
           speaker: 'Bác Kem',
           portrait: 'kem',
-          text: flags.boss_snow
+          text: flags.boss_snow_method === 'kill'
+            ? 'Đường tuần tra im quá. Bác cứ nhìn ra ngoài, chờ cái đuôi trắng quen thuộc ấy.'
+            : flags.boss_snow
             ? 'Con chó ngoài kia ngủ rồi à? Tốt quá — nó mà thức là ăn hết kem của bác đấy.'
             : 'Ăn kem đi rồi hãy lên đường. Đường tuần tra lạnh lắm.',
         },
@@ -789,7 +791,9 @@ export const NPC_TALK = {
         {
           speaker: 'Người Tuyết',
           portrait: 'snowman',
-          text: flags.boss_snow
+          text: flags.boss_snow_method === 'kill'
+            ? 'Tuyết hôm nay lạnh hơn. Bác không còn nghe tiếng bước chân trên đường tuần tra.'
+            : flags.boss_snow
             ? 'Con chó tuần tra ngủ rồi nhỉ. Bác nghe tiếng ngáy vang khắp đồng tuyết.'
             : 'Đi đường cẩn thận. Chó giữ đường không ác, chỉ là quá to thôi.',
         },
@@ -839,6 +843,19 @@ export const BOSS_OUTRO = {
   king: [
     { speaker: 'Vua Tro', text: '"TA... XIN LỖI. TA CHỈ KHÔNG MUỐN NGỌN LỬA NÀY TẮT TRONG CÔ ĐƠN."' },
     { speaker: 'Đom', portrait: 'dom', text: 'Không ai phải tắt một mình cả. Đó là điều tôi học được từ cậu ấy.' },
+  ],
+};
+
+export const BOSS_KILL_OUTRO = {
+  sentinel: [
+    { text: 'Giữa những mảnh sắt vụn, lớp tro chắn lối dần tan đi.' },
+    { speaker: 'Đom', portrait: 'dom', text: 'Đường mở rồi... nhưng chẳng còn ai đợi trên cầu nữa.' },
+    { text: 'Lối sang Tuyết Tro đã mở.' },
+  ],
+  guard: [
+    { text: 'Tuyết lặng lẽ phủ lên dấu chân khổng lồ. Đường tuần tra không còn người canh.' },
+    { speaker: 'Đom', portrait: 'dom', text: 'Tôi cứ nghĩ nó sẽ lại vẫy đuôi.' },
+    { text: 'Lối sang Rừng Tro đã mở.' },
   ],
 };
 

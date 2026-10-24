@@ -60,8 +60,41 @@ try {
   assert.match(result.remaining, /50%/);
   assert.equal(result.lv, 4);
   assert.match(result.levelMessage, /HP tối đa \+12, Công \+3/);
+  const worldResult = await page.evaluate(async () => {
+    const { NPC_TALK } = await import('/src/data.js');
+    const game = window.__duoidat;
+    game.flags = { intro_seen: true, met_nhim: true, met_moc: true, met_kem: true, met_tuyet: true };
+    game.enterRoom('market');
+    const world = game.world;
+    world.talkToNpc(world.objects.find((o) => o.id === 'nhim'));
+    world.dialogue.onDone();
+    const shop = [...world.shop.items];
+    const bosses = ['sentinel', 'guard'].map((id) => {
+      game.enterRoom(id === 'sentinel' ? 'bridge' : 'snow3');
+      const boss = world.objects.find((o) => o.type === 'boss');
+      world.afterBattle('kill', id, boss);
+      const lines = world.dialogue.lines.map((l) => l.text).join('\n');
+      game.enterRoom(world.room.id);
+      world.player.x = boss.x * 32;
+      world.player.y = boss.y * 32 + 20;
+      world.updateInteractions();
+      return { lines, nearBoss: world.nearObject?.type === 'boss', method: game.flags[`${boss.flag}_method`] };
+    });
+    const reactions = ['baMoc', 'kem', 'nguoiTuyet'].map((id) => NPC_TALK[id]({ flags: game.flags }).lines.map((l) => l.text).join('\n'));
+    return { shop, bosses, reactions };
+  });
+  assert.deepEqual(worldResult.shop, ['bread', 'candy', 'tea', 'honey']);
+  for (const boss of worldResult.bosses) {
+    assert.equal(boss.method, 'kill');
+    assert.equal(boss.nearBoss, false);
+    assert.doesNotMatch(boss.lines, /chịu đứng lại nghe|ngủ ngon/);
+  }
+  assert.match(worldResult.reactions[0], /không còn nghe tiếng giáo/);
+  assert.match(worldResult.reactions[1], /Đường tuần tra im/);
+  assert.match(worldResult.reactions[2], /không còn nghe tiếng bước chân/);
   assert.deepEqual(errors, []);
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
+  console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
 } finally {
   await browser?.close();
   server.kill();
