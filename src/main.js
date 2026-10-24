@@ -61,7 +61,7 @@ class Game {
   }
 
   useItem(id) {
-    const item = itemsTable[id];
+    const item = ITEMS[id];
     if (!item || (this.player.items[id] ?? 0) <= 0) return 0;
     if (this.player.hp >= this.player.maxHp) return 0;
     const healed = Math.min(item.heal, this.player.maxHp - this.player.hp);
