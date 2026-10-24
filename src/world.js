@@ -977,6 +977,31 @@ export class World {
     }
   }
 
+  getObjective() {
+    switch (this.room?.id) {
+      case 'wake':
+        return this.flags.met_dom ? 'Đi sang phải tới Hành Lang Rêu.' : 'Làm quen với Đom ở Rêu Xanh.';
+      case 'hall':
+        return this.flags.met_moc ? 'Đi sang phải tới Cầu Tro.' : 'Nói chuyện với Bà Mốc ở giữa hành lang.';
+      case 'bridge':
+        return this.flags.boss_bridge ? 'Lối sang phải đã mở: tới Đồng Tuyết Tro.' : 'Gặp người gác ở giữa Cầu Tro để mở đường.';
+      case 'snow1':
+        return 'Đi sang phải tới Làng Tuyết Tro.';
+      case 'snow2':
+        return 'Chuẩn bị đồ hồi máu rồi đi sang phải tới Đường Tuần Tra.';
+      case 'snow3':
+        return this.flags.boss_snow ? 'Lối sang phải đã mở: tới Rừng Tro.' : 'Gặp Chó Tuyết trên đường tuần tra để mở lối.';
+      case 'forest':
+        return 'Đi sang phải tới Chợ Tro; suối trong rừng có thể hồi máu.';
+      case 'market':
+        return this.flags.met_nhim ? 'Chuẩn bị đồ rồi đi sang phải tới Ngai Tro.' : 'Nói chuyện với Nhím ở quầy hàng để mở lối tới Ngai Tro.';
+      case 'throne':
+        return 'Gặp Vua Tro; có thể quay trái về chợ để chuẩn bị thêm.';
+      default:
+        return '';
+    }
+  }
+
   drawPause() {
     const player = this.game.player;
     R.fade(0.6);
@@ -1007,6 +1032,11 @@ export class World {
         if (selected) R.text(item.desc, 146, y + 20, { size: 12, color: '#a8a294' });
       });
     }
+
+    const objectiveLines = R.wrap(`Mục tiêu: ${this.getObjective()}`, 430, 14);
+    objectiveLines.slice(0, 2).forEach((line, i) => {
+      R.text(line, 110, 316 + i * 18, { size: 14, color: '#c9b98e' });
+    });
 
     R.text('Z: dùng vật phẩm · X: đóng túi', 320, 372, { size: 15, align: 'center', color: '#8d877c' });
     R.text(`${this.room?.title ?? ''} — ${this.room?.subtitle ?? ''}`, 320, 402, { size: 13, align: 'center', italic: true, color: '#6f6a60' });

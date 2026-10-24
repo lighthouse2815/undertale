@@ -188,6 +188,10 @@ và những người bạn nói chuyện được: **Đom** (đom đóm dẫn đ
 kem tuyết, kẹo rêu và trà tro; các nhân vật ở Tuyết Tro kể thêm về con chó
 khổng lồ đang giữ đường tuần tra.
 
+Mở túi đồ bằng X / Esc để xem **mục tiêu hiện tại**. Gợi ý thay đổi khi bạn
+mở đường qua trùm hoặc nói chuyện với Nhím. Trước trận cuối, bạn có thể đi
+sang trái từ Ngai Tro để quay về Chợ Tro mua thêm vật phẩm.
+
 **Trận đánh.** Mỗi lượt bạn chọn một trong bốn hành động:
 
 - **ĐÁNH** — canh vạch chạy qua lại, càng gần vạch giữa thì sát thương càng lớn.

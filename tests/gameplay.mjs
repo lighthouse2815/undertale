@@ -227,6 +227,31 @@ try {
   assert.equal(inventory.kem, 0);
   assert.equal(inventory.texts.filter((entry) => / ×\d/.test(entry.text)).length, 3);
   assert.ok(inventory.texts.some((entry) => entry.text === 'Kem tuyết ×1' && entry.y < 330));
+  const objectives = await page.evaluate(async () => {
+    const { ROOMS } = await import('/src/data.js');
+    const { R } = await import('/src/core.js');
+    const game = window.__duoidat;
+    const rooms = Object.keys(ROOMS).map((id) => {
+      game.flags = { intro_seen: true }; game.enterRoom(id);
+      return { id, text: game.world.getObjective() };
+    });
+    const gates = [['bridge', 'boss_bridge'], ['snow3', 'boss_snow'], ['market', 'met_nhim']].map(([id, flag]) => {
+      game.flags = { intro_seen: true }; game.enterRoom(id);
+      const before = game.world.getObjective(); game.flags[flag] = true;
+      return { before, after: game.world.getObjective() };
+    });
+    const texts = [];
+    const original = R.text;
+    R.text = (text, x, y) => { texts.push({ text, y }); };
+    try { game.world.drawPause(); } finally { R.text = original; }
+    return { rooms, gates, texts };
+  });
+  assert.ok(objectives.rooms.every((room) => room.text.length > 0));
+  assert.ok(objectives.gates.every((gate) => gate.before !== gate.after));
+  assert.match(objectives.gates[0].after, /Đồng Tuyết Tro/);
+  assert.match(objectives.gates[1].after, /Rừng Tro/);
+  assert.match(objectives.gates[2].after, /Ngai Tro/);
+  assert.ok(objectives.texts.some((entry) => entry.text.startsWith('Mục tiêu:') && entry.y >= 316 && entry.y < 352));
   const battles = await page.evaluate(async () => {
     const { Battle } = await import('/src/battle.js');
     const { ENEMIES } = await import('/src/data.js');
