@@ -3,6 +3,7 @@
 // ============================================================
 
 import { art, PORTRAIT_ART } from './localassets.js';
+import { ROOMS, ITEMS } from './data.js';
 
 export const W = 640;
 export const H = 480;
@@ -1240,16 +1241,29 @@ const SAVE_KEY = 'duoidat.save.v1';
 
 export const Save = {
   exists() {
-    try {
-      return Boolean(localStorage.getItem(SAVE_KEY));
-    } catch {
-      return false;
-    }
+    return this.read() !== null;
   },
   read() {
     try {
       const raw = localStorage.getItem(SAVE_KEY);
-      return raw ? JSON.parse(raw) : null;
+      if (!raw) return null;
+      const data = JSON.parse(raw);
+      const object = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+      if (!object(data) || !Object.hasOwn(ROOMS, data.roomId) || !object(data.player)) return null;
+      const p = data.player;
+      for (const key of ['lv', 'hp', 'maxHp', 'exp', 'atk', 'def', 'gold', 'kills', 'spares']) {
+        if (!Number.isFinite(p[key]) || p[key] < 0) return null;
+      }
+      if (!Number.isSafeInteger(p.lv) || p.lv < 1 || p.maxHp < 1 || p.hp > p.maxHp || !object(p.items)) return null;
+      if (Object.entries(p.items).some(([id, count]) => !Object.hasOwn(ITEMS, id) || !Number.isSafeInteger(count) || count < 0)) return null;
+      if (data.flags !== undefined && !object(data.flags)) return null;
+      if (data.playtime !== undefined && (!Number.isFinite(data.playtime) || data.playtime < 0)) return null;
+      if (data.spawn != null) {
+        const s = data.spawn;
+        if (!object(s) || !Number.isFinite(s.x) || !Number.isFinite(s.y) || s.x < 0 || s.x >= 19.5 || s.y < 0 || s.y >= 14.5) return null;
+        if (s.facing !== undefined && !['up', 'down', 'left', 'right'].includes(s.facing)) return null;
+      }
+      return data;
     } catch {
       return null;
     }

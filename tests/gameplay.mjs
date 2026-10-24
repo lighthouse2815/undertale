@@ -112,10 +112,38 @@ try {
   });
   assert.deepEqual(mapResult.invalid, []);
   assert.deepEqual(mapResult.after, mapResult.before);
+  const saveResult = await page.evaluate(async () => {
+    const { Save } = await import('/src/core.js');
+    const game = window.__duoidat;
+    game.world.save();
+    const valid = Save.read();
+    const invalid = ['{', 'null', '[]', '{}', JSON.stringify({ ...valid, roomId: 'missing' }),
+      JSON.stringify({ ...valid, player: { ...valid.player, hp: -1 } }),
+      JSON.stringify({ ...valid, player: { ...valid.player, items: { missing: 1 } } }),
+      JSON.stringify({ ...valid, spawn: { x: 100, y: 2 } })];
+    const rejected = invalid.map((raw) => {
+      localStorage.setItem('duoidat.save.v1', raw);
+      return !Save.exists() && Save.read() === null && !game.loadGame();
+    });
+    Save.write(valid);
+    const accepted = Save.exists() && game.loadGame();
+    const original = Storage.prototype.setItem;
+    Storage.prototype.setItem = () => { throw new Error('blocked'); };
+    game.enterRoom('wake');
+    game.world.interact(game.world.objects.find((o) => o.type === 'lamp'));
+    const failure = game.world.dialogue.lines.map((l) => l.text).join('\n');
+    Storage.prototype.setItem = original;
+    return { rejected, accepted, failure };
+  });
+  assert.ok(saveResult.rejected.every(Boolean));
+  assert.equal(saveResult.accepted, true);
+  assert.match(saveResult.failure, /Không lưu được hành trình/);
+  assert.doesNotMatch(saveResult.failure, /Hành trình đã được ghi lại/);
   assert.deepEqual(errors, []);
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
   console.log('✓ vị trí vào phòng, điểm lưu và tọa độ sau khi tải lại');
+  console.log('✓ dữ liệu lưu hợp lệ, tám trường hợp lưu hỏng và bộ nhớ bị chặn');
 } finally {
   await browser?.close();
   server.kill();
