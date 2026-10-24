@@ -145,6 +145,20 @@ try {
   assert.ok(mapResult.blocked.length > 0);
   assert.ok(mapResult.blocked.every((gate) => gate.safe && gate.stayed));
   assert.deepEqual(mapResult.after, mapResult.before);
+  const returnToMarket = await page.evaluate(() => {
+    const game = window.__duoidat;
+    game.flags = { intro_seen: true, met_nhim: true };
+    game.enterRoom('throne');
+    game.world.player.x = 24;
+    game.world.player.y = 224;
+    game.world.updateMovement(0);
+    const returned = game.world.room.id;
+    game.world.player.x = 616;
+    game.world.player.y = 224;
+    game.world.updateMovement(0);
+    return { returned, reentered: game.world.room.id, finished: Boolean(game.flags.boss_king) };
+  });
+  assert.deepEqual(returnToMarket, { returned: 'market', reentered: 'throne', finished: false });
   const saveResult = await page.evaluate(async () => {
     const { Save } = await import('/src/core.js');
     const game = window.__duoidat;
