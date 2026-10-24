@@ -55,7 +55,7 @@ Phần nhìn và cảm giác được làm theo tinh thần RPG dưới lòng đ
   SIL Open Font License 1.1, xem `assets/fonts/OFL.txt`), vẽ trong canvas ở chế độ
   khử răng cưa bằng ngưỡng alpha nên chữ sắc như font bitmap. Đây là font pixel
   hiếm hoi có đủ dấu tiếng Việt.
-- **Phòng tối gần như đen** — sáu khu vực chỉ khác nhau ở sắc độ rất nhẹ, ánh sáng
+- **Phòng tối gần như đen** — chín khu vực chỉ khác nhau ở sắc độ rất nhẹ, ánh sáng
   đến từ ngôi sao lưu game, đèn, và các hạt tro bay.
 - **Hộp thoại viền trắng đặc** (viền dày 5px, góc vuông đúng kiểu gốc), mỗi dòng bắt
   đầu bằng dấu `*`, tên người nói nằm trong khung nhỏ vát góc phía trên.
@@ -167,8 +167,8 @@ GitHub vẫn chạy đầy đủ với người không có bản game.
 
 ## Cách chơi
 
-**Khám phá.** Đi qua sáu khu vực của Hầm Tro: Rêu Xanh → Hành Lang Tro →
-Cầu Tro → Rừng Tro → Chợ Tro → Ngai Tro. Trong phòng có ngôi sao lưu game (hồi
+**Khám phá.** Đi qua chín khu vực của Hầm Tro: Rêu Xanh → Hành Lang Tro →
+Cầu Tro → Đồng Tuyết Tro → Làng Tuyết Tro → Đường Tuần Tra → Rừng Tro → Chợ Tro → Ngai Tro. Trong phòng có ngôi sao lưu game (hồi
 máu và ghi lại hành trình), rương đồ, biển chỉ dẫn, suối nước ấm trong Rừng Tro,
 và những người bạn nói chuyện được: **Đom** (đom đóm dẫn đường), **Bà Mốc**,
 **Nhím** (chủ tiệm — bán bánh mì tro, kẹo rêu, trà tro, mật đom).
