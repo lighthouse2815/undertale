@@ -362,6 +362,67 @@ try {
     assert.equal(battle.outcome, 'spare', battle.id);
     assert.ok(battle.patterns.every((p) => p.count > 0 && p.ended), battle.id);
   }
+  const combatBranches = await page.evaluate(async () => {
+    const { Battle } = await import('/src/battle.js');
+    const { Input } = await import('/src/core.js');
+    const game = window.__duoidat;
+    const press = (battle, action) => {
+      Input.just.add(action);
+      battle.update(0);
+      Input.clearAll();
+    };
+    const drain = (battle) => {
+      for (let i = 0; battle.phase === 'message' && i < 100; i++) {
+        battle.typer.skip();
+        press(battle, 'confirm');
+      }
+    };
+    const items = [{ count: 0, missingHp: 0 }, { count: 1, missingHp: 0 }, { count: 2, missingHp: 2 }].map(({ count, missingHp }) => {
+      game.startNewGame();
+      game.player.items = count ? { bread: count } : {};
+      game.player.hp -= missingHp;
+      const battle = new Battle(game, 'moss', () => {});
+      drain(battle);
+      press(battle, 'right'); press(battle, 'right'); press(battle, 'confirm');
+      press(battle, 'confirm'); drain(battle);
+      return { phase: battle.phase, turn: battle.turn, count: game.player.items.bread ?? 0,
+        hp: game.player.hp, maxHp: game.player.maxHp };
+    });
+    const fleeing = [{ enemy: 'moss', random: 0.1 }, { enemy: 'moss', random: 0.9 }, { enemy: 'sentinel', random: 0.1 }].map(({ enemy, random }) => {
+      game.startNewGame();
+      let outcome = null;
+      const battle = new Battle(game, enemy, (result) => { outcome = result; });
+      drain(battle);
+      press(battle, 'left'); press(battle, 'confirm'); press(battle, 'down');
+      const original = Math.random;
+      try { Math.random = () => random; press(battle, 'confirm'); }
+      finally { Math.random = original; }
+      drain(battle);
+      return { outcome, phase: battle.phase, turn: battle.turn, gold: game.player.gold,
+        kills: game.player.kills, spares: game.player.spares };
+    });
+    game.startNewGame();
+    const aim = new Battle(game, 'shroom', () => {});
+    drain(aim);
+    press(aim, 'confirm'); press(aim, 'cancel');
+    const cancelled = { phase: aim.phase, turn: aim.turn, enemyHp: aim.enemyHp };
+    press(aim, 'confirm'); aim.barX = 320; press(aim, 'confirm'); aim.update(0.5);
+    return { items, fleeing, cancelled, initialHp: aim.maxEnemyHp,
+      damage: aim.maxEnemyHp - aim.enemyHp,
+      perfectDamage: Math.max(1, Math.round((game.player.atk + 4) * 2.4) - aim.enemy.def) };
+  });
+  assert.deepEqual(combatBranches.items.map(({ phase, turn, count }) => ({ phase, turn, count })), [
+    { phase: 'menu', turn: 0, count: 0 }, { phase: 'menu', turn: 0, count: 1 },
+    { phase: 'enemyTurn', turn: 1, count: 1 },
+  ]);
+  assert.ok(combatBranches.items.every((item) => item.hp === item.maxHp));
+  assert.deepEqual(combatBranches.fleeing.map(({ outcome, phase, turn }) => ({ outcome, phase, turn })), [
+    { outcome: 'flee', phase: 'gone', turn: 0 }, { outcome: null, phase: 'enemyTurn', turn: 1 },
+    { outcome: null, phase: 'menu', turn: 0 },
+  ]);
+  assert.ok(combatBranches.fleeing.every((result) => result.gold === 0 && result.kills === 0 && result.spares === 0));
+  assert.deepEqual(combatBranches.cancelled, { phase: 'menu', turn: 0, enemyHp: combatBranches.initialHp });
+  assert.equal(combatBranches.damage, combatBranches.perfectDamage);
   for (const [type, result, kills] of [['true', 'spare', 0], ['neutral', 'spare', 1], ['dark', 'kill', 0]]) {
     const ending = await page.evaluate(({ result, kills }) => {
       const game = window.__duoidat;
@@ -381,6 +442,120 @@ try {
     }
     assert.equal(await page.evaluate(() => window.__duoidat.scene), 'title');
     assert.equal(await page.evaluate(() => localStorage.getItem('duoidat.save.v1')), null);
+  }
+  const journeys = await page.evaluate(async () => {
+    const { Input } = await import('/src/core.js');
+    const game = window.__duoidat;
+    const world = game.world;
+    const press = (action, update) => {
+      Input.just.add(action);
+      update();
+      Input.clearAll();
+    };
+    const finishDialogue = () => {
+      for (let i = 0; world.dialogue && i < 100; i++) {
+        world.dialogue.typer.skip();
+        press('confirm', () => world.update(0));
+      }
+      if (world.dialogue) throw new Error('Hội thoại hành trình bị kẹt');
+    };
+    // Tìm đường trên chính bản đồ va chạm, rồi đi từng bước bằng engine nhập liệu.
+    const walkTo = (goal) => {
+      world.encounterNext = 1e9;
+      const queue = [{ x: world.player.x, y: world.player.y, parent: -1 }];
+      const seen = new Set([`${queue[0].x},${queue[0].y}`]);
+      let target = -1;
+      for (let i = 0; i < queue.length; i++) {
+        const node = queue[i];
+        if (goal(node)) { target = i; break; }
+        for (const [action, dx, dy] of [['right', 8, 0], ['left', -8, 0], ['down', 0, 8], ['up', 0, -8]]) {
+          const x = node.x + dx, y = node.y + dy, key = `${x},${y}`;
+          if (seen.has(key) || !world.canStand(x, y)) continue;
+          const exit = world.room.exits.some((e) => x / 32 >= e.x && x / 32 < e.x + e.w && y / 32 >= e.y && y / 32 < e.y + e.h);
+          if (exit && !goal({ x, y })) continue;
+          seen.add(key);
+          queue.push({ x, y, parent: i, action });
+        }
+      }
+      if (target < 0) throw new Error(`Không tìm được đường ở ${world.room.id}`);
+      const path = [];
+      for (let i = target; queue[i].parent >= 0; i = queue[i].parent) path.unshift(queue[i].action);
+      for (const action of path) {
+        Input.down.add(action);
+        world.update(8 / 146);
+        Input.clearAll();
+      }
+    };
+    const interact = (object) => {
+      walkTo(({ x, y }) => Math.hypot(x - object.x * 32, y - (object.y * 32 - 10)) < 50);
+      press('confirm', () => world.update(0));
+      finishDialogue();
+    };
+    const results = [];
+    for (const route of ['true', 'neutral', 'dark']) {
+      game.startNewGame();
+      game.enterRoom('wake');
+      world.update(0.3);
+      finishDialogue();
+      const rooms = [];
+      let actions = 0;
+      for (let roomCount = 0; roomCount < 9; roomCount++) {
+        rooms.push(world.room.id);
+        const npc = world.objects.find((o) => o.id === 'baMoc' || o.id === 'nhim');
+        if (npc) {
+          interact(npc);
+          if (world.shop) press('cancel', () => world.update(0));
+        }
+        const boss = world.objects.find((o) => o.type === 'boss');
+        if (boss) {
+          interact(boss);
+          world.update(1);
+          if (game.scene !== 'battle') throw new Error(`Không bắt đầu được trận ${boss.id}`);
+          const battle = game.battle;
+          const kill = route === 'dark' || (route === 'neutral' && boss.enemy === 'sentinel');
+          for (let frames = 0; game.scene === 'battle' && frames < 10000; frames++) {
+            if (battle.phase === 'message') {
+              battle.typer.skip();
+              press('confirm', () => battle.update(0));
+            } else if (battle.phase === 'menu') {
+              battle.menuIndex = kill ? 0 : battle.warmth >= battle.enemy.mercyAt ? 3 : 1;
+              press('confirm', () => battle.update(0));
+              if (battle.phase === 'fightAim') {
+                battle.barX = 320;
+                press('confirm', () => battle.update(0));
+              } else {
+                battle.subIndex = battle.subKind === 'act' ? actions % battle.availableActs().length : 0;
+                press('confirm', () => battle.update(0));
+              }
+              actions++;
+            } else {
+              // Kiểm tra tiến trình và các lượt đánh; khả năng nhận sát thương có test riêng.
+              battle.invuln = 999;
+              battle.update(0.05);
+            }
+          }
+          if (game.scene === 'battle') throw new Error(`Trận ${boss.id} không kết thúc`);
+          finishDialogue();
+        }
+        if (game.scene === 'ending') break;
+        const exit = world.room.exits.find((e) => e.x === 19);
+        if (!exit) throw new Error(`Thiếu lối đi tiếp ở ${world.room.id}`);
+        if (exit.requires && !game.flags[exit.requires]) throw new Error(`Chưa mở khóa ${exit.requires}`);
+        walkTo(({ x, y }) => x / 32 >= exit.x && x / 32 < exit.x + exit.w && y / 32 >= exit.y && y / 32 < exit.y + exit.h);
+      }
+      results.push({ route, ending: game.endingType, scene: game.scene, rooms,
+        kills: game.player.kills, spares: game.player.spares, metNhim: game.flags.met_nhim });
+    }
+    game.toTitle();
+    return results;
+  });
+  for (const journey of journeys) {
+    assert.equal(journey.scene, 'ending', journey.route);
+    assert.equal(journey.ending, journey.route);
+    assert.deepEqual(journey.rooms, ['wake', 'hall', 'bridge', 'snow1', 'snow2', 'snow3', 'forest', 'market', 'throne']);
+    assert.equal(journey.metNhim, true);
+    assert.equal(journey.kills, journey.route === 'dark' ? 3 : journey.route === 'neutral' ? 1 : 0);
+    assert.equal(journey.spares + journey.kills, 3);
   }
   await page.evaluate(() => {
     const game = window.__duoidat;
@@ -597,6 +772,8 @@ try {
   console.log('✓ tự lưu báo đúng khi hết dung lượng, giữ điểm lưu cũ và lưu lại khi bộ nhớ hoạt động');
   console.log('✓ cuộn túi đồ, giữ lựa chọn khi còn vật phẩm và cập nhật khi dùng hết');
   console.log('✓ toàn bộ kẻ địch, các mẫu đạn, tuyến tha và cả ba kết thúc');
+  console.log('✓ đi thật qua chín phòng, mở khóa bằng hội thoại/trận đấu và hoàn thành cả ba tuyến');
+  console.log('✓ túi trống, hồi máu trong trận, hủy đòn đánh, canh đòn hoàn hảo và ba nhánh bỏ chạy');
   console.log('✓ thua trận, tải điểm lưu, từ chối tiếp tục khi chưa lưu và chơi lại');
   console.log('✓ rương mở một lần, mua hàng, thiếu tiền, hồi máu, suối và nút cảm ứng');
   console.log('✓ nút cảm ứng nằm ngoài màn hình game, không chồng lấn ở bốn kích thước dọc/ngang');

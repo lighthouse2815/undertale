@@ -45,6 +45,10 @@ Bộ kiểm thử tự mở server cổng 5187 (đổi bằng `TEST_PORT`), sử
 duyệt riêng và không đọc tài sản game gốc. Kiểm thử bao gồm đường đi và va chạm
 trong chín phòng, cửa khóa, cửa hàng, túi đồ, lưu/tải, chuyển giai đoạn trùm,
 các mẫu đạn, tuyến tha và ba kết thúc.
+Ba tuyến còn được kiểm tra xuyên suốt bằng cách tìm đường và di chuyển qua đủ
+chín phòng, nói chuyện để nhận hỗ trợ/mở cửa, chiến đấu với ba trùm rồi kiểm tra
+kết thúc tương ứng. Kiểm thử riêng bao gồm dùng đồ trong trận, bỏ chạy thành công/
+thất bại, trùm chặn bỏ chạy, canh đòn đánh và bố cục cảm ứng ở màn hình dọc/ngang.
 
 ## Điều khiển
 
