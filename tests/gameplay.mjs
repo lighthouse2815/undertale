@@ -323,6 +323,37 @@ try {
   assert.deepEqual(interactions.refused, interactions.bought);
   assert.equal(interactions.fullHpUse, 0); assert.equal(interactions.remainingBread, 2);
   assert.equal(interactions.springFirst, 20); assert.equal(interactions.springSecond, 1);
+  await page.evaluate(() => {
+    const game = window.__duoidat;
+    game.startNewGame(); game.flags.intro_seen = true; game.enterRoom('hall');
+    game.startBattle('moss', () => {});
+    const battle = game.battle;
+    while (battle.phase === 'message') { battle.typer.skip(); battle.advanceMessage(); }
+    battle.beginEnemyTurn();
+    window.dispatchEvent(new Event('blur'));
+  });
+  const frozen = await page.evaluate(() => {
+    const game = window.__duoidat;
+    return { hp: game.player.hp, playtime: game.playtime, turn: game.battle.turn, time: game.time };
+  });
+  await page.waitForTimeout(200);
+  assert.deepEqual(await page.evaluate(() => {
+    const game = window.__duoidat;
+    return { hp: game.player.hp, playtime: game.playtime, turn: game.battle.turn, time: game.time };
+  }), frozen);
+  assert.equal(await page.evaluate(() => window.__duoidat.suspended), true);
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => !window.__duoidat.suspended);
+  assert.equal(await page.evaluate(() => window.__duoidat.battle.phase), 'enemyTurn');
+  await page.evaluate(() => {
+    const game = window.__duoidat;
+    game.enterRoom('hall');
+    window.dispatchEvent(new Event('blur'));
+  });
+  assert.equal(await page.evaluate(() => window.__duoidat.suspended), true);
+  await page.keyboard.press('x');
+  await page.waitForFunction(() => !window.__duoidat.suspended);
+  assert.equal(await page.evaluate(() => window.__duoidat.world.paused), false);
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   const phone = await mobile.newPage();
   phone.on('pageerror', (error) => errors.push(error.message));
@@ -334,6 +365,7 @@ try {
   await phone.waitForFunction(() => window.__duoidat.scene === 'world');
   await mobile.close();
   assert.deepEqual(errors, []);
+  console.log('✓ tạm dừng khi mất tiêu điểm, đóng băng trận đấu và tiếp tục không lọt phím');
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
   console.log('✓ vị trí vào phòng, điểm lưu và tọa độ sau khi tải lại');

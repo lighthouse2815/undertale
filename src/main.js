@@ -32,6 +32,7 @@ class Game {
     this.flags = {};
     this.playtime = 0;
     this.scene = 'boot';
+    this.suspended = false;
     this.battle = null;
     this.world = new World(this);
     this.embers = new Embers(46, { color: '#ff9a5c', speed: 12, drift: 16, size: 2 });
@@ -105,6 +106,12 @@ class Game {
     });
   }
 
+  suspend() {
+    if (this.scene !== 'world' && this.scene !== 'battle') return;
+    this.suspended = true;
+    Input.clearAll();
+  }
+
   onDeath() {
     this.scene = 'gameover';
     this.gameoverIndex = 0;
@@ -121,6 +128,7 @@ class Game {
   }
 
   toTitle() {
+    this.suspended = false;
     this.scene = 'title';
     this.menuIndex = 0;
     this.helpOpen = false;
@@ -129,6 +137,7 @@ class Game {
 
   // ---------------- bắt đầu / tiếp tục ----------------
   startNewGame() {
+    this.suspended = false;
     this.player = newPlayer();
     this.flags = {};
     this.playtime = 0;
@@ -140,6 +149,7 @@ class Game {
   loadGame() {
     const data = Save.read();
     if (!data) return false;
+    this.suspended = false;
     const fresh = newPlayer();
     this.player = { ...fresh, ...(data.player ?? {}) };
     this.player.items = { ...(data.player?.items ?? fresh.items) };
@@ -732,6 +742,14 @@ function drawToast() {
 // Vòng lặp
 // ------------------------------------------------------------
 function update(dt) {
+  if (game.suspended) {
+    if (!document.hidden && (Input.consume('confirm') || Input.consume('cancel'))) {
+      game.suspended = false;
+      Input.clearAll();
+      audio.resume();
+    }
+    return;
+  }
   game.time += dt;
   audio.update();
 
@@ -806,6 +824,13 @@ function draw() {
       break;
   }
   if (game.flash > 0) R.fade(game.flash * 0.85, '#fff');
+  if (game.suspended) {
+    R.fade(0.8);
+    R.frame(100, 170, 440, 132, { border: '#ffffff', fill: '#000000', lw: 5 });
+    R.text('TẠM DỪNG', W / 2, 190, { size: 26, bold: true, align: 'center', color: '#ffd166' });
+    R.text('Z / Enter hoặc X để tiếp tục', W / 2, 242, { size: 18, align: 'center', color: '#ffffff' });
+    R.text('Trên điện thoại: chạm nút Z hoặc X', W / 2, 274, { size: 14, align: 'center', color: '#a8a294' });
+  }
   R.end();
 }
 
@@ -889,8 +914,10 @@ function boot() {
     }
   });
   window.addEventListener('pointerdown', () => audio.resume(), { once: false });
+  window.addEventListener('blur', () => game.suspend());
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) audio.resume();
+    if (document.hidden) game.suspend();
+    else audio.resume();
   });
 
   // cho phép bỏ qua màn hình chờ khi kiểm thử: #play

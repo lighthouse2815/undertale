@@ -57,6 +57,8 @@ các mẫu đạn, tuyến tha và ba kết thúc.
 | `F` | Bật–tắt toàn màn hình |
 
 Trên điện thoại/máy tính bảng có sẵn các nút cảm ứng ở dưới màn hình.
+Khi chuyển tab hoặc cửa sổ, game tự tạm dừng cả khám phá lẫn trận đấu.
+Quay lại và nhấn Z / Enter hoặc X (hoặc nút cảm ứng) để tiếp tục.
 
 ## Giao diện
 
