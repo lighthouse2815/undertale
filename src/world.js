@@ -614,7 +614,9 @@ export class World {
       return;
     }
 
+    const room = this.room;
     this.updateMovement(dt);
+    if (this.room !== room || this.pendingBattle || this.dialogue) return;
     this.updateCompanion(dt);
     this.updateInteractions();
   }

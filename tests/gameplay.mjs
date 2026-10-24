@@ -241,6 +241,38 @@ try {
   assert.equal(roomReset.staleIntro, false);
   assert.equal(roomReset.cooldown, 0);
   assert.ok(roomReset.companionDistance < 50);
+  const encounterTransition = await page.evaluate(async () => {
+    const { Input } = await import('/src/core.js');
+    const game = window.__duoidat;
+    game.enterRoom('hall');
+    const world = game.world;
+    const npc = world.objects.find((o) => o.type === 'npc');
+    world.player.x = npc.x * 32;
+    world.player.y = npc.y * 32 - 10;
+    world.encounterDist = world.encounterNext + 1;
+    Input.just.add('confirm');
+    const original = Math.random;
+    try {
+      Math.random = () => 0;
+      world.update(0);
+    } finally {
+      Math.random = original;
+      Input.clearAll();
+    }
+    const queued = Boolean(world.pendingBattle);
+    const dialogueDuringTransition = Boolean(world.dialogue);
+    world.update(1);
+    const enteredBattle = game.scene === 'battle';
+    game.battle.finish('flee');
+    const dialogueAfterBattle = Boolean(world.dialogue);
+    Input.just.add('confirm');
+    world.update(0);
+    Input.clearAll();
+    return { queued, enteredBattle, dialogueDuringTransition, dialogueAfterBattle,
+      canTalkAfterBattle: Boolean(world.dialogue) };
+  });
+  assert.deepEqual(encounterTransition, { queued: true, enteredBattle: true,
+    dialogueDuringTransition: false, dialogueAfterBattle: false, canTalkAfterBattle: true });
   const inventory = await page.evaluate(async () => {
     const { Input, R } = await import('/src/core.js');
     const game = window.__duoidat;
@@ -560,6 +592,7 @@ try {
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
   console.log('✓ vị trí vào phòng, điểm lưu và tọa độ sau khi tải lại');
+  console.log('✓ không mở hội thoại khi chuyển vào trận ngẫu nhiên, vẫn trò chuyện được sau khi thoát');
   console.log('✓ dữ liệu lưu hợp lệ, tám trường hợp lưu hỏng và bộ nhớ bị chặn');
   console.log('✓ tự lưu báo đúng khi hết dung lượng, giữ điểm lưu cũ và lưu lại khi bộ nhớ hoạt động');
   console.log('✓ cuộn túi đồ, giữ lựa chọn khi còn vật phẩm và cập nhật khi dùng hết');
