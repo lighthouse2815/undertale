@@ -414,7 +414,7 @@ function drawHelp() {
     ['X / Esc', 'Mở túi đồ, quay lại'],
     ['M', 'Bật / tắt âm thanh'],
     ['F', 'Toàn màn hình'],
-    ['', ''],
+    ['P / nút Ⅱ', 'Tạm dừng, tiếp tục kể cả trong trận'],
     ['Trong trận đánh:', ''],
     ['ĐÁNH', 'Canh vạch giữa để gây sát thương lớn'],
     ['NÓI', 'Trò chuyện để tăng HƠI ẤM'],
@@ -743,11 +743,15 @@ function drawToast() {
 // ------------------------------------------------------------
 function update(dt) {
   if (game.suspended) {
-    if (!document.hidden && (Input.consume('confirm') || Input.consume('cancel'))) {
+    if (!document.hidden && (Input.consume('pause') || Input.consume('confirm') || Input.consume('cancel'))) {
       game.suspended = false;
       Input.clearAll();
       audio.resume();
     }
+    return;
+  }
+  if ((game.scene === 'world' || game.scene === 'battle') && Input.consume('pause')) {
+    game.suspend();
     return;
   }
   game.time += dt;
@@ -828,8 +832,8 @@ function draw() {
     R.fade(0.8);
     R.frame(100, 170, 440, 132, { border: '#ffffff', fill: '#000000', lw: 5 });
     R.text('TẠM DỪNG', W / 2, 190, { size: 26, bold: true, align: 'center', color: '#ffd166' });
-    R.text('Z / Enter hoặc X để tiếp tục', W / 2, 242, { size: 18, align: 'center', color: '#ffffff' });
-    R.text('Trên điện thoại: chạm nút Z hoặc X', W / 2, 274, { size: 14, align: 'center', color: '#a8a294' });
+    R.text('P / Z / Enter / X để tiếp tục', W / 2, 242, { size: 18, align: 'center', color: '#ffffff' });
+    R.text('Trên điện thoại: chạm Ⅱ, Z hoặc X', W / 2, 274, { size: 14, align: 'center', color: '#a8a294' });
   }
   R.end();
 }

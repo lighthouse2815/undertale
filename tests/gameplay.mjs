@@ -393,6 +393,18 @@ try {
   await page.keyboard.press('x');
   await page.waitForFunction(() => !window.__duoidat.suspended);
   assert.equal(await page.evaluate(() => window.__duoidat.world.paused), false);
+  await page.keyboard.press('p');
+  await page.waitForFunction(() => window.__duoidat.suspended);
+  await page.keyboard.press('p');
+  await page.waitForFunction(() => !window.__duoidat.suspended);
+  await page.evaluate(() => window.__duoidat.startBattle('moss', () => {}));
+  await page.keyboard.press('p');
+  await page.waitForFunction(() => window.__duoidat.suspended);
+  const manualPauseTime = await page.evaluate(() => window.__duoidat.battle.time);
+  await page.waitForTimeout(100);
+  assert.equal(await page.evaluate(() => window.__duoidat.battle.time), manualPauseTime);
+  await page.keyboard.press('p');
+  await page.waitForFunction(() => !window.__duoidat.suspended);
   await page.evaluate(() => window.__duoidat.toTitle());
   await page.keyboard.down('w');
   await page.keyboard.down('ArrowUp');
@@ -422,6 +434,17 @@ try {
   await phone.waitForFunction(() => window.__duoidat.scene === 'intro');
   for (let i = 0; i < 3; i++) { await phone.locator('[data-input="confirm"]').tap(); await phone.waitForTimeout(40); }
   await phone.waitForFunction(() => window.__duoidat.scene === 'world');
+  await phone.locator('[data-input="pause"]').tap();
+  await phone.waitForFunction(() => window.__duoidat.suspended);
+  await phone.locator('[data-input="pause"]').tap();
+  await phone.waitForFunction(() => !window.__duoidat.suspended);
+  await phone.evaluate(() => window.__duoidat.startBattle('moss', () => {}));
+  await phone.locator('[data-input="pause"]').tap();
+  await phone.waitForFunction(() => window.__duoidat.suspended);
+  await phone.locator('[data-input="confirm"]').tap();
+  await phone.waitForFunction(() => !window.__duoidat.suspended);
+  assert.equal(await phone.locator('[data-input="confirm"]').textContent(), 'Z');
+  assert.equal(await phone.locator('[data-input="cancel"]').textContent(), 'X');
   await mobile.close();
   assert.deepEqual(errors, []);
   console.log('✓ tạm dừng khi mất tiêu điểm, đóng băng trận đấu và tiếp tục không lọt phím');

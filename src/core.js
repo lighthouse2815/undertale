@@ -47,6 +47,7 @@ const KEYMAP = {
   KeyM: 'mute',
   KeyF: 'fullscreen',
   KeyH: 'hint',
+  KeyP: 'pause',
 };
 
 class InputEngine {

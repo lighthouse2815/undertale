@@ -53,12 +53,13 @@ các mẫu đạn, tuyến tha và ba kết thúc.
 | `↑ ↓ ← →` hoặc `W A S D` | Di chuyển / chọn trong menu |
 | `Z` · `Enter` · `Space` | Xác nhận, nói chuyện, tấn công |
 | `X` · `Esc` | Mở túi đồ / quay lại |
+| `P` hoặc nút `Ⅱ` | Tạm dừng / tiếp tục, kể cả trong trận |
 | `M` | Bật–tắt âm thanh |
 | `F` | Bật–tắt toàn màn hình |
 
 Trên điện thoại/máy tính bảng có sẵn các nút cảm ứng ở dưới màn hình.
 Khi chuyển tab hoặc cửa sổ, game tự tạm dừng cả khám phá lẫn trận đấu.
-Quay lại và nhấn Z / Enter hoặc X (hoặc nút cảm ứng) để tiếp tục.
+Quay lại và nhấn P / Z / Enter hoặc X (hoặc nút cảm ứng) để tiếp tục.
 
 ## Giao diện
 
