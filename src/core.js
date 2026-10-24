@@ -207,6 +207,30 @@ const TRACKS = {
   },
 };
 
+// ------------------------------------------------------------
+// Nhạc gốc (tuỳ chọn): engine đọc các tệp .ogg từ bản game bạn đã cài
+// trên máy, phục vụ qua server ở /local-music/. Không tệp nào nằm trong
+// repo này — máy nào không có bản game thì game dùng nhạc tự tổng hợp.
+// ------------------------------------------------------------
+const LOCAL_MUSIC_ROUTE = '/local-music/';
+const LOCAL_VOLUME = 0.5;
+
+const LOCAL_TRACKS = {
+  title: ['mus_menu0.ogg', 'mus_story.ogg'],
+  field: ['mus_ruins.ogg'],
+  battle: ['mus_battle1.ogg'],
+  boss: ['mus_boss1.ogg'],
+  gameover: ['mus_gameover.ogg'],
+  ending: ['mus_z_ending.ogg'],
+  // theo từng khu vực
+  wake: ['mus_ruins.ogg'],
+  hall: ['mus_ruins.ogg', 'mus_waterquiet.ogg'],
+  bridge: ['mus_snowy.ogg'],
+  forest: ['mus_waterfall.ogg'],
+  market: ['mus_temshop.ogg', 'mus_shop.ogg'],
+  throne: ['mus_bergentruckung.ogg', 'mus_barrier.ogg'],
+};
+
 class AudioEngine {
   constructor() {
     this.ctx = null;
@@ -221,6 +245,12 @@ class AudioEngine {
     this.nextTime = 0;
     this.stepDur = 0.2;
     this.ready = false;
+    // nhạc .ogg đọc từ bản game cài trên máy (không kèm trong repo)
+    this.localFiles = null;
+    this.localDir = null;
+    this.localCache = new Map();
+    this.localEl = null;
+    this.localFile = null;
   }
 
   init() {
@@ -259,6 +289,65 @@ class AudioEngine {
     if (this.master && this.ctx) {
       this.master.gain.setTargetAtTime(muted ? 0 : 1, this.ctx.currentTime, 0.05);
     }
+    for (const el of this.localCache.values()) el.volume = muted ? 0 : LOCAL_VOLUME;
+  }
+
+  /** Tìm nhạc gốc trên máy. Không có cũng không sao — game vẫn chạy. */
+  async detectLocalMusic() {
+    try {
+      const res = await fetch(`${LOCAL_MUSIC_ROUTE}index.json`);
+      if (!res.ok) return false;
+      const data = await res.json();
+      if (!Array.isArray(data.files) || data.files.length === 0) return false;
+      this.localFiles = new Set(data.files);
+      this.localDir = typeof data.dir === 'string' ? data.dir : null;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  /** Chọn tệp nhạc gốc phù hợp với ngữ cảnh (khu vực trước, rồi tới loại nhạc). */
+  localTrackFor(context, name) {
+    if (!this.localFiles) return null;
+    for (const key of [context, name]) {
+      for (const file of LOCAL_TRACKS[key] ?? []) {
+        if (this.localFiles.has(file)) return file;
+      }
+    }
+    return null;
+  }
+
+  playLocal(file, loop) {
+    let el = this.localCache.get(file);
+    if (!el) {
+      el = new Audio(`${LOCAL_MUSIC_ROUTE}${encodeURIComponent(file)}`);
+      el.preload = 'auto';
+      this.localCache.set(file, el);
+    }
+    for (const other of this.localCache.values()) {
+      if (other !== el && !other.paused) other.pause();
+    }
+    el.loop = loop;
+    el.volume = this.muted ? 0 : LOCAL_VOLUME;
+    try {
+      el.currentTime = 0;
+    } catch {
+      /* tệp chưa tải xong — bỏ qua */
+    }
+    el.play().catch(() => {
+      /* trình duyệt chặn tự phát: coi như không có nhạc gốc */
+    });
+    this.localEl = el;
+    this.localFile = file;
+  }
+
+  stopLocal() {
+    for (const el of this.localCache.values()) {
+      if (!el.paused) el.pause();
+    }
+    this.localEl = null;
+    this.localFile = null;
   }
 
   toggleMuted() {
@@ -268,12 +357,22 @@ class AudioEngine {
   }
 
   // ---------------- nhạc nền ----------------
-  playMusic(name) {
+  playMusic(name, context = null) {
     if (!this.ready) return;
-    if (this.trackName === name && this.track) return;
+    const file = this.localTrackFor(context, name);
+    const playing = this.trackName === name && (file ? this.localFile === file : !!this.track);
+    if (playing) return;
     this.trackName = name;
-    this.track = TRACKS[name] ?? null;
     this.step = 0;
+
+    // có nhạc gốc trên máy thì dùng, không thì tổng hợp bằng WebAudio
+    if (file) {
+      this.track = null;
+      this.playLocal(file, name !== 'gameover');
+      return;
+    }
+    this.stopLocal();
+    this.track = TRACKS[name] ?? null;
     if (!this.track) return;
     this.track.loopSteps = Math.max(...this.track.channels.map((c) => c.notes.length));
     this.stepDur = 60 / this.track.bpm / 2;
@@ -283,6 +382,7 @@ class AudioEngine {
   stopMusic() {
     this.trackName = null;
     this.track = null;
+    this.stopLocal();
   }
 
   update() {

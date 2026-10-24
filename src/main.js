@@ -45,6 +45,8 @@ class Game {
     this.toastText = '';
     this.toastColor = '#ffd166';
     this.toastTimer = 0;
+    // có nhạc .ogg của bản game trên máy hay không (xem audio.detectLocalMusic)
+    this.localMusic = false;
     this.flash = 0;
     this.time = 0;
     this.titleIndex = 0;
@@ -95,7 +97,7 @@ class Game {
     this.battle = new Battle(this, enemyId, (result) => {
       this.battle = null;
       this.scene = 'world';
-      audio.playMusic(this.world.room?.music ?? 'field');
+      audio.playMusic(this.world.room?.music ?? 'field', this.world.room?.id ?? null);
       if (onEnd) onEnd(result);
     });
   }
@@ -156,6 +158,7 @@ const itemsTable = Object.fromEntries(
 
 const game = new Game();
 window.__duoidat = game; // tiện cho việc kiểm thử
+window.__audio = audio; // tiện cho việc kiểm thử phần nhạc
 
 // ------------------------------------------------------------
 // Nền tiêu đề dùng chung
@@ -782,6 +785,12 @@ function boot() {
     if (!ok) console.warn('Không nạp được font pixel, dùng font dự phòng.');
   });
 
+  // tìm nhạc gốc trên máy (nếu có); không có thì dùng nhạc tự tổng hợp
+  audio.detectLocalMusic().then((ok) => {
+    game.localMusic = ok;
+    if (ok) console.info(`Nhạc gốc lấy từ: ${audio.localDir ?? '(không rõ đường dẫn)'}`);
+  });
+
   const overlay = document.getElementById('boot');
   const start = () => {
     if (overlay.classList.contains('hide')) return;
@@ -790,6 +799,9 @@ function boot() {
     audio.resume();
     audio.playMusic('title');
     game.scene = 'title';
+    if (game.localMusic) {
+      window.setTimeout(() => game.toast('Nhạc: lấy từ bản game trên máy', '#9fd48c'), 1400);
+    }
     window.setTimeout(() => overlay.remove(), 1000);
   };
   document.getElementById('bootBtn')?.addEventListener('click', start);

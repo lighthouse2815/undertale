@@ -64,6 +64,44 @@ Phần nhìn và cảm giác được làm theo tinh thần RPG dưới lòng đ
 - **Điểm lưu** là ngôi sao vàng (thay cho đèn lồng trước đây) — chạm vào để hồi
   máu đầy và ghi lại hành trình.
 
+## Dùng nhạc từ bản game bạn đã cài trên máy (tuỳ chọn)
+
+Engine có thể phát các tệp `.ogg` **có sẵn trên máy bạn** thay cho nhạc tự tổng hợp.
+Cách này giống các engine mã nguồn mở khác: repo chỉ chứa code, còn dữ liệu game là
+của bản cài trên máy — **không tệp nhạc nào được sao chép vào dự án hay lên GitHub**.
+
+Cách dùng:
+
+1. Đặt bản cài vào `Undertale-AnkerGames/Undertale/` (thư mục này đã bị `.gitignore`
+   bỏ qua), hoặc trỏ tới chỗ khác bằng biến môi trường:
+
+   ```bash
+   LOCAL_MUSIC_DIR="/đường/dẫn/tới/thư-mục-có-ogg" npm run dev
+   ```
+
+2. Chạy game như thường lệ. Khi vào màn hình chờ, góc dưới hiện dòng
+   “Nhạc: lấy từ bản game trên máy”.
+
+Server nội bộ chỉ phục vụ các tệp `.ogg` trong thư mục đó ở đường dẫn `/local-music/`
+(danh sách ở `/local-music/index.json`), kèm kiểm tra tên tệp nên không đi ra ngoài
+thư mục. Không có thư mục/nhạc thì game tự quay về nhạc WebAudio như trước — nên bản
+trên GitHub vẫn chạy đầy đủ với người không có bản game.
+
+Bài nhạc được chọn theo khu vực và theo cảnh:
+
+| Cảnh | Tệp ưu tiên |
+| --- | --- |
+| Màn hình chờ | `mus_menu0.ogg` |
+| Rêu Xanh, Hành Lang Tro | `mus_ruins.ogg` |
+| Cầu Tro | `mus_snowy.ogg` |
+| Rừng Tro | `mus_waterfall.ogg` |
+| Chợ Tro | `mus_temshop.ogg` |
+| Ngai Tro | `mus_bergentruckung.ogg` |
+| Trận thường / trận trùm | `mus_battle1.ogg` / `mus_boss1.ogg` |
+| Thua / kết thúc | `mus_gameover.ogg` / `mus_z_ending.ogg` |
+
+Muốn đổi bản nhạc khác thì sửa bảng `LOCAL_TRACKS` trong `src/core.js`.
+
 ## Cách chơi
 
 **Khám phá.** Đi qua sáu khu vực của Hầm Tro: Rêu Xanh → Hành Lang Tro →
@@ -101,7 +139,7 @@ khi bạn đi hết một cái kết.
 
 ```
 index.html          khung trang, chỉ gắn canvas
-server.mjs          static server cổng 5173
+server.mjs          static server cổng 5173 (+ /local-music: nhạc .ogg trên máy)
 scripts/check.mjs   kiểm tra cú pháp + bản đồ + sprite
 src/
   core.js           nhập liệu, âm thanh (WebAudio), vẽ, chữ, hội thoại, lưu game
@@ -123,5 +161,8 @@ Không có bước build: trình duyệt chạy trực tiếp các ES module tro
 - Không có asset (hình, âm thanh, chữ) nào được sao chép từ trò chơi khác.
   Font Handjet trong `assets/fonts/` là phần mềm tự do theo SIL Open Font
   License 1.1 (xem `assets/fonts/OFL.txt`), không liên quan tới trò chơi nào.
+- Nhạc `.ogg` từ bản game cài trên máy **không** được đưa vào repo: engine chỉ đọc
+  tệp tại chỗ khi chạy (xem mục “Dùng nhạc từ bản game bạn đã cài trên máy”).
+  Máy không có bản game vẫn chạy bình thường với nhạc tự tổng hợp.
 - Thư mục `Undertale-AnkerGames/` (bản game gốc để tham khảo cục bộ) **không**
   được đưa lên kho git — xem `.gitignore`.

@@ -75,7 +75,7 @@ export class World {
     this.dialogue = null;
     this.shop = null;
     this.paused = false;
-    if (room.music) audio.playMusic(room.music);
+    if (room.music) audio.playMusic(room.music, room.id);
     if (room.autosave) {
       this.game.healFull();
       this.save(true);
