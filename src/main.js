@@ -156,6 +156,7 @@ const itemsTable = Object.fromEntries(
     candy: { name: 'Kẹo rêu', heal: 26 },
     tea: { name: 'Trà tro', heal: 45 },
     honey: { name: 'Mật đom', heal: 70 },
+    kem: { name: 'Kem tuyết', heal: 55 },
   })
 );
 
