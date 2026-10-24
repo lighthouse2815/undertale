@@ -4,6 +4,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 let errors = 0;
+const MAP_TILES = new Set('#,.>OT_bcfghlmp svw|~'.replaceAll(' ', '').split(''));
 
 // 1. cú pháp
 const files = [
@@ -32,11 +33,21 @@ for (const [id, room] of Object.entries(ROOMS)) {
       errors++;
       console.error(`✗ ${id} hàng ${i}: cần 20 cột, đang có ${row.length}`);
     }
+    for (const [j, tile] of [...row].entries()) {
+      if (!MAP_TILES.has(tile)) {
+        errors++;
+        console.error(`✗ ${id} hàng ${i} cột ${j}: ký hiệu bản đồ không hợp lệ "${tile}"`);
+      }
+    }
   });
   for (const exit of room.exits ?? []) {
     if (!ROOMS[exit.to]) {
       errors++;
       console.error(`✗ ${id}: lối ra dẫn tới phòng không tồn tại "${exit.to}"`);
+    }
+    if (exit.x < 0 || exit.y < 0 || exit.x + (exit.w ?? 1) > 20 || exit.y + (exit.h ?? 1) > 15) {
+      errors++;
+      console.error(`✗ ${id}: lối ra nằm ngoài bản đồ`);
     }
   }
   for (const enemyId of room.encounters?.pool ?? []) {
