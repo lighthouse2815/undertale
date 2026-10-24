@@ -21,7 +21,7 @@ for (const file of files) {
 }
 
 // 2. bản đồ
-const { ROOMS, ITEMS, ENEMIES, SHOP_STOCK } = await import('../src/data.js');
+const { ROOMS, ITEMS, ENEMIES, NPC_TALK, SHOP_STOCK } = await import('../src/data.js');
 for (const [id, room] of Object.entries(ROOMS)) {
   if (room.map.length !== 15) {
     errors++;
@@ -39,10 +39,24 @@ for (const [id, room] of Object.entries(ROOMS)) {
       console.error(`✗ ${id}: lối ra dẫn tới phòng không tồn tại "${exit.to}"`);
     }
   }
+  for (const enemyId of room.encounters?.pool ?? []) {
+    if (!ENEMIES[enemyId]) {
+      errors++;
+      console.error(`✗ ${id}: encounter trỏ tới kẻ địch không tồn tại "${enemyId}"`);
+    }
+  }
   for (const obj of room.objects ?? []) {
     if (obj.type === 'chest' && !ITEMS[obj.item]) {
       errors++;
       console.error(`✗ ${id}: rương chứa vật phẩm không tồn tại "${obj.item}"`);
+    }
+    if (obj.type === 'npc' && !NPC_TALK[obj.id]) {
+      errors++;
+      console.error(`✗ ${id}: NPC không có hội thoại "${obj.id}"`);
+    }
+    if (obj.type === 'boss' && !ENEMIES[obj.enemy]) {
+      errors++;
+      console.error(`✗ ${id}: trùm trỏ tới kẻ địch không tồn tại "${obj.enemy}"`);
     }
     if (obj.type === 'boss' && (obj.x < 0 || obj.x > 20 || obj.y < 0 || obj.y > 15)) {
       errors++;
