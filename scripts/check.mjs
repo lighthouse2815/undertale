@@ -21,7 +21,7 @@ for (const file of files) {
 }
 
 // 2. bản đồ
-const { ROOMS } = await import('../src/data.js');
+const { ROOMS, ITEMS, ENEMIES, SHOP_STOCK } = await import('../src/data.js');
 for (const [id, room] of Object.entries(ROOMS)) {
   if (room.map.length !== 15) {
     errors++;
@@ -40,10 +40,27 @@ for (const [id, room] of Object.entries(ROOMS)) {
     }
   }
   for (const obj of room.objects ?? []) {
+    if (obj.type === 'chest' && !ITEMS[obj.item]) {
+      errors++;
+      console.error(`✗ ${id}: rương chứa vật phẩm không tồn tại "${obj.item}"`);
+    }
     if (obj.type === 'boss' && (obj.x < 0 || obj.x > 20 || obj.y < 0 || obj.y > 15)) {
       errors++;
       console.error(`✗ ${id}: trùm đặt ngoài bản đồ`);
     }
+  }
+}
+
+for (const id of SHOP_STOCK) {
+  if (!ITEMS[id]) {
+    errors++;
+    console.error(`✗ cửa hàng chứa vật phẩm không tồn tại "${id}"`);
+  }
+}
+for (const [id, enemy] of Object.entries(ENEMIES)) {
+  if (!enemy.patterns?.length) {
+    errors++;
+    console.error(`✗ kẻ địch ${id}: chưa có mẫu tấn công`);
   }
 }
 
