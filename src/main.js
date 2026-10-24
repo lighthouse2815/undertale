@@ -4,7 +4,7 @@
 import { R, W, H, Input, audio, Embers, Save, clamp, rand, hash2, pick, loadFonts } from './core.js';
 import { art, loadLocalSprites, PLAYER_ART, PROP_ART } from './localassets.js';
 import { drawSprite, drawLocal } from './sprites.js';
-import { ROOMS, ENEMIES } from './data.js';
+import { ROOMS, ENEMIES, ITEMS } from './data.js';
 import { World } from './world.js';
 import { Battle } from './battle.js';
 
@@ -149,16 +149,6 @@ class Game {
     return true;
   }
 }
-
-const itemsTable = Object.fromEntries(
-  Object.entries({
-    bread: { name: 'Bánh mì tro', heal: 14 },
-    candy: { name: 'Kẹo rêu', heal: 26 },
-    tea: { name: 'Trà tro', heal: 45 },
-    honey: { name: 'Mật đom', heal: 70 },
-    kem: { name: 'Kem tuyết', heal: 55 },
-  })
-);
 
 const game = new Game();
 window.__duoidat = game; // tiện cho việc kiểm thử
