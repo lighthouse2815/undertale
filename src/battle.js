@@ -324,7 +324,7 @@ export class Battle {
         this.victory('spare');
         return;
       }
-      const left = Math.max(0, this.enemy.mercyAt - this.warmth);
+      const left = Math.ceil(100 * Math.max(0, this.enemy.mercyAt - this.warmth) / this.enemy.mercyAt);
       this.say(
         [
           { text: `Bạn chìa tay ra và đề nghị dừng lại.` },
@@ -357,7 +357,7 @@ export class Battle {
       this.victory('kill');
       return;
     }
-    this.checkStage();
+    if (this.checkStage()) return;
     this.beginEnemyTurn();
   }
 
@@ -371,7 +371,9 @@ export class Battle {
             text:
               this.enemy.id === 'king'
                 ? 'Tro trên người Vua Tro bùng lên. Ánh mắt ngài đau đớn hơn, nhưng cũng gần gũi hơn.'
-                : 'Gỉ sét nứt ra. Lính Sắt Vụn run lên, chuyển sang thế thủ dữ dội hơn.',
+                : this.enemy.id === 'guard'
+                  ? 'Chó Tuyết Khổng Lồ đứng bật dậy, giũ tuyết khỏi bộ lông. Nó bắt đầu chạy vòng quanh bạn.'
+                  : 'Gỉ sét nứt ra. Lính Sắt Vụn run lên, chuyển sang thế thủ dữ dội hơn.',
           },
           { text: 'Thế trận đã đổi. Hãy cẩn thận hơn!', color: '#ff8a3d' },
         ],
@@ -718,8 +720,7 @@ export class Battle {
       p.spares += 1;
       const gold = Math.round(this.enemy.gold * 0.7);
       p.gold += gold;
-      const heal = 4;
-      p.hp = Math.min(p.maxHp, p.hp + heal);
+      const heal = this.game.heal(4);
       audio.spare();
       const lines = [
         { text: this.enemy.spareLine },
@@ -750,6 +751,7 @@ export class Battle {
   applyLevelUp() {
     const p = this.player;
     const thresholds = [10, 30, 70, 130, 220, 340];
+    const oldLv = p.lv;
     let leveledUp = false;
     while (p.lv - 1 < thresholds.length && p.exp >= thresholds[p.lv - 1]) {
       p.lv += 1;
@@ -760,7 +762,8 @@ export class Battle {
     }
     if (!leveledUp) return null;
     audio.levelUp();
-    return { text: `LV tăng lên ${p.lv}! HP tối đa +4, Công +1. Bạn cảm thấy mình cứng cáp hơn.`, color: '#9fd48c' };
+    const levels = p.lv - oldLv;
+    return { text: `LV tăng lên ${p.lv}! HP tối đa +${levels * 4}, Công +${levels}. Bạn cảm thấy mình cứng cáp hơn.`, color: '#9fd48c' };
   }
 
   finish(result) {
