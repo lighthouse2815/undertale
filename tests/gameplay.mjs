@@ -739,6 +739,17 @@ try {
   await page.waitForFunction(() => window.__duoidat.scene === 'intro');
   assert.equal(await page.evaluate(() => window.__duoidat.player.gold), 0);
   assert.equal(await page.evaluate(() => localStorage.getItem('duoidat.save.v1')), previousSave);
+  const bootPage = await browser.newPage();
+  bootPage.on('pageerror', (error) => errors.push(error.message));
+  bootPage.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  await bootPage.goto(`http://127.0.0.1:${port}/`);
+  await bootPage.waitForFunction(() => window.__duoidat?.scene === 'boot');
+  await bootPage.keyboard.press('Enter');
+  await bootPage.waitForTimeout(100);
+  assert.equal(await bootPage.evaluate(() => window.__duoidat.scene), 'title');
+  await bootPage.keyboard.press('Enter');
+  await bootPage.waitForFunction(() => window.__duoidat.scene === 'intro');
+  await bootPage.close();
   const blocked = await browser.newContext();
   await blocked.addInitScript(() => {
     Object.defineProperty(window, 'localStorage', {
@@ -762,6 +773,7 @@ try {
   await blocked.close();
   assert.deepEqual(errors, []);
   console.log('✓ xác nhận hành trình mới, hủy không mất điểm lưu và tiếp tục hành trình cũ');
+  console.log('✓ phím mở màn hình chờ không lọt xuống menu tiêu đề');
   console.log('✓ khởi động, bật/tắt tiếng và bắt đầu chơi khi localStorage bị chặn');
   console.log('✓ tạm dừng khi mất tiêu điểm, đóng băng trận đấu và tiếp tục không lọt phím');
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');

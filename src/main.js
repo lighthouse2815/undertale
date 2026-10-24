@@ -917,6 +917,7 @@ function boot() {
 
   const start = () => {
     if (overlay.classList.contains('hide')) return;
+    Input.clearAll();
     overlay.classList.add('hide');
     audio.init();
     audio.resume();
