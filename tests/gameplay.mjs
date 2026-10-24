@@ -172,6 +172,25 @@ try {
   assert.equal(saveResult.accepted, true);
   assert.match(saveResult.failure, /Không lưu được hành trình/);
   assert.doesNotMatch(saveResult.failure, /Hành trình đã được ghi lại/);
+  const roomReset = await page.evaluate(() => {
+    const game = window.__duoidat;
+    game.flags = {};
+    game.enterRoom('wake');
+    const queuedIntro = Boolean(game.world.pendingIntro);
+    game.world.blockedCooldown = 4;
+    game.world.nearObject = game.world.objects[0];
+    game.flags = { intro_seen: true, met_dom: true };
+    game.enterRoom('hall');
+    const world = game.world;
+    world.update(0.3);
+    return { queuedIntro, staleIntro: Boolean(world.pendingIntro || world.dialogue),
+      nearObject: world.nearObject?.id ?? null, cooldown: world.blockedCooldown,
+      companionDistance: Math.hypot(world.companion.x - world.player.x, world.companion.y - world.player.y) };
+  });
+  assert.equal(roomReset.queuedIntro, true);
+  assert.equal(roomReset.staleIntro, false);
+  assert.equal(roomReset.cooldown, 0);
+  assert.ok(roomReset.companionDistance < 50);
   const inventory = await page.evaluate(async () => {
     const { Input, R } = await import('/src/core.js');
     const game = window.__duoidat;

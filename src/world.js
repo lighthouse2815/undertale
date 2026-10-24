@@ -74,6 +74,17 @@ export class World {
     this.encounterGrace = 300;
     this.encounterNext = rand(room.encounters?.min ?? 700, room.encounters?.max ?? 1000);
     this.pendingBattle = null;
+    this.pendingIntro = null;
+    this.nearObject = null;
+    this.blockedCooldown = 0;
+    this.pauseIndex = 0;
+    this.pauseMessage = '';
+    this.pauseMessageTimer = 0;
+    this.player.moving = false;
+    this.player.anim = 0;
+    this.companion.x = this.player.x;
+    this.companion.y = this.player.y - 24;
+    this.companion.active = Boolean(this.flags.met_dom);
     this.dialogue = null;
     this.shop = null;
     this.paused = false;
