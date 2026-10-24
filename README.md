@@ -129,13 +129,15 @@ Sau đó thư mục sprite là `Undertale-AnkerGames/du-lieu-goc/Sprites/` (đã
 LOCAL_SPRITE_DIR="/đường/dẫn/tới/Sprites" npm run dev
 ```
 
-Server phục vụ các tệp `.png` ở đường dẫn `/local-sprites/`. Khi vào màn hình chờ,
-góc dưới hiện dòng “Hình ảnh: lấy từ bản game trên máy”.
+Server phục vụ các tệp `.png` ở đường dẫn `/local-sprites/`. Khi máy có sprite gốc,
+màn hình chờ và màn hình tiêu đề hiện đúng ảnh logo gốc như bản game (`spr_undertaletitle`),
+và trong game hiện dòng “Hình ảnh: lấy từ bản game trên máy”.
 
 Những sprite được dùng (xem `src/localassets.js`):
 
 | Chỗ dùng | Sprite gốc |
 | --- | --- |
+| Màn hình chờ & màn hình tiêu đề | `spr_undertaletitle` (ảnh 320×240: nền đen + logo + tim đỏ) |
 | Nhân vật chính (bốn hướng, khung đi) | `spr_f_mainchara` + `d`/`u`/`l`/`r` |
 | Bọ Rêu (trận) | `spr_migosp` (con bọ xanh trong Ruins) |
 | Nấm Buồn (trận) | `spr_moldsmal` |

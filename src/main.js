@@ -290,52 +290,71 @@ function updateTitle(dt) {
 
 function drawTitle(dt) {
   const ctx = R.ctx;
-  drawCaveBackdrop(Math.sin(game.time * 0.4) > 0.4 ? 1 : 0);
-  drawStars(game.time);
-  game.embers.draw();
+  const logo = art.get('spr_undertaletitle_0.png'); // ảnh tiêu đề gốc 320×240 (nền đen + logo + tim đỏ)
+  if (logo) {
+    // y như màn hình tiêu đề gốc: ảnh phóng 2× kín màn hình
+    R.image(logo, 0, 0, 2);
+    // phụ đề tiếng Việt ngay dưới logo
+    R.text('DƯỚI ĐẤT — một câu chuyện dưới tầng tro', W / 2, 298, {
+      size: 12,
+      align: 'center',
+      spacing: 2,
+      color: '#6f6a60',
+      shadow: false,
+    });
+  } else {
+    drawCaveBackdrop(Math.sin(game.time * 0.4) > 0.4 ? 1 : 0);
+    drawStars(game.time);
+    game.embers.draw();
 
-  // tiêu đề
-  const glow = 0.5 + 0.2 * Math.sin(game.time * 1.2);
-  R.glow(W / 2, 120, 220, '#ff8a3d', glow * 0.22);
-  R.text('DƯỚI', W / 2, 58, { size: 66, bold: true, align: 'center', spacing: 12, color: '#f6efe2' });
-  R.text('ĐẤT', W / 2, 118, { size: 66, bold: true, align: 'center', spacing: 12, color: '#f6efe2' });
-  R.text('một câu chuyện dưới tầng tro', W / 2, 196, {
-    size: 15,
-    align: 'center',
-    italic: true,
-    color: '#c9b98e',
-    spacing: 2,
-  });
+    const glow = 0.5 + 0.2 * Math.sin(game.time * 1.2);
+    R.glow(W / 2, 120, 220, '#ff8a3d', glow * 0.22);
+    R.text('DƯỚI', W / 2, 58, { size: 66, bold: true, align: 'center', spacing: 12, color: '#f6efe2' });
+    R.text('ĐẤT', W / 2, 118, { size: 66, bold: true, align: 'center', spacing: 12, color: '#f6efe2' });
+    R.text('một câu chuyện dưới tầng tro', W / 2, 196, {
+      size: 15,
+      align: 'center',
+      italic: true,
+      color: '#c9b98e',
+      spacing: 2,
+    });
 
-  // thực thể nhỏ bên cạnh tiêu đề
-  const bob = Math.sin(game.time * 2) * 3;
-  const domArt = art.get(PROP_ART.dom);
-  if (domArt) R.image(domArt, W / 2 + 178, 168 + bob, 3, { anchor: 'bottom-center' });
-  else drawSprite('dom', W / 2 + 178, 168 + bob, 2, {});
-  R.glow(W / 2 + 178, 152 + bob, 30, '#ffd166', 0.35);
+    // thực thể nhỏ bên cạnh tiêu đề
+    const bob = Math.sin(game.time * 2) * 3;
+    const domArt = art.get(PROP_ART.dom);
+    if (domArt) R.image(domArt, W / 2 + 178, 168 + bob, 3, { anchor: 'bottom-center' });
+    else drawSprite('dom', W / 2 + 178, 168 + bob, 2, {});
+    R.glow(W / 2 + 178, 152 + bob, 30, '#ffd166', 0.35);
+  }
 
   // menu
   const hasSave = Save.exists();
-  const baseY = 258;
+  const baseY = logo ? 322 : 258;
+  const rowH = logo ? 26 : 40;
+  const mx = logo ? 172 : W / 2;
   TITLE_ITEMS.forEach((label, i) => {
-    const y = baseY + i * 40;
+    const y = baseY + i * rowH;
     const selected = i === game.titleIndex;
     const disabled = label === 'TIẾP TỤC' && !hasSave;
     const text = label === 'ÂM THANH' ? `${label}: ${audio.muted ? 'TẮT' : 'BẬT'}` : label;
     if (selected) {
-      R.heart(W / 2 - 128, y + 6, 2, '#ffd166', true);
-      R.ctx.save();
-      R.ctx.globalAlpha = 0.14;
-      R.ctx.fillStyle = '#ffb347';
-      R.ctx.fillRect(W / 2 - 150, y - 4, 300, 32);
-      R.ctx.restore();
+      // con trỏ tim đỏ như bản gốc
+      R.heart(mx - 26, y + (logo ? 3 : 6), logo ? 1.7 : 2, logo ? '#ff0000' : '#ffd166', !logo);
+      if (!logo) {
+        ctx.save();
+        ctx.globalAlpha = 0.14;
+        ctx.fillStyle = '#ffb347';
+        ctx.fillRect(W / 2 - 150, y - 4, 300, 32);
+        ctx.restore();
+      }
     }
-    R.text(text, W / 2, y, {
-      size: 22,
-      bold: true,
-      align: 'center',
-      spacing: 3,
-      color: disabled ? '#565049' : selected ? '#fff' : '#c9c2b4',
+    R.text(text, mx, y, {
+      size: logo ? 16 : 22,
+      bold: !logo,
+      align: logo ? 'left' : 'center',
+      spacing: logo ? 1 : 3,
+      shadow: !logo,
+      color: disabled ? '#565049' : selected ? '#fff' : logo ? '#8c8c8c' : '#c9c2b4',
     });
   });
 
@@ -345,20 +364,38 @@ function drawTitle(dt) {
     const room = ROOMS[data.roomId];
     const mins = Math.floor((data.playtime ?? 0) / 60);
     const secs = (data.playtime ?? 0) % 60;
-    R.box(W - 226, 250, 206, 88, { fill: 'rgba(5,5,10,0.7)', border: '#3a3540', lw: 1 });
-    R.text('HÀNH TRÌNH GẦN NHẤT', W - 206, 262, { size: 11, color: '#8d877c', spacing: 1 });
-    R.text(room?.title ?? '?', W - 206, 282, { size: 17, bold: true, color: '#ffd166' });
-    R.text(`LV ${data.player?.lv ?? 1} · ${mins}p${String(secs).padStart(2, '0')}s · ${data.player?.gold ?? 0} tro`, W - 206, 306, {
-      size: 12,
-      color: '#a8a294',
-    });
-    R.text(`Tha ${data.player?.spares ?? 0} · Hạ ${data.player?.kills ?? 0}`, W - 206, 322, { size: 12, color: '#a8a294' });
+    if (logo) {
+      // chữ nhỏ mờ như dòng nhắc của bản gốc
+      const sx = 392;
+      R.text('HÀNH TRÌNH GẦN NHẤT', sx, 322, { size: 11, color: '#5b554e', spacing: 1, shadow: false });
+      R.text(room?.title ?? '?', sx, 338, { size: 14, color: '#a8a294', spacing: 1 });
+      R.text(`LV ${data.player?.lv ?? 1} · Tro ${data.player?.gold ?? 0} · ${mins}p${String(secs).padStart(2, '0')}s`, sx, 358, {
+        size: 11,
+        color: '#6f6a60',
+        shadow: false,
+      });
+      R.text(`Tha ${data.player?.spares ?? 0} · Hạ ${data.player?.kills ?? 0}`, sx, 374, {
+        size: 11,
+        color: '#6f6a60',
+        shadow: false,
+      });
+    } else {
+      R.box(W - 226, 250, 206, 88, { fill: 'rgba(5,5,10,0.7)', border: '#3a3540', lw: 1 });
+      R.text('HÀNH TRÌNH GẦN NHẤT', W - 206, 262, { size: 11, color: '#8d877c', spacing: 1 });
+      R.text(room?.title ?? '?', W - 206, 282, { size: 17, bold: true, color: '#ffd166' });
+      R.text(`LV ${data.player?.lv ?? 1} · ${mins}p${String(secs).padStart(2, '0')}s · ${data.player?.gold ?? 0} tro`, W - 206, 306, {
+        size: 12,
+        color: '#a8a294',
+      });
+      R.text(`Tha ${data.player?.spares ?? 0} · Hạ ${data.player?.kills ?? 0}`, W - 206, 322, { size: 12, color: '#a8a294' });
+    }
   }
 
-  R.text('Z / Enter: chọn · ↑↓: di chuyển · M: tắt tiếng · F: toàn màn hình', W / 2, H - 30, {
-    size: 12,
+  R.text('Z / Enter: chọn · ↑↓: di chuyển · M: tắt tiếng · F: toàn màn hình', W / 2, H - (logo ? 24 : 30), {
+    size: logo ? 11 : 12,
     align: 'center',
-    color: '#6f6a60',
+    color: logo ? '#4f4a44' : '#6f6a60',
+    shadow: !logo,
   });
 
   if (game.helpOpen) drawHelp();
@@ -811,13 +848,25 @@ function boot() {
     if (ok) console.info(`Nhạc gốc lấy từ: ${audio.localDir ?? '(không rõ đường dẫn)'}`);
   });
 
+  const overlay = document.getElementById('boot');
+  const bootLogo = document.getElementById('bootLogo');
+
   // tìm sprite gốc trên máy (nếu có); không có thì vẽ bằng art tự sinh
   loadLocalSprites().then((ok) => {
     game.localArt = ok;
-    if (ok) console.info(`Sprite gốc lấy từ: ${art.dir ?? '(không rõ đường dẫn)'} (${art.count} ảnh)`);
+    if (!ok) return;
+    console.info(`Sprite gốc lấy từ: ${art.dir ?? '(không rõ đường dẫn)'} (${art.count} ảnh)`);
+
+    // màn hình chờ kiểu bản gốc: máy có ảnh tiêu đề gốc thì hiện y như màn hình gốc
+    const logo = art.get('spr_undertaletitle_0.png');
+    if (!logo || !bootLogo) return;
+    bootLogo.addEventListener('load', () => {
+      bootLogo.hidden = false;
+      overlay.classList.add('has-logo');
+    });
+    bootLogo.src = logo.src; // ảnh đã nạp sẵn nên hiện ngay
   });
 
-  const overlay = document.getElementById('boot');
   const start = () => {
     if (overlay.classList.contains('hide')) return;
     overlay.classList.add('hide');

@@ -69,6 +69,7 @@ const WANTED = [
   'spr_border_0.png', // viền khung gốc: ô trắng 5x5 (khung hội thoại/trận đấu)
   'spr_blackbox_o_0.png', // hộp nhỏ: viền trắng 1px, góc vát
   'spr_heart_0.png', // tim đỏ
+  'spr_undertaletitle_0.png', // ảnh màn hình tiêu đề gốc (nền đen + logo + tim)
   'spr_savepoint_0.png', // điểm lưu
   'spr_savepoint_1.png',
   'spr_fightbt_0.png', // nút trận đấu (0: thường, 1: đang chọn)
