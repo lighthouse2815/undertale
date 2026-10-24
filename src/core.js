@@ -51,6 +51,7 @@ const KEYMAP = {
 
 class InputEngine {
   constructor() {
+    this.keys = new Set();
     this.down = new Set();
     this.just = new Set();
     this.anyJust = false;
@@ -64,6 +65,7 @@ class InputEngine {
       if (!action) return;
       e.preventDefault();
       if (e.repeat) return;
+      this.keys.add(e.code);
       if (!this.down.has(action)) this.just.add(action);
       this.down.add(action);
       this.anyJust = true;
@@ -73,7 +75,8 @@ class InputEngine {
       const action = KEYMAP[e.code];
       if (!action) return;
       e.preventDefault();
-      this.down.delete(action);
+      this.keys.delete(e.code);
+      this.releaseAction(action);
     });
 
     window.addEventListener('blur', () => this.clearAll());
@@ -91,7 +94,7 @@ class InputEngine {
       const release = (e) => {
         this.pointers.delete(e.pointerId);
         btn.classList.remove('held');
-        if (![...this.pointers.values()].includes(action)) this.down.delete(action);
+        this.releaseAction(action);
       };
       btn.addEventListener('pointerdown', press);
       btn.addEventListener('pointerup', release);
@@ -101,7 +104,14 @@ class InputEngine {
     });
   }
 
+  releaseAction(action) {
+    if ([...this.keys].some((code) => KEYMAP[code] === action)) return;
+    if ([...this.pointers.values()].includes(action)) return;
+    this.down.delete(action);
+  }
+
   clearAll() {
+    this.keys.clear();
     this.down.clear();
     this.just.clear();
     this.pointers.clear();

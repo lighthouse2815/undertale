@@ -393,6 +393,26 @@ try {
   await page.keyboard.press('x');
   await page.waitForFunction(() => !window.__duoidat.suspended);
   assert.equal(await page.evaluate(() => window.__duoidat.world.paused), false);
+  await page.evaluate(() => window.__duoidat.toTitle());
+  await page.keyboard.down('w');
+  await page.keyboard.down('ArrowUp');
+  await page.keyboard.up('w');
+  assert.equal(await page.evaluate(async () => (await import('/src/core.js')).Input.isDown('up')), true);
+  await page.keyboard.up('ArrowUp');
+  assert.equal(await page.evaluate(async () => (await import('/src/core.js')).Input.isDown('up')), false);
+  await page.keyboard.down('ArrowRight');
+  await page.evaluate(() => {
+    const button = document.querySelector('[data-input="right"]');
+    button.dispatchEvent(new PointerEvent('pointerdown', { pointerId: 7, bubbles: true }));
+    button.dispatchEvent(new PointerEvent('pointerup', { pointerId: 7, bubbles: true }));
+  });
+  assert.equal(await page.evaluate(async () => (await import('/src/core.js')).Input.isDown('right')), true);
+  await page.keyboard.up('ArrowRight');
+  assert.equal(await page.evaluate(async () => (await import('/src/core.js')).Input.isDown('right')), false);
+  await page.keyboard.down('a');
+  await page.evaluate(() => window.dispatchEvent(new Event('blur')));
+  assert.equal(await page.evaluate(async () => (await import('/src/core.js')).Input.isDown('left')), false);
+  await page.keyboard.up('a');
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   const phone = await mobile.newPage();
   phone.on('pageerror', (error) => errors.push(error.message));
