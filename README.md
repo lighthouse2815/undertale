@@ -64,9 +64,10 @@ Phần nhìn và cảm giác được làm theo tinh thần RPG dưới lòng đ
 - **Điểm lưu** là ngôi sao vàng (thay cho đèn lồng trước đây) — chạm vào để hồi
   máu đầy và ghi lại hành trình.
 
-Nếu máy bạn có bản game gốc, game sẽ dùng luôn sprite gốc cho nhân vật chính,
-kẻ địch trong trận, khung, tim, điểm lưu và hàng lệnh trận — xem mục “Dùng hình ảnh
-(sprite) từ bản game bạn đã cài trên máy”.
+Nếu máy bạn có bản game gốc, game sẽ dùng luôn sprite gốc cho nhân vật chính, kẻ địch
+trong trận, trùm Vua Tro, NPC (Đom, Bà Mốc), đồ đạc trong phòng (rương, biển, cây, cột,
+hoa), khung hội thoại/khung trận, tim, điểm lưu và hàng lệnh trận — xem mục “Dùng hình
+ảnh (sprite) từ bản game bạn đã cài trên máy”.
 
 ## Dùng nhạc từ bản game bạn đã cài trên máy (tuỳ chọn)
 
@@ -109,7 +110,8 @@ Muốn đổi bản nhạc khác thì sửa bảng `LOCAL_TRACKS` trong `src/cor
 ## Dùng hình ảnh (sprite) từ bản game bạn đã cài trên máy (tuỳ chọn)
 
 Ngoài nhạc, game cũng có thể dùng **sprite gốc**: nhân vật chính trong phòng, kẻ địch
-trong trận, khung hội thoại/khung trận đấu, trái tim (con trỏ), điểm lưu và hàng lệnh
+trong trận, trùm Vua Tro, NPC (Đom, Bà Mốc), đồ đạc trong phòng (rương, biển, cây, cột,
+hoa vang), khung hội thoại/khung trận đấu, trái tim (con trỏ), điểm lưu và hàng lệnh
 ĐÁNH/NÓI/ĐỒ/THA.
 
 Sprite gốc nằm trong `data.win`, không phải tệp rời. Nếu bạn muốn tự trích ra:
@@ -139,15 +141,24 @@ Những sprite được dùng (xem `src/localassets.js`):
 | Nấm Buồn (trận) | `spr_moldsmal` |
 | Chim Tro (trận) | `spr_whimsun` |
 | Lính Sắt Vụn (trận) | `spr_dummybattle` (hình nộm gỗ) |
+| Trùm Vua Tro | ghép 8 phần `spr_asgoreb_*` như trận Asgore gốc |
+| Đom (NPC) | `spr_glowfly` (đom đóm) |
+| Bà Mốc (NPC) | ghép từ nấm gốc `spr_moldessa_*` (mũ, thân, hai tay) |
+| Rương | `spr_chestbox` |
+| Biển chỉ dẫn | `spr_npc_sign` |
+| Cột gãy (Hành Lang / Ngai Tro) | `spr_brokenpillar` |
+| Cây (Rừng Tro) | `spr_singletree` |
+| Hoa vang | `spr_echoflower` |
 | Viền khung hội thoại / khung trận | `spr_border` (ô trắng 5×5, viền dày 5px, góc vuông) |
 | Bảng tên người nói | `spr_blackbox_o` (viền 1px, góc vát) |
 | Trái tim / con trỏ | `spr_heart` (tô lại màu theo ngữ cảnh) |
 | Điểm lưu | `spr_savepoint` (2 khung hình nhấp nháy) |
 | Hàng lệnh trận | `spr_fightbt`, `spr_actbt_center`, `spr_itembt`, `spr_sparebt` |
 
-Kẻ địch trong game này là nhân vật nguyên bản, nên mỗi con được gán sang sprite gốc
-gần nhất về dáng hình (xem bảng `ENEMY_ART` trong `src/localassets.js`) — muốn đổi thì
-sửa bảng đó. Trùm Vua Tro giữ art tự sinh vì bản gốc không có sprite tương ứng.
+Kẻ địch và NPC trong game này là nhân vật nguyên bản, nên mỗi con được gán sang sprite
+gốc gần nhất về dáng hình (xem các bảng `ENEMY_ART`, `PROP_ART`, `BAMOC_ART`, `KING_ART`
+trong `src/localassets.js`) — muốn đổi thì sửa các bảng đó. Riêng NPC **Nhím** giữ art
+tự sinh vì bản gốc không có sprite nhím.
 
 Không có thư mục sprite thì game tự vẽ toàn bộ bằng art tự sinh như trước — bản trên
 GitHub vẫn chạy đầy đủ với người không có bản game.

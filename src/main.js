@@ -2,7 +2,7 @@
 //  DƯỚI ĐẤT — điểm khởi động, các cảnh, vòng lặp chính
 // ============================================================
 import { R, W, H, Input, audio, Embers, Save, clamp, rand, hash2, pick, loadFonts } from './core.js';
-import { art, loadLocalSprites, PLAYER_ART } from './localassets.js';
+import { art, loadLocalSprites, PLAYER_ART, PROP_ART } from './localassets.js';
 import { drawSprite, drawLocal } from './sprites.js';
 import { ROOMS, ENEMIES } from './data.js';
 import { World } from './world.js';
@@ -309,7 +309,9 @@ function drawTitle(dt) {
 
   // thực thể nhỏ bên cạnh tiêu đề
   const bob = Math.sin(game.time * 2) * 3;
-  drawSprite('dom', W / 2 + 178, 168 + bob, 2, {});
+  const domArt = art.get(PROP_ART.dom);
+  if (domArt) R.image(domArt, W / 2 + 178, 168 + bob, 3, { anchor: 'bottom-center' });
+  else drawSprite('dom', W / 2 + 178, 168 + bob, 2, {});
   R.glow(W / 2 + 178, 152 + bob, 30, '#ffd166', 0.35);
 
   // menu

@@ -861,16 +861,24 @@ class Renderer {
   /** Vẽ ảnh sprite gốc (từ bản game trên máy) — làm nét kiểu pixel. */
   image(img, x, y, scale = 1, o = {}) {
     if (!img) return;
-    const { alpha = 1, anchor = 'top-left', tint = null } = o;
+    const { alpha = 1, anchor = 'top-left', tint = null, flip = false } = o;
     const w = img.width * scale;
     const h = img.height * scale;
     const dx = anchor === 'center' || anchor === 'bottom-center' ? x - w / 2 : x;
     const dy = anchor === 'bottom-center' ? y - h : anchor === 'center' ? y - h / 2 : y;
-    const c = this.ctx;
+    // ctx tuỳ chọn: dùng khi vẽ vào canvas nền phòng (không phải canvas chính)
+    const c = o.ctx || this.ctx;
     c.save();
     c.globalAlpha = alpha;
     c.imageSmoothingEnabled = false;
-    c.drawImage(tint ? tinted(img, tint) : img, Math.round(dx), Math.round(dy), Math.round(w), Math.round(h));
+    const src = tint ? tinted(img, tint) : img;
+    if (flip) {
+      c.translate(Math.round(dx + w), Math.round(dy));
+      c.scale(-1, 1);
+      c.drawImage(src, 0, 0, img.width, img.height, 0, 0, Math.round(w), Math.round(h));
+    } else {
+      c.drawImage(src, Math.round(dx), Math.round(dy), Math.round(w), Math.round(h));
+    }
     c.restore();
   }
 

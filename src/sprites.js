@@ -603,3 +603,44 @@ export function drawLocal(names, x, y, scale = 2, opts = {}) {
   R.image(img, x, y, scale, { anchor: 'bottom-center', ...opts });
   return true;
 }
+
+/**
+ * Vẽ một nhân vật ghép từ nhiều sprite gốc (như trùm Asgore của bản gốc).
+ * `parts` là mảng [tên ảnh, lệch x, lệch y] theo mã gốc.
+ * Trả về true khi đã vẽ, false khi máy thiếu bất kỳ ảnh nào.
+ */
+export function drawParts(parts, x, y, scale = 2, opts = {}) {
+  const { anchor = 'bottom-center', alpha = 1, tint = null, offsetScale = 1 } = opts;
+  const imgs = parts.map(([n]) => art.get(n));
+  if (imgs.some((im) => !im)) return false;
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minY = Infinity;
+  let maxY = -Infinity;
+  parts.forEach(([, dx, dy], i) => {
+    minX = Math.min(minX, dx * offsetScale);
+    maxX = Math.max(maxX, dx * offsetScale + imgs[i].width * scale);
+    minY = Math.min(minY, dy * offsetScale);
+    maxY = Math.max(maxY, dy * offsetScale + imgs[i].height * scale);
+  });
+  const w = maxX - minX;
+  const h = maxY - minY;
+  let ox = x - minX;
+  let oy = y - minY;
+  if (anchor === 'bottom-center') {
+    ox = x - w / 2 - minX;
+    oy = y - h - minY;
+  } else if (anchor === 'center') {
+    ox = x - w / 2 - minX;
+    oy = y - h / 2 - minY;
+  }
+  for (let i = 0; i < parts.length; i++) {
+    const po = parts[i][3] ?? {};
+    R.image(imgs[i], ox + parts[i][1] * offsetScale, oy + parts[i][2] * offsetScale, scale, {
+      alpha,
+      tint,
+      flip: po.flip,
+    });
+  }
+  return true;
+}

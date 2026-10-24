@@ -23,6 +23,47 @@ export const ENEMY_ART = {
 };
 const ENEMY_FILES = Object.values(ENEMY_ART).flat();
 
+// đồ đạc & nhân vật phụ lấy từ bản gốc (máy không có thì vẽ bằng art tự sinh)
+export const PROP_ART = {
+  chest: 'spr_chestbox_0.png', // rương gỗ
+  sign: 'spr_npc_sign_0.png', // biển báo
+  pillar: 'spr_brokenpillar_0.png', // cột gãy
+  tree: 'spr_singletree_0.png', // cây
+  flower: 'spr_echoflower_0.png', // hoa vang
+  dom: 'spr_glowfly_0.png', // đom đóm
+};
+const PROP_FILES = Object.values(PROP_ART);
+
+// Bà Mốc: ghép từ các phần của con nấm gốc (mũ + thân + hai tay).
+// Toạ độ tính theo pixel gốc (bản gốc vẽ ở scale 2) nên trong game
+// truyền offsetScale = scale / 2 để cả hình nhỏ lại đều nhau.
+export const BAMOC_ART = {
+  scale: 1.1,
+  parts: [
+    ['spr_moldessa_stem_0.png', 0, 0], // thân nấm
+    ['spr_moldessa_headthing_0.png', 19, -34], // mũ nấm
+    ['spr_moldessa_arm_0.png', -27, 6], // tay trái
+    ['spr_moldessa_arm_0.png', 71, 6, { flip: true }], // tay phải (bản gốc lật ngang)
+  ],
+};
+const BAMOC_FILES = BAMOC_ART.parts.map(([n]) => n);
+
+// trùm Vua Tro: ghép từ các phần như trận Asgore gốc (obj_asgoreb_body)
+export const KING_ART = {
+  scale: 1.8,
+  parts: [
+    ['spr_asgoreb_cape_0.png', -48, 62],
+    ['spr_asgoreb_arml_0.png', 16, 70],
+    ['spr_asgoreb_armr_0.png', 168, 70],
+    ['spr_asgoreb_dress_0.png', 50, 130],
+    ['spr_asgoreb_legs_0.png', 54, 156],
+    ['spr_asgoreb_feet_0.png', 32, 210],
+    ['spr_asgoreb_armor_0.png', 0, 28],
+    ['spr_asgoreb_head1_0.png', 68, 0],
+  ],
+};
+const KING_FILES = KING_ART.parts.map(([n]) => n);
+
 // những sprite dùng cho giao diện (tên tệp trong bản game)
 const WANTED = [
   'spr_border_0.png', // viền khung gốc: ô trắng 5x5 (khung hội thoại/trận đấu)
@@ -42,6 +83,12 @@ const WANTED = [
   ...PLAYER_FILES,
   // kẻ địch gốc trong trận
   ...ENEMY_FILES,
+  // đồ đạc, nhân vật phụ
+  ...PROP_FILES,
+  // Bà Mốc (ghép từ các phần của con nấm gốc)
+  ...BAMOC_FILES,
+  // trùm Vua Tro (ghép từ các phần của Asgore gốc)
+  ...KING_FILES,
 ];
 
 // hàng lệnh trận đấu: [khung thường, khung đang chọn]

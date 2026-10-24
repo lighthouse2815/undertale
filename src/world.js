@@ -2,8 +2,8 @@
 //  Thế giới: bản đồ, di chuyển, vật thể, hội thoại, cửa hàng
 // ============================================================
 import { R, W, H, Input, Dialogue, Embers, audio, clamp, rand, hash2, pick, Save } from './core.js';
-import { drawSprite, drawLocal } from './sprites.js';
-import { art, PLAYER_ART } from './localassets.js';
+import { drawSprite, drawLocal, drawParts } from './sprites.js';
+import { art, PLAYER_ART, PROP_ART, BAMOC_ART, KING_ART } from './localassets.js';
 import {
   ROOMS, ITEMS, ENEMIES, NPC_TALK, SPRING_LINES, BOSS_INTRO, BOSS_OUTRO, SHOP_STOCK,
 } from './data.js';
@@ -281,6 +281,12 @@ export class World {
       }
       case 'T': {
         baseFloor();
+        const cay = art.get(PROP_ART.tree);
+        if (cay) {
+          // cây gốc, cao khoảng 1,5 ô
+          R.image(cay, x + 16, y + 30, 0.8, { anchor: 'bottom-center', ctx: g });
+          break;
+        }
         g.strokeStyle = '#2d2420';
         g.lineWidth = 5;
         g.beginPath();
@@ -315,6 +321,11 @@ export class World {
       }
       case 'f': {
         baseFloor();
+        const hoa = art.get(PROP_ART.flower);
+        if (hoa) {
+          R.image(hoa, x + 16, y + 30, 1.2, { anchor: 'bottom-center', ctx: g });
+          break;
+        }
         g.fillStyle = theme.glow;
         g.globalAlpha = 0.85;
         g.fillRect(x + 15, y + 14, 2, 8);
@@ -353,6 +364,11 @@ export class World {
       }
       case '|': {
         baseFloor();
+        const cot = art.get(PROP_ART.pillar);
+        if (cot) {
+          R.image(cot, x + 16, y + 32, 0.85, { anchor: 'bottom-center', ctx: g });
+          break;
+        }
         g.fillStyle = theme.wall;
         g.fillRect(x + 6, y + 2, 20, 30);
         g.fillStyle = theme.wallTop;
@@ -919,7 +935,31 @@ export class World {
   drawCompanion() {
     const c = this.companion;
     R.glow(c.x, c.y, 26, '#ffd166', 0.5);
-    drawSprite('dom', c.x, c.y + 4, 1.6, {});
+    const dom = art.get(PROP_ART.dom);
+    if (dom) {
+      R.image(dom, c.x, c.y + 4, 2.4, { anchor: 'bottom-center' });
+    } else {
+      drawSprite('dom', c.x, c.y + 4, 1.6, {});
+    }
+  }
+
+  /** NPC dùng sprite gốc nếu máy có: đom đóm, bà nấm (ghép lại như bản gốc). */
+  drawNpcArt(o, x, y, bob) {
+    const ay = y + 8 - bob;
+    if (o.sprite === 'dom') {
+      const dom = art.get(PROP_ART.dom);
+      if (dom) {
+        R.image(dom, x, ay, 2.4, { anchor: 'bottom-center' });
+        return;
+      }
+    }
+    if (
+      o.sprite === 'baMoc' &&
+      drawParts(BAMOC_ART.parts, x, ay, BAMOC_ART.scale, { offsetScale: BAMOC_ART.scale / 2 })
+    ) {
+      return;
+    }
+    drawSprite(o.sprite, x, ay, o.scale ?? 2, {});
   }
 
   drawObject(o) {
@@ -955,12 +995,23 @@ export class World {
         break;
       }
       case 'chest': {
-        drawSprite(o.opened ? 'chestOpen' : 'chestClosed', x, y + 8, 2, {});
+        const ruong = art.get(PROP_ART.chest);
+        if (ruong) {
+          R.image(ruong, x, y + 10, 1.8, {
+            anchor: 'bottom-center',
+            alpha: o.opened ? 0.45 : 1,
+            tint: o.opened ? '#8a8a92' : null,
+          });
+        } else {
+          drawSprite(o.opened ? 'chestOpen' : 'chestClosed', x, y + 8, 2, {});
+        }
         if (!o.opened) R.glow(x, y - 4, 30, '#ffd166', 0.18 + Math.sin(this.time * 2.6) * 0.06);
         break;
       }
       case 'sign': {
-        drawSprite('sign', x, y + 8, 2, {});
+        const bien = art.get(PROP_ART.sign);
+        if (bien) R.image(bien, x, y + 10, 2, { anchor: 'bottom-center' });
+        else drawSprite('sign', x, y + 8, 2, {});
         break;
       }
       case 'spring': {
@@ -1005,7 +1056,7 @@ export class World {
           ctx.restore();
         }
         R.glow(x, y - 22, 40, '#ffd166', 0.16);
-        drawSprite(o.sprite, x, y + 8 - bob, o.scale ?? 2, {});
+        this.drawNpcArt(o, x, y, bob);
         if (o.stall) {
           const ctx = R.ctx;
           ctx.fillStyle = '#5a4230';
@@ -1033,7 +1084,10 @@ export class World {
           ctx.restore();
           R.glow(x, y - 30, 130, o.done ? '#5a7fd8' : '#ff7a3c', 0.34);
           R.glow(x, y - 10, 70, o.done ? '#a8c4ff' : '#ffb066', 0.22);
-          drawSprite('king', x, y + 20 - bob * 0.4, 2.6, { alpha: o.done ? 0.65 : 1 });
+          // Vua Tro: ghép từ sprite gốc, không có thì art tự sinh
+          if (!drawParts(KING_ART.parts, x, y + 20 - bob * 0.4, KING_ART.scale, { alpha: o.done ? 0.65 : 1 })) {
+            drawSprite('king', x, y + 20 - bob * 0.4, 2.6, { alpha: o.done ? 0.65 : 1 });
+          }
         } else {
           R.glow(x, y - 30, 70, o.done ? '#7fd8a8' : '#ff9a4d', 0.28);
           drawSprite('sentinel', x, y + 10 - bob * 0.3, 3, {});
