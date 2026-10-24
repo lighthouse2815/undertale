@@ -276,6 +276,44 @@ try {
   await page.keyboard.press('z');
   await page.waitForFunction(() => window.__duoidat.scene === 'intro');
   assert.equal(await page.evaluate(() => window.__duoidat.player.kills), 0);
+  const interactions = await page.evaluate(async () => {
+    const { Input } = await import('/src/core.js');
+    const game = window.__duoidat;
+    game.startNewGame(); game.flags.intro_seen = true; game.enterRoom('wake');
+    const world = game.world;
+    const chest = world.objects.find((o) => o.type === 'chest');
+    world.interact(chest); world.interact(chest);
+    const candy = game.player.items.candy;
+    world.openShop(['bread']); game.player.gold = 8;
+    Input.just.add('confirm'); world.updateShop();
+    const bought = { bread: game.player.items.bread, gold: game.player.gold };
+    Input.just.add('confirm'); world.updateShop();
+    const refused = { bread: game.player.items.bread, gold: game.player.gold };
+    game.player.hp = game.player.maxHp;
+    const fullHpUse = game.useItem('bread');
+    const remainingBread = game.player.items.bread;
+    game.enterRoom('forest');
+    const spring = world.objects.find((o) => o.type === 'spring');
+    game.player.hp = 1; world.interact(spring);
+    const springFirst = game.player.hp;
+    game.player.hp = 1; world.interact(spring);
+    return { candy, bought, refused, fullHpUse, remainingBread, springFirst, springSecond: game.player.hp };
+  });
+  assert.equal(interactions.candy, 1);
+  assert.deepEqual(interactions.bought, { bread: 2, gold: 0 });
+  assert.deepEqual(interactions.refused, interactions.bought);
+  assert.equal(interactions.fullHpUse, 0); assert.equal(interactions.remainingBread, 2);
+  assert.equal(interactions.springFirst, 20); assert.equal(interactions.springSecond, 1);
+  const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const phone = await mobile.newPage();
+  phone.on('pageerror', (error) => errors.push(error.message));
+  await phone.goto(`http://127.0.0.1:${port}/#play`);
+  await phone.waitForFunction(() => window.__duoidat?.scene === 'title');
+  await phone.locator('[data-input="confirm"]').tap();
+  await phone.waitForFunction(() => window.__duoidat.scene === 'intro');
+  for (let i = 0; i < 3; i++) { await phone.locator('[data-input="confirm"]').tap(); await phone.waitForTimeout(40); }
+  await phone.waitForFunction(() => window.__duoidat.scene === 'world');
+  await mobile.close();
   assert.deepEqual(errors, []);
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
@@ -284,6 +322,7 @@ try {
   console.log('✓ cuộn túi đồ, giữ lựa chọn khi còn vật phẩm và cập nhật khi dùng hết');
   console.log('✓ toàn bộ kẻ địch, các mẫu đạn, tuyến tha và cả ba kết thúc');
   console.log('✓ thua trận, tải điểm lưu, từ chối tiếp tục khi chưa lưu và chơi lại');
+  console.log('✓ rương mở một lần, mua hàng, thiếu tiền, hồi máu, suối và nút cảm ứng');
 } finally {
   await browser?.close();
   server.kill();
