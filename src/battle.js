@@ -649,12 +649,12 @@ export class Battle {
       b.age += dt;
       b.x += b.vx * dt;
       b.y += b.vy * dt;
-      if (
+      if (!b.dying && (
         b.x < this.box.x - margin ||
         b.x > this.box.x + this.box.w + margin ||
         b.y < this.box.y - margin ||
         b.y > this.box.y + this.box.h + margin
-      ) {
+      )) {
         b.dying = true;
         b.deadTimer = 0.25;
       }

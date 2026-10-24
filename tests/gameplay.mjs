@@ -47,7 +47,10 @@ try {
     const level = new Battle(game, 'moss', () => {});
     game.player.exp = 70;
     const levelMessage = level.applyLevelUp().text;
-    return { stages, reward, remaining, levelMessage, lv: game.player.lv };
+    const bullet = new Battle(game, 'moss', () => {});
+    bullet.bullets = [bullet.makeBullet({ x: -100, y: 100, vx: -10, vy: 0, r: 5, color: '#fff' })];
+    for (let i = 0; i < 30; i++) bullet.updateBullets(1 / 60);
+    return { stages, reward, remaining, levelMessage, lv: game.player.lv, expiredBullets: bullet.bullets.length };
   });
   for (const stage of result.stages) {
     assert.equal(stage.phase, 'message');
@@ -60,6 +63,7 @@ try {
   assert.match(result.remaining, /50%/);
   assert.equal(result.lv, 4);
   assert.match(result.levelMessage, /HP tối đa \+12, Công \+3/);
+  assert.equal(result.expiredBullets, 0);
   const worldResult = await page.evaluate(async () => {
     const { NPC_TALK } = await import('/src/data.js');
     const game = window.__duoidat;
