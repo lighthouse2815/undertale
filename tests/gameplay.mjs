@@ -96,11 +96,29 @@ try {
     const { ROOMS } = await import('/src/data.js');
     const game = window.__duoidat;
     const invalid = [];
+    const unreachable = [];
     for (const room of Object.values(ROOMS)) {
       const incoming = Object.values(ROOMS).flatMap((r) => r.exits.filter((e) => e.to === room.id).map((e) => e.spawn));
       for (const spawn of [room.spawn, room.saveSpawn, ...incoming].filter(Boolean)) {
         game.enterRoom(room.id, spawn);
         if (!game.world.canStand(game.world.player.x, game.world.player.y)) invalid.push({ room: room.id, spawn });
+      }
+      game.enterRoom(room.id);
+      const world = game.world;
+      const queue = [[world.player.x, world.player.y]];
+      const seen = new Set([queue[0].join(',')]);
+      for (let i = 0; i < queue.length; i++) {
+        const [x, y] = queue[i];
+        for (const [dx, dy] of [[8, 0], [-8, 0], [0, 8], [0, -8]]) {
+          const nx = x + dx, ny = y + dy, key = `${nx},${ny}`;
+          if (!seen.has(key) && world.canStand(nx, ny)) { seen.add(key); queue.push([nx, ny]); }
+        }
+      }
+      for (const exit of room.exits) {
+        if (!queue.some(([x, y]) => x / 32 >= exit.x && x / 32 < exit.x + exit.w && y / 32 >= exit.y && y / 32 < exit.y + exit.h)) unreachable.push(`${room.id} → ${exit.to}`);
+      }
+      for (const object of world.objects) {
+        if (!queue.some(([x, y]) => Math.hypot(x - object.x * 32, y - (object.y * 32 - 10)) < 62)) unreachable.push(`${room.id}: ${object.id}`);
       }
     }
     game.enterRoom('hall');
@@ -108,9 +126,10 @@ try {
     game.world.save();
     game.loadGame();
     const after = { x: game.world.player.x, y: game.world.player.y };
-    return { invalid, before, after };
+    return { invalid, unreachable, before, after };
   });
   assert.deepEqual(mapResult.invalid, []);
+  assert.deepEqual(mapResult.unreachable, []);
   assert.deepEqual(mapResult.after, mapResult.before);
   const saveResult = await page.evaluate(async () => {
     const { Save } = await import('/src/core.js');
