@@ -671,10 +671,12 @@ function formatTime(seconds) {
 // ------------------------------------------------------------
 function drawToast() {
   if (game.toastTimer <= 0) return;
+  // trong trận đấu chỗ đó là tên kẻ địch nên không hiện thông báo
+  if (game.scene === 'battle') return;
   const a = clamp(game.toastTimer / 0.5, 0, 1) * clamp((2.4 - game.toastTimer) / 0.25, 0, 1);
   const w = R.measure(game.toastText, 15, true) + 40;
-  R.box(W / 2 - w / 2, H - 62, w, 34, { fill: 'rgba(5,5,10,0.9)', border: '#ffd166', lw: 1, alpha: a });
-  R.text(game.toastText, W / 2, H - 54, { size: 15, bold: true, align: 'center', color: game.toastColor, alpha: a });
+  R.box(W / 2 - w / 2, 6, w, 34, { fill: 'rgba(5,5,10,0.9)', border: '#ffd166', lw: 1, alpha: a });
+  R.text(game.toastText, W / 2, 14, { size: 15, bold: true, align: 'center', color: game.toastColor, alpha: a });
 }
 
 // ------------------------------------------------------------
