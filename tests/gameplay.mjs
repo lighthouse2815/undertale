@@ -194,12 +194,75 @@ try {
   assert.equal(inventory.kem, 0);
   assert.equal(inventory.texts.filter((entry) => / ×\d/.test(entry.text)).length, 3);
   assert.ok(inventory.texts.some((entry) => entry.text === 'Kem tuyết ×1' && entry.y < 330));
+  const battles = await page.evaluate(async () => {
+    const { Battle } = await import('/src/battle.js');
+    const { ENEMIES } = await import('/src/data.js');
+    const game = window.__duoidat;
+    const drain = (battle) => {
+      let limit = 100;
+      while (battle.phase === 'message' && limit-- > 0) { battle.typer.skip(); battle.advanceMessage(); }
+      if (limit <= 0) throw new Error('Hội thoại không kết thúc');
+    };
+    return Object.keys(ENEMIES).map((id) => {
+      let outcome;
+      const battle = new Battle(game, id, (result) => { outcome = result; });
+      drain(battle);
+      const patterns = [];
+      for (const pattern of battle.enemy.patterns) {
+        battle.beginEnemyTurn();
+        battle.patternRing = [pattern]; battle.patternIndex = 0; battle.currentPattern = pattern;
+        battle.patternSegment = battle.attackDuration;
+        battle.setBoxForPattern(pattern);
+        battle.invuln = 999;
+        let count = 0;
+        for (let i = 0; i < 600 && battle.phase === 'enemyTurn'; i++) {
+          battle.updateEnemyTurn(1 / 60);
+          count = Math.max(count, battle.bullets.length);
+          if (battle.bullets.some((b) => !Number.isFinite(b.x + b.y))) throw new Error(`Đạn lỗi: ${id}/${pattern}`);
+        }
+        patterns.push({ pattern, count, ended: battle.phase === 'menu' });
+      }
+      let turns = 0;
+      while (battle.warmth < battle.enemy.mercyAt && turns < 20) {
+        const acts = battle.availableActs();
+        battle.doAct(acts[turns++ % acts.length]); drain(battle);
+        battle.endEnemyTurn();
+      }
+      battle.doMercy(0); drain(battle);
+      return { id, outcome, patterns };
+    });
+  });
+  for (const battle of battles) {
+    assert.equal(battle.outcome, 'spare', battle.id);
+    assert.ok(battle.patterns.every((p) => p.count > 0 && p.ended), battle.id);
+  }
+  for (const [type, result, kills] of [['true', 'spare', 0], ['neutral', 'spare', 1], ['dark', 'kill', 0]]) {
+    const ending = await page.evaluate(({ result, kills }) => {
+      const game = window.__duoidat;
+      game.startNewGame(); game.flags.intro_seen = true;
+      game.player.kills = kills; game.enterRoom('throne');
+      const boss = game.world.objects.find((o) => o.final);
+      game.startBattle('king', (outcome) => game.world.afterBattle(outcome, 'king', boss));
+      const battle = game.battle;
+      battle.victory(result);
+      while (battle.phase === 'message') { battle.typer.skip(); battle.advanceMessage(); }
+      return { scene: game.scene, type: game.endingType };
+    }, { result, kills });
+    assert.equal(ending.scene, 'ending'); assert.equal(ending.type, type);
+    for (let i = 0; i < 10; i++) {
+      if (await page.evaluate(() => window.__duoidat.scene === 'title')) break;
+      await page.keyboard.press('z'); await page.waitForTimeout(40);
+    }
+    assert.equal(await page.evaluate(() => window.__duoidat.scene), 'title');
+    assert.equal(await page.evaluate(() => localStorage.getItem('duoidat.save.v1')), null);
+  }
   assert.deepEqual(errors, []);
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
   console.log('✓ vị trí vào phòng, điểm lưu và tọa độ sau khi tải lại');
   console.log('✓ dữ liệu lưu hợp lệ, tám trường hợp lưu hỏng và bộ nhớ bị chặn');
   console.log('✓ cuộn túi đồ, giữ lựa chọn khi còn vật phẩm và cập nhật khi dùng hết');
+  console.log('✓ toàn bộ kẻ địch, các mẫu đạn, tuyến tha và cả ba kết thúc');
 } finally {
   await browser?.close();
   server.kill();

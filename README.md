@@ -35,6 +35,17 @@ npm run check
 (`playwright-core` trong `devDependencies` chỉ phục vụ việc kiểm thử tự động bằng
 Chrome; chơi game không cần cài gì cả.)
 
+Chạy kiểm thử gameplay bằng Chrome/Chromium đã cài trên máy:
+
+```bash
+CHROME_PATH="/đường/dẫn/tới/chrome" npm test
+```
+
+Bộ kiểm thử tự mở server cổng 5187 (đổi bằng `TEST_PORT`), sử dụng profile trình
+duyệt riêng và không đọc tài sản game gốc. Kiểm thử bao gồm đường đi và va chạm
+trong chín phòng, cửa khóa, cửa hàng, túi đồ, lưu/tải, chuyển giai đoạn trùm,
+các mẫu đạn, tuyến tha và ba kết thúc.
+
 ## Điều khiển
 
 | Phím | Tác dụng |
