@@ -446,6 +446,40 @@ try {
   assert.equal(await phone.locator('[data-input="confirm"]').textContent(), 'Z');
   assert.equal(await phone.locator('[data-input="cancel"]').textContent(), 'X');
   await mobile.close();
+  const previousSave = await page.evaluate(() => {
+    const game = window.__duoidat;
+    game.startNewGame();
+    game.flags.intro_seen = true;
+    game.enterRoom('hall');
+    game.player.gold = 37;
+    game.world.save();
+    game.toTitle();
+    game.titleIndex = 0;
+    return localStorage.getItem('duoidat.save.v1');
+  });
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(() => window.__duoidat.newGameConfirm);
+  await page.keyboard.press('ArrowDown');
+  assert.equal(await page.evaluate(() => window.__duoidat.titleIndex), 0);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !window.__duoidat.newGameConfirm);
+  assert.equal(await page.evaluate(() => localStorage.getItem('duoidat.save.v1')), previousSave);
+  await page.keyboard.press('ArrowDown');
+  await page.waitForFunction(() => window.__duoidat.titleIndex === 1);
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(() => window.__duoidat.scene === 'world');
+  assert.equal(await page.evaluate(() => window.__duoidat.player.gold), 37);
+  await page.evaluate(() => {
+    window.__duoidat.toTitle();
+    window.__duoidat.titleIndex = 0;
+  });
+  await page.locator('[data-input="confirm"]').dispatchEvent('pointerdown', { pointerId: 91 });
+  await page.locator('[data-input="confirm"]').dispatchEvent('pointerup', { pointerId: 91 });
+  await page.waitForFunction(() => window.__duoidat.newGameConfirm);
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(() => window.__duoidat.scene === 'intro');
+  assert.equal(await page.evaluate(() => window.__duoidat.player.gold), 0);
+  assert.equal(await page.evaluate(() => localStorage.getItem('duoidat.save.v1')), previousSave);
   const blocked = await browser.newContext();
   await blocked.addInitScript(() => {
     Object.defineProperty(window, 'localStorage', {
@@ -468,6 +502,7 @@ try {
   await blockedPage.waitForFunction(() => window.__duoidat.scene === 'intro');
   await blocked.close();
   assert.deepEqual(errors, []);
+  console.log('✓ xác nhận hành trình mới, hủy không mất điểm lưu và tiếp tục hành trình cũ');
   console.log('✓ khởi động, bật/tắt tiếng và bắt đầu chơi khi localStorage bị chặn');
   console.log('✓ tạm dừng khi mất tiêu điểm, đóng băng trận đấu và tiếp tục không lọt phím');
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');

@@ -38,6 +38,7 @@ class Game {
     this.embers = new Embers(46, { color: '#ff9a5c', speed: 12, drift: 16, size: 2 });
     this.menuIndex = 0;
     this.helpOpen = false;
+    this.newGameConfirm = false;
     this.introPage = 0;
     this.introTimer = 0;
     this.endingType = 'true';
@@ -132,11 +133,13 @@ class Game {
     this.scene = 'title';
     this.menuIndex = 0;
     this.helpOpen = false;
+    this.newGameConfirm = false;
     audio.playMusic('title');
   }
 
   // ---------------- bắt đầu / tiếp tục ----------------
   startNewGame() {
+    this.newGameConfirm = false;
     this.suspended = false;
     this.player = newPlayer();
     this.flags = {};
@@ -250,6 +253,16 @@ const TITLE_ITEMS = ['BẮT ĐẦU', 'TIẾP TỤC', 'HƯỚNG DẪN', 'ÂM THAN
 
 function updateTitle(dt) {
   game.embers.update(dt);
+  if (game.newGameConfirm) {
+    if (Input.consume('cancel')) {
+      game.newGameConfirm = false;
+      audio.cancel();
+    } else if (Input.consume('confirm')) {
+      audio.confirm();
+      game.startNewGame();
+    }
+    return;
+  }
   if (game.helpOpen) {
     if (Input.consume('confirm') || Input.consume('cancel')) {
       game.helpOpen = false;
@@ -285,7 +298,8 @@ function updateTitle(dt) {
       game.toast(muted ? 'Đã tắt âm thanh (M)' : 'Đã bật âm thanh (M)');
     } else {
       audio.confirm();
-      game.startNewGame();
+      if (hasSave) game.newGameConfirm = true;
+      else game.startNewGame();
     }
   }
 }
@@ -401,6 +415,13 @@ function drawTitle(dt) {
   });
 
   if (game.helpOpen) drawHelp();
+  if (game.newGameConfirm) {
+    R.fade(0.8);
+    R.frame(70, 156, 500, 168, { border: '#ffffff', fill: '#000000', lw: 5 });
+    R.text('BẮT ĐẦU HÀNH TRÌNH MỚI?', W / 2, 176, { size: 22, bold: true, align: 'center', color: '#ffd166' });
+    R.text('Điểm lưu tiếp theo sẽ ghi đè hành trình cũ.', W / 2, 218, { size: 17, align: 'center' });
+    R.text('Z / Enter: bắt đầu · X / Esc: quay lại', W / 2, 274, { size: 16, align: 'center', color: '#a8a294' });
+  }
   drawToast();
 }
 

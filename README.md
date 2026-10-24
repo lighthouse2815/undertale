@@ -58,6 +58,8 @@ các mẫu đạn, tuyến tha và ba kết thúc.
 | `F` | Bật–tắt toàn màn hình |
 
 Trên điện thoại/máy tính bảng có sẵn các nút cảm ứng ở dưới màn hình.
+Nếu đã có điểm lưu, chọn **BẮT ĐẦU** sẽ hiện xác nhận: Z / Enter để chơi mới,
+X / Esc để quay lại. Hành trình cũ được giữ cho đến khi hành trình mới được lưu.
 Khi chuyển tab hoặc cửa sổ, game tự tạm dừng cả khám phá lẫn trận đấu.
 Quay lại và nhấn P / Z / Enter hoặc X (hoặc nút cảm ứng) để tiếp tục.
 
