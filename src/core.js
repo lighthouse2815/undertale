@@ -2,6 +2,8 @@
 //  DƯỚI ĐẤT — lõi engine: nhập liệu, âm thanh, vẽ, hội thoại, lưu
 // ============================================================
 
+import { art } from './localassets.js';
+
 export const W = 640;
 export const H = 480;
 
@@ -634,6 +636,46 @@ function maskOf(text, font, color, size, spacing) {
   return rec;
 }
 
+// bản tô màu của sprite gốc: giữ hình dạng, đổi màu
+const tints = new Map();
+function tinted(img, color) {
+  if (!color || color === '#ffffff' || color === '#fff') return img;
+  const key = `${img.src}|${color}`;
+  const hit = tints.get(key);
+  if (hit) return hit;
+  if (tints.size > 64) tints.clear();
+  const cv = document.createElement('canvas');
+  cv.width = img.width;
+  cv.height = img.height;
+  const g = cv.getContext('2d');
+  g.drawImage(img, 0, 0);
+  g.globalCompositeOperation = 'source-in';
+  g.fillStyle = color;
+  g.fillRect(0, 0, cv.width, cv.height);
+  tints.set(key, cv);
+  return cv;
+}
+
+// bản đổi màu riêng phần viền trắng của sprite khung hộp (nền đen giữ nguyên)
+const outlines = new Map();
+function outlineSprite(img, color) {
+  if (!color || color === '#ffffff' || color === '#fff') return img;
+  const key = `${img.src}|${color}`;
+  const hit = outlines.get(key);
+  if (hit) return hit;
+  if (outlines.size > 32) outlines.clear();
+  const cv = document.createElement('canvas');
+  cv.width = img.width;
+  cv.height = img.height;
+  const g = cv.getContext('2d');
+  g.drawImage(tinted(img, color), 0, 0);
+  // nhân với ảnh gốc: chỗ trắng thành màu mới, chỗ đen vẫn đen
+  g.globalCompositeOperation = 'multiply';
+  g.drawImage(img, 0, 0);
+  outlines.set(key, cv);
+  return cv;
+}
+
 // ------------------------------------------------------------
 // Vẽ
 // ------------------------------------------------------------
@@ -816,17 +858,93 @@ class Renderer {
     c.restore();
   }
 
-  /** Khung kiểu Undertale: viền đặc màu sáng, ruột đen, góc vuông, sắc nét. */
-  frame(x, y, w, h, o = {}) {
-    const { border = '#f2eee4', fill = '#000', lw = 3, alpha = 1 } = o;
+  /** Vẽ ảnh sprite gốc (từ bản game trên máy) — làm nét kiểu pixel. */
+  image(img, x, y, scale = 1, o = {}) {
+    if (!img) return;
+    const { alpha = 1, anchor = 'top-left', tint = null } = o;
+    const w = img.width * scale;
+    const h = img.height * scale;
+    const dx = anchor === 'center' || anchor === 'bottom-center' ? x - w / 2 : x;
+    const dy = anchor === 'bottom-center' ? y - h : anchor === 'center' ? y - h / 2 : y;
     const c = this.ctx;
     c.save();
     c.globalAlpha = alpha;
-    c.fillStyle = border;
-    c.fillRect(x, y, w, h);
+    c.imageSmoothingEnabled = false;
+    c.drawImage(tint ? tinted(img, tint) : img, Math.round(dx), Math.round(dy), Math.round(w), Math.round(h));
+    c.restore();
+  }
+
+  /** Khung kiểu gốc: viền trắng dày (mặc định 5px), góc vuông, ruột đen.
+   *  Viền lấy từ sprite gốc spr_border (ô trắng 5x5); không có thì tô màu. */
+  frame(x, y, w, h, o = {}) {
+    const { border = '#ffffff', fill = '#000', lw = 5, alpha = 1, sprite = true } = o;
+    const c = this.ctx;
+    const t = Math.max(1, Math.round(lw));
+    const ix = Math.round(x);
+    const iy = Math.round(y);
+    const iw = Math.round(w);
+    const ih = Math.round(h);
+    const tile = sprite ? art.get('spr_border_0.png') : null;
+    const src = tile ? tinted(tile, border) : null;
+    c.save();
+    c.globalAlpha = alpha;
     if (fill) {
       c.fillStyle = fill;
-      c.fillRect(x + lw, y + lw, w - lw * 2, h - lw * 2);
+      c.fillRect(ix, iy, iw, ih);
+    }
+    if (src) {
+      c.imageSmoothingEnabled = false;
+      c.drawImage(src, 0, 0, 5, 5, ix, iy, iw, t); // viền trên
+      c.drawImage(src, 0, 0, 5, 5, ix, iy + ih - t, iw, t); // viền dưới
+      c.drawImage(src, 0, 0, 5, 5, ix, iy + t, t, ih - t * 2); // viền trái
+      c.drawImage(src, 0, 0, 5, 5, ix + iw - t, iy + t, t, ih - t * 2); // viền phải
+    } else {
+      c.fillStyle = border;
+      c.fillRect(ix, iy, iw, t);
+      c.fillRect(ix, iy + ih - t, iw, t);
+      c.fillRect(ix, iy + t, t, ih - t * 2);
+      c.fillRect(ix + iw - t, iy + t, t, ih - t * 2);
+    }
+    c.restore();
+  }
+
+  /** Hộp nhỏ kiểu gốc (spr_blackbox_o): viền 1px, góc vát, dùng cho bảng tên… */
+  smallBox(x, y, w, h, o = {}) {
+    const { border = '#ffffff', fill = '#000', alpha = 1 } = o;
+    const c = this.ctx;
+    const ix = Math.round(x);
+    const iy = Math.round(y);
+    const iw = Math.round(w);
+    const ih = Math.round(h);
+    const tile = art.get('spr_blackbox_o_0.png');
+    c.save();
+    c.globalAlpha = alpha;
+
+    if (tile && iw >= 12 && ih >= 12) {
+      // 4 góc 4x4 giữ nguyên, viền trên/dưới/trái/phải kéo dài 1px
+      const src = outlineSprite(tile, border);
+      c.imageSmoothingEnabled = false;
+      if (fill) {
+        c.fillStyle = fill;
+        c.fillRect(ix, iy, iw, ih);
+      }
+      c.drawImage(src, 4, 1, 12, 1, ix + 4, iy + 1, iw - 8, 1); // viền trên
+      c.drawImage(src, 4, 18, 12, 1, ix + 4, iy + ih - 2, iw - 8, 1); // viền dưới
+      c.drawImage(src, 1, 4, 1, 12, ix + 1, iy + 4, 1, ih - 8); // viền trái
+      c.drawImage(src, 18, 4, 1, 12, ix + iw - 2, iy + 4, 1, ih - 8); // viền phải
+      c.drawImage(src, 0, 0, 4, 4, ix, iy, 4, 4);
+      c.drawImage(src, 16, 0, 4, 4, ix + iw - 4, iy, 4, 4);
+      c.drawImage(src, 0, 16, 4, 4, ix, iy + ih - 4, 4, 4);
+      c.drawImage(src, 16, 16, 4, 4, ix + iw - 4, iy + ih - 4, 4, 4);
+      c.restore();
+      return;
+    }
+
+    c.fillStyle = border;
+    c.fillRect(ix, iy, iw, ih);
+    if (fill) {
+      c.fillStyle = fill;
+      c.fillRect(ix + 2, iy + 2, iw - 4, ih - 4);
     }
     c.restore();
   }
@@ -846,9 +964,14 @@ class Renderer {
 
   /** Trái tim 7x6 pixel — dùng cho nhân vật và con trỏ. */
   heart(x, y, scale = 2, color = '#e5484d', glow = false) {
+    if (glow) this.glow(x + 3.5 * scale, y + 3 * scale, 9 * scale, color, 0.55);
+    const sprite = art.get('spr_heart_0.png');
+    if (sprite) {
+      this.image(sprite, x, y, scale / 2, { tint: color });
+      return;
+    }
     const rows = ['.xx.xx.', 'xxxxxxx', 'xxxxxxx', '.xxxxx.', '..xxx..', '...x...'];
     const c = this.ctx;
-    if (glow) this.glow(x + 3.5 * scale, y + 3 * scale, 9 * scale, color, 0.55);
     c.fillStyle = color;
     rows.forEach((row, ry) => {
       for (let rx = 0; rx < row.length; rx++) {
@@ -1003,13 +1126,13 @@ export class Dialogue {
     const boxW = 600;
     const boxH = 112;
     const portrait = line.portrait;
-    R.frame(boxX, boxY, boxW, boxH, { border: '#f2eee4', fill: '#000000', lw: 3 });
+    R.frame(boxX, boxY, boxW, boxH, { border: '#ffffff', fill: '#000000', lw: 5 });
 
     if (speaker) {
       const label = ` ${speaker} `;
       const tw = R.measure(label, 15, true);
       const tw2 = tw + 14;
-      R.frame(boxX + 14, boxY - 17, tw2, 28, { border: SPEAKER_COLORS[speaker] ?? '#f2eee4', fill: '#000', lw: 2 });
+      R.smallBox(boxX + 14, boxY - 17, tw2, 28, { border: SPEAKER_COLORS[speaker] ?? '#ffffff', fill: '#000' });
       R.text(label, boxX + 21, boxY - 11, { size: 15, bold: true, color: SPEAKER_COLORS[speaker] ?? '#f2eee4' });
     }
 

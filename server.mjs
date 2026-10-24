@@ -5,12 +5,58 @@ import { extname, join, normalize, resolve, sep } from 'node:path';
 const root = resolve(process.cwd());
 const port = Number(process.env.PORT) || 5173;
 
-// Nhạc từ bản game cài trên máy (KHÔNG nằm trong repo):
-// engine chỉ đọc các tệp .ogg có sẵn ở thư mục này, không sao chép vào dự án.
+// Dữ liệu game cài trên máy (KHÔNG nằm trong repo): engine chỉ đọc các tệp
+// có sẵn ở những thư mục này, không sao chép gì vào dự án.
 const localMusicDir = resolve(
   process.env.LOCAL_MUSIC_DIR || join(root, 'Undertale-AnkerGames', 'Undertale')
 );
-const LOCAL_MUSIC_PREFIX = '/local-music/';
+const localSpriteDir = resolve(
+  process.env.LOCAL_SPRITE_DIR || join(root, 'Undertale-AnkerGames', 'du-lieu-goc', 'Sprites')
+);
+
+const LOCAL_PACKS = [
+  { prefix: '/local-music/', dir: localMusicDir, ext: '.ogg', mime: 'audio/ogg' },
+  { prefix: '/local-sprites/', dir: localSpriteDir, ext: '.png', mime: 'image/png' },
+];
+
+async function serveLocalPack(res, url, pack) {
+  const { prefix, dir, ext, mime } = pack;
+  if (!url.pathname.startsWith(prefix)) return false;
+  const name = decodeURIComponent(url.pathname.slice(prefix.length));
+
+  if (name === 'index.json') {
+    let files = [];
+    try {
+      files = (await readdir(dir))
+        .filter((f) => f.toLowerCase().endsWith(ext))
+        .sort();
+    } catch {
+      files = [];
+    }
+    const body = Buffer.from(JSON.stringify({ dir, files }), 'utf8');
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Length': body.length,
+      'Cache-Control': 'no-store',
+    });
+    res.end(body);
+    return true;
+  }
+
+  if (!new RegExp(`^[A-Za-z0-9_.-]+\\${ext}$`, 'i').test(name)) {
+    res.writeHead(400).end('Tên tệp không hợp lệ');
+    return true;
+  }
+  const body = await readFile(join(dir, name));
+  res.writeHead(200, {
+    'Content-Type': mime,
+    'Content-Length': body.length,
+    'Cache-Control': 'no-store',
+    'X-Content-Type-Options': 'nosniff',
+  });
+  res.end(body);
+  return true;
+}
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -33,40 +79,9 @@ const server = createServer(async (req, res) => {
     let pathname = decodeURIComponent(url.pathname);
     if (pathname === '/') pathname = '/index.html';
 
-    // ---- nhạc từ bản game trên máy (chỉ đọc tại chỗ) ----
-    if (pathname.startsWith(LOCAL_MUSIC_PREFIX)) {
-      const name = pathname.slice(LOCAL_MUSIC_PREFIX.length);
-      if (name === 'index.json') {
-        let files = [];
-        try {
-          files = (await readdir(localMusicDir))
-            .filter((f) => f.toLowerCase().endsWith('.ogg'))
-            .sort();
-        } catch {
-          files = [];
-        }
-        const body = Buffer.from(JSON.stringify({ dir: localMusicDir, files }), 'utf8');
-        res.writeHead(200, {
-          'Content-Type': 'application/json; charset=utf-8',
-          'Content-Length': body.length,
-          'Cache-Control': 'no-store',
-        });
-        res.end(body);
-        return;
-      }
-      if (!/^[A-Za-z0-9_.-]+\.ogg$/i.test(name)) {
-        res.writeHead(400).end('Tên tệp không hợp lệ');
-        return;
-      }
-      const body = await readFile(join(localMusicDir, name));
-      res.writeHead(200, {
-        'Content-Type': 'audio/ogg',
-        'Content-Length': body.length,
-        'Cache-Control': 'no-store',
-        'X-Content-Type-Options': 'nosniff',
-      });
-      res.end(body);
-      return;
+    // ---- dữ liệu gốc trên máy: nhạc .ogg, sprite .png (chỉ đọc tại chỗ) ----
+    for (const pack of LOCAL_PACKS) {
+      if (await serveLocalPack(res, url, pack)) return;
     }
 
     const filePath = normalize(join(root, pathname));

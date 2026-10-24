@@ -57,12 +57,15 @@ Phần nhìn và cảm giác được làm theo tinh thần RPG dưới lòng đ
   hiếm hoi có đủ dấu tiếng Việt.
 - **Phòng tối gần như đen** — sáu khu vực chỉ khác nhau ở sắc độ rất nhẹ, ánh sáng
   đến từ ngôi sao lưu game, đèn, và các hạt tro bay.
-- **Hộp thoại viền trắng đặc**, mỗi dòng bắt đầu bằng dấu `*`, tên người nói nằm
-  trong khung nhỏ phía trên.
+- **Hộp thoại viền trắng đặc** (viền dày 5px, góc vuông đúng kiểu gốc), mỗi dòng bắt
+  đầu bằng dấu `*`, tên người nói nằm trong khung nhỏ vát góc phía trên.
 - **Panel trận đấu** là khung trắng: HP / LV / TRO ở trên, nội dung ở giữa, hàng
   lệnh **ĐÁNH · NÓI · ĐỒ · THA** ở dưới, con trỏ là trái tim đỏ.
 - **Điểm lưu** là ngôi sao vàng (thay cho đèn lồng trước đây) — chạm vào để hồi
   máu đầy và ghi lại hành trình.
+
+Nếu máy bạn có bản game gốc, game sẽ dùng luôn sprite gốc cho khung, tim, điểm lưu
+và hàng lệnh trận — xem mục “Dùng hình ảnh (sprite) từ bản game bạn đã cài trên máy”.
 
 ## Dùng nhạc từ bản game bạn đã cài trên máy (tuỳ chọn)
 
@@ -102,6 +105,42 @@ Bài nhạc được chọn theo khu vực và theo cảnh:
 
 Muốn đổi bản nhạc khác thì sửa bảng `LOCAL_TRACKS` trong `src/core.js`.
 
+## Dùng hình ảnh (sprite) từ bản game bạn đã cài trên máy (tuỳ chọn)
+
+Ngoài nhạc, game cũng có thể dùng **sprite gốc** cho giao diện: khung hội thoại/khung
+trận đấu, trái tim (con trỏ), điểm lưu và hàng lệnh ĐÁNH/NÓI/ĐỒ/THA.
+
+Sprite gốc nằm trong `data.win`, không phải tệp rời. Nếu bạn muốn tự trích ra:
+
+```bash
+# UndertaleModCli (UnderminersTeam/UndertaleModTool) — cần .NET 10
+dotnet UndertaleModCli.dll dump "Undertale-AnkerGames/Undertale/data.win" \
+  --textures --sprites -o "Undertale-AnkerGames/du-lieu-goc"
+```
+
+Sau đó thư mục sprite là `Undertale-AnkerGames/du-lieu-goc/Sprites/` (đã bị
+`.gitignore` bỏ qua), hoặc trỏ tới chỗ khác:
+
+```bash
+LOCAL_SPRITE_DIR="/đường/dẫn/tới/Sprites" npm run dev
+```
+
+Server phục vụ các tệp `.png` ở đường dẫn `/local-sprites/`. Khi vào màn hình chờ,
+góc dưới hiện dòng “Hình ảnh: lấy từ bản game trên máy”.
+
+Những sprite được dùng (xem `src/localassets.js`):
+
+| Chỗ dùng | Sprite gốc |
+| --- | --- |
+| Viền khung hội thoại / khung trận | `spr_border` (ô trắng 5×5, viền dày 5px, góc vuông) |
+| Bảng tên người nói | `spr_blackbox_o` (viền 1px, góc vát) |
+| Trái tim / con trỏ | `spr_heart` (tô lại màu theo ngữ cảnh) |
+| Điểm lưu | `spr_savepoint` (2 khung hình nhấp nháy) |
+| Hàng lệnh trận | `spr_fightbt`, `spr_actbt_center`, `spr_itembt`, `spr_sparebt` |
+
+Không có thư mục sprite thì game tự vẽ toàn bộ bằng art tự sinh như trước — bản trên
+GitHub vẫn chạy đầy đủ với người không có bản game.
+
 ## Cách chơi
 
 **Khám phá.** Đi qua sáu khu vực của Hầm Tro: Rêu Xanh → Hành Lang Tro →
@@ -139,10 +178,11 @@ khi bạn đi hết một cái kết.
 
 ```
 index.html          khung trang, chỉ gắn canvas
-server.mjs          static server cổng 5173 (+ /local-music: nhạc .ogg trên máy)
+server.mjs          static server cổng 5173 (+ /local-music, /local-sprites: dữ liệu gốc trên máy)
 scripts/check.mjs   kiểm tra cú pháp + bản đồ + sprite
 src/
   core.js           nhập liệu, âm thanh (WebAudio), vẽ, chữ, hội thoại, lưu game
+  localassets.js    sprite gốc đọc từ bản game trên máy (tuỳ chọn)
   sprites.js        toàn bộ sprite pixel (chữ cái → bảng màu)
   data.js           phòng, kẻ địch, vật phẩm, hội thoại, cửa hàng
   world.js          bản đồ, va chạm, tương tác, túi đồ, cửa hàng
@@ -161,8 +201,8 @@ Không có bước build: trình duyệt chạy trực tiếp các ES module tro
 - Không có asset (hình, âm thanh, chữ) nào được sao chép từ trò chơi khác.
   Font Handjet trong `assets/fonts/` là phần mềm tự do theo SIL Open Font
   License 1.1 (xem `assets/fonts/OFL.txt`), không liên quan tới trò chơi nào.
-- Nhạc `.ogg` từ bản game cài trên máy **không** được đưa vào repo: engine chỉ đọc
-  tệp tại chỗ khi chạy (xem mục “Dùng nhạc từ bản game bạn đã cài trên máy”).
-  Máy không có bản game vẫn chạy bình thường với nhạc tự tổng hợp.
+- Nhạc `.ogg` và sprite `.png` từ bản game cài trên máy **không** được đưa vào repo:
+  engine chỉ đọc tệp tại chỗ khi chạy (xem mục “Dùng nhạc…” và “Dùng hình ảnh…”).
+  Máy không có bản game vẫn chạy bình thường với nhạc tự tổng hợp và art tự sinh.
 - Thư mục `Undertale-AnkerGames/` (bản game gốc để tham khảo cục bộ) **không**
   được đưa lên kho git — xem `.gitignore`.

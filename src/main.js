@@ -2,6 +2,7 @@
 //  DƯỚI ĐẤT — điểm khởi động, các cảnh, vòng lặp chính
 // ============================================================
 import { R, W, H, Input, audio, Embers, Save, clamp, rand, hash2, pick, loadFonts } from './core.js';
+import { art, loadLocalSprites } from './localassets.js';
 import { drawSprite } from './sprites.js';
 import { ROOMS, ENEMIES } from './data.js';
 import { World } from './world.js';
@@ -47,6 +48,8 @@ class Game {
     this.toastTimer = 0;
     // có nhạc .ogg của bản game trên máy hay không (xem audio.detectLocalMusic)
     this.localMusic = false;
+    // có sprite .png trích từ bản game trên máy hay không (xem loadLocalSprites)
+    this.localArt = false;
     this.flash = 0;
     this.time = 0;
     this.titleIndex = 0;
@@ -159,6 +162,7 @@ const itemsTable = Object.fromEntries(
 const game = new Game();
 window.__duoidat = game; // tiện cho việc kiểm thử
 window.__audio = audio; // tiện cho việc kiểm thử phần nhạc
+window.__art = art; // tiện cho việc kiểm thử phần sprite gốc
 
 // ------------------------------------------------------------
 // Nền tiêu đề dùng chung
@@ -361,7 +365,7 @@ function drawTitle(dt) {
 
 function drawHelp() {
   R.fade(0.72);
-  R.frame(60, 40, 520, 400, { border: '#f2eee4', fill: 'rgba(0,0,0,0.97)', lw: 3 });
+  R.frame(60, 40, 520, 400, { border: '#ffffff', fill: 'rgba(0,0,0,0.97)', lw: 5 });
   R.text('HƯỚNG DẪN', W / 2, 58, { size: 24, bold: true, align: 'center', spacing: 5 });
   const rows = [
     ['MŨI TÊN / WASD', 'Đi lại, chọn mục'],
@@ -791,6 +795,12 @@ function boot() {
     if (ok) console.info(`Nhạc gốc lấy từ: ${audio.localDir ?? '(không rõ đường dẫn)'}`);
   });
 
+  // tìm sprite gốc trên máy (nếu có); không có thì vẽ bằng art tự sinh
+  loadLocalSprites().then((ok) => {
+    game.localArt = ok;
+    if (ok) console.info(`Sprite gốc lấy từ: ${art.dir ?? '(không rõ đường dẫn)'} (${art.count} ảnh)`);
+  });
+
   const overlay = document.getElementById('boot');
   const start = () => {
     if (overlay.classList.contains('hide')) return;
@@ -801,6 +811,9 @@ function boot() {
     game.scene = 'title';
     if (game.localMusic) {
       window.setTimeout(() => game.toast('Nhạc: lấy từ bản game trên máy', '#9fd48c'), 1400);
+    }
+    if (game.localArt) {
+      window.setTimeout(() => game.toast('Hình ảnh: lấy từ bản game trên máy', '#9fd48c'), 3400);
     }
     window.setTimeout(() => overlay.remove(), 1000);
   };

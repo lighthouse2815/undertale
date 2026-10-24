@@ -3,6 +3,7 @@
 // ============================================================
 import { R, W, H, Input, Typewriter, Embers, audio, clamp, rand, randInt, pick, dist, hash2 } from './core.js';
 import { drawSprite } from './sprites.js';
+import { art, BUTTON_ART } from './localassets.js';
 import { ENEMIES, ITEMS } from './data.js';
 
 const PANEL = { x: 20, y: 314, w: 600, h: 150 };
@@ -876,7 +877,7 @@ export class Battle {
 
   drawPanel() {
     const ctx = R.ctx;
-    R.frame(PANEL.x, PANEL.y, PANEL.w, PANEL.h, { border: '#f2eee4', fill: 'rgba(0,0,0,0.94)', lw: 3 });
+    R.frame(PANEL.x, PANEL.y, PANEL.w, PANEL.h, { border: '#ffffff', fill: '#000', lw: 5 });
 
     // dòng trạng thái
     const p = this.player;
@@ -949,6 +950,21 @@ export class Battle {
       const x = 38 + i * 143;
       const selected = i === this.menuIndex;
       const ready = b.key === 'mercy' && this.warmth >= this.enemy.mercyAt;
+      const names = BUTTON_ART[b.key];
+      const img = names ? art.get(selected || ready ? names[1] : names[0]) : null;
+
+      // có sprite gốc (110x42) thì dùng, không thì vẽ ô chữ như trước
+      if (img) {
+        const sx = x + 12;
+        R.image(img, sx, y, 1);
+        if (selected) R.heart(sx + 8, y + 14, 2, '#ffd166', true);
+        if (ready) {
+          const pulse = 0.4 + 0.6 * Math.sin(this.time * 6);
+          R.glow(sx + 55, y + 21, 60, '#ffd166', pulse * 0.25);
+        }
+        return;
+      }
+
       R.box(x, y, 134, 44, {
         fill: selected ? 'rgba(255,150,70,0.20)' : 'rgba(12,12,20,0.9)',
         border: ready ? '#ffd166' : selected ? '#ffb347' : '#4a4550',

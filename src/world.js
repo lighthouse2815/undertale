@@ -3,6 +3,7 @@
 // ============================================================
 import { R, W, H, Input, Dialogue, Embers, audio, clamp, rand, hash2, pick, Save } from './core.js';
 import { drawSprite } from './sprites.js';
+import { art } from './localassets.js';
 import {
   ROOMS, ITEMS, ENEMIES, NPC_TALK, SPRING_LINES, BOSS_INTRO, BOSS_OUTRO, SHOP_STOCK,
 } from './data.js';
@@ -723,7 +724,7 @@ export class World {
   drawShop() {
     const shop = this.shop;
     const player = this.game.player;
-    R.frame(120, 96, 400, 300, { border: '#f2eee4', fill: '#000000', lw: 3 });
+    R.frame(120, 96, 400, 300, { border: '#ffffff', fill: '#000000', lw: 5 });
     R.text('CHỢ TRO', 320, 110, { size: 22, bold: true, align: 'center', color: '#ffb347', spacing: 3 });
     R.text(`Túi của bạn: ${player.gold} tro`, 320, 140, { size: 15, align: 'center', color: '#ffd166' });
 
@@ -797,7 +798,7 @@ export class World {
   drawPause() {
     const player = this.game.player;
     R.fade(0.6);
-    R.frame(70, 44, 500, 392, { border: '#f2eee4', fill: 'rgba(0,0,0,0.97)', lw: 3 });
+    R.frame(70, 44, 500, 392, { border: '#ffffff', fill: 'rgba(0,0,0,0.97)', lw: 5 });
     R.text('TÚI ĐỒ', 320, 60, { size: 24, bold: true, align: 'center', spacing: 4, color: '#f2eee4' });
 
     R.text(`LV ${player.lv}`, 110, 104, { size: 17, color: '#ffd166' });
@@ -924,7 +925,15 @@ export class World {
       case 'lamp': {
         const pulse = 0.4 + Math.sin(this.time * 2.6) * 0.12;
         R.glow(x, y - 16, 60 + pulse * 20, '#ffd166', 0.30);
-        drawSprite('star', x, y + 12, 2.4, {});
+        const sao = art.get('spr_savepoint_0.png');
+        const saoSang = art.get('spr_savepoint_1.png');
+        if (sao) {
+          // điểm lưu gốc: hai khung hình nhấp nháy
+          const bright = Math.sin(this.time * 3.4) > 0.1 && saoSang;
+          R.image(bright ? saoSang : sao, x, y + 8, 1.25, { anchor: 'bottom-center' });
+        } else {
+          drawSprite('star', x, y + 12, 2.4, {});
+        }
         // tia sáng xoay quanh ngôi sao
         const c = R.ctx;
         c.save();
