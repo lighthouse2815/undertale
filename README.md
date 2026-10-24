@@ -171,7 +171,9 @@ GitHub vẫn chạy đầy đủ với người không có bản game.
 Cầu Tro → Đồng Tuyết Tro → Làng Tuyết Tro → Đường Tuần Tra → Rừng Tro → Chợ Tro → Ngai Tro. Trong phòng có ngôi sao lưu game (hồi
 máu và ghi lại hành trình), rương đồ, biển chỉ dẫn, suối nước ấm trong Rừng Tro,
 và những người bạn nói chuyện được: **Đom** (đom đóm dẫn đường), **Bà Mốc**,
-**Nhím** (chủ tiệm — bán bánh mì tro, kẹo rêu, trà tro, mật đom).
+**Nhím** (chủ tiệm ở Chợ Tro), **Bác Kem** và **Người Tuyết**. Bác Kem bán
+kem tuyết, kẹo rêu và trà tro; các nhân vật ở Tuyết Tro kể thêm về con chó
+khổng lồ đang giữ đường tuần tra.
 
 **Trận đánh.** Mỗi lượt bạn chọn một trong bốn hành động:
 
