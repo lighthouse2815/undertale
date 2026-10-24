@@ -740,10 +740,11 @@ export class World {
         audio.save();
         this.flash = 0.5;
         const healed = this.game.healFull();
-        this.save();
+        const saved = this.save();
         this.openDialogue([
           { text: 'Ngôi sao vàng bùng sáng khi bạn lại gần. Hơi ấm quấn quanh vai bạn.' },
-          { text: healed > 0 ? `HP đã hồi phục hoàn toàn (+${healed}). Hành trình đã được ghi lại.` : 'Hành trình đã được ghi lại.' },
+          ...(healed > 0 ? [{ text: `HP đã hồi phục hoàn toàn (+${healed}).` }] : []),
+          { text: saved ? 'Hành trình đã được ghi lại.' : 'Không lưu được hành trình vì trình duyệt chặn bộ nhớ. Hãy thử lại ở điểm lưu này.' },
           { speaker: 'Đom', portrait: 'dom', text: 'Tôi thích chỗ này. Sáng, ấm, và không có ai giẫm lên tôi.' },
         ]);
         break;
@@ -834,12 +835,11 @@ export class World {
       }
       const outro = BOSS_OUTRO[enemyId] ?? [];
       const healAmount = Math.round(this.game.player.maxHp * 0.4);
-      this.game.heal(healAmount);
+      const healed = this.game.heal(healAmount);
       this.openDialogue(
-        [...outro, { text: `Bạn ngồi nghỉ một lát và hồi ${healAmount} HP.` }],
+        [...outro, { text: `Bạn ngồi nghỉ một lát và hồi ${healed} HP.` }],
         () => {
-          this.save(true);
-          this.game.toast('Hành trình đã được ghi lại');
+          if (this.save()) this.game.toast('Hành trình đã được ghi lại');
         }
       );
     }
