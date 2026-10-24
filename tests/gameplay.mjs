@@ -256,6 +256,26 @@ try {
     assert.equal(await page.evaluate(() => window.__duoidat.scene), 'title');
     assert.equal(await page.evaluate(() => localStorage.getItem('duoidat.save.v1')), null);
   }
+  await page.evaluate(() => {
+    const game = window.__duoidat;
+    game.startNewGame(); game.flags.intro_seen = true; game.enterRoom('hall');
+    game.world.save();
+    game.startBattle('moss', (result) => game.world.afterBattle(result, 'moss'));
+    game.player.hp = 1; game.battle.hurtPlayer(); game.battle.update(2.2);
+  });
+  assert.equal(await page.evaluate(() => window.__duoidat.scene), 'gameover');
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => window.__duoidat.scene === 'world');
+  assert.equal(await page.evaluate(() => window.__duoidat.player.hp), 20);
+  await page.evaluate(() => { localStorage.clear(); window.__duoidat.endingTimer = 100; window.__duoidat.onDeath(); });
+  assert.ok(await page.evaluate(() => window.__duoidat.endingTimer < 1));
+  await page.keyboard.press('z'); await page.waitForTimeout(40);
+  assert.equal(await page.evaluate(() => window.__duoidat.scene), 'gameover');
+  assert.match(await page.evaluate(() => window.__duoidat.toastText), /Chưa có hành trình/);
+  await page.keyboard.press('ArrowDown'); await page.waitForTimeout(40);
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => window.__duoidat.scene === 'intro');
+  assert.equal(await page.evaluate(() => window.__duoidat.player.kills), 0);
   assert.deepEqual(errors, []);
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
@@ -263,6 +283,7 @@ try {
   console.log('✓ dữ liệu lưu hợp lệ, tám trường hợp lưu hỏng và bộ nhớ bị chặn');
   console.log('✓ cuộn túi đồ, giữ lựa chọn khi còn vật phẩm và cập nhật khi dùng hết');
   console.log('✓ toàn bộ kẻ địch, các mẫu đạn, tuyến tha và cả ba kết thúc');
+  console.log('✓ thua trận, tải điểm lưu, từ chối tiếp tục khi chưa lưu và chơi lại');
 } finally {
   await browser?.close();
   server.kill();

@@ -108,6 +108,7 @@ class Game {
   onDeath() {
     this.scene = 'gameover';
     this.gameoverIndex = 0;
+    this.endingTimer = 0;
     audio.playMusic('gameover');
   }
 
@@ -523,6 +524,11 @@ function updateGameover(dt) {
   }
   if (Input.consume('confirm')) {
     const item = GAMEOVER_ITEMS[game.gameoverIndex];
+    if (item === 'TIẾP TỤC TỪ ĐIỂM LỬA' && !hasSave) {
+      audio.cancel();
+      game.toast('Chưa có hành trình nào được lưu.', '#c46a6a');
+      return;
+    }
     audio.confirm();
     if (item === 'TIẾP TỤC TỪ ĐIỂM LỬA' && hasSave) {
       game.loadGame();
@@ -576,6 +582,7 @@ function drawGameover() {
     });
   });
   R.text('Z: chọn', W / 2, H - 26, { size: 12, align: 'center', color: '#6f6a60' });
+  drawToast();
 }
 
 // ------------------------------------------------------------
