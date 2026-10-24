@@ -168,11 +168,34 @@ try {
   assert.equal(saveResult.accepted, true);
   assert.match(saveResult.failure, /Không lưu được hành trình/);
   assert.doesNotMatch(saveResult.failure, /Hành trình đã được ghi lại/);
+  const inventory = await page.evaluate(async () => {
+    const { Input, R } = await import('/src/core.js');
+    const game = window.__duoidat;
+    const world = game.world;
+    game.player.items = { bread: 1, candy: 1, tea: 1, honey: 1, kem: 2 };
+    game.player.hp = game.player.maxHp - 1;
+    world.pauseIndex = 4;
+    Input.just.add('confirm'); world.updatePause();
+    const indexAfterUse = world.pauseIndex;
+    const texts = [];
+    const original = R.text;
+    R.text = (text, x, y) => { texts.push({ text, y }); };
+    world.drawPause(); R.text = original;
+    game.player.hp = game.player.maxHp - 1;
+    Input.just.add('confirm'); world.updatePause();
+    return { indexAfterUse, finalIndex: world.pauseIndex, kem: game.player.items.kem ?? 0, texts };
+  });
+  assert.equal(inventory.indexAfterUse, 4);
+  assert.equal(inventory.finalIndex, 3);
+  assert.equal(inventory.kem, 0);
+  assert.equal(inventory.texts.filter((entry) => / ×\d/.test(entry.text)).length, 3);
+  assert.ok(inventory.texts.some((entry) => entry.text === 'Kem tuyết ×1' && entry.y < 330));
   assert.deepEqual(errors, []);
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
   console.log('✓ vị trí vào phòng, điểm lưu và tọa độ sau khi tải lại');
   console.log('✓ dữ liệu lưu hợp lệ, tám trường hợp lưu hỏng và bộ nhớ bị chặn');
+  console.log('✓ cuộn túi đồ, giữ lựa chọn khi còn vật phẩm và cập nhật khi dùng hết');
 } finally {
   await browser?.close();
   server.kill();

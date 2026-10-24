@@ -961,7 +961,8 @@ export class World {
         }
       }
       this.pauseMessageTimer = 2.6;
-      this.pauseIndex = clamp(this.pauseIndex, 0, Math.max(0, ids.length - 2));
+      const remaining = Object.keys(player.items).filter((id) => player.items[id] > 0).length;
+      this.pauseIndex = clamp(this.pauseIndex, 0, Math.max(0, remaining - 1));
     }
   }
 
@@ -981,10 +982,13 @@ export class World {
     if (!ids.length) {
       R.text('(Không có gì trong túi.)', 130, 194, { size: 15, italic: true, color: '#6f6a60' });
     } else {
-      ids.forEach((id, i) => {
+      const visibleCount = 3;
+      const start = clamp(this.pauseIndex - visibleCount + 1, 0, Math.max(0, ids.length - visibleCount));
+      if (ids.length > visibleCount) R.text(`${this.pauseIndex + 1} / ${ids.length} · ↑↓`, 530, 168, { size: 13, align: 'right', color: '#8d877c' });
+      ids.slice(start, start + visibleCount).forEach((id, i) => {
         const item = ITEMS[id];
         const y = 194 + i * 40;
-        const selected = i === this.pauseIndex;
+        const selected = start + i === this.pauseIndex;
         if (selected) {
           R.heart(118, y + 2, 2, '#ffd166');
         }
