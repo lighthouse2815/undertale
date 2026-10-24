@@ -652,8 +652,11 @@ export class World {
             this.blockedCooldown = 4;
             this.openDialogue(exit.blockedText);
           }
-          // đẩy nhẹ người chơi lại
-          p.x = clamp(p.x, (exit.x + 1.2) * TILE, W - 40);
+          // Đẩy về phía trong phòng, tránh đặt người chơi ra ngoài bản đồ.
+          if (exit.x === 0) p.x = (exit.x + exit.w) * TILE + 10;
+          else if (exit.x + exit.w >= this.map[0].length) p.x = exit.x * TILE - 10;
+          else if (exit.y === 0) p.y = (exit.y + exit.h) * TILE + 10;
+          else p.y = exit.y * TILE - 10;
         } else {
           this.game.enterRoom(exit.to, exit.spawn);
           return;

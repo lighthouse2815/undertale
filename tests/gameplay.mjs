@@ -97,6 +97,7 @@ try {
     const game = window.__duoidat;
     const invalid = [];
     const unreachable = [];
+    const blocked = [];
     for (const room of Object.values(ROOMS)) {
       const incoming = Object.values(ROOMS).flatMap((r) => r.exits.filter((e) => e.to === room.id).map((e) => e.spawn));
       for (const spawn of [room.spawn, room.saveSpawn, ...incoming].filter(Boolean)) {
@@ -116,6 +117,13 @@ try {
       }
       for (const exit of room.exits) {
         if (!queue.some(([x, y]) => x / 32 >= exit.x && x / 32 < exit.x + exit.w && y / 32 >= exit.y && y / 32 < exit.y + exit.h)) unreachable.push(`${room.id} → ${exit.to}`);
+        if (exit.requires) {
+          delete game.flags[exit.requires];
+          world.player.x = (exit.x + exit.w / 2) * 32;
+          world.player.y = (exit.y + exit.h / 2) * 32;
+          world.updateMovement(0);
+          blocked.push({ room: room.id, safe: world.canStand(world.player.x, world.player.y), stayed: world.room.id === room.id });
+        }
       }
       for (const object of world.objects) {
         if (!queue.some(([x, y]) => Math.hypot(x - object.x * 32, y - (object.y * 32 - 10)) < 62)) unreachable.push(`${room.id}: ${object.id}`);
@@ -126,10 +134,12 @@ try {
     game.world.save();
     game.loadGame();
     const after = { x: game.world.player.x, y: game.world.player.y };
-    return { invalid, unreachable, before, after };
+    return { invalid, unreachable, blocked, before, after };
   });
   assert.deepEqual(mapResult.invalid, []);
   assert.deepEqual(mapResult.unreachable, []);
+  assert.ok(mapResult.blocked.length > 0);
+  assert.ok(mapResult.blocked.every((gate) => gate.safe && gate.stayed));
   assert.deepEqual(mapResult.after, mapResult.before);
   const saveResult = await page.evaluate(async () => {
     const { Save } = await import('/src/core.js');
