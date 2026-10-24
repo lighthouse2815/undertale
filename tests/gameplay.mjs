@@ -466,6 +466,22 @@ try {
   phone.on('pageerror', (error) => errors.push(error.message));
   await phone.goto(`http://127.0.0.1:${port}/#play`);
   await phone.waitForFunction(() => window.__duoidat?.scene === 'title');
+  for (const viewport of [{ width: 390, height: 844 }, { width: 320, height: 568 }, { width: 844, height: 390 }, { width: 568, height: 320 }]) {
+    await phone.setViewportSize(viewport);
+    const layout = await phone.evaluate(() => {
+      const canvas = document.querySelector('canvas').getBoundingClientRect();
+      const buttons = [...document.querySelectorAll('[data-input]')].map((button) => button.getBoundingClientRect());
+      return {
+        ratio: canvas.width / canvas.height,
+        visible: buttons.every((r) => r.x >= 0 && r.y >= canvas.bottom && r.right <= innerWidth && r.bottom <= innerHeight),
+        overlap: buttons.some((a, i) => buttons.slice(i + 1).some((b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top)),
+      };
+    });
+    assert.ok(Math.abs(layout.ratio - 4 / 3) < 0.01, JSON.stringify(viewport));
+    assert.equal(layout.visible, true, JSON.stringify(viewport));
+    assert.equal(layout.overlap, false, JSON.stringify(viewport));
+  }
+  await phone.setViewportSize({ width: 390, height: 844 });
   await phone.locator('[data-input="confirm"]').tap();
   await phone.waitForFunction(() => window.__duoidat.scene === 'intro');
   for (let i = 0; i < 3; i++) { await phone.locator('[data-input="confirm"]').tap(); await phone.waitForTimeout(40); }
@@ -550,6 +566,7 @@ try {
   console.log('✓ toàn bộ kẻ địch, các mẫu đạn, tuyến tha và cả ba kết thúc');
   console.log('✓ thua trận, tải điểm lưu, từ chối tiếp tục khi chưa lưu và chơi lại');
   console.log('✓ rương mở một lần, mua hàng, thiếu tiền, hồi máu, suối và nút cảm ứng');
+  console.log('✓ nút cảm ứng nằm ngoài màn hình game, không chồng lấn ở bốn kích thước dọc/ngang');
 } finally {
   await browser?.close();
   server.kill();
