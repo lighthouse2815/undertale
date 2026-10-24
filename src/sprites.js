@@ -2,6 +2,7 @@
 //  Sprite pixel tự vẽ — toàn bộ nhân vật trong game
 // ============================================================
 import { R } from './core.js';
+import { art } from './localassets.js';
 
 const P = {
   h: '#3b2733', // tóc
@@ -578,3 +579,27 @@ export function drawSprite(name, x, y, scale = 2, opts = {}) {
 
 // Gắn vào renderer để hội thoại và các cảnh khác dùng tiện
 R.sprite = drawSprite;
+
+/**
+ * Ảnh gốc đầu tiên có trong danh sách (máy không có bản game thì trả null).
+ * Dùng để ưu tiên sprite gốc, thiếu thì quay về art tự sinh.
+ */
+export function localImage(names) {
+  if (!names) return null;
+  for (const n of names) {
+    const im = art.get(n);
+    if (im) return im;
+  }
+  return null;
+}
+
+/**
+ * Vẽ sprite gốc nếu có. Trả về true khi đã vẽ, false khi máy không có ảnh.
+ * (x, y) theo điểm neo, mặc định "giữa-dưới" như drawSprite.
+ */
+export function drawLocal(names, x, y, scale = 2, opts = {}) {
+  const img = localImage(names);
+  if (!img) return false;
+  R.image(img, x, y, scale, { anchor: 'bottom-center', ...opts });
+  return true;
+}

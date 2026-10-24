@@ -5,6 +5,24 @@
 // ------------------------------------------------------------
 const SPRITE_ROUTE = '/local-sprites/';
 
+// nhân vật chính gốc: các khung hình đi theo hướng
+export const PLAYER_ART = {
+  down: ['spr_f_maincharad_0.png', 'spr_f_maincharad_1.png', 'spr_f_maincharad_2.png', 'spr_f_maincharad_3.png'],
+  up: ['spr_f_maincharau_0.png', 'spr_f_maincharau_1.png', 'spr_f_maincharau_2.png', 'spr_f_maincharau_3.png'],
+  left: ['spr_f_maincharal_0.png', 'spr_f_maincharal_1.png'],
+  right: ['spr_f_maincharar_0.png', 'spr_f_maincharar_1.png'],
+};
+const PLAYER_FILES = Object.values(PLAYER_ART).flat();
+
+// kẻ địch trong game này — gán sang sprite gốc gần nhất về dáng hình
+export const ENEMY_ART = {
+  moss: ['spr_migosp_0.png'], // Bọ Rêu → Migosp (con bọ xanh)
+  shroom: ['spr_moldsmal_0.png'], // Nấm Buồn → Moldsmal (khối mềm buồn)
+  bird: ['spr_whimsun_0.png'], // Chim Tro → Whimsun (sinh vật bay)
+  sentinel: ['spr_dummybattle_0.png'], // Lính Sắt Vụn → hình nộm gỗ
+};
+const ENEMY_FILES = Object.values(ENEMY_ART).flat();
+
 // những sprite dùng cho giao diện (tên tệp trong bản game)
 const WANTED = [
   'spr_border_0.png', // viền khung gốc: ô trắng 5x5 (khung hội thoại/trận đấu)
@@ -20,6 +38,10 @@ const WANTED = [
   'spr_itembt_1.png',
   'spr_sparebt_0.png', // nút THA (0: thường, 1: đang chọn)
   'spr_sparebt_1.png',
+  // nhân vật chính (Frisk gốc, 20x30, bốn hướng)
+  ...PLAYER_FILES,
+  // kẻ địch gốc trong trận
+  ...ENEMY_FILES,
 ];
 
 // hàng lệnh trận đấu: [khung thường, khung đang chọn]

@@ -2,8 +2,8 @@
 //  Thế giới: bản đồ, di chuyển, vật thể, hội thoại, cửa hàng
 // ============================================================
 import { R, W, H, Input, Dialogue, Embers, audio, clamp, rand, hash2, pick, Save } from './core.js';
-import { drawSprite } from './sprites.js';
-import { art } from './localassets.js';
+import { drawSprite, drawLocal } from './sprites.js';
+import { art, PLAYER_ART } from './localassets.js';
 import {
   ROOMS, ITEMS, ENEMIES, NPC_TALK, SPRING_LINES, BOSS_INTRO, BOSS_OUTRO, SHOP_STOCK,
 } from './data.js';
@@ -908,7 +908,12 @@ export class World {
     R.ctx.ellipse(p.x, p.y + 4, 12, 4, 0, 0, Math.PI * 2);
     R.ctx.fill();
     R.ctx.restore();
-    drawSprite(spriteName, p.x, p.y + 4 - bob, 2.2, { flip });
+    // nhân vật gốc (Frisk): đứng yên dùng khung 0, đi thì đổi khung theo hướng
+    const frames = PLAYER_ART[p.facing] || PLAYER_ART.down;
+    const frame = p.moving ? frames[Math.floor(p.anim / 1.6) % frames.length] : frames[0];
+    if (!drawLocal([frame, frames[0]], p.x, p.y + 4, 2)) {
+      drawSprite(spriteName, p.x, p.y + 4 - bob, 2.2, { flip });
+    }
   }
 
   drawCompanion() {

@@ -2,8 +2,8 @@
 //  Trận đánh: theo lượt, né đạn, ĐÁNH / NÓI / ĐỒ / THA
 // ============================================================
 import { R, W, H, Input, Typewriter, Embers, audio, clamp, rand, randInt, pick, dist, hash2 } from './core.js';
-import { drawSprite } from './sprites.js';
-import { art, BUTTON_ART } from './localassets.js';
+import { drawSprite, drawLocal } from './sprites.js';
+import { art, BUTTON_ART, ENEMY_ART } from './localassets.js';
 import { ENEMIES, ITEMS } from './data.js';
 
 const PANEL = { x: 20, y: 314, w: 600, h: 150 };
@@ -844,14 +844,19 @@ export class Battle {
 
     const tint = this.enemyFlash > 0.55 ? '#ffffff' : this.enemyFlash > 0 ? '#ffc9c9' : null;
     const flashAlpha = this.enemyFlash > 0 ? 0.6 + Math.sin(this.time * 60) * 0.4 : 1;
-    drawSprite(e.sprite, x, y, e.scale, { tint, alpha: this.enemyFlash > 0 ? flashAlpha : 1 });
+    // sprite gốc (kẻ địch Ruins) nếu máy có; không thì art tự sinh
+    if (!drawLocal(ENEMY_ART[e.id], x, y, 2, { alpha: flashAlpha, tint })) {
+      drawSprite(e.sprite, x, y, e.scale, { tint, alpha: this.enemyFlash > 0 ? flashAlpha : 1 });
+    }
     // kiệt sức: cúi xuống khi máu thấp
     this.drawStatusBars();
   }
 
   drawEnemyFading() {
     const a = clamp(this.deathTimer / 2.1, 0, 1);
-    drawSprite(this.enemy.sprite, W / 2, 288, this.enemy.scale, { alpha: a * 0.8, tint: '#ffffff' });
+    if (!drawLocal(ENEMY_ART[this.enemy.id], W / 2, 288, 2, { alpha: a * 0.8, tint: '#ffffff' })) {
+      drawSprite(this.enemy.sprite, W / 2, 288, this.enemy.scale, { alpha: a * 0.8, tint: '#ffffff' });
+    }
   }
 
   drawStatusBars() {

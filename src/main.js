@@ -2,8 +2,8 @@
 //  DƯỚI ĐẤT — điểm khởi động, các cảnh, vòng lặp chính
 // ============================================================
 import { R, W, H, Input, audio, Embers, Save, clamp, rand, hash2, pick, loadFonts } from './core.js';
-import { art, loadLocalSprites } from './localassets.js';
-import { drawSprite } from './sprites.js';
+import { art, loadLocalSprites, PLAYER_ART } from './localassets.js';
+import { drawSprite, drawLocal } from './sprites.js';
 import { ROOMS, ENEMIES } from './data.js';
 import { World } from './world.js';
 import { Battle } from './battle.js';
@@ -439,7 +439,13 @@ function drawIntro() {
   const fall = (game.introTimer * 90) % 620;
   const y = 60 + fall;
   R.glow(W / 2, y, 40, '#ffd166', 0.4);
-  drawSprite('playerDown', W / 2, y, 2, { alpha: clamp(1 - fall / 620, 0.15, 1) });
+  {
+    const frames = PLAYER_ART.down;
+    const frame = frames[Math.floor(game.time * 7) % frames.length];
+    if (!drawLocal([frame, frames[0]], W / 2, y, 2, { alpha: clamp(1 - fall / 620, 0.15, 1) })) {
+      drawSprite('playerDown', W / 2, y, 2, { alpha: clamp(1 - fall / 620, 0.15, 1) });
+    }
+  }
   ctx.save();
   ctx.globalAlpha = 0.25;
   ctx.fillStyle = '#ffd166';
@@ -631,7 +637,13 @@ function drawEnding() {
   game.embers.draw();
 
   // bóng lưng nhân vật đi về phía bình minh
-  drawSprite('playerUp', W / 2 + Math.sin(t * 0.3) * 6, H - 84, 2.4, { alpha: 0.9 });
+  {
+    const frames = PLAYER_ART.up;
+    const frame = frames[Math.floor(t * 6) % frames.length];
+    if (!drawLocal([frame, frames[0]], W / 2 + Math.sin(t * 0.3) * 6, H - 84, 2.4, { alpha: 0.9 })) {
+      drawSprite('playerUp', W / 2 + Math.sin(t * 0.3) * 6, H - 84, 2.4, { alpha: 0.9 });
+    }
+  }
 
   const lines = ending.lines;
   if (game.endingPage < lines.length) {
