@@ -201,7 +201,9 @@ export class Battle {
       this.menuIndex = (this.menuIndex + 1) % 4;
       audio.select();
     }
-    if (Input.consume('confirm')) {
+    const quickItem = Input.consume('cancel');
+    if (quickItem) this.menuIndex = 2;
+    if (Input.consume('confirm') || quickItem) {
       audio.confirm();
       const key = BUTTONS[this.menuIndex].key;
       if (key === 'fight') {

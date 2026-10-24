@@ -407,7 +407,13 @@ try {
     press(aim, 'confirm'); press(aim, 'cancel');
     const cancelled = { phase: aim.phase, turn: aim.turn, enemyHp: aim.enemyHp };
     press(aim, 'confirm'); aim.barX = 320; press(aim, 'confirm'); aim.update(0.5);
+    const shortcut = new Battle(game, 'moss', () => {});
+    drain(shortcut);
+    press(shortcut, 'cancel');
+    const openedItems = shortcut.phase === 'item' && shortcut.subKind === 'item';
+    press(shortcut, 'cancel');
     return { items, fleeing, cancelled, initialHp: aim.maxEnemyHp,
+      openedItems, closedItems: shortcut.phase === 'menu' && shortcut.turn === 0,
       damage: aim.maxEnemyHp - aim.enemyHp,
       perfectDamage: Math.max(1, Math.round((game.player.atk + 4) * 2.4) - aim.enemy.def) };
   });
@@ -423,6 +429,8 @@ try {
   assert.ok(combatBranches.fleeing.every((result) => result.gold === 0 && result.kills === 0 && result.spares === 0));
   assert.deepEqual(combatBranches.cancelled, { phase: 'menu', turn: 0, enemyHp: combatBranches.initialHp });
   assert.equal(combatBranches.damage, combatBranches.perfectDamage);
+  assert.equal(combatBranches.openedItems, true);
+  assert.equal(combatBranches.closedItems, true);
   for (const [type, result, kills] of [['true', 'spare', 0], ['neutral', 'spare', 1], ['dark', 'kill', 0]]) {
     const ending = await page.evaluate(({ result, kills }) => {
       const game = window.__duoidat;

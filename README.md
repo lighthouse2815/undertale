@@ -56,7 +56,7 @@ thất bại, trùm chặn bỏ chạy, canh đòn đánh và bố cục cảm �
 | --- | --- |
 | `↑ ↓ ← →` hoặc `W A S D` | Di chuyển / chọn trong menu |
 | `Z` · `Enter` · `Space` | Xác nhận, nói chuyện, tấn công |
-| `X` · `Esc` | Mở túi đồ / quay lại |
+| `X` · `Esc` | Mở túi đồ khi khám phá hoặc ở menu trận đấu / quay lại |
 | `P` hoặc nút `Ⅱ` | Tạm dừng / tiếp tục, kể cả trong trận |
 | `M` | Bật–tắt âm thanh |
 | `F` | Bật–tắt toàn màn hình |
