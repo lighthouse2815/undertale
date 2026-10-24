@@ -254,7 +254,12 @@ class AudioEngine {
     this.musicGain = null;
     this.sfxGain = null;
     this.noiseBuf = null;
-    this.muted = localStorage.getItem('duoidat.muted') === '1';
+    this.muted = false;
+    try {
+      this.muted = localStorage.getItem('duoidat.muted') === '1';
+    } catch {
+      // Bộ nhớ bị chặn: vẫn cho phép chơi và đổi âm thanh trong phiên này.
+    }
     this.trackName = null;
     this.track = null;
     this.step = 0;
@@ -301,7 +306,11 @@ class AudioEngine {
 
   setMuted(muted) {
     this.muted = muted;
-    localStorage.setItem('duoidat.muted', muted ? '1' : '0');
+    try {
+      localStorage.setItem('duoidat.muted', muted ? '1' : '0');
+    } catch {
+      // Không lưu được tùy chọn cũng không được ngắt việc cập nhật âm thanh.
+    }
     if (this.master && this.ctx) {
       this.master.gain.setTargetAtTime(muted ? 0 : 1, this.ctx.currentTime, 0.05);
     }

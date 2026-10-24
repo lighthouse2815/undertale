@@ -446,7 +446,29 @@ try {
   assert.equal(await phone.locator('[data-input="confirm"]').textContent(), 'Z');
   assert.equal(await phone.locator('[data-input="cancel"]').textContent(), 'X');
   await mobile.close();
+  const blocked = await browser.newContext();
+  await blocked.addInitScript(() => {
+    Object.defineProperty(window, 'localStorage', {
+      get() { throw new DOMException('Bộ nhớ bị chặn', 'SecurityError'); },
+    });
+  });
+  const blockedPage = await blocked.newPage();
+  blockedPage.on('pageerror', (error) => errors.push(error.message));
+  blockedPage.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  await blockedPage.goto(`http://127.0.0.1:${port}/#play`);
+  await blockedPage.waitForFunction(() => window.__duoidat?.scene === 'title');
+  assert.equal(await blockedPage.evaluate(() => window.__audio.muted), false);
+  await blockedPage.evaluate(() => window.__audio.localCache.set('test', new Audio()));
+  await blockedPage.keyboard.press('m');
+  await blockedPage.waitForFunction(() => window.__audio.muted && window.__audio.localCache.get('test').volume === 0);
+  await blockedPage.keyboard.press('m');
+  await blockedPage.waitForFunction(() => !window.__audio.muted);
+  assert.ok(await blockedPage.evaluate(() => window.__audio.localCache.get('test').volume > 0));
+  await blockedPage.keyboard.press('Enter');
+  await blockedPage.waitForFunction(() => window.__duoidat.scene === 'intro');
+  await blocked.close();
   assert.deepEqual(errors, []);
+  console.log('✓ khởi động, bật/tắt tiếng và bắt đầu chơi khi localStorage bị chặn');
   console.log('✓ tạm dừng khi mất tiêu điểm, đóng băng trận đấu và tiếp tục không lọt phím');
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
