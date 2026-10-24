@@ -1002,7 +1002,7 @@ export class World {
   // ----------------------------------------------------------
   save(silent = false) {
     const p = this.player;
-    const spawn = this.room.saveSpawn ?? { x: p.x / TILE, y: p.y / TILE, facing: p.facing };
+    const spawn = this.room.saveSpawn ?? { x: p.x / TILE - 0.5, y: p.y / TILE - 0.5, facing: p.facing };
     const ok = Save.write({
       roomId: this.room.id,
       spawn,

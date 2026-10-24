@@ -92,9 +92,30 @@ try {
   assert.match(worldResult.reactions[0], /không còn nghe tiếng giáo/);
   assert.match(worldResult.reactions[1], /Đường tuần tra im/);
   assert.match(worldResult.reactions[2], /không còn nghe tiếng bước chân/);
+  const mapResult = await page.evaluate(async () => {
+    const { ROOMS } = await import('/src/data.js');
+    const game = window.__duoidat;
+    const invalid = [];
+    for (const room of Object.values(ROOMS)) {
+      const incoming = Object.values(ROOMS).flatMap((r) => r.exits.filter((e) => e.to === room.id).map((e) => e.spawn));
+      for (const spawn of [room.spawn, room.saveSpawn, ...incoming].filter(Boolean)) {
+        game.enterRoom(room.id, spawn);
+        if (!game.world.canStand(game.world.player.x, game.world.player.y)) invalid.push({ room: room.id, spawn });
+      }
+    }
+    game.enterRoom('hall');
+    const before = { x: game.world.player.x, y: game.world.player.y };
+    game.world.save();
+    game.loadGame();
+    const after = { x: game.world.player.x, y: game.world.player.y };
+    return { invalid, before, after };
+  });
+  assert.deepEqual(mapResult.invalid, []);
+  assert.deepEqual(mapResult.after, mapResult.before);
   assert.deepEqual(errors, []);
   console.log('✓ chuyển giai đoạn của ba trùm, phần thưởng tha, phần trăm hơi ấm và tăng nhiều cấp');
   console.log('✓ mở lại cửa hàng, hậu quả hạ trùm và phản ứng của NPC');
+  console.log('✓ vị trí vào phòng, điểm lưu và tọa độ sau khi tải lại');
 } finally {
   await browser?.close();
   server.kill();

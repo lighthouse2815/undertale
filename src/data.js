@@ -325,7 +325,7 @@ export const ROOMS = {
       '####################',
     ],
     spawn: { x: 10, y: 6, facing: 'down' },
-    saveSpawn: { x: 16, y: 10.4, facing: 'up' },
+    saveSpawn: { x: 16, y: 11, facing: 'up' },
     exits: [
       { x: 19, y: 6, w: 1, h: 2, to: 'hall', spawn: { x: 1.6, y: 7, facing: 'right' } },
     ],
@@ -367,7 +367,7 @@ export const ROOMS = {
     spawn: { x: 2, y: 7, facing: 'right' },
     exits: [
       { x: 0, y: 6, w: 1, h: 2, to: 'wake', spawn: { x: 18, y: 7, facing: 'left' } },
-      { x: 19, y: 6, w: 1, h: 2, to: 'bridge', spawn: { x: 1.6, y: 7, facing: 'right' } },
+      { x: 19, y: 6, w: 1, h: 2, to: 'bridge', spawn: { x: 1, y: 7, facing: 'right' } },
     ],
     encounters: { pool: ['moss', 'shroom'], min: 620, max: 980 },
     objects: [
@@ -402,7 +402,7 @@ export const ROOMS = {
       '#..................#',
       '####################',
     ],
-    spawn: { x: 2, y: 7, facing: 'right' },
+    spawn: { x: 1, y: 7, facing: 'right' },
     exits: [
       { x: 0, y: 6, w: 1, h: 2, to: 'hall', spawn: { x: 18, y: 7, facing: 'left' } },
       {
@@ -487,7 +487,7 @@ export const ROOMS = {
     ],
     spawn: { x: 2, y: 7, facing: 'right' },
     exits: [
-      { x: 0, y: 5, w: 1, h: 2, to: 'snow1', spawn: { x: 17, y: 7, facing: 'left' } },
+      { x: 0, y: 5, w: 1, h: 2, to: 'snow1', spawn: { x: 18, y: 6, facing: 'left' } },
       { x: 19, y: 5, w: 1, h: 2, to: 'snow3', spawn: { x: 1.6, y: 7, facing: 'right' } },
     ],
     encounters: null,
@@ -617,7 +617,7 @@ export const ROOMS = {
       { x: 0, y: 6, w: 1, h: 2, to: 'forest', spawn: { x: 18, y: 7, facing: 'left' } },
       {
         x: 19, y: 6, w: 1, h: 2, to: 'throne',
-        spawn: { x: 1.6, y: 7, facing: 'right' },
+        spawn: { x: 2, y: 7, facing: 'right' },
         requires: 'met_nhim',
         blockedText: [
           { text: 'Nhím đứng chắn trước lối vào Ngai Tro, tay khoanh trước ngực.' },
