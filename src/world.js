@@ -3,13 +3,13 @@
 // ============================================================
 import { R, W, H, Input, Dialogue, Embers, audio, clamp, rand, hash2, pick, Save } from './core.js';
 import { drawSprite, drawLocal, drawParts } from './sprites.js';
-import { art, PLAYER_ART, PROP_ART, BAMOC_ART, KING_ART } from './localassets.js';
+import { art, PLAYER_ART, PROP_ART, NPC_ART, BAMOC_ART, KING_ART } from './localassets.js';
 import {
   ROOMS, ITEMS, ENEMIES, NPC_TALK, SPRING_LINES, BOSS_INTRO, BOSS_OUTRO, SHOP_STOCK,
 } from './data.js';
 
 export const TILE = 32;
-const SOLID = new Set(['#', '~', 'w', 'O', 'T', 'b', '|']);
+const SOLID = new Set(['#', '~', 'w', 'O', 'T', 'b', '|', 's', 'c', 'h', 'g']);
 const INTERACTIVE = new Set(['sign', 'chest', 'lamp', 'npc', 'spring', 'boss']);
 
 const THEMES = {
@@ -17,6 +17,7 @@ const THEMES = {
   hall: { sky: '#020206', floor: ['#0a0b12', '#0c0e16', '#080910'], dot: '#131624', wall: '#05060c', wallTop: '#1b2130', wallLine: '#0c0f1a', grass: '#101a16', grassHi: '#1c2b22', accent: '#8fa8d8', chasm: '#010104', water: '#0e2233', glow: '#a9c4ff', ember: '#9fc6ff' },
   ash: { sky: '#040302', floor: ['#100c0b', '#130f0e', '#0c0908'], dot: '#1b1514', wall: '#070505', wallTop: '#241b18', wallLine: '#110d0c', grass: '#161311', grassHi: '#241d1a', accent: '#ff9a4d', chasm: '#020103', water: '#1d1411', glow: '#ffb066', ember: '#ff9a4d' },
   forest: { sky: '#020302', floor: ['#0c0c0a', '#0f0f0d', '#090a08'], dot: '#16150f', wall: '#050505', wallTop: '#1e1c17', wallLine: '#0e0d0b', grass: '#1d2216', grassHi: '#2d3320', accent: '#c9d16a', chasm: '#020202', water: '#142a26', glow: '#e0e08a', ember: '#d8d08a' },
+  snow: { sky: '#05070d', floor: ['#141b26', '#171f2c', '#111823'], dot: '#26313f', wall: '#0a0e16', wallTop: '#2b3b50', wallLine: '#141b26', grass: '#1a2333', grassHi: '#2d3d52', accent: '#9fd8ff', chasm: '#03050a', water: '#1b3b52', glow: '#bfe6ff', ember: '#cfeaff' },
   market: { sky: '#040302', floor: ['#120e0b', '#150f0c', '#0d0a08'], dot: '#1d1611', wall: '#070504', wallTop: '#2a1f16', wallLine: '#130e0a', grass: '#15120e', grassHi: '#221c14', accent: '#ffb347', chasm: '#020202', water: '#1d1611', glow: '#ffc46b', ember: '#ffab5c' },
   throne: { sky: '#020104', floor: ['#0b090e', '#0e0b12', '#08070b'], dot: '#141021', wall: '#040309', wallTop: '#1f1829', wallLine: '#0c0913', grass: '#100c17', grassHi: '#1a1422', accent: '#ff7a4d', chasm: '#010103', water: '#160f18', glow: '#ff8a5c', ember: '#ff8a5c' },
 };
@@ -378,6 +379,154 @@ export class World {
         g.fillRect(x + 6, y + 7, 3, 21);
         break;
       }
+      case 's': {
+        // cây thông phủ tuyết
+        baseFloor();
+        g.fillStyle = 'rgba(0,0,0,0.35)';
+        g.beginPath();
+        g.ellipse(x + 16, y + 30, 12, 4, 0, 0, Math.PI * 2);
+        g.fill();
+        g.fillStyle = '#3a2a20';
+        g.fillRect(x + 14, y + 22, 4, 9);
+        const tiers = [
+          { w: 16, top: 2, hi: '#2b4a3a', snow: '#dfeefc' },
+          { w: 13, top: 11, hi: '#26412f', snow: '#cfe2f4' },
+          { w: 10, top: 20, hi: '#22392b', snow: '#c2d8ec' },
+        ];
+        for (const t of tiers) {
+          const half = t.w / 2;
+          g.fillStyle = t.hi;
+          g.beginPath();
+          g.moveTo(x + 16, y + t.top);
+          g.lineTo(x + 16 + half, y + t.top + 12);
+          g.lineTo(x + 16 - half, y + t.top + 12);
+          g.closePath();
+          g.fill();
+          g.fillStyle = t.snow;
+          g.globalAlpha = 0.9;
+          g.beginPath();
+          g.moveTo(x + 16, y + t.top);
+          g.lineTo(x + 16 + half * 0.62, y + t.top + 6);
+          g.lineTo(x + 16 + half * 0.25, y + t.top + 5);
+          g.lineTo(x + 16, y + t.top + 8);
+          g.lineTo(x + 16 - half * 0.25, y + t.top + 5);
+          g.lineTo(x + 16 - half * 0.62, y + t.top + 6);
+          g.closePath();
+          g.fill();
+          g.globalAlpha = 1;
+        }
+        break;
+      }
+      case 'c': {
+        // tảng băng (dùng sprite gốc nếu có)
+        baseFloor();
+        const bang = art.get(PROP_ART.iceblock);
+        if (bang) {
+          R.image(bang, x + 16, y + 31, 1, { anchor: 'bottom-center', ctx: g });
+          break;
+        }
+        g.fillStyle = '#8fbede';
+        g.fillRect(x + 6, y + 10, 20, 20);
+        g.fillStyle = '#b9dcf2';
+        g.fillRect(x + 8, y + 12, 16, 8);
+        g.fillStyle = 'rgba(255,255,255,0.55)';
+        g.fillRect(x + 10, y + 14, 4, 4);
+        g.fillStyle = 'rgba(0,0,0,0.22)';
+        g.fillRect(x + 6, y + 26, 20, 4);
+        break;
+      }
+      case 'p': {
+        // đống tuyết
+        baseFloor();
+        g.fillStyle = 'rgba(0,0,0,0.28)';
+        g.beginPath();
+        g.ellipse(x + 16, y + 26, 13, 5, 0, 0, Math.PI * 2);
+        g.fill();
+        g.fillStyle = '#dbe9f6';
+        g.beginPath();
+        g.ellipse(x + 16, y + 22, 12, 8, 0, 0, Math.PI * 2);
+        g.fill();
+        g.fillStyle = '#f2f9ff';
+        g.beginPath();
+        g.ellipse(x + 14, y + 19, 8, 5, 0, 0, Math.PI * 2);
+        g.fill();
+        g.fillStyle = 'rgba(120,160,200,0.35)';
+        g.fillRect(x + 8, y + 24, 16, 2);
+        break;
+      }
+      case 'h': {
+        // nhà tuyết trong làng
+        baseFloor();
+        g.fillStyle = 'rgba(0,0,0,0.35)';
+        g.fillRect(x + 1, y + 4, 30, 28);
+        g.fillStyle = '#4a3b34';
+        g.fillRect(x + 2, y + 12, 28, 20);
+        g.fillStyle = '#5c4a41';
+        g.fillRect(x + 4, y + 14, 24, 18);
+        // mái phủ tuyết
+        g.fillStyle = '#2f241f';
+        g.beginPath();
+        g.moveTo(x + 16, y - 1);
+        g.lineTo(x + 32, y + 13);
+        g.lineTo(x, y + 13);
+        g.closePath();
+        g.fill();
+        g.fillStyle = '#e6f1fb';
+        g.beginPath();
+        g.moveTo(x + 16, y - 2);
+        g.lineTo(x + 27, y + 8);
+        g.lineTo(x + 19, y + 6);
+        g.lineTo(x + 16, y + 9);
+        g.lineTo(x + 13, y + 6);
+        g.lineTo(x + 5, y + 8);
+        g.closePath();
+        g.fill();
+        // cửa sổ sáng đèn
+        g.fillStyle = '#f7d98a';
+        g.fillRect(x + 7, y + 17, 7, 7);
+        g.fillRect(x + 18, y + 17, 7, 7);
+        g.strokeStyle = '#2f241f';
+        g.lineWidth = 1;
+        g.strokeRect(x + 7, y + 17, 7, 7);
+        g.strokeRect(x + 18, y + 17, 7, 7);
+        g.fillStyle = 'rgba(255,220,150,0.16)';
+        g.fillRect(x + 5, y + 15, 22, 11);
+        break;
+      }
+      case 'g': {
+        // hộp quà (dùng sprite gốc nếu có)
+        baseFloor();
+        const qua = art.get(PROP_ART.gift);
+        if (qua) {
+          R.image(qua, x + 16, y + 30, 1, { anchor: 'bottom-center', ctx: g });
+          break;
+        }
+        g.fillStyle = '#7a2f38';
+        g.fillRect(x + 8, y + 14, 16, 15);
+        g.fillStyle = '#9c3d47';
+        g.fillRect(x + 9, y + 15, 14, 13);
+        g.fillStyle = '#e8c96a';
+        g.fillRect(x + 14, y + 14, 4, 15);
+        g.fillRect(x + 8, y + 19, 16, 4);
+        break;
+      }
+      case 'v': {
+        // hoa băng phát sáng
+        baseFloor();
+        const hoaBang = art.get(PROP_ART.iceflower);
+        if (hoaBang) {
+          R.image(hoaBang, x + 16, y + 30, 1.2, { anchor: 'bottom-center', ctx: g });
+          break;
+        }
+        g.fillStyle = '#7fb8dc';
+        g.fillRect(x + 15, y + 16, 2, 10);
+        g.fillStyle = '#bfe6ff';
+        g.fillRect(x + 15, y + 13, 2, 2);
+        g.fillRect(x + 11, y + 15, 10, 2);
+        g.fillStyle = '#fff';
+        g.fillRect(x + 15, y + 15, 2, 2);
+        break;
+      }
       default: {
         baseFloor();
       }
@@ -646,10 +795,10 @@ export class World {
       }
       if (reward.heal) {
         const healed = this.game.healFull();
-        if (healed > 0) this.game.toast(`Bà Mốc hồi cho bạn ${healed} HP`);
+        if (healed > 0) this.game.toast(`${o.name ?? 'Người bạn'} hồi cho bạn ${healed} HP`);
       }
       if (reward.flag) this.flags[reward.flag] = true;
-      if (reward.openShop) this.openShop();
+      if (reward.openShop) this.openShop(Array.isArray(reward.openShop) ? reward.openShop : SHOP_STOCK);
       audio.confirm();
     });
   }
@@ -699,8 +848,8 @@ export class World {
   // ----------------------------------------------------------
   //  Cửa hàng
   // ----------------------------------------------------------
-  openShop() {
-    this.shop = { index: 0, message: '', messageTimer: 0, items: SHOP_STOCK };
+  openShop(stock = SHOP_STOCK) {
+    this.shop = { index: 0, message: '', messageTimer: 0, items: stock };
     audio.select();
   }
 
@@ -959,6 +1108,11 @@ export class World {
     ) {
       return;
     }
+    const npcImg = art.get(NPC_ART[o.sprite]);
+    if (npcImg) {
+      R.image(npcImg, x, ay, o.scale ?? 2, { anchor: 'bottom-center' });
+      return;
+    }
     drawSprite(o.sprite, x, ay, o.scale ?? 2, {});
   }
 
@@ -1089,8 +1243,26 @@ export class World {
             drawSprite('king', x, y + 20 - bob * 0.4, 2.6, { alpha: o.done ? 0.65 : 1 });
           }
         } else {
-          R.glow(x, y - 30, 70, o.done ? '#7fd8a8' : '#ff9a4d', 0.28);
-          drawSprite('sentinel', x, y + 10 - bob * 0.3, 3, {});
+          R.glow(x, y - 30, 80, o.done ? '#7fd8a8' : '#9fd8ff', 0.30);
+          const shadow = (w, h) => {
+            const ctx = R.ctx;
+            ctx.save();
+            ctx.globalAlpha = 0.4;
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.ellipse(x, y + 22, w, h, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          };
+          const painted = drawLocal(ENEMY_ART[o.enemy], x, y + 12 - bob * 0.3, 3, {
+            alpha: o.done ? 0.7 : 1,
+          });
+          if (painted) {
+            shadow(34, 8);
+          } else {
+            shadow(26, 7);
+            drawSprite(o.enemy, x, y + 10 - bob * 0.3, 3, { alpha: o.done ? 0.7 : 1 });
+          }
         }
         break;
       }
@@ -1108,6 +1280,7 @@ export class World {
         if (ch === 'l') R.glow(tx * TILE + 16, ty * TILE + 12, 60, this.theme.accent, pulse);
         else if (ch === 'm') R.glow(tx * TILE + 16, ty * TILE + 14, 26, this.theme.accent, 0.20);
         else if (ch === 'f') R.glow(tx * TILE + 16, ty * TILE + 16, 34, this.theme.glow, pulse * 0.8);
+        else if (ch === 'v') R.glow(tx * TILE + 16, ty * TILE + 16, 30, this.theme.glow, pulse * 0.7);
       }
     }
   }

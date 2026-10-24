@@ -20,6 +20,10 @@ export const ENEMY_ART = {
   shroom: ['spr_moldsmal_0.png'], // Nấm Buồn → Moldsmal (khối mềm buồn)
   bird: ['spr_whimsun_0.png'], // Chim Tro → Whimsun (sinh vật bay)
   sentinel: ['spr_dummybattle_0.png'], // Lính Sắt Vụn → hình nộm gỗ
+  frog: ['spr_froggit_0.png'], // Ếch Tuyết → Froggit (con ếch nhỏ)
+  drek: ['spr_snowdrake_0.png', 'spr_snowdrake_1.png'], // Tuyết Long → Snowdrake
+  cap: ['spr_icecap_0.png', 'spr_icecap_1.png'], // Mũ Băng → Ice Cap
+  guard: ['spr_bigdog_side_0.png', 'spr_bigdog_side_1.png'], // Chó Tuyết Khổng Lồ → con chó lớn trong Snowdin
 };
 const ENEMY_FILES = Object.values(ENEMY_ART).flat();
 
@@ -31,8 +35,27 @@ export const PROP_ART = {
   tree: 'spr_singletree_0.png', // cây
   flower: 'spr_echoflower_0.png', // hoa vang
   dom: 'spr_glowfly_0.png', // đom đóm
+  // khu Tuyết Tro
+  iceblock: 'spr_iceblock_0.png', // tảng băng
+  gift: 'spr_presentbox_0.png', // hộp quà
+  iceflower: 'spr_iceflower_0.png', // hoa băng
+  snowman: 'spr_regsnowman_0.png', // người tuyết
+  kem: 'spr_icecreamguy_anim_0.png', // Bác Kem (người bán kem gốc)
 };
 const PROP_FILES = Object.values(PROP_ART);
+
+// nhân vật phụ dùng một sprite gốc duy nhất, gán theo mã trong phòng
+export const NPC_ART = {
+  kem: PROP_ART.kem,
+  snowman: PROP_ART.snowman,
+};
+
+// chân dung trong khung hội thoại (máy có sprite gốc thì dùng luôn)
+export const PORTRAIT_ART = {
+  dom: PROP_ART.dom,
+  kem: PROP_ART.kem,
+  snowman: PROP_ART.snowman,
+};
 
 // Bà Mốc: ghép từ các phần của con nấm gốc (mũ + thân + hai tay).
 // Toạ độ tính theo pixel gốc (bản gốc vẽ ở scale 2) nên trong game

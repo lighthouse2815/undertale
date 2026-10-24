@@ -2,7 +2,7 @@
 //  DƯỚI ĐẤT — lõi engine: nhập liệu, âm thanh, vẽ, hội thoại, lưu
 // ============================================================
 
-import { art } from './localassets.js';
+import { art, PORTRAIT_ART } from './localassets.js';
 
 export const W = 640;
 export const H = 480;
@@ -228,6 +228,8 @@ const LOCAL_TRACKS = {
   wake: ['mus_ruins.ogg'],
   hall: ['mus_ruins.ogg', 'mus_waterquiet.ogg'],
   bridge: ['mus_snowy.ogg'],
+  snow: ['mus_snowy.ogg', 'mus_snowwalk.ogg'],
+  snowboss: ['mus_dogsong.ogg', 'mus_battle2.ogg'],
   forest: ['mus_waterfall.ogg'],
   market: ['mus_temshop.ogg', 'mus_shop.ogg'],
   throne: ['mus_bergentruckung.ogg', 'mus_barrier.ogg'],
@@ -1080,6 +1082,8 @@ const SPEAKER_COLORS = {
   'Nhím': '#ffb3a7',
   'Vua Tro': '#ff8a3d',
   'Lính Sắt Vụn': '#9fb6d8',
+  'Bác Kem': '#9fd8ff',
+  'Người Tuyết': '#e8f2ff',
   'Bạn': '#f2eee4',
   narration: '#cfc7b8',
 };
@@ -1146,10 +1150,12 @@ export class Dialogue {
 
     let textX = boxX + 22;
     if (portrait) {
-      const sizes = { dom: 4, baMoc: 2.4, nhim: 2.6, king: 1.8, sentinel: 2, moss: 2.4, shroom: 2.4, bird: 2.4 };
+      const sizes = { dom: 4, baMoc: 2.4, nhim: 2.6, king: 1.8, sentinel: 2, moss: 2.4, shroom: 2.4, bird: 2.4, kem: 2.6, snowman: 2.6 };
       const scale = sizes[portrait] ?? 2.4;
       R.glow(boxX + 60, boxY + 58, 46, '#ffb066', 0.2);
-      R.sprite(portrait, boxX + 60, boxY + 94, scale, { anchor: 'bottom-center' });
+      const anhGoc = art.get(PORTRAIT_ART[portrait]); // ưu tiên ảnh gốc nếu máy có
+      if (anhGoc) R.image(anhGoc, boxX + 60, boxY + 94, scale, { anchor: 'bottom-center' });
+      else R.sprite(portrait, boxX + 60, boxY + 94, scale, { anchor: 'bottom-center' });
       textX = boxX + 120;
     }
 

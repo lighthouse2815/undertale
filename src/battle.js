@@ -17,6 +17,7 @@ const BUTTONS = [
 const BG = {
   moss: { top: '#0d1a12', bottom: '#05070a', accent: '#6fae4d', ember: '#a8e26b', silhouette: '#12241a' },
   ash: { top: '#1b1210', bottom: '#050406', accent: '#ff9a4d', ember: '#ffb066', silhouette: '#241715' },
+  snow: { top: '#0e1a26', bottom: '#04070c', accent: '#8fd3ff', ember: '#bfe6ff', silhouette: '#16242e' },
   throne: { top: '#1a0f14', bottom: '#050306', accent: '#ff6b3d', ember: '#ff8a4d', silhouette: '#2a1620' },
 };
 

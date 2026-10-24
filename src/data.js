@@ -7,6 +7,7 @@ export const ITEMS = {
   candy: { name: 'Kẹo rêu', heal: 26, price: 16, desc: 'Ngọt lịm và hơi nhớt. Hồi 26 HP.' },
   tea: { name: 'Trà tro', heal: 45, price: 28, desc: 'Ấm từ cổ họng xuống tận ngón chân. Hồi 45 HP.' },
   honey: { name: 'Mật đom', heal: 70, price: 46, desc: 'Ánh sáng cô đọng thành giọt. Hồi 70 HP.' },
+  kem: { name: 'Kem tuyết', heal: 55, price: 36, desc: 'Lạnh buốt rồi ấm dần trong ngực. Hồi 55 HP.' },
 };
 
 export const ENEMIES = {
@@ -131,6 +132,130 @@ export const ENEMIES = {
     spareLine: 'Lính Sắt Vụn hạ giáo, cúi đầu: "ĐƯỜNG... ĐÃ MỞ. ĐI CẨN THẬN."',
     killLine: 'Lính Sắt Vụn đổ sập xuống, tiếng gỉ sét ngưng hẳn giữa cầu.',
     spareReward: 'Lính Sắt Vụn đưa bạn một mảnh huy hiệu hoen gỉ.',
+  },
+  frog: {
+    id: 'frog',
+    name: 'ẾCH TUYẾT',
+    sprite: 'frog',
+    scale: 3,
+    hp: 30,
+    atk: 3,
+    def: 1,
+    exp: 11,
+    gold: 8,
+    mercyAt: 100,
+    theme: 'snow',
+    intro: 'Ếch Tuyết nhảy ra khỏi đống tuyết, da xanh lấm tấm băng.',
+    banter: [
+      'Ếch Tuyết ngồi im, cổ họng phồng lên rồi xẹp xuống.',
+      'Ếch Tuyết nghiêng đầu: "Ribbit?"',
+      'Ếch Tuyết nhảy tại chỗ, tuyết bắn tung toé.',
+      'Ếch Tuyết nhìn bạn chằm chằm như đang cân nhắc điều gì đó.',
+    ],
+    acts: [
+      { label: 'Chào', warmth: 35, text: 'Bạn cúi xuống chào thật lễ phép.\nẾch Tuyết chớp mắt: "Ribbit, ribbit." (Nghe như "chào bạn".)' },
+      { label: 'Nhảy thi', warmth: 45, text: 'Bạn nhảy một cái thật cao.\nẾch Tuyết thích chí, nhảy theo — cao hơn cả bạn.' },
+      { label: 'Khen da', warmth: 30, text: 'Bạn khen làn da xanh mướt của nó.\nẾch Tuyết ưỡn ngực, tự hào ra mặt.' },
+    ],
+    patterns: ['rain', 'aimed'],
+    attacks: 2,
+    spareLine: 'Ếch Tuyết nhảy lên vai bạn một cái rồi nhảy xuống tuyết, biến mất sau gò đất.',
+    killLine: 'Ếch Tuyết lạnh cứng lại, rồi tan thành một vũng nước mỏng.',
+    spareReward: 'Ếch Tuyết để lại một viên sỏi tuyết lấp lánh.',
+  },
+  drek: {
+    id: 'drek',
+    name: 'TUYẾT LONG',
+    sprite: 'drek',
+    scale: 3.2,
+    hp: 34,
+    atk: 3,
+    def: 2,
+    exp: 13,
+    gold: 10,
+    mercyAt: 100,
+    theme: 'snow',
+    intro: 'Tuyết Long sà xuống từ cành thông, hơi thở phả ra sương trắng.',
+    banter: [
+      'Tuyết Long kể một câu chuyện cười dở tệ về băng đá.',
+      'Tuyết Long: "Cậu có thấy lạnh không? Tớ thì... lạnh từ trong ra."',
+      'Tuyết Long xếp cánh lại, hắt xì một cái ra tuyết.',
+      'Tuyết Long lẩm bẩm: "Ở đây chẳng ai cười với tớ cả."',
+    ],
+    acts: [
+      { label: 'Cười', warmth: 40, text: 'Bạn cười thật to — không phải vì câu đùa, mà vì nó kể quá nhiệt tình.\nTuyết Long sáng cả mắt: "CẬU CƯỜI RỒI!"' },
+      { label: 'Khen lông', warmth: 35, text: 'Bạn khen bộ lông bạc óng ánh của nó.\nTuyết Long xoay người khoe dưới ánh sáng xanh.' },
+      { label: 'Kể chuyện mùa hè', warmth: 45, text: 'Bạn kể về mùa hè: nắng vàng, ve kêu, kem chảy nhanh.\nTuyết Long nghe mà quên cả vỗ cánh.' },
+    ],
+    patterns: ['rain', 'sweep', 'ring'],
+    attacks: 2,
+    spareLine: 'Tuyết Long bay lên khỏi tầm tay, lượn một vòng rồi thả xuống một chiếc lông bạc.',
+    killLine: 'Tuyết Long rơi xuống mặt tuyết, đôi cánh vỡ thành bụi băng.',
+    spareReward: 'Tuyết Long tặng bạn một chiếc lông bạc mát lạnh.',
+  },
+  cap: {
+    id: 'cap',
+    name: 'MŨ BĂNG',
+    sprite: 'cap',
+    scale: 3.2,
+    hp: 38,
+    atk: 4,
+    def: 2,
+    exp: 15,
+    gold: 12,
+    mercyAt: 100,
+    theme: 'snow',
+    intro: 'MŨ BĂNG đội chiếc mũ băng trên đầu, kiêu hãnh đứng giữa đường.',
+    banter: [
+      'MŨ BĂNG chỉnh lại mũ: "Nhìn kỹ đi. Đây là tác phẩm."',
+      'MŨ BĂNG hát lẩm nhẩm một bài về băng, lệch nửa cung.',
+      'MŨ BĂNG: "Một ngày nào đó, mũ ta sẽ cao đến tận trần hang."',
+      'MŨ BĂNG hắt xì. Một mảnh mũ rơi xuống. Nó vội nhặt lên.',
+    ],
+    acts: [
+      { label: 'Khen mũ', warmth: 40, text: 'Bạn nói: "Cái mũ đẹp thật."\nMŨ BĂNG đỏ mặt (khó thấy, nhưng bạn thấy): "Tất nhiên. Tôi tự làm đấy."' },
+      { label: 'Hỏi thăm', warmth: 35, text: 'Bạn hỏi mũ được làm từ gì.\nMŨ BĂNG kể vanh vách cả quy trình — nghe rất thú vị.' },
+      { label: 'Đội thử', warmth: 45, text: 'Bạn xin đội thử chiếc mũ một lát.\nMŨ BĂNG run lên hồi hộp, rồi gật đầu: "Cẩn thận nhé."' },
+    ],
+    patterns: ['walls', 'rain', 'aimed'],
+    attacks: 3,
+    spareLine: 'MŨ BĂNG cúi chào thật sâu, chiếc mũ vẫn nguyên vẹn trên đầu.',
+    killLine: 'Chiếc mũ vỡ thành trăm mảnh băng, tan vào tuyết.',
+    spareReward: 'MŨ BĂNG tặng bạn một mảnh băng trong veo không bao giờ tan.',
+  },
+  guard: {
+    id: 'guard',
+    name: 'CHÓ TUYẾT KHỔNG LỒ',
+    sprite: 'guard',
+    scale: 3,
+    hp: 90,
+    atk: 4,
+    def: 3,
+    exp: 36,
+    gold: 42,
+    mercyAt: 100,
+    theme: 'snow',
+    canFlee: false,
+    isBoss: true,
+    intro: 'Một con chó trắng to như cả căn chòi nằm chắn giữa đường tuần tra.\nNó mở mắt, nhìn bạn, rồi vẫy đuôi — hơi đất tuyết bay mù mịt.',
+    banter: [
+      'Chó Tuyết Khổng Lồ cọ đầu vào chân bạn, suýt hất bạn ngã.',
+      'Chó Tuyết Khổng Lồ: "GÂU!" (Nghe như: "Chơi không?")',
+      'Chó Tuyết Khổng Lồ gõ chân xuống tuyết, tạo ra cả một trận địa chấn nhỏ.',
+      'Chó Tuyết Khổng Lồ nằm lăn, phơi bụng ra. Rõ ràng đây không phải tư thế tấn công.',
+      'Chó Tuyết Khổng Lồ nhìn bạn: "Gâu gâu?" (Nghe như: "Cậu thích tớ không?")',
+    ],
+    acts: [
+      { label: 'Vuốt ve', warmth: 35, text: 'Bạn với tay vuốt đầu nó — tay bạn chỉ chạm tới đúng cái mũi.\nChó Tuyết Khổng Lồ híp mắt, rung rung cả người vì thích.' },
+      { label: 'Chơi ném', warmth: 40, text: 'Bạn ném một cục tuyết đi thật xa.\nNó lao theo như một quả núi trắng đang chạy, rồi mang cục tuyết về — đã tan thành nước.' },
+      { label: 'Gọi tên', warmth: 45, stageOnly: 2, text: 'Bạn gọi nó bằng cái tên nghe thật thân thương.\nNó sụp xuống ngay trước chân bạn, cái đuôi ngoáy tít.' },
+    ],
+    patterns: ['sweep', 'ring', 'walls', 'aimed'],
+    attacks: 3,
+    phase2At: 45,
+    spareLine: 'Chó Tuyết Khổng Lồ nằm xuống, lấy mũi cào tuyết sang hai bên — để lộ lối đi.\nRồi nó ngủ ngay tại chỗ, đuôi vẫn ngoáy.',
+    killLine: 'Chó Tuyết Khổng Lồ gục xuống. Tuyết quanh nó thôi không còn lấp lánh nữa.',
+    spareReward: 'Chó Tuyết Khổng Lồ cọ mũi vào tay bạn, để lại một sợi lông trắng mềm như mây.',
   },
   king: {
     id: 'king',
@@ -281,7 +406,7 @@ export const ROOMS = {
     exits: [
       { x: 0, y: 6, w: 1, h: 2, to: 'hall', spawn: { x: 18, y: 7, facing: 'left' } },
       {
-        x: 19, y: 6, w: 1, h: 2, to: 'forest',
+        x: 19, y: 6, w: 1, h: 2, to: 'snow1',
         spawn: { x: 1.6, y: 7, facing: 'right' },
         requires: 'boss_bridge',
         blockedText: [
@@ -295,6 +420,133 @@ export const ROOMS = {
       { type: 'lamp', id: 'lamp_bridge', x: 3.5, y: 11.6 },
       { type: 'chest', id: 'chest_bridge', x: 17.5, y: 3.6, item: 'tea', count: 1 },
       { type: 'boss', id: 'sentinel', enemy: 'sentinel', flag: 'boss_bridge', x: 10, y: 6.6 },
+    ],
+  },
+
+  snow1: {
+    id: 'snow1',
+    title: 'ĐỒNG TUYẾT TRO',
+    subtitle: 'tuyết ở đây rơi từ trước khi có tên gọi',
+    theme: 'snow',
+    music: 'snow',
+    map: [
+      '####################',
+      '#..................#',
+      '#...ss......ss.....#',
+      '#....s......s......#',
+      '#........p.........#',
+      '#.....c.......v....#',
+      '>..................>',
+      '>................c.>',
+      '#........p.........#',
+      '#.....s.......s....#',
+      '#..................#',
+      '#..p...........p...#',
+      '#..................#',
+      '#........c.........#',
+      '####################',
+    ],
+    spawn: { x: 2, y: 7, facing: 'right' },
+    exits: [
+      { x: 0, y: 6, w: 1, h: 2, to: 'bridge', spawn: { x: 18, y: 7, facing: 'left' } },
+      { x: 19, y: 6, w: 1, h: 2, to: 'snow2', spawn: { x: 1.6, y: 7, facing: 'right' } },
+    ],
+    encounters: { pool: ['frog', 'cap'], min: 540, max: 860 },
+    objects: [
+      { type: 'sign', id: 'sign_snow1', x: 6.5, y: 11.6, lines: [
+        { text: 'TUYẾT TRO — nơi hơi lạnh đã ở đây lâu hơn cả tro.' },
+        { text: 'Dấu chân trên tuyết: của nhiều người, nhưng không ai đi cùng nhau.' },
+      ] },
+      { type: 'chest', id: 'chest_snow1', x: 3.5, y: 4.6, item: 'kem', count: 1 },
+      { type: 'npc', id: 'nguoiTuyet', x: 13.5, y: 9.6, sprite: 'snowman', scale: 2.2, name: 'Người Tuyết', bob: true },
+    ],
+  },
+
+  snow2: {
+    id: 'snow2',
+    title: 'LÀNG TUYẾT TRO',
+    subtitle: 'đèn trong nhà vẫn sáng cho người lạ',
+    theme: 'snow',
+    music: 'snow',
+    map: [
+      '####################',
+      '#..................#',
+      '#..h.....s....h....#',
+      '#..................#',
+      '#....g.......g.....#',
+      '>..................>',
+      '>..................>',
+      '#........l.........#',
+      '#....v........p....#',
+      '#..................#',
+      '#..h............h..#',
+      '#..................#',
+      '#..................#',
+      '#..................#',
+      '####################',
+    ],
+    spawn: { x: 2, y: 7, facing: 'right' },
+    exits: [
+      { x: 0, y: 5, w: 1, h: 2, to: 'snow1', spawn: { x: 17, y: 7, facing: 'left' } },
+      { x: 19, y: 5, w: 1, h: 2, to: 'snow3', spawn: { x: 1.6, y: 7, facing: 'right' } },
+    ],
+    encounters: null,
+    objects: [
+      { type: 'lamp', id: 'lamp_snow2', x: 9.5, y: 7.6 },
+      { type: 'npc', id: 'kem', x: 5.5, y: 4.6, sprite: 'kem', scale: 2.2, name: 'Bác Kem', bob: true, stall: true },
+      { type: 'npc', id: 'nguoiTuyet', x: 14.5, y: 10.6, sprite: 'snowman', scale: 2.2, name: 'Người Tuyết', bob: true },
+      { type: 'sign', id: 'sign_snow2', x: 3.5, y: 12.6, lines: [
+        { text: 'LÀNG TUYẾT TRO — bác Kem bán thứ lạnh nhất nhưng làm ấm nhất.' },
+        { text: 'Muốn mua thì nói chuyện với bác, đừng quên chào.' },
+      ] },
+    ],
+  },
+
+  snow3: {
+    id: 'snow3',
+    title: 'ĐƯỜNG TUẦN TRA',
+    subtitle: 'có tiếng thở rất lớn phía sau làn sương',
+    theme: 'snow',
+    music: 'snow',
+    map: [
+      '####################',
+      '#..................#',
+      '#..c...........c...#',
+      '#..................#',
+      '#....p.....p.......#',
+      '>..................>',
+      '>..................>',
+      '#.....c.....c......#',
+      '#..................#',
+      '#...p..........p...#',
+      '#..................#',
+      '#..................#',
+      '#........c.........#',
+      '#..................#',
+      '####################',
+    ],
+    spawn: { x: 2, y: 7, facing: 'right' },
+    exits: [
+      { x: 0, y: 5, w: 1, h: 2, to: 'snow2', spawn: { x: 18, y: 6.8, facing: 'left' } },
+      {
+        x: 19, y: 5, w: 1, h: 2, to: 'forest',
+        spawn: { x: 1.6, y: 7, facing: 'right' },
+        requires: 'boss_snow',
+        blockedText: [
+          { text: 'Một trận bão tuyết mỏng quét ngang lối đi.' },
+          { text: 'Có gì đó rất lớn đang nằm chắn giữa đường tuần tra.' },
+        ],
+      },
+    ],
+    encounters: { pool: ['drek', 'frog', 'cap'], min: 620, max: 920 },
+    objects: [
+      { type: 'chest', id: 'chest_snow3', x: 16.5, y: 3.6, item: 'kem', count: 2 },
+      { type: 'sign', id: 'sign_snow3', x: 4.5, y: 12.6, lines: [
+        { text: 'ĐƯỜNG TUẦN TRA — chó giữ đường, chứ không giữ ai.' },
+        { text: 'Nó rất thích được vuốt ve. Nếu tay với tới.' },
+      ] },
+      { type: 'lamp', id: 'lamp_snow3', x: 9.5, y: 12.6 },
+      { type: 'boss', id: 'guard', enemy: 'guard', flag: 'boss_snow', x: 10, y: 8.6 },
     ],
   },
 
@@ -323,7 +575,7 @@ export const ROOMS = {
     ],
     spawn: { x: 2, y: 7, facing: 'right' },
     exits: [
-      { x: 0, y: 6, w: 1, h: 2, to: 'bridge', spawn: { x: 18, y: 7, facing: 'left' } },
+      { x: 0, y: 6, w: 1, h: 2, to: 'snow3', spawn: { x: 18, y: 7, facing: 'left' } },
       { x: 19, y: 5, w: 1, h: 3, to: 'market', spawn: { x: 1.6, y: 7, facing: 'right' } },
     ],
     encounters: { pool: ['shroom', 'bird', 'moss'], min: 560, max: 900 },
@@ -441,6 +693,13 @@ export const NPC_TALK = {
         domVoice('Mà này... cậu để ý không? Càng xuống sâu, tro càng lạnh.'),
       ];
     }
+    if (room === 'snow1' || room === 'snow2' || room === 'snow3') {
+      return [
+        domVoice('Lạnh quá... Tôi là đom đóm, đáng ra phải thích bóng tối, chứ không phải tuyết.'),
+        domVoice('Cái làng này có bác Kem. Bán kem giữa trời tuyết — nghe thì vô lý, mà ăn thì tuyệt.'),
+        domVoice('Đường tuần tra phía đông có gì đó rất lớn. Tôi nghe tiếng thở từ hôm qua rồi.'),
+      ];
+    }
     return [
       domVoice('Tôi vẫn ở đây. Sáng nay tôi thấy một ngôi sao — hay là vết nứt trên trần hang nhỉ.'),
       domVoice('Cậu nghĩ trên mặt đất có gì? Kể tôi nghe với, khi nào rảnh.'),
@@ -485,6 +744,59 @@ export const NPC_TALK = {
     }
     return { lines: [{ speaker: 'Nhím', portrait: 'nhim', text: 'Vẫn còn sống à? Tốt. Mua gì thì nói.' }], reward: {} };
   },
+
+  kem(ctx) {
+    const { flags } = ctx;
+    const stock = ['kem', 'candy', 'tea'];
+    if (!flags.met_kem) {
+      return {
+        lines: [
+          { speaker: 'Bác Kem', portrait: 'kem', text: 'Ối, khách! Trời tuyết thế này mà cháu đi một mình à? Ngồi xuống đi, bác đãi một que kem.' },
+          { speaker: 'Bác Kem', portrait: 'kem', text: 'Bác bán kem quanh năm. Người ta hỏi sao không đợi hè — bác bảo: kem là để chia, không phải để đợi mùa.' },
+          { speaker: 'Bác Kem', portrait: 'kem', text: 'Đây, cầm lấy. Muốn mua thêm thì cứ nói với bác.' },
+        ],
+        reward: { items: { kem: 1 }, flag: 'met_kem', openShop: stock },
+      };
+    }
+    return {
+      lines: [
+        {
+          speaker: 'Bác Kem',
+          portrait: 'kem',
+          text: flags.boss_snow
+            ? 'Con chó ngoài kia ngủ rồi à? Tốt quá — nó mà thức là ăn hết kem của bác đấy.'
+            : 'Ăn kem đi rồi hãy lên đường. Đường tuần tra lạnh lắm.',
+        },
+      ],
+      reward: { openShop: stock },
+    };
+  },
+
+  nguoiTuyet(ctx) {
+    const { flags } = ctx;
+    if (!flags.met_tuyet) {
+      return {
+        lines: [
+          { speaker: 'Người Tuyết', portrait: 'snowman', text: 'Chào... cháu. Bác đứng đây lâu lắm rồi. Tuyết phủ lên bác, rồi thành chính bác.' },
+          { speaker: 'Người Tuyết', portrait: 'snowman', text: 'Bác không đi đâu được cả. Nên bác ở lại, đếm xem mùa lạnh này kéo dài bao lâu.' },
+          { speaker: 'Người Tuyết', portrait: 'snowman', text: 'À, cháu có biết không: khi trời đủ lạnh, người ta lại gần nhau hơn. Bác nghĩ vậy là đáng.' },
+        ],
+        reward: { flag: 'met_tuyet', heal: true },
+      };
+    }
+    return {
+      lines: [
+        {
+          speaker: 'Người Tuyết',
+          portrait: 'snowman',
+          text: flags.boss_snow
+            ? 'Con chó tuần tra ngủ rồi nhỉ. Bác nghe tiếng ngáy vang khắp đồng tuyết.'
+            : 'Đi đường cẩn thận. Chó giữ đường không ác, chỉ là quá to thôi.',
+        },
+      ],
+      reward: {},
+    };
+  },
 };
 
 // Chọn vật phẩm bán trong shop
@@ -497,6 +809,12 @@ export const BOSS_INTRO = {
     { speaker: 'Lính Sắt Vụn', text: '"DỪNG LẠI. KHÔNG AI QUA CẦU."' },
     { speaker: 'Đom', portrait: 'dom', text: 'Nó canh cây cầu này lâu hơn cả tôi sống. Nó không ác — nó chỉ quên mất mình đang đợi ai.' },
     { text: 'Gợi ý: dùng NÓI để tìm cách khiến nó yên lòng, rồi dùng THA.' },
+  ],
+  guard: [
+    { text: 'Đường tuần tra tối dần. Tuyết rơi dày hơn, và mặt đất rung lên theo từng nhịp thở.' },
+    { text: 'Một con chó trắng khổng lồ đứng dậy khỏi đám tuyết. Nó không gầm gừ — nó chỉ nhìn bạn.' },
+    { speaker: 'Đom', portrait: 'dom', text: 'Nó không chặn đường vì ác... nó chặn vì ở đây chẳng có ai chơi với nó cả.' },
+    { text: 'Gợi ý: nó thích được chú ý. Hãy thử NÓI, rồi THA.' },
   ],
   king: [
     { text: 'Đại sảnh tối om. Trên ngai, một bóng người làm bằng tro đang khẽ thở.' },
@@ -511,7 +829,12 @@ export const BOSS_OUTRO = {
   sentinel: [
     { speaker: 'Lính Sắt Vụn', text: '"TA... NHỚ RA RỒI. TA ĐỨNG ĐÂY ĐỂ ĐỢI NGƯỜI MỞ LỐI, KHÔNG PHẢI ĐỂ CHẶN."' },
     { speaker: 'Đom', portrait: 'dom', text: 'Thấy chưa? Chỉ cần một người chịu đứng lại nghe.' },
-    { text: 'Cầu Tro sáng lên một vệt ấm. Lối sang Rừng Tro đã mở.' },
+    { text: 'Cầu Tro sáng lên một vệt ấm. Lối sang Tuyết Tro đã mở.' },
+  ],
+  guard: [
+    { text: 'Chó Tuyết Khổng Lồ cào tuyết sang hai bên. Con đường tuần tra hiện ra, sạch sẽ lạ thường.' },
+    { speaker: 'Đom', portrait: 'dom', text: 'Nó canh đường này bao lâu rồi nhỉ... chắc cũng chẳng ai nhớ. Ít ra giờ nó ngủ ngon.' },
+    { text: 'Lối sang Rừng Tro đã mở.' },
   ],
   king: [
     { speaker: 'Vua Tro', text: '"TA... XIN LỖI. TA CHỈ KHÔNG MUỐN NGỌN LỬA NÀY TẮT TRONG CÔ ĐƠN."' },
