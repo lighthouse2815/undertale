@@ -1,0 +1,14 @@
+{
+  "name": "undertale-web-source",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "check": "node check.mjs",
+    "build:game": "node tools/build-game.mjs",
+    "build": "node tools/build-web.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

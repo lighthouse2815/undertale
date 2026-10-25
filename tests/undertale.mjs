@@ -1,29 +1,47 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
-import { cp, mkdir, mkdtemp, rm } from 'node:fs/promises';
+import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { dirname, join } from 'node:path';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import { buildWeb } from '../game/tools/build-web.mjs';
 
 const executablePath = process.env.CHROME_PATH;
 assert.ok(executablePath, 'Đặt CHROME_PATH tới Chrome/Chromium có WebAssembly JSPI.');
 const root = fileURLToPath(new URL('../', import.meta.url));
 const fixture = await mkdtemp(join(tmpdir(), 'undertale-web-'));
+const exported = join(fixture, 'undertale');
 const port = process.env.ORIGINAL_TEST_PORT ?? '5188';
 const origin = `http://127.0.0.1:${port}`;
 let server;
 let browser;
 try {
-  for (const name of ['index.html', 'server.mjs', 'src/undertale.js', 'src/undertale.css',
-    'src/style.css', 'assets/undertale', 'assets/fonts', 'assets/sprites/spr_undertaletitle_0.png',
-    'vendor/butterscotch/butterscotch.mjs', 'vendor/butterscotch/butterscotch.wasm']) {
-    const target = join(fixture, name);
-    await mkdir(dirname(target), { recursive: true });
-    await cp(join(root, name), target, { recursive: true });
+  await buildWeb(exported);
+  const manifest = JSON.parse(await readFile(join(exported, 'runtime.json'), 'utf8'));
+  assert.equal(manifest.files.length, 215);
+  for (const file of manifest.files) {
+    assert.equal((await readFile(join(exported, file.url))).length, file.bytes, file.name);
   }
-  server = spawn(process.execPath, ['server.mjs'], {
+  // Có thể build lại từ gói đã copy, không cần repository cha.
+  const { buildWeb: rebuild } = await import(join(exported, 'tools/build-web.mjs'));
+  await rebuild(join(fixture, 'rebuilt'));
+  assert.deepEqual(await readFile(join(fixture, 'rebuilt/runtime.json')),
+    await readFile(join(exported, 'runtime.json')));
+  await rm(join(fixture, 'rebuilt'), { recursive: true });
+  const unrelated = join(fixture, 'unrelated');
+  await mkdir(unrelated);
+  await writeFile(join(unrelated, 'keep.txt'), 'giu-nguyen');
+  await assert.rejects(buildWeb(unrelated), /không có marker/);
+  assert.equal(await readFile(join(unrelated, 'keep.txt'), 'utf8'), 'giu-nguyen');
+  const linked = join(fixture, 'linked');
+  await symlink(exported, linked, 'dir');
+  await assert.rejects(buildWeb(linked), /symlink/);
+  await assert.rejects(buildWeb(join(root, 'game')), /ngoài source/);
+  console.log('✓ đóng gói đủ tài nguyên, build lại từ bản copy và bảo vệ thư mục xuất có sẵn');
+  // CWD khác thư mục ứng dụng: mọi đường dẫn phải lấy theo source.
+  server = spawn(process.execPath, [join(exported, 'server.mjs')], {
     cwd: fixture, env: { ...process.env, PORT: port }, stdio: ['ignore', 'pipe', 'inherit'],
   });
   await Promise.race([
@@ -220,14 +238,43 @@ try {
   await unsupported.close();
   const missing = await browser.newContext();
   const missingPage = await missing.newPage();
-  await missingPage.route('**/assets/undertale/index.json', (route) => route.fulfill({
-    contentType: 'application/json', body: JSON.stringify({ files: [{ name: 'missing.ogg', bytes: 1 }] }),
+  await missingPage.route('**/runtime.json', (route) => route.fulfill({
+    contentType: 'application/json', body: JSON.stringify({ files: [{ name: 'missing.ogg', url: 'missing.ogg', bytes: 1 }] }),
   }));
   await missingPage.goto(origin);
   await missingPage.waitForFunction(() => __undertale.phase === 'error');
   assert.match(await missingPage.locator('#loadStatus').textContent(), /missing\.ogg/);
   await missing.close();
   console.log('✓ báo lỗi rõ ràng khi thiếu JSPI hoặc thiếu tài nguyên');
+
+  const exited = once(server, 'exit');
+  server.kill();
+  await exited;
+  // Server tĩnh không có API runtime.json/game.win; chỉ phục vụ tệp đã xuất.
+  await cp(join(root, 'server.mjs'), join(fixture, 'static-server.mjs'));
+  server = spawn(process.execPath, ['static-server.mjs'], {
+    cwd: fixture, env: { ...process.env, PORT: port }, stdio: ['ignore', 'pipe', 'inherit'],
+  });
+  await Promise.race([
+    once(server.stdout, 'data'),
+    once(server, 'exit').then(([code]) => { throw new Error(`Server tĩnh dừng: ${code}`); }),
+  ]);
+  const hosted = await browser.newContext();
+  const staticPage = await hosted.newPage();
+  const staticErrors = [];
+  const staticRequests = [];
+  staticPage.on('pageerror', (error) => staticErrors.push(error.message));
+  staticPage.on('console', (message) => { if (message.type() === 'error') staticErrors.push(message.text()); });
+  staticPage.on('request', (request) => staticRequests.push(request.url()));
+  await staticPage.goto(`${origin}/undertale/`);
+  await staticPage.waitForFunction(() => ['ready', 'error'].includes(__undertale.phase));
+  assert.equal(await staticPage.evaluate(() => __undertale.phase), 'ready');
+  await staticPage.click('#bootBtn');
+  await staticPage.waitForFunction(() => __undertale.room?.name === 'room_introstory');
+  assert.deepEqual(staticErrors, []);
+  assert.ok(staticRequests.every((url) => url.startsWith(`${origin}/undertale/`)));
+  await hosted.close();
+  console.log('✓ gói xuất chạy trên hosting tĩnh dưới đường dẫn con, không cần API server');
 } finally {
   await browser?.close();
   if (server && server.exitCode === null) {

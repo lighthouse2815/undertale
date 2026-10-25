@@ -2,6 +2,8 @@
 game/code/*.gml -text whitespace=cr-at-eol
 # Giữ nguyên bảng credit gốc (encoding và CRLF).
 game/CREDITS.txt -text whitespace=cr-at-eol
-assets/undertale/credits.txt -text whitespace=cr-at-eol
+game/assets/misc/credits.txt -text whitespace=cr-at-eol
+# Giữ nguyên giấy phép font được sao chép từ upstream.
+game/assets/ui/fonts/OFL.txt -text -whitespace
 # Mã nguồn thư viện được nhập nguyên bản, giữ định dạng upstream.
-vendor/butterscotch/** -text -whitespace
+game/vendor/butterscotch/** -text -whitespace

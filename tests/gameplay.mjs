@@ -17,7 +17,7 @@ let server;
 let browser;
 try {
   // Chạy bản sao chỉ có code và assets: không thể đọc thư mục cài game gốc.
-  for (const name of ['index.html', 'duoi-dat.html', 'server.mjs', 'src', 'assets']) {
+  for (const name of ['duoi-dat.html', 'server.mjs', 'src', 'assets']) {
     await cp(join(projectRoot, name), join(standaloneRoot, name), { recursive: true });
   }
   server = spawn(process.execPath, ['server.mjs'], {

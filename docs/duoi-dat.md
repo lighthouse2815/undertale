@@ -16,15 +16,15 @@ Không cần thư mục cài game gốc, file `.exe`, `data.win` hay bước tr�
 Yêu cầu: **Node.js 18+** và một trình duyệt hiện đại (có WebAudio).
 
 ```bash
-npm run dev          # tương đương: node server.mjs
+npm run dev:legacy   # tương đương: node server.mjs
 ```
 
-Mở **http://localhost:5173** là chơi được ngay.
+Mở **http://localhost:5174** là chơi được ngay.
 
 Muốn đổi cổng thì đặt biến môi trường:
 
 ```bash
-PORT=8080 npm run dev
+PORT=8080 npm run dev:legacy
 ```
 
 Kiểm tra nhanh mã nguồn (cú pháp, kích thước bản đồ, sprite):
@@ -39,7 +39,7 @@ Chrome; chơi game không cần cài gì cả.)
 Chạy kiểm thử gameplay bằng Chrome/Chromium đã cài trên máy:
 
 ```bash
-CHROME_PATH="/đường/dẫn/tới/chrome" npm test
+CHROME_PATH="/đường/dẫn/tới/chrome" npm run test:legacy
 ```
 
 Bộ kiểm thử tự mở server cổng 5187 (đổi bằng `TEST_PORT`), sử dụng profile trình
@@ -98,7 +98,7 @@ Các tệp này nằm trong Git nên bản clone có đủ code, hình ảnh và
 `Undertale-AnkerGames/` chỉ là dữ liệu tham khảo cũ trên máy, không còn được
 code đọc tới. Không cần `LOCAL_MUSIC_DIR`, `LOCAL_SPRITE_DIR` hay công cụ trích xuất.
 Khi chuyển dự án sang máy khác, clone repository hoặc mang theo `src/`, `assets/`,
-`index.html`, `server.mjs` và `package.json`, rồi chạy `npm run dev` như hướng dẫn phía trên.
+`duoi-dat.html`, `server.mjs` và `package.json`, rồi chạy `npm run dev:legacy` như hướng dẫn phía trên.
 
 ### Nhạc
 
@@ -197,8 +197,8 @@ khi bạn đi hết một cái kết.
 ## Cấu trúc thư mục
 
 ```
-index.html          khung trang, chỉ gắn canvas
-server.mjs          static server cổng 5173, phục vụ code và assets của dự án
+duoi-dat.html       khung trang, chỉ gắn canvas
+server.mjs          static server cổng 5174, phục vụ code và assets của dự án
 scripts/check.mjs   kiểm tra cú pháp + bản đồ + sprite + tài nguyên đi kèm
 src/
   core.js           nhập liệu, âm thanh (WebAudio), vẽ, chữ, hội thoại, lưu game

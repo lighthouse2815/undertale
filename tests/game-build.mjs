@@ -9,50 +9,50 @@ import { fileURLToPath } from 'node:url';
 
 const cli = process.env.UNDERTALE_MOD_CLI;
 assert.ok(cli, 'Đặt UNDERTALE_MOD_CLI tới UndertaleModCli để kiểm thử biên dịch.');
-const root = fileURLToPath(new URL('../', import.meta.url));
+const root = fileURLToPath(new URL('../game/', import.meta.url));
 const fixture = await mkdtemp(join(tmpdir(), 'undertale-build-'));
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 let server;
 try {
-  await cp(join(root, 'scripts'), join(fixture, 'scripts'), { recursive: true });
-  await mkdir(join(fixture, 'game/code'), { recursive: true });
+  await cp(join(root, 'tools'), join(fixture, 'tools'), { recursive: true });
+  await mkdir(join(fixture, 'code'), { recursive: true });
   const codeName = 'gml_Script_scr_gettext.gml';
-  const metadata = JSON.parse(await readFile(join(root, 'game/manifest.json'), 'utf8'));
+  const metadata = JSON.parse(await readFile(join(root, 'manifest.json'), 'utf8'));
   metadata.code = { [codeName]: metadata.code[codeName] };
-  await writeFile(join(fixture, 'game/manifest.json'), JSON.stringify(metadata));
-  await cp(join(root, 'game/code', codeName), join(fixture, 'game/code', codeName));
+  await writeFile(join(fixture, 'manifest.json'), JSON.stringify(metadata));
+  await cp(join(root, 'code', codeName), join(fixture, 'code', codeName));
   for (const folder of ['sprites', 'backgrounds', 'sounds', 'fonts', 'paths', 'scripts', 'objects', 'rooms']) {
-    await mkdir(join(fixture, 'game/assets', folder), { recursive: true });
+    await mkdir(join(fixture, 'assets', folder), { recursive: true });
   }
-  const baseline = JSON.parse(await readFile(join(root, 'game/asset-baseline.json'), 'utf8'));
+  const baseline = JSON.parse(await readFile(join(root, 'asset-baseline.json'), 'utf8'));
   const selected = ['rooms/room_area1.json', 'sprites/spr_maincharad/spr_maincharad.json', 'sounds/snd_damage/snd_damage.json'];
   baseline.resources = Object.fromEntries(selected.map((name) => [name, baseline.resources[name]]));
   for (const files of Object.values(baseline.resources)) {
     for (const name of Object.keys(files)) {
-      const target = join(fixture, 'game/assets', name);
+      const target = join(fixture, 'assets', name);
       await mkdir(join(target, '..'), { recursive: true });
-      await cp(join(root, 'game/assets', name), target);
+      await cp(join(root, 'assets', name), target);
     }
   }
-  await writeFile(join(fixture, 'game/asset-baseline.json'), JSON.stringify(baseline));
-  await mkdir(join(fixture, 'assets/undertale'), { recursive: true });
-  const base = join(fixture, 'assets/undertale/data.win');
-  await cp(join(root, 'assets/undertale/data.win'), base);
-  const file = join(fixture, 'game/code/gml_Script_scr_gettext.gml');
+  await writeFile(join(fixture, 'asset-baseline.json'), JSON.stringify(baseline));
+  await mkdir(join(fixture, 'base'), { recursive: true });
+  const base = join(fixture, 'base/data.win');
+  await cp(join(root, 'base/data.win'), base);
+  const file = join(fixture, 'code/gml_Script_scr_gettext.gml');
   const original = await readFile(file, 'utf8');
   await writeFile(file, original.replace('text = "";', 'text = "kiem-thu-build";'));
-  const roomFile = join(fixture, 'game/assets/rooms/room_area1.json');
+  const roomFile = join(fixture, 'assets/rooms/room_area1.json');
   const roomOriginal = await readFile(roomFile, 'utf8');
   await writeFile(roomFile, JSON.stringify({ ...JSON.parse(roomOriginal), Caption: 'kiem-thu-phong' }));
-  const spriteFile = join(fixture, 'game/assets/sprites/spr_maincharad/spr_maincharad_0.png');
+  const spriteFile = join(fixture, 'assets/sprites/spr_maincharad/spr_maincharad_0.png');
   const spriteOriginal = await readFile(spriteFile);
-  const spriteReplacement = await readFile(join(fixture, 'game/assets/sprites/spr_maincharad/spr_maincharad_1.png'));
+  const spriteReplacement = await readFile(join(fixture, 'assets/sprites/spr_maincharad/spr_maincharad_1.png'));
   await writeFile(spriteFile, spriteReplacement);
-  const soundFile = join(fixture, 'game/assets/sounds/snd_damage/snd_damage.wav');
+  const soundFile = join(fixture, 'assets/sounds/snd_damage/snd_damage.wav');
   const soundOriginal = await readFile(soundFile);
-  const soundReplacement = await readFile(join(root, 'game/assets/sounds/snd_squeak/snd_squeak.wav'));
+  const soundReplacement = await readFile(join(root, 'assets/sounds/snd_squeak/snd_squeak.wav'));
   await writeFile(soundFile, soundReplacement);
-  const build = () => spawnSync(process.execPath, ['scripts/build-game.mjs'], {
+  const build = () => spawnSync(process.execPath, ['tools/build-game.mjs'], {
     cwd: fixture, env: process.env, encoding: 'utf8',
   });
   const valid = build();
@@ -61,6 +61,7 @@ try {
   const compiledHash = hash(await readFile(output));
   assert.notEqual(compiledHash, hash(await readFile(base)));
   await cp(join(root, 'server.mjs'), join(fixture, 'server.mjs'));
+  await cp(join(root, 'assets/misc'), join(fixture, 'assets/misc'), { recursive: true });
   const port = process.env.BUILD_TEST_PORT ?? '5189';
   server = spawn(process.execPath, ['server.mjs'], {
     cwd: fixture, env: { ...process.env, PORT: port }, stdio: ['ignore', 'pipe', 'inherit'],
@@ -69,7 +70,7 @@ try {
     once(server.stdout, 'data'),
     once(server, 'exit').then(([code]) => { throw new Error(`Server dừng: ${code}`); }),
   ]);
-  const response = await fetch(`http://127.0.0.1:${port}/assets/undertale/data.win`);
+  const response = await fetch(`http://127.0.0.1:${port}/runtime/game.win`);
   assert.equal(response.status, 200);
   assert.equal(hash(new Uint8Array(await response.arrayBuffer())), compiledHash);
   const inspectPng = join(fixture, 'sprite-roundtrip.png');

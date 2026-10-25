@@ -3,7 +3,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 
 const root = resolve(process.cwd());
-const port = Number(process.env.PORT) || 5173;
+const port = Number(process.env.PORT) || 5174;
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -25,18 +25,9 @@ const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`);
     let pathname = decodeURIComponent(url.pathname);
-    if (pathname === '/') pathname = '/index.html';
+    if (pathname === '/') pathname = '/duoi-dat.html';
 
     let filePath = normalize(join(root, pathname));
-    // Bản build từ GML trong repo được ưu tiên; không đọc bản cài game bên ngoài.
-    if (pathname === '/assets/undertale/data.win') {
-      const built = join(root, 'build/undertale/data.win');
-      try {
-        if ((await stat(built)).isFile()) filePath = built;
-      } catch (error) {
-        if (error.code !== 'ENOENT') throw error;
-      }
-    }
     if (!filePath.startsWith(root + sep) && filePath !== root) {
       res.writeHead(403).end('Forbidden');
       return;
@@ -62,5 +53,5 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`\n  UNDERTALE đang chạy tại: http://localhost:${port}\n`);
+  console.log(`\n  DƯỚI ĐẤT đang chạy tại: http://localhost:${port}\n`);
 });

@@ -7,7 +7,7 @@ Trang chính chạy **bytecode và dữ liệu Undertale gốc** bằng runtime 
 
 Dữ liệu nền, 212 tệp âm thanh ngoài và runtime đều đi kèm repository. Khi chạy,
 không cần `Undertale-AnkerGames/`, bản cài Undertale hay file thực thi gốc.
-`data.win` trong `assets/undertale/` chứa bytecode, bản đồ và tài nguyên nhúng;
+`game/base/data.win` chứa bytecode, bản đồ và tài nguyên nhúng;
 logic gốc được thực thi từ đây, không được thay bằng các trận đấu tự viết.
 
 ## Chạy
@@ -33,7 +33,8 @@ Tiến trình Undertale được lưu trong OPFS của trình duyệt tại cùn
 | Giữ Esc | Đóng game theo logic gốc |
 
 Có nút cảm ứng ↑ ↓ ← →, Z, X, C. Bản Dưới Đất trước đây được giữ ở
-http://localhost:5173/duoi-dat.html; xem [hướng dẫn Dưới Đất](docs/duoi-dat.md).
+http://localhost:5174 khi chạy `npm run dev:legacy`;
+xem [hướng dẫn Dưới Đất](docs/duoi-dat.md).
 
 ## Chỉnh sửa logic gốc
 
@@ -43,10 +44,27 @@ Sửa GML trong `game/code/`, sau đó biên dịch bằng UndertaleModTool:
 UNDERTALE_MOD_CLI="/đường/dẫn/UndertaleModCli.dll" npm run build:game
 ```
 
-Server tự ưu tiên `build/undertale/data.win` khi có bản build. Tải lại trang để chơi
-logic đã sửa. Dữ liệu nền trong Git được giữ nguyên; mỗi lần build tái áp dụng các
-mục GML đã sửa lên dữ liệu nền, kể cả khi hoàn tác source.
+Sprite PNG, âm thanh WAV/OGG, phòng và đối tượng JSON nằm trong `game/assets/`,
+có thể chỉnh sửa trực tiếp rồi chạy cùng lệnh build. Server tự ưu tiên
+`game/build/undertale/data.win` khi có bản build. Tải lại trang để chơi thay đổi.
+Dữ liệu nền trong Git được giữ nguyên; mỗi lần build tái áp dụng GML và asset
+đã sửa lên dữ liệu nền, kể cả khi hoàn tác source.
 Xem [hướng dẫn GML và build](game/README.md).
+
+## Đóng gói và chạy độc lập
+
+Thư mục `game/` chứa đủ source, asset và công cụ để copy sang nơi khác rồi chạy
+`npm start` ngay trong đó, không cần `npm install` hay repository cha.
+
+```bash
+npm run build       # xuất dist/undertale-web/
+npm run preview     # chạy gói đã xuất tại http://localhost:5173
+```
+
+Gói xuất giữ source chỉnh sửa được, kèm `runtime.json` và `runtime/game.win`
+để đưa lên hosting tĩnh HTTP(S), kể cả dưới đường dẫn con. Không mở bằng `file://`.
+Build tự biên dịch các thay đổi trước khi đóng gói; cần UndertaleModTool khi
+GML hoặc asset nhúng đã được sửa. Thư mục xuất có sẵn phải có marker của công cụ.
 
 ## Kiểm thử
 
@@ -57,10 +75,11 @@ CHROME_PATH="/đường/dẫn/chrome" npm test
 UNDERTALE_MOD_CLI="/đường/dẫn/UndertaleModCli.dll" npm run test:build
 ```
 
-`check` kiểm tra JavaScript, dữ liệu Dưới Đất, danh mục GML, checksum dữ liệu Undertale
-và runtime. Kiểm thử trình duyệt chạy từ bản sao chỉ có các tệp của dự án, không có
-thư mục cài game gốc. `test:build` biên dịch GML thật, giải biên dịch để xác nhận,
-kiểm tra lỗi cú pháp và hoàn tác.
+`check` kiểm tra JavaScript, dữ liệu Dưới Đất, liên kết asset, danh mục GML,
+checksum dữ liệu Undertale và runtime. Kiểm thử trình duyệt chạy trên gói xuất
+độc lập, kiểm tra build lại từ bản copy và hosting tĩnh dưới đường dẫn con;
+không có thư mục cài game gốc. `test:build` biên dịch GML, JSON phòng, PNG sprite
+và WAV thật, đọc lại dữ liệu để xác nhận, kiểm tra lỗi và hoàn tác.
 
 Butterscotch có thể khác runner GameMaker ở một số hành vi. Việc nhập đủ dữ liệu
 không đồng nghĩa đã kiểm thử mọi phòng, trận đấu và cả ba tuyến đến kết thúc;
@@ -69,17 +88,20 @@ không khẳng định bản web giống tuyệt đối trong tất cả tình h
 ## Cấu trúc
 
 ```
-index.html                  trang chạy Undertale
-src/undertale.js             tải dữ liệu, lưu OPFS, điều khiển runtime
-src/undertale.css            bố cục trang Undertale
-assets/undertale/            dữ liệu nền, âm thanh và danh mục tải
+game/index.html             trang chạy Undertale
+game/server.mjs             server ứng dụng, mặc định cổng 5173
+game/web/                   giao diện, tải dữ liệu, lưu OPFS, điều khiển runtime
+game/base/data.win          dữ liệu GameMaker nền giữ nguyên
+game/assets/                PNG, WAV/OGG, JSON phòng/đối tượng/font/... để sửa
 game/code/                  6.272 mục GML gốc, chỉnh sửa được
 game/resources.json         danh mục 336 phòng và 1.709 đối tượng
 game/manifest.json          checksum dữ liệu nền và GML trước chỉnh sửa
-scripts/build-game.mjs       biên dịch GML đã sửa bằng UndertaleModTool
-vendor/butterscotch/         runtime, mã nguồn và giấy phép upstream
-build/undertale/             dữ liệu sau biên dịch (không commit)
+game/tools/                 biên dịch GML/asset và đóng gói web
+game/vendor/butterscotch/    runtime, mã nguồn và giấy phép upstream
+game/build/undertale/        dữ liệu sau biên dịch (không commit)
+dist/undertale-web/          gói web độc lập (không commit)
 duoi-dat.html                bản Dưới Đất trước đây
+server.mjs                  server Dưới Đất, mặc định cổng 5174
 src/{main,world,battle,...}  logic JavaScript của Dưới Đất
 ```
 
@@ -88,5 +110,5 @@ src/{main,world,battle,...}  logic JavaScript của Dưới Đất
 Tài nguyên, nội dung và mã trò chơi được nhập từ bản Undertale do người dùng cung
 cấp, giữ quyền sở hữu của tác giả gốc; xem [credit gốc](game/CREDITS.txt).
 Butterscotch dùng AGPL-3.0; mã nguồn runtime tại đúng revision và giấy phép các
-thư viện được giữ trong [vendor/butterscotch](vendor/butterscotch/README.md).
-Font Handjet dùng [SIL Open Font License](assets/fonts/OFL.txt).
+thư viện được giữ trong [game/vendor/butterscotch](game/vendor/butterscotch/README.md).
+Font Handjet dùng [SIL Open Font License](game/assets/ui/fonts/OFL.txt).
