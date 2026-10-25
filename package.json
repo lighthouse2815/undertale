@@ -7,8 +7,10 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
-    "check": "node scripts/check.mjs",
-    "test": "node tests/gameplay.mjs"
+    "check": "node scripts/check.mjs && node scripts/check-game.mjs",
+    "build:game": "node scripts/build-game.mjs",
+    "test": "node tests/gameplay.mjs",
+    "test:build": "node tests/game-build.mjs"
   },
   "devDependencies": {
     "playwright-core": "^1.64.1"

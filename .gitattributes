@@ -1,0 +1,4 @@
+# Mã GML giải biên dịch có ký tự CR trong chuỗi; giữ nguyên byte khi checkout.
+game/code/*.gml -text whitespace=cr-at-eol
+# Giữ nguyên bảng credit gốc (encoding và CRLF).
+game/CREDITS.txt -text whitespace=cr-at-eol
