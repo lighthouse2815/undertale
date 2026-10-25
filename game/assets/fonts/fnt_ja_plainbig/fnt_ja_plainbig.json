@@ -1,0 +1,20 @@
+{
+  "$type": "Font",
+  "DataName": null,
+  "DisplayName": "FTT-UD角ゴC80 M",
+  "EmSizeIsFloat": false,
+  "EmSize": 56,
+  "Bold": false,
+  "Italic": false,
+  "RangeStart": 32,
+  "Charset": 1,
+  "AntiAliasing": 0,
+  "RangeEnd": 12397,
+  "ScaleX": 1,
+  "ScaleY": 1,
+  "Ascender": 0,
+  "SDFSpread": 0,
+  "LineHeight": 0,
+  "AscenderOffset": 0,
+  "Glyphs": [{"C":32,"X":110,"Y":2,"W":37,"H":75,"S":37,"O":0,"K":[]},{"C":12375,"X":62,"Y":2,"W":46,"H":71,"S":60,"O":11,"K":[]},{"C":12397,"X":2,"Y":2,"W":58,"H":73,"S":60,"O":2,"K":[]}]
+}

@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFile, readdir } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { readAssets } from './game-assets.mjs';
 
 const manifest = JSON.parse(await readFile(new URL('../game/manifest.json', import.meta.url), 'utf8'));
 const resources = JSON.parse(await readFile(new URL('../game/resources.json', import.meta.url), 'utf8'));
@@ -26,4 +28,33 @@ for (const [name, checksum] of Object.entries(runtime.files)) {
   assert.equal(createHash('sha256').update(bytes).digest('hex'), checksum, `Runtime bị thay đổi: ${name}`);
 }
 console.log(`✓ runtime Butterscotch tại revision ${runtime.commit}`);
+const editable = readAssets(fileURLToPath(new URL('../game/assets', import.meta.url)));
+const names = (type) => new Set(editable.filter((asset) => asset.type === type).map((asset) => asset.name));
+const references = {
+  Sprite: names('Sprite'), GameObject: names('GameObject'), Background: new Set([...names('Background'), ...resources.emptyBackgrounds]),
+  Code: new Set(codeFiles.map((file) => file.slice(0, -4))),
+};
+const checkReference = (value, type, owner) => {
+  if (value != null) assert.ok(references[type].has(value), `${owner}: không tìm thấy ${type} ${value}`);
+};
+for (const asset of editable) {
+  const data = asset.data;
+  if (asset.type === 'GameObject') {
+    for (const field of ['Sprite', 'MaskSprite']) checkReference(data[field], 'Sprite', asset.path);
+    checkReference(data.ParentObject, 'GameObject', asset.path);
+    for (const event of data.Events) checkReference(event.CodeEntry, 'Code', asset.path);
+  }
+  if (asset.type === 'Room') {
+    for (const background of data.Backgrounds) checkReference(background.BackgroundAsset, 'Background', asset.path);
+    for (const view of data.Views) checkReference(view.FollowsObject, 'GameObject', asset.path);
+    for (const instance of data.GameObjects) {
+      checkReference(instance.ObjectName, 'GameObject', asset.path);
+      for (const field of ['CreationCodeEntry', 'PreCreateCodeEntry']) checkReference(instance[field], 'Code', asset.path);
+    }
+    for (const tile of data.Tiles) checkReference(tile.Asset, 'Background', asset.path);
+    checkReference(data.CreationCodeEntry, 'Code', asset.path);
+  }
+  if (asset.type === 'Script') checkReference(data.Code, 'Code', asset.path);
+}
+console.log(`✓ ${editable.length} tài nguyên rời PNG/WAV/OGG/JSON và liên kết phòng, đối tượng, GML`);
 console.log(`✓ dữ liệu Undertale: ${resources.rooms.length} phòng, ${resources.objects.length} đối tượng, ${codeFiles.length} mục GML và ${manifest.assets.filter((a) => a.name.endsWith('.ogg')).length} tệp âm thanh`);

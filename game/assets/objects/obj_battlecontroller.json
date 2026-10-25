@@ -1,0 +1,120 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": null,
+  "Visible": true,
+  "Solid": false,
+  "Depth": -450,
+  "Persistent": false,
+  "ParentObject": null,
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Create_0"
+    },
+    {
+      "Category": "Destroy",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Destroy_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "0",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Alarm_0"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "BeginStep",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Step_1"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Step_0"
+    },
+    {
+      "Category": "Keyboard",
+      "Subtype": "Digit9",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Keyboard_57"
+    },
+    {
+      "Category": "Keyboard",
+      "Subtype": "Digit8",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Keyboard_56"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User0",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Other_10"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "RoomEnd",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Other_5"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "Draw",
+      "CodeEntry": "gml_Object_obj_battlecontroller_Draw_0"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_f6",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_117"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "P",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_80"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit2",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_50"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit1",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_49"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_delete",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_46"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_down",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_40"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_right",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_39"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_up",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_38"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_left",
+      "CodeEntry": "gml_Object_obj_battlecontroller_KeyPress_37"
+    }
+  ]
+}

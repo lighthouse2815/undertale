@@ -1,0 +1,85 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_swordmaster",
+  "Visible": false,
+  "Solid": false,
+  "Depth": 0,
+  "Persistent": false,
+  "ParentObject": null,
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Create_0"
+    },
+    {
+      "Category": "Destroy",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Destroy_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "6",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Alarm_6"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "5",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Alarm_5"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Step_0"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User9",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Other_19"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User8",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Other_18"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User7",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Other_17"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User6",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Other_16"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User5",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Other_15"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User3",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Other_13"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User2",
+      "CodeEntry": "gml_Object_obj_asriel_swordmaster_Other_12"
+    }
+  ]
+}

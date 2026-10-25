@@ -1,0 +1,70 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_lasermachine_b",
+  "Visible": true,
+  "Solid": false,
+  "Depth": 500,
+  "Persistent": false,
+  "ParentObject": null,
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Create_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "4",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Alarm_4"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "3",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Alarm_3"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "2",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Alarm_2"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "0",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Alarm_0"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_solidline",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Collision_7"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User1",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Other_11"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User0",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Other_10"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "Draw",
+      "CodeEntry": "gml_Object_obj_bluelaser_o_Draw_0"
+    }
+  ]
+}

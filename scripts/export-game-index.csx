@@ -11,6 +11,7 @@ var resources = new {
     sounds = Data.Sounds.Count,
     sprites = Data.Sprites.Count,
     backgrounds = Data.Backgrounds.Count,
+    emptyBackgrounds = Data.Backgrounds.Where(background => background.Texture == null).Select(background => background.Name.Content),
     scripts = Data.Scripts.Count,
     codeEntries = Data.Code.Count,
     rooms = Data.Rooms.Select((room, id) => new {

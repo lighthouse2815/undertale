@@ -1,0 +1,30 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_fightbt_center",
+  "Visible": true,
+  "Solid": false,
+  "Depth": 11,
+  "Persistent": false,
+  "ParentObject": "obj_centeract_parent",
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Other",
+      "Subtype": "User4",
+      "CodeEntry": "gml_Object_obj_flowey_fightbt_Other_14"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_slug",
+  "Visible": true,
+  "Solid": true,
+  "Depth": 0,
+  "Persistent": false,
+  "ParentObject": "obj_readablesolid",
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_snail3_Create_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "0",
+      "CodeEntry": "gml_Object_obj_snail3_Alarm_0"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "BeginStep",
+      "CodeEntry": "gml_Object_obj_snail3_Step_1"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": null,
+  "Visible": true,
+  "Solid": false,
+  "Depth": 9,
+  "Persistent": false,
+  "ParentObject": null,
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_gigavine_preview_Create_0"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User5",
+      "CodeEntry": "gml_Object_obj_gigavine_preview_Other_15"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User4",
+      "CodeEntry": "gml_Object_obj_gigavine_preview_Other_14"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "Draw",
+      "CodeEntry": "gml_Object_obj_gigavine_preview_Draw_0"
+    }
+  ]
+}

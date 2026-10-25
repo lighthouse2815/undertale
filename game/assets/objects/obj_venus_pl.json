@@ -1,0 +1,60 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_venus_placeholder",
+  "Visible": true,
+  "Solid": false,
+  "Depth": 7,
+  "Persistent": false,
+  "ParentObject": "obj_floweybullet_parent",
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_venus_pl_Create_0"
+    },
+    {
+      "Category": "Destroy",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_venus_pl_Destroy_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "4",
+      "CodeEntry": "gml_Object_obj_venus_pl_Alarm_4"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "2",
+      "CodeEntry": "gml_Object_obj_venus_pl_Alarm_2"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_venus_pl_Step_0"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User3",
+      "CodeEntry": "gml_Object_obj_venus_pl_Other_13"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "Draw",
+      "CodeEntry": "gml_Object_obj_venus_pl_Draw_0"
+    }
+  ]
+}

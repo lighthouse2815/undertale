@@ -1,0 +1,19 @@
+{
+  "$type": "Path",
+  "DataName": null,
+  "IsSmooth": false,
+  "IsClosed": false,
+  "Precision": 4,
+  "Points": [
+    {
+      "X": 60,
+      "Y": 100,
+      "Speed": 100
+    },
+    {
+      "X": 144,
+      "Y": 40,
+      "Speed": 100
+    }
+  ]
+}

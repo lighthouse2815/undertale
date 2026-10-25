@@ -1,0 +1,40 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_hg_debris_small",
+  "Visible": true,
+  "Solid": false,
+  "Depth": -9900,
+  "Persistent": false,
+  "ParentObject": "obj_asbulletparent",
+  "MaskSprite": "spr_hg_debris_mask",
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_hg_debris_Create_0"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_hg_debris_Step_0"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_heart",
+      "CodeEntry": "gml_Object_obj_hg_debris_Collision_744"
+    }
+  ]
+}

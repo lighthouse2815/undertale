@@ -1,0 +1,55 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_heart",
+  "Visible": true,
+  "Solid": false,
+  "Depth": 0,
+  "Persistent": false,
+  "ParentObject": null,
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_fakeheart_Create_0"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_fakeheart_Step_0"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_dborder",
+      "CodeEntry": "gml_Object_obj_fakeheart_Collision_762"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_rborder",
+      "CodeEntry": "gml_Object_obj_fakeheart_Collision_761"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_uborder",
+      "CodeEntry": "gml_Object_obj_fakeheart_Collision_760"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_lborder",
+      "CodeEntry": "gml_Object_obj_fakeheart_Collision_759"
+    }
+  ]
+}

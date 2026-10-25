@@ -1,0 +1,65 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_mettheart",
+  "Visible": true,
+  "Solid": false,
+  "Depth": -3,
+  "Persistent": false,
+  "ParentObject": "obj_mettheart_parent",
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_mettheart_4_Create_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "4",
+      "CodeEntry": "gml_Object_obj_mettheart_4_Alarm_4"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "3",
+      "CodeEntry": "gml_Object_obj_mettheart_4_Alarm_3"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_mettheart_4_Step_0"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_heartshot",
+      "CodeEntry": "gml_Object_obj_mettheart_4_Collision_740"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User1",
+      "CodeEntry": "gml_Object_obj_mettheart_4_Other_11"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User0",
+      "CodeEntry": "gml_Object_obj_mettheart_4_Other_10"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "Draw",
+      "CodeEntry": "gml_Object_obj_mettheart_4_Draw_0"
+    }
+  ]
+}

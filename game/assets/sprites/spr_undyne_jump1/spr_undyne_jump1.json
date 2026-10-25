@@ -1,0 +1,20 @@
+{
+  "$type": "Sprite",
+  "DataName": null,
+  "Width": 40,
+  "Height": 57,
+  "MarginLeft": 1,
+  "MarginRight": 38,
+  "MarginBottom": 56,
+  "MarginTop": 2,
+  "Transparent": false,
+  "Smooth": false,
+  "Preload": false,
+  "BBoxMode": 0,
+  "CollisionKind": "AxisAlignedRect",
+  "OriginX": 0,
+  "OriginY": 2,
+  "TextureCount": 1,
+  "MaskCount": 1,
+  "Sequence": null
+}

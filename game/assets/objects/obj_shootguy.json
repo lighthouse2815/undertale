@@ -1,0 +1,85 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_shootguy",
+  "Visible": true,
+  "Solid": false,
+  "Depth": 90000,
+  "Persistent": false,
+  "ParentObject": "obj_readable",
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_shootguy_Create_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "5",
+      "CodeEntry": "gml_Object_obj_shootguy_Alarm_5"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "3",
+      "CodeEntry": "gml_Object_obj_shootguy_Alarm_3"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "2",
+      "CodeEntry": "gml_Object_obj_shootguy_Alarm_2"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "1",
+      "CodeEntry": "gml_Object_obj_shootguy_Alarm_1"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_shootguy_Step_0"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User4",
+      "CodeEntry": "gml_Object_obj_shootguy_Other_14"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User3",
+      "CodeEntry": "gml_Object_obj_shootguy_Other_13"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User2",
+      "CodeEntry": "gml_Object_obj_shootguy_Other_12"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User1",
+      "CodeEntry": "gml_Object_obj_shootguy_Other_11"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User0",
+      "CodeEntry": "gml_Object_obj_shootguy_Other_10"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "Draw",
+      "CodeEntry": "gml_Object_obj_shootguy_Draw_0"
+    }
+  ]
+}

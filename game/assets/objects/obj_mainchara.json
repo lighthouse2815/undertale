@@ -1,0 +1,215 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_maincharad",
+  "Visible": true,
+  "Solid": false,
+  "Depth": 100,
+  "Persistent": false,
+  "ParentObject": null,
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_mainchara_Create_0"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "EndStep",
+      "CodeEntry": "gml_Object_obj_mainchara_Step_2"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_mainchara_Step_0"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_solidnpcparent",
+      "CodeEntry": "gml_Object_obj_mainchara_Collision_1367"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_solidparent",
+      "CodeEntry": "gml_Object_obj_mainchara_Collision_822"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_sul",
+      "CodeEntry": "gml_Object_obj_mainchara_Collision_13"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_sur",
+      "CodeEntry": "gml_Object_obj_mainchara_Collision_12"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_sdl",
+      "CodeEntry": "gml_Object_obj_mainchara_Collision_11"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_sdr",
+      "CodeEntry": "gml_Object_obj_mainchara_Collision_10"
+    },
+    {
+      "Category": "Keyboard",
+      "Subtype": "S",
+      "CodeEntry": "gml_Object_obj_mainchara_Keyboard_83"
+    },
+    {
+      "Category": "Keyboard",
+      "Subtype": "L",
+      "CodeEntry": "gml_Object_obj_mainchara_Keyboard_76"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User2",
+      "CodeEntry": "gml_Object_obj_mainchara_Other_12"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User0",
+      "CodeEntry": "gml_Object_obj_mainchara_Other_10"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "Draw",
+      "CodeEntry": "gml_Object_obj_mainchara_Draw_0"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_f12",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_123"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_f11",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_122"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_f10",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_121"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_f9",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_120"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_f7",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_118"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "U",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_85"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "P",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_80"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "O",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_79"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "M",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_77"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "I",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_73"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "G",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_71"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit6",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_54"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit5",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_53"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit4",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_52"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit3",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_51"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit2",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_50"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit1",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_49"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Digit0",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_48"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_delete",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_46"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_insert",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_45"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_home",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_36"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_end",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_35"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_pagedown",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_34"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_pageup",
+      "CodeEntry": "gml_Object_obj_mainchara_KeyPress_33"
+    }
+  ]
+}

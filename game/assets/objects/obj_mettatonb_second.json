@@ -1,0 +1,65 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_mettatonb",
+  "Visible": false,
+  "Solid": false,
+  "Depth": 10,
+  "Persistent": false,
+  "ParentObject": "obj_monsterparent",
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_mettatonb_second_Create_0"
+    },
+    {
+      "Category": "Destroy",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_mettatonb_second_Destroy_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "7",
+      "CodeEntry": "gml_Object_obj_mettatonb_second_Alarm_7"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "6",
+      "CodeEntry": "gml_Object_obj_mettatonb_second_Alarm_6"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "5",
+      "CodeEntry": "gml_Object_obj_mettatonb_second_Alarm_5"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "4",
+      "CodeEntry": "gml_Object_obj_mettatonb_second_Alarm_4"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "3",
+      "CodeEntry": "gml_Object_obj_mettatonb_second_Alarm_3"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_mettatonb_second_Step_0"
+    }
+  ]
+}

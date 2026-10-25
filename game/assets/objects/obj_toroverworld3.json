@@ -1,0 +1,50 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_toriel_d",
+  "Visible": true,
+  "Solid": false,
+  "Depth": 0,
+  "Persistent": false,
+  "ParentObject": "obj_toroverworld1",
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Step",
+      "Subtype": "BeginStep",
+      "CodeEntry": "gml_Object_obj_toroverworld3_Step_1"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_toroverworld3_Step_0"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_toribuster",
+      "CodeEntry": "gml_Object_obj_toroverworld3_Collision_879"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "AnimationEnd",
+      "CodeEntry": "gml_Object_obj_toroverworld3_Other_7"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "RoomStart",
+      "CodeEntry": "gml_Object_obj_toroverworld3_Other_4"
+    }
+  ]
+}

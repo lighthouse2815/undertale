@@ -1,0 +1,215 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": null,
+  "Visible": true,
+  "Solid": false,
+  "Depth": -10,
+  "Persistent": false,
+  "ParentObject": null,
+  "MaskSprite": null,
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_flowey_master_Create_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "11",
+      "CodeEntry": "gml_Object_obj_flowey_master_Alarm_11"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "10",
+      "CodeEntry": "gml_Object_obj_flowey_master_Alarm_10"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "9",
+      "CodeEntry": "gml_Object_obj_flowey_master_Alarm_9"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "7",
+      "CodeEntry": "gml_Object_obj_flowey_master_Alarm_7"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "5",
+      "CodeEntry": "gml_Object_obj_flowey_master_Alarm_5"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "4",
+      "CodeEntry": "gml_Object_obj_flowey_master_Alarm_4"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "BeginStep",
+      "CodeEntry": "gml_Object_obj_flowey_master_Step_1"
+    },
+    {
+      "Category": "Keyboard",
+      "Subtype": "V",
+      "CodeEntry": "gml_Object_obj_flowey_master_Keyboard_86"
+    },
+    {
+      "Category": "Keyboard",
+      "Subtype": "H",
+      "CodeEntry": "gml_Object_obj_flowey_master_Keyboard_72"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User10",
+      "CodeEntry": "gml_Object_obj_flowey_master_Other_20"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User9",
+      "CodeEntry": "gml_Object_obj_flowey_master_Other_19"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User8",
+      "CodeEntry": "gml_Object_obj_flowey_master_Other_18"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User7",
+      "CodeEntry": "gml_Object_obj_flowey_master_Other_17"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User6",
+      "CodeEntry": "gml_Object_obj_flowey_master_Other_16"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User5",
+      "CodeEntry": "gml_Object_obj_flowey_master_Other_15"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User4",
+      "CodeEntry": "gml_Object_obj_flowey_master_Other_14"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "Draw",
+      "CodeEntry": "gml_Object_obj_flowey_master_Draw_0"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "W",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_87"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "V",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_86"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "S",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_83"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "Q",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_81"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "P",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_80"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "O",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_79"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "N",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_78"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "M",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_77"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "L",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_76"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "K",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_75"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "J",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_74"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "I",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_73"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "G",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_71"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "F",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_70"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "D",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_68"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "B",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_66"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "A",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_65"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_home",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_36"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_pageup",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_33"
+    },
+    {
+      "Category": "KeyPress",
+      "Subtype": "vk_shift",
+      "CodeEntry": "gml_Object_obj_flowey_master_KeyPress_16"
+    }
+  ]
+}

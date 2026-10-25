@@ -1,0 +1,75 @@
+{
+  "$type": "GameObject",
+  "DataName": null,
+  "Sprite": "spr_venter_r",
+  "Visible": true,
+  "Solid": false,
+  "Depth": 500000,
+  "Persistent": false,
+  "ParentObject": "obj_bouncetileparent",
+  "MaskSprite": "spr_event_small",
+  "UsesPhysics": false,
+  "IsSensor": false,
+  "CollisionShape": "Circle",
+  "Density": 0.5,
+  "Restitution": 0.1,
+  "Group": 0,
+  "LinearDamping": 0.1,
+  "AngularDamping": 0.1,
+  "Friction": 0.2,
+  "Awake": true,
+  "Kinematic": false,
+  "PhysicsVertices": [],
+  "Events": [
+    {
+      "Category": "Create",
+      "Subtype": "",
+      "CodeEntry": "gml_Object_obj_bounceright_Create_0"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "11",
+      "CodeEntry": "gml_Object_obj_bounceright_Alarm_11"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "10",
+      "CodeEntry": "gml_Object_obj_bounceright_Alarm_10"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "9",
+      "CodeEntry": "gml_Object_obj_bounceright_Alarm_9"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "4",
+      "CodeEntry": "gml_Object_obj_bounceright_Alarm_4"
+    },
+    {
+      "Category": "Alarm",
+      "Subtype": "1",
+      "CodeEntry": "gml_Object_obj_bounceright_Alarm_1"
+    },
+    {
+      "Category": "Step",
+      "Subtype": "Step",
+      "CodeEntry": "gml_Object_obj_bounceright_Step_0"
+    },
+    {
+      "Category": "Collision",
+      "Subtype": "obj_mainchara",
+      "CodeEntry": "gml_Object_obj_bounceright_Collision_1576"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User2",
+      "CodeEntry": "gml_Object_obj_bounceright_Other_12"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "User0",
+      "CodeEntry": "gml_Object_obj_bounceright_Other_10"
+    }
+  ]
+}
