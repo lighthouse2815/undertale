@@ -1,18 +1,30 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
+import { cp, mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
 // Dùng Chrome đã cài trên máy; không tải thêm trình duyệt vào project.
 const executablePath = process.env.CHROME_PATH;
 if (!executablePath) throw new Error('Hãy đặt CHROME_PATH tới tệp thực thi Chrome/Chromium.');
 const port = process.env.TEST_PORT ?? '5187';
-const server = spawn(process.execPath, ['server.mjs'], {
-  env: { ...process.env, PORT: port, LOCAL_MUSIC_DIR: '/nonexistent', LOCAL_SPRITE_DIR: '/nonexistent' },
-  stdio: ['ignore', 'pipe', 'inherit'],
-});
+const projectRoot = fileURLToPath(new URL('../', import.meta.url));
+const standaloneRoot = await mkdtemp(join(tmpdir(), 'duoidat-standalone-'));
+let server;
 let browser;
 try {
+  // Chạy bản sao chỉ có code và assets: không thể đọc thư mục cài game gốc.
+  for (const name of ['index.html', 'server.mjs', 'src', 'assets']) {
+    await cp(join(projectRoot, name), join(standaloneRoot, name), { recursive: true });
+  }
+  server = spawn(process.execPath, ['server.mjs'], {
+    cwd: standaloneRoot,
+    env: { ...process.env, PORT: port },
+    stdio: ['ignore', 'pipe', 'inherit'],
+  });
   await Promise.race([
     once(server.stdout, 'data'),
     once(server, 'exit').then(([code]) => { throw new Error(`Server dừng: ${code}`); }),
@@ -24,6 +36,41 @@ try {
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   await page.goto(`http://127.0.0.1:${port}/#play`);
   await page.waitForFunction(() => window.__duoidat?.scene === 'title');
+  await page.waitForFunction(() => window.__duoidat.localMusic && window.__duoidat.localArt);
+  const assetResult = await page.evaluate(async () => {
+    const { art } = await import('/src/localassets.js');
+    const { audio } = await import('/src/core.js');
+    const sprites = await fetch('/assets/sprites/index.json').then((res) => res.json());
+    const music = await fetch('/assets/music/index.json').then((res) => res.json());
+    const invalidMusic = [];
+    // Giải mã từng bài bằng WebAudio để phát hiện tệp thiếu hoặc hỏng.
+    for (const name of music.files) {
+      const response = await fetch(`/assets/music/${name}`);
+      if (!response.ok || response.headers.get('content-type') !== 'audio/ogg') {
+        invalidMusic.push(name);
+        continue;
+      }
+      const decoded = await audio.ctx.decodeAudioData(await response.arrayBuffer());
+      if (decoded.duration <= 0) invalidMusic.push(name);
+    }
+    return {
+      missingSprites: sprites.files.filter((name) => !art.get(name)?.naturalWidth),
+      invalidMusic,
+      track: audio.localTrackFor(null, 'title'),
+      musicUrl: audio.localEl?.src,
+      spriteCount: art.count,
+      musicCount: music.files.length,
+      externalRequests: performance.getEntriesByType('resource').map((r) => r.name)
+        .filter((url) => /local-music|local-sprites|Undertale-AnkerGames/.test(url)),
+    };
+  });
+  assert.deepEqual(assetResult.missingSprites, []);
+  assert.deepEqual(assetResult.invalidMusic, []);
+  assert.equal(assetResult.spriteCount, 59);
+  assert.equal(assetResult.musicCount, 17);
+  assert.equal(assetResult.track, 'mus_menu0.ogg');
+  assert.ok(assetResult.musicUrl.endsWith('/assets/music/mus_menu0.ogg'));
+  assert.deepEqual(assetResult.externalRequests, []);
   const result = await page.evaluate(async () => {
     const { Battle } = await import('/src/battle.js');
     const game = window.__duoidat;
@@ -750,11 +797,21 @@ try {
   const bootPage = await browser.newPage();
   bootPage.on('pageerror', (error) => errors.push(error.message));
   bootPage.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  let releaseMusicIndex;
+  const musicIndexReady = new Promise((resolve) => { releaseMusicIndex = resolve; });
+  await bootPage.route('**/assets/music/index.json', async (route) => {
+    await musicIndexReady;
+    await route.continue();
+  });
   await bootPage.goto(`http://127.0.0.1:${port}/`);
   await bootPage.waitForFunction(() => window.__duoidat?.scene === 'boot');
   await bootPage.keyboard.press('Enter');
   await bootPage.waitForTimeout(100);
   assert.equal(await bootPage.evaluate(() => window.__duoidat.scene), 'title');
+  assert.equal(await bootPage.evaluate(() => window.__audio.localFile), null);
+  releaseMusicIndex();
+  await bootPage.waitForFunction(() => window.__audio.localFile === 'mus_menu0.ogg'
+    && !window.__audio.localEl.paused && window.__audio.localEl.currentTime > 0);
   await bootPage.keyboard.press('Enter');
   await bootPage.waitForFunction(() => window.__duoidat.scene === 'intro');
   await bootPage.close();
@@ -780,6 +837,8 @@ try {
   await blockedPage.waitForFunction(() => window.__duoidat.scene === 'intro');
   await blocked.close();
   assert.deepEqual(errors, []);
+  console.log('✓ bản sao độc lập nạp đủ 59 sprite, giải mã đủ 17 bài nhạc và không gọi dữ liệu game gốc');
+  console.log('✓ nhạc đi kèm phát sau thao tác mở game, kể cả khi danh sách nhạc tải chậm');
   console.log('✓ xác nhận hành trình mới, hủy không mất điểm lưu và tiếp tục hành trình cũ');
   console.log('✓ phím mở màn hình chờ không lọt xuống menu tiêu đề');
   console.log('✓ khởi động, bật/tắt tiếng và bắt đầu chơi khi localStorage bị chặn');
@@ -799,5 +858,10 @@ try {
   console.log('✓ nút cảm ứng nằm ngoài màn hình game, không chồng lấn ở bốn kích thước dọc/ngang');
 } finally {
   await browser?.close();
-  server.kill();
+  if (server && server.exitCode === null) {
+    const exited = once(server, 'exit');
+    server.kill();
+    await exited;
+  }
+  await rm(standaloneRoot, { recursive: true, force: true });
 }

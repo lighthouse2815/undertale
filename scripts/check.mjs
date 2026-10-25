@@ -1,6 +1,6 @@
-// Kiểm tra nhanh mã nguồn: cú pháp + kích thước bản đồ + sprite
+// Kiểm tra nhanh mã nguồn: cú pháp + kích thước bản đồ + sprite + tài nguyên
 import { execFileSync } from 'node:child_process';
-import { readdirSync, readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 let errors = 0;
@@ -98,6 +98,35 @@ for (const match of spriteSrc.matchAll(/(\w+):\s*\{\s*palette:[\s\S]*?rows:\s*\[
   if (rows.some((r) => r.length !== first)) {
     errors++;
     console.error(`✗ sprite ${match[1]}: các hàng không bằng nhau`);
+  }
+}
+
+// 4. Mỗi tài nguyên được code tham chiếu phải có trong manifest và trong dự án.
+for (const [dir, ext, source] of [
+  ['assets/sprites', 'png', 'src/localassets.js'],
+  ['assets/music', 'ogg', 'src/core.js'],
+]) {
+  try {
+    const { files: assets } = JSON.parse(readFileSync(join(dir, 'index.json'), 'utf8'));
+    if (!Array.isArray(assets) || !assets.length || new Set(assets).size !== assets.length) {
+      throw new Error('Danh sách tài nguyên trống, trùng tên hoặc không hợp lệ');
+    }
+    const references = [...readFileSync(source, 'utf8').matchAll(new RegExp(`['"]([^'"]+\\.${ext})['"]`, 'g'))];
+    for (const [, name] of references) {
+      if (!assets.includes(name)) throw new Error(`Chưa có trong index.json: ${name}`);
+    }
+    for (const name of assets) {
+      if (typeof name !== 'string' || !new RegExp(`^[A-Za-z0-9_.-]+\\.${ext}$`).test(name)) {
+        throw new Error(`Tên tài nguyên không hợp lệ: ${name}`);
+      }
+      const file = join(dir, name);
+      const info = statSync(file);
+      if (!info.isFile() || !info.size) throw new Error(`Tệp tài nguyên rỗng: ${name}`);
+    }
+    console.log(`✓ ${assets.length} tài nguyên trong ${dir}`);
+  } catch (error) {
+    errors++;
+    console.error(`✗ ${dir}: ${error.message}`);
   }
 }
 

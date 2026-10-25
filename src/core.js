@@ -222,11 +222,10 @@ const TRACKS = {
 };
 
 // ------------------------------------------------------------
-// Nhạc gốc (tuỳ chọn): engine đọc các tệp .ogg từ bản game bạn đã cài
-// trên máy, phục vụ qua server ở /local-music/. Không tệp nào nằm trong
-// repo này — máy nào không có bản game thì game dùng nhạc tự tổng hợp.
+// Nhạc .ogg đóng gói trong assets/music/ của dự án.
+// Nhạc WebAudio vẫn được giữ làm dự phòng khi không có bài phù hợp.
 // ------------------------------------------------------------
-const LOCAL_MUSIC_ROUTE = '/local-music/';
+const LOCAL_MUSIC_ROUTE = new URL('../assets/music/', import.meta.url).href;
 const LOCAL_VOLUME = 0.5;
 
 const LOCAL_TRACKS = {
@@ -266,7 +265,7 @@ class AudioEngine {
     this.nextTime = 0;
     this.stepDur = 0.2;
     this.ready = false;
-    // nhạc .ogg đọc từ bản game cài trên máy (không kèm trong repo)
+    // nhạc .ogg đi kèm dự án
     this.localFiles = null;
     this.localDir = null;
     this.localCache = new Map();
@@ -317,7 +316,7 @@ class AudioEngine {
     for (const el of this.localCache.values()) el.volume = muted ? 0 : LOCAL_VOLUME;
   }
 
-  /** Tìm nhạc gốc trên máy. Không có cũng không sao — game vẫn chạy. */
+  /** Đọc danh sách nhạc đóng gói trong dự án. */
   async detectLocalMusic() {
     try {
       const res = await fetch(`${LOCAL_MUSIC_ROUTE}index.json`);
@@ -325,14 +324,14 @@ class AudioEngine {
       const data = await res.json();
       if (!Array.isArray(data.files) || data.files.length === 0) return false;
       this.localFiles = new Set(data.files);
-      this.localDir = typeof data.dir === 'string' ? data.dir : null;
+      this.localDir = LOCAL_MUSIC_ROUTE;
       return true;
     } catch {
       return false;
     }
   }
 
-  /** Chọn tệp nhạc gốc phù hợp với ngữ cảnh (khu vực trước, rồi tới loại nhạc). */
+  /** Chọn tệp nhạc phù hợp với ngữ cảnh (khu vực trước, rồi tới loại nhạc). */
   localTrackFor(context, name) {
     if (!this.localFiles) return null;
     for (const key of [context, name]) {
@@ -361,7 +360,7 @@ class AudioEngine {
       /* tệp chưa tải xong — bỏ qua */
     }
     el.play().catch(() => {
-      /* trình duyệt chặn tự phát: coi như không có nhạc gốc */
+      /* trình duyệt chặn tự phát: chờ tương tác của người chơi */
     });
     this.localEl = el;
     this.localFile = file;
@@ -390,7 +389,7 @@ class AudioEngine {
     this.trackName = name;
     this.step = 0;
 
-    // có nhạc gốc trên máy thì dùng, không thì tổng hợp bằng WebAudio
+    // ưu tiên nhạc đi kèm dự án, thiếu bài thì tổng hợp bằng WebAudio
     if (file) {
       this.track = null;
       this.playLocal(file, name !== 'gameover');
@@ -881,7 +880,7 @@ class Renderer {
     c.restore();
   }
 
-  /** Vẽ ảnh sprite gốc (từ bản game trên máy) — làm nét kiểu pixel. */
+  /** Vẽ ảnh sprite đi kèm dự án — làm nét kiểu pixel. */
   image(img, x, y, scale = 1, o = {}) {
     if (!img) return;
     const { alpha = 1, anchor = 'top-left', tint = null, flip = false } = o;

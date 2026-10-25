@@ -705,7 +705,7 @@ export function drawSprite(name, x, y, scale = 2, opts = {}) {
 R.sprite = drawSprite;
 
 /**
- * Ảnh gốc đầu tiên có trong danh sách (máy không có bản game thì trả null).
+ * Ảnh đã nạp đầu tiên có trong danh sách (thiếu ảnh thì trả null).
  * Dùng để ưu tiên sprite gốc, thiếu thì quay về art tự sinh.
  */
 export function localImage(names) {
@@ -718,7 +718,7 @@ export function localImage(names) {
 }
 
 /**
- * Vẽ sprite gốc nếu có. Trả về true khi đã vẽ, false khi máy không có ảnh.
+ * Vẽ sprite gốc nếu có. Trả về true khi đã vẽ, false khi chưa nạp được ảnh.
  * (x, y) theo điểm neo, mặc định "giữa-dưới" như drawSprite.
  */
 export function drawLocal(names, x, y, scale = 2, opts = {}) {
@@ -731,7 +731,7 @@ export function drawLocal(names, x, y, scale = 2, opts = {}) {
 /**
  * Vẽ một nhân vật ghép từ nhiều sprite gốc (như trùm Asgore của bản gốc).
  * `parts` là mảng [tên ảnh, lệch x, lệch y] theo mã gốc.
- * Trả về true khi đã vẽ, false khi máy thiếu bất kỳ ảnh nào.
+ * Trả về true khi đã vẽ, false khi chưa nạp được bất kỳ ảnh nào.
  */
 export function drawParts(parts, x, y, scale = 2, opts = {}) {
   const { anchor = 'bottom-center', alpha = 1, tint = null, offsetScale = 1 } = opts;

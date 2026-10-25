@@ -121,7 +121,7 @@ canvas {
   display: none;
 }
 
-/* ảnh logo gốc (spr_undertaletitle): máy có bản game thì hiện y như màn hình gốc */
+/* ảnh logo gốc (spr_undertaletitle) đi kèm bộ tài nguyên của dự án */
 .boot-logo {
   position: absolute;
   inset: 0;

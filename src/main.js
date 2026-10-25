@@ -48,9 +48,9 @@ class Game {
     this.toastText = '';
     this.toastColor = '#ffd166';
     this.toastTimer = 0;
-    // có nhạc .ogg của bản game trên máy hay không (xem audio.detectLocalMusic)
+    // trạng thái nạp nhạc .ogg đi kèm dự án
     this.localMusic = false;
-    // có sprite .png trích từ bản game trên máy hay không (xem loadLocalSprites)
+    // trạng thái nạp sprite .png đi kèm dự án
     this.localArt = false;
     this.flash = 0;
     this.time = 0;
@@ -890,22 +890,25 @@ function boot() {
     if (!ok) console.warn('Không nạp được font pixel, dùng font dự phòng.');
   });
 
-  // tìm nhạc gốc trên máy (nếu có); không có thì dùng nhạc tự tổng hợp
+  // nạp danh sách nhạc đi kèm dự án
   audio.detectLocalMusic().then((ok) => {
     game.localMusic = ok;
-    if (ok) console.info(`Nhạc gốc lấy từ: ${audio.localDir ?? '(không rõ đường dẫn)'}`);
+    if (ok) console.info(`Đã nạp danh sách nhạc: ${audio.localDir}`);
+    if (ok && audio.trackName) {
+      audio.playMusic(audio.trackName, game.scene === 'world' ? game.world.room?.id : null);
+    }
   });
 
   const overlay = document.getElementById('boot');
   const bootLogo = document.getElementById('bootLogo');
 
-  // tìm sprite gốc trên máy (nếu có); không có thì vẽ bằng art tự sinh
+  // nạp sprite đi kèm dự án
   loadLocalSprites().then((ok) => {
     game.localArt = ok;
     if (!ok) return;
-    console.info(`Sprite gốc lấy từ: ${art.dir ?? '(không rõ đường dẫn)'} (${art.count} ảnh)`);
+    console.info(`Đã nạp ${art.count} sprite từ: ${art.dir}`);
 
-    // màn hình chờ kiểu bản gốc: máy có ảnh tiêu đề gốc thì hiện y như màn hình gốc
+    // dùng ảnh tiêu đề đã nạp cho màn hình chờ
     const logo = art.get('spr_undertaletitle_0.png');
     if (!logo || !bootLogo) return;
     bootLogo.addEventListener('load', () => {
@@ -923,12 +926,6 @@ function boot() {
     audio.resume();
     audio.playMusic('title');
     game.scene = 'title';
-    if (game.localMusic) {
-      window.setTimeout(() => game.toast('Nhạc: lấy từ bản game trên máy', '#9fd48c'), 1400);
-    }
-    if (game.localArt) {
-      window.setTimeout(() => game.toast('Hình ảnh: lấy từ bản game trên máy', '#9fd48c'), 3400);
-    }
     window.setTimeout(() => overlay.remove(), 1000);
   };
   document.getElementById('bootBtn')?.addEventListener('click', start);

@@ -1,9 +1,8 @@
 // ------------------------------------------------------------
-// Dữ liệu gốc trên máy (tuỳ chọn) — sprite .png trích từ bản game bạn
-// đã cài, phục vụ qua /local-sprites/. Không tệp nào nằm trong repo:
-// máy không có bản game thì game vẽ bằng art tự sinh như trước.
+// Sprite .png đóng gói trong assets/sprites/ của dự án.
+// Giữ art tự sinh làm dự phòng khi một ảnh không nạp được.
 // ------------------------------------------------------------
-const SPRITE_ROUTE = '/local-sprites/';
+const SPRITE_ROUTE = new URL('../assets/sprites/', import.meta.url).href;
 
 // nhân vật chính gốc: các khung hình đi theo hướng
 export const PLAYER_ART = {
@@ -27,7 +26,7 @@ export const ENEMY_ART = {
 };
 const ENEMY_FILES = Object.values(ENEMY_ART).flat();
 
-// đồ đạc & nhân vật phụ lấy từ bản gốc (máy không có thì vẽ bằng art tự sinh)
+// đồ đạc & nhân vật phụ lấy từ bộ sprite của dự án
 export const PROP_ART = {
   chest: 'spr_chestbox_0.png', // rương gỗ
   sign: 'spr_npc_sign_0.png', // biển báo
@@ -50,7 +49,7 @@ export const NPC_ART = {
   snowman: PROP_ART.snowman,
 };
 
-// chân dung trong khung hội thoại (máy có sprite gốc thì dùng luôn)
+// chân dung trong khung hội thoại
 export const PORTRAIT_ART = {
   dom: PROP_ART.dom,
   kem: PROP_ART.kem,
@@ -135,7 +134,7 @@ export const art = {
   },
 };
 
-/** Dò và nạp sprite gốc trên máy. Không có cũng không sao. */
+/** Nạp sprite từ bộ tài nguyên đi kèm dự án. */
 export async function loadLocalSprites() {
   try {
     const res = await fetch(`${SPRITE_ROUTE}index.json`);
@@ -143,7 +142,7 @@ export async function loadLocalSprites() {
     const data = await res.json();
     if (!Array.isArray(data.files) || data.files.length === 0) return false;
     art.files = new Set(data.files);
-    art.dir = typeof data.dir === 'string' ? data.dir : null;
+    art.dir = SPRITE_ROUTE;
 
     const wanted = WANTED.filter((f) => art.files.has(f));
     await Promise.all(
