@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
-import { spawnSync } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
+import { once } from 'node:events';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,6 +12,7 @@ assert.ok(cli, 'Đặt UNDERTALE_MOD_CLI tới UndertaleModCli để kiểm th�
 const root = fileURLToPath(new URL('../', import.meta.url));
 const fixture = await mkdtemp(join(tmpdir(), 'undertale-build-'));
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+let server;
 try {
   for (const name of ['scripts', 'game']) await cp(join(root, name), join(fixture, name), { recursive: true });
   await mkdir(join(fixture, 'assets/undertale'), { recursive: true });
@@ -27,6 +29,18 @@ try {
   const output = join(fixture, 'build/undertale/data.win');
   const compiledHash = hash(await readFile(output));
   assert.notEqual(compiledHash, hash(await readFile(base)));
+  await cp(join(root, 'server.mjs'), join(fixture, 'server.mjs'));
+  const port = process.env.BUILD_TEST_PORT ?? '5189';
+  server = spawn(process.execPath, ['server.mjs'], {
+    cwd: fixture, env: { ...process.env, PORT: port }, stdio: ['ignore', 'pipe', 'inherit'],
+  });
+  await Promise.race([
+    once(server.stdout, 'data'),
+    once(server, 'exit').then(([code]) => { throw new Error(`Server dừng: ${code}`); }),
+  ]);
+  const response = await fetch(`http://127.0.0.1:${port}/assets/undertale/data.win`);
+  assert.equal(response.status, 200);
+  assert.equal(hash(new Uint8Array(await response.arrayBuffer())), compiledHash);
   const args = ['dump', output, '--code', 'gml_Script_scr_gettext', '--output', join(fixture, 'dump')];
   const dump = spawnSync(cli.endsWith('.dll') ? 'dotnet' : cli, cli.endsWith('.dll') ? [cli, ...args] : args,
     { encoding: 'utf8' });
@@ -39,7 +53,12 @@ try {
   const restored = build();
   assert.equal(restored.status, 0, restored.stdout + restored.stderr);
   assert.equal(hash(await readFile(output)), hash(await readFile(base)));
-  console.log('✓ biên dịch GML thật, giải biên dịch xác nhận thay đổi, giữ bản cũ khi lỗi và hoàn tác về dữ liệu gốc');
+  console.log('✓ biên dịch GML thật, server phục vụ bản đã sửa, giải biên dịch xác nhận, giữ bản cũ khi lỗi và hoàn tác');
 } finally {
+  if (server && server.exitCode === null) {
+    const exited = once(server, 'exit');
+    server.kill();
+    await exited;
+  }
   await rm(fixture, { recursive: true, force: true });
 }

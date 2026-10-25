@@ -1,0 +1,66 @@
+.original-game #app { background: #000; }
+.original-game #frame {
+  width: min(100vw, calc((100dvh - 48px) * 4 / 3));
+  max-width: 1280px;
+}
+.original-game #stage {
+  width: 100%;
+  height: auto;
+  box-shadow: none;
+}
+.original-game canvas { height: auto; aspect-ratio: 4 / 3; }
+.original-game .boot { cursor: default; }
+.original-game .boot[hidden] { display: none; }
+.original-game #bootBtn { top: 60%; margin: 0; font-size: clamp(15px, 2vw, 24px); }
+.original-game #bootBtn:disabled { cursor: wait; opacity: .6; }
+#loadProgress {
+  position: absolute;
+  left: 24%;
+  top: 79%;
+  width: 52%;
+  height: 6px;
+  accent-color: #fff;
+}
+#loadStatus {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 85%;
+  margin: 0;
+  font-size: clamp(13px, 1.8vw, 20px);
+  color: #bcbcbc;
+  white-space: pre-line;
+}
+.boot[data-error] #loadStatus { top: 20%; }
+.boot[data-error] .boot-logo { opacity: .25; }
+.game-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  min-height: 40px;
+  padding: 6px;
+  font-size: 16px;
+  color: #aaa;
+}
+.game-toolbar a, .game-toolbar button { color: #ccc; font: inherit; }
+.game-toolbar button { background: none; border: 1px solid #555; cursor: pointer; }
+.original-game #frame:fullscreen {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  background: #000;
+}
+@media (pointer: coarse) {
+  .original-game #frame { width: 100vw; }
+  .original-game canvas, .original-game .boot {
+    width: min(100%, calc((100dvh - 176px) * 4 / 3));
+    margin: 0 auto;
+  }
+  .original-game .boot { bottom: 120px; }
+  .original-game .tactions { gap: 6px; }
+  .game-toolbar { font-size: 14px; gap: 4px 12px; }
+}

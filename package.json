@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Dưới Đất — game nhập vai né đạn trên web, lấy cảm hứng từ thể loại RPG dưới lòng đất.",
+  "description": "Undertale chạy độc lập trên web bằng dữ liệu, mã GML gốc và Butterscotch.",
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
     "check": "node scripts/check.mjs && node scripts/check-game.mjs",
     "build:game": "node scripts/build-game.mjs",
-    "test": "node tests/gameplay.mjs",
+    "test": "node tests/undertale.mjs && node tests/gameplay.mjs",
+    "test:original": "node tests/undertale.mjs",
+    "test:legacy": "node tests/gameplay.mjs",
     "test:build": "node tests/game-build.mjs"
   },
   "devDependencies": {

@@ -18,6 +18,7 @@ const MIME = {
   '.woff2': 'font/woff2',
   '.ogg': 'audio/ogg',
   '.mp3': 'audio/mpeg',
+  '.wasm': 'application/wasm',
 };
 
 const server = createServer(async (req, res) => {
@@ -26,7 +27,16 @@ const server = createServer(async (req, res) => {
     let pathname = decodeURIComponent(url.pathname);
     if (pathname === '/') pathname = '/index.html';
 
-    const filePath = normalize(join(root, pathname));
+    let filePath = normalize(join(root, pathname));
+    // Bản build từ GML trong repo được ưu tiên; không đọc bản cài game bên ngoài.
+    if (pathname === '/assets/undertale/data.win') {
+      const built = join(root, 'build/undertale/data.win');
+      try {
+        if ((await stat(built)).isFile()) filePath = built;
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+      }
+    }
     if (!filePath.startsWith(root + sep) && filePath !== root) {
       res.writeHead(403).end('Forbidden');
       return;
@@ -52,5 +62,5 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`\n  DƯỚI ĐẤT đang chạy tại: http://localhost:${port}\n`);
+  console.log(`\n  UNDERTALE đang chạy tại: http://localhost:${port}\n`);
 });

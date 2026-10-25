@@ -18,4 +18,12 @@ for (const asset of manifest.assets) {
   assert.equal(bytes.length, asset.bytes, `Sai kích thước ${asset.name}`);
   assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256, `Sai nội dung ${asset.name}`);
 }
-console.log(`✓ dữ liệu Undertale: ${resources.rooms.length} phòng, ${resources.objects.length} đối tượng, ${codeFiles.length} mục GML và ${manifest.assets.length - 1} tệp âm thanh`);
+const index = JSON.parse(await readFile(new URL('../assets/undertale/index.json', import.meta.url), 'utf8'));
+assert.deepEqual(index.files, manifest.assets.map(({ name, bytes }) => ({ name, bytes })));
+const runtime = JSON.parse(await readFile(new URL('../vendor/butterscotch/manifest.json', import.meta.url), 'utf8'));
+for (const [name, checksum] of Object.entries(runtime.files)) {
+  const bytes = await readFile(new URL(`../vendor/butterscotch/${name}`, import.meta.url));
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), checksum, `Runtime bị thay đổi: ${name}`);
+}
+console.log(`✓ runtime Butterscotch tại revision ${runtime.commit}`);
+console.log(`✓ dữ liệu Undertale: ${resources.rooms.length} phòng, ${resources.objects.length} đối tượng, ${codeFiles.length} mục GML và ${manifest.assets.filter((a) => a.name.endsWith('.ogg')).length} tệp âm thanh`);

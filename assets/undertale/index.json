@@ -1,0 +1,860 @@
+{
+  "files": [
+    {
+      "name": "abc_123_a.ogg",
+      "bytes": 41445
+    },
+    {
+      "name": "credits.txt",
+      "bytes": 12162
+    },
+    {
+      "name": "data.win",
+      "bytes": 62921978
+    },
+    {
+      "name": "mus_a2.ogg",
+      "bytes": 190508
+    },
+    {
+      "name": "mus_alphysfix.ogg",
+      "bytes": 37336
+    },
+    {
+      "name": "mus_amalgam.ogg",
+      "bytes": 925215
+    },
+    {
+      "name": "mus_ambientwater.ogg",
+      "bytes": 25226
+    },
+    {
+      "name": "mus_anothermedium.ogg",
+      "bytes": 1631371
+    },
+    {
+      "name": "mus_bad.ogg",
+      "bytes": 15367
+    },
+    {
+      "name": "mus_barrier.ogg",
+      "bytes": 294861
+    },
+    {
+      "name": "mus_battle1.ogg",
+      "bytes": 658044
+    },
+    {
+      "name": "mus_battle2.ogg",
+      "bytes": 723437
+    },
+    {
+      "name": "mus_bergentruckung.ogg",
+      "bytes": 138547
+    },
+    {
+      "name": "mus_bgflameA.ogg",
+      "bytes": 55087
+    },
+    {
+      "name": "mus_birdnoise.ogg",
+      "bytes": 339872
+    },
+    {
+      "name": "mus_birdsong.ogg",
+      "bytes": 257060
+    },
+    {
+      "name": "mus_boss1.ogg",
+      "bytes": 1268539
+    },
+    {
+      "name": "mus_cast_1.ogg",
+      "bytes": 421829
+    },
+    {
+      "name": "mus_cast_2.ogg",
+      "bytes": 218377
+    },
+    {
+      "name": "mus_cast_3.ogg",
+      "bytes": 419039
+    },
+    {
+      "name": "mus_cast_4.ogg",
+      "bytes": 543714
+    },
+    {
+      "name": "mus_cast_5.ogg",
+      "bytes": 835097
+    },
+    {
+      "name": "mus_cast_6.ogg",
+      "bytes": 213067
+    },
+    {
+      "name": "mus_cast_7.ogg",
+      "bytes": 188078
+    },
+    {
+      "name": "mus_chokedup.ogg",
+      "bytes": 1663093
+    },
+    {
+      "name": "mus_churchbell.ogg",
+      "bytes": 78897
+    },
+    {
+      "name": "mus_computer.ogg",
+      "bytes": 18155
+    },
+    {
+      "name": "mus_confession.ogg",
+      "bytes": 215747
+    },
+    {
+      "name": "mus_coolbeat.ogg",
+      "bytes": 24348
+    },
+    {
+      "name": "mus_core.ogg",
+      "bytes": 2019126
+    },
+    {
+      "name": "mus_core_ambience.ogg",
+      "bytes": 62347
+    },
+    {
+      "name": "mus_coretransition.ogg",
+      "bytes": 122526
+    },
+    {
+      "name": "mus_creepy_ambience.ogg",
+      "bytes": 142854
+    },
+    {
+      "name": "mus_crickets.ogg",
+      "bytes": 522004
+    },
+    {
+      "name": "mus_cymbal.ogg",
+      "bytes": 54298
+    },
+    {
+      "name": "mus_dance_of_dog.ogg",
+      "bytes": 115895
+    },
+    {
+      "name": "mus_date.ogg",
+      "bytes": 1315019
+    },
+    {
+      "name": "mus_date_fight.ogg",
+      "bytes": 389822
+    },
+    {
+      "name": "mus_date_tense.ogg",
+      "bytes": 294740
+    },
+    {
+      "name": "mus_deeploop2.ogg",
+      "bytes": 72441
+    },
+    {
+      "name": "mus_disturbing.ogg",
+      "bytes": 84660
+    },
+    {
+      "name": "mus_dogappear.ogg",
+      "bytes": 25150
+    },
+    {
+      "name": "mus_dogmeander.ogg",
+      "bytes": 88021
+    },
+    {
+      "name": "mus_dogroom.ogg",
+      "bytes": 353905
+    },
+    {
+      "name": "mus_dogshrine_1.ogg",
+      "bytes": 569729
+    },
+    {
+      "name": "mus_dogshrine_2.ogg",
+      "bytes": 179728
+    },
+    {
+      "name": "mus_dogsong.ogg",
+      "bytes": 386793
+    },
+    {
+      "name": "mus_dontgiveup.ogg",
+      "bytes": 1424917
+    },
+    {
+      "name": "mus_doorclose.ogg",
+      "bytes": 13942
+    },
+    {
+      "name": "mus_dooropen.ogg",
+      "bytes": 9233
+    },
+    {
+      "name": "mus_drone.ogg",
+      "bytes": 20373
+    },
+    {
+      "name": "mus_dummybattle.ogg",
+      "bytes": 1637070
+    },
+    {
+      "name": "mus_dununnn.ogg",
+      "bytes": 16185
+    },
+    {
+      "name": "mus_elevator.ogg",
+      "bytes": 21671
+    },
+    {
+      "name": "mus_elevator_last.ogg",
+      "bytes": 90308
+    },
+    {
+      "name": "mus_endarea_parta.ogg",
+      "bytes": 2188141
+    },
+    {
+      "name": "mus_endarea_partb.ogg",
+      "bytes": 2134581
+    },
+    {
+      "name": "mus_endingexcerpt1.ogg",
+      "bytes": 295592
+    },
+    {
+      "name": "mus_endingexcerpt2.ogg",
+      "bytes": 594893
+    },
+    {
+      "name": "mus_express_myself.ogg",
+      "bytes": 1724516
+    },
+    {
+      "name": "mus_f_6s_1.ogg",
+      "bytes": 166063
+    },
+    {
+      "name": "mus_f_6s_2.ogg",
+      "bytes": 300803
+    },
+    {
+      "name": "mus_f_6s_3.ogg",
+      "bytes": 172921
+    },
+    {
+      "name": "mus_f_6s_4.ogg",
+      "bytes": 289982
+    },
+    {
+      "name": "mus_f_6s_5.ogg",
+      "bytes": 346516
+    },
+    {
+      "name": "mus_f_6s_6.ogg",
+      "bytes": 151223
+    },
+    {
+      "name": "mus_f_alarm.ogg",
+      "bytes": 20542
+    },
+    {
+      "name": "mus_f_destroyed.ogg",
+      "bytes": 64749
+    },
+    {
+      "name": "mus_f_destroyed2.ogg",
+      "bytes": 76088
+    },
+    {
+      "name": "mus_f_destroyed3.ogg",
+      "bytes": 36313
+    },
+    {
+      "name": "mus_f_finale_1.ogg",
+      "bytes": 129927
+    },
+    {
+      "name": "mus_f_finale_1_l.ogg",
+      "bytes": 231568
+    },
+    {
+      "name": "mus_f_finale_2.ogg",
+      "bytes": 503821
+    },
+    {
+      "name": "mus_f_finale_3.ogg",
+      "bytes": 719807
+    },
+    {
+      "name": "mus_f_intro.ogg",
+      "bytes": 202626
+    },
+    {
+      "name": "mus_f_newlaugh.ogg",
+      "bytes": 37700
+    },
+    {
+      "name": "mus_f_newlaugh_low.ogg",
+      "bytes": 73118
+    },
+    {
+      "name": "mus_f_part1.ogg",
+      "bytes": 359060
+    },
+    {
+      "name": "mus_f_part2.ogg",
+      "bytes": 328637
+    },
+    {
+      "name": "mus_f_part3.ogg",
+      "bytes": 315539
+    },
+    {
+      "name": "mus_f_saved.ogg",
+      "bytes": 58182
+    },
+    {
+      "name": "mus_f_wind1.ogg",
+      "bytes": 295335
+    },
+    {
+      "name": "mus_f_wind2.ogg",
+      "bytes": 224153
+    },
+    {
+      "name": "mus_fallendown2.ogg",
+      "bytes": 1520179
+    },
+    {
+      "name": "mus_fearsting.ogg",
+      "bytes": 13207
+    },
+    {
+      "name": "mus_flowey.ogg",
+      "bytes": 188451
+    },
+    {
+      "name": "mus_gameover.ogg",
+      "bytes": 367721
+    },
+    {
+      "name": "mus_ghostbattle.ogg",
+      "bytes": 563673
+    },
+    {
+      "name": "mus_harpnoise.ogg",
+      "bytes": 33633
+    },
+    {
+      "name": "mus_hereweare.ogg",
+      "bytes": 1607956
+    },
+    {
+      "name": "mus_hotel.ogg",
+      "bytes": 968920
+    },
+    {
+      "name": "mus_hotel_battle.ogg",
+      "bytes": 766125
+    },
+    {
+      "name": "mus_house1.ogg",
+      "bytes": 1188342
+    },
+    {
+      "name": "mus_house2.ogg",
+      "bytes": 1311196
+    },
+    {
+      "name": "mus_intronoise.ogg",
+      "bytes": 39671
+    },
+    {
+      "name": "mus_kingdescription.ogg",
+      "bytes": 697389
+    },
+    {
+      "name": "mus_lab.ogg",
+      "bytes": 955109
+    },
+    {
+      "name": "mus_leave.ogg",
+      "bytes": 907150
+    },
+    {
+      "name": "mus_menu0.ogg",
+      "bytes": 204293
+    },
+    {
+      "name": "mus_menu1.ogg",
+      "bytes": 227547
+    },
+    {
+      "name": "mus_menu2.ogg",
+      "bytes": 360118
+    },
+    {
+      "name": "mus_menu3.ogg",
+      "bytes": 374733
+    },
+    {
+      "name": "mus_menu4.ogg",
+      "bytes": 388076
+    },
+    {
+      "name": "mus_menu5.ogg",
+      "bytes": 376086
+    },
+    {
+      "name": "mus_menu6.ogg",
+      "bytes": 383516
+    },
+    {
+      "name": "mus_mett_applause.ogg",
+      "bytes": 69155
+    },
+    {
+      "name": "mus_mett_cheer.ogg",
+      "bytes": 55195
+    },
+    {
+      "name": "mus_mettafly.ogg",
+      "bytes": 79860
+    },
+    {
+      "name": "mus_mettaton_ex.ogg",
+      "bytes": 1634836
+    },
+    {
+      "name": "mus_mettaton_neo.ogg",
+      "bytes": 319346
+    },
+    {
+      "name": "mus_mettaton_pretransform.ogg",
+      "bytes": 180281
+    },
+    {
+      "name": "mus_mettatonbattle.ogg",
+      "bytes": 583328
+    },
+    {
+      "name": "mus_mettmusical1.ogg",
+      "bytes": 163603
+    },
+    {
+      "name": "mus_mettmusical2.ogg",
+      "bytes": 160930
+    },
+    {
+      "name": "mus_mettmusical3.ogg",
+      "bytes": 149776
+    },
+    {
+      "name": "mus_mettmusical4.ogg",
+      "bytes": 156332
+    },
+    {
+      "name": "mus_mettsad.ogg",
+      "bytes": 1005973
+    },
+    {
+      "name": "mus_mode.ogg",
+      "bytes": 28974
+    },
+    {
+      "name": "mus_mtgameshow.ogg",
+      "bytes": 563936
+    },
+    {
+      "name": "mus_muscle.ogg",
+      "bytes": 277334
+    },
+    {
+      "name": "mus_musicbox.ogg",
+      "bytes": 752037
+    },
+    {
+      "name": "mus_myemeow.ogg",
+      "bytes": 7881
+    },
+    {
+      "name": "mus_mysteriousroom2.ogg",
+      "bytes": 164686
+    },
+    {
+      "name": "mus_mystery.ogg",
+      "bytes": 201444
+    },
+    {
+      "name": "mus_napstachords.ogg",
+      "bytes": 481190
+    },
+    {
+      "name": "mus_napstahouse.ogg",
+      "bytes": 103046
+    },
+    {
+      "name": "mus_news.ogg",
+      "bytes": 174060
+    },
+    {
+      "name": "mus_news_battle.ogg",
+      "bytes": 574242
+    },
+    {
+      "name": "mus_ohyes.ogg",
+      "bytes": 55969
+    },
+    {
+      "name": "mus_oogloop.ogg",
+      "bytes": 140074
+    },
+    {
+      "name": "mus_operatile.ogg",
+      "bytes": 369368
+    },
+    {
+      "name": "mus_options_fall.ogg",
+      "bytes": 582100
+    },
+    {
+      "name": "mus_options_summer.ogg",
+      "bytes": 304325
+    },
+    {
+      "name": "mus_options_winter.ogg",
+      "bytes": 166565
+    },
+    {
+      "name": "mus_papyrus.ogg",
+      "bytes": 271164
+    },
+    {
+      "name": "mus_papyrusboss.ogg",
+      "bytes": 637752
+    },
+    {
+      "name": "mus_piano.ogg",
+      "bytes": 233861
+    },
+    {
+      "name": "mus_prebattle1.ogg",
+      "bytes": 131921
+    },
+    {
+      "name": "mus_predummy.ogg",
+      "bytes": 63364
+    },
+    {
+      "name": "mus_race.ogg",
+      "bytes": 497216
+    },
+    {
+      "name": "mus_rain.ogg",
+      "bytes": 98059
+    },
+    {
+      "name": "mus_rain_deep.ogg",
+      "bytes": 95924
+    },
+    {
+      "name": "mus_repeat_1.ogg",
+      "bytes": 66334
+    },
+    {
+      "name": "mus_repeat_2.ogg",
+      "bytes": 67502
+    },
+    {
+      "name": "mus_reunited.ogg",
+      "bytes": 3032892
+    },
+    {
+      "name": "mus_rimshot.ogg",
+      "bytes": 20847
+    },
+    {
+      "name": "mus_ruins.ogg",
+      "bytes": 1043131
+    },
+    {
+      "name": "mus_ruinspiano.ogg",
+      "bytes": 654602
+    },
+    {
+      "name": "mus_sansdate.ogg",
+      "bytes": 2155251
+    },
+    {
+      "name": "mus_sfx_a_grab.ogg",
+      "bytes": 11623
+    },
+    {
+      "name": "mus_sfx_chainsaw.ogg",
+      "bytes": 36071
+    },
+    {
+      "name": "mus_sfx_hypergoner_charge.ogg",
+      "bytes": 145003
+    },
+    {
+      "name": "mus_sfx_hypergoner_laugh.ogg",
+      "bytes": 35374
+    },
+    {
+      "name": "mus_sfx_rainbowbeam_hold.ogg",
+      "bytes": 24775
+    },
+    {
+      "name": "mus_shop.ogg",
+      "bytes": 505692
+    },
+    {
+      "name": "mus_sigh_of_dog.ogg",
+      "bytes": 228860
+    },
+    {
+      "name": "mus_silence.ogg",
+      "bytes": 4037
+    },
+    {
+      "name": "mus_smallshock.ogg",
+      "bytes": 77774
+    },
+    {
+      "name": "mus_smile.ogg",
+      "bytes": 734622
+    },
+    {
+      "name": "mus_snoresymphony.ogg",
+      "bytes": 336887
+    },
+    {
+      "name": "mus_snowwalk.ogg",
+      "bytes": 148063
+    },
+    {
+      "name": "mus_snowy.ogg",
+      "bytes": 1016656
+    },
+    {
+      "name": "mus_spider.ogg",
+      "bytes": 1076361
+    },
+    {
+      "name": "mus_spoopy.ogg",
+      "bytes": 187771
+    },
+    {
+      "name": "mus_spoopy_holiday.ogg",
+      "bytes": 109375
+    },
+    {
+      "name": "mus_spoopy_wave.ogg",
+      "bytes": 263510
+    },
+    {
+      "name": "mus_st_happytown.ogg",
+      "bytes": 14348
+    },
+    {
+      "name": "mus_st_him.ogg",
+      "bytes": 164073
+    },
+    {
+      "name": "mus_st_meatfactory.ogg",
+      "bytes": 29761
+    },
+    {
+      "name": "mus_st_troubledingle.ogg",
+      "bytes": 13248
+    },
+    {
+      "name": "mus_star.ogg",
+      "bytes": 425637
+    },
+    {
+      "name": "mus_sticksnap.ogg",
+      "bytes": 24291
+    },
+    {
+      "name": "mus_story.ogg",
+      "bytes": 664113
+    },
+    {
+      "name": "mus_story_stuck.ogg",
+      "bytes": 5057
+    },
+    {
+      "name": "mus_temshop.ogg",
+      "bytes": 333418
+    },
+    {
+      "name": "mus_temvillage.ogg",
+      "bytes": 666763
+    },
+    {
+      "name": "mus_tension.ogg",
+      "bytes": 79758
+    },
+    {
+      "name": "mus_tone2.ogg",
+      "bytes": 21403
+    },
+    {
+      "name": "mus_tone3.ogg",
+      "bytes": 13723
+    },
+    {
+      "name": "mus_toomuch.ogg",
+      "bytes": 468735
+    },
+    {
+      "name": "mus_toriel.ogg",
+      "bytes": 378887
+    },
+    {
+      "name": "mus_town.ogg",
+      "bytes": 879498
+    },
+    {
+      "name": "mus_tv.ogg",
+      "bytes": 104730
+    },
+    {
+      "name": "mus_undyneboss.ogg",
+      "bytes": 1327244
+    },
+    {
+      "name": "mus_undynefast.ogg",
+      "bytes": 228138
+    },
+    {
+      "name": "mus_undynepiano.ogg",
+      "bytes": 62937
+    },
+    {
+      "name": "mus_undynescary.ogg",
+      "bytes": 150736
+    },
+    {
+      "name": "mus_undynetheme.ogg",
+      "bytes": 432991
+    },
+    {
+      "name": "mus_undynetruetheme.ogg",
+      "bytes": 957792
+    },
+    {
+      "name": "mus_vsasgore.ogg",
+      "bytes": 1757194
+    },
+    {
+      "name": "mus_waterfall.ogg",
+      "bytes": 1479629
+    },
+    {
+      "name": "mus_waterquiet.ogg",
+      "bytes": 242873
+    },
+    {
+      "name": "mus_wawa.ogg",
+      "bytes": 37985
+    },
+    {
+      "name": "mus_whoopee.ogg",
+      "bytes": 56851
+    },
+    {
+      "name": "mus_wind.ogg",
+      "bytes": 90923
+    },
+    {
+      "name": "mus_woofenstein.ogg",
+      "bytes": 94782
+    },
+    {
+      "name": "mus_woofenstein_loop.ogg",
+      "bytes": 76883
+    },
+    {
+      "name": "mus_wrongnumbersong.ogg",
+      "bytes": 70778
+    },
+    {
+      "name": "mus_wrongworld.ogg",
+      "bytes": 637481
+    },
+    {
+      "name": "mus_x_undyne.ogg",
+      "bytes": 1839786
+    },
+    {
+      "name": "mus_x_undyne_pre.ogg",
+      "bytes": 173968
+    },
+    {
+      "name": "mus_xpart.ogg",
+      "bytes": 2070525
+    },
+    {
+      "name": "mus_xpart_2.ogg",
+      "bytes": 1253912
+    },
+    {
+      "name": "mus_xpart_a.ogg",
+      "bytes": 708242
+    },
+    {
+      "name": "mus_xpart_b.ogg",
+      "bytes": 508539
+    },
+    {
+      "name": "mus_xpart_back.ogg",
+      "bytes": 198691
+    },
+    {
+      "name": "mus_yourbestfriend_3.ogg",
+      "bytes": 395020
+    },
+    {
+      "name": "mus_z_ending.ogg",
+      "bytes": 2115643
+    },
+    {
+      "name": "mus_zz_megalovania.ogg",
+      "bytes": 1867146
+    },
+    {
+      "name": "mus_zzz_c.ogg",
+      "bytes": 94797
+    },
+    {
+      "name": "mus_zzz_c2.ogg",
+      "bytes": 57136
+    },
+    {
+      "name": "snd_ballchime.ogg",
+      "bytes": 36248
+    },
+    {
+      "name": "snd_curtgunshot.ogg",
+      "bytes": 5853
+    },
+    {
+      "name": "snd_mushroomdance.ogg",
+      "bytes": 14007
+    }
+  ]
+}

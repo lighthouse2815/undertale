@@ -17,7 +17,7 @@ let server;
 let browser;
 try {
   // Chạy bản sao chỉ có code và assets: không thể đọc thư mục cài game gốc.
-  for (const name of ['index.html', 'server.mjs', 'src', 'assets']) {
+  for (const name of ['index.html', 'duoi-dat.html', 'server.mjs', 'src', 'assets']) {
     await cp(join(projectRoot, name), join(standaloneRoot, name), { recursive: true });
   }
   server = spawn(process.execPath, ['server.mjs'], {
@@ -34,7 +34,7 @@ try {
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-  await page.goto(`http://127.0.0.1:${port}/#play`);
+  await page.goto(`http://127.0.0.1:${port}/duoi-dat.html#play`);
   await page.waitForFunction(() => window.__duoidat?.scene === 'title');
   await page.waitForFunction(() => window.__duoidat.localMusic && window.__duoidat.localArt);
   const assetResult = await page.evaluate(async () => {
@@ -726,7 +726,7 @@ try {
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   const phone = await mobile.newPage();
   phone.on('pageerror', (error) => errors.push(error.message));
-  await phone.goto(`http://127.0.0.1:${port}/#play`);
+  await phone.goto(`http://127.0.0.1:${port}/duoi-dat.html#play`);
   await phone.waitForFunction(() => window.__duoidat?.scene === 'title');
   for (const viewport of [{ width: 390, height: 844 }, { width: 320, height: 568 }, { width: 844, height: 390 }, { width: 568, height: 320 }]) {
     await phone.setViewportSize(viewport);
@@ -803,7 +803,7 @@ try {
     await musicIndexReady;
     await route.continue();
   });
-  await bootPage.goto(`http://127.0.0.1:${port}/`);
+  await bootPage.goto(`http://127.0.0.1:${port}/duoi-dat.html`);
   await bootPage.waitForFunction(() => window.__duoidat?.scene === 'boot');
   await bootPage.keyboard.press('Enter');
   await bootPage.waitForTimeout(100);
@@ -824,7 +824,7 @@ try {
   const blockedPage = await blocked.newPage();
   blockedPage.on('pageerror', (error) => errors.push(error.message));
   blockedPage.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-  await blockedPage.goto(`http://127.0.0.1:${port}/#play`);
+  await blockedPage.goto(`http://127.0.0.1:${port}/duoi-dat.html#play`);
   await blockedPage.waitForFunction(() => window.__duoidat?.scene === 'title');
   assert.equal(await blockedPage.evaluate(() => window.__audio.muted), false);
   await blockedPage.evaluate(() => window.__audio.localCache.set('test', new Audio()));

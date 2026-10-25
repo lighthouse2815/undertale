@@ -1,6 +1,6 @@
 # Dữ liệu và logic Undertale
 
-`assets/undertale/` chứa dữ liệu nền `data.win` và toàn bộ 212 tệp âm thanh ngoài
+`assets/undertale/` chứa dữ liệu nền `data.win`, `credits.txt` và toàn bộ 212 tệp âm thanh ngoài
 được nhập từ bản game do người dùng cung cấp. Sprite, font, âm thanh nhúng, bản đồ,
 đối tượng và bytecode gốc nằm trong dữ liệu nền; không cần bản cài Undertale khi chạy.
 `resources.json` liệt kê 336 phòng và 1.709 đối tượng để tra cứu theo tên và ID.
