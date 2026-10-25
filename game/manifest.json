@@ -1070,6 +1070,11 @@
       "name": "snd_mushroomdance.ogg",
       "bytes": 14007,
       "sha256": "762bb73a6158f511356f205065f5fe2271569b5b75d3da96250998a03818ed5e"
+    },
+    {
+      "name": "splash.png",
+      "bytes": 1501,
+      "sha256": "4d61c1a05b596720523f442bed39d04067d19f7c306073e2306f282e1198c554"
     }
   ],
   "code": {

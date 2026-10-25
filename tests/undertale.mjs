@@ -54,8 +54,10 @@ try {
   await page.goto(`${origin}/?debug`);
   await page.waitForFunction(() => ['ready', 'error'].includes(window.__undertale?.phase));
   assert.equal(await page.evaluate(() => __undertale.phase), 'ready');
-  assert.equal(await page.evaluate(() => __undertale.module.FS.readdir('/game').filter((f) => !f.startsWith('.')).length), 214);
+  assert.equal(await page.evaluate(() => __undertale.module.FS.readdir('/game').filter((f) => !f.startsWith('.')).length), 215);
   assert.ok(await page.evaluate(() => __undertale.module.FS.readFile('/game/credits.txt').length > 0));
+  assert.deepEqual(await page.evaluate(() => [...__undertale.module.FS.readFile('/game/splash.png').slice(0, 8)]),
+    [137, 80, 78, 71, 13, 10, 26, 10]);
   await page.click('#bootBtn');
   await page.waitForFunction(() => __undertale.room?.name === 'room_introstory');
   await page.waitForTimeout(350);
@@ -173,7 +175,7 @@ try {
   assert.equal(await page.evaluate(() => __undertale.logs.some((l) => /Failed to load file|Unknown function/i.test(l))), false);
   await context.close();
   console.log('✓ bản sao độc lập chạy bytecode gốc, intro, tiêu đề, đặt tên và vào phòng đầu');
-  console.log('✓ 214 tệp dữ liệu/âm thanh/credit trong runtime, âm thanh phát thật, di chuyển và va chạm gốc');
+  console.log('✓ 215 tệp dữ liệu/âm thanh/credit/splash trong runtime, âm thanh phát thật, di chuyển và va chạm gốc');
   console.log('✓ thả phím khi mất tiêu điểm, GML ghi OPFS và nạp checkpoint sau khi tải lại trang');
   console.log('✓ hội thoại Toriel, chuyển vào trận gốc, bốn lệnh và thực hiện một lượt tấn công');
 
