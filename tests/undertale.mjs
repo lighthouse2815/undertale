@@ -312,11 +312,18 @@ try {
   }
   const pagesContext = await browser.newContext();
   const pagesPage = await pagesContext.newPage();
+  const pagesErrors = [];
+  pagesPage.on('pageerror', (error) => pagesErrors.push(error.message));
+  pagesPage.on('console', (message) => { if (message.type() === 'error') pagesErrors.push(message.text()); });
   await pagesPage.goto(`${origin}/pages/`);
   await pagesPage.waitForFunction(() => ['ready', 'error'].includes(__undertale.phase));
   assert.equal(await pagesPage.evaluate(() => __undertale.phase), 'ready');
+  assert.ok(await pagesPage.locator('.boot-logo').evaluate((image) => image.complete && image.naturalWidth > 0));
+  const readme = await pagesPage.request.get(`${origin}/pages/README.md`);
+  assert.equal(readme.status(), 200);
   await pagesPage.click('#bootBtn');
   await pagesPage.waitForFunction(() => __undertale.room?.name === 'room_introstory');
+  assert.deepEqual(pagesErrors, []);
   await pagesContext.close();
   const brokenContext = await browser.newContext();
   const brokenPage = await brokenContext.newPage();

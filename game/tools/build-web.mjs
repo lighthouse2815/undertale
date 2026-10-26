@@ -39,7 +39,8 @@ export async function buildWeb(output, { pages = false } = {}) {
   const compiled = await buildGame();
   const staging = await mkdtemp(join(dirname(output), '.undertale-web-'));
   try {
-    for (const name of pages ? ['index.html', 'CREDITS.txt', 'vendor', 'web', 'assets/ui'] : content) {
+    for (const name of pages ? ['index.html', 'README.md', 'CREDITS.txt', 'vendor', 'web', 'assets/ui',
+      'assets/sprites/spr_undertaletitle'] : content) {
       await cp(join(source, name), join(staging, name), { recursive: true, mode: constants.COPYFILE_FICLONE,
         filter: async (file) => {
           if ((await lstat(file)).isSymbolicLink()) throw new Error(`Không đóng gói symlink: ${file}`);
