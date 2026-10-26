@@ -18,6 +18,7 @@ import { RuinsBattle } from './ruins-battle.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
+import { Ruins12Lesson } from './ruins12.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -51,6 +52,7 @@ const ROOM_EXITS = {
   room_ruins9: { A: 'room_ruins10', B: 'room_ruins8' },
   room_ruins10: { A: 'room_ruins11', B: 'room_ruins9' },
   room_ruins11: { A: 'room_ruins12', B: 'room_ruins10' },
+  room_ruins12: { B: 'room_ruins11' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -90,6 +92,7 @@ class World extends Scene {
     this.ruinsEncounter?.destroy(); this.ruinsEncounter = null;
     this.ruinsRock = null; this.ruinsHoles?.destroy(); this.ruinsHoles = null;
     this.ruinsGoofyrock?.destroy(); this.ruinsGoofyrock = null;
+    this.ruins12?.destroy(); this.ruins12 = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -195,6 +198,8 @@ class World extends Scene {
     if (['room_ruins8', 'room_ruins10'].includes(name)) this.ruinsHoles = new RuinsHoles(this);
     if (name === 'room_ruins9') this.ruinsRock = new RuinsRock(this);
     if (name === 'room_ruins11') this.ruinsGoofyrock = new RuinsGoofyrock(this);
+    if (name === 'room_ruins12') this.ruins12 = new Ruins12Lesson(this);
+    if (name === 'room_ruins12A') this.ruins12 = new Ruins12Lesson(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -310,6 +315,7 @@ class World extends Scene {
   tryInteract() {
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;
+    if (this.ruins12?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
