@@ -49,8 +49,11 @@ export async function testVegetoid(page) {
   assert.equal(await page.evaluate(() => __remake.scene.hp), 17);
   await key('z'); await key('x'); assert.equal(await page.evaluate(() => __remake.scene.mode), 'soul');
   await page.waitForFunction(() => __remake.scene.mode === 'menu');
+  // Các ca ACT độc lập cần đủ HP; đứng yên qua nhiều wave ngẫu nhiên có thể Game Over.
+  await page.evaluate(() => { const scene = __remake.scene; scene.hp = scene.maxHp; scene.refreshHp(); });
   await act(1); assert.match(await page.evaluate(() => __remake.scene.message.text), /wasn't weakened/); await close(); await wave(90, 'vegetables');
   await page.waitForFunction(() => __remake.scene.mode === 'menu');
+  await page.evaluate(() => { const scene = __remake.scene; scene.hp = scene.maxHp; scene.refreshHp(); });
   await act(2); assert.match(await page.evaluate(() => __remake.scene.speechText.text), /Plants/); await wave(90, 'vegetables');
   await page.waitForFunction(() => __remake.scene.mode === 'menu');
   await flee();
