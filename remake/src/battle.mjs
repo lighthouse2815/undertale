@@ -7,6 +7,7 @@ export const BATTLE_CONFIGS = {
   tutorialFroggit: { name: 'Froggit', asset: 'spr_froggit', hp: 20, def: 1 },
   froggit: { name: 'Froggit', asset: 'spr_froggit', hp: 30, def: 4, xp: 3 },
   whimsun: { name: 'Whimsun', asset: 'spr_whimsun', hp: 10, def: 0, xp: 2 },
+  napstablook: { name: 'Napstablook', asset: 'spr_napstabattle', hp: 88, def: 4, xp: 0 },
   nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
 };
 

@@ -1,0 +1,61 @@
+{
+  "intro": [
+    "* Here comes Napstablook."
+  ],
+  "hardIntro": [
+    "* Here comes Napstablook.\n* Same as usual."
+  ],
+  "check": [
+    "* NAPSTABLOOK - ATK 10 DEF 10\n* This monster doesn't seem to\n  have a sense of humor..."
+  ],
+  "hardCheck": [
+    "* NAPSTABLOOK - ATK 10 DEF 10\n* Missed the memo and is the\n  same difficulty as normal."
+  ],
+  "threat": [
+    "* You give Napstablook a\n  cruel look."
+  ],
+  "cheer": [
+    "* You try to console\n  Napstablook...",
+    "* You gave Napstablook a\n  patient smile.",
+    "* You told Napstablook a\n  little joke.",
+    "* Napstablook wants to\n  show you something."
+  ],
+  "speech": [
+    "i'm\nfine,\nthanks.",
+    "just\npluggin\nalong...",
+    "nnnnnn\nggghhh.",
+    "oh, i'm\nREAL\nfunny.",
+    "go\nahead,\ndo it.",
+    "i'd just\nweigh\nyou\ndown.",
+    "heh...",
+    "heh\nheh...",
+    "let me\ntry...",
+    "i knew\nit...",
+    "oh\nno...",
+    "oh\ngee..."
+  ],
+  "idle": [
+    "* Napstablook is staring into\n  the distance.",
+    "* Napstablook is wishing they\n  weren't here.",
+    "* Napstablook is pretending to\n  sleep.",
+    "* The faint odor of ectoplasm\n  permeates the vicinity.",
+    "* Napstablook looks just a\n  little bit better.",
+    "* Cheering seems to have\n  improved Napstablook's\n  mood again."
+  ],
+  "beaten": [
+    "umm... you do\nknow you cant\nkill ghosts, right?",
+    "we're sorta\nincorporeal and\nall",
+    "i was just\nlowering my hp\nbecause i didnt\nwant to be rude",
+    "sorry...\ni just made this\nmore awkward...",
+    "pretend you beat\n  me...",
+    "oooooooooo"
+  ],
+  "win": [
+    "* YOU WON!\n* You lost 1 experience point."
+  ],
+  "hat": [
+    "i call\nit\n\"dapper\nblook\"",
+    "do you\nlike\nit..."
+  ],
+  "hatWaiting": "* Napstablook eagerly awaits\n  your response."
+}

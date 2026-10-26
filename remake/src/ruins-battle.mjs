@@ -11,7 +11,7 @@ const SPRITES = { spr_froggit: 4, spr_froghead: 2, spr_froglegs: 2, spr_whimsun:
 
 // Trận đơn battlegroup 4/5: obj_froggit/obj_whimsun và các đợt né đạn gốc.
 export class RuinsBattle extends DummyBattle {
-  constructor() { super('RuinsBattle'); }
+  constructor(key = 'RuinsBattle') { super(key); }
 
   preload() {
     super.preload();
@@ -52,21 +52,25 @@ export class RuinsBattle extends DummyBattle {
     if (window.__remake.phase === 'error') return;
     this.invFrames = 0; this.soulElapsed = 0; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
     this.previousScene.flags[30] = this.monster === 'froggit' ? 1 : this.previousScene.flags[30] ?? 0;
-    this.enemy.setPosition(this.monster === 'froggit' ? 108 : 107, this.monster === 'froggit' ? 68 : 8);
     this.enemyParts = [];
-    if (this.monster === 'froggit') {
-      this.enemy.setOrigin(2 / 112);
-      this.enemyParts = ['spr_froghead', 'spr_froglegs'].map((key) => this.add.image(108, 68, `${key}:0`).setOrigin(0).setScale(.5));
-    }
-    this.animatePath(this.monster === 'froggit' ? this.enemyParts[0] : this.enemy,
-      this.monster === 'froggit' ? 'path_froghead' : 'path_whimsun');
-    this.music = this.sound.add('mus_battle1', { loop: true, volume: .5 }); this.music.play();
+    this.setupEnemy();
+    this.music = this.sound.add(this.musicKey ?? 'mus_battle1', { loop: true, volume: .5 }); this.music.play();
     this.events.once('shutdown', () => { this.music?.destroy(); this.wave?.destroy(); });
     window.__remake.room = `battle_${this.monster}`;
     if (this.monster === 'nobody') {
       this.enemy.setVisible(false); this.soul.setVisible(false); this.music.stop();
       this.showPages(this.dialogue.empty, () => this.finishBattle());
     }
+  }
+
+  setupEnemy() {
+    this.enemy.setPosition(this.monster === 'froggit' ? 108 : 107, this.monster === 'froggit' ? 68 : 8);
+    if (this.monster === 'froggit') {
+      this.enemy.setOrigin(2 / 112);
+      this.enemyParts = ['spr_froghead', 'spr_froglegs'].map((key) => this.add.image(108, 68, `${key}:0`).setOrigin(0).setScale(.5));
+    }
+    this.animatePath(this.monster === 'froggit' ? this.enemyParts[0] : this.enemy,
+      this.monster === 'froggit' ? 'path_froghead' : 'path_whimsun');
   }
 
   animatePath(npc, name) {
@@ -88,11 +92,13 @@ export class RuinsBattle extends DummyBattle {
         else this.retry();
       }
     } else super.update(time, delta);
-    if (this.mode !== 'dead' && this.mode !== 'fight') {
-      if (this.monster === 'froggit') for (const [i, part] of this.enemyParts.entries()) part.setTexture(`${i ? 'spr_froglegs' : 'spr_froghead'}:${Math.floor(time / (1000 / (i ? 1.2 : .6))) % 2}`);
-      else if (this.enemy.visible) this.enemy.setTexture(`spr_whimsun:${Math.floor(time / (1000 / 3)) % 2}`);
-    }
+    if (this.mode !== 'dead' && this.mode !== 'fight') this.animateEnemy(time);
     this.confirmPressed = false; this.cancel = false;
+  }
+
+  animateEnemy(time) {
+    if (this.monster === 'froggit') for (const [i, part] of this.enemyParts.entries()) part.setTexture(`${i ? 'spr_froglegs' : 'spr_froghead'}:${Math.floor(time / (1000 / (i ? 1.2 : .6))) % 2}`);
+    else if (this.enemy.visible) this.enemy.setTexture(`spr_whimsun:${Math.floor(time / (1000 / 3)) % 2}`);
   }
 
   updateMenu() {
@@ -164,8 +170,8 @@ export class RuinsBattle extends DummyBattle {
       this.soulElapsed -= 1000 / 30; this.invFrames--;
       const speed = this.keys.shift.isDown ? 1 : 2;
       const input = (name) => this.keys[name].isDown || [...this.previousScene.touch.values()].some((pointer) => pointer.direction === name);
-      this.soul.x = Math.max(120.5, Math.min(190.5, this.soul.x + (input('right') ? speed : 0) - (input('left') ? speed : 0)));
-      this.soul.y = Math.max(127, Math.min(184.5, this.soul.y + (input('down') ? speed : 0) - (input('up') ? speed : 0)));
+      this.soul.x = Math.max(this.arena.x + 2, Math.min(this.arena.x + this.arena.width - 8, this.soul.x + (input('right') ? speed : 0) - (input('left') ? speed : 0)));
+      this.soul.y = Math.max(this.arena.y + 2, Math.min(this.arena.y + this.arena.height - 8, this.soul.y + (input('down') ? speed : 0) - (input('up') ? speed : 0)));
       const done = this.wave.step(); this.bullets = this.wave.bullets;
       this.soul.setTexture(`spr_heart:${this.invFrames > 0 ? Math.floor(this.invFrames * .5) % 2 : 0}`);
       if (this.hp <= 0) { this.die(); break; }
@@ -222,7 +228,7 @@ export class RuinsBattle extends DummyBattle {
 
   die() {
     this.mode = 'dead'; this.wave.destroy(); this.music.stop(); this.sound.stopAll();
-    const x = this.soul.x, y = this.soul.y; this.children.removeAll(true); this.enemyParts = []; this.enemyMotion.stop();
+    const x = this.soul.x, y = this.soul.y; this.children.removeAll(true); this.enemyParts = []; this.enemyMotion?.stop();
     this.cameras.main.resetFX();
     const heart = this.add.image(x, y, 'spr_heart:0').setScale(.5).setOrigin(0);
     this.deathReady = false;

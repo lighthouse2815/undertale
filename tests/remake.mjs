@@ -355,7 +355,7 @@ try {
   await testRuinsBattle(page, root);
   await testRuinsPath(page);
   await testRuinsLate(page);
-  await testRuins12(page);
+  await testRuins12(page, root);
   await testRuins13(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);

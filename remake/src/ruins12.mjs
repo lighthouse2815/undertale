@@ -1,7 +1,7 @@
 import { inInteractionRange } from './npc.mjs';
 
 const NAP = [
-  '* zzzzzzzzzzzzzzzz..\n* zzzzzzzzzzzzzz...',
+  '* zzzzzzzzzzzzzzz..\n* zzzzzzzzzzzzzz...',
   '* zzzzzzzzzz..\n* (are they gone yet)\n* zzzzzzzzzzzzzzz...',
   "* (This ghost keeps saying 'z'\n  out loud repeatedly,\n  pretending to sleep.)",
 ];
@@ -15,22 +15,36 @@ export class Ruins12Lesson {
     this.world = world;
     this.nap = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_napstablook1');
     this.cheese = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_cheesetable1');
-    this.stage = world.plot > 10.5 ? 'gone' : world.plot >= 10.4 ? 'leaving' : 'sleeping';
+    if (this.nap && (world.flags[202] ?? 0) >= 20 && world.plot < 10.4) world.plot = 10.4;
+    this.stage = world.plot > 10.5 ? 'gone' : 'sleeping';
     if (this.stage === 'gone') this.nap?.image.destroy();
+  }
+
+  update() {
+    const world = this.world;
+    if (!this.nap || this.stage === 'gone') return false;
+    if (world.plot > 10.5) { this.stage = 'gone'; this.nap.image.destroy(); return false; }
+    if (world.plot === 10.3 || world.plot === 10.35) {
+      world.plot = 10.4; world.flags[36] = 1; this.stage = 'leaving';
+      world.showDialogue(NAP_AFTER, { onClose: () => this.leave() });
+      return true;
+    }
+    if (world.plot === 10.4) {
+      if (!this.fading) this.leave();
+      return true;
+    }
+    return false;
   }
 
   interact() {
     const world = this.world;
     if (this.nap && this.stage === 'sleeping' && inInteractionRange(world, this.nap)) {
-      world.showChoice(NAP[0], ['Yes', 'No'], (choice) => {
-        if (choice === 0) {
-          world.showDialogue([...NAP.slice(1), '* (You decide not to move it.)'], { onClose: () => this.finish() });
-        } else this.finish();
-      });
-      return true;
-    }
-    if (this.nap && this.stage === 'leaving' && inInteractionRange(world, this.nap)) {
-      world.showDialogue(NAP_AFTER, { onClose: () => this.leave() });
+      world.showDialogue(NAP, { onClose: () => world.showChoice('* Move it with force?', ['Yes', 'No'], (choice) => {
+        if (choice !== 0) return;
+        world.flags[200] = 0;
+        for (const flag of [10, 11, 12, 13]) world.flags[flag] = 0;
+        world.release(); window.__remake.startBattle('napstablook');
+      }) });
       return true;
     }
     if (this.cheese && inInteractionRange(world, this.cheese)) {
@@ -41,14 +55,11 @@ export class Ruins12Lesson {
     return false;
   }
 
-  finish() {
-    const world = this.world; world.plot = 10.4; world.flags[36] = 1; this.stage = 'leaving';
-    if (this.nap) this.nap.image.setAlpha(.45);
-  }
-
   leave() {
-    const world = this.world; world.plot = 11; this.stage = 'gone'; this.nap?.image.destroy();
+    this.stage = 'leaving';
+    this.fading = this.world.tweens.add({ targets: this.nap.image, alpha: 0, duration: 18 * 1000 / 30,
+      onComplete: () => { this.world.plot = 11; this.stage = 'gone'; this.nap.image.destroy(); this.fading = null; } });
   }
 
-  destroy() { }
+  destroy() { this.fading?.stop(); }
 }
