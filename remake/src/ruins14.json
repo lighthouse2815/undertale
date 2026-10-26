@@ -1,0 +1,11 @@
+{
+  "sign": ["* There is just one switch."],
+  "ribbon": ["* You found a Faded Ribbon."],
+  "full": ["* You are carrying too\n  much."],
+  "nap": [
+    "* i fell down a hole...\n* now i cant get up...",
+    "* go on without me...",
+    "* wait, ghosts can fly,\n  can't they...",
+    "* oh well..."
+  ]
+}

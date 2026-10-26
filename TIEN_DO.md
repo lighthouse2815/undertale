@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 27/10/2026, sau phần trận Vegetoid đơn. Mốc code trước phần này: `1efd02c1` trên `main`.
+Cập nhật: 27/10/2026, sau phần sự kiện phòng 14. Mốc code trước phần này: `e17b604b` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -27,16 +27,17 @@ Trang chính/bản Butterscotch chưa được thay bằng bản viết lại; k
 - Có trận Napstablook nối từ phòng 12; Check/Threat/Cheer/Flirt, màn mũ, kết thúc riêng, Flee/ITEM và Game Over; xem giới hạn trình bày trong `remake/README.md`.
 - Mask trái tim/đạn trong trận đã đọc pixel trắng thay vì alpha, dòng nước Napstablook tải mask theo khung hình; có kiểm tra góc đen an toàn, hình ếch, xoay/co giãn, sát thương và bất tử bằng tài nguyên thật.
 - Có trận đơn Froggit/Whimsun, một số đợt đạn, ACT/FIGHT/ITEM/MERCY, phần thưởng và Game Over nạp snapshot tạm; encounter mới nối ở phòng lá.
-- Có trận Vegetoid đơn qua `__remake.startBattle('vegetoid')`: Check/Devour/Talk/Dinner, hai generator cà rốt/rau, đạn xanh hồi HP cả khi bất tử, tha/Devour/Flee/đánh bại và thưởng riêng. Chưa nối Vegetoid ngoài phòng 14, chưa có Parsnik Hard Mode hoặc encounter ngẫu nhiên Vegetoid.
-- Các phòng Ruins tới 13 đã có nhiều phần triển khai, **chưa hoàn chỉnh toàn bộ sự kiện và hành vi gốc**. Xem giới hạn bên dưới và `remake/README.md`.
+- Có trận Vegetoid đơn: Check/Devour/Talk/Dinner, hai generator cà rốt/rau, đạn xanh hồi HP cả khi bất tử, tha/Devour/Flee/đánh bại và thưởng riêng. Hai Vegetoid ngoài phòng 14 mở trận này; chưa có Parsnik Hard Mode hoặc encounter ngẫu nhiên Vegetoid.
+- Phòng 14 nối hai chiều với 13, có biển chỉ dẫn, hố xuống dùng mask riêng, sáu lối lên 400/510 pixel, công tắc đặt plot 13 và mở tường/gai, nhặt Ribbon với túi đầy/cờ 100, lần gặp lại Napstablook theo cờ 36/dân số/tuyến. Vật phẩm và NPC có va chạm, bỏ collider khi biến mất; lưu/nạp giữ tiến trình. Cửa tới 15A chưa nối, encounter ngẫu nhiên và Parsnik chưa chuyển.
+- Các phòng Ruins tới 14 đã có nhiều phần triển khai, **chưa hoàn chỉnh toàn bộ sự kiện và hành vi gốc**. Xem giới hạn bên dưới và `remake/README.md`.
 - Phần trước: cửa phải phòng 12 → 12A → 12B; cửa trên phòng 12 ↔ 13 dùng markerX. Spider Bake Sale mua Donut 7G/Cider 18G, kiểm tra túi/GOLD và cờ 59. Phòng 13 có các hội thoại Froggit, cờ màu tên 22 được trận thường đọc lại, cuộc gọi bánh Toriel theo trigger vô hình và Flowey chìm khi camera thấy.
 
 ## Việc tiếp theo và các chỗ phải sửa thật
 
-1. **Ưu tiên phòng 14 trở đi và encounter còn thiếu.** Vegetoid đơn đã chuyển, bước tiếp là nối cửa 13 ↔ 14, hố cao khác nhau, công tắc/tường/gai, Ribbon, Napstablook và Vegetoid ngoài trận trong phòng 14. Đối chiếu `obj_holeup2` (lối dưới đi lên 510 pixel), `obj_plotswitch3`, `obj_plotwall6`, `obj_ribbon_pickup`, `obj_napstablook2`, `obj_vegetoid_overworld`. Nhánh Hard Mode dùng Parsnik (nhóm 122), chưa có; không thay bằng Vegetoid thường rồi báo đã chuyển đầy đủ. Trận Napstablook đã nối: No không đổi plot; Yes vào battlegroup 20; Cheer ba lần → màn mũ, Cheer/Flirt tiếp → lời cảm ơn tự động, cờ 36 và fade tới plot 11. Flee giữ ma để đấu lại; đánh cạn 88 HP khiến ma rời đi, không đổi EXP/GOLD/kill/dân số. Nhánh cờ 202 >= 20 tự rời phòng không bật cờ 36. Bộ test phòng 12 đã thay kỳ vọng bỏ qua boss bằng các nhánh thật. Va chạm dòng nước sát khung và nước mắt tạo mũ còn cần đối chiếu từng khung; test hiện tại kiểm tra luật chơi và kết quả, chưa chứng minh toàn bộ quỹ đạo giống hệt gốc. Trình bày bong bóng thoại, gõ chữ và chuyển cảnh chiến đấu cũng chưa hoàn chỉnh như bản gốc.
+1. **Ưu tiên phòng 15A trở đi và encounter còn thiếu.** Theo thứ tự trong `game/project/order.json`, phòng sau 14 là 15A. Sự kiện phòng 14 và Vegetoid thường đã nối; Parsnik Hard Mode (nhóm 122) chưa có, không thay bằng Vegetoid thường rồi báo đã chuyển đầy đủ. Đối chiếu tiếp câu đố công tắc màu ở 15A trở đi và các encounter chưa chuyển. Trận Napstablook đã nối: No không đổi plot; Yes vào battlegroup 20; Cheer ba lần → màn mũ, Cheer/Flirt tiếp → lời cảm ơn tự động, cờ 36 và fade tới plot 11. Flee giữ ma để đấu lại; đánh cạn 88 HP khiến ma rời đi, không đổi EXP/GOLD/kill/dân số. Nhánh cờ 202 >= 20 tự rời phòng không bật cờ 36. Bộ test phòng 12 đã thay kỳ vọng bỏ qua boss bằng các nhánh thật. Va chạm dòng nước sát khung và nước mắt tạo mũ còn cần đối chiếu từng khung; test hiện tại kiểm tra luật chơi và kết quả, chưa chứng minh toàn bộ quỹ đạo giống hệt gốc. Trình bày bong bóng thoại, gõ chữ và chuyển cảnh chiến đấu cũng chưa hoàn chỉnh như bản gốc.
 2. Phát hiện mask PNG gốc là ảnh trắng/đen với alpha 255 ở cả hai màu. `movement.mjs`, `ruins-waves.mjs` và `napstablook-waves.mjs` đã đọc kênh đỏ cho mask. Đạn dòng nước Napstablook tải cả hai mask và chọn theo khung ảnh. Kiểm tra pixel thật ở góc tim/ruồi/ếch/nước mắt/dòng nước, gồm các góc xoay và hệ số scale, đã bổ sung. Quỹ đạo và va chạm khung của các generator vẫn cần đối chiếu riêng, không suy ra đã khớp hoàn toàn chỉ từ test mask. Hố phòng 8/10 đã thay bộ đếm dịch chuyển cố định bằng di chuyển 30 Hz, giữ x và chênh 400 pixel; hai bảng chỉ dẫn phòng 10 đã dùng lời gốc và vùng tương tác theo hướng nhìn, tải font bitmap cả khi vào phòng trực tiếp. Phần đá đã sửa: không đẩy khi chỉ đứng gần; di chuyển và collider đi cùng nhau; Goofyrock chỉ rời nút khi chạm activator chứ không phải sau câu “Was that helpful?”. Test kiểm tra các trạng thái/vị trí và chuyển động giữa đường, chưa chứng minh mọi khung va chạm sát cạnh hoặc thứ tự alarm giống hoàn toàn bản gốc.
-3. Phòng 12A đã bổ sung lời thoại/tên SAVE và tiếng chuột; không suy ra toàn bộ Ruins đã hoàn chỉnh. Encounter phòng 8–13 và nhóm nhiều quái/hard mode chưa chuyển.
-4. Tiếp tục phòng 14 trở đi, các phần Ruins còn thiếu, rồi Snowdin, Waterfall, Hotland, CORE, New Home, các tuyến và kết thúc. Cảnh Flowey mở đầu cũng còn thiếu.
+3. Phòng 12A đã bổ sung lời thoại/tên SAVE và tiếng chuột; không suy ra toàn bộ Ruins đã hoàn chỉnh. Encounter phòng 8–14 và nhóm nhiều quái/hard mode chưa chuyển.
+4. Tiếp tục phòng 15A trở đi, các phần Ruins còn thiếu, rồi Snowdin, Waterfall, Hotland, CORE, New Home, các tuyến và kết thúc. Cảnh Flowey mở đầu cũng còn thiếu.
 5. Các hạn chế chung còn có: hộp thoại hiện cả trang thay vì gõ từng chữ, hoạt hình/âm thanh/chuyển cảnh chiến đấu chưa đầy đủ, các vật phẩm/điện thoại/trạng thái lưu ngoài phần hiện tại chưa đủ.
 
 Không dùng lời thoại tự bịa, tự tăng plot hoặc bỏ qua trận để thay cho gameplay chưa chuyển.
@@ -66,9 +67,13 @@ Phần bảng chỉ dẫn phòng 10 đã qua cú pháp, build và `testRuinsHole
 
 Phần Vegetoid có kiểm thử `tests/remake-vegetoid.mjs`, gọi trong bộ tổng: Check/Talk/Devour thất bại và thành công, Dinner ở cả hai dạng đạn, HP/sát thương, rau xanh khi bất tử, Spare/Flee, EXP/GOLD/kill/cờ dân số. Quỹ đạo từng frame và trình bày vẫn cần đối chiếu thêm như ghi trong README.
 Phần Vegetoid đã qua kiểm tra cú pháp, build và kiểm thử riêng trên Chrome nêu trên.
+Toàn bộ `test:remake` đã qua sau phần Vegetoid, trước khi nối phòng 14.
+
+Phần phòng 14 có kiểm thử `tests/remake-ruins-14.mjs`, gọi trong bộ tổng: cửa hai chiều với 13, biển đúng hướng/font, mask hố xuống, sáu lối lên hai độ cao, công tắc/tường/gai/khóa di chuyển, túi đầy và nhặt Ribbon/bỏ va chạm, bốn lời ma/fade/cờ, lưu/nạp, hai Vegetoid mở trận thật và điều kiện NPC vắng mặt. Chưa có kiểm thử Parsnik hoặc encounter ngẫu nhiên vì các phần đó chưa chuyển.
+Phần phòng 14 đã qua cú pháp, build, kiểm thử riêng và chuỗi hồi quy hố 8/10 → sự kiện 12B/13 → phòng 14 trên Chrome nêu trên, không có lỗi JavaScript/console. Chưa chạy lại toàn bộ bộ tổng sau khi nối phòng 14.
 
 Phần 12A có kiểm thử tại `tests/remake-ruins-12a.mjs`: hướng tương tác/tiếng chuột, chống phát chồng, lời SAVE thường/hết quái, file cũ/mới, Return/Save/nạp/hồi HP và va chạm/thoại bàn phô mai.
-Phần 12A đã qua cú pháp, build, kiểm thử riêng và chuỗi hồi quy Napstablook → 12A → 12B/13. Bộ tổng gần nhất đã qua ở mốc sửa mask `3c30e1b2`; sau phần 12A chạy các kiểm thử liên quan nêu trên.
+Phần 12A đã qua cú pháp, build, kiểm thử riêng và chuỗi hồi quy Napstablook → 12A → 12B/13; sau đó cũng đã qua trong bộ tổng của phần Vegetoid.
 
 Phần mask chiến đấu có kiểm thử tại `tests/remake-battle-masks.mjs`, dùng scene và PNG thật để kiểm tra pixel đen/trắng, sát thương/bất tử và các phép xoay/co giãn; được gọi trước test trận thường trong bộ tổng.
 Phần mask đã qua cú pháp, build, kiểm thử riêng, kiểm thử Napstablook với vị trí đạn đã chỉnh và toàn bộ `test:remake`.

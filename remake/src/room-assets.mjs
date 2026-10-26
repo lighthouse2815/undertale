@@ -24,7 +24,9 @@ export async function loadRoom(scene, name) {
   const ruinsRock = name === 'room_ruins9';
   const goofyrock = name === 'room_ruins11';
   const rockDialogue = goofyrock ? await json(new URL('./ruins-goofyrock.json', import.meta.url).href) : null;
-  const ruinsHoles = ['room_ruins8', 'room_ruins10'].includes(name);
+  const ruinsHoles = ['room_ruins8', 'room_ruins10', 'room_ruins14'].includes(name);
+  const ruins14 = name === 'room_ruins14';
+  const ruins14Dialogue = ruins14 ? await json(new URL('./ruins14.json', import.meta.url).href) : null;
   const ruins12 = name === 'room_ruins12';
   const ruins13 = ['room_ruins12B', 'room_ruins13'].includes(name);
   const ruins13Dialogue = ruins13 ? await json(new URL('./ruins13.json', import.meta.url).href) : null;
@@ -85,7 +87,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
@@ -93,6 +95,7 @@ export async function loadRoom(scene, name) {
     ...(ruins12 ? ['snd_squeak'] : []),
     ...(name === 'room_ruins12A' ? ['snd_movemenu'] : []),
     ...(ruinsHoles ? ['snd_noise', 'snd_fall2', 'snd_hero'] : []),
+    ...(ruins14 ? ['snd_screenshake', 'snd_b'] : []),
     ...(hasSavepoint ? ['snd_power', 'snd_save'] : []), ...(ruinsTutorial ? ['snd_noise'] : []),
     ...(ruinsSwitches ? ['snd_screenshake', 'snd_wrongvictory'] : []),
     ...(dummyLesson ? ['snd_select', 'snd_damage', 'snd_escaped', 'snd_slidewhist'] : []),
@@ -118,5 +121,5 @@ export async function loadRoom(scene, name) {
   });
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, rockDialogue };
 }

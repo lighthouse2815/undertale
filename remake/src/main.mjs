@@ -22,6 +22,7 @@ import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
 import { Ruins13Lesson } from './ruins13.mjs';
+import { Ruins14Lesson } from './ruins14.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -58,6 +59,8 @@ const ROOM_EXITS = {
   room_ruins12: { A: 'room_ruins12A', B: 'room_ruins11' },
   room_ruins12A: { A: 'room_ruins12B', B: 'room_ruins12' },
   room_ruins12B: { B: 'room_ruins12A' },
+  room_ruins13: { A: 'room_ruins14' },
+  room_ruins14: { B: 'room_ruins13' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -99,6 +102,7 @@ class World extends Scene {
     this.ruinsGoofyrock?.destroy(); this.ruinsGoofyrock = null;
     this.ruins12?.destroy(); this.ruins12 = null;
     this.ruins13?.destroy(); this.ruins13 = null;
+    this.ruins14?.destroy(); this.ruins14 = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -202,12 +206,13 @@ class World extends Scene {
     if (name === 'room_ruins6') this.corridorLesson = new CorridorLesson(this);
     if (name === 'room_ruins7A') this.candyDish = new CandyDish(this);
     if (name === 'room_ruins7') { this.ruinsStart = new RuinsStart(this); this.ruinsEncounter = new RuinsEncounter(this); }
-    if (['room_ruins8', 'room_ruins10'].includes(name)) this.ruinsHoles = new RuinsHoles(this);
+    if (['room_ruins8', 'room_ruins10', 'room_ruins14'].includes(name)) this.ruinsHoles = new RuinsHoles(this);
     if (['room_ruins9', 'room_ruins11'].includes(name)) this.ruinsRock = new RuinsRock(this);
     if (name === 'room_ruins11') this.ruinsGoofyrock = new RuinsGoofyrock(this);
     if (name === 'room_ruins12') this.ruins12 = new Ruins12Lesson(this);
     if (name === 'room_ruins12A') this.ruins12 = new Ruins12Lesson(this);
     if (['room_ruins12B', 'room_ruins13'].includes(name)) this.ruins13 = new Ruins13Lesson(this);
+    if (name === 'room_ruins14') this.ruins14 = new Ruins14Lesson(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -284,6 +289,7 @@ class World extends Scene {
     if (this.ruinsStart?.update()) return;
     if (this.ruins12?.update()) return;
     if (this.ruins13?.update()) return;
+    if (this.ruins14?.update()) return;
     if (menuPressed && this.flags[17] !== 1) {
       this.release();
       state.phase = 'loadingMenu';
@@ -334,6 +340,7 @@ class World extends Scene {
     if (this.ruinsHoles?.interact()) return;
     if (this.ruins12?.interact()) return;
     if (this.ruins13?.interact()) return;
+    if (this.ruins14?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }

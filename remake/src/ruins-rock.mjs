@@ -65,7 +65,7 @@ export class RuinsHoles {
   constructor(world) {
     this.world = world;
     this.holes = world.dataSource.room.GameObjects
-      .filter((item) => ['obj_holeup', 'obj_holedown', 'obj_holedown2'].includes(item.ObjectName))
+      .filter((item) => ['obj_holeup', 'obj_holeup2', 'obj_holedown', 'obj_holedown2', 'obj_holedown3'].includes(item.ObjectName))
       .map((item) => ({ item, body: createCollider(world.dataSource,
         item.ObjectName === 'obj_holedown2' ? { ...item, ScaleY: 4 } : item) }));
     this.stage = 'idle'; this.locked = false; this.elapsed = 0;
@@ -88,7 +88,8 @@ export class RuinsHoles {
     if (this.locked || world.dialogue) return false;
     const hole = this.holes.find(({ body }) => !body.disabled && blocked(world, [body], world.player.x, world.player.y));
     if (!hole) return false;
-    this.hole = hole; this.up = hole.item.ObjectName === 'obj_holeup';
+    this.hole = hole; this.up = ['obj_holeup', 'obj_holeup2'].includes(hole.item.ObjectName);
+    this.travelFrames = this.up ? hole.item.ObjectName === 'obj_holeup2' && world.player.y > 550 ? 51 : 40 : 80;
     if (!this.up) {
       const image = world.add.image(world.player.x, world.player.y + 20, 'spr_hole:0').setOrigin(0).setDepth(-70000);
       this.cosmeticHoles.push(image);
@@ -138,7 +139,7 @@ export class RuinsHoles {
     }
     player.y += this.up ? -10 : 5;
     player.setDepth(player.y + 30);
-    if (this.frames === (this.up ? 40 : 80)) {
+    if (this.frames === this.travelFrames) {
       this.locked = false; this.stage = 'idle';
       player.setVisible(true).setAlpha(1);
     }
