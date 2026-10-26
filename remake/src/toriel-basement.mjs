@@ -1,7 +1,18 @@
 import { touchesObject, walkNpc } from './npc.mjs';
 
-export const BASEMENT_ROOMS = ['room_basement1', 'room_basement2', 'room_basement3'];
+export const BASEMENT_ROOMS = ['room_basement1', 'room_basement2', 'room_basement3', 'room_basement4'];
 export function stopBasementMusic(world) { world.basementMusic?.destroy(); world.basementMusic = null; }
+
+export function startBasementMusic(world) {
+  const key = world.flags[7] === 1 ? 'mus_reunited' : 'mus_intronoise', rate = key === 'mus_intronoise' ? .3 : 1;
+  if (world.basementMusic?.key !== key || world.basementMusic.pendingRemove) {
+    stopBasementMusic(world);
+    world.basementMusic = world.sound.add(key, { loop: true, volume: key === 'mus_intronoise' ? .4 : 1, rate });
+    world.basementMusic.play();
+  }
+  if (!world.basementMusic.isPlaying) world.basementMusic.play();
+  return world.basementMusic;
+}
 
 // obj_torieltrigger8–11: đưa về trên lầu và ba lời cảnh báo trước cửa Ruins.
 export class TorielBasement {
@@ -17,13 +28,7 @@ export class TorielBasement {
       this.npc = world.add.image(name === 'room_basement3' ? 140 : 370, 90,
         `spr_toriel_${name === 'room_basement3' ? 'u' : 'd'}:0`).setOrigin(0).setDepth(143);
     });
-    const key = world.flags[7] === 1 ? 'mus_reunited' : 'mus_intronoise', rate = key === 'mus_intronoise' ? .3 : 1;
-    if (world.basementMusic?.key !== key || world.basementMusic.pendingRemove) {
-      stopBasementMusic(world);
-      world.basementMusic = world.sound.add(key, { loop: true, volume: key === 'mus_intronoise' ? .4 : 1, rate });
-      world.basementMusic.play();
-    }
-    this.music = world.basementMusic;
+    this.music = startBasementMusic(world);
   }
 
   update() { return this.locked; }

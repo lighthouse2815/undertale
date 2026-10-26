@@ -9,6 +9,7 @@ export const BATTLE_CONFIGS = {
   whimsun: { name: 'Whimsun', asset: 'spr_whimsun', hp: 10, def: 0, xp: 2 },
   vegetoid: { name: 'Vegetoid', asset: 'spr_vegetoid', hp: 72, def: 0, xp: 6 },
   napstablook: { name: 'Napstablook', asset: 'spr_napstabattle', hp: 88, def: 4, xp: 0 },
+  toriel: { name: 'Toriel', asset: 'spr_torielboss', hp: 440, def: 1, xp: 150 },
   nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
 };
 

@@ -1,0 +1,150 @@
+{
+  "intro": [
+    "* Toriel blocks the way!"
+  ],
+  "check": [
+    "* TORIEL - ATK 80 DEF 80\n* Knows best for you."
+  ],
+  "talk": [
+    "* You couldn't think of\n  any conversation\n  topics.",
+    "* You tried to think\n  of something to say\n  again, but...",
+    "* Ironically, talking does not\n  seem to be the solution\n  to this situation."
+  ],
+  "talkMemory": [
+    "* You thought about telling\n  Toriel that you saw\n  her die.",
+    "* But...\n* That's creepy.",
+    "* Can you show mercy without\n  fighting or running\n  away...?"
+  ],
+  "talkMemoryRepeat": [
+    "* Can you show mercy\n  without running away...?"
+  ],
+  "talkKill": [
+    "* Not worth talking to."
+  ],
+  "idle": [
+    "* Toriel prepares a magical\n  attack.",
+    "* Toriel looks through you.",
+    "* Toriel is acting aloof.",
+    "* Toriel takes a deep breath.",
+    "* ..."
+  ],
+  "spareSpeech": [
+    " .....",
+    " .....\n .....",
+    " .....\n .....\n .....",
+    " ...?",
+    " What are\n you\n doing?",
+    " Attack\n or run\n away!",
+    " What are\n you\n proving\n this way?",
+    " Fight me\n or\n leave!",
+    " Stop it.",
+    " Stop\n looking\n at me\n that way.",
+    " Go away!",
+    " ...",
+    " ...\n ...",
+    "I know you want\nto go home, but...",
+    "But please... go\nupstairs now.",
+    "I promise I will\ntake good care\nof you here.",
+    "I know we do not\nhave much, but...",
+    "We can have a\ngood life here.",
+    "Why are you\nmaking this so\ndifficult?",
+    "Please, go upstairs.",
+    ".....",
+    "Ha ha...",
+    "Pathetic, is it not?\nI cannot save even\na single child.",
+    "..."
+  ],
+  "spared": [
+    "No, I understand.",
+    "You would just be\nunhappy trapped\ndown here.",
+    "The RUINS are very\nsmall once you\nget used to them.",
+    "It would not be\nright for you to\ngrow up in a\nplace like this.",
+    "My expectations...\nMy loneliness...\nMy fear...",
+    "For you, my child...\nI will put them aside."
+  ],
+  "killed": [
+    "Urgh...",
+    "You are stronger\nthan I thought...",
+    "Listen to me,\n small one...",
+    "If you go beyond\nthis door,",
+    "Keep walking as\nfar as you can.",
+    "Eventually you will\nreach an exit.",
+    "...\n....",
+    "ASGORE...\nDo not let ASGORE \ntake your soul.",
+    "His plan\ncannot be allowed\nto succeed.",
+    "......",
+    "Be good,\nwon't you?",
+    "My child.      "
+  ],
+  "killedMurder": [
+    "Y... you...\nreally hate me\nthat much?",
+    "Now I see who I\nwas protecting by\nkeeping you here.",
+    "Not you...",
+    "But them!",
+    "Ha... ha... "
+  ],
+  "betrayal": [
+    "You...",
+    "... at my most\nvulnerable\nmoment...",
+    "To think I was\nworried you\nwouldn't fit\nin out there...",
+    "Eheheheh!!!\nYou really are\nno different than\nthem!",
+    "Ha... ha... "
+  ],
+  "deathSprites": {
+    "killed": [
+      "spr_torielboss_kneel",
+      "spr_torielboss_kneel",
+      "spr_torielboss_kneel",
+      "spr_torielboss_kneel",
+      "spr_torielboss_kneel",
+      "spr_torielboss_kneel",
+      "spr_torielboss_kneelanguish",
+      "spr_torielboss_kneelanguish",
+      "spr_torielboss_kneelanguish",
+      "spr_torielboss_kneelanguish2",
+      "spr_torielboss_kneelanguish2",
+      "spr_torielboss_kneelsmile"
+    ],
+    "killedMurder": [
+      "spr_torielboss_kneel",
+      "spr_torielboss_kneel",
+      "spr_torielboss_kneel",
+      "spr_torielboss_murdered",
+      "spr_torielboss_kneelsmile"
+    ],
+    "betrayal": [
+      "spr_torielboss_murdered",
+      "spr_torielboss_murdered",
+      "spr_torielboss_murdered",
+      "spr_torielboss_murdered",
+      "spr_torielboss_kneelsmile"
+    ]
+  },
+  "sprites": {
+    "spr_torielboss": 1,
+    "spr_torielboss_hurt": 1,
+    "spr_torielboss_reallyhurt": 1,
+    "spr_torielboss_murdered": 2,
+    "spr_torielboss_side": 1,
+    "spr_torielboss_sidesad": 1,
+    "spr_torielboss_sad": 1,
+    "spr_torielboss_sadhappy": 2,
+    "spr_torielboss_sidesad2": 1,
+    "spr_torielboss_sidesadhappy": 1,
+    "spr_torielboss_neutral": 1,
+    "spr_torielboss_kneel": 1,
+    "spr_torielboss_kneelanguish": 1,
+    "spr_torielboss_kneelanguish2": 1,
+    "spr_torielboss_kneelsmile": 1,
+    "spr_torielboss_kneelsmile2": 1,
+    "spr_torielboss_mouthcover": 1,
+    "spr_firebullet": 2,
+    "spr_handbullet": 2,
+    "spr_torheart": 1,
+    "spr_torheartbreak": 1,
+    "spr_theartshards": 4,
+    "spr_blconsm": 1,
+    "spr_blconwdshrt": 1,
+    "spr_blconabove": 1
+  }
+}

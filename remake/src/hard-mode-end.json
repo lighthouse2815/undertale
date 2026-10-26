@@ -1,0 +1,251 @@
+{
+  "speech": {
+    "153": [
+      {
+        "text": "And that's the\nend of Hard\nMode!",
+        "emotion": null
+      }
+    ],
+    "175": [
+      {
+        "text": "Eh??",
+        "emotion": 1
+      },
+      {
+        "text": "You are ending\nit NOW?",
+        "emotion": 2
+      },
+      {
+        "text": "And on such a\ndramatic moment...?",
+        "emotion": 1
+      }
+    ],
+    "192": [
+      {
+        "text": "That's the\ndifficult part.",
+        "emotion": null
+      },
+      {
+        "text": "Not the bullets.",
+        "emotion": null
+      },
+      {
+        "text": "But, accepting\nthat it's all\nover...",
+        "emotion": null
+      }
+    ],
+    "211": [
+      {
+        "text": "But there WILL be\nmore, will there\nnot?",
+        "emotion": null
+      }
+    ],
+    "224": [
+      {
+        "text": "Maybe.",
+        "emotion": null
+      },
+      {
+        "text": "Knowing the\nanswer is...",
+        "emotion": null
+      },
+      {
+        "text": "... HARD.",
+        "emotion": null
+      },
+      {
+        "text": "...",
+        "emotion": 4
+      }
+    ],
+    "264": [
+      {
+        "text": "Hey!",
+        "emotion": null
+      },
+      {
+        "text": "Aren't you\nsupposed\nto be dying or\nsomething?",
+        "emotion": null
+      }
+    ],
+    "280": [
+      {
+        "text": "Well.\nWhat is the point\nof that now?",
+        "emotion": null
+      }
+    ],
+    "293": [
+      {
+        "text": "What will you do\ninstead...?",
+        "emotion": null
+      }
+    ],
+    "308": [
+      {
+        "text": "Hmmm.\nPerhaps I will\nbake another pie.",
+        "emotion": null
+      },
+      {
+        "text": "That last one ended\nup a little burnt.",
+        "emotion": null
+      }
+    ],
+    "324": [
+      {
+        "text": "I thought it was\ngood.",
+        "emotion": 2
+      },
+      {
+        "text": "Theoretically.",
+        "emotion": 1
+      },
+      {
+        "text": "It's not like I\nate it all while\nyou were\nfighting.",
+        "emotion": 4
+      }
+    ],
+    "360": [
+      {
+        "text": "Hey! Hey!\nCan I have some\npie!",
+        "emotion": null
+      }
+    ],
+    "377": [
+      {
+        "text": "You are just going\nto eat it all...",
+        "emotion": null
+      }
+    ],
+    "400": [
+      {
+        "text": "I can helllp!!!",
+        "emotion": null
+      }
+    ],
+    "415": [
+      {
+        "text": "Snoring on the\nfloor is NOT help.",
+        "emotion": null
+      }
+    ],
+    "429": [
+      {
+        "text": "I'm not snoring,\nI'm cheering you\non in my sleep!!",
+        "emotion": null
+      },
+      {
+        "text": "...",
+        "emotion": null
+      },
+      {
+        "text": "Oh, you're still\nhere?",
+        "emotion": null
+      },
+      {
+        "text": "Don't you have\nanything better\nto do?",
+        "emotion": null
+      }
+    ],
+    "512": [
+      {
+        "text": "Hey.",
+        "emotion": 0
+      },
+      {
+        "text": "What's the hold\nup!?",
+        "emotion": 3
+      },
+      {
+        "text": "Shouldn't she be\ndead by now!?",
+        "emotion": 9
+      },
+      {
+        "text": "I've been waiting\nin that room for...",
+        "emotion": 1
+      },
+      {
+        "text": "...",
+        "emotion": 6
+      },
+      {
+        "text": "... Hard mode...?",
+        "emotion": 7
+      },
+      {
+        "text": "Gee, you better\ntake a picture.",
+        "emotion": 0
+      },
+      {
+        "text": "People are gonna\nthink you're REALLY\ncool.",
+        "emotion": null
+      },
+      {
+        "text": "... NOT!",
+        "emotion": 9
+      },
+      {
+        "text": "Golly, talk about\na tryhard.",
+        "emotion": 8
+      },
+      {
+        "text": "PA. THE. TIC.",
+        "emotion": null
+      }
+    ],
+    "544": [
+      {
+        "text": "Uh, so, are you\ngonna keep going,\nor...?",
+        "emotion": 0
+      }
+    ],
+    "558": [
+      {
+        "text": "It's over.",
+        "emotion": null
+      }
+    ],
+    "578": [
+      {
+        "text": "Hahaha!\nI KNEW that!",
+        "emotion": 8
+      },
+      {
+        "text": "Why does everyone\nhave to be so\ncondescending!?",
+        "emotion": null
+      },
+      {
+        "text": "...",
+        "emotion": 1
+      },
+      {
+        "text": "So what's YOUR\nexcuse?\nSitting around\nhere...?",
+        "emotion": 8
+      },
+      {
+        "text": "Don't you have\nanything better to",
+        "emotion": 0
+      }
+    ],
+    "595": [
+      {
+        "text": "I already said\nthat.",
+        "emotion": null
+      }
+    ]
+  },
+  "title": [
+    "HARD MODE",
+    "Coming...",
+    "Maybe,",
+    "Eh. don't count on it."
+  ],
+  "sprites": {
+    "spr_tobdogl": 2,
+    "spr_tobdogl_talk": 2,
+    "spr_torweird": 5,
+    "spr_torielside1": 2,
+    "spr_undertaletitle": 1,
+    "spr_flowey_riseanim": 9,
+    "spr_floweyface_l3": 11
+  }
+}

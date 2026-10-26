@@ -17,6 +17,8 @@ import { TutorialFroggit } from './tutorial-froggit.mjs';
 import { RuinsBattle } from './ruins-battle.mjs';
 import { NapstablookBattle } from './napstablook-battle.mjs';
 import { VegetoidBattle } from './vegetoid-battle.mjs';
+import { TorielBattle } from './toriel-battle.mjs';
+import { TorielGate } from './toriel-gate.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
@@ -86,7 +88,9 @@ const ROOM_EXITS = {
   room_asrielroom: { D: 'room_torhouse3' },
   room_basement1: { A: 'room_basement2' },
   room_basement2: { A: 'room_basement3', B: 'room_basement1' },
-  room_basement3: { B: 'room_basement2' },
+  room_basement3: { A: 'room_basement4', B: 'room_basement2' },
+  room_basement4: { A: 'room_basement5', B: 'room_basement3' },
+  room_basement5: { B: 'room_basement4' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -141,6 +145,7 @@ class World extends Scene {
     this.torielBedroom = null;
     this.torielLiving?.destroy(); this.torielLiving = null;
     this.torielBasement?.destroy(); this.torielBasement = null;
+    this.torielGate?.destroy(); this.torielGate = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -260,7 +265,8 @@ class World extends Scene {
     if (name === 'room_asrielroom') this.childBedroom = new ChildBedroom(this);
     if (name === 'room_torielroom') this.torielBedroom = new TorielBedroom(this);
     if (['room_torhouse2', 'room_kitchen'].includes(name)) this.torielLiving = new TorielLiving(this);
-    if (BASEMENT_ROOMS.includes(name)) this.torielBasement = new TorielBasement(this);
+    if (BASEMENT_ROOMS.includes(name) && name !== 'room_basement4') this.torielBasement = new TorielBasement(this);
+    if (name === 'room_basement4') this.torielGate = new TorielGate(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -338,11 +344,12 @@ class World extends Scene {
     this.torielBedroom?.update(delta);
     const livingLocked = this.torielLiving?.update(delta);
     const basementLocked = this.torielBasement?.update(delta);
+    const gateLocked = this.torielGate?.update();
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -372,6 +379,7 @@ class World extends Scene {
       if (this.ruinsPerspective?.checkTrigger(previous)) return;
       if (this.ruinsHome?.checkTrigger()) return;
       if (this.torielBasement?.checkTrigger(previous)) return;
+      if (this.torielGate?.checkTrigger(previous)) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
@@ -388,7 +396,7 @@ class World extends Scene {
   transitionRoom(destination, marker, duration, musicFade = false) {
     state.phase = 'transition';
     if (musicFade && this.flags[7] !== 1) {
-      const music = this.ruinsHome?.music ?? this.torielHall?.music[0];
+      const music = this.ruinsHome?.music ?? this.torielHall?.music[0] ?? this.torielGate?.music;
       if (music) this.tweens.add({ targets: music, volume: 0, duration: 10 * 1000 / 30 });
     }
     this.cameras.main.once('camerafadeoutcomplete', async () => {
@@ -402,7 +410,8 @@ class World extends Scene {
 
   findDoor(x, y) {
     const sprite = this.dataSource.sprites.get(`spr_mainchara${this.player.facing}`);
-    return this.doors.find((entry) => !(entry.direction === 'A' && this.ruinsTutorial && !this.ruinsTutorial.gateOpen)
+    return this.doors.find((entry) => !(entry.direction === 'A' && this.torielGate && this.plot < 25)
+      && !(entry.direction === 'A' && this.ruinsTutorial && !this.ruinsTutorial.gateOpen)
       && x + sprite.MarginRight >= entry.left
       && x + sprite.MarginLeft <= entry.right
       && y + sprite.MarginBottom >= entry.top
@@ -636,7 +645,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, SaveMenu, FieldMenu],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, SaveMenu, FieldMenu],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
@@ -645,7 +654,7 @@ state.startBattle = (config = 'dummy') => {
   const world = state.scene;
   state.phase = 'loading';
   world.scene.pause();
-  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : 'RuinsBattle');
+  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : 'RuinsBattle');
 };
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);

@@ -1,0 +1,152 @@
+{
+  "intro": [
+    {
+      "text": "* You want to leave\n  so badly?",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Hmph.",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* You are just like\n  the others.",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* There is only one\n  solution to this.",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Prove yourself...",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Prove to me you\n  are strong enough\n  to survive.",
+      "portrait": "spr_face_torielmad"
+    }
+  ],
+  "memory": [
+    {
+      "text": "* You want to leave\n  so badly?",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Hmph.",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* You are just like\n  the others.",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* There is only one\n  solution to this.",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Prove yourself...",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Prove to me you\n  are strong enough\n  to survive!",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* ... wait.",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* ... why are you looking\n  at me like that?",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* Like you have seen\n  a ghost.",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* Do you know something\n  that I do not?",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* No...\n* That is impossible.",
+      "portrait": "spr_face_torielmad"
+    }
+  ],
+  "manyKills": [
+    {
+      "text": "* You want to leave\n  so badly?",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Hmph.",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* You are just like\n  the others.",
+      "portrait": "spr_face_torielcold"
+    },
+    {
+      "text": "* There is only one\n  solution to this.",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Prove yourself...",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Prove to me that you\n  are...",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* Hey, let me finish",
+      "portrait": "spr_face_torieltalkside"
+    }
+  ],
+  "retry": [
+    {
+      "text": "* Already?",
+      "portrait": "spr_face_torielmad"
+    },
+    {
+      "text": "* What will it take\n  for you to learn\n  your lesson?",
+      "portrait": "spr_face_torielmad"
+    }
+  ],
+  "fled": [
+    {
+      "text": "* That is right.",
+      "portrait": "spr_face_torieltalk"
+    },
+    {
+      "text": "* Go upstairs.",
+      "portrait": "spr_face_torieltalk"
+    }
+  ],
+  "spared": [
+    {
+      "text": "* If you truly wish to\n  leave the RUINS...",
+      "portrait": "spr_face_torieltalk"
+    },
+    {
+      "text": "* I will not stop you.",
+      "portrait": "spr_face_torieltalk"
+    },
+    {
+      "text": "* However, when you\n  leave...",
+      "portrait": "spr_face_torieltalk"
+    },
+    {
+      "text": "* Please do not come\n  back.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* I hope you understand.",
+      "portrait": "spr_face_torieltalk"
+    }
+  ],
+  "goodbye": [
+    {
+      "text": "* Goodbye, my child.",
+      "portrait": "spr_face_torielhappytalk"
+    }
+  ]
+}
