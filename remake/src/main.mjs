@@ -3,6 +3,7 @@ import { loadRoom } from './room-assets.mjs';
 import { createColliders, movePlayer } from './movement.mjs';
 import { Battle, BATTLE_CONFIGS } from './battle.mjs';
 import { readSave, writeSave } from './save.mjs';
+import { SaveMenu } from './save-menu.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -18,7 +19,7 @@ const INTRO_TEXT = [
 const DIALOGUES = {
   obj_readable_flowers1: ['The flowers are growing\nthere.', 'They look like they\nhave a mind of their own.'],
   obj_torinteractable7: ['* Someone has to take\n  care of these flowers.'],
-  obj_savepoint: ['* (The strange light fills you\n  with determination.)'],
+  obj_savepoint: ['* (The shadow of the ruins\n  looms above, filling you with\n  determination.)', '* (HP fully restored.)'],
 };
 // Chỉ nối các phòng đã chuyển. A đi tới markerA của phòng kế, B quay về markerB.
 const ROOM_EXITS = {
@@ -40,6 +41,9 @@ class World extends Scene {
     this.game.registry.set('sourceCache', new Map());
     state.scene = this;
     this.setupInput();
+    this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
+    this.game.events.on('step', this.trackTime);
+    this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
     this.openRoom('room_area1').catch(fail);
   }
 
@@ -103,6 +107,10 @@ class World extends Scene {
     this.interactionCooldown = 0;
     this.dialogue = null;
     this.hp = this.hp ?? 20;
+    this.maxHp = this.maxHp ?? 20;
+    this.lv = this.lv ?? 1;
+    this.plot = this.plot ?? 0;
+    this.playTime = this.playTime ?? 0;
     this.encounterDistance = 0;
     this.colliders = createColliders(data);
     this.elapsed = 0;
@@ -198,14 +206,14 @@ class World extends Scene {
       .sort((a, b) => a.distance - b.distance)[0];
     if (!target) return;
     if (target.entry.item.ObjectName === 'obj_savepoint') {
-      this.saveGame();
-      this.dialogue = { lines: ['* (The game has been saved.)'], index: 0 };
-      this.dialogueBox = this.add.rectangle(8, 160, 304, 70, 0x000000, .94).setOrigin(0).setScrollFactor(0).setDepth(100000);
-      this.dialogueText = this.add.text(18, 170, this.dialogue.lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 }).setScrollFactor(0).setDepth(100001);
-      this.interactionCooldown = 250;
-      return;
-    }
-    this.dialogue = { lines: DIALOGUES[target.entry.item.ObjectName], index: 0 };
+      this.hp = Math.max(this.hp, this.maxHp);
+      this.sound.play('snd_power', { volume: 0.88 });
+      this.dialogue = { lines: DIALOGUES.obj_savepoint, index: 0, onClose: () => {
+        this.plot = Math.max(this.plot, 2);
+        this.scene.pause();
+        this.scene.launch('SaveMenu');
+      } };
+    } else this.dialogue = { lines: DIALOGUES[target.entry.item.ObjectName], index: 0 };
     this.dialogueBox = this.add.rectangle(8, 160, 304, 70, 0x000000, .94).setOrigin(0).setScrollFactor(0).setDepth(100000);
     this.dialogueText = this.add.text(18, 170, this.dialogue.lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 }).setScrollFactor(0).setDepth(100001);
     this.interactionCooldown = 250;
@@ -222,14 +230,17 @@ class World extends Scene {
   advanceDialogue() {
     this.dialogue.index += 1;
     if (this.dialogue.index >= this.dialogue.lines.length) {
+      const onClose = this.dialogue.onClose;
       this.dialogueBox.destroy(); this.dialogueText.destroy(); this.dialogue = null;
+      onClose?.();
     } else this.dialogueText.setText(this.dialogue.lines[this.dialogue.index]);
     this.interactionCooldown = 250;
   }
 
   saveGame() {
     return writeSave({ name: this.game.registry.get('charname'), room: this.dataSource.name,
-      x: this.player.x, y: this.player.y, hp: this.hp });
+      x: this.player.x, y: this.player.y, hp: this.hp, maxHp: this.maxHp, lv: this.lv,
+      playTime: this.playTime, flags: { plot: this.plot } });
   }
 
   async restoreGame() {
@@ -237,6 +248,10 @@ class World extends Scene {
     if (!save) return false;
     this.game.registry.set('charname', save.name);
     this.hp = save.hp;
+    this.maxHp = save.maxHp ?? 20;
+    this.lv = save.lv ?? 1;
+    this.plot = save.flags?.plot ?? 0;
+    this.playTime = save.playTime ?? 0;
     await this.openRoom(save.room);
     this.player.setPosition(save.x, save.y);
     this.updateCamera();
@@ -333,7 +348,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, SaveMenu],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);

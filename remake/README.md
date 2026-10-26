@@ -10,10 +10,11 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Dựng nền và tile của phòng đầu `room_area1` từ JSON/PNG gốc.
 - Mở đầu theo từng khung gốc, logo tiêu đề và nhập tên nhân vật tối đa 6 ký tự.
 - Nhân vật bốn hướng, animation, bước 3 pixel ở 30 Hz, camera cuộn theo phòng.
-- Nối hai chiều `room_area1` ↔ `room_area1_2` ↔ `room_ruins1` ↔ `room_ruins2`, dùng vùng cửa và marker gốc; giữ hướng nhìn, khóa di chuyển khi mờ chuyển phòng. Savepoint trong Ruins dùng hộp thoại lưu.
+- Nối hai chiều `room_area1` ↔ `room_area1_2` ↔ `room_ruins1` ↔ `room_ruins2`, dùng vùng cửa và marker gốc; giữ hướng nhìn, khóa di chuyển khi mờ chuyển phòng.
+- Savepoint đầu Ruins hồi HP, hiện lời thoại gốc rồi mở Save/Return; X hoặc Return giữ file cũ, Save hiện xác nhận khi ghi thành công. Menu dùng font bitmap, con trỏ trái tim và âm thanh gốc.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
 - Nền chiến đấu: FIGHT có thanh đánh/sát thương, ACT Check/Talk, ITEM Monster Candy hồi HP, MERCY, SOUL, đạn, HP và kết thúc lượt; mở qua `__remake.startBattle()` để kiểm thử engine.
-- Save/nạp phiên bản đầu lưu tên, phòng, vị trí và HP qua localStorage; `scene.saveGame()` và `scene.restoreGame()` dùng chung format.
+- Save/nạp phiên bản đầu lưu tên, phòng, vị trí, HP, LV, thời gian chơi và mốc cốt truyện qua localStorage; `scene.saveGame()` và `scene.restoreGame()` dùng chung format, đọc được file trước khi thêm metadata.
 - Vật cản chữ nhật dài/cao và mask PNG của bốn góc chéo.
 - Bàn phím, cảm ứng, thả phím khi mất tiêu điểm, toàn màn hình.
 - Tải JSON và PNG của phòng khi mở; giữ cache trong phiên chơi.
@@ -21,7 +22,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 
 **Đây mới là nền tảng mở đầu, chiến đấu và đi lại qua bốn phòng, chưa phải Undertale đầy đủ.**
 Chưa chuyển các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, Flowey/Toriel, menu đầy đủ,
-ACT/ITEM/MERCY theo từng quái, lưu/nạp, những khu vực và nhánh kết thúc khác.
+ACT/ITEM/MERCY theo từng quái, toàn bộ trạng thái lưu/nạp và menu Continue, những khu vực và nhánh kết thúc khác.
 Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
 
@@ -51,6 +52,8 @@ thuộc tác giả Undertale; xem `CREDITS.txt` trong gói xuất.
 | `src/main.mjs` | Vòng lặp phòng, vẽ, camera và điều khiển |
 | `src/room-assets.mjs` | Tải dữ liệu và ảnh theo phòng, cache trong phiên |
 | `src/movement.mjs` | Di chuyển, animation, va chạm hình chữ nhật/mask |
+| `src/save-menu.mjs` | Menu Save/Return, hiển thị file cũ và xác nhận lưu |
+| `src/save.mjs` | Đọc/ghi tiến trình qua localStorage |
 | `server.mjs` | Phục vụ mã và tài nguyên rời khi phát triển/chạy gói xuất |
 | `build.mjs` | Đóng gói mã, Phaser, giấy phép và tài nguyên rời |
 

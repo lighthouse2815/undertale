@@ -116,9 +116,15 @@ try {
     return __remake.scene.saveGame();
   });
   assert.deepEqual({ room: saved.room, x: saved.x, y: saved.y, name: saved.name }, { room: 'room_area1', x: 210, y: 150, name: 'FRISK' });
+  await page.evaluate((save) => {
+    const { maxHp, lv, playTime, ...legacy } = save;
+    localStorage.setItem('undertale-remake-save-v1', JSON.stringify(legacy));
+    __remake.scene.maxHp = 99; __remake.scene.lv = 9;
+  }, saved);
   await page.evaluate(() => __remake.scene.player.setPosition(300, 150));
   assert.equal(await page.evaluate(() => __remake.scene.restoreGame()), true);
   assert.deepEqual(await position(), { x: 210, y: 150 });
+  assert.deepEqual(await page.evaluate(() => ({ maxHp: __remake.scene.maxHp, lv: __remake.scene.lv })), { maxHp: 20, lv: 1 });
   await page.evaluate(() => __remake.scene.player.setPosition(141, 120));
   assert.ok(requests.every((url) => !/\.(wasm|win|gml|ogg|wav)(?:$|\?)/.test(url)));
   assert.ok(requests.filter((url) => url.includes('/assets/rooms/')).every((url) => url.endsWith('/room_area1.json')));
@@ -174,11 +180,72 @@ try {
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_ruins1');
   assert.deepEqual(await position(), { x: 150, y: 420 });
   await page.evaluate(() => __remake.scene.player.setPosition(150, 195));
+  const oldSave = await page.evaluate(() => localStorage.getItem('undertale-remake-save-v1'));
+  await page.evaluate(() => { __remake.scene.hp = 3; });
+  const openSaveMenu = async () => {
+    await page.waitForTimeout(260);
+    await page.keyboard.press('z');
+    await page.waitForFunction(() => !!__remake.scene.dialogue);
+    assert.match(await page.evaluate(() => __remake.scene.dialogueText.text), /shadow of the ruins/);
+    assert.equal(await page.evaluate(() => __remake.scene.hp), 20);
+    assert.equal(await page.evaluate(() => localStorage.getItem('undertale-remake-save-v1')), oldSave, 'Chạm savepoint hồi máu nhưng chưa lưu file.');
+    await page.keyboard.press('z');
+    await page.waitForFunction(() => __remake.scene.dialogueText.text.includes('HP fully restored.'));
+    await page.keyboard.press('z');
+    await page.waitForFunction(() => __remake.phase === 'saving');
+  };
+  await openSaveMenu();
+  assert.equal(await page.evaluate(() => __remake.scene.nameLabel.text), 'FRISK');
+  const menuTime = await page.evaluate(() => __remake.scene.world.playTime);
+  await page.keyboard.down('ArrowDown');
+  await page.waitForTimeout(200);
+  await page.keyboard.up('ArrowDown');
+  assert.ok(await page.evaluate((time) => __remake.scene.world.playTime >= time + 100, menuTime));
+  assert.deepEqual(await page.evaluate(() => ({ x: __remake.scene.world.player.x, y: __remake.scene.world.player.y })), { x: 150, y: 195 });
+  await page.keyboard.press('ArrowRight');
+  assert.equal(await page.evaluate(() => __remake.scene.selection), 1);
   await page.keyboard.press('z');
-  await page.waitForFunction(() => !!__remake.scene.dialogue);
-  assert.match(await page.locator('canvas').evaluate(() => __remake.scene.dialogueText.text), /saved/i);
+  await page.waitForFunction(() => __remake.phase === 'running');
+  assert.equal(await page.evaluate(() => localStorage.getItem('undertale-remake-save-v1')), oldSave, 'Return giữ nguyên file cũ.');
+  await openSaveMenu();
+  await page.keyboard.press('x');
+  await page.waitForFunction(() => __remake.phase === 'running');
+  await openSaveMenu();
+  await page.evaluate(() => {
+    window.originalSetItem = Storage.prototype.setItem;
+    Storage.prototype.setItem = () => { throw new DOMException('Storage full', 'QuotaExceededError'); };
+  });
   await page.keyboard.press('z');
-  await page.waitForFunction(() => !__remake.scene.dialogue);
+  assert.equal(await page.evaluate(() => __remake.scene.saveLabel.text), 'Save failed.');
+  assert.equal(await page.evaluate(() => __remake.scene.saved), false);
+  assert.equal(await page.evaluate(() => localStorage.getItem('undertale-remake-save-v1')), oldSave);
+  await page.evaluate(() => { Storage.prototype.setItem = window.originalSetItem; delete window.originalSetItem; });
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => __remake.scene.saved);
+  assert.equal(await page.evaluate(() => __remake.scene.saveLabel.text), 'File saved.');
+  assert.equal(await page.evaluate(() => __remake.scene.roomLabel.text), 'Ruins - Entrance');
+  const savedAtPoint = await page.evaluate(() => JSON.parse(localStorage.getItem('undertale-remake-save-v1')));
+  assert.deepEqual({ room: savedAtPoint.room, hp: savedAtPoint.hp, maxHp: savedAtPoint.maxHp, lv: savedAtPoint.lv, plot: savedAtPoint.flags.plot },
+    { room: 'room_ruins1', hp: 20, maxHp: 20, lv: 1, plot: 2 });
+  assert.ok(savedAtPoint.playTime > 0);
+  await page.waitForFunction(() => {
+    const context = document.querySelector('canvas').getContext('2d');
+    const border = context.getImageData(54, 49, 1, 1).data;
+    if (border[0] !== 255 || border[1] !== 255 || border[2] !== 255) return false;
+    const pixels = context.getImageData(70, 60, 180, 65).data;
+    for (let i = 0; i < pixels.length; i += 4) if (pixels[i] === 255 && pixels[i + 1] === 255 && pixels[i + 2] === 0) return true;
+    return false;
+  });
+  await page.screenshot({ path: join(root, 'test-results/remake-save-menu.png') });
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => __remake.phase === 'running');
+  await page.evaluate(async () => {
+    __remake.scene.hp = 1; __remake.scene.plot = 0; __remake.scene.playTime = 0;
+    await __remake.scene.restoreGame();
+  });
+  assert.deepEqual(await page.evaluate((time) => ({ hp: __remake.scene.hp, plot: __remake.scene.plot, playTime: __remake.scene.playTime >= time }), savedAtPoint.playTime),
+    { hp: 20, plot: 2, playTime: true });
+  console.log('✓ savepoint hồi HP, lời thoại gốc, Save/Return/X, lỗi lưu không báo thành công, nạp tiến trình');
   await page.evaluate(() => __remake.scene.player.setPosition(150, 110));
   await page.keyboard.down('ArrowUp');
   await page.waitForFunction(() => __remake.phase === 'transition');

@@ -16,6 +16,9 @@ export function writeSave(value) {
     x: Number(value.x),
     y: Number(value.y),
     hp: Number(value.hp ?? 20),
+    maxHp: Number(value.maxHp ?? 20),
+    lv: Number(value.lv ?? 1),
+    playTime: Number(value.playTime ?? 0),
     flags: { ...(value.flags ?? {}) },
     savedAt: Date.now(),
   };
