@@ -40,7 +40,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 **Đã chuyển một phần đầu Ruins, gồm trận Napstablook; chưa phải Undertale đầy đủ.**
 Chưa chuyển lời thoại SAVE/âm thanh chuột ở phòng 12A, nhóm nhiều quái/hard mode tại `room_ruins7`, encounter phòng 8–13, các sự kiện còn lại từ phòng 8 và phòng 14 trở đi, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, các vật phẩm sau ID 13, các mục điện thoại sau Toriel và menu đầy đủ,
 ACT/ITEM/MERCY theo từng quái, toàn bộ trạng thái lưu/nạp và menu Continue, những khu vực và nhánh kết thúc khác.
-Va chạm ngoài trận/hố đọc pixel trắng trong mask gốc (pixel đen cũng có alpha 255); mask trái tim/đạn trong trận vẫn cần sửa tương tự. Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
+Va chạm ngoài trận/hố đọc pixel trắng trong mask gốc (pixel đen cũng có alpha 255); mask trái tim/đạn trong trận cũng đã đọc pixel trắng, gồm mask theo khung hình của dòng nước Napstablook và phép xoay/co giãn hiện có. Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
 Hộp thoại hiện hiển thị cả trang; chưa chuyển hiệu ứng gõ từng chữ, nhịp ngắt và hoạt hình chân dung.
 Trận Dummy chưa chuyển đầy đủ âm nhạc, hoạt hình tan bụi khi bị đánh bại và chuyển cảnh vào trận;

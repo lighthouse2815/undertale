@@ -108,12 +108,14 @@ export class NapstablookWave extends RuinsWave {
     if (this.kind === 'sad') return super.touchesHeart(bullet);
     const scene = this.scene, data = scene.cache.json.get(bullet.sprite);
     const scale = bullet.scale ?? 1, angle = bullet.rotation ?? 0, cos = Math.cos(angle), sin = Math.sin(angle);
+    const frame = data.MaskCount > 1 ? Number(bullet.image.texture.key.split(':').at(-1)) : 0;
+    const mask = `${bullet.sprite}:mask${frame ? `:${frame}` : ''}`;
     for (let hx = 0; hx < 16; hx++) for (let hy = 0; hy < 16; hy++) {
-      if (!scene.textures.getPixelAlpha(hx, hy, 'spr_heart:mask')) continue;
+      if (!(scene.textures.getPixel(hx, hy, 'spr_heart:mask')?.red > 0)) continue;
       const dx = scene.soul.x * 2 + hx - bullet.x, dy = scene.soul.y * 2 + hy - bullet.y;
       const x = Math.floor((dx * cos + dy * sin) / scale), y = Math.floor((-dx * sin + dy * cos) / scale);
       if (x < data.MarginLeft || x > data.MarginRight || y < data.MarginTop || y > data.MarginBottom) continue;
-      if (data.CollisionKind !== 'Precise' || scene.textures.getPixelAlpha(x, y, `${bullet.sprite}:mask`)) return true;
+      if (data.CollisionKind !== 'Precise' || scene.textures.getPixel(x, y, mask)?.red > 0) return true;
     }
     return false;
   }

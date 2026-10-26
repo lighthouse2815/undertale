@@ -81,8 +81,9 @@ export class RuinsWave {
     const left = Math.ceil(Math.max(hx, bullet.x + data.MarginLeft)), right = Math.floor(Math.min(hx + 15, bullet.x + data.MarginRight));
     const top = Math.ceil(Math.max(hy, bullet.y + data.MarginTop)), bottom = Math.floor(Math.min(hy + 15, bullet.y + data.MarginBottom));
     for (let x = left; x <= right; x++) for (let y = top; y <= bottom; y++) {
-      if (!scene.textures.getPixelAlpha(Math.floor(x - hx), Math.floor(y - hy), 'spr_heart:mask')) continue;
-      if (data.CollisionKind !== 'Precise' || scene.textures.getPixelAlpha(Math.floor(x - bullet.x), Math.floor(y - bullet.y), `${bullet.sprite}:mask`)) return true;
+      // Mask gốc mã hóa bằng trắng/đen; cả vùng trống cũng có alpha 255.
+      if (!(scene.textures.getPixel(Math.floor(x - hx), Math.floor(y - hy), 'spr_heart:mask')?.red > 0)) continue;
+      if (data.CollisionKind !== 'Precise' || scene.textures.getPixel(Math.floor(x - bullet.x), Math.floor(y - bullet.y), `${bullet.sprite}:mask`)?.red > 0) return true;
     }
     return false;
   }

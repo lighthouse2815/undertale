@@ -15,6 +15,7 @@ export class NapstablookBattle extends RuinsBattle {
         this.load.image(`${key}:${i}`, new URL(`sprites/${key}/${key}_${i}.png`, base).href);
       if (!this.textures.exists(`${key}:mask`)) this.load.image(`${key}:mask`, new URL(`sprites/${key}/${key}_0.mask.png`, base).href);
     }
+    if (!this.textures.exists('spr_streambullet:mask:1')) this.load.image('spr_streambullet:mask:1', new URL('sprites/spr_streambullet/spr_streambullet_1.mask.png', base).href);
     if (!this.cache.audio.exists('mus_ghostbattle')) this.load.audio('mus_ghostbattle', new URL('sounds/mus_ghostbattle/mus_ghostbattle.ogg', base).href);
     if (!this.cache.json.exists('napstablook-battle')) this.load.json('napstablook-battle', new URL('./napstablook-battle.json', import.meta.url).href);
   }

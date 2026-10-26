@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 26/10/2026, sau phần chuyển lại hố Ruins 8/10. Mốc code trước phần này: `ba78a877` trên `main`.
+Cập nhật: 26/10/2026, sau phần sửa mask chiến đấu. Mốc code trước phần này: `9b72f654` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -23,14 +23,15 @@ Trang chính/bản Butterscotch chưa được thay bằng bản viết lại; k
 - Có các sự kiện đầu Ruins: công tắc, Dummy, Toriel dẫn qua gai, Froggit theo kịch bản, hành lang nhận điện thoại.
 - Có menu ngoài trận, một số cuộc gọi Toriel, túi 8 ô và dữ liệu vật phẩm ID 1–13.
 - Có trận Napstablook nối từ phòng 12; Check/Threat/Cheer/Flirt, màn mũ, kết thúc riêng, Flee/ITEM và Game Over; xem giới hạn trình bày trong `remake/README.md`.
+- Mask trái tim/đạn trong trận đã đọc pixel trắng thay vì alpha, dòng nước Napstablook tải mask theo khung hình; có kiểm tra góc đen an toàn, hình ếch, xoay/co giãn, sát thương và bất tử bằng tài nguyên thật.
 - Có trận đơn Froggit/Whimsun, một số đợt đạn, ACT/FIGHT/ITEM/MERCY, phần thưởng và Game Over nạp snapshot tạm; encounter mới nối ở phòng lá.
 - Các phòng Ruins tới 13 đã có nhiều phần triển khai, **chưa hoàn chỉnh toàn bộ sự kiện và hành vi gốc**. Xem giới hạn bên dưới và `remake/README.md`.
 - Phần trước: cửa phải phòng 12 → 12A → 12B; cửa trên phòng 12 ↔ 13 dùng markerX. Spider Bake Sale mua Donut 7G/Cider 18G, kiểm tra túi/GOLD và cờ 59. Phòng 13 có các hội thoại Froggit, cờ màu tên 22 được trận thường đọc lại, cuộc gọi bánh Toriel theo trigger vô hình và Flowey chìm khi camera thấy.
 
 ## Việc tiếp theo và các chỗ phải sửa thật
 
-1. **Ưu tiên sửa mask chiến đấu, sau đó các phần thiếu ở 12A và phòng 14 trở đi.** Trận Napstablook đã nối: No không đổi plot; Yes vào battlegroup 20; Cheer ba lần → màn mũ, Cheer/Flirt tiếp → lời cảm ơn tự động, cờ 36 và fade tới plot 11. Flee giữ ma để đấu lại; đánh cạn 88 HP khiến ma rời đi, không đổi EXP/GOLD/kill/dân số. Nhánh cờ 202 >= 20 tự rời phòng không bật cờ 36. Bộ test phòng 12 đã thay kỳ vọng bỏ qua boss bằng các nhánh thật. Va chạm dòng nước sát khung và nước mắt tạo mũ còn cần đối chiếu từng khung; test hiện tại kiểm tra luật chơi và kết quả, chưa chứng minh toàn bộ quỹ đạo giống hệt gốc. Trình bày bong bóng thoại, gõ chữ và chuyển cảnh chiến đấu cũng chưa hoàn chỉnh như bản gốc.
-2. Phát hiện mask PNG gốc là ảnh trắng/đen với alpha 255 ở cả hai màu. `movement.mjs` đã đọc kênh đỏ để dùng chung cho vật cản và hố; `ruins-waves.mjs`/`napstablook-waves.mjs` vẫn đọc `getPixelAlpha` nên mask trái tim/đạn chưa chính xác, cần sửa và kiểm tra pixel trắng/đen thật. Hố phòng 8/10 đã thay bộ đếm dịch chuyển cố định bằng di chuyển 30 Hz, giữ x và chênh 400 pixel; bảng chỉ dẫn ở phòng 10 vẫn chưa chuyển. Phần đá đã sửa: không đẩy khi chỉ đứng gần; di chuyển và collider đi cùng nhau; Goofyrock chỉ rời nút khi chạm activator chứ không phải sau câu “Was that helpful?”. Test kiểm tra các trạng thái/vị trí và chuyển động giữa đường, chưa chứng minh mọi khung va chạm sát cạnh hoặc thứ tự alarm giống hoàn toàn bản gốc.
+1. **Ưu tiên các phần thiếu ở 12A, bảng chỉ dẫn phòng 10 và phòng 14 trở đi.** Trận Napstablook đã nối: No không đổi plot; Yes vào battlegroup 20; Cheer ba lần → màn mũ, Cheer/Flirt tiếp → lời cảm ơn tự động, cờ 36 và fade tới plot 11. Flee giữ ma để đấu lại; đánh cạn 88 HP khiến ma rời đi, không đổi EXP/GOLD/kill/dân số. Nhánh cờ 202 >= 20 tự rời phòng không bật cờ 36. Bộ test phòng 12 đã thay kỳ vọng bỏ qua boss bằng các nhánh thật. Va chạm dòng nước sát khung và nước mắt tạo mũ còn cần đối chiếu từng khung; test hiện tại kiểm tra luật chơi và kết quả, chưa chứng minh toàn bộ quỹ đạo giống hệt gốc. Trình bày bong bóng thoại, gõ chữ và chuyển cảnh chiến đấu cũng chưa hoàn chỉnh như bản gốc.
+2. Phát hiện mask PNG gốc là ảnh trắng/đen với alpha 255 ở cả hai màu. `movement.mjs`, `ruins-waves.mjs` và `napstablook-waves.mjs` đã đọc kênh đỏ cho mask. Đạn dòng nước Napstablook tải cả hai mask và chọn theo khung ảnh. Kiểm tra pixel thật ở góc tim/ruồi/ếch/nước mắt/dòng nước, gồm các góc xoay và hệ số scale, đã bổ sung. Quỹ đạo và va chạm khung của các generator vẫn cần đối chiếu riêng, không suy ra đã khớp hoàn toàn chỉ từ test mask. Hố phòng 8/10 đã thay bộ đếm dịch chuyển cố định bằng di chuyển 30 Hz, giữ x và chênh 400 pixel; bảng chỉ dẫn ở phòng 10 vẫn chưa chuyển. Phần đá đã sửa: không đẩy khi chỉ đứng gần; di chuyển và collider đi cùng nhau; Goofyrock chỉ rời nút khi chạm activator chứ không phải sau câu “Was that helpful?”. Test kiểm tra các trạng thái/vị trí và chuyển động giữa đường, chưa chứng minh mọi khung va chạm sát cạnh hoặc thứ tự alarm giống hoàn toàn bản gốc.
 3. Phòng 12A còn thiếu lời thoại/tên SAVE đúng khu vực và âm thanh chuột. Encounter phòng 8–13 và nhóm nhiều quái/hard mode chưa chuyển.
 4. Tiếp tục phòng 14 trở đi, các phần Ruins còn thiếu, rồi Snowdin, Waterfall, Hotland, CORE, New Home, các tuyến và kết thúc. Cảnh Flowey mở đầu cũng còn thiếu.
 5. Các hạn chế chung còn có: hộp thoại hiện cả trang thay vì gõ từng chữ, hoạt hình/âm thanh/chuyển cảnh chiến đấu chưa đầy đủ, các vật phẩm/điện thoại/trạng thái lưu ngoài phần hiện tại chưa đủ.
@@ -57,6 +58,9 @@ TMPDIR="$PWD/.cache/test-tmp" CHROME_PATH=/opt/google/chrome/chrome npm run test
 Máy hiện tại có Chrome ở đường dẫn trên; phiên/máy khác cần xác minh lại.
 Server phát triển mặc định dùng cổng 5191. `.cache/` chứa script kiểm tra/trích dữ liệu cục bộ, không được giả định có trong checkout mới.
 Không commit `.cache/`, `test-results/`, `dist/`, thư mục game gốc hoặc bí mật.
+
+Phần mask chiến đấu có kiểm thử tại `tests/remake-battle-masks.mjs`, dùng scene và PNG thật để kiểm tra pixel đen/trắng, sát thương/bất tử và các phép xoay/co giãn; được gọi trước test trận thường trong bộ tổng.
+Phần mask đã qua cú pháp, build, kiểm thử riêng, kiểm thử Napstablook với vị trí đạn đã chỉnh và toàn bộ `test:remake`.
 
 Phần hố có kiểm thử tại `tests/remake-ruins-holes.mjs`: vùng trắng/đen, scale holedown2, thời gian chờ, alpha/xoay/âm thanh, lên/xuống 400 pixel, camera/khóa điều khiển, dấu sàn và nhánh 11 lần sập; được gọi trong bộ tổng.
 Phần hố đã qua kiểm tra cú pháp, build, kiểm thử riêng, kiểm thử hồi quy đá và toàn bộ `test:remake` trên Chrome nêu trên.

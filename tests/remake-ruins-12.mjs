@@ -77,7 +77,8 @@ export async function testRuins12(page, root) {
   await page.waitForFunction(() => __remake.scene.wave.bullets.some((bullet) => bullet.y > 260 && bullet.y < 360));
   await page.evaluate(() => {
     const scene = __remake.scene, bullet = scene.wave.bullets.find((bullet) => bullet.y > 260 && bullet.y < 360);
-    bullet.x = scene.soul.x * 2; bullet.y = scene.soul.y * 2; bullet.vx = 0; bullet.vy = 0;
+    // Step xoay giọt đứng yên -90°; bù y để mask trắng chạm giữa tim.
+    bullet.x = scene.soul.x * 2; bullet.y = scene.soul.y * 2 + 14; bullet.vx = 0; bullet.vy = 0;
     bullet.rotation = 0; bullet.gravity = 0; bullet.friction = 0; bullet.scale = 1; scene.invFrames = 0;
   });
   await page.waitForFunction(() => __remake.scene.hp < 20);
@@ -165,7 +166,7 @@ export async function testRuins12(page, root) {
   await page.evaluate(() => {
     const scene = __remake.scene, bullet = scene.wave.bullets[0];
     scene.hp = 1; scene.invFrames = 0;
-    bullet.x = scene.soul.x * 2; bullet.y = scene.soul.y * 2; bullet.vx = 0; bullet.vy = 0;
+    bullet.x = scene.soul.x * 2; bullet.y = scene.soul.y * 2 + 14; bullet.vx = 0; bullet.vy = 0;
     bullet.rotation = 0; bullet.gravity = 0; bullet.friction = 0; bullet.scale = 1;
   });
   await page.waitForFunction(() => __remake.scene.mode === 'dead');

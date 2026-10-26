@@ -14,6 +14,7 @@ import { testCorridor } from './remake-corridor.mjs';
 import { testFieldMenu } from './remake-field-menu.mjs';
 import { testInventory } from './remake-inventory.mjs';
 import { testRuinsBattle } from './remake-ruins-battle.mjs';
+import { testBattleMasks } from './remake-battle-masks.mjs';
 import { testRuinsPath } from './remake-ruins-path.mjs';
 import { testRuinsHoles } from './remake-ruins-holes.mjs';
 import { testRuinsLate } from './remake-ruins-late.mjs';
@@ -353,6 +354,7 @@ try {
   await testCorridor(page, root);
   await testFieldMenu(page, root);
   await testInventory(page, root);
+  await testBattleMasks(page);
   await testRuinsBattle(page, root);
   await testRuinsHoles(page);
   await testRuinsPath(page);
