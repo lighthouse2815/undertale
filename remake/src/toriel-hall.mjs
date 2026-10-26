@@ -62,5 +62,5 @@ export class TorielHall {
     world.showDialogue(this.text.books); return true;
   }
 
-  destroy() { this.returnTimer?.remove(); for (const path of this.paths) path.stop(); for (const music of this.music) music.destroy(); }
+  destroy() { this.returnTimer?.remove(); for (const path of this.paths) path.stop(); }
 }

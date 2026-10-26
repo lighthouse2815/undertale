@@ -28,6 +28,7 @@ import { RuinsOutlook } from './ruins-outlook.mjs';
 import { RuinsHome } from './ruins-home.mjs';
 import { TorielHall } from './toriel-hall.mjs';
 import { TorielCorridor } from './toriel-corridor.mjs';
+import { HOUSE_ROOMS, stopHouseMusic } from './house-music.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -93,11 +94,13 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
+    this.events.once('shutdown', () => stopHouseMusic(this));
     this.openRoom('room_area1').catch(fail);
   }
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
+    if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     this.scene.stop('FieldMenu');
     state.scene = this;
     this.ruinsTutorial?.destroy();

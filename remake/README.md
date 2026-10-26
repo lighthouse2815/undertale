@@ -188,3 +188,5 @@ CORE, New Home → các tuyến và kết thúc. Mỗi hệ thống phải có k
 render được một phòng không đồng nghĩa đã chuyển gameplay của phòng đó.
 
 Hành lang phòng ngủ có cảnh nắm tay và xoa đầu của Toriel, giữ các path 20_2/20, vị trí hai nhân vật và thời gian 90 frame của ruffle; đặt plot 19 sau lời cuối. Có ngăn kéo, cây, biển và gương với các nhánh gốc, phản chiếu nằm sau tile. Chưa nối hai phòng ngủ. Mã ở `src/toriel-corridor.mjs` và lời thoại `src/toriel-corridor.json`; nhạc nhà dùng chung `src/house-music.mjs`.
+
+Hai lớp nhạc nhà được giữ nguyên instance giữa các phòng trong nhóm nhà Toriel, dọn khi ra ngoài hoặc đổi chế độ nhạc. Việc nối nhạc toàn Ruins/sân vẫn chưa chuyển đầy đủ.

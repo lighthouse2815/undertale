@@ -42,8 +42,11 @@ export async function testTorielCorridor(page) {
   assert.equal(await page.evaluate(() => __remake.scene.plot), 19);
   await page.waitForFunction(() => __remake.scene.torielCorridor.stage === 'complete');
   assert.equal(await page.evaluate(() => __remake.scene.torielCorridor.npc.active), false);
+  await page.evaluate(() => { __remake.scene.testHouseTrack = __remake.scene.houseMusic[0]; });
   await door(23, 144, 'ArrowLeft', 'room_torhouse1', [274, 164]);
+  assert.equal(await page.evaluate(() => __remake.scene.houseMusic[0] === __remake.scene.testHouseTrack), true);
   await door(274, 164, 'ArrowRight', 'room_torhouse3', [23, 144]);
+  assert.equal(await page.evaluate(() => __remake.scene.houseMusic[0] === __remake.scene.testHouseTrack), true);
   assert.equal(await page.evaluate(() => __remake.scene.dialogue), null);
   await place(568, 134); await key('z'); assert.equal(await page.evaluate(() => __remake.scene.dialogueText.text), '* "Room under renovations."'); await drain();
   await place(687, 140); await key('z'); assert.match(await page.evaluate(() => __remake.scene.dialogueText.text), /do not know its name/); await drain();

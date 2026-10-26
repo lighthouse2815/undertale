@@ -84,6 +84,5 @@ export class TorielCorridor {
   destroy() {
     this.path?.stop(); this.ruffle?.destroy();
     if (this.world.player?.active) this.world.player.setVisible(true);
-    for (const music of this.music) music.destroy();
   }
 }
