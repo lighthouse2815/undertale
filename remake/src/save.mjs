@@ -8,7 +8,7 @@ export function readSave() {
   } catch { return null; }
 }
 
-export function writeSave(value) {
+export function writeSave(value, { temporary = false } = {}) {
   const save = {
     version: 1,
     name: String(value.name ?? '').slice(0, 6),
@@ -22,10 +22,11 @@ export function writeSave(value) {
     gold: Number(value.gold ?? 0),
     kills: Number(value.kills ?? 0),
     playTime: Number(value.playTime ?? 0),
+    phone: [...(value.phone ?? [])],
     flags: { ...(value.flags ?? {}) },
     savedAt: Date.now(),
   };
-  localStorage.setItem(KEY, JSON.stringify(save));
+  localStorage.setItem(temporary ? 'undertale-remake-temp-v1' : KEY, JSON.stringify(save));
   return save;
 }
 

@@ -9,6 +9,7 @@ import { RuinsSwitches } from './ruins-switches.mjs';
 import { DummyLesson } from './dummy-lesson.mjs';
 import { DummyBattle } from './dummy-battle.mjs';
 import { SpikeGuide } from './spike-guide.mjs';
+import { CorridorLesson } from './corridor-lesson.mjs';
 import { TutorialFroggit } from './tutorial-froggit.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
@@ -67,7 +68,10 @@ class World extends Scene {
     this.dummyLesson = null;
     this.spikeGuide?.destroy();
     this.spikeGuide = null;
+    this.corridorLesson?.destroy();
+    this.corridorLesson = null;
     this.flags ??= {};
+    this.phone ??= [];
     const facing = this.player?.facing ?? 'd';
     const data = await loadRoom(this, name);
     this.children.removeAll(true);
@@ -103,6 +107,10 @@ class World extends Scene {
         if (item.ObjectName === 'obj_dummy1' && this.flags[14] === 1) continue;
       }
       if (name === 'room_ruins5' && item.ObjectName === 'obj_toroverworld5' && (this.plot > 7 || this.plot < 6)) continue;
+      if (name === 'room_ruins6') {
+        if (item.ObjectName === 'obj_toroverworld7' && this.plot > 8) continue;
+        if (item.ObjectName === 'obj_torinteractable6' && this.plot > 8.5) continue;
+      }
       const object = data.objects.get(item.ObjectName);
       const interactable = Boolean(object && (inherits(item.ObjectName, 'obj_readable') || inherits(item.ObjectName, 'obj_interactable')
         || item.ObjectName.includes('readable') || item.ObjectName.includes('torinteractable')));
@@ -154,6 +162,7 @@ class World extends Scene {
     if (name === 'room_ruins3') this.ruinsSwitches = new RuinsSwitches(this);
     if (name === 'room_ruins4') this.dummyLesson = new DummyLesson(this);
     if (name === 'room_ruins5') this.spikeGuide = new SpikeGuide(this);
+    if (name === 'room_ruins6') this.corridorLesson = new CorridorLesson(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -201,15 +210,17 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (guideLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
     this.elapsed = Math.min(this.elapsed + delta, 200);
     while (this.elapsed >= 1000 / 30) {
+      const previous = { x: this.player.x, y: this.player.y };
       movePlayer(this, this.player, this.colliders,
         (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction));
       this.elapsed -= 1000 / 30;
+      if (this.corridorLesson?.checkTrigger(previous)) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
     if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();
@@ -238,6 +249,7 @@ class World extends Scene {
   }
 
   tryInteract() {
+    if (this.corridorLesson) { this.corridorLesson.interact(); return; }
     if (this.spikeGuide) { this.spikeGuide.interact(); return; }
     if (this.dummyLesson) { this.dummyLesson.interact(); return; }
     if (this.ruinsSwitches) {
@@ -265,10 +277,10 @@ class World extends Scene {
       ? this.dataSource.tutorialDialogue.sign : DIALOGUES[target.entry.item.ObjectName]);
   }
 
-  showDialogue(lines, { portrait = false, onClose } = {}) {
+  showDialogue(lines, { portrait = false, onClose, onPage } = {}) {
     this.confirmPressed = false;
     this.confirmWasDown = this.confirmDown;
-    this.dialogue = { lines, index: 0, onClose };
+    this.dialogue = { lines, index: 0, onClose, onPage };
     const y = this.player.y - this.cameras.main.scrollY > 130 ? 8 : 160;
     this.dialogueBox = this.add.rectangle(8, y, 304, 70, 0x000000).setOrigin(0).setScrollFactor(0).setDepth(100000).setStrokeStyle(2, 0xffffff);
     const x = portrait ? 68 : 18;
@@ -277,6 +289,7 @@ class World extends Scene {
       : this.add.text(x, y + 10, lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 });
     this.dialogueText.setScrollFactor(0).setDepth(100001);
     this.dialoguePortrait = portrait ? this.add.image(23, y + 19, `${typeof portrait === 'string' ? portrait : 'spr_face_torielhappytalk'}:0`).setOrigin(0).setScrollFactor(0).setDepth(100001) : null;
+    onPage?.(0);
     this.interactionCooldown = 250;
   }
 
@@ -295,14 +308,17 @@ class World extends Scene {
       this.dialogueBox.destroy(); this.dialogueText.destroy(); this.dialogue = null;
       this.dialoguePortrait?.destroy();
       onClose?.();
-    } else this.dialogueText.setText(this.dialogue.lines[this.dialogue.index]);
+    } else {
+      this.dialogueText.setText(this.dialogue.lines[this.dialogue.index]);
+      this.dialogue.onPage?.(this.dialogue.index);
+    }
     this.interactionCooldown = 250;
   }
 
-  saveGame() {
+  saveGame(temporary = false) {
     return writeSave({ name: this.game.registry.get('charname'), room: this.dataSource.name,
       x: this.player.x, y: this.player.y, hp: this.hp, maxHp: this.maxHp, lv: this.lv,
-      playTime: this.playTime, xp: this.xp, gold: this.gold, kills: this.kills, flags: { ...this.flags, plot: this.plot } });
+      playTime: this.playTime, xp: this.xp, gold: this.gold, kills: this.kills, phone: this.phone, flags: { ...this.flags, plot: this.plot } }, { temporary });
   }
 
   async restoreGame() {
@@ -313,6 +329,7 @@ class World extends Scene {
     this.maxHp = save.maxHp ?? 20;
     this.lv = save.lv ?? 1;
     this.xp = save.xp ?? 0; this.gold = save.gold ?? 0; this.kills = save.kills ?? 0;
+    this.phone = [...(save.phone ?? [])];
     this.plot = save.flags?.plot ?? 0;
     this.flags = { ...(save.flags ?? {}) };
     delete this.flags.plot;

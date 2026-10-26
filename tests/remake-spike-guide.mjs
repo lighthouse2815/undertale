@@ -124,6 +124,11 @@ export async function testSpikeGuide(page, root) {
   await page.keyboard.down('ArrowRight'); await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowRight');
   await page.waitForFunction(() => __remake.room === 'room_ruins6' && __remake.phase === 'running');
   assert.deepEqual(await position(), { x: 30, y: 102 });
+  await page.waitForFunction(() => !!__remake.scene.dialogue);
+  await closeWorld(5);
+  await page.keyboard.down('ArrowLeft'); await page.waitForTimeout(350); await page.keyboard.up('ArrowLeft');
+  assert.equal((await position()).x, 27);
+  await page.evaluate(async () => { __remake.scene.plot = 9; await __remake.scene.openRoom('room_ruins6', 'obj_markerA'); });
   await page.keyboard.down('ArrowLeft'); await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowLeft');
   await page.waitForFunction(() => __remake.room === 'room_ruins5' && __remake.phase === 'running');
   assert.deepEqual(await position(), { x: 1160, y: 100 });

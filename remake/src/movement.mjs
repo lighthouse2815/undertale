@@ -1,7 +1,7 @@
 import { Geom } from '../vendor/phaser.esm.min.js';
 
 // Tỉ lệ của hai vật cản dài được đặt trong Create của game gốc.
-const scales = { obj_solidlong: [400, 1], obj_solidtall: [1, 400], obj_solidlongleft: [-400, 1], obj_plotwall1: [1, 400], obj_plotwall2: [1, 400] };
+const scales = { obj_solidlong: [400, 1], obj_solidtall: [1, 400], obj_solidlongleft: [-400, 1], obj_plotwall1: [1, 400], obj_plotwall2: [1, 400], obj_plotwall3: [1, 400] };
 export function createColliders(data) {
   const inherits = (name, target) => {
     for (let current = name; current; current = data.objects.get(current)?.ParentObject) if (current === target) return true;

@@ -1,0 +1,114 @@
+{
+  "intro": [
+    "* You have done\n  excellently thus\n  far, my child.",
+    "* However... I have a\n  difficult request to ask\n  of you.",
+    "* ...",
+    "* I would like you to walk\n  to the end of the room\n  by yourself.",
+    "* Forgive me for this."
+  ],
+  "peek": [
+    "..."
+  ],
+  "phone": [
+    "* Greetings, my child.\n* Do not worry, I did\n  not leave you.",
+    "* I was merely behind this\n  pillar the whole time.",
+    "* Thank you for trusting\n  me.",
+    "* However, there was an\n  important reason for\n  this exercise.",
+    "* ... to test your\n  independence.",
+    "* I must attend to some\n  business, and you must\n  stay alone for a while.",
+    "* Please remain here.\n* It's dangerous to\n  explore by yourself.",
+    "* I have an idea.\n* I will give you a\n  CELL PHONE.",
+    "* If you have a need for\n  anything, just call.",
+    "* Be good, alright?"
+  ],
+  "dogCalls": [
+    [
+      "* Ring...T ",
+      " ",
+      "* Hello!\n* This is TORIEL.",
+      "* My errands are taking\n  longer than I thought\n  they would.",
+      "* You must wait 5 more\n  minutes.",
+      "* Thank you for being\n  patient.",
+      "S   ",
+      "* Click..."
+    ],
+    [
+      "* Ring...T ",
+      " ",
+      "* Hello...\n* This is TORIEL.",
+      "* I found what I was\n  looking for.",
+      "* But before I could\n  take it...",
+      "* A small, white puppy\n  snatched it away.",
+      "* How odd.",
+      "* Do dogs even LIKE\n  flour?",
+      "* Err, that is an\n  unrelated question,\n  of course.",
+      "* It will take a little\n  longer.\n* Please understand.",
+      "S   ",
+      "* Click..."
+    ],
+    [
+      "* Ring...",
+      "* (...)",
+      "* (You hear heavy panting on\n  the other end of the\n  phone...)",
+      "* (...)",
+      "* Bark!\n* Bark!",
+      "* Bark...\n* Bark!",
+      "* (You hear a distant voice.)T",
+      "* Stop, please!",
+      "* Come back here with my\n  CELLPHONE!",
+      "S   ",
+      "* Click..."
+    ],
+    [
+      "* Ring...",
+      "* (...)",
+      "* (Snore... snore...)",
+      "* (It sounds like a small,\n  white dog is sleeping on\n  the cell phone.)",
+      "* (You hear a distant voice.)T",
+      "* Helloooo?\n* Little puppy...?",
+      "* Where are you...?",
+      "* I will give you a nice pat\n  on the head!",
+      "* (The snoring stops.)T",
+      "* ... if you return my CELLPHONE.",
+      "* (The snoring resumes.)",
+      "S   ",
+      "* Click..."
+    ],
+    [
+      "* Ring...",
+      "* (...)",
+      "* (Snore... snore...)",
+      "* (Achoo!)",
+      "* (It sounds like a small,\n  white dog sneezing in its\n  sleep.)",
+      "* (You hear a distant voice.)T",
+      "* Here, pup-pup-puppy!",
+      "* Oh dear, I should not keep\n  my guest waiting any longer.",
+      "* ... Oh no, how long has it\n  been since I have talked to\n  them...?",
+      "* Perhaps they have been calling\n  the phone, and...?",
+      "* ... here, puppy!",
+      "S   ",
+      "* Click..."
+    ],
+    [
+      "* Ring...",
+      "* (...)",
+      "* (Snore... snore...)",
+      "* (Yawn...)",
+      "* (Blink blink.)",
+      "* (Yawn...)",
+      "* (Snore... snore...)",
+      "* (You hear a tired voice.)T",
+      "* Doggie...\n* Here, doggie...",
+      "* Oh dear...",
+      "* I do wonder how they are...",
+      "S   ",
+      "* Click..."
+    ],
+    [
+      "* Ring...",
+      "* (Snore... snore...)",
+      "S   ",
+      "* Click..."
+    ]
+  ]
+}
