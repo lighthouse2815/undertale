@@ -202,7 +202,7 @@ class World extends Scene {
     if (name === 'room_ruins7A') this.candyDish = new CandyDish(this);
     if (name === 'room_ruins7') { this.ruinsStart = new RuinsStart(this); this.ruinsEncounter = new RuinsEncounter(this); }
     if (['room_ruins8', 'room_ruins10'].includes(name)) this.ruinsHoles = new RuinsHoles(this);
-    if (name === 'room_ruins9') this.ruinsRock = new RuinsRock(this);
+    if (['room_ruins9', 'room_ruins11'].includes(name)) this.ruinsRock = new RuinsRock(this);
     if (name === 'room_ruins11') this.ruinsGoofyrock = new RuinsGoofyrock(this);
     if (name === 'room_ruins12') this.ruins12 = new Ruins12Lesson(this);
     if (name === 'room_ruins12A') this.ruins12 = new Ruins12Lesson(this);
@@ -271,7 +271,7 @@ class World extends Scene {
     const menuPressed = this.menuPressed; this.menuPressed = false;
     const guideLocked = this.spikeGuide?.update(delta);
     const holesLocked = this.ruinsHoles?.update(delta);
-    const rockLocked = this.ruinsRock?.update();
+    const rockLocked = this.ruinsGoofyrock?.update();
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
@@ -293,10 +293,12 @@ class World extends Scene {
     while (this.elapsed >= 1000 / 30) {
       const previous = { x: this.player.x, y: this.player.y };
       movePlayer(this, this.player, this.colliders,
-        (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction));
+        (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction),
+        (x, y, dx, dy) => this.dialogue || this.ruinsRock?.tryMove(x, y, dx, dy) || this.ruinsGoofyrock?.tryMove(x, y));
       this.elapsed -= 1000 / 30;
       if (this.player.x !== previous.x || this.player.y !== previous.y) this.ruinsEncounter?.step();
       if (this.corridorLesson?.checkTrigger(previous)) return;
+      if (this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
     if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();

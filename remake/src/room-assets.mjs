@@ -22,6 +22,8 @@ export async function loadRoom(scene, name) {
   const candyRoom = name === 'room_ruins7A';
   const ruinsStart = name === 'room_ruins7';
   const ruinsRock = name === 'room_ruins9';
+  const goofyrock = name === 'room_ruins11';
+  const rockDialogue = goofyrock ? await json(new URL('./ruins-goofyrock.json', import.meta.url).href) : null;
   const ruinsHoles = ['room_ruins8', 'room_ruins10'].includes(name);
   const ruins12 = name === 'room_ruins12';
   const ruins13 = ['room_ruins12B', 'room_ruins13'].includes(name);
@@ -39,7 +41,7 @@ export async function loadRoom(scene, name) {
     : ruinsSwitches ? ['path_torielwalk3', 'path_torielwalk3_2', 'path_walkright']
       : dummyLesson ? ['path_torielwalk4', 'path_torielwalk4_2']
         : spikeGuide ? ['path_torielwalk5', 'path_torielwalk5_2', 'path_walkright', 'path_froghead']
-          : corridorLesson ? ['path_walkright', 'path_torielwalk6'] : [];
+          : corridorLesson ? ['path_walkright', 'path_torielwalk6'] : goofyrock ? ['path_goofyrock'] : [];
   await Promise.all(pathNames.map(async (key) => {
     paths.set(key, await json(`paths/${key}.json`));
   }));
@@ -82,7 +84,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13) && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || goofyrock) && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
@@ -113,5 +115,5 @@ export async function loadRoom(scene, name) {
   });
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, rockDialogue };
 }

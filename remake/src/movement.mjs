@@ -42,13 +42,14 @@ export function blocked(scene, colliders, x, y) {
   });
 }
 
-export function movePlayer(scene, player, colliders, input) {
+export function movePlayer(scene, player, colliders, input, onMove) {
   const oldX = player.x, oldY = player.y;
   // Game gốc chạy 30 FPS, 3 pixel mỗi bước; giữ tốc độ độc lập FPS màn hình.
   for (const [direction, dx, dy] of [['left', -3, 0], ['right', 3, 0], ['up', 0, -3], ['down', 0, 3]]) {
     if (!input(direction)) continue;
     player.facing = { down: 'd', right: 'r', up: 'u', left: 'l' }[direction];
     const x = player.x + dx, y = player.y + dy;
+    if (onMove?.(x, y, dx, dy)) continue;
     // Step gốc kích hoạt cửa trước pha va chạm tường. Nhiều cửa nằm ngay trên tường biên.
     if (scene.findDoor(x, y) || !blocked(scene, colliders, x, y)) player.setPosition(x, y);
   }

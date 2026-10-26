@@ -1,50 +1,62 @@
 import { inInteractionRange, touchesObject } from './npc.mjs';
-import { createCollider } from './movement.mjs';
+import { blocked, createCollider } from './movement.mjs';
 
-// room_ruins9: obj_pushrock3, obj_plotwall4 và spikes_room.
+// obj_pushrock1/2/3: đẩy từng bước, chốt khi chạm obj_toribuster.
 export class RuinsRock {
   constructor(world) {
     this.world = world;
-    this.entry = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_pushrock3');
+    const settings = { obj_pushrock1: [31, 100], obj_pushrock2: [32, 80], obj_pushrock3: [35, 60] };
+    this.rocks = world.roomObjects.filter(({ item }) => settings[item.ObjectName]).map((entry) => {
+      const [flag, distance] = settings[entry.item.ObjectName], start = entry.item.X;
+      entry.item = { ...entry.item };
+      const body = createCollider(world.dataSource, entry.item);
+      world.colliders.push(body);
+      const rock = { entry, body, flag, start, target: start + distance, pushed: world.flags[flag] === 1 };
+      if (rock.pushed) entry.image.x = rock.target;
+      this.sync(rock);
+      return rock;
+    });
     this.wall = world.colliders.find((body) => body.objectName === 'obj_plotwall4');
-    this.spikes = world.roomObjects.filter(({ item }) => item.ObjectName === 'obj_spikes_room');
-    this.pushed = world.flags[35] === 1;
-    this.sync();
+    this.triggers = world.dataSource.room.GameObjects.filter((item) => item.ObjectName === 'obj_toribuster');
+    this.openSpikes();
   }
 
-  sync() {
-    const world = this.world;
-    if (!this.entry) return;
-    if (this.pushed) {
-      this.entry.image.x = this.entry.item.X + 60;
-      this.entry.image.setVisible(false);
-      if (this.wall) this.wall.disabled = true;
-      for (const spike of this.spikes) spike.image.setTexture('spr_spiketile:1');
-    } else if (this.wall) this.wall.disabled = false;
+  sync({ entry, body }) {
+    entry.item.X = entry.image.x;
+    body.x = entry.image.x;
+    body.rectangle.x = body.x + body.sprite.MarginLeft;
+    entry.image.setDepth(entry.image.y + entry.sprite.Height);
   }
 
-  update() {
+  openSpikes() {
+    if (!this.wall) return;
+    this.wall.disabled = this.world.flags[35] === 1;
+    for (const spike of this.world.roomObjects.filter(({ item }) => item.ObjectName === 'obj_spikes_room'))
+      spike.image.setTexture(`spr_spiketile:${this.wall.disabled ? 1 : 0}`);
+  }
+
+  tryMove(x, y, dx, dy) {
     const world = this.world;
-    if (!this.entry || this.pushed || world.dialogue) return false;
-    const rock = this.entry.image;
-    const dx = world.player.x - rock.x, dy = world.player.y - rock.y;
-    if (Math.abs(dx) < 28 && Math.abs(dy) < 25 && world.player.facing === 'r') {
-      this.pushed = true; world.flags[35] = 1;
-      rock.x = this.entry.item.X + 60; world.player.x -= 6;
-      this.sync(); world.sound.play('snd_noise');
-      return true;
+    const rock = this.rocks.find(({ body }) => blocked(world, [body], x, y));
+    if (!rock) return false;
+    if (!rock.pushed && !dy && (dx > 0 || dx < 0 && rock.entry.image.x > rock.start)) {
+      rock.entry.image.x += dx; world.player.setPosition(x, y);
+      this.sync(rock);
+      if (this.triggers.some((trigger) => touchesObject(world, rock.entry.image, trigger))) {
+        rock.entry.image.x = rock.target; world.player.x -= 6;
+        rock.pushed = true; world.flags[rock.flag] = 1;
+        this.sync(rock); this.openSpikes();
+      }
     }
-    return false;
+    return true;
   }
 
   interact() {
     const world = this.world;
     const sign = world.roomObjects.find((entry) => entry.item.ObjectName === 'obj_readable_room1');
-    if (sign && inInteractionRange(world, sign)) {
-      world.showDialogue(["* (The path ahead is blocked by spikes.)"]);
-      return true;
-    }
-    return false;
+    if (!sign || !inInteractionRange(world, sign)) return false;
+    world.showDialogue(['* Three out of four grey rocks\n  recommend you push them.']);
+    return true;
   }
 }
 

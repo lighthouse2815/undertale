@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 26/10/2026, sau phần trận Napstablook. Mốc bàn giao trước phần này: `b762a563` trên `main`.
+Cập nhật: 26/10/2026, sau phần sửa câu đố đá Ruins 9/11. Mốc code trước phần này: `5547acd7` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -18,6 +18,7 @@ Trang chính/bản Butterscotch chưa được thay bằng bản viết lại; k
 ## Hiện trạng
 
 - Có intro, tiêu đề, nhập tên; tải phòng/ảnh theo nhu cầu, di chuyển, camera, va chạm, chuyển phòng và lưu/nạp cơ bản.
+- Đá phòng 9 và hai đá thường phòng 11 đã đẩy/lùi từng bước, chốt tại vùng nút, giữ va chạm/vị trí qua cờ 31/32/35. Goofyrock đi theo `path_goofyrock`, có nhường đường, activator khiến đá rời nút và dựng lại tường, cờ 33 chỉ chốt khi yêu cầu đứng lại.
 - Có các sự kiện đầu Ruins: công tắc, Dummy, Toriel dẫn qua gai, Froggit theo kịch bản, hành lang nhận điện thoại.
 - Có menu ngoài trận, một số cuộc gọi Toriel, túi 8 ô và dữ liệu vật phẩm ID 1–13.
 - Có trận Napstablook nối từ phòng 12; Check/Threat/Cheer/Flirt, màn mũ, kết thúc riêng, Flee/ITEM và Game Over; xem giới hạn trình bày trong `remake/README.md`.
@@ -27,8 +28,8 @@ Trang chính/bản Butterscotch chưa được thay bằng bản viết lại; k
 
 ## Việc tiếp theo và các chỗ phải sửa thật
 
-1. **Tiếp tục đối chiếu câu đố đá/hố, sau đó các phần thiếu ở 12A và phòng 14 trở đi.** Trận Napstablook đã nối: No không đổi plot; Yes vào battlegroup 20; Cheer ba lần → màn mũ, Cheer/Flirt tiếp → lời cảm ơn tự động, cờ 36 và fade tới plot 11. Flee giữ ma để đấu lại; đánh cạn 88 HP khiến ma rời đi, không đổi EXP/GOLD/kill/dân số. Nhánh cờ 202 >= 20 tự rời phòng không bật cờ 36. Bộ test phòng 12 đã thay kỳ vọng bỏ qua boss bằng các nhánh thật. Va chạm dòng nước sát khung và nước mắt tạo mũ còn cần đối chiếu từng khung; test hiện tại kiểm tra luật chơi và kết quả, chưa chứng minh toàn bộ quỹ đạo giống hệt gốc. Trình bày bong bóng thoại, gõ chữ và chuyển cảnh chiến đấu cũng chưa hoàn chỉnh như bản gốc.
-2. Đối chiếu lại `ruins-rock.mjs` và `ruins-goofyrock.mjs`: hố/đá hiện có các bước dịch chuyển tức thời và chuỗi tương tác đơn giản hóa. Cần chuyển chuyển động, vị trí, hội thoại, va chạm và cờ thực tế; test hiện tại chưa chứng minh những phần này trung thực hoàn toàn.
+1. **Ưu tiên chuyển lại hố rơi phòng 8/10, sau đó các phần thiếu ở 12A và phòng 14 trở đi.** Trận Napstablook đã nối: No không đổi plot; Yes vào battlegroup 20; Cheer ba lần → màn mũ, Cheer/Flirt tiếp → lời cảm ơn tự động, cờ 36 và fade tới plot 11. Flee giữ ma để đấu lại; đánh cạn 88 HP khiến ma rời đi, không đổi EXP/GOLD/kill/dân số. Nhánh cờ 202 >= 20 tự rời phòng không bật cờ 36. Bộ test phòng 12 đã thay kỳ vọng bỏ qua boss bằng các nhánh thật. Va chạm dòng nước sát khung và nước mắt tạo mũ còn cần đối chiếu từng khung; test hiện tại kiểm tra luật chơi và kết quả, chưa chứng minh toàn bộ quỹ đạo giống hệt gốc. Trình bày bong bóng thoại, gõ chữ và chuyển cảnh chiến đấu cũng chưa hoàn chỉnh như bản gốc.
+2. `RuinsHoles` trong `ruins-rock.mjs` vẫn ẩn Frisk rồi đổi y tức thời sau bộ đếm; cần đối chiếu `obj_holeup`, `obj_holedown/2` để chuyển cảnh rơi, vị trí và âm thanh đúng. Phần đá đã sửa: không đẩy khi chỉ đứng gần; di chuyển và collider đi cùng nhau; Goofyrock chỉ rời nút khi chạm activator chứ không phải sau câu “Was that helpful?”. Test kiểm tra các trạng thái/vị trí và chuyển động giữa đường, chưa chứng minh mọi khung va chạm sát cạnh hoặc thứ tự alarm giống hoàn toàn bản gốc.
 3. Phòng 12A còn thiếu lời thoại/tên SAVE đúng khu vực và âm thanh chuột. Encounter phòng 8–13 và nhóm nhiều quái/hard mode chưa chuyển.
 4. Tiếp tục phòng 14 trở đi, các phần Ruins còn thiếu, rồi Snowdin, Waterfall, Hotland, CORE, New Home, các tuyến và kết thúc. Cảnh Flowey mở đầu cũng còn thiếu.
 5. Các hạn chế chung còn có: hộp thoại hiện cả trang thay vì gõ từng chữ, hoạt hình/âm thanh/chuyển cảnh chiến đấu chưa đầy đủ, các vật phẩm/điện thoại/trạng thái lưu ngoài phần hiện tại chưa đủ.
@@ -55,6 +56,9 @@ TMPDIR="$PWD/.cache/test-tmp" CHROME_PATH=/opt/google/chrome/chrome npm run test
 Máy hiện tại có Chrome ở đường dẫn trên; phiên/máy khác cần xác minh lại.
 Server phát triển mặc định dùng cổng 5191. `.cache/` chứa script kiểm tra/trích dữ liệu cục bộ, không được giả định có trong checkout mới.
 Không commit `.cache/`, `test-results/`, `dist/`, thư mục game gốc hoặc bí mật.
+
+Phần đá có kiểm thử tại `tests/remake-ruins-path.mjs` và `tests/remake-ruins-late.mjs`: đẩy/lùi, đứng gần không tự đẩy, chốt nút, collider mới, ba đá phòng 11, path Goofyrock/nhường đường, activator/gai/tường, cờ 31–33/35, lời thoại tuyến thường/kết thúc và lưu/nạp.
+Phần đá đã qua kiểm tra cú pháp, build, kiểm thử riêng và toàn bộ `test:remake` trên Chrome nêu trên.
 
 Phần Napstablook có kiểm thử trình duyệt riêng tại `tests/remake-ruins-12.mjs`, được gọi trong bộ tổng.
 Ở phần này, `check:remake`, `build:remake`, kiểm thử riêng và toàn bộ `test:remake` đã qua trên Chrome tại đường dẫn nêu trên.
