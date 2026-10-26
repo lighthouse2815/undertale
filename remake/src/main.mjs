@@ -25,6 +25,7 @@ import { Ruins13Lesson } from './ruins13.mjs';
 import { Ruins14Lesson } from './ruins14.mjs';
 import { RuinsPerspective } from './ruins-perspective.mjs';
 import { RuinsOutlook } from './ruins-outlook.mjs';
+import { RuinsHome } from './ruins-home.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -114,6 +115,7 @@ class World extends Scene {
     this.ruins14?.destroy(); this.ruins14 = null;
     this.ruinsPerspective?.destroy(); this.ruinsPerspective = null;
     this.ruinsOutlook = null;
+    this.ruinsHome?.destroy(); this.ruinsHome = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -183,7 +185,7 @@ class World extends Scene {
     this.player.facing = facing; this.player.frameIndex = 0;
     this.doors = data.room.GameObjects.flatMap((item) => {
       const match = /^obj_door([ABCD])(musicfade)?$/.exec(item.ObjectName);
-      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A' })[name];
+      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A', room_ruins16: 'room_ruins19', room_ruins19: 'room_ruins16' })[name];
       const destination = special || (match && ROOM_EXITS[name]?.[match[1]]);
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
@@ -226,6 +228,7 @@ class World extends Scene {
     if (name === 'room_ruins14') this.ruins14 = new Ruins14Lesson(this);
     if (/^room_ruins15[A-D]$/.test(name)) this.ruinsPerspective = new RuinsPerspective(this);
     if (['room_ruins17', 'room_ruins18OLD'].includes(name)) this.ruinsOutlook = new RuinsOutlook(this);
+    if (name === 'room_ruins19') this.ruinsHome = new RuinsHome(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -292,11 +295,12 @@ class World extends Scene {
     const guideLocked = this.spikeGuide?.update(delta);
     const holesLocked = this.ruinsHoles?.update(delta);
     const rockLocked = this.ruinsGoofyrock?.update();
+    const homeLocked = this.ruinsHome?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -322,6 +326,7 @@ class World extends Scene {
       if (this.player.x !== previous.x || this.player.y !== previous.y) this.ruinsEncounter?.step();
       if (this.corridorLesson?.checkTrigger(previous)) return;
       if (this.ruinsPerspective?.checkTrigger(previous)) return;
+      if (this.ruinsHome?.checkTrigger()) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
@@ -364,6 +369,7 @@ class World extends Scene {
     if (this.ruins14?.interact()) return;
     if (this.ruinsPerspective?.interact()) return;
     if (this.ruinsOutlook?.interact()) return;
+    if (this.ruinsHome?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
@@ -385,7 +391,7 @@ class World extends Scene {
     if (target.entry.item.ObjectName === 'obj_savepoint') {
       this.hp = Math.max(this.hp, this.maxHp);
       this.sound.play('snd_power', { volume: 0.88 });
-      this.showDialogue(this.ruins12?.saveDialogue ?? this.ruinsStart?.text.save ?? DIALOGUES.obj_savepoint, { onClose: () => {
+      this.showDialogue(this.ruinsHome?.saveDialogue ?? this.ruins12?.saveDialogue ?? this.ruinsStart?.text.save ?? DIALOGUES.obj_savepoint, { onClose: () => {
         this.plot = Math.max(this.plot, 2);
         this.scene.pause();
         this.scene.launch('SaveMenu');

@@ -1,0 +1,58 @@
+{
+  "intro": [
+    {
+      "text": "* Oh dear, that took\n  longer than I\n  thought it would.",
+      "portrait": "spr_face_torieltalkside"
+    }
+  ],
+  "greeting": {
+    "text": "* How did you get\n  here, my child?\n* Are you hurt?",
+    "portrait": "spr_face_torieltalkside"
+  },
+  "full": {
+    "text": "* Not a scratch...\n* Impressive!\n* But still...",
+    "portrait": "spr_face_torieltalkside"
+  },
+  "hurt": {
+    "text": "* There, there, I will\n  heal you.",
+    "portrait": "spr_face_torieltalkside"
+  },
+  "critical": {
+    "text": "* Who did this to you? \n* You will get an apology.",
+    "portrait": "spr_face_torieltalkside"
+  },
+  "follow": [
+    {
+      "text": "* I should not have\n  left you alone\n  for so long.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* It was irresponsible\n  to try to surprise\n  you like this.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Err...",
+      "portrait": "spr_face_torielembarrassed"
+    },
+    {
+      "text": "* Well, I suppose I\n  cannot hide it\n  any longer.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Come, small one!",
+      "portrait": "spr_face_torielhappytalk"
+    }
+  ],
+  "tree": [
+    "* Every time this old tree\n  grows any leaves, they fall\n  right off."
+  ],
+  "treeEnd": [
+    "* (It's natural for a tree to\n  lose its leaves.)"
+  ],
+  "save": [
+    "* (Seeing such a cute, tidy\n  house in the RUINS gives\n  you determination.)"
+  ],
+  "emptySave": [
+    "* Determination."
+  ]
+}

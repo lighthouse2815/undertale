@@ -31,6 +31,8 @@ export async function loadRoom(scene, name) {
   const perspectiveDialogue = perspective ? await json(new URL('./ruins-perspective.json', import.meta.url).href) : null;
   const outlook = ['room_ruins17', 'room_ruins18OLD'].includes(name);
   const outlookDialogue = outlook ? await json(new URL('./ruins-outlook.json', import.meta.url).href) : null;
+  const ruinsHome = name === 'room_ruins19';
+  const homeDialogue = ruinsHome ? await json(new URL('./ruins-home.json', import.meta.url).href) : null;
   const ruins12 = name === 'room_ruins12';
   const ruins13 = ['room_ruins12B', 'room_ruins13'].includes(name);
   const ruins13Dialogue = ruins13 ? await json(new URL('./ruins13.json', import.meta.url).href) : null;
@@ -47,7 +49,7 @@ export async function loadRoom(scene, name) {
     : ruinsSwitches ? ['path_torielwalk3', 'path_torielwalk3_2', 'path_walkright']
       : dummyLesson ? ['path_torielwalk4', 'path_torielwalk4_2']
         : spikeGuide ? ['path_torielwalk5', 'path_torielwalk5_2', 'path_walkright', 'path_froghead']
-          : corridorLesson ? ['path_walkright', 'path_torielwalk6'] : goofyrock ? ['path_goofyrock'] : [];
+          : corridorLesson ? ['path_walkright', 'path_torielwalk6'] : ruinsHome ? ['path_torielwalk19', 'path_torielwalk19_3', 'path_torielwalk19_4'] : goofyrock ? ['path_goofyrock'] : [];
   await Promise.all(pathNames.map(async (key) => {
     paths.set(key, await json(`paths/${key}.json`));
   }));
@@ -67,11 +69,14 @@ export async function loadRoom(scene, name) {
   if (corridorLesson) await Promise.all(['obj_plotwall3', 'obj_stalkerflowey'].map(object));
   if (ruinsRock) await Promise.all(['obj_plotwall4'].map(object));
   if (ruinsHoles || perspective) await object('obj_cosmetichole');
+  if (ruinsHome) await object('obj_toroverworld3');
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
   if (ruinsStart) spriteNames.add('spr_exc');
   if (ruinsStart) for (const page of [...ruinsStartDialogue.call, ...ruinsStartDialogue.afterDog]) if (page.portrait) spriteNames.add(page.portrait);
   if (ruins13) for (const page of [...ruins13Dialogue.call, ...ruins13Dialogue.callHard]) if (page.portrait) spriteNames.add(page.portrait);
   if (candyRoom) spriteNames.add('spr_candydish2');
+  if (ruinsHome) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_toriel_d_phone', 'spr_exc',
+    'spr_face_torielhappytalk', 'spr_face_torieltalkside', 'spr_face_torielembarrassed']) spriteNames.add(key);
   if (hasSavepoint || candyRoom || ruins12 || ruins13 || perspective) spriteNames.add('spr_heartsmall');
   if (ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_face_torielhappytalk']) spriteNames.add(key);
   if (ruinsSwitches) for (const key of ['spr_face_torieltalk', 'spr_face_torieltalkside']) spriteNames.add(key);
@@ -101,6 +106,7 @@ export async function loadRoom(scene, name) {
     ...(ruinsHoles ? ['snd_noise', 'snd_fall2', 'snd_hero'] : []),
     ...(ruins14 ? ['snd_screenshake', 'snd_b'] : []),
     ...(perspective ? ['snd_switchpull_n', 'snd_noise', 'snd_fall2', 'snd_squeak'] : []),
+    ...(ruinsHome ? ['snd_phone', 'mus_ruins', 'mus_toomuch', 'mus_reunited', 'mus_toriel'] : []),
     ...(hasSavepoint ? ['snd_power', 'snd_save'] : []), ...(ruinsTutorial ? ['snd_noise'] : []),
     ...(ruinsSwitches ? ['snd_screenshake', 'snd_wrongvictory'] : []),
     ...(dummyLesson ? ['snd_select', 'snd_damage', 'snd_escaped', 'snd_slidewhist'] : []),
@@ -121,10 +127,10 @@ export async function loadRoom(scene, name) {
     scene.load.on('loaderror', failed);
     scene.load.once('complete', complete);
     for (const [key, path] of queued) scene.load.image(key, new URL(path, base).href);
-    for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.${key === 'snd_fall2' ? 'ogg' : 'wav'}`, base).href);
+    for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.${key === 'snd_fall2' || key.startsWith('mus_') ? 'ogg' : 'wav'}`, base).href);
     scene.load.start();
   });
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, rockDialogue };
 }
