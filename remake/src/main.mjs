@@ -16,6 +16,7 @@ import { CorridorLesson } from './corridor-lesson.mjs';
 import { TutorialFroggit } from './tutorial-froggit.mjs';
 import { RuinsBattle } from './ruins-battle.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
+import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -43,8 +44,11 @@ const ROOM_EXITS = {
   room_ruins4: { A: 'room_ruins5', B: 'room_ruins3' },
   room_ruins5: { A: 'room_ruins6', B: 'room_ruins4' },
   room_ruins6: { A: 'room_ruins7', B: 'room_ruins5' },
-  room_ruins7: { A: 'room_ruins7A', B: 'room_ruins6' },
+  room_ruins7: { A: 'room_ruins7A', B: 'room_ruins6', C: 'room_ruins8' },
   room_ruins7A: { B: 'room_ruins7' },
+  room_ruins8: { A: 'room_ruins9', D: 'room_ruins7' },
+  room_ruins9: { A: 'room_ruins10', B: 'room_ruins8' },
+  room_ruins10: { B: 'room_ruins9' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -82,6 +86,7 @@ class World extends Scene {
     this.candyDish = null;
     this.ruinsStart = null;
     this.ruinsEncounter?.destroy(); this.ruinsEncounter = null;
+    this.ruinsRock = null; this.ruinsHoles?.destroy(); this.ruinsHoles = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -123,6 +128,7 @@ class World extends Scene {
         if (item.ObjectName === 'obj_dummy1' && this.flags[14] === 1) continue;
       }
       if (name === 'room_ruins5' && item.ObjectName === 'obj_toroverworld5' && (this.plot > 7 || this.plot < 6)) continue;
+      if (name === 'room_ruins9' && item.ObjectName === 'obj_plotwall4' && this.flags[35] === 1) continue;
       if (name === 'room_ruins7' && item.ObjectName === 'obj_smallfrog' && this.kills > 0) continue;
       if (name === 'room_ruins6') {
         if (item.ObjectName === 'obj_toroverworld7' && this.plot > 8) continue;
@@ -149,11 +155,11 @@ class World extends Scene {
       spawnName === 'obj_mainchara' ? snap(spawn.Y) : spawn.Y, `spr_mainchara${facing}:0`).setOrigin(0);
     this.player.facing = facing; this.player.frameIndex = 0;
     this.doors = data.room.GameObjects.flatMap((item) => {
-      const match = /^obj_door([AB])(musicfade)?$/.exec(item.ObjectName);
+      const match = /^obj_door([ABCD])(musicfade)?$/.exec(item.ObjectName);
       const destination = match && ROOM_EXITS[name]?.[match[1]];
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
-      return [{ destination, direction: match[1], marker: match[1] === 'A' ? 'obj_markerA' : 'obj_markerB',
+      return [{ destination, direction: match[1], marker: ({ A: 'obj_markerA', B: 'obj_markerB', C: 'obj_markerC', D: 'obj_markerD' })[match[1]] ?? 'obj_markerA',
         duration: (match[2] ? 13 : 8) * 1000 / 30,
         left: item.X + (sprite.MarginLeft - sprite.OriginX) * item.ScaleX,
         right: item.X + (sprite.MarginRight - sprite.OriginX) * item.ScaleX,
@@ -183,6 +189,8 @@ class World extends Scene {
     if (name === 'room_ruins6') this.corridorLesson = new CorridorLesson(this);
     if (name === 'room_ruins7A') this.candyDish = new CandyDish(this);
     if (name === 'room_ruins7') { this.ruinsStart = new RuinsStart(this); this.ruinsEncounter = new RuinsEncounter(this); }
+    if (name === 'room_ruins8') this.ruinsHoles = new RuinsHoles(this);
+    if (name === 'room_ruins9') this.ruinsRock = new RuinsRock(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -242,11 +250,13 @@ class World extends Scene {
     if (state.phase !== 'running') return;
     const menuPressed = this.menuPressed; this.menuPressed = false;
     const guideLocked = this.spikeGuide?.update(delta);
+    const holesLocked = this.ruinsHoles?.update(delta);
+    const rockLocked = this.ruinsRock?.update();
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -295,6 +305,7 @@ class World extends Scene {
 
   tryInteract() {
     if (this.candyDish) { this.candyDish.interact(); return; }
+    if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
     if (this.spikeGuide) { this.spikeGuide.interact(); return; }

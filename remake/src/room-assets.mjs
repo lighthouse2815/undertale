@@ -21,6 +21,8 @@ export async function loadRoom(scene, name) {
   const corridorLesson = name === 'room_ruins6';
   const candyRoom = name === 'room_ruins7A';
   const ruinsStart = name === 'room_ruins7';
+  const ruinsRock = name === 'room_ruins9';
+  const ruinsHoles = name === 'room_ruins8';
   const ruinsStartDialogue = ruinsStart ? await json(new URL('./ruins-start.json', import.meta.url).href) : null;
   if ((dummyLesson || spikeGuide || candyRoom) && !scene.cache.json.exists('inventory')) scene.cache.json.add('inventory',
     await json(new URL('./inventory.json', import.meta.url).href));
@@ -51,6 +53,7 @@ export async function loadRoom(scene, name) {
   if (spikeGuide) await Promise.all(['obj_toroverworld6', 'obj_torinteractable5', 'obj_torhandhold1', 'obj_fakefroggit',
     'obj_froghead', 'obj_froglegs', 'obj_torieldisapprove'].map(object));
   if (corridorLesson) await Promise.all(['obj_plotwall3', 'obj_stalkerflowey'].map(object));
+  if (ruinsRock) await Promise.all(['obj_plotwall4'].map(object));
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
   if (ruinsStart) spriteNames.add('spr_exc');
   if (ruinsStart) for (const page of [...ruinsStartDialogue.call, ...ruinsStartDialogue.afterDog]) if (page.portrait) spriteNames.add(page.portrait);
@@ -83,7 +86,7 @@ export async function loadRoom(scene, name) {
     ...(ruinsSwitches ? ['snd_screenshake', 'snd_wrongvictory'] : []),
     ...(dummyLesson ? ['snd_select', 'snd_damage', 'snd_escaped', 'snd_slidewhist'] : []),
     ...(spikeGuide ? ['snd_select', 'snd_damage', 'snd_escaped', 'snd_ehurt1'] : []),
-    ...(corridorLesson ? ['snd_phone', 'snd_pombark'] : []), ...(ruinsStart ? ['snd_phone', 'snd_b'] : [])]
+    ...(corridorLesson ? ['snd_phone', 'snd_pombark'] : []), ...(ruinsStart ? ['snd_phone', 'snd_b'] : []), ...(ruinsRock ? ['snd_noise'] : [])]
     .filter((key) => !scene.cache.audio.exists(key));
   const queued = [...images].filter(([key]) => !scene.textures.exists(key));
   if (queued.length || sounds.length) await new Promise((resolve, reject) => {
