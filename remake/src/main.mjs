@@ -1,6 +1,7 @@
 import { Game, Scene, Scale, CANVAS } from '../vendor/phaser.esm.min.js';
 import { loadRoom } from './room-assets.mjs';
 import { createColliders, movePlayer } from './movement.mjs';
+import { Battle } from './battle.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -265,8 +266,9 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
+state.startBattle = () => state.game.scene.start('Battle');
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);
   else document.querySelector('main').requestFullscreen().catch(fail);

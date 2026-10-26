@@ -12,14 +12,15 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Nhân vật bốn hướng, animation, bước 3 pixel ở 30 Hz, camera cuộn theo phòng.
 - Cửa phải của phòng đầu chuyển sang `room_area1_2`, cửa dưới quay lại và đặt nhân vật tại marker gốc.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
+- Khung chiến đấu đầu tiên: menu FIGHT/ACT/ITEM/MERCY, SOUL, đạn, HP và kết thúc lượt; mở qua `__remake.startBattle()` để kiểm thử engine.
 - Vật cản chữ nhật dài/cao và mask PNG của bốn góc chéo.
 - Bàn phím, cảm ứng, thả phím khi mất tiêu điểm, toàn màn hình.
 - Tải JSON và PNG của phòng khi mở; giữ cache trong phiên chơi.
 - Đóng gói hosting tĩnh, chạy dưới đường dẫn con, không cần compiler GML.
 
 **Đây mới là bộ mở đầu, hiển thị và di chuyển ở phòng đầu, chưa phải Undertale đầy đủ.**
-Chưa chuyển cửa chuyển phòng, hội thoại, Flowey/Toriel, menu,
-chiến đấu, vật phẩm, lưu/nạp, những khu vực và nhánh kết thúc khác.
+Chưa chuyển cửa chuyển phòng, hội thoại đầy đủ, Flowey/Toriel, menu đầy đủ,
+ACT/ITEM/MERCY theo từng quái, lưu/nạp, những khu vực và nhánh kết thúc khác.
 Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
 
