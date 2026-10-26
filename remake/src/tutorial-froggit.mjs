@@ -38,13 +38,15 @@ export class TutorialFroggit extends DummyBattle {
     this.sound.play('snd_select');
     if (this.menuIndex < 2) this.choose(this.menuIndex ? 'actTarget' : 'fightTarget', ['Froggit']);
     else if (this.menuIndex === 3) this.choose('mercy', ['Spare', 'Flee']);
+    else if (this.menuIndex === 2) this.chooseInventory();
   }
 
   updateSubmenu() {
     this.drawSubmenu();
     if (this.cancel) { this.toMenu(this.text.intro[0]); return; }
     if (!this.confirmPressed) return;
-    if (this.kind === 'actTarget') this.choose('act', ['Check', 'Compliment', 'Threat']);
+    if (this.kind === 'item') this.useInventory();
+    else if (this.kind === 'actTarget') this.choose('act', ['Check', 'Compliment', 'Threat']);
     else if (this.kind === 'act') {
       if (this.subIndex !== 0) this.mercyModifier = 30;
       this.showPages(this.text[['check', 'compliment', 'threaten'][this.subIndex]], () => this.dummyTurn());

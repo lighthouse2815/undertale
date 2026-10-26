@@ -23,6 +23,9 @@ export function writeSave(value, { temporary = false } = {}) {
     kills: Number(value.kills ?? 0),
     playTime: Number(value.playTime ?? 0),
     phone: [...(value.phone ?? [])],
+    inventory: [...(value.inventory ?? [])],
+    weapon: Number(value.weapon ?? 3), armor: Number(value.armor ?? 4),
+    weaponStrength: Number(value.weaponStrength ?? 0), armorDefense: Number(value.armorDefense ?? 0),
     flags: { ...(value.flags ?? {}) },
     savedAt: Date.now(),
   };

@@ -1,5 +1,6 @@
 import { Battle } from './battle.mjs';
 import { loadRoom } from './room-assets.mjs';
+import { itemAction, itemNames } from './inventory.mjs';
 
 // obj_dummymonster: không có đạn, chỉ Check/Talk và các kết thúc hướng dẫn.
 export class DummyBattle extends Battle {
@@ -72,7 +73,7 @@ export class DummyBattle extends Battle {
     this.sound.play('snd_select');
     if (this.menuIndex === 0 || this.menuIndex === 1) this.choose(this.menuIndex === 0 ? 'fightTarget' : 'actTarget', ['Dummy']);
     else if (this.menuIndex === 3) this.choose('mercy', ['Spare', 'Flee']);
-    // Lúc đầu không có đồ; ITEM rỗng không tạo kẹo miễn phí.
+    else if (this.menuIndex === 2) this.chooseInventory();
   }
 
   choose(kind, items) {
@@ -86,7 +87,8 @@ export class DummyBattle extends Battle {
     this.drawSubmenu();
     if (this.cancel) { this.toMenu(this.text.intro[0]); return; }
     if (!this.confirmPressed) return;
-    if (this.kind === 'fightTarget') this.startFight();
+    if (this.kind === 'item') this.useInventory();
+    else if (this.kind === 'fightTarget') this.startFight();
     else if (this.kind === 'actTarget') this.choose('act', ['Check', 'Talk']);
     else if (this.kind === 'act') {
       if (this.subIndex === 0) this.showPages(this.text.check, () => this.dummyTurn());
@@ -104,6 +106,16 @@ export class DummyBattle extends Battle {
         } else this.dummyTurn();
       }
     }
+  }
+
+  chooseInventory() {
+    if (this.previousScene.inventory.length) this.choose('item', itemNames(this.previousScene, this.cache.json.get('inventory'), true));
+  }
+
+  useInventory() {
+    const lines = itemAction(this.previousScene, this.subIndex, 'use', this.cache.json.get('inventory'), { scene: this, health: this });
+    this.hpText.setText(`${this.previousScene.game.registry.get('charname')}  LV ${this.previousScene.lv}     HP ${this.hp}/${this.maxHp}`);
+    this.showPages(lines, () => this.dummyTurn());
   }
 
   toMenu(text) {

@@ -54,7 +54,7 @@ export class SaveMenu extends Scene {
     this.levelLabel.setText(`LV ${save?.lv ?? (save ? 1 : 0)}`);
     const seconds = Math.floor((save?.playTime ?? 0) / 1000);
     this.timeLabel.setText(`${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`);
-    this.roomLabel.setText(save?.room === 'room_ruins1' ? 'Ruins - Entrance' : ' ');
+    this.roomLabel.setText(({ room_ruins1: 'Ruins - Entrance', room_ruins7: 'Ruins - Leaf Pile' })[save?.room] ?? ' ');
   }
 
   close() {

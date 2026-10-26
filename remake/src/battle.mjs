@@ -1,4 +1,5 @@
 import { Scene } from '../vendor/phaser.esm.min.js';
+import { itemAction, itemNames } from './inventory.mjs';
 
 const getState = () => window.__remake;
 export const BATTLE_CONFIGS = {
@@ -12,6 +13,11 @@ export class Battle extends Scene {
   constructor(key = 'Battle') { super(key); }
 
   preload() {
+    if (this.game.scene.getScene('World').inventory.length) {
+      if (!this.cache.json.exists('inventory')) this.load.json('inventory', new URL('./inventory.json', import.meta.url).href);
+      for (const key of ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item']) if (!this.cache.audio.exists(key))
+        this.load.audio(key, new URL(`../assets/sounds/${key}/${key}.wav`, import.meta.url).href);
+    }
     this.load.image('battle-heart', new URL('../assets/sprites/spr_heart/spr_heart_0.png', import.meta.url).href);
     const key = this.game.registry.get('battleConfig') ?? 'dummy';
     const config = BATTLE_CONFIGS[key] ?? BATTLE_CONFIGS.dummy;
@@ -77,7 +83,9 @@ export class Battle extends Scene {
     if (this.confirmPressed) {
       if (this.menuIndex === 0) this.startFight();
       else if (this.menuIndex === 1) this.openSubmenu(['Check', 'Talk']);
-      else if (this.menuIndex === 2) this.openSubmenu(['Monster Candy']);
+      else if (this.menuIndex === 2) {
+        if (this.previousScene.inventory.length) this.openSubmenu(itemNames(this.previousScene, this.cache.json.get('inventory'), true));
+      }
       else if (this.mercyReady) this.showResult(`You spared the ${this.config.name}.`);
       else this.queueEnemyTurn(`The ${this.config.name} does not want to be spared.`);
     }
@@ -103,7 +111,10 @@ export class Battle extends Scene {
         if (this.subIndex === 1) this.mercyReady = true;
         this.queueEnemyTurn(this.subIndex === 0 ? this.config.check : this.config.talk);
       }
-      else { this.hp = Math.min(this.maxHp, this.hp + 10); this.hpText.setText(`HP ${this.hp} / ${this.maxHp}`); this.queueEnemyTurn('* You eat the Monster Candy.'); }
+      else {
+        const lines = itemAction(this.previousScene, this.subIndex, 'use', this.cache.json.get('inventory'), { scene: this, health: this });
+        this.hpText.setText(`HP ${this.hp} / ${this.maxHp}`); this.queueEnemyTurn(lines.join('\n'));
+      }
     }
     if (this.cancel) { this.mode = 'menu'; this.updateMenuText(); }
     this.menu.setText(this.submenu.map((item, i) => i === this.subIndex ? `>${item}` : ` ${item}`).join('\n'));

@@ -10,7 +10,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Dựng nền và tile của phòng đầu `room_area1` từ JSON/PNG gốc.
 - Mở đầu theo từng khung gốc, logo tiêu đề và nhập tên nhân vật tối đa 6 ký tự.
 - Nhân vật bốn hướng, animation, bước 3 pixel ở 30 Hz, camera cuộn theo phòng.
-- Nối hai chiều `room_area1` ↔ `room_area1_2` ↔ `room_ruins1` ↔ `room_ruins2` ↔ `room_ruins3` ↔ `room_ruins4` ↔ `room_ruins5` ↔ `room_ruins6`, dùng vùng cửa và marker gốc; giữ hướng nhìn, khóa di chuyển khi mờ chuyển phòng.
+- Nối hai chiều `room_area1` ↔ `room_area1_2` ↔ `room_ruins1` ↔ `room_ruins2` ↔ `room_ruins3` ↔ `room_ruins4` ↔ `room_ruins5` ↔ `room_ruins6` ↔ `room_ruins7` ↔ `room_ruins7A`, dùng vùng cửa và marker gốc; giữ hướng nhìn, khóa di chuyển khi mờ chuyển phòng.
 - Cảnh công tắc tại `room_ruins2`: Toriel chào, đi theo hai path JSON gốc, đạp bốn nút sàn, bật công tắc tường và mở cửa; giải thích xong đặt `plot = 3`, đợi Frisk tới gần rồi rời phòng. Quay lại hoặc nạp tiến trình giữ cửa mở. Biển hướng dẫn dùng lời thoại gốc.
 - Hai công tắc tại `room_ruins3`: Toriel đi trước và nhắc khi được hỏi; công tắc đầu gỡ tường chặn, công tắc sau hạ gai và rung màn hình. Hỗ trợ công tắc sai, ghi chú, hướng tương tác, va chạm Toriel đứng chờ và nạp lại ở các mốc `plot = 4 / 4.5 / 5`. Có lời thoại và ẩn ghi chú theo tên FRISK; các hệ thống Hard Mode khác chưa chuyển.
 - Phòng Dummy: Toriel hướng dẫn rồi đi theo path gốc, nhắc khi được hỏi; Dummy có 15 HP, ACT Check/Talk, FIGHT theo vị trí thanh đánh, MERCY Spare/Flee. Dummy không bắn đạn; hết tám lượt có thể bỏ đi. Bốn kết quả có lời phản hồi Toriel riêng, cập nhật cờ 10–14 và mốc `plot = 7`; lưu/nạp giữ Dummy còn hay mất.
@@ -19,6 +19,9 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Froggit theo kịch bản ở phòng gai có 20 HP, ACT Check/Compliment/Threat, FIGHT và MERCY. Toriel can thiệp rồi Froggit chạy đi sau hành động không kết liễu. Cờ 30 ngăn gặp lại; thưởng GOLD/XP, số quái bị đánh bại và LV được giữ qua lưu/nạp. Đây là trận hướng dẫn riêng, khác encounter Froggit ngẫu nhiên.
 - Menu ngoài trận mở bằng C/Ctrl, dùng Z/Enter xác nhận và X/Shift quay lại; giữ vị trí con trỏ chính, chặn khi đang thoại/cảnh khóa và khi cờ 17 bật. ITEM rỗng có màu xám và không mở. STAT hiện tên, LV, HP, AT/DF, EXP/NEXT, GOLD và trang bị ban đầu, đổi vị trí bảng nhỏ theo vị trí Frisk. Font nhỏ, bitmap, con trỏ và âm thanh gốc tải lúc mở menu. NPC vẫn di chuyển/dừng chờ, bộ đếm cuộc gọi không tăng khi xem menu.
 - CELL chỉ hiện sau khi nhận điện thoại. Hỗ trợ Say Hello qua bốn biến thể rồi lặp biến thể cuối; About Yourself, Call Her Mom và Flirt với thứ tự hội thoại, chân dung theo từng trang, cờ 40–42 và xóa mục dùng xong theo mã gốc. Giữ nhánh bận khi chó cầm điện thoại, sau đó gọi lại được; lời thoại không trả lời ở mốc `plot >= 19.9`. Danh sách mục và cờ được lưu/nạp; trang chỉ chứa lệnh đổi mặt được chuyển tự động, không bắt xác nhận trang trống.
+- Túi đồ 8 ô có USE/INFO/DROP, con trỏ hai tầng và xóa/đổi món đúng vị trí. Đã chuyển dữ liệu 13 vật phẩm đầu: các món hồi HP, gậy dùng xong nhặt lại, Faded Ribbon và Toy Knife đổi món đang trang bị trở vào túi; STAT và sát thương trận hướng dẫn đọc chỉ số trang bị. Lưu/nạp giữ túi, trang bị và chỉ số, file cũ mặc định túi rỗng với Stick/Bandage. Hai trận hướng dẫn dùng được ITEM thật, hồi HP và tiêu hao một món; ITEM rỗng giữ nguyên lượt.
+- Phòng lá `room_ruins7`: cuộc gọi Toriel một lần đưa `plot` lên `9.2`, có nhánh sau chuỗi chó giữ điện thoại và cờ 37; Froggit nhỏ đổi hình, nói chuyện theo cờ tuyến và biến mất nếu đã đánh bại quái. Savepoint có lời thoại và tên khu vực riêng.
+- Phòng kẹo `room_ruins7A`: chọn Yes/No bằng trái/phải rồi Z, không nhận khi túi đủ 8 món, phản hồi theo số lần lấy. Lần thứ tư làm đổ bát kẹo; nhánh cờ 6 chỉ lấy được ba viên. Lưu/nạp giữ trạng thái bát và kẹo.
 - Savepoint đầu Ruins hồi HP, hiện lời thoại gốc rồi mở Save/Return; X hoặc Return giữ file cũ, Save hiện xác nhận khi ghi thành công. Menu dùng font bitmap, con trỏ trái tim và âm thanh gốc.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
 - Phòng rơi xuống không vẽ trùng Frisk; chỉ cho đọc hoa sau mốc mở đầu và hiện Toriel ở mốc `plot = 25` của tuyến thường. Lời thoại hoa dùng nội dung gốc. Phòng savepoint Ruins không có trận ngẫu nhiên.
@@ -30,16 +33,17 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Đóng gói hosting tĩnh, chạy dưới đường dẫn con, không cần compiler GML.
 
 **Đã chuyển một phần mở đầu đến hành lang Ruins, chưa phải Undertale đầy đủ.**
-Chưa chuyển sự kiện từ `room_ruins7`, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, inventory/trang bị, các mục điện thoại sau Toriel và menu đầy đủ,
+Chưa chuyển trận ngẫu nhiên tại `room_ruins7` và các sự kiện từ `room_ruins8`, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, các vật phẩm sau ID 13, các mục điện thoại sau Toriel và menu đầy đủ,
 ACT/ITEM/MERCY theo từng quái, toàn bộ trạng thái lưu/nạp và menu Continue, những khu vực và nhánh kết thúc khác.
 Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
 Hộp thoại hiện hiển thị cả trang; chưa chuyển hiệu ứng gõ từng chữ, nhịp ngắt và hoạt hình chân dung.
 Trận Dummy chưa chuyển đầy đủ âm nhạc, hoạt hình tan bụi khi bị đánh bại và chuyển cảnh vào trận;
-inventory và các vũ khí ngoài nhánh sát thương ban đầu còn phải chuyển.
+các hoạt hình đánh bằng vũ khí khác nhau và vật phẩm sau ID 13 còn phải chuyển.
 Hai trận hướng dẫn chưa có đầy đủ hoạt hình sát thương, tan bụi, nhạc và chuyển cảnh gốc;
 trạng thái lưu giữa lúc đang nắm tay qua gai chưa được hỗ trợ.
-Trang bị STAT hiện theo Stick/Bandage ban đầu; chưa hỗ trợ đổi đồ, nhánh cuộc gọi khi đang giữ vật phẩm Annoying Dog và lớp kính chân dung tại nhà Toriel.
+Chưa nối trận ngẫu nhiên trong phòng lá; cuộc gọi khi đang giữ Annoying Dog, hiệu ứng vật phẩm riêng ở các boss/khu vực sau và lớp kính chân dung tại nhà Toriel còn phải chuyển.
+Faded Ribbon/Toy Knife đã dùng được trong hệ thống túi đồ; sự kiện nhặt chúng trong các phòng phía sau chưa chuyển.
 Nhạc cảnh hành lang chưa chuyển; snapshot tạm đã ghi riêng nhưng chưa có luồng nạp sau Game Over.
 
 Cảnh công tắc đối chiếu `obj_torieltrigger1`, `obj_toroverworld3`,
@@ -62,6 +66,11 @@ Hành lang đối chiếu `obj_toroverworld7`, `obj_torinteractable6`, `obj_tori
 
 Menu/điện thoại đối chiếu `obj_mainchara` User2, `obj_overworldcontroller`, `scr_itemuseb` mục 201–205,
 `SCR_TEXT` mục 1501–1508, `scr_phonename`, `scr_phoneshift`, `scr_levelup` và chân dung Toriel.
+
+Túi đồ/bát kẹo đối chiếu `scr_itemget`, `scr_itemshift`, `scr_itemuseb` mục 1–13,
+`scr_recoitem`, `scr_recover`, `scr_armoreq`, `scr_weaponeq`, `scr_itemdesc`,
+`obj_candydish1` và `SCR_TEXT` mục 508/509. Phòng lá dùng `obj_torielcall1`,
+`obj_smallfrog` và `SCR_TEXT` mục 15.
 
 Bản `game/` hiện tại là bản tham chiếu chạy bằng Butterscotch, vẫn được giữ để
 đối chiếu. Không đổi bản công khai thành bản viết lại trước khi chuyển đủ nội dung.
@@ -92,6 +101,11 @@ thuộc tác giả Undertale; xem `CREDITS.txt` trong gói xuất.
 | `src/save-menu.mjs` | Menu Save/Return, hiển thị file cũ và xác nhận lưu |
 | `src/field-menu.mjs` | Menu ngoài trận, STAT và danh sách CELL |
 | `src/phone.mjs` | Cuộc gọi Toriel, thay đổi danh sách và cờ hội thoại |
+| `src/inventory.mjs` | Nhận đồ, tên, USE/INFO/DROP, hồi HP và đổi trang bị |
+| `src/inventory.json` | Dữ liệu 13 vật phẩm đầu và lời thoại bát kẹo |
+| `src/candy-dish.mjs` | Lựa chọn nhận kẹo, túi đầy và bát đổ |
+| `src/ruins-start.mjs` | Cuộc gọi và Froggit nhỏ ở phòng lá |
+| `src/ruins-start.json` | Lời thoại cuộc gọi, Froggit và SAVE phòng lá |
 | `src/phone.json` | Nhãn menu và các nhánh lời thoại điện thoại gốc |
 | `src/fonts.mjs` | Dùng chung metric font bitmap và atlas đổi màu cho Canvas |
 | `src/levels.mjs` | Ngưỡng EXP dùng chung cho chiến đấu và STAT |

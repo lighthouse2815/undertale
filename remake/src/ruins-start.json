@@ -1,0 +1,103 @@
+{
+  "call": [
+    {
+      "text": "* Ring... ",
+      "portrait": null
+    },
+    {
+      "text": "* Hello?\n* This is TORIEL.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* You have not left\n  the room, have you?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* There are a few puzzles\n  ahead that I have\n  yet to explain.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* It would be dangerous\n  to try to solve them\n  yourself.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Be good, alright?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "afterDog": [
+    {
+      "text": "* Ring... ",
+      "portrait": null
+    },
+    {
+      "text": "* Hello? Hello?\n* This is TORIEL.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* My apologies.\n* A strange dog\n  kidnapped my phone.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* So if you called, I\n  could not have helped\n  you.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* However, I have\n  recovered it.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* And you are still in\n  that room, are you not?",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* What a good child you\n  are.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* There are a few puzzles\n  ahead that I have\n  yet to explain.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* It would be dangerous\n  to try to solve them\n  yourself.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Be good, alright?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "frog": [
+    "* Ribbit, ribbit.\n* (Excuse me, human.)",
+    "* (I have some advice\n  for you about battling\n  monsters.)",
+    "* (If you ACT a certain way\n  or FIGHT until you\n  almost defeat them...)",
+    "* (They might not want to\n  battle you anymore.)",
+    "* (If a monster does not\n  want to fight you, please...)",
+    "* (Use some MERCY, human.)\n* Ribbit."
+  ],
+  "frogHard": [
+    "* Ribbit, ribbit.\n* (Excuse me, human.)",
+    "* (I have some advice\n  for you about battling\n  monsters.)",
+    "* (The monsters in this world\n  are very dangerous and\n  aggressive.)",
+    "* (In this place, running away\n  will not work on the\n  first turn.)",
+    "* (It may be better to try\n  another option.)\n* Ribbit."
+  ],
+  "frogAfter": [
+    "* Ribbit, ribbit.\n* (Excuse me, human.)",
+    "* (You seem like you have\n  grown into a thoughtful and\n  conscientious person.)",
+    "* (Whether that was from my\n  advice or not...)\n* (I'm quite proud.)",
+    "* Ribbit."
+  ],
+  "save": [
+    "* (Playfully crinkling through\n  the leaves fills you with\n  determination.)",
+    "* (HP fully restored.)"
+  ]
+}

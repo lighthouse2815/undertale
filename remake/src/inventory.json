@@ -1,0 +1,181 @@
+{
+  "items": {
+    "1": {
+      "name": "Monster Candy",
+      "battleName": "MnstrCndy",
+      "seriousName": "MnstrCndy",
+      "use": "* You ate the Monster Candy.",
+      "info": [
+        "* \"Monster Candy\" - Heals 10 HP\n* Has a distinct, \n  non-licorice flavor."
+      ],
+      "heal": 10,
+      "a": " \n* Very un-licorice-like.",
+      "b": " \n* ... tastes like licorice."
+    },
+    "2": {
+      "name": "Croquet Roll",
+      "battleName": "CroqtRoll",
+      "seriousName": "CroqtRoll",
+      "use": "* You hit the Croquet Roll into\n  your mouth.",
+      "info": [
+        "* \"Croquet Roll\" - Heals 15 HP\n* Fried dough traditionally\n  served with a mallet."
+      ],
+      "heal": 15,
+      "_serious": "* You ate the Croquet Roll."
+    },
+    "3": {
+      "name": "Stick",
+      "battleName": "Stick",
+      "seriousName": "Stick",
+      "use": "* You threw the stick away.\n* Then picked it back up.",
+      "info": [
+        "* \"Stick\" - Weapon AT 0\n* Its bark is worse than\n  its bite."
+      ]
+    },
+    "4": {
+      "name": "Bandage",
+      "battleName": "Bandage",
+      "seriousName": "Bandage",
+      "use": "* You re-applied the bandage.",
+      "info": [
+        "* \"Bandage\" - Heals 10 HP\n* It has already been used\n  several times."
+      ],
+      "heal": 10,
+      "a": "\n* Still kind of gooey."
+    },
+    "5": {
+      "name": "Rock Candy",
+      "battleName": "RockCandy",
+      "seriousName": "RockCandy",
+      "use": "* You ate the Rock Candy.",
+      "info": [
+        "* \"Rock Candy\" - Heals 1 HP\n* Here is a recipe to make\n  this at home:",
+        "* 1. Find a rock"
+      ],
+      "heal": 1
+    },
+    "6": {
+      "name": "Pumpkin Rings",
+      "battleName": "PunkRings",
+      "seriousName": "PmknRings",
+      "use": "* You ate the Pumpkin Rings.",
+      "info": [
+        "* \"Pumpkin Rings\" - Heals 8 HP\n* A small pumpkin cooked\n  like onion rings."
+      ],
+      "heal": 8
+    },
+    "7": {
+      "name": "Spider Donut",
+      "battleName": "SpidrDont",
+      "seriousName": "SpdrDonut",
+      "use": "* You ate the Spider Donut.",
+      "info": [
+        "* \"Spider Donut\" - Heals 12 HP\n* A donut made with Spider\n  Cider in the batter."
+      ],
+      "heal": 12,
+      "a": "* Don't worry, Spider didn't."
+    },
+    "8": {
+      "name": "Stoic Onion",
+      "battleName": "StocOnoin",
+      "seriousName": "Onion",
+      "use": "* You ate the Stoic Onion.",
+      "info": [
+        "* \"Stoic Onion\" - Heals 5 HP\n* Even eating it raw, the\n  tears just won't come."
+      ],
+      "heal": 5,
+      "a": "\n* You didn't cry..."
+    },
+    "9": {
+      "name": "Ghost Fruit",
+      "battleName": "GhostFrut",
+      "seriousName": "GhstFruit",
+      "use": "* You ate the Ghost Fruit.",
+      "info": [
+        "* \"Ghost Fruit\" - Heals 16 HP\n* If eaten, it will never\n  pass to the other side."
+      ],
+      "heal": 16
+    },
+    "10": {
+      "name": "Spider Cider",
+      "battleName": "SpidrCidr",
+      "seriousName": "SpdrCider",
+      "use": "* You drank the Spider Cider.",
+      "info": [
+        "* \"Spider Cider\" - Heals 24 HP\n* Made with whole spiders,\n  not just the juice."
+      ],
+      "heal": 24
+    },
+    "11": {
+      "name": "Butterscotch Pie",
+      "battleName": "ButtsPie",
+      "seriousName": "Pie",
+      "use": "* You ate the Butterscotch Pie.\n* Your HP was maxed out.",
+      "info": [
+        "* \"Butterscotch Pie\" - All HP\n* Butterscotch-cinnamon\n  pie, one slice."
+      ]
+    },
+    "12": {
+      "name": "Faded Ribbon",
+      "battleName": "Ribbon",
+      "seriousName": "Ribbon",
+      "use": "* You equipped the ribbon.",
+      "info": [
+        "* \"Faded Ribbon\" - Armor DF 3\n* If you're cuter, monsters\n  won't hit you as hard."
+      ]
+    },
+    "13": {
+      "name": "Toy Knife",
+      "battleName": "Toy Knife",
+      "seriousName": "Toy Knife",
+      "use": "* You equipped Toy Knife.",
+      "info": [
+        "* \"Toy Knife\" - Weapon AT 3\n* Made of plastic.\n* A rarity nowadays."
+      ]
+    }
+  },
+  "actions": [
+    "USE",
+    "INFO",
+    "DROP"
+  ],
+  "recover": "* You recovered \\[1] HP!",
+  "maxed": "* Your HP was maxed out.",
+  "drop": [
+    "* You bid a quiet farewell\n  to the \\[I].",
+    "* You put the \\[I]\n  on the ground and gave it a\n  little pat.",
+    "* You threw the \\[I]\n  on the ground like the piece\n  of trash it is.",
+    "* You abandoned the \n  \\[I].",
+    "* The \\[I] was\n  thrown away."
+  ],
+  "candy": {
+    "first": "* It says 'take one.'\n* Take a piece of candy?",
+    "again": "* 'Take one.'\n* Take a candy?",
+    "empty": [
+      "* Look at what you've done."
+    ],
+    "take": [
+      [
+        "* You took a piece of candy.\n* (Press C to open the menu.)"
+      ],
+      [
+        "* You took more candy.\n* How disgusting.."
+      ],
+      [
+        "* You take another piece.\n* You feel like the\n  scum of the earth..."
+      ],
+      [
+        "* You took too much too fast.\n* The candy spills onto\n  the floor."
+      ]
+    ],
+    "hard": [
+      "* In this hellish world, you\n  can only take 3 pieces\n  of candy..."
+    ],
+    "full": [
+      "* You tried to take a piece\n  of candy, but you didn't\n  have any room."
+    ],
+    "no": [
+      "* You decided not to take some."
+    ]
+  }
+}

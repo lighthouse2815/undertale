@@ -5,6 +5,8 @@ import { Battle, BATTLE_CONFIGS } from './battle.mjs';
 import { readSave, writeSave } from './save.mjs';
 import { SaveMenu } from './save-menu.mjs';
 import { FieldMenu } from './field-menu.mjs';
+import { CandyDish } from './candy-dish.mjs';
+import { RuinsStart } from './ruins-start.mjs';
 import { RuinsTutorial } from './ruins-tutorial.mjs';
 import { RuinsSwitches } from './ruins-switches.mjs';
 import { DummyLesson } from './dummy-lesson.mjs';
@@ -29,7 +31,7 @@ const DIALOGUES = {
   obj_torinteractable7: ['* Do not worry about\n  me.', '* Someone has to take\n  care of these flowers.'],
   obj_savepoint: ['* (The shadow of the ruins\n  looms above, filling you with\n  determination.)', '* (HP fully restored.)'],
 };
-// Chỉ nối các phòng đã chuyển. A đi tới markerA của phòng kế, B quay về markerB.
+// Các cửa đã nối: A đi tới markerA của phòng kế, B quay về markerB.
 const ROOM_EXITS = {
   room_area1: { A: 'room_area1_2' },
   room_area1_2: { A: 'room_ruins1', B: 'room_area1' },
@@ -38,7 +40,9 @@ const ROOM_EXITS = {
   room_ruins3: { A: 'room_ruins4', B: 'room_ruins2' },
   room_ruins4: { A: 'room_ruins5', B: 'room_ruins3' },
   room_ruins5: { A: 'room_ruins6', B: 'room_ruins4' },
-  room_ruins6: { B: 'room_ruins5' },
+  room_ruins6: { A: 'room_ruins7', B: 'room_ruins5' },
+  room_ruins7: { A: 'room_ruins7A', B: 'room_ruins6' },
+  room_ruins7A: { B: 'room_ruins7' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -73,8 +77,14 @@ class World extends Scene {
     this.spikeGuide = null;
     this.corridorLesson?.destroy();
     this.corridorLesson = null;
+    this.candyDish = null;
+    this.ruinsStart = null;
+    this.dialogue = null;
+    this.choiceUi = [];
     this.flags ??= {};
     this.phone ??= [];
+    this.inventory ??= []; this.weapon ??= 3; this.armor ??= 4;
+    this.weaponStrength ??= 0; this.armorDefense ??= 0;
     const facing = this.player?.facing ?? 'd';
     const data = await loadRoom(this, name);
     this.children.removeAll(true);
@@ -110,6 +120,7 @@ class World extends Scene {
         if (item.ObjectName === 'obj_dummy1' && this.flags[14] === 1) continue;
       }
       if (name === 'room_ruins5' && item.ObjectName === 'obj_toroverworld5' && (this.plot > 7 || this.plot < 6)) continue;
+      if (name === 'room_ruins7' && item.ObjectName === 'obj_smallfrog' && this.kills > 0) continue;
       if (name === 'room_ruins6') {
         if (item.ObjectName === 'obj_toroverworld7' && this.plot > 8) continue;
         if (item.ObjectName === 'obj_torinteractable6' && this.plot > 8.5) continue;
@@ -167,6 +178,8 @@ class World extends Scene {
     if (name === 'room_ruins4') this.dummyLesson = new DummyLesson(this);
     if (name === 'room_ruins5') this.spikeGuide = new SpikeGuide(this);
     if (name === 'room_ruins6') this.corridorLesson = new CorridorLesson(this);
+    if (name === 'room_ruins7A') this.candyDish = new CandyDish(this);
+    if (name === 'room_ruins7') this.ruinsStart = new RuinsStart(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -189,6 +202,11 @@ class World extends Scene {
     this.release = () => { this.input.keyboard.resetKeys(); this.touch.clear(); };
     this.confirmPress = (event) => {
       if (event.repeat) return;
+      if (state.phase === 'running' && this.dialogue?.choice && ['ArrowLeft', 'ArrowRight'].includes(event.code) && this.time.now >= this.dialogue.choice.readyAt) {
+        this.dialogue.choice.index = 1 - this.dialogue.choice.index;
+        this.choiceUi[0].x = this.dialogue.choice.index === 0 ? 89 : 185;
+        this.sound.play('snd_squeak');
+      }
       if (['KeyZ', 'Enter'].includes(event.code)) { this.confirmDown = true; this.confirmPressed = true; }
       if (['KeyC', 'ControlLeft', 'ControlRight'].includes(event.code) && state.phase === 'running' && !this.dialogue) this.menuPressed = true;
     };
@@ -212,6 +230,7 @@ class World extends Scene {
   }
 
   update(_time, delta) {
+    if (['running', 'menu', 'loadingMenu'].includes(state.phase)) this.ruinsStart?.animate();
     if (['menu', 'loadingMenu'].includes(state.phase)) {
       this.spikeGuide?.updateMotion(delta);
       this.corridorLesson?.updateFlowey();
@@ -228,6 +247,7 @@ class World extends Scene {
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
+    if (this.ruinsStart?.update()) return;
     if (menuPressed && this.flags[17] !== 1) {
       this.release();
       state.phase = 'loadingMenu';
@@ -269,6 +289,8 @@ class World extends Scene {
   }
 
   tryInteract() {
+    if (this.candyDish) { this.candyDish.interact(); return; }
+    if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
     if (this.spikeGuide) { this.spikeGuide.interact(); return; }
     if (this.dummyLesson) { this.dummyLesson.interact(); return; }
@@ -288,7 +310,7 @@ class World extends Scene {
     if (target.entry.item.ObjectName === 'obj_savepoint') {
       this.hp = Math.max(this.hp, this.maxHp);
       this.sound.play('snd_power', { volume: 0.88 });
-      this.showDialogue(DIALOGUES.obj_savepoint, { onClose: () => {
+      this.showDialogue(this.ruinsStart?.text.save ?? DIALOGUES.obj_savepoint, { onClose: () => {
         this.plot = Math.max(this.plot, 2);
         this.scene.pause();
         this.scene.launch('SaveMenu');
@@ -314,6 +336,15 @@ class World extends Scene {
     this.interactionCooldown = 250;
   }
 
+  showChoice(prompt, options, onChoose) {
+    this.showDialogue([prompt]);
+    this.dialogue.choice = { index: 0, readyAt: this.time.now + 100, onChoose };
+    const y = this.dialogueBox.y + 50;
+    this.choiceUi = [this.add.image(89, y, 'spr_heartsmall:0').setOrigin(0)];
+    for (const [index, label] of options.entries()) this.choiceUi.push(this.add.bitmapText(index === 0 ? 100 : 196, y - 4, 'fnt_maintext', label, 12));
+    for (const child of this.choiceUi) child.setScrollFactor(0).setDepth(100002);
+  }
+
   setDialoguePortrait(portrait) {
     const x = portrait ? 68 : 18;
     this.dialogueText.x = x;
@@ -332,11 +363,18 @@ class World extends Scene {
   }
 
   advanceDialogue() {
+    if (this.dialogue.choice) {
+      if (this.time.now < this.dialogue.choice.readyAt) return;
+      const choice = this.dialogue.choice;
+      this.dialogue.onClose = () => choice.onChoose(choice.index);
+    }
     this.dialogue.index += 1;
     if (this.dialogue.index >= this.dialogue.lines.length) {
       const onClose = this.dialogue.onClose;
       this.dialogueBox.destroy(); this.dialogueText.destroy(); this.dialogue = null;
       this.dialoguePortrait?.destroy();
+      for (const child of this.choiceUi) child.destroy();
+      this.choiceUi = [];
       onClose?.();
     } else {
       this.dialogueText.setText(this.dialogue.lines[this.dialogue.index]);
@@ -348,7 +386,8 @@ class World extends Scene {
   saveGame(temporary = false) {
     return writeSave({ name: this.game.registry.get('charname'), room: this.dataSource.name,
       x: this.player.x, y: this.player.y, hp: this.hp, maxHp: this.maxHp, lv: this.lv,
-      playTime: this.playTime, xp: this.xp, gold: this.gold, kills: this.kills, phone: this.phone, flags: { ...this.flags, plot: this.plot } }, { temporary });
+      playTime: this.playTime, xp: this.xp, gold: this.gold, kills: this.kills, phone: this.phone, inventory: this.inventory, weapon: this.weapon, armor: this.armor,
+      weaponStrength: this.weaponStrength, armorDefense: this.armorDefense, flags: { ...this.flags, plot: this.plot } }, { temporary });
   }
 
   async restoreGame() {
@@ -360,6 +399,8 @@ class World extends Scene {
     this.lv = save.lv ?? 1;
     this.xp = save.xp ?? 0; this.gold = save.gold ?? 0; this.kills = save.kills ?? 0;
     this.phone = [...(save.phone ?? [])];
+    this.inventory = [...(save.inventory ?? [])]; this.weapon = save.weapon ?? 3; this.armor = save.armor ?? 4;
+    this.weaponStrength = save.weaponStrength ?? 0; this.armorDefense = save.armorDefense ?? 0;
     this.plot = save.flags?.plot ?? 0;
     this.flags = { ...(save.flags ?? {}) };
     delete this.flags.plot;

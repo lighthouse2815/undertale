@@ -12,6 +12,7 @@ import { testDummy } from './remake-dummy.mjs';
 import { testSpikeGuide } from './remake-spike-guide.mjs';
 import { testCorridor } from './remake-corridor.mjs';
 import { testFieldMenu } from './remake-field-menu.mjs';
+import { testInventory } from './remake-inventory.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -368,6 +369,7 @@ try {
   await testSpikeGuide(page, root);
   await testCorridor(page, root);
   await testFieldMenu(page, root);
+  await testInventory(page, root);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);
