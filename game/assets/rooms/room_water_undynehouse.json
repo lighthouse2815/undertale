@@ -258,7 +258,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106223
     },
     {
       "ObjectName": "obj_undynewindow",
@@ -271,7 +272,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106224
     },
     {
       "ObjectName": "obj_solidtall_2",
@@ -284,7 +286,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106225
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -297,7 +300,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106226
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -310,7 +314,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106227
     },
     {
       "ObjectName": "obj_solidtall",
@@ -323,7 +328,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106228
     },
     {
       "ObjectName": "obj_mainchara",
@@ -336,7 +342,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106229
     },
     {
       "ObjectName": "obj_markerA",
@@ -349,7 +356,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106230
     },
     {
       "ObjectName": "obj_undynedate_inside",
@@ -362,7 +370,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106231
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -375,7 +384,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106232
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -388,7 +398,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106233
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -401,7 +412,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106234
     },
     {
       "ObjectName": "obj_readable_room1",
@@ -414,7 +426,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106235
     },
     {
       "ObjectName": "obj_readable_room2",
@@ -427,7 +440,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106236
     },
     {
       "ObjectName": "obj_readable_room3",
@@ -440,7 +454,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106237
     },
     {
       "ObjectName": "obj_readable_room3",
@@ -453,7 +468,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106238
     },
     {
       "ObjectName": "obj_readable_room4",
@@ -466,7 +482,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106239
     },
     {
       "ObjectName": "obj_readable_room5",
@@ -479,7 +496,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106240
     },
     {
       "ObjectName": "obj_readable_room5",
@@ -492,7 +510,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106241
     },
     {
       "ObjectName": "obj_readable_room1",
@@ -505,7 +524,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106242
     },
     {
       "ObjectName": "obj_sign_room",
@@ -518,7 +538,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106243
     },
     {
       "ObjectName": "obj_readable_room3",
@@ -531,7 +552,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106244
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -544,7 +566,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106245
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -557,7 +580,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106246
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -570,7 +594,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106247
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -583,7 +608,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106248
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -596,7 +622,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106249
     },
     {
       "ObjectName": "obj_readable_room5",
@@ -609,7 +636,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106250
     },
     {
       "ObjectName": "obj_readable_room5",
@@ -622,7 +650,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106251
     },
     {
       "ObjectName": "obj_solidthin",
@@ -635,7 +664,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106252
     },
     {
       "ObjectName": "obj_readable_room4",
@@ -648,7 +678,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106253
     },
     {
       "ObjectName": "obj_bonedrawer_check",
@@ -661,7 +692,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106254
     },
     {
       "ObjectName": "obj_solidwide",
@@ -674,7 +706,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106255
     },
     {
       "ObjectName": "obj_solidlong",
@@ -687,7 +720,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106256
     },
     {
       "ObjectName": "obj_solidwide",
@@ -700,7 +734,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106257
     },
     {
       "ObjectName": "obj_solidwide",
@@ -713,7 +748,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106258
     },
     {
       "ObjectName": "obj_solidexwide",
@@ -726,7 +762,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106259
     },
     {
       "ObjectName": "obj_solidexwide",
@@ -739,7 +776,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106260
     },
     {
       "ObjectName": "obj_overworldcontroller",
@@ -752,7 +790,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106261
     }
   ],
   "Tiles": [],

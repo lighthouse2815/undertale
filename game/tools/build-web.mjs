@@ -4,11 +4,12 @@ import { cp, lstat, mkdir, mkdtemp, readFile, realpath, rename, rm, writeFile } 
 import { spawnSync } from 'node:child_process';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { runtimeData, runtimeFiles } from './runtime-files.mjs';
+import { runtimeFiles } from './runtime-files.mjs';
+import { buildGame } from './build-game.mjs';
 
 const source = fileURLToPath(new URL('../', import.meta.url)).replace(/[\\/]$/, '');
 const content = ['index.html', 'server.mjs', 'package.json', 'README.md', 'CREDITS.txt', 'check.mjs',
-  'manifest.json', 'asset-baseline.json', 'resources.json', 'code', 'assets', 'base', 'vendor', 'web', 'tools'];
+  'project.json', 'project', 'resources.json', 'code', 'assets', 'vendor', 'web', 'tools'];
 const inside = (file, parent) => { const path = relative(parent, file); return !path || (!path.startsWith(`..${sep}`) && path !== '..' && !path.startsWith(sep)); };
 
 export async function buildWeb(output = join(dirname(source), 'dist/undertale-web')) {
@@ -28,11 +29,12 @@ export async function buildWeb(output = join(dirname(source), 'dist/undertale-we
     try { await lstat(output); throw new Error('Thư mục xuất đã tồn tại và không có marker Undertale.'); }
     catch (missing) { if (missing.code !== 'ENOENT') throw missing; }
   }
-  for (const command of ['check.mjs', 'tools/build-game.mjs']) {
+  for (const command of ['check.mjs']) {
     const result = spawnSync(process.execPath, [join(source, command)], { cwd: source, env: process.env, stdio: 'inherit' });
     if (result.error) throw result.error;
     if (result.status !== 0) throw new Error(`Không đóng gói vì ${command} thất bại.`);
   }
+  const compiled = await buildGame();
   const staging = await mkdtemp(join(dirname(output), '.undertale-web-'));
   try {
     for (const name of content) {
@@ -43,7 +45,8 @@ export async function buildWeb(output = join(dirname(source), 'dist/undertale-we
         } });
     }
     await mkdir(join(staging, 'runtime'));
-    await cp(runtimeData(source), join(staging, 'runtime/game.win'), { mode: constants.COPYFILE_FICLONE });
+    await cp(compiled, join(staging, 'runtime/game.win'), { mode: constants.COPYFILE_FICLONE });
+    await cp(join(dirname(compiled), 'source.json'), join(staging, 'runtime/source.json'));
     await writeFile(join(staging, 'runtime.json'), JSON.stringify(runtimeFiles(staging), null, 2) + '\n');
     await writeFile(join(staging, 'web-build.json'), JSON.stringify({ format: 'undertale-web', version: 1,
       source: 'Source GML, JSON, PNG, WAV/OGG và runtime đi kèm' }, null, 2) + '\n');

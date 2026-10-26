@@ -1,17 +1,15 @@
-import { existsSync, readFileSync, statSync } from 'node:fs';
+import { readFileSync, statSync } from 'node:fs';
 import { basename, dirname, join, relative } from 'node:path';
 import { filesIn } from './game-assets.mjs';
 
-export function runtimeData(root) {
-  for (const name of ['build/undertale/data.win', 'runtime/game.win', 'base/data.win']) {
-    const file = join(root, name);
-    if (existsSync(file)) return file;
-  }
-  throw new Error('Thiếu dữ liệu game trong dự án.');
+export function runtimeFiles(root, dataFile = join(root, 'runtime/game.win')) {
+  return { format: 'undertale-web-runtime', files: [
+    { name: 'data.win', url: 'runtime/game.win', bytes: statSync(dataFile).size }, ...runtimeAssets(root),
+  ] };
 }
 
-export function runtimeFiles(root) {
-  const files = [{ name: 'data.win', url: 'runtime/game.win', bytes: statSync(runtimeData(root)).size }];
+export function runtimeAssets(root) {
+  const files = [];
   const names = new Set(['data.win']);
   for (const file of filesIn(join(root, 'assets/sounds')).filter((name) => name.endsWith('.json'))) {
     const sound = JSON.parse(readFileSync(file, 'utf8'));
@@ -27,5 +25,5 @@ export function runtimeFiles(root) {
     const url = `assets/misc/${name}`;
     files.push({ name, url, bytes: statSync(join(root, url)).size });
   }
-  return { format: 'undertale-web-runtime', files };
+  return files;
 }

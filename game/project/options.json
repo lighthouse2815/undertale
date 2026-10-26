@@ -1,0 +1,33 @@
+{
+  "ShaderExtensionFlag": -2147483648,
+  "ShaderExtensionVersion": 2,
+  "Info": 13400596,
+  "Scale": -1,
+  "WindowColor": 0,
+  "ColorDepth": 0,
+  "Resolution": 0,
+  "Frequency": 0,
+  "VertexSync": 1,
+  "Priority": 0,
+  "BackImage": {
+    "Texture": null
+  },
+  "FrontImage": {
+    "Texture": null
+  },
+  "LoadImage": {
+    "Texture": null
+  },
+  "LoadAlpha": 255,
+  "Constants": [
+    {
+      "Name": "@@SleepMargin",
+      "Value": "1"
+    },
+    {
+      "Name": "@@DrawColour",
+      "Value": "4294967295"
+    }
+  ],
+  "NewFormat": true
+}

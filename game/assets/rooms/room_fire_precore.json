@@ -258,7 +258,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110288
     },
     {
       "ObjectName": "obj_markerX",
@@ -271,7 +272,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110289
     },
     {
       "ObjectName": "obj_doorXmusicfade",
@@ -284,7 +286,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110290
     },
     {
       "ObjectName": "obj_doorXmusicfade",
@@ -297,7 +300,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110291
     },
     {
       "ObjectName": "obj_doorAmusicfade",
@@ -310,7 +314,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110292
     },
     {
       "ObjectName": "obj_markerB",
@@ -323,7 +328,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110293
     },
     {
       "ObjectName": "obj_precore_event",
@@ -336,7 +342,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110294
     },
     {
       "ObjectName": "obj_pitsound",
@@ -349,7 +356,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110295
     },
     {
       "ObjectName": "obj_undyne_lettercall",
@@ -362,7 +370,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110296
     },
     {
       "ObjectName": "obj_doorAmusicfade",
@@ -375,7 +384,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110297
     },
     {
       "ObjectName": "obj_overworldcontroller",
@@ -388,7 +398,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110298
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -401,7 +412,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110299
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -414,7 +426,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110300
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -427,7 +440,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110301
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -440,7 +454,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110302
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -453,7 +468,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110303
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -466,7 +482,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110304
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -479,7 +496,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110305
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -492,7 +510,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110306
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -505,7 +524,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110307
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -518,7 +538,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110308
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -531,7 +552,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110309
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -544,7 +566,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110310
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -557,7 +580,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110311
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -570,7 +594,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110312
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -583,7 +608,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110313
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -596,7 +622,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110314
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -609,7 +636,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110315
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -622,7 +650,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110316
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -635,7 +664,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110317
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -648,7 +678,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110318
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -661,7 +692,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110319
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -674,7 +706,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110320
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -687,7 +720,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110321
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -700,7 +734,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110322
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -713,7 +748,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110323
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -726,7 +762,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110324
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -739,7 +776,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110325
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -752,7 +790,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110326
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -765,7 +804,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110327
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -778,7 +818,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110328
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -791,7 +832,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110329
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -804,7 +846,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110330
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -817,7 +860,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110331
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -830,7 +874,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110332
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -843,7 +888,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110333
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -856,7 +902,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110334
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -869,7 +916,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110335
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -882,7 +930,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110336
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -895,7 +944,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110337
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -908,7 +958,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110338
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -921,7 +972,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110339
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -934,7 +986,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110340
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -947,7 +1000,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110341
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -960,7 +1014,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110342
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -973,7 +1028,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110343
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -986,7 +1042,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110344
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -999,7 +1056,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110345
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -1012,7 +1070,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110346
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -1025,7 +1084,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110347
     },
     {
       "ObjectName": "obj_solidextall_2",
@@ -1038,10 +1098,11 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110348
     }
   ],
-  "Tiles": [{"Asset":"bg_firetiles","X":580,"Y":260,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":240,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":220,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":200,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":180,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":160,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":140,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":120,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":100,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":80,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":60,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":40,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":260,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":240,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":220,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":200,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":180,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":160,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":140,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":120,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":100,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":80,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":60,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":40,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":260,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":240,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":220,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":200,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":180,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":160,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":140,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":120,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":100,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":80,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":60,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":40,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":20,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":260,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":240,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":220,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":200,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":180,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":160,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":140,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":120,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":100,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":80,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":60,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":40,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":20,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":360,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":380,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":400,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":420,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":440,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":360,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":380,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":400,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":420,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":440,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":460,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":440,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":440,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":620,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":620,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":620,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":620,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":40,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":60,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":80,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":100,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":120,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":140,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":160,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":180,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":200,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":220,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":240,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":260,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":280,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":300,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":320,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":340,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":360,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":380,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":400,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":420,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":760,"Y":440,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":280,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":300,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":320,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":340,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":780,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":340,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":320,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":300,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":280,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":800,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":300,"SourceX":0,"SourceY":140,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":320,"SourceX":20,"SourceY":240,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":620,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":280,"SourceX":20,"SourceY":220,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":280,"SourceX":20,"SourceY":240,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":280,"SourceX":0,"SourceY":240,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":280,"SourceX":0,"SourceY":140,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":620,"Y":280,"SourceX":0,"SourceY":140,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":620,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":560,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":580,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":600,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":620,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":640,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":660,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":680,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":700,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":720,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_firetiles","X":740,"Y":340,"SourceX":80,"SourceY":240,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_core_distance_foreground","X":0,"Y":0,"SourceX":0,"SourceY":0,"Width":320,"Height":560,"Depth":4000,"ScaleX":1,"ScaleY":1,"Color":4294967295}],
+  "Tiles": [{"Asset":"bg_firetiles","X":580,"Y":260,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053014},{"Asset":"bg_firetiles","X":580,"Y":240,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053015},{"Asset":"bg_firetiles","X":580,"Y":220,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053016},{"Asset":"bg_firetiles","X":580,"Y":200,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053017},{"Asset":"bg_firetiles","X":580,"Y":180,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053018},{"Asset":"bg_firetiles","X":580,"Y":160,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053019},{"Asset":"bg_firetiles","X":580,"Y":140,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053020},{"Asset":"bg_firetiles","X":580,"Y":120,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053021},{"Asset":"bg_firetiles","X":580,"Y":100,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053022},{"Asset":"bg_firetiles","X":580,"Y":80,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053023},{"Asset":"bg_firetiles","X":580,"Y":60,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053024},{"Asset":"bg_firetiles","X":580,"Y":40,"SourceX":220,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053025},{"Asset":"bg_firetiles","X":640,"Y":260,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053026},{"Asset":"bg_firetiles","X":640,"Y":240,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053027},{"Asset":"bg_firetiles","X":640,"Y":220,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053028},{"Asset":"bg_firetiles","X":640,"Y":200,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053029},{"Asset":"bg_firetiles","X":640,"Y":180,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053030},{"Asset":"bg_firetiles","X":640,"Y":160,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053031},{"Asset":"bg_firetiles","X":640,"Y":140,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053032},{"Asset":"bg_firetiles","X":640,"Y":120,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053033},{"Asset":"bg_firetiles","X":640,"Y":100,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053034},{"Asset":"bg_firetiles","X":640,"Y":80,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053035},{"Asset":"bg_firetiles","X":640,"Y":60,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053036},{"Asset":"bg_firetiles","X":640,"Y":40,"SourceX":240,"SourceY":80,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053037},{"Asset":"bg_firetiles","X":560,"Y":260,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053038},{"Asset":"bg_firetiles","X":560,"Y":240,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053039},{"Asset":"bg_firetiles","X":560,"Y":220,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053040},{"Asset":"bg_firetiles","X":560,"Y":200,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053041},{"Asset":"bg_firetiles","X":560,"Y":180,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053042},{"Asset":"bg_firetiles","X":560,"Y":160,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053043},{"Asset":"bg_firetiles","X":560,"Y":140,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053044},{"Asset":"bg_firetiles","X":560,"Y":120,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053045},{"Asset":"bg_firetiles","X":560,"Y":100,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053046},{"Asset":"bg_firetiles","X":560,"Y":80,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053047},{"Asset":"bg_firetiles","X":560,"Y":60,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053048},{"Asset":"bg_firetiles","X":560,"Y":40,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053049},{"Asset":"bg_firetiles","X":560,"Y":20,"SourceX":260,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053050},{"Asset":"bg_firetiles","X":660,"Y":260,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053051},{"Asset":"bg_firetiles","X":660,"Y":240,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053052},{"Asset":"bg_firetiles","X":660,"Y":220,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053053},{"Asset":"bg_firetiles","X":660,"Y":200,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053054},{"Asset":"bg_firetiles","X":660,"Y":180,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053055},{"Asset":"bg_firetiles","X":660,"Y":160,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053056},{"Asset":"bg_firetiles","X":660,"Y":140,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053057},{"Asset":"bg_firetiles","X":660,"Y":120,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053058},{"Asset":"bg_firetiles","X":660,"Y":100,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053059},{"Asset":"bg_firetiles","X":660,"Y":80,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053060},{"Asset":"bg_firetiles","X":660,"Y":60,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053061},{"Asset":"bg_firetiles","X":660,"Y":40,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053062},{"Asset":"bg_firetiles","X":660,"Y":20,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053063},{"Asset":"bg_firetiles","X":680,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053064},{"Asset":"bg_firetiles","X":680,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053065},{"Asset":"bg_firetiles","X":680,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053066},{"Asset":"bg_firetiles","X":680,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053067},{"Asset":"bg_firetiles","X":680,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053068},{"Asset":"bg_firetiles","X":680,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053069},{"Asset":"bg_firetiles","X":680,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053070},{"Asset":"bg_firetiles","X":680,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053071},{"Asset":"bg_firetiles","X":680,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053072},{"Asset":"bg_firetiles","X":680,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053073},{"Asset":"bg_firetiles","X":680,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053074},{"Asset":"bg_firetiles","X":680,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053075},{"Asset":"bg_firetiles","X":700,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053076},{"Asset":"bg_firetiles","X":700,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053077},{"Asset":"bg_firetiles","X":700,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053078},{"Asset":"bg_firetiles","X":700,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053079},{"Asset":"bg_firetiles","X":700,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053080},{"Asset":"bg_firetiles","X":700,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053081},{"Asset":"bg_firetiles","X":700,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053082},{"Asset":"bg_firetiles","X":700,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053083},{"Asset":"bg_firetiles","X":700,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053084},{"Asset":"bg_firetiles","X":700,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053085},{"Asset":"bg_firetiles","X":700,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053086},{"Asset":"bg_firetiles","X":700,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053087},{"Asset":"bg_firetiles","X":720,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053088},{"Asset":"bg_firetiles","X":720,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053089},{"Asset":"bg_firetiles","X":720,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053090},{"Asset":"bg_firetiles","X":720,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053091},{"Asset":"bg_firetiles","X":720,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053092},{"Asset":"bg_firetiles","X":720,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053093},{"Asset":"bg_firetiles","X":720,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053094},{"Asset":"bg_firetiles","X":720,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053095},{"Asset":"bg_firetiles","X":720,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053096},{"Asset":"bg_firetiles","X":720,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053097},{"Asset":"bg_firetiles","X":720,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053098},{"Asset":"bg_firetiles","X":720,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053099},{"Asset":"bg_firetiles","X":740,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053100},{"Asset":"bg_firetiles","X":740,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053101},{"Asset":"bg_firetiles","X":740,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053102},{"Asset":"bg_firetiles","X":740,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053103},{"Asset":"bg_firetiles","X":740,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053104},{"Asset":"bg_firetiles","X":740,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053105},{"Asset":"bg_firetiles","X":740,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053106},{"Asset":"bg_firetiles","X":740,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053107},{"Asset":"bg_firetiles","X":740,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053108},{"Asset":"bg_firetiles","X":740,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053109},{"Asset":"bg_firetiles","X":740,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053110},{"Asset":"bg_firetiles","X":740,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053111},{"Asset":"bg_firetiles","X":560,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053112},{"Asset":"bg_firetiles","X":660,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053113},{"Asset":"bg_firetiles","X":680,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053114},{"Asset":"bg_firetiles","X":700,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053115},{"Asset":"bg_firetiles","X":720,"Y":280,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053116},{"Asset":"bg_firetiles","X":560,"Y":360,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053117},{"Asset":"bg_firetiles","X":560,"Y":380,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053118},{"Asset":"bg_firetiles","X":560,"Y":400,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053119},{"Asset":"bg_firetiles","X":560,"Y":420,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053120},{"Asset":"bg_firetiles","X":560,"Y":440,"SourceX":260,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053121},{"Asset":"bg_firetiles","X":660,"Y":360,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053122},{"Asset":"bg_firetiles","X":660,"Y":380,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053123},{"Asset":"bg_firetiles","X":660,"Y":400,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053124},{"Asset":"bg_firetiles","X":660,"Y":420,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053125},{"Asset":"bg_firetiles","X":660,"Y":440,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053126},{"Asset":"bg_firetiles","X":660,"Y":460,"SourceX":220,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053127},{"Asset":"bg_firetiles","X":680,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053128},{"Asset":"bg_firetiles","X":680,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053129},{"Asset":"bg_firetiles","X":680,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053130},{"Asset":"bg_firetiles","X":680,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053131},{"Asset":"bg_firetiles","X":700,"Y":440,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053132},{"Asset":"bg_firetiles","X":700,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053133},{"Asset":"bg_firetiles","X":700,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053134},{"Asset":"bg_firetiles","X":700,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053135},{"Asset":"bg_firetiles","X":700,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053136},{"Asset":"bg_firetiles","X":720,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053137},{"Asset":"bg_firetiles","X":720,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053138},{"Asset":"bg_firetiles","X":720,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053139},{"Asset":"bg_firetiles","X":720,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053140},{"Asset":"bg_firetiles","X":740,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053141},{"Asset":"bg_firetiles","X":740,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053142},{"Asset":"bg_firetiles","X":740,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053143},{"Asset":"bg_firetiles","X":740,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053144},{"Asset":"bg_firetiles","X":640,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053145},{"Asset":"bg_firetiles","X":640,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053146},{"Asset":"bg_firetiles","X":640,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053147},{"Asset":"bg_firetiles","X":640,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053148},{"Asset":"bg_firetiles","X":580,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053149},{"Asset":"bg_firetiles","X":600,"Y":440,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053150},{"Asset":"bg_firetiles","X":600,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053151},{"Asset":"bg_firetiles","X":620,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053152},{"Asset":"bg_firetiles","X":620,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053153},{"Asset":"bg_firetiles","X":620,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053154},{"Asset":"bg_firetiles","X":620,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053155},{"Asset":"bg_firetiles","X":600,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053156},{"Asset":"bg_firetiles","X":580,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053157},{"Asset":"bg_firetiles","X":580,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053158},{"Asset":"bg_firetiles","X":580,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053159},{"Asset":"bg_firetiles","X":600,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053160},{"Asset":"bg_firetiles","X":600,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053161},{"Asset":"bg_firetiles","X":760,"Y":40,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053162},{"Asset":"bg_firetiles","X":760,"Y":60,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053163},{"Asset":"bg_firetiles","X":760,"Y":80,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053164},{"Asset":"bg_firetiles","X":760,"Y":100,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053165},{"Asset":"bg_firetiles","X":760,"Y":120,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053166},{"Asset":"bg_firetiles","X":760,"Y":140,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053167},{"Asset":"bg_firetiles","X":760,"Y":160,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053168},{"Asset":"bg_firetiles","X":760,"Y":180,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053169},{"Asset":"bg_firetiles","X":760,"Y":200,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053170},{"Asset":"bg_firetiles","X":760,"Y":220,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053171},{"Asset":"bg_firetiles","X":760,"Y":240,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053172},{"Asset":"bg_firetiles","X":760,"Y":260,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053173},{"Asset":"bg_firetiles","X":760,"Y":280,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053174},{"Asset":"bg_firetiles","X":760,"Y":300,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053175},{"Asset":"bg_firetiles","X":760,"Y":320,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053176},{"Asset":"bg_firetiles","X":760,"Y":340,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053177},{"Asset":"bg_firetiles","X":760,"Y":360,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053178},{"Asset":"bg_firetiles","X":760,"Y":380,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053179},{"Asset":"bg_firetiles","X":760,"Y":400,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053180},{"Asset":"bg_firetiles","X":760,"Y":420,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053181},{"Asset":"bg_firetiles","X":760,"Y":440,"SourceX":220,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053182},{"Asset":"bg_firetiles","X":780,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053183},{"Asset":"bg_firetiles","X":780,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053184},{"Asset":"bg_firetiles","X":780,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053185},{"Asset":"bg_firetiles","X":780,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053186},{"Asset":"bg_firetiles","X":780,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053187},{"Asset":"bg_firetiles","X":780,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053188},{"Asset":"bg_firetiles","X":780,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053189},{"Asset":"bg_firetiles","X":780,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053190},{"Asset":"bg_firetiles","X":780,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053191},{"Asset":"bg_firetiles","X":780,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053192},{"Asset":"bg_firetiles","X":780,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053193},{"Asset":"bg_firetiles","X":780,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053194},{"Asset":"bg_firetiles","X":780,"Y":280,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053195},{"Asset":"bg_firetiles","X":780,"Y":300,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053196},{"Asset":"bg_firetiles","X":780,"Y":320,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053197},{"Asset":"bg_firetiles","X":780,"Y":340,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053198},{"Asset":"bg_firetiles","X":780,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053199},{"Asset":"bg_firetiles","X":780,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053200},{"Asset":"bg_firetiles","X":780,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053201},{"Asset":"bg_firetiles","X":780,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053202},{"Asset":"bg_firetiles","X":800,"Y":420,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053203},{"Asset":"bg_firetiles","X":800,"Y":400,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053204},{"Asset":"bg_firetiles","X":800,"Y":380,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053205},{"Asset":"bg_firetiles","X":800,"Y":360,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053206},{"Asset":"bg_firetiles","X":800,"Y":340,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053207},{"Asset":"bg_firetiles","X":800,"Y":320,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053208},{"Asset":"bg_firetiles","X":800,"Y":300,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053209},{"Asset":"bg_firetiles","X":800,"Y":280,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053210},{"Asset":"bg_firetiles","X":800,"Y":260,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053211},{"Asset":"bg_firetiles","X":800,"Y":240,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053212},{"Asset":"bg_firetiles","X":800,"Y":220,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053213},{"Asset":"bg_firetiles","X":800,"Y":200,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053214},{"Asset":"bg_firetiles","X":800,"Y":180,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053215},{"Asset":"bg_firetiles","X":800,"Y":160,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053216},{"Asset":"bg_firetiles","X":800,"Y":140,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053217},{"Asset":"bg_firetiles","X":800,"Y":120,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053218},{"Asset":"bg_firetiles","X":800,"Y":100,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053219},{"Asset":"bg_firetiles","X":800,"Y":80,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053220},{"Asset":"bg_firetiles","X":800,"Y":60,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053221},{"Asset":"bg_firetiles","X":800,"Y":40,"SourceX":240,"SourceY":200,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053222},{"Asset":"bg_firetiles","X":740,"Y":300,"SourceX":0,"SourceY":140,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053223},{"Asset":"bg_firetiles","X":740,"Y":320,"SourceX":20,"SourceY":240,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053224},{"Asset":"bg_firetiles","X":560,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053225},{"Asset":"bg_firetiles","X":580,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053226},{"Asset":"bg_firetiles","X":600,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053227},{"Asset":"bg_firetiles","X":620,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053228},{"Asset":"bg_firetiles","X":640,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053229},{"Asset":"bg_firetiles","X":660,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053230},{"Asset":"bg_firetiles","X":680,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053231},{"Asset":"bg_firetiles","X":700,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053232},{"Asset":"bg_firetiles","X":720,"Y":320,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053233},{"Asset":"bg_firetiles","X":740,"Y":280,"SourceX":20,"SourceY":220,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053234},{"Asset":"bg_firetiles","X":580,"Y":280,"SourceX":20,"SourceY":240,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053235},{"Asset":"bg_firetiles","X":640,"Y":280,"SourceX":0,"SourceY":240,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053236},{"Asset":"bg_firetiles","X":600,"Y":280,"SourceX":0,"SourceY":140,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053237},{"Asset":"bg_firetiles","X":620,"Y":280,"SourceX":0,"SourceY":140,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053238},{"Asset":"bg_firetiles","X":560,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053239},{"Asset":"bg_firetiles","X":580,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053240},{"Asset":"bg_firetiles","X":600,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053241},{"Asset":"bg_firetiles","X":620,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053242},{"Asset":"bg_firetiles","X":640,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053243},{"Asset":"bg_firetiles","X":660,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053244},{"Asset":"bg_firetiles","X":680,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053245},{"Asset":"bg_firetiles","X":700,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053246},{"Asset":"bg_firetiles","X":720,"Y":300,"SourceX":0,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053247},{"Asset":"bg_firetiles","X":560,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053248},{"Asset":"bg_firetiles","X":580,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053249},{"Asset":"bg_firetiles","X":600,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053250},{"Asset":"bg_firetiles","X":620,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053251},{"Asset":"bg_firetiles","X":640,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053252},{"Asset":"bg_firetiles","X":660,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053253},{"Asset":"bg_firetiles","X":680,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053254},{"Asset":"bg_firetiles","X":700,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053255},{"Asset":"bg_firetiles","X":720,"Y":340,"SourceX":60,"SourceY":180,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053256},{"Asset":"bg_firetiles","X":740,"Y":340,"SourceX":80,"SourceY":240,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053257},{"Asset":"bg_core_distance_foreground","X":0,"Y":0,"SourceX":0,"SourceY":0,"Width":320,"Height":560,"Depth":4000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10053258}],
   "Layers": [],
   "InstanceCreationOrderIDs": null,
   "Sequences": []

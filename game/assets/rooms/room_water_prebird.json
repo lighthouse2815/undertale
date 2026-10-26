@@ -258,7 +258,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106424
     },
     {
       "ObjectName": "obj_watermusic",
@@ -271,7 +272,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106425
     },
     {
       "ObjectName": "obj_markerX",
@@ -284,7 +286,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106426
     },
     {
       "ObjectName": "obj_door_ruins13",
@@ -297,7 +300,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106427
     },
     {
       "ObjectName": "obj_door_ruins13",
@@ -310,7 +314,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106428
     },
     {
       "ObjectName": "obj_door_ruins13",
@@ -323,7 +328,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106429
     },
     {
       "ObjectName": "obj_markers",
@@ -336,7 +342,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106430
     },
     {
       "ObjectName": "obj_door_s_musfade",
@@ -349,7 +356,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106431
     },
     {
       "ObjectName": "obj_door_s_musfade",
@@ -362,7 +370,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106432
     },
     {
       "ObjectName": "obj_door_s_musfade",
@@ -375,7 +384,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106433
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -388,7 +398,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106434
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -401,7 +412,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106435
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -414,7 +426,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106436
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -427,7 +440,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106437
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -440,7 +454,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106438
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -453,7 +468,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106439
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -466,7 +482,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106440
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -479,7 +496,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106441
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -492,7 +510,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106442
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -505,7 +524,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106443
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -518,7 +538,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106444
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -531,7 +552,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106445
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -544,7 +566,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106446
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -557,7 +580,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106447
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -570,7 +594,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106448
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -583,7 +608,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106449
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -596,7 +622,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106450
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -609,7 +636,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106451
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -622,7 +650,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106452
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -635,7 +664,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106453
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -648,7 +678,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106454
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -661,7 +692,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106455
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -674,7 +706,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106456
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -687,7 +720,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106457
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -700,7 +734,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106458
     },
     {
       "ObjectName": "obj_grasssounder",
@@ -713,7 +748,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106459
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -726,7 +762,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106460
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -739,7 +776,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106461
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -752,7 +790,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106462
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -765,7 +804,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106463
     },
     {
       "ObjectName": "obj_readable_room1",
@@ -778,7 +818,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106464
     },
     {
       "ObjectName": "obj_readable_room2",
@@ -791,7 +832,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106465
     },
     {
       "ObjectName": "obj_readable_room3",
@@ -804,7 +846,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106466
     },
     {
       "ObjectName": "obj_readable_room4",
@@ -817,7 +860,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106467
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -830,7 +874,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106468
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -843,7 +888,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106469
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -856,7 +902,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106470
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -869,7 +916,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106471
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -882,7 +930,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106472
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -895,7 +944,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106473
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -908,7 +958,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106474
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -921,7 +972,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106475
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -934,7 +986,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106476
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -947,7 +1000,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106477
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -960,7 +1014,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106478
     },
     {
       "ObjectName": "obj_tallgrass",
@@ -973,7 +1028,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106479
     },
     {
       "ObjectName": "obj_solidlong",
@@ -986,7 +1042,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106480
     },
     {
       "ObjectName": "obj_solidlong",
@@ -999,7 +1056,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106481
     },
     {
       "ObjectName": "obj_overworldcontroller",
@@ -1012,10 +1070,11 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 106482
     }
   ],
-  "Tiles": [{"Asset":"bg_watertiles","X":0,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":20,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":40,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":60,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":80,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":100,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":120,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":140,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":160,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":180,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":200,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":220,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":240,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":260,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":280,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":300,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":320,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":0,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":20,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":40,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":60,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":80,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":100,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":120,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":140,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":160,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":180,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":200,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":220,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":240,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":260,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":280,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":300,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":320,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":340,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":360,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":380,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":400,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":420,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":440,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":460,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":480,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":500,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":520,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":540,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":560,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":580,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":600,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":340,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":360,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":380,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":400,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":420,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":440,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":460,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":480,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":500,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":520,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":540,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":560,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":580,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":620,"Y":60,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_watertiles","X":600,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295}],
+  "Tiles": [{"Asset":"bg_watertiles","X":0,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037259},{"Asset":"bg_watertiles","X":20,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037260},{"Asset":"bg_watertiles","X":40,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037261},{"Asset":"bg_watertiles","X":60,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037262},{"Asset":"bg_watertiles","X":80,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037263},{"Asset":"bg_watertiles","X":100,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037264},{"Asset":"bg_watertiles","X":120,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037265},{"Asset":"bg_watertiles","X":140,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037266},{"Asset":"bg_watertiles","X":160,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037267},{"Asset":"bg_watertiles","X":180,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037268},{"Asset":"bg_watertiles","X":200,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037269},{"Asset":"bg_watertiles","X":220,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037270},{"Asset":"bg_watertiles","X":240,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037271},{"Asset":"bg_watertiles","X":260,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037272},{"Asset":"bg_watertiles","X":280,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037273},{"Asset":"bg_watertiles","X":300,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037274},{"Asset":"bg_watertiles","X":320,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037275},{"Asset":"bg_watertiles","X":0,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037276},{"Asset":"bg_watertiles","X":20,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037277},{"Asset":"bg_watertiles","X":40,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037278},{"Asset":"bg_watertiles","X":60,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037279},{"Asset":"bg_watertiles","X":80,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037280},{"Asset":"bg_watertiles","X":100,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037281},{"Asset":"bg_watertiles","X":120,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037282},{"Asset":"bg_watertiles","X":140,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037283},{"Asset":"bg_watertiles","X":160,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037284},{"Asset":"bg_watertiles","X":180,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037285},{"Asset":"bg_watertiles","X":200,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037286},{"Asset":"bg_watertiles","X":220,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037287},{"Asset":"bg_watertiles","X":240,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037288},{"Asset":"bg_watertiles","X":260,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037289},{"Asset":"bg_watertiles","X":280,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037290},{"Asset":"bg_watertiles","X":300,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037291},{"Asset":"bg_watertiles","X":320,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037292},{"Asset":"bg_watertiles","X":340,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037293},{"Asset":"bg_watertiles","X":360,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037294},{"Asset":"bg_watertiles","X":380,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037295},{"Asset":"bg_watertiles","X":400,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037296},{"Asset":"bg_watertiles","X":420,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037297},{"Asset":"bg_watertiles","X":440,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037298},{"Asset":"bg_watertiles","X":460,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037299},{"Asset":"bg_watertiles","X":480,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037300},{"Asset":"bg_watertiles","X":500,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037301},{"Asset":"bg_watertiles","X":520,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037302},{"Asset":"bg_watertiles","X":540,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037303},{"Asset":"bg_watertiles","X":560,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037304},{"Asset":"bg_watertiles","X":580,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037305},{"Asset":"bg_watertiles","X":600,"Y":160,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037306},{"Asset":"bg_watertiles","X":340,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037307},{"Asset":"bg_watertiles","X":360,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037308},{"Asset":"bg_watertiles","X":380,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037309},{"Asset":"bg_watertiles","X":400,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037310},{"Asset":"bg_watertiles","X":420,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037311},{"Asset":"bg_watertiles","X":440,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037312},{"Asset":"bg_watertiles","X":460,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037313},{"Asset":"bg_watertiles","X":480,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037314},{"Asset":"bg_watertiles","X":500,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037315},{"Asset":"bg_watertiles","X":520,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037316},{"Asset":"bg_watertiles","X":540,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037317},{"Asset":"bg_watertiles","X":560,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037318},{"Asset":"bg_watertiles","X":580,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037319},{"Asset":"bg_watertiles","X":620,"Y":60,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037320},{"Asset":"bg_watertiles","X":600,"Y":40,"SourceX":20,"SourceY":180,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10037321}],
   "Layers": [],
   "InstanceCreationOrderIDs": null,
   "Sequences": []

@@ -258,7 +258,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105552
     },
     {
       "ObjectName": "obj_backgrounder_castle",
@@ -271,7 +272,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105553
     },
     {
       "ObjectName": "obj_doorB",
@@ -284,7 +286,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105554
     },
     {
       "ObjectName": "obj_markerA",
@@ -297,7 +300,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105555
     },
     {
       "ObjectName": "obj_mkid_shadow",
@@ -310,7 +314,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105556
     },
     {
       "ObjectName": "obj_doorA",
@@ -323,7 +328,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105557
     },
     {
       "ObjectName": "obj_doorA",
@@ -336,7 +342,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105558
     },
     {
       "ObjectName": "obj_markerB",
@@ -349,7 +356,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105559
     },
     {
       "ObjectName": "obj_ambientrain",
@@ -362,7 +370,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105560
     },
     {
       "ObjectName": "obj_solidlong",
@@ -375,7 +384,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105561
     },
     {
       "ObjectName": "obj_solidlong",
@@ -388,7 +398,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105562
     },
     {
       "ObjectName": "obj_overworldcontroller",
@@ -401,10 +412,11 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 105563
     }
   ],
-  "Tiles": [{"Asset":"bg_waterfall_right","X":1244,"Y":0,"SourceX":0,"SourceY":0,"Width":157,"Height":240,"Depth":100,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_waterfall_left","X":0,"Y":0,"SourceX":0,"SourceY":0,"Width":200,"Height":240,"Depth":100,"ScaleX":1,"ScaleY":1,"Color":4294967295}],
+  "Tiles": [{"Asset":"bg_waterfall_right","X":1244,"Y":0,"SourceX":0,"SourceY":0,"Width":157,"Height":240,"Depth":100,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10032191},{"Asset":"bg_waterfall_left","X":0,"Y":0,"SourceX":0,"SourceY":0,"Width":200,"Height":240,"Depth":100,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10032192}],
   "Layers": [],
   "InstanceCreationOrderIDs": null,
   "Sequences": []

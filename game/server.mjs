@@ -2,7 +2,8 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { runtimeData, runtimeFiles } from './tools/runtime-files.mjs';
+import { runtimeFiles } from './tools/runtime-files.mjs';
+import { buildGame } from './tools/build-game.mjs';
 
 const root = fileURLToPath(new URL('./', import.meta.url)).replace(/[\\/]$/, '');
 const port = Number(process.env.PORT ?? 5173);
@@ -12,7 +13,8 @@ const mime = {
   '.json': 'application/json; charset=utf-8', '.png': 'image/png', '.svg': 'image/svg+xml',
   '.ogg': 'audio/ogg', '.wav': 'audio/wav', '.woff2': 'font/woff2', '.wasm': 'application/wasm',
 };
-runtimeFiles(root); // Thiếu source/tài nguyên phải báo ngay khi khởi động.
+let dataFile = await buildGame();
+runtimeFiles(root, dataFile); // Thiếu source/tài nguyên phải báo ngay khi khởi động.
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? '/', 'http://localhost');
@@ -23,10 +25,11 @@ const server = createServer(async (req, res) => {
     let body;
     let contentType;
     if (pathname === '/runtime.json') {
-      body = Buffer.from(JSON.stringify(runtimeFiles(root)));
+      dataFile = await buildGame();
+      body = Buffer.from(JSON.stringify(runtimeFiles(root, dataFile)));
       contentType = mime['.json'];
     } else {
-      if (pathname === '/runtime/game.win') file = runtimeData(root);
+      if (pathname === '/runtime/game.win') file = dataFile;
       const info = await stat(file);
       if (info.isDirectory()) {
         res.writeHead(302, { Location: `${pathname.replace(/\/?$/, '/')}index.html` }).end();

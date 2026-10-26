@@ -1,0 +1,5 @@
+{
+  "Name": "UNDERTALE Web",
+  "ErrorOnWarnings": true,
+  "ExcludeDirectories": ["project", "tools", "web", "vendor", "build", "runtime"]
+}

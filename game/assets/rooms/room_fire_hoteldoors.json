@@ -258,7 +258,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110213
     },
     {
       "ObjectName": "obj_mainchara",
@@ -271,7 +272,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110214
     },
     {
       "ObjectName": "obj_readable_room1",
@@ -284,7 +286,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110215
     },
     {
       "ObjectName": "obj_knock_room",
@@ -297,7 +300,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110216
     },
     {
       "ObjectName": "obj_knock_room",
@@ -310,7 +314,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110217
     },
     {
       "ObjectName": "obj_knock_room",
@@ -323,7 +328,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110218
     },
     {
       "ObjectName": "obj_slimejanitor",
@@ -336,7 +342,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110219
     },
     {
       "ObjectName": "obj_doorD",
@@ -349,7 +356,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110220
     },
     {
       "ObjectName": "obj_doorD",
@@ -362,7 +370,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110221
     },
     {
       "ObjectName": "obj_doorD",
@@ -375,7 +384,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110222
     },
     {
       "ObjectName": "obj_markerC",
@@ -388,7 +398,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110223
     },
     {
       "ObjectName": "obj_markerB",
@@ -401,7 +412,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110224
     },
     {
       "ObjectName": "obj_hotelmusic",
@@ -414,7 +426,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110225
     },
     {
       "ObjectName": "obj_solidlong",
@@ -427,7 +440,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110226
     },
     {
       "ObjectName": "obj_solidlong",
@@ -440,7 +454,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110227
     },
     {
       "ObjectName": "obj_overworldcontroller",
@@ -453,7 +468,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110228
     },
     {
       "ObjectName": "obj_solidexwide",
@@ -466,7 +482,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110229
     },
     {
       "ObjectName": "obj_solidexwide",
@@ -479,7 +496,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110230
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -492,7 +510,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110231
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -505,7 +524,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110232
     },
     {
       "ObjectName": "obj_solidsmall",
@@ -518,7 +538,8 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110233
     },
     {
       "ObjectName": "obj_sign_room",
@@ -531,10 +552,11 @@
       "Rotation": 0,
       "PreCreateCodeEntry": null,
       "ImageSpeed": 0,
-      "ImageIndex": 0
+      "ImageIndex": 0,
+      "InstanceID": 110234
     }
   ],
-  "Tiles": [{"Asset":"bg_hoteltile","X":60,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":80,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":60,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":80,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":120,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":100,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":100,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":280,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":260,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":240,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":220,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":200,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":180,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":160,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":140,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":120,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":140,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":160,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":180,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":200,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":220,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":240,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":260,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":280,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":300,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":300,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":320,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":340,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":360,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":380,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":400,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":420,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":440,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":440,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":420,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":400,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":380,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":360,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":340,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":320,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":80,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":100,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":120,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":140,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":160,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":180,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":200,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":220,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":240,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":260,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":280,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":300,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":320,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":340,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":360,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":380,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":400,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":420,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":440,"Y":80,"SourceX":120,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":40,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":20,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":0,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":20,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":40,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":20,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":0,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":0,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":40,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":60,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":80,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":100,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":120,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":140,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":160,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":180,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":200,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":220,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":240,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":260,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":280,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":300,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":320,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":340,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":360,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":380,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":400,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":420,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":440,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":60,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":40,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":20,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":0,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteltile","X":-20,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteldoor","X":112,"Y":92,"SourceX":0,"SourceY":0,"Width":36,"Height":49,"Depth":900000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteldoor","X":188,"Y":92,"SourceX":0,"SourceY":0,"Width":36,"Height":49,"Depth":900000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteldoor","X":262,"Y":92,"SourceX":0,"SourceY":0,"Width":36,"Height":49,"Depth":900000,"ScaleX":1,"ScaleY":1,"Color":4294967295},{"Asset":"bg_hoteldoor","X":336,"Y":92,"SourceX":0,"SourceY":0,"Width":36,"Height":49,"Depth":900000,"ScaleX":1,"ScaleY":1,"Color":4294967295}],
+  "Tiles": [{"Asset":"bg_hoteltile","X":60,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052736},{"Asset":"bg_hoteltile","X":80,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052737},{"Asset":"bg_hoteltile","X":60,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052738},{"Asset":"bg_hoteltile","X":80,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052739},{"Asset":"bg_hoteltile","X":120,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052740},{"Asset":"bg_hoteltile","X":100,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052741},{"Asset":"bg_hoteltile","X":100,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052742},{"Asset":"bg_hoteltile","X":280,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052743},{"Asset":"bg_hoteltile","X":260,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052744},{"Asset":"bg_hoteltile","X":240,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052745},{"Asset":"bg_hoteltile","X":220,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052746},{"Asset":"bg_hoteltile","X":200,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052747},{"Asset":"bg_hoteltile","X":180,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052748},{"Asset":"bg_hoteltile","X":160,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052749},{"Asset":"bg_hoteltile","X":140,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052750},{"Asset":"bg_hoteltile","X":120,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052751},{"Asset":"bg_hoteltile","X":140,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052752},{"Asset":"bg_hoteltile","X":160,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052753},{"Asset":"bg_hoteltile","X":180,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052754},{"Asset":"bg_hoteltile","X":200,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052755},{"Asset":"bg_hoteltile","X":220,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052756},{"Asset":"bg_hoteltile","X":240,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052757},{"Asset":"bg_hoteltile","X":260,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052758},{"Asset":"bg_hoteltile","X":280,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052759},{"Asset":"bg_hoteltile","X":300,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052760},{"Asset":"bg_hoteltile","X":300,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052761},{"Asset":"bg_hoteltile","X":320,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052762},{"Asset":"bg_hoteltile","X":340,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052763},{"Asset":"bg_hoteltile","X":360,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052764},{"Asset":"bg_hoteltile","X":380,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052765},{"Asset":"bg_hoteltile","X":400,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052766},{"Asset":"bg_hoteltile","X":420,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052767},{"Asset":"bg_hoteltile","X":440,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052768},{"Asset":"bg_hoteltile","X":440,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052769},{"Asset":"bg_hoteltile","X":420,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052770},{"Asset":"bg_hoteltile","X":400,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052771},{"Asset":"bg_hoteltile","X":380,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052772},{"Asset":"bg_hoteltile","X":360,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052773},{"Asset":"bg_hoteltile","X":340,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052774},{"Asset":"bg_hoteltile","X":320,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052775},{"Asset":"bg_hoteltile","X":80,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052776},{"Asset":"bg_hoteltile","X":100,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052777},{"Asset":"bg_hoteltile","X":120,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052778},{"Asset":"bg_hoteltile","X":140,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052779},{"Asset":"bg_hoteltile","X":160,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052780},{"Asset":"bg_hoteltile","X":180,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052781},{"Asset":"bg_hoteltile","X":200,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052782},{"Asset":"bg_hoteltile","X":220,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052783},{"Asset":"bg_hoteltile","X":240,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052784},{"Asset":"bg_hoteltile","X":260,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052785},{"Asset":"bg_hoteltile","X":280,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052786},{"Asset":"bg_hoteltile","X":300,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052787},{"Asset":"bg_hoteltile","X":320,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052788},{"Asset":"bg_hoteltile","X":340,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052789},{"Asset":"bg_hoteltile","X":360,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052790},{"Asset":"bg_hoteltile","X":380,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052791},{"Asset":"bg_hoteltile","X":400,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052792},{"Asset":"bg_hoteltile","X":420,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052793},{"Asset":"bg_hoteltile","X":440,"Y":80,"SourceX":120,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052794},{"Asset":"bg_hoteltile","X":40,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052795},{"Asset":"bg_hoteltile","X":20,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052796},{"Asset":"bg_hoteltile","X":0,"Y":140,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052797},{"Asset":"bg_hoteltile","X":20,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052798},{"Asset":"bg_hoteltile","X":40,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052799},{"Asset":"bg_hoteltile","X":20,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052800},{"Asset":"bg_hoteltile","X":0,"Y":160,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052801},{"Asset":"bg_hoteltile","X":0,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052802},{"Asset":"bg_hoteltile","X":40,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052803},{"Asset":"bg_hoteltile","X":60,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052804},{"Asset":"bg_hoteltile","X":80,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052805},{"Asset":"bg_hoteltile","X":100,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052806},{"Asset":"bg_hoteltile","X":120,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052807},{"Asset":"bg_hoteltile","X":140,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052808},{"Asset":"bg_hoteltile","X":160,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052809},{"Asset":"bg_hoteltile","X":180,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052810},{"Asset":"bg_hoteltile","X":200,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052811},{"Asset":"bg_hoteltile","X":220,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052812},{"Asset":"bg_hoteltile","X":240,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052813},{"Asset":"bg_hoteltile","X":260,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052814},{"Asset":"bg_hoteltile","X":280,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052815},{"Asset":"bg_hoteltile","X":300,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052816},{"Asset":"bg_hoteltile","X":320,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052817},{"Asset":"bg_hoteltile","X":340,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052818},{"Asset":"bg_hoteltile","X":360,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052819},{"Asset":"bg_hoteltile","X":380,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052820},{"Asset":"bg_hoteltile","X":400,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052821},{"Asset":"bg_hoteltile","X":420,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052822},{"Asset":"bg_hoteltile","X":440,"Y":180,"SourceX":60,"SourceY":120,"Width":20,"Height":20,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052823},{"Asset":"bg_hoteltile","X":60,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052824},{"Asset":"bg_hoteltile","X":40,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052825},{"Asset":"bg_hoteltile","X":20,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052826},{"Asset":"bg_hoteltile","X":0,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052827},{"Asset":"bg_hoteltile","X":-20,"Y":80,"SourceX":100,"SourceY":100,"Width":20,"Height":60,"Depth":1000000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052828},{"Asset":"bg_hoteldoor","X":112,"Y":92,"SourceX":0,"SourceY":0,"Width":36,"Height":49,"Depth":900000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052829},{"Asset":"bg_hoteldoor","X":188,"Y":92,"SourceX":0,"SourceY":0,"Width":36,"Height":49,"Depth":900000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052830},{"Asset":"bg_hoteldoor","X":262,"Y":92,"SourceX":0,"SourceY":0,"Width":36,"Height":49,"Depth":900000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052831},{"Asset":"bg_hoteldoor","X":336,"Y":92,"SourceX":0,"SourceY":0,"Width":36,"Height":49,"Depth":900000,"ScaleX":1,"ScaleY":1,"Color":4294967295,"InstanceID":10052832}],
   "Layers": [],
   "InstanceCreationOrderIDs": null,
   "Sequences": []

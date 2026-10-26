@@ -16,6 +16,9 @@ cache/
 *.log
 *.tmp
 *.temp
+*.win
+/game/runtime/
+/game/runtime.json
 
 # Kết quả kiểm thử
 /test-results/

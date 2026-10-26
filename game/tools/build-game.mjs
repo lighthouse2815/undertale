@@ -1,57 +1,84 @@
-// Biên dịch GML bằng UndertaleModTool, luôn lấy dữ liệu nền từ bộ đi kèm repo.
-import { readFile, readdir, mkdir, mkdtemp, copyFile, rename, rm, writeFile } from 'node:fs/promises';
+// Dựng dữ liệu chạy từ GML/JSON/PNG/WAV; không đọc file dữ liệu game gốc.
+import { createHash } from 'node:crypto';
+import { constants } from 'node:fs';
+import { cp, readFile, mkdir, mkdtemp, rename, rm, writeFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
-import { dirname, join } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { checksum, readAssets } from './game-assets.mjs';
+import { assetTypes, checksum, filesIn, readSource } from './game-assets.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const manifest = JSON.parse(await readFile(join(root, 'manifest.json'), 'utf8'));
-const base = join(root, manifest.base.path);
-if (checksum(await readFile(base)) !== manifest.base.sha256) {
-  throw new Error('Dữ liệu nền đã thay đổi. Khôi phục base/data.win trước khi biên dịch GML.');
-}
-const patches = {};
-for (const name of Object.keys(manifest.code)) await readFile(join(root, 'code', name));
-for (const name of (await readdir(join(root, 'code'))).filter((file) => file.endsWith('.gml'))) {
-  const file = join(root, 'code', name);
-  if (checksum(await readFile(file)) !== manifest.code[name]) patches[name] = file;
-}
-const baseline = JSON.parse(await readFile(join(root, 'asset-baseline.json'), 'utf8'));
-const assets = readAssets(join(root, 'assets'));
-for (const path of Object.keys(baseline.resources)) {
-  if (!assets.some((asset) => asset.path === path)) throw new Error(`Thiếu tài nguyên nguồn ${path}`);
-}
-const changedAssets = assets.filter((asset) => JSON.stringify(asset.hashes) !== JSON.stringify(baseline.resources[asset.path]));
-const output = join(root, 'build/undertale/data.win');
-await mkdir(dirname(output), { recursive: true });
-const work = await mkdtemp(join(dirname(output), 'compile-'));
-try {
-  const next = join(work, 'data.win');
-  if (Object.keys(patches).length || changedAssets.length) {
-    const cli = process.env.UNDERTALE_MOD_CLI ?? 'UndertaleModCli';
-    const project = join(work, 'project');
-    await mkdir(join(project, 'code'), { recursive: true });
-    await writeFile(join(project, 'project.json'), JSON.stringify({ Name: 'UNDERTALE Web', ErrorOnWarnings: true }));
-    for (const [name, file] of Object.entries(patches)) await copyFile(file, join(project, 'code', name));
-    for (const asset of changedAssets) {
-      for (const file of Object.keys(asset.hashes)) {
-        const target = join(project, file);
-        await mkdir(dirname(target), { recursive: true });
-        await copyFile(join(root, 'assets', file), target);
-      }
-    }
-    const args = ['project', 'build', join(project, 'project.json'), '--source', base, '--destination', next];
-    const result = spawnSync(cli.endsWith('.dll') ? 'dotnet' : cli,
-      cli.endsWith('.dll') ? [cli, ...args] : args,
-      { cwd: root, env: process.env, stdio: 'inherit' });
-    if (result.error) throw new Error(`Không chạy được UndertaleModCli: ${result.error.message}. Đặt UNDERTALE_MOD_CLI tới CLI hoặc DLL.`);
-    if (result.status !== 0) throw new Error('Biên dịch thất bại; giữ nguyên bản build thành công trước đó.');
-  } else {
-    await copyFile(base, next);
+
+async function sourceHash() {
+  const { assets, codeFiles } = readSource(root);
+  const inputs = new Map(assets.flatMap((asset) => Object.entries(asset.hashes)
+    .map(([name, hash]) => [`assets/${name}`, hash])));
+  for (const file of [join(root, 'project.json'), ...filesIn(join(root, 'project')), ...codeFiles,
+    ...['build-game.mjs', 'compile-source.csx', 'game-assets.mjs'].map((name) => join(root, 'tools', name))]) {
+    inputs.set(relative(root, file).replaceAll('\\', '/'), checksum(await readFile(file)));
   }
-  await rename(next, output);
-  console.log(`✓ ${Object.keys(patches).length} mục GML và ${changedAssets.length} tài nguyên thay đổi; dữ liệu chạy: build/undertale/data.win`);
-} finally {
-  await rm(work, { recursive: true, force: true });
+  const hash = createHash('sha256');
+  for (const [name, value] of [...inputs].sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)) {
+    hash.update(name).update('\0').update(value).update('\0');
+  }
+  return hash.digest('hex');
+}
+
+export async function buildGame({ force = false } = {}) {
+  const source = await sourceHash();
+  if (!force) {
+    // Bản xuất có sẵn runtime vẫn chơi được mà không cần cài compiler.
+    for (const folder of ['build/undertale', 'runtime']) {
+      const file = join(root, folder, folder === 'runtime' ? 'game.win' : 'data.win');
+      try {
+        const stamp = JSON.parse(await readFile(join(root, folder, 'source.json'), 'utf8'));
+        if (stamp.format === 'undertale-source-build' && stamp.source === source && checksum(await readFile(file)) === stamp.sha256) {
+          console.log('✓ Dữ liệu chạy đã khớp nguồn GML/JSON/PNG/WAV.');
+          return file;
+        }
+      } catch (error) { if (error.code !== 'ENOENT' && !(error instanceof SyntaxError)) throw error; }
+    }
+  }
+  const output = join(root, 'build/undertale/data.win');
+  await mkdir(dirname(output), { recursive: true });
+  const work = await mkdtemp(join(dirname(output), 'compile-'));
+  try {
+    const cli = process.env.UNDERTALE_MOD_CLI ?? 'UndertaleModCli';
+    const next = join(work, 'data.win');
+    const empty = join(work, 'empty.win');
+    const project = join(work, 'project');
+    await mkdir(project);
+    // Importer quét mọi thư mục con: chỉ đưa đúng nguồn vào vùng biên dịch.
+    for (const name of ['project.json', 'code', ...Object.keys(assetTypes).map((folder) => `assets/${folder}`)]) {
+      await cp(join(root, name), join(project, name), { recursive: true, mode: constants.COPYFILE_FICLONE });
+    }
+    const run = (args) => {
+      const result = spawnSync(cli.endsWith('.dll') ? 'dotnet' : cli,
+        cli.endsWith('.dll') ? [cli, ...args] : args, {
+          cwd: root, env: { ...process.env, UNDERTALE_BUILD_OUTPUT: next, UNDERTALE_BUILD_PROJECT: join(project, 'project.json') },
+          encoding: 'utf8', maxBuffer: 16 * 1024 * 1024,
+        });
+      if (result.error) throw new Error(`Không chạy được UndertaleModCli: ${result.error.message}. Đặt UNDERTALE_MOD_CLI tới CLI hoặc DLL.`);
+      if (result.status !== 0) throw new Error(`Biên dịch thất bại; giữ nguyên build trước.\n${result.stdout}${result.stderr}`);
+    };
+    console.log('Đang biên dịch toàn bộ nguồn bằng UndertaleModTool...');
+    run(['new', '--output', empty]);
+    run(['load', empty, '--scripts', join(root, 'tools/compile-source.csx'), '--output', next]);
+    if (await sourceHash() !== source) throw new Error('Nguồn thay đổi trong khi build; hãy build lại. Giữ nguyên build trước.');
+    const bytes = await readFile(next);
+    await writeFile(join(work, 'source.json'), JSON.stringify({ format: 'undertale-source-build', source,
+      sha256: checksum(bytes), bytes: bytes.length }, null, 2) + '\n');
+    await rename(next, output);
+    await rename(join(work, 'source.json'), join(dirname(output), 'source.json'));
+    console.log('✓ Đã dựng game từ nguồn rời: build/undertale/data.win');
+    return output;
+  } finally {
+    await rm(work, { recursive: true, force: true });
+  }
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const args = process.argv.slice(2);
+  if (args.length && (args.length !== 1 || args[0] !== '--force')) throw new Error('Cách dùng: node tools/build-game.mjs [--force]');
+  await buildGame({ force: args.includes('--force') });
 }

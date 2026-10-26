@@ -1,4 +1,4 @@
-// Từ game/: UndertaleModCli load base/data.win --scripts tools/export-game-index.csx
+// Từ game/: UndertaleModCli load build/undertale/data.win --scripts tools/export-game-index.csx
 using System;
 using System.IO;
 using System.Linq;

@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import assert from 'node:assert/strict';
 import { lstatSync, readdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 
@@ -7,6 +8,10 @@ export const assetTypes = {
   paths: 'Path', scripts: 'Script', objects: 'GameObject', rooms: 'Room',
 };
 export const checksum = (bytes) => createHash('sha256').update(bytes).digest('hex');
+export const resourceLists = {
+  Sprites: 'Sprite', Backgrounds: 'Background', Sounds: 'Sound', Paths: 'Path',
+  Scripts: 'Script', Fonts: 'Font', GameObjects: 'GameObject', Rooms: 'Room', Code: 'Code',
+};
 
 export function filesIn(directory) {
   return readdirSync(directory, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name)).flatMap((entry) => {
@@ -39,4 +44,49 @@ export function readAssets(root) {
     }
   }
   return result;
+}
+
+export function readSource(root) {
+  const json = (name) => JSON.parse(readFileSync(join(root, 'project', `${name}.json`), 'utf8'));
+  const general = json('general');
+  assert.equal(general.Name, 'UNDERTALE');
+  assert.equal(general.BytecodeVersion, 16, 'Chỉ hỗ trợ bytecode 16 của Undertale.');
+  assert.equal(general.Major, 1, 'Chỉ hỗ trợ định dạng GameMaker 1.');
+  json('options');
+  json('language');
+  const order = json('order');
+  assert.deepEqual(Object.keys(order).sort(), [...Object.keys(resourceLists), 'RoomOrder'].sort());
+  const emptyBackgrounds = json('empty-backgrounds');
+  const assets = readAssets(join(root, 'assets'));
+  const codeFiles = filesIn(join(root, 'code')).filter((name) => name.endsWith('.gml'));
+  for (const [list, type] of Object.entries(resourceLists)) {
+    assert.ok(Array.isArray(order[list]), `Thiếu danh mục ${list}.`);
+    const actual = type === 'Code' ? codeFiles.map((file) => basename(file, '.gml'))
+      : assets.filter((asset) => asset.type === type).map((asset) => asset.name);
+    if (type === 'Background') actual.push(...emptyBackgrounds.map((item) => item.Name));
+    assert.ok(order[list].every((name) => typeof name === 'string' && name.length > 0), `Tên ${list} không hợp lệ.`);
+    assert.equal(new Set(order[list]).size, order[list].length, `Trùng tên trong project/order.json: ${list}.`);
+    assert.equal(new Set(actual).size, actual.length, `Trùng nguồn tài nguyên ${type}.`);
+    const expected = new Set(order[list]), found = new Set(actual);
+    const missing = order[list].filter((name) => !found.has(name));
+    const unlisted = actual.filter((name) => !expected.has(name));
+    assert.equal(missing.length, 0, `Thiếu nguồn ${type}: ${missing.join(', ')}.`);
+    assert.equal(unlisted.length, 0, `Chưa khai báo ${type} trong project/order.json: ${unlisted.join(', ')}.`);
+  }
+  assert.ok(order.RoomOrder.length > 0, 'Cần ít nhất một phòng khởi động.');
+  assert.equal(new Set(order.RoomOrder).size, order.RoomOrder.length, 'Trùng phòng trong RoomOrder.');
+  for (const name of order.RoomOrder) assert.ok(order.Rooms.includes(name), `Không có phòng ${name}.`);
+  const ids = { GameObjects: new Set(), Tiles: new Set() };
+  for (const asset of assets.filter((item) => item.type === 'Room')) {
+    for (const [list, minimum] of [['GameObjects', 100000], ['Tiles', 10000000]]) {
+      for (const item of asset.data[list]) {
+        if (item.InstanceID == null) continue;
+        assert.ok(Number.isInteger(item.InstanceID) && item.InstanceID >= minimum && item.InstanceID <= 0x7fffffff,
+          `${asset.path}: InstanceID không hợp lệ.`);
+        assert.ok(!ids[list].has(item.InstanceID), `${asset.path}: trùng InstanceID ${item.InstanceID}.`);
+        ids[list].add(item.InstanceID);
+      }
+    }
+  }
+  return { order, assets, codeFiles, emptyBackgrounds };
 }

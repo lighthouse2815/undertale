@@ -1,4 +1,4 @@
-// Chạy bytecode gốc bằng Butterscotch; dữ liệu và runtime đều nằm trong repo.
+// Chạy GML đã biên dịch từ nguồn dự án bằng Butterscotch.
 const canvas = document.getElementById('canvas');
 const overlay = document.getElementById('boot');
 const button = document.getElementById('bootBtn');

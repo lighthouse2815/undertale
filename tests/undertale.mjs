@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
-import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
+import { access, cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 import { buildWeb } from '../game/tools/build-web.mjs';
@@ -19,17 +19,23 @@ let server;
 let browser;
 try {
   await buildWeb(exported);
+  await assert.rejects(access(join(exported, 'base/data.win')), { code: 'ENOENT' });
   const manifest = JSON.parse(await readFile(join(exported, 'runtime.json'), 'utf8'));
   assert.equal(manifest.files.length, 215);
   for (const file of manifest.files) {
     assert.equal((await readFile(join(exported, file.url))).length, file.bytes, file.name);
   }
-  // Có thể build lại từ gói đã copy, không cần repository cha.
-  const { buildWeb: rebuild } = await import(join(exported, 'tools/build-web.mjs'));
+  // Xóa mọi dữ liệu chạy khỏi bản copy để chứng minh build từ nguồn rời thật.
+  const sourceOnly = join(fixture, 'source-only');
+  await cp(exported, sourceOnly, { recursive: true, filter: (file) =>
+    !['runtime', 'build', 'runtime.json', 'web-build.json'].includes(relative(exported, file).split(sep)[0]) });
+  await assert.rejects(access(join(sourceOnly, 'runtime/game.win')), { code: 'ENOENT' });
+  const { buildWeb: rebuild } = await import(join(sourceOnly, 'tools/build-web.mjs'));
   await rebuild(join(fixture, 'rebuilt'));
   assert.deepEqual(await readFile(join(fixture, 'rebuilt/runtime.json')),
     await readFile(join(exported, 'runtime.json')));
   await rm(join(fixture, 'rebuilt'), { recursive: true });
+  await rm(sourceOnly, { recursive: true });
   const unrelated = join(fixture, 'unrelated');
   await mkdir(unrelated);
   await writeFile(join(unrelated, 'keep.txt'), 'giu-nguyen');
@@ -39,13 +45,18 @@ try {
   await symlink(exported, linked, 'dir');
   await assert.rejects(buildWeb(linked), /symlink/);
   await assert.rejects(buildWeb(join(root, 'game')), /ngoài source/);
-  console.log('✓ đóng gói đủ tài nguyên, build lại từ bản copy và bảo vệ thư mục xuất có sẵn');
+  console.log('✓ build từ bản copy chỉ có nguồn, không có data.win/game.win, và bảo vệ thư mục xuất có sẵn');
   // CWD khác thư mục ứng dụng: mọi đường dẫn phải lấy theo source.
   server = spawn(process.execPath, [join(exported, 'server.mjs')], {
     cwd: fixture, env: { ...process.env, PORT: port }, stdio: ['ignore', 'pipe', 'inherit'],
   });
   await Promise.race([
-    once(server.stdout, 'data'),
+    new Promise((resolve) => server.stdout.on('data', function ready(chunk) {
+      if (chunk.toString().includes('UNDERTALE đang chạy')) {
+        server.stdout.off('data', ready);
+        resolve();
+      }
+    })),
     once(server, 'exit').then(([code]) => { throw new Error(`Server dừng: ${code}`); }),
   ]);
   browser = await chromium.launch({ executablePath, headless: true,
@@ -192,7 +203,7 @@ try {
   assert.ok(requests.every((url) => !/Undertale-AnkerGames|local-music|local-sprites/.test(url)));
   assert.equal(await page.evaluate(() => __undertale.logs.some((l) => /Failed to load file|Unknown function/i.test(l))), false);
   await context.close();
-  console.log('✓ bản sao độc lập chạy bytecode gốc, intro, tiêu đề, đặt tên và vào phòng đầu');
+  console.log('✓ bản sao độc lập chạy GML đã biên dịch từ nguồn, intro, tiêu đề, đặt tên và vào phòng đầu');
   console.log('✓ 215 tệp dữ liệu/âm thanh/credit/splash trong runtime, âm thanh phát thật, di chuyển và va chạm gốc');
   console.log('✓ thả phím khi mất tiêu điểm, GML ghi OPFS và nạp checkpoint sau khi tải lại trang');
   console.log('✓ hội thoại Toriel, chuyển vào trận gốc, bốn lệnh và thực hiện một lượt tấn công');
