@@ -1,0 +1,41 @@
+{
+  "early": [
+    "* I think you should\n  play upstairs\n  instead.",
+    "* It is dangerous\n  to play here.",
+    "* It is drafty here.\n* You will catch\n  a cold.",
+    "* It is dusty here.\n* You will catch\n  a cough.",
+    "* There is nothing\n  to see here.",
+    "* Do you want to\n  read a book?",
+    "* I do not like\n  the game you\n  are playing.",
+    "* Why not go for\n  a walk in the\n  yard?",
+    "* Really now.",
+    "* ..."
+  ],
+  "beforeRoom": [
+    "* Hey, do not go down\n  here.",
+    "* I have something\n  to show you\n  upstairs."
+  ],
+  "first": [
+    "* You wish to know how\n  to return \"home,\"\n  do you not?",
+    "* Ahead of us lies the\n  end of the RUINS.",
+    "* A one-way exit to the\n  rest of the underground.",
+    "* I am going to destroy\n  it.",
+    "* No one will ever\n  be able to leave\n  again.",
+    "* Now be a good child\n  and go upstairs."
+  ],
+  "second": [
+    "* Every human that falls\n  down here meets\n  the same fate.",
+    "* I have seen it\n  again and again.",
+    "* They come.",
+    "* They leave.",
+    "* They die.",
+    "* You naive child...\n* If you leave the\n  RUINS...",
+    "* They...\n* ASGORE...\n* Will kill you.",
+    "* I am only protecting\n  you, do you understand?",
+    "* ... go to your room."
+  ],
+  "third": [
+    "* Do not try to stop me.",
+    "* This is your final\n  warning."
+  ]
+}

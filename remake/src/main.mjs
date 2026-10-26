@@ -32,6 +32,7 @@ import { HOUSE_ROOMS, stopHouseMusic } from './house-music.mjs';
 import { ChildBedroom } from './child-bedroom.mjs';
 import { TorielBedroom } from './toriel-bedroom.mjs';
 import { TorielLiving } from './toriel-living.mjs';
+import { TorielBasement, BASEMENT_ROOMS, stopBasementMusic } from './toriel-basement.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -83,6 +84,9 @@ const ROOM_EXITS = {
   room_torhouse3: { D: 'room_torhouse1', C: 'room_asrielroom', A: 'room_torielroom' },
   room_torielroom: { B: 'room_torhouse3' },
   room_asrielroom: { D: 'room_torhouse3' },
+  room_basement1: { A: 'room_basement2' },
+  room_basement2: { A: 'room_basement3', B: 'room_basement1' },
+  room_basement3: { B: 'room_basement2' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -100,13 +104,14 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => stopHouseMusic(this));
+    this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); });
     this.openRoom('room_area1').catch(fail);
   }
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
+    if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     this.scene.stop('FieldMenu');
     state.scene = this;
     this.ruinsTutorial?.destroy();
@@ -135,6 +140,7 @@ class World extends Scene {
     this.childBedroom?.destroy(); this.childBedroom = null;
     this.torielBedroom = null;
     this.torielLiving?.destroy(); this.torielLiving = null;
+    this.torielBasement?.destroy(); this.torielBasement = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -204,7 +210,7 @@ class World extends Scene {
     this.player.facing = facing; this.player.frameIndex = 0;
     this.doors = data.room.GameObjects.flatMap((item) => {
       const match = /^obj_door([ABCD])(musicfade)?$/.exec(item.ObjectName);
-      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A', room_ruins16: 'room_ruins19', room_ruins19: 'room_ruins16', room_torhouse2: 'room_kitchen', room_kitchen: 'room_torhouse2' })[name];
+      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A', room_ruins16: 'room_ruins19', room_ruins19: 'room_ruins16', room_torhouse2: 'room_kitchen', room_kitchen: 'room_torhouse2', room_torhouse1: 'room_basement1', room_basement1: 'room_torhouse1' })[name];
       const destination = special || (match && ROOM_EXITS[name]?.[match[1]]);
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
@@ -254,6 +260,7 @@ class World extends Scene {
     if (name === 'room_asrielroom') this.childBedroom = new ChildBedroom(this);
     if (name === 'room_torielroom') this.torielBedroom = new TorielBedroom(this);
     if (['room_torhouse2', 'room_kitchen'].includes(name)) this.torielLiving = new TorielLiving(this);
+    if (BASEMENT_ROOMS.includes(name)) this.torielBasement = new TorielBasement(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -330,11 +337,12 @@ class World extends Scene {
     const sleepLocked = this.childBedroom?.update(delta);
     this.torielBedroom?.update(delta);
     const livingLocked = this.torielLiving?.update(delta);
+    const basementLocked = this.torielBasement?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -363,6 +371,7 @@ class World extends Scene {
       if (this.corridorLesson?.checkTrigger(previous)) return;
       if (this.ruinsPerspective?.checkTrigger(previous)) return;
       if (this.ruinsHome?.checkTrigger()) return;
+      if (this.torielBasement?.checkTrigger(previous)) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);

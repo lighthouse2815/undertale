@@ -31,6 +31,7 @@ import { testTorielCorridor } from './remake-toriel-corridor.mjs';
 import { testChildBedroom } from './remake-child-bedroom.mjs';
 import { testTorielBedroom } from './remake-toriel-bedroom.mjs';
 import { testTorielLiving } from './remake-toriel-living.mjs';
+import { testTorielBasement } from './remake-toriel-basement.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -383,6 +384,7 @@ try {
   await testChildBedroom(page);
   await testTorielBedroom(page);
   await testTorielLiving(page);
+  await testTorielBasement(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);
