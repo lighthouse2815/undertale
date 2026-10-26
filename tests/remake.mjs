@@ -132,6 +132,16 @@ try {
   await page.evaluate(() => __remake.scene.player.setPosition(150, 400));
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_area1');
   assert.deepEqual(await position(), { x: 609, y: 153 });
+  await page.evaluate(() => __remake.scene.openRoom('room_area1_2'));
+  await page.waitForFunction(() => __remake.room === 'room_area1_2');
+  await page.evaluate(() => __remake.scene.player.setPosition(150, 120));
+  await page.waitForFunction(() => __remake.room === 'room_ruins1');
+  await page.evaluate(() => __remake.scene.player.setPosition(150, 195));
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => !!__remake.scene.dialogue);
+  assert.match(await page.locator('canvas').evaluate(() => __remake.scene.dialogueText.text), /saved/i);
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => !__remake.scene.dialogue);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

@@ -147,6 +147,14 @@ class World extends Scene {
       this.openRoom('room_area1', 'obj_markerB').catch(fail);
       return;
     }
+    if (this.dataSource.name === 'room_area1_2' && this.player.y <= 125) {
+      this.openRoom('room_ruins1', 'obj_markerA').catch(fail);
+      return;
+    }
+    if (this.dataSource.name === 'room_ruins1' && this.player.y >= this.dataSource.room.Height - 35) {
+      this.openRoom('room_area1_2', 'obj_markerB').catch(fail);
+      return;
+    }
     this.updateCamera();
   }
 
