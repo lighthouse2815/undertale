@@ -10,8 +10,9 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Dựng nền và tile của phòng đầu `room_area1` từ JSON/PNG gốc.
 - Mở đầu theo từng khung gốc, logo tiêu đề và nhập tên nhân vật tối đa 6 ký tự.
 - Nhân vật bốn hướng, animation, bước 3 pixel ở 30 Hz, camera cuộn theo phòng.
-- Nối hai chiều `room_area1` ↔ `room_area1_2` ↔ `room_ruins1` ↔ `room_ruins2` ↔ `room_ruins3`, dùng vùng cửa và marker gốc; giữ hướng nhìn, khóa di chuyển khi mờ chuyển phòng.
+- Nối hai chiều `room_area1` ↔ `room_area1_2` ↔ `room_ruins1` ↔ `room_ruins2` ↔ `room_ruins3` ↔ `room_ruins4`, dùng vùng cửa và marker gốc; giữ hướng nhìn, khóa di chuyển khi mờ chuyển phòng.
 - Cảnh công tắc tại `room_ruins2`: Toriel chào, đi theo hai path JSON gốc, đạp bốn nút sàn, bật công tắc tường và mở cửa; giải thích xong đặt `plot = 3`, đợi Frisk tới gần rồi rời phòng. Quay lại hoặc nạp tiến trình giữ cửa mở. Biển hướng dẫn dùng lời thoại gốc.
+- Hai công tắc tại `room_ruins3`: Toriel đi trước và nhắc khi được hỏi; công tắc đầu gỡ tường chặn, công tắc sau hạ gai và rung màn hình. Hỗ trợ công tắc sai, ghi chú, hướng tương tác, va chạm Toriel đứng chờ và nạp lại ở các mốc `plot = 4 / 4.5 / 5`. Có lời thoại và ẩn ghi chú theo tên FRISK; các hệ thống Hard Mode khác chưa chuyển.
 - Savepoint đầu Ruins hồi HP, hiện lời thoại gốc rồi mở Save/Return; X hoặc Return giữ file cũ, Save hiện xác nhận khi ghi thành công. Menu dùng font bitmap, con trỏ trái tim và âm thanh gốc.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
 - Phòng rơi xuống không vẽ trùng Frisk; chỉ cho đọc hoa sau mốc mở đầu và hiện Toriel ở mốc `plot = 25` của tuyến thường. Lời thoại hoa dùng nội dung gốc. Phòng savepoint Ruins không có trận ngẫu nhiên.
@@ -23,7 +24,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Đóng gói hosting tĩnh, chạy dưới đường dẫn con, không cần compiler GML.
 
 **Đây mới là nền tảng mở đầu, chiến đấu và cảnh công tắc đầu Ruins, chưa phải Undertale đầy đủ.**
-Chưa chuyển sự kiện tại `room_ruins3`, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, Flowey và các cảnh Toriel khác, menu đầy đủ,
+Chưa chuyển sự kiện tại `room_ruins4`, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, Flowey và các cảnh Toriel khác, menu đầy đủ,
 ACT/ITEM/MERCY theo từng quái, toàn bộ trạng thái lưu/nạp và menu Continue, những khu vực và nhánh kết thúc khác.
 Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
@@ -33,6 +34,9 @@ Cảnh công tắc đối chiếu `obj_torieltrigger1`, `obj_toroverworld3`,
 `obj_floorswitch1`, `obj_wallswitchcut1` và `obj_ruinsdoor1` trong `game/code/`.
 Nội dung lấy từ `SCR_TEXT` mục 202/203 và `obj_readable_room1_65`;
 đường đi đọc từ `path_torielwalk2`, `path_torielwalk2_2` và `path_walkup` trong `game/assets/paths/`.
+Phòng hai công tắc đối chiếu `obj_torieltrigger2`, `obj_plotswitch1/2`, `obj_plotwall1`,
+`obj_torinteractable1/2`, `obj_readable_switch1`, `obj_spikes_room` và `obj_shaker`;
+đường đi dùng `path_torielwalk3`, `path_torielwalk3_2`, `path_walkright`.
 
 Bản `game/` hiện tại là bản tham chiếu chạy bằng Butterscotch, vẫn được giữ để
 đối chiếu. Không đổi bản công khai thành bản viết lại trước khi chuyển đủ nội dung.
@@ -64,6 +68,9 @@ thuộc tác giả Undertale; xem `CREDITS.txt` trong gói xuất.
 | `src/save.mjs` | Đọc/ghi tiến trình qua localStorage |
 | `src/ruins-tutorial.mjs` | Cảnh Toriel biểu diễn công tắc, đường đi và mốc cốt truyện |
 | `src/ruins-tutorial.json` | Bảy trang lời thoại gốc của cảnh công tắc và biển hướng dẫn |
+| `src/ruins-switches.mjs` | Hai công tắc, Toriel hướng dẫn và thay đổi chướng ngại ở phòng kế |
+| `src/ruins-switches.json` | Lời thoại và ghi chú của phòng hai công tắc |
+| `src/npc.mjs` | Theo path JSON và vùng va chạm NPC |
 | `server.mjs` | Phục vụ mã và tài nguyên rời khi phát triển/chạy gói xuất |
 | `build.mjs` | Đóng gói mã, Phaser, giấy phép và tài nguyên rời |
 

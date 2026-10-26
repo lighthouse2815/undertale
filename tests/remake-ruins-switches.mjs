@@ -1,0 +1,153 @@
+import assert from 'node:assert/strict';
+import { join } from 'node:path';
+import { readFile } from 'node:fs/promises';
+
+export async function testRuinsSwitches(page, root) {
+  const dialogueData = JSON.parse(await readFile(join(root, 'remake/src/ruins-switches.json'), 'utf8'));
+  assert.ok(Object.values(dialogueData).flat().every((line) => line.startsWith('*') && !/SCR_TEXT_|obj_readable_/.test(line)), 'Dữ liệu hội thoại không được chứa mã định danh GML.');
+  const position = () => page.evaluate(() => ({ x: __remake.scene.player.x, y: __remake.scene.player.y }));
+  const place = (x, y, facing = 'u') => page.evaluate(({ x, y, facing }) => {
+    __remake.scene.player.setPosition(x, y); __remake.scene.player.facing = facing;
+  }, { x, y, facing });
+  const confirm = async () => {
+    await page.waitForTimeout(260);
+    await page.keyboard.press('z');
+  };
+  const closeDialogue = async (count) => {
+    for (let index = 0; index < count; index++) {
+      await page.waitForFunction((index) => __remake.scene.dialogue?.index === index, index);
+      await page.keyboard.press('z');
+    }
+    await page.waitForFunction(() => !__remake.scene.dialogue);
+  };
+  await page.evaluate(async () => {
+    __remake.game.registry.set('charname', 'CHARA');
+    __remake.scene.plot = 3;
+    await __remake.scene.openRoom('room_ruins3', 'obj_markerA');
+  });
+  assert.equal(await page.evaluate(() => __remake.scene.ruinsSwitches.stage), 'waiting');
+  assert.equal(await page.evaluate(() => __remake.scene.roomObjects.filter(({ item }) => /^obj_tor(overworld4|interactable[12])$/.test(item.ObjectName)).length), 1);
+  await page.keyboard.down('ArrowUp');
+  await page.waitForFunction(() => __remake.scene.ruinsSwitches.stage === 'intro');
+  await page.keyboard.up('ArrowUp');
+  const held = await position();
+  await page.keyboard.down('ArrowRight');
+  await page.waitForTimeout(150);
+  await page.keyboard.up('ArrowRight');
+  assert.deepEqual(await position(), held);
+  await closeDialogue(2);
+  await page.keyboard.down('ArrowDown');
+  await page.waitForTimeout(100);
+  await page.keyboard.up('ArrowDown');
+  assert.ok((await position()).y > held.y, 'Được đi theo Toriel trong lúc Toriel chạy tới công tắc.');
+  await page.waitForFunction(() => __remake.scene.plot === 4);
+  assert.deepEqual(await page.evaluate(() => ({ x: __remake.scene.ruinsSwitches.npc.x, y: __remake.scene.ruinsSwitches.npc.y })), { x: 445, y: 110 });
+  await place(459, 140, 'r');
+  await page.keyboard.down('ArrowRight');
+  await page.waitForTimeout(450);
+  await page.keyboard.up('ArrowRight');
+  assert.equal((await position()).x, 459, 'Tường cao chặn toàn bộ hành lang trước plot 4.5.');
+  await place(420, 125, 'r');
+  await page.keyboard.down('ArrowRight');
+  await page.waitForTimeout(400);
+  await page.keyboard.up('ArrowRight');
+  assert.ok((await position()).x <= 429, 'Toriel đứng chờ phải chặn chân nhân vật.');
+  await place(420, 125, 'r');
+  await confirm();
+  await page.waitForFunction(() => !!__remake.scene.dialogue);
+  assert.equal(await page.evaluate(() => __remake.scene.dialogue.lines.length), 1);
+  await closeDialogue(1);
+  await confirm();
+  await page.waitForFunction(() => !!__remake.scene.dialogue);
+  assert.equal(await page.evaluate(() => __remake.scene.dialogue.lines.length), 2);
+  await closeDialogue(2);
+  await place(357, 72);
+  await confirm();
+  await page.waitForFunction(() => !!__remake.scene.dialogue);
+  assert.equal(await page.evaluate(() => __remake.scene.dialogueText.text), dialogueData.firstAdvice[0]);
+  await closeDialogue(1);
+  await place(392, 72, 'd');
+  await confirm();
+  assert.equal(await page.evaluate(() => __remake.scene.plot), 4, 'Quay lưng về công tắc không được bật.');
+  await place(392, 72, 'u');
+  await confirm();
+  await page.waitForFunction(() => __remake.scene.plot === 4.5);
+  assert.equal(await page.evaluate(() => __remake.scene.roomObjects.find(({ item }) => item.ObjectName === 'obj_plotswitch1').image.texture.key), 'spr_switch:1');
+  await place(459, 140, 'r');
+  await page.keyboard.down('ArrowRight');
+  await page.waitForTimeout(600);
+  await page.keyboard.up('ArrowRight');
+  assert.ok((await position()).x > 500, 'Công tắc đầu gỡ tường chặn.');
+  await page.waitForFunction(() => __remake.scene.ruinsSwitches.stage === 'second');
+  assert.deepEqual(await page.evaluate(() => ({ x: __remake.scene.ruinsSwitches.npc.x, y: __remake.scene.ruinsSwitches.npc.y })), { x: 670, y: 110 });
+  await place(630, 72);
+  await confirm();
+  await page.waitForFunction(() => !!__remake.scene.dialogue);
+  assert.equal(await page.evaluate(() => __remake.scene.plot), 4.5, 'Công tắc sai giữ gai ở trạng thái cũ.');
+  assert.equal(await page.evaluate(() => __remake.scene.dialogue.lines.length), 3);
+  await closeDialogue(3);
+  await page.evaluate(() => __remake.scene.saveGame());
+  await place(592, 72);
+  await confirm();
+  await page.waitForFunction(() => __remake.scene.ruinsSwitches.locked);
+  assert.equal(await page.evaluate(() => __remake.scene.plot), 5);
+  const shaking = await position();
+  await page.keyboard.down('ArrowRight');
+  await page.waitForFunction(() => __remake.scene.ruinsSwitches.stage === 'praise');
+  assert.equal(await page.evaluate(() => __remake.scene.dialogueText.text), dialogueData.praise[0]);
+  await page.keyboard.up('ArrowRight');
+  assert.deepEqual(await position(), shaking);
+  assert.ok(await page.evaluate(() => __remake.scene.roomObjects.filter(({ item }) => item.ObjectName === 'obj_spikes_room').every(({ image }) => image.texture.key === 'spr_spiketile:1')));
+  await page.waitForFunction(() => {
+    const context = document.querySelector('canvas').getContext('2d');
+    const border = context.getImageData(8, 160, 1, 1).data;
+    return border[0] === 255 && border[1] === 255 && border[2] === 255;
+  });
+  await page.waitForTimeout(100);
+  await page.screenshot({ path: join(root, 'test-results/remake-ruins-switches.png') });
+  await closeDialogue(2);
+  await place(704, 132, 'r');
+  await page.keyboard.down('ArrowRight');
+  await page.waitForFunction(() => __remake.phase === 'transition');
+  await page.keyboard.up('ArrowRight');
+  await page.waitForFunction(() => __remake.room === 'room_ruins4' && __remake.phase === 'running');
+  assert.deepEqual(await position(), { x: 20, y: 140 });
+  await page.keyboard.down('ArrowLeft');
+  await page.waitForFunction(() => __remake.phase === 'transition');
+  await page.keyboard.up('ArrowLeft');
+  await page.waitForFunction(() => __remake.room === 'room_ruins3' && __remake.phase === 'running');
+  assert.deepEqual(await position(), { x: 700, y: 140 });
+  assert.equal(await page.evaluate(() => __remake.scene.ruinsSwitches.stage), 'complete');
+  await place(630, 72);
+  await confirm();
+  await page.waitForFunction(() => !!__remake.scene.dialogue);
+  assert.equal(await page.evaluate(() => __remake.scene.dialogueText.text), dialogueData.wrongAfter[0]);
+  assert.equal(await page.evaluate(() => __remake.scene.dialoguePortrait), null);
+  await closeDialogue(1);
+  await page.evaluate(() => __remake.scene.restoreGame());
+  assert.equal(await page.evaluate(() => __remake.scene.plot), 4.5);
+  assert.equal(await page.evaluate(() => __remake.scene.ruinsSwitches.stage), 'second');
+  for (const plot of [4, 4.5, 5]) {
+    await page.evaluate(async (plot) => {
+      __remake.scene.plot = plot;
+      await __remake.scene.openRoom('room_ruins3', 'obj_markerA');
+      __remake.scene.saveGame(); __remake.scene.plot = 0;
+      await __remake.scene.restoreGame();
+    }, plot);
+    assert.equal(await page.evaluate(() => __remake.scene.plot), plot);
+    assert.equal(await page.evaluate(() => __remake.scene.ruinsSwitches.stage), plot === 4 ? 'first' : plot === 4.5 ? 'second' : 'complete');
+    assert.equal(await page.evaluate(() => __remake.scene.colliders.find((body) => body.objectName === 'obj_plotwall1').disabled), plot > 4);
+    assert.equal(await page.evaluate(() => __remake.scene.roomObjects.filter(({ item }) => /^obj_tor(interactable[12]|overworld4)$/.test(item.ObjectName)).length), plot === 5 ? 0 : 1);
+  }
+  await page.evaluate(async () => {
+    __remake.game.registry.set('charname', 'FRISK'); __remake.scene.plot = 3;
+    await __remake.scene.openRoom('room_ruins3', 'obj_markerA');
+  });
+  assert.ok(await page.evaluate(() => __remake.scene.roomObjects.filter(({ item }) => /^obj_switchadvice[12]$/.test(item.ObjectName)).every(({ image }) => !image.visible)));
+  await page.keyboard.down('ArrowUp');
+  await page.waitForFunction(() => __remake.scene.ruinsSwitches.stage === 'intro');
+  await page.keyboard.up('ArrowUp');
+  assert.equal(await page.evaluate(() => __remake.scene.dialogue.lines.length), 5);
+  await page.evaluate(async () => { __remake.scene.plot = 5; await __remake.scene.openRoom('room_ruins3', 'obj_markerA'); });
+  console.log('✓ hai công tắc Ruins, tường chặn, hướng tương tác, công tắc sai, hạ gai, Toriel, cửa và lưu/nạp plot 4/4.5/5; lời dẫn Hard Mode');
+}

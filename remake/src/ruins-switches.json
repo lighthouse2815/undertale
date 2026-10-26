@@ -1,0 +1,66 @@
+{
+  "intro": [
+    "* To make progress here, \n  you will need to trigger\n  several switches.",
+    "* Do not worry, I have \n  labelled the ones that\n  you need to flip."
+  ],
+  "introHard": [
+    "* To make progress here, \n  you will need to trigger\n  several switches.",
+    "* Do not worry, I have \n  labelled the ones that\n  you need to flip.",
+    "* ... eh?\n* It seems that the\n  labelling has worn away.",
+    "* Oh dear.",
+    "* This might be far more\n  challenging than I\n  anticipated..."
+  ],
+  "firstHelp": [
+    "* The first switch is over\n  on the wall."
+  ],
+  "firstRepeat": [
+    "* Do you need some help..?\n* Press the switch on the wall.",
+    "* Come on, you can do it!"
+  ],
+  "secondHelp": [
+    "* Go on, press the switch\n  on the left."
+  ],
+  "secondHelpHard": [
+    "* I believe it was\n  the switch on the\n  left."
+  ],
+  "secondRepeat": [
+    "* You do know which way\n  left is, do you not?",
+    "* Press the switch that I\n  labelled for you."
+  ],
+  "secondRepeatHard": [
+    "* You do know which way\n  left is, do you not?",
+    "* Press the switch that I\n  labelled for you."
+  ],
+  "praise": [
+    "* Splendid! \n* I am proud of you, \n  little one.",
+    "* Let us move to the\n  next room."
+  ],
+  "wrongSwitch": [
+    "* No no no!",
+    "* You want to press the\n  other switch.",
+    "* I even labelled it for\n  you..."
+  ],
+  "wrongSwitchHard": [
+    "* It seems that is not\n  the correct switch.",
+    "* You want to press the\n  other switch.",
+    "* I even labelled it for\n  you..."
+  ],
+  "wrongWithoutToriel": [
+    "* (Wow!)\n* (You are superfast at being\n  wrong.)"
+  ],
+  "wrongAfter": [
+    "* This switch doesn't even\n  work..."
+  ],
+  "sign": [
+    "* \"Press \\*Z to read signs!\""
+  ],
+  "wallSign": [
+    "* Stay on the path."
+  ],
+  "firstAdvice": [
+    "* Please press this switch.\n \n - TORIEL"
+  ],
+  "secondAdvice": [
+    "* Please press this switch\n  too.\n - TORIEL"
+  ]
+}

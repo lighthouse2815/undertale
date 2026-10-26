@@ -13,9 +13,13 @@ export async function loadRoom(scene, name) {
   const room = await json(`rooms/${name}.json`);
   const hasSavepoint = room.GameObjects.some((item) => item.ObjectName === 'obj_savepoint');
   const ruinsTutorial = name === 'room_ruins2';
+  const ruinsSwitches = name === 'room_ruins3';
   const tutorialDialogue = ruinsTutorial ? await json(new URL('./ruins-tutorial.json', import.meta.url).href) : null;
+  const switchDialogue = ruinsSwitches ? await json(new URL('./ruins-switches.json', import.meta.url).href) : null;
   const paths = new Map();
-  if (ruinsTutorial) await Promise.all(['path_torielwalk2', 'path_torielwalk2_2', 'path_walkup'].map(async (key) => {
+  const pathNames = ruinsTutorial ? ['path_torielwalk2', 'path_torielwalk2_2', 'path_walkup']
+    : ruinsSwitches ? ['path_torielwalk3', 'path_torielwalk3_2', 'path_walkright'] : [];
+  await Promise.all(pathNames.map(async (key) => {
     paths.set(key, await json(`paths/${key}.json`));
   }));
   const objects = new Map();
@@ -30,7 +34,8 @@ export async function loadRoom(scene, name) {
   await Promise.all([...new Set(room.GameObjects.map((item) => item.ObjectName))].map(object));
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
   if (hasSavepoint) spriteNames.add('spr_heartsmall');
-  if (ruinsTutorial) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_face_torielhappytalk']) spriteNames.add(key);
+  if (ruinsTutorial || ruinsSwitches) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_face_torielhappytalk']) spriteNames.add(key);
+  if (ruinsSwitches) for (const key of ['spr_face_torieltalk', 'spr_face_torieltalkside']) spriteNames.add(key);
   for (const direction of ['d', 'r', 'u', 'l']) spriteNames.add(`spr_mainchara${direction}`);
   await Promise.all([...spriteNames].map(async (key) => sprites.set(key, await json(`sprites/${key}/${key}.json`))));
   const images = new Map();
@@ -42,10 +47,11 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (hasSavepoint || ruinsTutorial) && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches) && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
-  const sounds = [...(hasSavepoint ? ['snd_power', 'snd_save'] : []), ...(ruinsTutorial ? ['snd_noise'] : [])]
+  const sounds = [...(hasSavepoint ? ['snd_power', 'snd_save'] : []), ...(ruinsTutorial ? ['snd_noise'] : []),
+    ...(ruinsSwitches ? ['snd_screenshake', 'snd_wrongvictory'] : [])]
     .filter((key) => !scene.cache.audio.exists(key));
   const queued = [...images].filter(([key]) => !scene.textures.exists(key));
   if (queued.length || sounds.length) await new Promise((resolve, reject) => {
@@ -86,5 +92,5 @@ export async function loadRoom(scene, name) {
     scene.cache.bitmapFont.add('fnt_maintext:yellow', { texture: 'fnt_maintext:yellow', frame: null,
       data: scene.cache.bitmapFont.get('fnt_maintext').data });
   }
-  return { name, room, objects, sprites, paths, tutorialDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue };
 }

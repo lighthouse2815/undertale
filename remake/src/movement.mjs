@@ -1,31 +1,34 @@
 import { Geom } from '../vendor/phaser.esm.min.js';
 
 // Tỉ lệ của hai vật cản dài được đặt trong Create của game gốc.
-const scales = { obj_solidlong: [400, 1], obj_solidtall: [1, 400], obj_solidlongleft: [-400, 1] };
+const scales = { obj_solidlong: [400, 1], obj_solidtall: [1, 400], obj_solidlongleft: [-400, 1], obj_plotwall1: [1, 400] };
 export function createColliders(data) {
   const inherits = (name, target) => {
     for (let current = name; current; current = data.objects.get(current)?.ParentObject) if (current === target) return true;
     return false;
   };
   return data.room.GameObjects.filter((item) => inherits(item.ObjectName, 'obj_solidparent') || inherits(item.ObjectName, 'obj_diagoparent'))
-    .map((item) => {
-      const object = data.objects.get(item.ObjectName);
-      const name = object.MaskSprite ?? object.Sprite;
-      const sprite = data.sprites.get(name);
-      const [sx, sy] = scales[item.ObjectName] ?? [item.ScaleX, item.ScaleY];
-      const x1 = item.X + (sprite.MarginLeft - sprite.OriginX) * sx;
-      const x2 = item.X + (sprite.MarginRight + 1 - sprite.OriginX) * sx;
-      const y1 = item.Y + (sprite.MarginTop - sprite.OriginY) * sy;
-      const y2 = item.Y + (sprite.MarginBottom + 1 - sprite.OriginY) * sy;
-      return { rectangle: new Geom.Rectangle(Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1)),
-        mask: sprite.CollisionKind === 'Precise' ? `${name}:mask` : null, sprite, x: item.X, y: item.Y, sx, sy };
-    });
+    .map((item) => createCollider(data, item));
+}
+
+export function createCollider(data, item) {
+  const object = data.objects.get(item.ObjectName);
+  const name = object.MaskSprite ?? object.Sprite;
+  const sprite = data.sprites.get(name);
+  const [sx, sy] = scales[item.ObjectName] ?? [item.ScaleX, item.ScaleY];
+  const x1 = item.X + (sprite.MarginLeft - sprite.OriginX) * sx;
+  const x2 = item.X + (sprite.MarginRight + 1 - sprite.OriginX) * sx;
+  const y1 = item.Y + (sprite.MarginTop - sprite.OriginY) * sy;
+  const y2 = item.Y + (sprite.MarginBottom + 1 - sprite.OriginY) * sy;
+  return { objectName: item.ObjectName, rectangle: new Geom.Rectangle(Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1)),
+    mask: sprite.CollisionKind === 'Precise' ? `${name}:mask` : null, sprite, x: item.X, y: item.Y, sx, sy };
 }
 
 export function blocked(scene, colliders, x, y) {
   // Mask của Frisk: phần chân, từ hàng 19 đến 29 trên sprite 20×30.
   const feet = new Geom.Rectangle(x, y + 19, 20, 11);
   return colliders.some((body) => {
+    if (body.disabled) return false;
     if (!Geom.Rectangle.Overlaps(feet, body.rectangle)) return false;
     if (!body.mask) return true;
     for (let px = Math.max(Math.floor(feet.left), Math.floor(body.rectangle.left)); px < Math.min(feet.right, body.rectangle.right); px++) {
