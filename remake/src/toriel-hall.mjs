@@ -1,5 +1,6 @@
 import { blocked, createCollider } from './movement.mjs';
 import { inInteractionRange, touchesObject, walkNpc } from './npc.mjs';
+import { startHouseMusic } from './house-music.mjs';
 
 // obj_torieltrigger6, obj_torgen_house1, obj_stairstep và nhạc hai lớp trong sảnh.
 export class TorielHall {
@@ -17,12 +18,7 @@ export class TorielHall {
       this.walk(npc, world.plot < 19 ? 'path_torielwalkhouse2' : 'path_torielwalkhouse3');
       world.flags[45] = 0;
     });
-    const reunited = world.flags[7] === 1, slow = world.flags[45] === 4;
-    const keys = reunited ? ['mus_reunited'] : slow ? ['mus_toriel', 'mus_toriel'] : ['mus_house1', 'mus_house2'];
-    this.music = keys.map((key, index) => {
-      const sound = world.sound.add(key, { loop: true, volume: index ? .01 : 1, rate: slow && !reunited ? .4 : 1 });
-      sound.play(); return sound;
-    });
+    this.music = startHouseMusic(world);
   }
 
   spawn(x, y) {

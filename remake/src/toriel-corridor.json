@@ -1,0 +1,32 @@
+{
+  "intro": [
+    "* This is it..."
+  ],
+  "room": [
+    "* A room of your own.\n* I hope you like it!"
+  ],
+  "burning": [
+    "* Is something burning...?\n* Um, make yourself\n  at home!"
+  ],
+  "renovations": [
+    "* \"Room under renovations.\""
+  ],
+  "plant": [
+    "* You have seen this type\n  of plant before but\n  do not know its name."
+  ],
+  "plantKnown": [
+    "* Oh!\n* It is a \"water sausage.\""
+  ],
+  "drawer": [
+    "* Inside the drawer are\n  flower seeds and some\n  broken crayons."
+  ],
+  "mirror": [
+    "* It's you!"
+  ],
+  "mirrorEnd": [
+    "* Still just you, Frisk."
+  ],
+  "mirrorKill": [
+    "* It's me, \\[C]."
+  ]
+}

@@ -27,6 +27,7 @@ import { RuinsPerspective } from './ruins-perspective.mjs';
 import { RuinsOutlook } from './ruins-outlook.mjs';
 import { RuinsHome } from './ruins-home.mjs';
 import { TorielHall } from './toriel-hall.mjs';
+import { TorielCorridor } from './toriel-corridor.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -73,7 +74,8 @@ const ROOM_EXITS = {
   room_ruins17: { A: 'room_ruins18OLD', B: 'room_ruins16' },
   room_ruins18OLD: { B: 'room_ruins17' },
   room_ruins19: { A: 'room_torhouse1' },
-  room_torhouse1: { B: 'room_ruins19' },
+  room_torhouse1: { B: 'room_ruins19', C: 'room_torhouse3' },
+  room_torhouse3: { D: 'room_torhouse1' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -120,6 +122,7 @@ class World extends Scene {
     this.ruinsOutlook = null;
     this.ruinsHome?.destroy(); this.ruinsHome = null;
     this.torielHall?.destroy(); this.torielHall = null;
+    this.torielCorridor?.destroy(); this.torielCorridor = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -235,6 +238,7 @@ class World extends Scene {
     if (['room_ruins17', 'room_ruins18OLD'].includes(name)) this.ruinsOutlook = new RuinsOutlook(this);
     if (name === 'room_ruins19') this.ruinsHome = new RuinsHome(this);
     if (name === 'room_torhouse1') this.torielHall = new TorielHall(this);
+    if (name === 'room_torhouse3') this.torielCorridor = new TorielCorridor(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -290,6 +294,7 @@ class World extends Scene {
       this.ruinsStart?.animate();
       this.ruins13?.animate();
       this.ruinsOutlook?.animate();
+      this.torielCorridor?.animate();
     }
     if (['menu', 'loadingMenu'].includes(state.phase)) {
       this.spikeGuide?.updateMotion(delta);
@@ -302,11 +307,12 @@ class World extends Scene {
     const holesLocked = this.ruinsHoles?.update(delta);
     const rockLocked = this.ruinsGoofyrock?.update();
     const homeLocked = this.ruinsHome?.update(delta);
+    const bedroomLocked = this.torielCorridor?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -383,6 +389,7 @@ class World extends Scene {
     if (this.ruinsOutlook?.interact()) return;
     if (this.ruinsHome?.interact()) return;
     if (this.torielHall?.interact()) return;
+    if (this.torielCorridor?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
