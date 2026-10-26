@@ -17,8 +17,8 @@ const INTRO_TEXT = [
   'Legends say that those\nwho climb the mountain\nnever return.',
 ];
 const DIALOGUES = {
-  obj_readable_flowers1: ['The flowers are growing\nthere.', 'They look like they\nhave a mind of their own.'],
-  obj_torinteractable7: ['* Someone has to take\n  care of these flowers.'],
+  obj_readable_flowers1: ['* (Golden flowers.)\n* (They must have\n  broken your fall.)'],
+  obj_torinteractable7: ['* Do not worry about\n  me.', '* Someone has to take\n  care of these flowers.'],
   obj_savepoint: ['* (The shadow of the ruins\n  looms above, filling you with\n  determination.)', '* (HP fully restored.)'],
 };
 // Chỉ nối các phòng đã chuyển. A đi tới markerA của phòng kế, B quay về markerB.
@@ -69,6 +69,10 @@ class World extends Scene {
       return false;
     };
     for (const item of data.room.GameObjects) {
+      if (item.ObjectName === 'obj_mainchara') continue; // Vị trí gốc chỉ dùng để tạo player một lần.
+      // Create/RoomStart gốc: không đọc hoa khi mới rơi xuống; Toriel ở đây khi plot = 25.
+      if (item.ObjectName === 'obj_readable_flowers1' && (this.plot ?? 0) === 0) continue;
+      if (item.ObjectName === 'obj_torinteractable7' && this.plot !== 25) continue;
       const object = data.objects.get(item.ObjectName);
       const interactable = Boolean(object && (inherits(item.ObjectName, 'obj_readable') || inherits(item.ObjectName, 'obj_interactable')
         || item.ObjectName.includes('readable') || item.ObjectName.includes('torinteractable')));
@@ -111,7 +115,6 @@ class World extends Scene {
     this.lv = this.lv ?? 1;
     this.plot = this.plot ?? 0;
     this.playTime = this.playTime ?? 0;
-    this.encounterDistance = 0;
     this.colliders = createColliders(data);
     this.elapsed = 0;
     this.cameras.main.setBounds(0, 0, data.room.Width, data.room.Height);
@@ -163,15 +166,10 @@ class World extends Scene {
       return;
     }
     this.elapsed = Math.min(this.elapsed + delta, 200);
-    const oldX = this.player.x; const oldY = this.player.y;
     while (this.elapsed >= 1000 / 30) {
       movePlayer(this, this.player, this.colliders,
         (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction));
       this.elapsed -= 1000 / 30;
-    }
-    if (this.dataSource.name === 'room_ruins1' && (this.player.x !== oldX || this.player.y !== oldY)) {
-      this.encounterDistance += Math.hypot(this.player.x - oldX, this.player.y - oldY);
-      if (this.encounterDistance >= 480) { state.startBattle('froggit'); return; }
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
     if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();

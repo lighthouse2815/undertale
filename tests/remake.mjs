@@ -63,14 +63,20 @@ try {
   await page.waitForFunction(() => __remake.phase === 'running');
   assert.equal(await page.evaluate(() => __remake.room), 'room_area1');
   assert.equal(await page.evaluate(() => __remake.game.registry.get('charname')), 'FRISK');
-  assert.ok(await page.evaluate(() => __remake.scene.roomObjects.some((entry) => entry.item.ObjectName === 'obj_torinteractable7')));
+  assert.ok(await page.evaluate(() => !__remake.scene.roomObjects.some((entry) => ['obj_torinteractable7', 'obj_readable_flowers1', 'obj_mainchara'].includes(entry.item.ObjectName))));
+  assert.equal(await page.evaluate(() => __remake.scene.children.list.filter((entry) => /^spr_mainchara[durl]:0$/.test(entry.texture?.key)).length), 1);
+  await page.keyboard.press('z');
+  await page.waitForTimeout(100);
+  assert.equal(await page.evaluate(() => __remake.scene.dialogue), null);
+  await page.evaluate(async () => { __remake.scene.plot = 1; await __remake.scene.openRoom('room_area1'); });
   await page.keyboard.press('z');
   await page.waitForFunction(() => !!__remake.scene.dialogue);
-  assert.match(await page.locator('canvas').evaluate(() => __remake.scene.dialogueText.text), /flowers/i);
-  await page.keyboard.press('z');
-  await page.waitForTimeout(300);
+  assert.equal(await page.evaluate(() => __remake.scene.dialogueText.text), '* (Golden flowers.)\n* (They must have\n  broken your fall.)');
   await page.keyboard.press('z');
   await page.waitForFunction(() => !__remake.scene.dialogue);
+  await page.evaluate(async () => { __remake.scene.plot = 25; await __remake.scene.openRoom('room_area1'); });
+  assert.ok(await page.evaluate(() => __remake.scene.roomObjects.some((entry) => entry.item.ObjectName === 'obj_torinteractable7')));
+  await page.evaluate(async () => { __remake.scene.plot = 0; await __remake.scene.openRoom('room_area1'); });
   await page.evaluate(() => __remake.startBattle('froggit'));
   await page.waitForFunction(() => __remake.phase === 'battle');
   assert.deepEqual(await page.evaluate(() => ({ name: __remake.scene.config.name, hp: __remake.scene.enemyMaxHp })), { name: 'Froggit', hp: 30 });
@@ -246,6 +252,18 @@ try {
   assert.deepEqual(await page.evaluate((time) => ({ hp: __remake.scene.hp, plot: __remake.scene.plot, playTime: __remake.scene.playTime >= time }), savedAtPoint.playTime),
     { hp: 20, plot: 2, playTime: true });
   console.log('✓ savepoint hồi HP, lời thoại gốc, Save/Return/X, lỗi lưu không báo thành công, nạp tiến trình');
+  await page.evaluate(() => __remake.scene.player.setPosition(150, 250));
+  let walked = 0;
+  for (const direction of ['ArrowDown', 'ArrowUp', 'ArrowDown', 'ArrowUp']) {
+    const before = await position();
+    await page.keyboard.down(direction);
+    await page.waitForTimeout(1700);
+    await page.keyboard.up(direction);
+    assert.equal(await page.evaluate(() => __remake.phase), 'running', 'Phòng Ruins đầu không có encounter ngẫu nhiên.');
+    const after = await position();
+    walked += Math.hypot(after.x - before.x, after.y - before.y);
+  }
+  assert.ok(walked > 500, `Chưa đi đủ để kiểm tra hồi quy encounter: ${walked}`);
   await page.evaluate(() => __remake.scene.player.setPosition(150, 110));
   await page.keyboard.down('ArrowUp');
   await page.waitForFunction(() => __remake.phase === 'transition');
