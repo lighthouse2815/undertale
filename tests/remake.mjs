@@ -19,6 +19,7 @@ import { testRuinsPath } from './remake-ruins-path.mjs';
 import { testRuinsHoles } from './remake-ruins-holes.mjs';
 import { testRuinsLate } from './remake-ruins-late.mjs';
 import { testRuins12 } from './remake-ruins-12.mjs';
+import { testRuins12A } from './remake-ruins-12a.mjs';
 import { testRuins13 } from './remake-ruins-13.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
@@ -360,6 +361,7 @@ try {
   await testRuinsPath(page);
   await testRuinsLate(page);
   await testRuins12(page, root);
+  await testRuins12A(page);
   await testRuins13(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);

@@ -353,7 +353,7 @@ class World extends Scene {
     if (target.entry.item.ObjectName === 'obj_savepoint') {
       this.hp = Math.max(this.hp, this.maxHp);
       this.sound.play('snd_power', { volume: 0.88 });
-      this.showDialogue(this.ruinsStart?.text.save ?? DIALOGUES.obj_savepoint, { onClose: () => {
+      this.showDialogue(this.ruins12?.saveDialogue ?? this.ruinsStart?.text.save ?? DIALOGUES.obj_savepoint, { onClose: () => {
         this.plot = Math.max(this.plot, 2);
         this.scene.pause();
         this.scene.launch('SaveMenu');

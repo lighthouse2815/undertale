@@ -1,4 +1,5 @@
 import { inInteractionRange } from './npc.mjs';
+import { createCollider } from './movement.mjs';
 
 const NAP = [
   '* zzzzzzzzzzzzzzz..\n* zzzzzzzzzzzzzz...',
@@ -9,12 +10,21 @@ const NAP_AFTER = [
   '* i usually come to the\n  RUINS because there\'s\n  nobody around...',
   '* but today i met somebody\n  nice...', '* ...', '* oh, i\'m rambling again', '* i\'ll get out of your way',
 ];
+const MOUSE_SAVE = [
+  '* (Knowing the mouse might one\n  day leave its hole and\n  get the cheese...)',
+  '* (It fills you with\n  determination.)',
+];
 
 export class Ruins12Lesson {
   constructor(world) {
     this.world = world;
     this.nap = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_napstablook1');
     this.cheese = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_cheesetable1');
+    this.mouse = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_mousehole');
+    if (this.cheese) {
+      world.colliders.push(createCollider(world.dataSource, this.cheese.item));
+      this.cheese.image.setDepth(this.cheese.item.Y + this.cheese.sprite.Height);
+    }
     if (this.nap && (world.flags[202] ?? 0) >= 20 && world.plot < 10.4) world.plot = 10.4;
     this.stage = world.plot > 10.5 ? 'gone' : 'sleeping';
     if (this.stage === 'gone') this.nap?.image.destroy();
@@ -38,6 +48,10 @@ export class Ruins12Lesson {
 
   interact() {
     const world = this.world;
+    if (this.mouse && inInteractionRange(world, this.mouse)) {
+      if (!world.sound.isPlaying('snd_movemenu')) world.sound.play('snd_movemenu');
+      return true;
+    }
     if (this.nap && this.stage === 'sleeping' && inInteractionRange(world, this.nap)) {
       world.showDialogue(NAP, { onClose: () => world.showChoice('* Move it with force?', ['Yes', 'No'], (choice) => {
         if (choice !== 0) return;
@@ -53,6 +67,11 @@ export class Ruins12Lesson {
       return true;
     }
     return false;
+  }
+
+  get saveDialogue() {
+    if (!this.mouse) return null;
+    return this.world.flags[202] >= 20 ? ['* Determination.'] : MOUSE_SAVE;
   }
 
   leave() {

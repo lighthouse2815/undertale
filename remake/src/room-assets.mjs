@@ -91,6 +91,7 @@ export async function loadRoom(scene, name) {
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
     ...(candyRoom ? ['snd_select', 'snd_squeak'] : []),
     ...(ruins12 ? ['snd_squeak'] : []),
+    ...(name === 'room_ruins12A' ? ['snd_movemenu'] : []),
     ...(ruinsHoles ? ['snd_noise', 'snd_fall2', 'snd_hero'] : []),
     ...(hasSavepoint ? ['snd_power', 'snd_save'] : []), ...(ruinsTutorial ? ['snd_noise'] : []),
     ...(ruinsSwitches ? ['snd_screenshake', 'snd_wrongvictory'] : []),
