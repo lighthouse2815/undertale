@@ -51,7 +51,7 @@ export class RuinsRock {
 export class RuinsHoles {
   constructor(world) {
     this.world = world;
-    this.holes = world.dataSource.room.GameObjects.filter((item) => ['obj_holeup', 'obj_holedown2'].includes(item.ObjectName));
+    this.holes = world.dataSource.room.GameObjects.filter((item) => ['obj_holeup', 'obj_holedown', 'obj_holedown2'].includes(item.ObjectName));
     this.cooldown = 0;
   }
 

@@ -17,6 +17,7 @@ import { TutorialFroggit } from './tutorial-froggit.mjs';
 import { RuinsBattle } from './ruins-battle.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
+import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -48,7 +49,8 @@ const ROOM_EXITS = {
   room_ruins7A: { B: 'room_ruins7' },
   room_ruins8: { A: 'room_ruins9', D: 'room_ruins7' },
   room_ruins9: { A: 'room_ruins10', B: 'room_ruins8' },
-  room_ruins10: { B: 'room_ruins9' },
+  room_ruins10: { A: 'room_ruins11', B: 'room_ruins9' },
+  room_ruins11: { A: 'room_ruins12', B: 'room_ruins10' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -87,6 +89,7 @@ class World extends Scene {
     this.ruinsStart = null;
     this.ruinsEncounter?.destroy(); this.ruinsEncounter = null;
     this.ruinsRock = null; this.ruinsHoles?.destroy(); this.ruinsHoles = null;
+    this.ruinsGoofyrock?.destroy(); this.ruinsGoofyrock = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -189,8 +192,9 @@ class World extends Scene {
     if (name === 'room_ruins6') this.corridorLesson = new CorridorLesson(this);
     if (name === 'room_ruins7A') this.candyDish = new CandyDish(this);
     if (name === 'room_ruins7') { this.ruinsStart = new RuinsStart(this); this.ruinsEncounter = new RuinsEncounter(this); }
-    if (name === 'room_ruins8') this.ruinsHoles = new RuinsHoles(this);
+    if (['room_ruins8', 'room_ruins10'].includes(name)) this.ruinsHoles = new RuinsHoles(this);
     if (name === 'room_ruins9') this.ruinsRock = new RuinsRock(this);
+    if (name === 'room_ruins11') this.ruinsGoofyrock = new RuinsGoofyrock(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -305,6 +309,7 @@ class World extends Scene {
 
   tryInteract() {
     if (this.candyDish) { this.candyDish.interact(); return; }
+    if (this.ruinsGoofyrock?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
