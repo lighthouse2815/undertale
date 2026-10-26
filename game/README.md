@@ -37,6 +37,7 @@ Save nằm trong OPFS theo địa chỉ/cổng trình duyệt; giữ origin đ�
 | 45 đường đi và 238 khai báo script | `assets/paths/`, `assets/scripts/` |
 | Giao diện web, bàn phím và nút cảm ứng | `web/app.mjs`, `web/undertale.css`, `web/style.css` |
 | Runtime và nguồn C của Butterscotch | `vendor/butterscotch/` |
+| Biên dịch GML, nhập tài nguyên và đóng gói web | `tools/` (cần để build từ nguồn) |
 | Cấu hình GameMaker, cửa sổ, tùy chọn | `project/general.json`, `project/options.json` |
 | ID tài nguyên và thứ tự chạy phòng | `project/order.json` |
 
