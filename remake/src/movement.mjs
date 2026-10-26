@@ -26,7 +26,7 @@ export function blocked(scene, colliders, x, y) {
   // Mask của Frisk: phần chân, từ hàng 19 đến 29 trên sprite 20×30.
   const feet = new Geom.Rectangle(x, y + 19, 20, 11);
   return colliders.some((body) => {
-    if (!Geom.Intersects.RectangleToRectangle(feet, body.rectangle)) return false;
+    if (!Geom.Rectangle.Overlaps(feet, body.rectangle)) return false;
     if (!body.mask) return true;
     for (let px = Math.max(Math.floor(feet.left), Math.floor(body.rectangle.left)); px < Math.min(feet.right, body.rectangle.right); px++) {
       for (let py = Math.max(Math.floor(feet.top), Math.floor(body.rectangle.top)); py < Math.min(feet.bottom, body.rectangle.bottom); py++) {
@@ -46,7 +46,8 @@ export function movePlayer(scene, player, colliders, input) {
     if (!input(direction)) continue;
     player.facing = { down: 'd', right: 'r', up: 'u', left: 'l' }[direction];
     const x = player.x + dx, y = player.y + dy;
-    if (!blocked(scene, colliders, x, y)) player.setPosition(x, y);
+    // Step gốc kích hoạt cửa trước pha va chạm tường. Nhiều cửa nằm ngay trên tường biên.
+    if (scene.findDoor(x, y) || !blocked(scene, colliders, x, y)) player.setPosition(x, y);
   }
   const moved = player.x !== oldX || player.y !== oldY;
   player.frameIndex = moved ? (player.frameIndex + 0.2) % 4 : 0;

@@ -10,8 +10,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Dựng nền và tile của phòng đầu `room_area1` từ JSON/PNG gốc.
 - Mở đầu theo từng khung gốc, logo tiêu đề và nhập tên nhân vật tối đa 6 ký tự.
 - Nhân vật bốn hướng, animation, bước 3 pixel ở 30 Hz, camera cuộn theo phòng.
-- Cửa phải của phòng đầu chuyển sang `room_area1_2`, cửa dưới quay lại và đặt nhân vật tại marker gốc.
-- Cửa trên `room_area1_2` vào `room_ruins1`, cửa dưới quay lại; savepoint trong Ruins dùng hộp thoại lưu.
+- Nối hai chiều `room_area1` ↔ `room_area1_2` ↔ `room_ruins1` ↔ `room_ruins2`, dùng vùng cửa và marker gốc; giữ hướng nhìn, khóa di chuyển khi mờ chuyển phòng. Savepoint trong Ruins dùng hộp thoại lưu.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
 - Nền chiến đấu: FIGHT có thanh đánh/sát thương, ACT Check/Talk, ITEM Monster Candy hồi HP, MERCY, SOUL, đạn, HP và kết thúc lượt; mở qua `__remake.startBattle()` để kiểm thử engine.
 - Save/nạp phiên bản đầu lưu tên, phòng, vị trí và HP qua localStorage; `scene.saveGame()` và `scene.restoreGame()` dùng chung format.
@@ -20,8 +19,8 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Tải JSON và PNG của phòng khi mở; giữ cache trong phiên chơi.
 - Đóng gói hosting tĩnh, chạy dưới đường dẫn con, không cần compiler GML.
 
-**Đây mới là bộ mở đầu, hiển thị và di chuyển ở phòng đầu, chưa phải Undertale đầy đủ.**
-Chưa chuyển cửa chuyển phòng, hội thoại đầy đủ, Flowey/Toriel, menu đầy đủ,
+**Đây mới là nền tảng mở đầu, chiến đấu và đi lại qua bốn phòng, chưa phải Undertale đầy đủ.**
+Chưa chuyển các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, Flowey/Toriel, menu đầy đủ,
 ACT/ITEM/MERCY theo từng quái, lưu/nạp, những khu vực và nhánh kết thúc khác.
 Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.

@@ -20,6 +20,13 @@ const DIALOGUES = {
   obj_torinteractable7: ['* Someone has to take\n  care of these flowers.'],
   obj_savepoint: ['* (The strange light fills you\n  with determination.)'],
 };
+// Chỉ nối các phòng đã chuyển. A đi tới markerA của phòng kế, B quay về markerB.
+const ROOM_EXITS = {
+  room_area1: { A: 'room_area1_2' },
+  room_area1_2: { A: 'room_ruins1', B: 'room_area1' },
+  room_ruins1: { A: 'room_ruins2', B: 'room_area1_2' },
+  room_ruins2: { B: 'room_ruins1' },
+};
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
   status.hidden = false; status.textContent = `Không mở được phòng: ${error.message}`;
@@ -38,6 +45,7 @@ class World extends Scene {
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
+    const facing = this.player?.facing ?? 'd';
     const data = await loadRoom(this, name);
     this.children.removeAll(true);
     this.dataSource = data;
@@ -73,8 +81,22 @@ class World extends Scene {
       ?? data.room.GameObjects.find((item) => item.ObjectName === 'obj_mainchara');
     if (!spawn) throw new Error(`Phòng ${name} không có vị trí nhân vật.`);
     const snap = (value) => value % 3 === 2 ? value + 1 : value % 3 === 1 ? value - 1 : value;
-    this.player = this.add.image(snap(spawn.X), snap(spawn.Y), 'spr_maincharad:0').setOrigin(0);
-    this.player.facing = 'd'; this.player.frameIndex = 0;
+    // Create gốc căn lưới trước, rồi mới ghi đè bằng marker cửa: không căn lại marker.
+    this.player = this.add.image(spawnName === 'obj_mainchara' ? snap(spawn.X) : spawn.X,
+      spawnName === 'obj_mainchara' ? snap(spawn.Y) : spawn.Y, `spr_mainchara${facing}:0`).setOrigin(0);
+    this.player.facing = facing; this.player.frameIndex = 0;
+    this.doors = data.room.GameObjects.flatMap((item) => {
+      const match = /^obj_door([AB])(musicfade)?$/.exec(item.ObjectName);
+      const destination = match && ROOM_EXITS[name]?.[match[1]];
+      if (!destination) return [];
+      const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
+      return [{ destination, marker: match[1] === 'A' ? 'obj_markerA' : 'obj_markerB',
+        duration: (match[2] ? 13 : 8) * 1000 / 30,
+        left: item.X + (sprite.MarginLeft - sprite.OriginX) * item.ScaleX,
+        right: item.X + (sprite.MarginRight - sprite.OriginX) * item.ScaleX,
+        top: item.Y + (sprite.MarginTop - sprite.OriginY) * item.ScaleY,
+        bottom: item.Y + (sprite.MarginBottom - sprite.OriginY) * item.ScaleY }];
+    });
     this.confirmDown = false;
     this.confirmPressed = false;
     this.confirmWasDown = false;
@@ -145,23 +167,27 @@ class World extends Scene {
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
     if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();
-    if (this.dataSource.name === 'room_area1' && this.player.x >= this.dataSource.room.Width - 35) {
-      this.openRoom('room_area1_2', 'obj_markerA').catch(fail);
-      return;
-    }
-    if (this.dataSource.name === 'room_area1_2' && this.player.y >= this.dataSource.room.Height - 35) {
-      this.openRoom('room_area1', 'obj_markerB').catch(fail);
-      return;
-    }
-    if (this.dataSource.name === 'room_area1_2' && this.player.y <= 125) {
-      this.openRoom('room_ruins1', 'obj_markerA').catch(fail);
-      return;
-    }
-    if (this.dataSource.name === 'room_ruins1' && this.player.y >= this.dataSource.room.Height - 35) {
-      this.openRoom('room_area1_2', 'obj_markerB').catch(fail);
+    const door = this.findDoor(this.player.x, this.player.y);
+    if (door) {
+      state.phase = 'transition';
+      this.cameras.main.once('camerafadeoutcomplete', async () => {
+        try {
+          await this.openRoom(door.destination, door.marker);
+          this.cameras.main.fadeIn(1000 / 30 / 0.08);
+        } catch (error) { fail(error); }
+      });
+      this.cameras.main.fadeOut(door.duration);
       return;
     }
     this.updateCamera();
+  }
+
+  findDoor(x, y) {
+    const sprite = this.dataSource.sprites.get(`spr_mainchara${this.player.facing}`);
+    return this.doors.find((entry) => x + sprite.MarginRight >= entry.left
+      && x + sprite.MarginLeft <= entry.right
+      && y + sprite.MarginBottom >= entry.top
+      && y + sprite.MarginTop <= entry.bottom);
   }
 
   tryInteract() {
