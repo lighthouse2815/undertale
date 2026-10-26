@@ -72,6 +72,17 @@ export class RuinsHoles {
     this.cosmeticHoles = [];
   }
 
+  interact() {
+    const text = {
+      obj_readable_plaque_1: "* Please don't step on the\n  leaves.",
+      obj_readable_plaque_2: "* Didn't you read the sign\n  downstairs?",
+    };
+    const entry = this.world.roomObjects.find((entry) => text[entry.item.ObjectName] && inInteractionRange(this.world, entry));
+    if (!entry) return false;
+    this.world.showDialogue([text[entry.item.ObjectName]]);
+    return true;
+  }
+
   checkTrigger() {
     const world = this.world;
     if (this.locked || world.dialogue) return false;

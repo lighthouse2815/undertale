@@ -330,6 +330,7 @@ class World extends Scene {
   tryInteract() {
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;
+    if (this.ruinsHoles?.interact()) return;
     if (this.ruins12?.interact()) return;
     if (this.ruins13?.interact()) return;
     if (this.ruinsRock?.interact()) return;

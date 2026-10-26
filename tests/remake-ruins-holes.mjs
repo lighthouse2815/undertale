@@ -73,6 +73,20 @@ export async function testRuinsHoles(page) {
   }
 
   await open('room_ruins10');
+  // Bảng vô hình lấy vùng tương tác gốc, lời khác nhau giữa hai tầng.
+  await place(430, 140);
+  await page.evaluate(() => { __remake.scene.player.facing = 'l'; __remake.scene.interactionCooldown = 0; });
+  await key('z');
+  assert.equal(await page.evaluate(() => __remake.scene.dialogue), null);
+  for (const [y, line] of [[140, "* Didn't you read the sign\n  downstairs?"], [540, "* Please don't step on the\n  leaves."]]) {
+    await place(430, y);
+    await page.evaluate(() => { __remake.scene.player.facing = 'r'; __remake.scene.interactionCooldown = 0; });
+    await key('z'); await page.waitForFunction(() => !!__remake.scene.dialogue);
+    assert.deepEqual(await page.evaluate(() => __remake.scene.dialogue.lines), [line]);
+    assert.equal(await page.evaluate(() => __remake.scene.dialogueText.type), 'BitmapText');
+    await key('z');
+    assert.equal(await page.evaluate(() => __remake.scene.plot), 9.2);
+  }
   // Các pixel đen có alpha 255 trong spr_holemask phải an toàn.
   await place(325, 180);
   await page.waitForTimeout(200);
@@ -105,5 +119,5 @@ export async function testRuinsHoles(page) {
   assert.ok(await page.evaluate(() => __remake.scene.ruinsHoles.holes.every(({ body }) => !body.disabled)));
   await place(160, 480); await stage('rising'); await finish(160, 80);
   await page.evaluate(() => { __remake.scene.restoreHoleSound(); delete __remake.scene.restoreHoleSound; });
-  console.log('✓ hố Ruins 8/10: mask trắng/đen, scale, chờ/xoay/alpha/âm thanh, lên/xuống 400 pixel, camera/khóa điều khiển, dấu hố và nhánh 11 lần sập');
+  console.log('✓ hố Ruins 8/10: mask, scale, hai bảng đúng hướng/lời gốc, chờ/xoay/alpha/âm thanh, lên/xuống 400 pixel, camera/khóa điều khiển và nhánh 11 lần sập');
 }

@@ -69,7 +69,7 @@ Trận Napstablook đối chiếu `obj_napstablook`, `scr_battlegroup` nhóm 20,
 
 Phòng 12–12A đối chiếu `obj_napstablook1`, `obj_cheesetable1`, `obj_mousehole`, `obj_door_ruins13`, `SCR_TEXT` 510/511/512 và lời thoại Napstablook.
 
-Phòng 10–11 đối chiếu `obj_holedown`, `obj_holeup`, `obj_pushrock1/2`, `obj_goofyrock`, `path_goofyrock`, `obj_toribuster`, `obj_rock_activator`, `obj_plotwall5`, `obj_spikes_room` và `SCR_TEXT` 1562–1593. Đá và hố đã có chuyển động; bảng chỉ dẫn phòng 10, thứ tự alarm và va chạm sát cạnh vẫn cần đối chiếu thêm.
+Phòng 10–11 đối chiếu `obj_holedown`, `obj_holeup`, `obj_pushrock1/2`, `obj_goofyrock`, `path_goofyrock`, `obj_toribuster`, `obj_rock_activator`, `obj_plotwall5`, `obj_spikes_room` và `SCR_TEXT` 1562–1593. Đá và hố đã có chuyển động; hai bảng chỉ dẫn phòng 10 dùng lời gốc và vùng tương tác theo hướng nhìn; thứ tự alarm và va chạm sát cạnh vẫn cần đối chiếu thêm.
 
 Phòng 8–9 đối chiếu `obj_holeup`, `obj_holedown2`, `obj_pushrock3`, `obj_plotwall4`, `obj_spikes_room` và `obj_readable_room1_68`.
 
