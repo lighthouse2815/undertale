@@ -53,11 +53,25 @@ export async function testRuinsLate(page) {
   await close();
   assert.equal(await page.evaluate(() => __remake.scene.ruinsGoofyrock.stage), 2);
   const during = await position(); assert.ok(during.x > 220 && during.x < 230);
-  const frozen = await page.evaluate(() => ({ x: __remake.scene.player.x, y: __remake.scene.player.y }));
-  await page.keyboard.down('ArrowUp'); await key('c'); await page.waitForTimeout(80); await page.keyboard.up('ArrowUp');
-  assert.equal(await page.evaluate(() => __remake.phase), 'running');
-  assert.deepEqual(await page.evaluate(() => ({ x: __remake.scene.player.x, y: __remake.scene.player.y })), frozen, 'Khóa đi/menu lúc đá đang dời.');
-  await stage(3); assert.deepEqual(await position(), { x: 230, y: 175 });
+  const frozen = await page.evaluate(() => {
+    const world = __remake.scene;
+    world.lockedRockSamples = [];
+    world.sampleLockedRock = () => {
+      if (world.ruinsGoofyrock.locked) world.lockedRockSamples.push({ x: world.player.x, y: world.player.y, phase: __remake.phase });
+    };
+    world.events.on('postupdate', world.sampleLockedRock);
+    return { x: world.player.x, y: world.player.y, phase: __remake.phase };
+  });
+  await page.keyboard.down('ArrowUp'); await page.keyboard.press('c');
+  await stage(3); await page.keyboard.up('ArrowUp');
+  const lockedSamples = await page.evaluate(() => {
+    const world = __remake.scene; world.events.off('postupdate', world.sampleLockedRock);
+    return world.lockedRockSamples;
+  });
+  assert.ok(lockedSamples.length > 0, 'Phải quan sát các frame đá còn khóa điều khiển.');
+  assert.ok(lockedSamples.every((sample) => sample.x === frozen.x && sample.y === frozen.y && sample.phase === 'running'),
+    'Khóa đi/menu ở từng frame đá đang dời; sau khi mở khóa nhân vật được di chuyển.');
+  assert.deepEqual(await position(), { x: 230, y: 175 });
   await interact(205, 165); await close(); await stage(6);
   assert.deepEqual(await position(), { x: 230, y: 165 }, 'Lần thứ hai đá đi lên, không nhảy sang phải.');
   // Đứng bên phải và phía dưới đường đá: nhường xuống rồi sang phải theo Alarm2.
