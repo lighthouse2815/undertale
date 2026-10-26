@@ -14,6 +14,8 @@ import { DummyBattle } from './dummy-battle.mjs';
 import { SpikeGuide } from './spike-guide.mjs';
 import { CorridorLesson } from './corridor-lesson.mjs';
 import { TutorialFroggit } from './tutorial-froggit.mjs';
+import { RuinsBattle } from './ruins-battle.mjs';
+import { RuinsEncounter } from './ruins-encounter.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -79,6 +81,7 @@ class World extends Scene {
     this.corridorLesson = null;
     this.candyDish = null;
     this.ruinsStart = null;
+    this.ruinsEncounter?.destroy(); this.ruinsEncounter = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -179,7 +182,7 @@ class World extends Scene {
     if (name === 'room_ruins5') this.spikeGuide = new SpikeGuide(this);
     if (name === 'room_ruins6') this.corridorLesson = new CorridorLesson(this);
     if (name === 'room_ruins7A') this.candyDish = new CandyDish(this);
-    if (name === 'room_ruins7') this.ruinsStart = new RuinsStart(this);
+    if (name === 'room_ruins7') { this.ruinsStart = new RuinsStart(this); this.ruinsEncounter = new RuinsEncounter(this); }
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -260,6 +263,7 @@ class World extends Scene {
       movePlayer(this, this.player, this.colliders,
         (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction));
       this.elapsed -= 1000 / 30;
+      if (this.player.x !== previous.x || this.player.y !== previous.y) this.ruinsEncounter?.step();
       if (this.corridorLesson?.checkTrigger(previous)) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
@@ -277,6 +281,7 @@ class World extends Scene {
       return;
     }
     this.updateCamera();
+    this.ruinsEncounter?.update();
   }
 
   findDoor(x, y) {
@@ -390,8 +395,8 @@ class World extends Scene {
       weaponStrength: this.weaponStrength, armorDefense: this.armorDefense, flags: { ...this.flags, plot: this.plot } }, { temporary });
   }
 
-  async restoreGame() {
-    const save = readSave();
+  async restoreGame(temporary = false) {
+    const save = readSave(temporary);
     if (!save) return false;
     this.game.registry.set('charname', save.name);
     this.hp = save.hp;
@@ -501,7 +506,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, TutorialFroggit, SaveMenu, FieldMenu],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, SaveMenu, FieldMenu],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
@@ -510,7 +515,7 @@ state.startBattle = (config = 'dummy') => {
   const world = state.scene;
   state.phase = 'loading';
   world.scene.pause();
-  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : 'Battle');
+  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : 'RuinsBattle');
 };
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);

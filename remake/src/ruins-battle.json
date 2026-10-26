@@ -1,0 +1,102 @@
+{
+  "froggit": {
+    "intro": [
+      "* Froggit hopped close!"
+    ],
+    "check": [
+      "* FROGGIT - ATK 4 DEF 5\n* Life is difficult for\n  this enemy."
+    ],
+    "act1": [
+      "* Froggit didn't understand\n  what you said, but was\n  scared anyway."
+    ],
+    "act3": [
+      "* Froggit didn't understand\n  what you said, but was\n  flattered anyway."
+    ],
+    "speech": [
+      "Ribbit,\nribbit.",
+      "Croak,\ncroak.",
+      "Hop,\nhop.",
+      "Meow.",
+      "Shiver,\nshiver.",
+      "(Blushes\ndeeply.)\nRibbit.."
+    ],
+    "idle": [
+      "* Froggit doesn't seem to\n  know why it's here.",
+      "* Froggit hops to and fro.",
+      "* The battlefield is filled\n  with the smell of mustard\n  seed.",
+      "* You are intimidated by\n  Froggit's raw strength.\n* Only kidding.",
+      "* Froggit seems reluctant\n  to fight you.",
+      "* Froggit is trying to\n  run away."
+    ]
+  },
+  "whimsun": {
+    "intro": [
+      "* Whimsun approached meekly!"
+    ],
+    "check": [
+      "* WHIMSUN - ATK 5 DEF 0\n* This monster is too\n  sensitive to fight..."
+    ],
+    "act1": [
+      "* You raise your arms and\n  wiggle your fingers.\n* Whimsun freaks out!"
+    ],
+    "act3": [
+      "* Halfway through your first\n  word, Whimsun bursts into\n  tears and runs away."
+    ],
+    "speech": [
+      "I'm\nsorry...",
+      "I have\nno\nchoice..",
+      "Forgive\nme...",
+      "*sniff\nsniff*",
+      "I\ncan't\nhandle\nthis..."
+    ],
+    "idle": [
+      "* Whimsun avoids eye contact.",
+      "* Whimsun continues to mutter\n  apologies.",
+      "* Whimsun is fluttering.",
+      "* It's starting to smell like\n  lavender and mothballs.",
+      "* Whimsun is hyperventilating.",
+      "* Whimsun is having trouble\n  flying."
+    ]
+  },
+  "win": [
+    "* YOU WON!\n* You earned \\[1] EXP and \\[2] gold."
+  ],
+  "levelUp": [
+    "\n* Your LOVE increased."
+  ],
+  "escaped": [
+    "   * I'm outta here.",
+    "   * I've got better to do.",
+    "   * Escaped...",
+    "   * Don't slow me down."
+  ],
+  "death": [
+    [
+      "  You cannot give\n  up just yet...",
+      "  \\[C]!\n  Stay determined..."
+    ],
+    [
+      "  You cannot give\n  up just yet...",
+      "  \\[C]!\n  Stay determined..."
+    ],
+    [
+      "  Our fate rests \n  upon you...",
+      "  \\[C]!\n  Stay determined..."
+    ],
+    [
+      "  You're going to\n  be alright!",
+      "  \\[C]!\n  Stay determined..."
+    ],
+    [
+      "  Don't lose hope!",
+      "  \\[C]!\n  Stay determined..."
+    ],
+    [
+      "  It cannot end\n  now!",
+      "  \\[C]!\n  Stay determined..."
+    ]
+  ],
+  "empty": [
+    "* But nobody came."
+  ]
+}

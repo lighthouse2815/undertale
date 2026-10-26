@@ -52,6 +52,7 @@ export async function loadRoom(scene, name) {
     'obj_froghead', 'obj_froglegs', 'obj_torieldisapprove'].map(object));
   if (corridorLesson) await Promise.all(['obj_plotwall3', 'obj_stalkerflowey'].map(object));
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
+  if (ruinsStart) spriteNames.add('spr_exc');
   if (ruinsStart) for (const page of [...ruinsStartDialogue.call, ...ruinsStartDialogue.afterDog]) if (page.portrait) spriteNames.add(page.portrait);
   if (candyRoom) spriteNames.add('spr_candydish2');
   if (hasSavepoint || candyRoom) spriteNames.add('spr_heartsmall');
@@ -82,7 +83,7 @@ export async function loadRoom(scene, name) {
     ...(ruinsSwitches ? ['snd_screenshake', 'snd_wrongvictory'] : []),
     ...(dummyLesson ? ['snd_select', 'snd_damage', 'snd_escaped', 'snd_slidewhist'] : []),
     ...(spikeGuide ? ['snd_select', 'snd_damage', 'snd_escaped', 'snd_ehurt1'] : []),
-    ...(corridorLesson ? ['snd_phone', 'snd_pombark'] : []), ...(ruinsStart ? ['snd_phone'] : [])]
+    ...(corridorLesson ? ['snd_phone', 'snd_pombark'] : []), ...(ruinsStart ? ['snd_phone', 'snd_b'] : [])]
     .filter((key) => !scene.cache.audio.exists(key));
   const queued = [...images].filter(([key]) => !scene.textures.exists(key));
   if (queued.length || sounds.length) await new Promise((resolve, reject) => {

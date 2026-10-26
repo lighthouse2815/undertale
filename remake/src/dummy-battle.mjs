@@ -9,9 +9,9 @@ export class DummyBattle extends Battle {
   async create() {
     try {
       this.buttons = null; this.kind = null;
-      const data = await loadRoom(this, this.assetRoom);
+      const data = await this.loadBattleData();
       this.battleData = data;
-      this.text = data.dummyDialogue ?? { ...data.spikeDialogue, intro: data.spikeDialogue.battleIntro };
+      this.text = data.battleDialogue ?? data.dummyDialogue ?? { ...data.spikeDialogue, intro: data.spikeDialogue.battleIntro };
       super.create();
       this.title.setVisible(false); this.enemyName.setVisible(false);
       this.enemy.setTexture(`${this.config.asset}:0`).setPosition(108, 68).setOrigin(0).setScale(.5);
@@ -35,6 +35,8 @@ export class DummyBattle extends Battle {
       console.error(error);
     }
   }
+
+  loadBattleData() { return loadRoom(this, this.assetRoom); }
 
   update(_time, delta) {
     if (window.__remake.phase !== 'battle' || window.__remake.scene !== this) return;

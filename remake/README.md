@@ -25,7 +25,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Savepoint đầu Ruins hồi HP, hiện lời thoại gốc rồi mở Save/Return; X hoặc Return giữ file cũ, Save hiện xác nhận khi ghi thành công. Menu dùng font bitmap, con trỏ trái tim và âm thanh gốc.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
 - Phòng rơi xuống không vẽ trùng Frisk; chỉ cho đọc hoa sau mốc mở đầu và hiện Toriel ở mốc `plot = 25` của tuyến thường. Lời thoại hoa dùng nội dung gốc. Phòng savepoint Ruins không có trận ngẫu nhiên.
-- Trận Dummy dùng ảnh, nút lệnh và nội dung gốc, ITEM rỗng không phát kẹo miễn phí. Froggit/Whimsun vẫn là nền kiểm thử chiến đấu sơ bộ với đạn chưa chuyển đúng; `__remake.startBattle()` mở Dummy, có thể truyền tên quái để kiểm thử.
+- Trận Dummy dùng ảnh, nút lệnh và nội dung gốc, ITEM rỗng không phát kẹo miễn phí. Trận Froggit/Whimsun thường đã dùng ảnh, ACT Check/Compliment/Threat hoặc Console/Terrorize, FIGHT/MERCY, đợt né đạn theo generator gốc, va chạm mask, thời gian bất tử, phần thưởng và cảnh Game Over nạp snapshot tạm. `__remake.startBattle()` nhận `dummy`, `tutorialFroggit`, `froggit`, `whimsun`.
 - Save/nạp phiên bản đầu lưu tên, phòng, vị trí, HP, LV, XP, GOLD, số quái bị đánh bại, thời gian chơi, danh sách điện thoại và mốc cốt truyện qua localStorage; `scene.saveGame()` và `scene.restoreGame()` dùng chung format, đọc được file trước khi thêm metadata.
 - Vật cản chữ nhật dài/cao và mask PNG của bốn góc chéo.
 - Bàn phím, cảm ứng, thả phím khi mất tiêu điểm, toàn màn hình.
@@ -33,7 +33,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Đóng gói hosting tĩnh, chạy dưới đường dẫn con, không cần compiler GML.
 
 **Đã chuyển một phần mở đầu đến hành lang Ruins, chưa phải Undertale đầy đủ.**
-Chưa chuyển trận ngẫu nhiên tại `room_ruins7` và các sự kiện từ `room_ruins8`, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, các vật phẩm sau ID 13, các mục điện thoại sau Toriel và menu đầy đủ,
+Chưa chuyển nhóm nhiều quái/hard mode tại `room_ruins7` và các sự kiện từ `room_ruins8`, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, các vật phẩm sau ID 13, các mục điện thoại sau Toriel và menu đầy đủ,
 ACT/ITEM/MERCY theo từng quái, toàn bộ trạng thái lưu/nạp và menu Continue, những khu vực và nhánh kết thúc khác.
 Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
@@ -42,9 +42,9 @@ Trận Dummy chưa chuyển đầy đủ âm nhạc, hoạt hình tan bụi khi 
 các hoạt hình đánh bằng vũ khí khác nhau và vật phẩm sau ID 13 còn phải chuyển.
 Hai trận hướng dẫn chưa có đầy đủ hoạt hình sát thương, tan bụi, nhạc và chuyển cảnh gốc;
 trạng thái lưu giữa lúc đang nắm tay qua gai chưa được hỗ trợ.
-Chưa nối trận ngẫu nhiên trong phòng lá; cuộc gọi khi đang giữ Annoying Dog, hiệu ứng vật phẩm riêng ở các boss/khu vực sau và lớp kính chân dung tại nhà Toriel còn phải chuyển.
+Nhóm đơn Froggit/Whimsun và bộ đếm bước đã nối; chưa chuyển nhóm nhiều quái trong phòng lá; cuộc gọi khi đang giữ Annoying Dog, hiệu ứng vật phẩm riêng ở các boss/khu vực sau và lớp kính chân dung tại nhà Toriel còn phải chuyển.
 Faded Ribbon/Toy Knife đã dùng được trong hệ thống túi đồ; sự kiện nhặt chúng trong các phòng phía sau chưa chuyển.
-Nhạc cảnh hành lang chưa chuyển; snapshot tạm đã ghi riêng nhưng chưa có luồng nạp sau Game Over.
+Nhạc cảnh hành lang và nhạc trận thường chưa chuyển; snapshot tạm đã ghi riêng nhưng chưa có luồng nạp sau Game Over.
 
 Cảnh công tắc đối chiếu `obj_torieltrigger1`, `obj_toroverworld3`,
 `obj_floorswitch1`, `obj_wallswitchcut1` và `obj_ruinsdoor1` trong `game/code/`.
@@ -59,6 +59,8 @@ Phòng Dummy đối chiếu `obj_torieltrigger3`, `obj_torinteractable4`, `obj_d
 Phòng gai đối chiếu `obj_toroverworld5/6`, `obj_torhandhold1`, `obj_encountertrigger1`,
 `obj_fakefroggit`, `obj_plotwall2`, `obj_spiketile1/2`; đường đi dùng `path_torielwalk5`,
 `path_torielwalk5_2` và `path_froghead`; lời thoại lấy từ `SCR_TEXT` mục 216–218 và `obj_fakefroggit`.
+
+Trận thường đối chiếu `obj_froggit`, `obj_whimsun`, `scr_monstersetup`, `scr_mercystandard`, `scr_damagestandard`, `obj_froggit_Alarm_5/6`, `obj_whimsun_Alarm_3/5/6`, `obj_battlecontroller`, `scr_battlegroup` nhóm 4/5, `blt_leapfrog`, `blt_flybullet`, `blt_butterfly1/2`, `obj_gameover`.
 
 Hành lang đối chiếu `obj_toroverworld7`, `obj_torinteractable6`, `obj_torieltrigger4`,
 `obj_plotwall3`, `obj_tordogcall`, `obj_stalkerflowey` và `scr_tempsave`; đường đi dùng
@@ -105,6 +107,10 @@ thuộc tác giả Undertale; xem `CREDITS.txt` trong gói xuất.
 | `src/inventory.json` | Dữ liệu 13 vật phẩm đầu và lời thoại bát kẹo |
 | `src/candy-dish.mjs` | Lựa chọn nhận kẹo, túi đầy và bát đổ |
 | `src/ruins-start.mjs` | Cuộc gọi và Froggit nhỏ ở phòng lá |
+| `src/ruins-battle.mjs` | Trận đơn Froggit/Whimsun, ACT, FIGHT/MERCY, phần thưởng, Game Over |
+| `src/ruins-battle.json` | Lời thoại trận thường và Game Over |
+| `src/ruins-waves.mjs` | Generator đạn leapfrog, fly và butterfly |
+| `src/ruins-encounter.mjs` | Bộ đếm bước và nhóm encounter đơn đầu Ruins |
 | `src/ruins-start.json` | Lời thoại cuộc gọi, Froggit và SAVE phòng lá |
 | `src/phone.json` | Nhãn menu và các nhánh lời thoại điện thoại gốc |
 | `src/fonts.mjs` | Dùng chung metric font bitmap và atlas đổi màu cho Canvas |

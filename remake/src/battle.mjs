@@ -5,8 +5,9 @@ const getState = () => window.__remake;
 export const BATTLE_CONFIGS = {
   dummy: { name: 'Dummy', asset: 'spr_dummybattle', hp: 15, def: -5 },
   tutorialFroggit: { name: 'Froggit', asset: 'spr_froggit', hp: 20, def: 1 },
-  froggit: { name: 'Froggit', asset: 'spr_froggit', hp: 30, check: '* FROGGIT - ATK 4 DEF 5.\n  Life is difficult for this enemy.', talk: '* You compliment Froggit.\n  It seems reluctant to fight you.' },
-  whimsun: { name: 'Whimsun', asset: 'spr_whimsun', hp: 20, check: '* WHIMSUN - ATK 5 DEF 0.\n  This monster is too sensitive to fight.', talk: '* You tell Whimsun it is doing a great job.' },
+  froggit: { name: 'Froggit', asset: 'spr_froggit', hp: 30, def: 4, xp: 3 },
+  whimsun: { name: 'Whimsun', asset: 'spr_whimsun', hp: 10, def: 0, xp: 2 },
+  nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
 };
 
 export class Battle extends Scene {
@@ -46,14 +47,14 @@ export class Battle extends Scene {
     this.keys = this.input.keyboard.createCursorKeys(); this.lastMenuMove = 0;
     this.onKeyDown = (event) => {
       if (event.repeat) return;
-      if (event.code === 'KeyZ') { this.confirm = true; this.confirmPressed = true; }
-      if (event.code === 'KeyX' || event.code === 'Escape') this.cancel = true;
+      if (['KeyZ', 'Enter'].includes(event.code)) { this.confirm = true; this.confirmPressed = true; }
+      if (['KeyX', 'ShiftLeft', 'ShiftRight', 'Escape'].includes(event.code)) this.cancel = true;
       if (this.mode === 'menu' && event.code === 'ArrowRight') this.menuIndex = Math.min(3, this.menuIndex + 1);
       if (this.mode === 'menu' && event.code === 'ArrowLeft') this.menuIndex = Math.max(0, this.menuIndex - 1);
       if (this.mode === 'submenu' && event.code === 'ArrowDown') this.subIndex = Math.min(this.submenu.length - 1, this.subIndex + 1);
       if (this.mode === 'submenu' && event.code === 'ArrowUp') this.subIndex = Math.max(0, this.subIndex - 1);
     };
-    this.onKeyUp = (event) => { if (event.code === 'KeyZ') this.confirm = false; };
+    this.onKeyUp = (event) => { if (['KeyZ', 'Enter'].includes(event.code)) this.confirm = false; };
     window.addEventListener('keydown', this.onKeyDown);
     window.addEventListener('keyup', this.onKeyUp);
     state.phase = 'battle'; state.room = 'battle_dummy'; state.scene = this;

@@ -1,8 +1,8 @@
 const KEY = 'undertale-remake-save-v1';
 
-export function readSave() {
+export function readSave(temporary = false) {
   try {
-    const value = JSON.parse(localStorage.getItem(KEY) ?? 'null');
+    const value = JSON.parse(localStorage.getItem(temporary ? 'undertale-remake-temp-v1' : KEY) ?? 'null');
     if (!value || typeof value !== 'object' || typeof value.room !== 'string') return null;
     return value;
   } catch { return null; }
