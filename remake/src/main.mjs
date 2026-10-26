@@ -298,7 +298,7 @@ class World extends Scene {
       this.elapsed -= 1000 / 30;
       if (this.player.x !== previous.x || this.player.y !== previous.y) this.ruinsEncounter?.step();
       if (this.corridorLesson?.checkTrigger(previous)) return;
-      if (this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
+      if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
     if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();

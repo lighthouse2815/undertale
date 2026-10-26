@@ -27,10 +27,12 @@ export async function testRuinsLate(page) {
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_ruins10');
   assert.deepEqual(await page.evaluate(() => ({ x: __remake.scene.player.x, y: __remake.scene.player.y })), { x: 20, y: 100 });
   await place(238, 138);
-  await page.waitForFunction(() => __remake.scene.ruinsHoles.cooldown > 0);
-  assert.equal(await page.evaluate(() => __remake.scene.player.visible), false);
-  await page.waitForTimeout(1500);
+  await page.waitForFunction(() => __remake.scene.ruinsHoles.stage === 'falling');
   assert.equal(await page.evaluate(() => __remake.scene.player.visible), true);
+  assert.equal(await page.evaluate(() => __remake.scene.player.alpha), .5);
+  await page.waitForFunction(() => __remake.scene.ruinsHoles.stage === 'idle');
+  assert.equal(await page.evaluate(() => __remake.scene.player.alpha), 1);
+  assert.equal(await page.evaluate(() => __remake.scene.player.y), 538);
   await place(540, 230);
   await page.keyboard.down('ArrowRight'); await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowRight');
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_ruins11');

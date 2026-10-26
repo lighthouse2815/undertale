@@ -60,32 +60,83 @@ export class RuinsRock {
   }
 }
 
+// obj_holeup/obj_holedown: chờ 10 frame, đi qua hai tầng cách nhau 400 pixel.
 export class RuinsHoles {
   constructor(world) {
     this.world = world;
-    this.holes = world.dataSource.room.GameObjects.filter((item) => ['obj_holeup', 'obj_holedown', 'obj_holedown2'].includes(item.ObjectName));
-    this.cooldown = 0;
+    this.holes = world.dataSource.room.GameObjects
+      .filter((item) => ['obj_holeup', 'obj_holedown', 'obj_holedown2'].includes(item.ObjectName))
+      .map((item) => ({ item, body: createCollider(world.dataSource,
+        item.ObjectName === 'obj_holedown2' ? { ...item, ScaleY: 4 } : item) }));
+    this.stage = 'idle'; this.locked = false; this.elapsed = 0;
+    this.cosmeticHoles = [];
   }
 
-  update(delta) {
-    if (this.locked) {
-      this.timer -= delta;
-      if (this.timer <= 0) {
-        this.locked = false;
-        this.world.player.setVisible(true);
-        this.world.player.y = this.hole.ObjectName === 'obj_holeup' ? 440 : 120;
-      }
-      return true;
-    }
-    this.cooldown = Math.max(0, this.cooldown - delta);
-    if (this.cooldown || this.world.dialogue) return false;
-    const player = this.world.player;
-    const hole = this.holes.find((item) => Math.abs(player.x - item.X) < 24 && Math.abs(player.y - item.Y) < 28);
+  checkTrigger() {
+    const world = this.world;
+    if (this.locked || world.dialogue) return false;
+    const hole = this.holes.find(({ body }) => !body.disabled && blocked(world, [body], world.player.x, world.player.y));
     if (!hole) return false;
-    this.cooldown = 1600; this.timer = 41 * 1000 / 30; this.hole = hole; this.locked = true;
-    this.world.player.setVisible(false);
+    this.hole = hole; this.up = hole.item.ObjectName === 'obj_holeup';
+    if (!this.up) {
+      const image = world.add.image(world.player.x, world.player.y + 20, 'spr_hole:0').setOrigin(0).setDepth(-70000);
+      this.cosmeticHoles.push(image);
+      // Sau lần sập thứ 11 ở phòng 10, sàn thôi sập cho tới khi vào lại phòng.
+      if (this.cosmeticHoles.length > 10 && world.dataSource.name === 'room_ruins10') {
+        world.sound.play('snd_hero');
+        for (const mark of this.cosmeticHoles) mark.destroy();
+        this.cosmeticHoles = []; hole.body.disabled = true;
+        return false;
+      }
+      if (this.cosmeticHoles.length >= 1000) {
+        for (const mark of this.cosmeticHoles.slice(0, -1)) mark.destroy();
+        this.cosmeticHoles = [image];
+      }
+      world.sound.play('snd_noise');
+    }
+    this.locked = true; this.stage = 'waiting'; this.frames = 0; this.elapsed = 0;
     return true;
   }
 
-  destroy() { this.cooldown = 0; }
+  update(delta) {
+    if (!this.locked) return this.checkTrigger();
+    this.elapsed = Math.min(this.elapsed + delta, 200);
+    while (this.elapsed >= 1000 / 30 && this.locked) {
+      this.elapsed -= 1000 / 30;
+      this.step();
+    }
+    this.world.updateCamera();
+    return true;
+  }
+
+  step() {
+    const world = this.world, player = world.player;
+    this.frames++;
+    if (this.stage === 'waiting') {
+      if (this.frames < 10) return;
+      this.frames = 0; this.stage = this.up ? 'rising' : 'falling';
+      player.facing = 'd'; player.frameIndex = 0;
+      player.setTexture('spr_maincharad:0');
+      if (this.up) player.setVisible(false);
+      else { player.setAlpha(.5); world.sound.play('snd_fall2'); }
+      return;
+    }
+    if (!this.up && this.frames % 4 === 0) {
+      player.facing = { d: 'r', r: 'u', u: 'l', l: 'd' }[player.facing];
+      player.setTexture(`spr_mainchara${player.facing}:0`);
+    }
+    player.y += this.up ? -10 : 5;
+    player.setDepth(player.y + 30);
+    if (this.frames === (this.up ? 40 : 80)) {
+      this.locked = false; this.stage = 'idle';
+      player.setVisible(true).setAlpha(1);
+    }
+  }
+
+  destroy() {
+    this.locked = false;
+    if (this.world.player?.active) this.world.player.setVisible(true).setAlpha(1);
+    for (const image of this.cosmeticHoles) image.destroy();
+    this.cosmeticHoles = [];
+  }
 }

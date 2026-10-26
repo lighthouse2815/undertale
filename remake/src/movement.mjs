@@ -35,7 +35,8 @@ export function blocked(scene, colliders, x, y) {
       for (let py = Math.max(Math.floor(feet.top), Math.floor(body.rectangle.top)); py < Math.min(feet.bottom, body.rectangle.bottom); py++) {
         const mx = Math.floor((px - body.x) / body.sx + body.sprite.OriginX);
         const my = Math.floor((py - body.y) / body.sy + body.sprite.OriginY);
-        if (scene.textures.getPixelAlpha(mx, my, body.mask) > 0) return true;
+        // Mask xuất từ game dùng pixel trắng/đen đều có alpha 255.
+        if (scene.textures.getPixel(mx, my, body.mask)?.red > 0) return true;
       }
     }
     return false;

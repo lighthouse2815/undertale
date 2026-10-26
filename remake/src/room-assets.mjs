@@ -60,6 +60,7 @@ export async function loadRoom(scene, name) {
   if (ruins13 && name === 'room_ruins13') await object('obj_stalkerflowey');
   if (corridorLesson) await Promise.all(['obj_plotwall3', 'obj_stalkerflowey'].map(object));
   if (ruinsRock) await Promise.all(['obj_plotwall4'].map(object));
+  if (ruinsHoles) await object('obj_cosmetichole');
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
   if (ruinsStart) spriteNames.add('spr_exc');
   if (ruinsStart) for (const page of [...ruinsStartDialogue.call, ...ruinsStartDialogue.afterDog]) if (page.portrait) spriteNames.add(page.portrait);
@@ -90,6 +91,7 @@ export async function loadRoom(scene, name) {
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
     ...(candyRoom ? ['snd_select', 'snd_squeak'] : []),
     ...(ruins12 ? ['snd_squeak'] : []),
+    ...(ruinsHoles ? ['snd_noise', 'snd_fall2', 'snd_hero'] : []),
     ...(hasSavepoint ? ['snd_power', 'snd_save'] : []), ...(ruinsTutorial ? ['snd_noise'] : []),
     ...(ruinsSwitches ? ['snd_screenshake', 'snd_wrongvictory'] : []),
     ...(dummyLesson ? ['snd_select', 'snd_damage', 'snd_escaped', 'snd_slidewhist'] : []),
@@ -110,7 +112,7 @@ export async function loadRoom(scene, name) {
     scene.load.on('loaderror', failed);
     scene.load.once('complete', complete);
     for (const [key, path] of queued) scene.load.image(key, new URL(path, base).href);
-    for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.wav`, base).href);
+    for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.${key === 'snd_fall2' ? 'ogg' : 'wav'}`, base).href);
     scene.load.start();
   });
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
