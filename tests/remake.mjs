@@ -9,6 +9,7 @@ import { chromium } from 'playwright-core';
 import { buildRemake } from '../remake/build.mjs';
 import { testRuinsSwitches } from './remake-ruins-switches.mjs';
 import { testDummy } from './remake-dummy.mjs';
+import { testSpikeGuide } from './remake-spike-guide.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -362,6 +363,7 @@ try {
   console.log('✓ Toriel đi theo path gốc, bốn nút sàn, công tắc mở cửa, hội thoại/biển, plot 3 và quay lại sau lưu/nạp');
   await testRuinsSwitches(page, root);
   await testDummy(page, root);
+  await testSpikeGuide(page, root);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

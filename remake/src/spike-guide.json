@@ -1,0 +1,37 @@
+{
+  "intro": [
+    "* There is another puzzle\n  in this room...",
+    "* I wonder if you can\n  solve it?"
+  ],
+  "ask": [
+    "* This is the puzzle,\n  but...",
+    "* Here, take my hand\n  for a moment."
+  ],
+  "end": [
+    "* Puzzles seem a little\n  too dangerous for\n  now."
+  ],
+  "sign": [
+    "* The western room is the\n  eastern room's blueprint."
+  ],
+  "check": [
+    "* FROGGIT - ATK 4 DEF 5\n* Life is difficult for\n  this enemy./^"
+  ],
+  "compliment": [
+    "* Froggit didn't understand\n  what you said, but was\n  flattered anyway./^"
+  ],
+  "threaten": [
+    "* Froggit didn't understand\n  what you said, but was\n  scared anyway./^"
+  ],
+  "battleIntro": [
+    "* Froggit attacks you!"
+  ],
+  "win": [
+    "* YOU WON!\n* You earned \\[1] EXP and \\[2] gold."
+  ],
+  "levelUp": [
+    "\n* Your LOVE increased."
+  ],
+  "escaped": [
+    "   * Escaped..."
+  ]
+}

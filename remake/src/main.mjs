@@ -8,6 +8,8 @@ import { RuinsTutorial } from './ruins-tutorial.mjs';
 import { RuinsSwitches } from './ruins-switches.mjs';
 import { DummyLesson } from './dummy-lesson.mjs';
 import { DummyBattle } from './dummy-battle.mjs';
+import { SpikeGuide } from './spike-guide.mjs';
+import { TutorialFroggit } from './tutorial-froggit.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -33,7 +35,8 @@ const ROOM_EXITS = {
   room_ruins2: { A: 'room_ruins3', B: 'room_ruins1' },
   room_ruins3: { A: 'room_ruins4', B: 'room_ruins2' },
   room_ruins4: { A: 'room_ruins5', B: 'room_ruins3' },
-  room_ruins5: { B: 'room_ruins4' },
+  room_ruins5: { A: 'room_ruins6', B: 'room_ruins4' },
+  room_ruins6: { B: 'room_ruins5' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -62,6 +65,8 @@ class World extends Scene {
     this.ruinsSwitches = null;
     this.dummyLesson?.destroy();
     this.dummyLesson = null;
+    this.spikeGuide?.destroy();
+    this.spikeGuide = null;
     this.flags ??= {};
     const facing = this.player?.facing ?? 'd';
     const data = await loadRoom(this, name);
@@ -97,6 +102,7 @@ class World extends Scene {
         if (item.ObjectName === 'obj_torinteractable4' && !(this.plot >= 5.4 && this.plot <= 6.5)) continue;
         if (item.ObjectName === 'obj_dummy1' && this.flags[14] === 1) continue;
       }
+      if (name === 'room_ruins5' && item.ObjectName === 'obj_toroverworld5' && (this.plot > 7 || this.plot < 6)) continue;
       const object = data.objects.get(item.ObjectName);
       const interactable = Boolean(object && (inherits(item.ObjectName, 'obj_readable') || inherits(item.ObjectName, 'obj_interactable')
         || item.ObjectName.includes('readable') || item.ObjectName.includes('torinteractable')));
@@ -137,6 +143,7 @@ class World extends Scene {
     this.hp = this.hp ?? 20;
     this.maxHp = this.maxHp ?? 20;
     this.lv = this.lv ?? 1;
+    this.xp ??= 0; this.gold ??= 0; this.kills ??= 0;
     this.plot = this.plot ?? 0;
     this.playTime = this.playTime ?? 0;
     this.colliders = createColliders(data);
@@ -146,6 +153,7 @@ class World extends Scene {
     if (name === 'room_ruins2') this.ruinsTutorial = new RuinsTutorial(this);
     if (name === 'room_ruins3') this.ruinsSwitches = new RuinsSwitches(this);
     if (name === 'room_ruins4') this.dummyLesson = new DummyLesson(this);
+    if (name === 'room_ruins5') this.spikeGuide = new SpikeGuide(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -188,10 +196,12 @@ class World extends Scene {
 
   update(_time, delta) {
     if (state.phase !== 'running') return;
+    const guideLocked = this.spikeGuide?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
+    if (guideLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -228,6 +238,7 @@ class World extends Scene {
   }
 
   tryInteract() {
+    if (this.spikeGuide) { this.spikeGuide.interact(); return; }
     if (this.dummyLesson) { this.dummyLesson.interact(); return; }
     if (this.ruinsSwitches) {
       const entry = this.roomObjects.find((entry) => entry.interactable
@@ -291,7 +302,7 @@ class World extends Scene {
   saveGame() {
     return writeSave({ name: this.game.registry.get('charname'), room: this.dataSource.name,
       x: this.player.x, y: this.player.y, hp: this.hp, maxHp: this.maxHp, lv: this.lv,
-      playTime: this.playTime, flags: { ...this.flags, plot: this.plot } });
+      playTime: this.playTime, xp: this.xp, gold: this.gold, kills: this.kills, flags: { ...this.flags, plot: this.plot } });
   }
 
   async restoreGame() {
@@ -301,6 +312,7 @@ class World extends Scene {
     this.hp = save.hp;
     this.maxHp = save.maxHp ?? 20;
     this.lv = save.lv ?? 1;
+    this.xp = save.xp ?? 0; this.gold = save.gold ?? 0; this.kills = save.kills ?? 0;
     this.plot = save.flags?.plot ?? 0;
     this.flags = { ...(save.flags ?? {}) };
     delete this.flags.plot;
@@ -401,7 +413,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, SaveMenu],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, TutorialFroggit, SaveMenu],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
@@ -410,7 +422,7 @@ state.startBattle = (config = 'dummy') => {
   const world = state.scene;
   state.phase = 'loading';
   world.scene.pause();
-  world.scene.launch(config === 'dummy' ? 'DummyBattle' : 'Battle');
+  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : 'Battle');
 };
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);

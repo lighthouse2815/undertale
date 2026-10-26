@@ -22,7 +22,7 @@ export function inInteractionRange(world, entry) {
 }
 
 // path_start: tốc độ theo pixel mỗi frame 30 Hz, điểm có hệ số Speed riêng.
-export function walkNpc(world, npc, name, { absolute = true, speed = 3, onComplete } = {}) {
+export function walkNpc(world, npc, name, { absolute = true, speed = 3, onComplete, onUpdate, sprites } = {}) {
   const points = world.dataSource.paths.get(name).Points;
   const offsetX = absolute ? 0 : npc.x - points[0].X;
   const offsetY = absolute ? 0 : npc.y - points[0].Y;
@@ -38,10 +38,11 @@ export function walkNpc(world, npc, name, { absolute = true, speed = 3, onComple
         duration: Math.hypot(dx, dy) / (speed * 30 * point.Speed / 100) * 1000,
         onStart: () => { direction = facing; },
         onUpdate: () => {
-          npc.setTexture(`spr_toriel_${facing}:${Math.floor(world.time.now / (1000 / 6)) % 4}`);
+          npc.setTexture(`${sprites?.[facing] ?? `spr_toriel_${facing}`}:${Math.floor(world.time.now / (1000 / 6)) % 4}`);
           npc.setDepth(npc.y + 8);
+          onUpdate?.(npc);
         } };
     }),
-    onComplete: () => { npc.setTexture(`spr_toriel_${direction}:0`); onComplete?.(); },
+    onComplete: () => { npc.setTexture(`${sprites?.[direction] ?? `spr_toriel_${direction}`}:0`); onComplete?.(); },
   });
 }

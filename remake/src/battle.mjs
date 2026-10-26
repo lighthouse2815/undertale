@@ -2,7 +2,8 @@ import { Scene } from '../vendor/phaser.esm.min.js';
 
 const getState = () => window.__remake;
 export const BATTLE_CONFIGS = {
-  dummy: { name: 'Dummy', asset: 'spr_dummybattle', hp: 15 },
+  dummy: { name: 'Dummy', asset: 'spr_dummybattle', hp: 15, def: -5 },
+  tutorialFroggit: { name: 'Froggit', asset: 'spr_froggit', hp: 20, def: 1 },
   froggit: { name: 'Froggit', asset: 'spr_froggit', hp: 30, check: '* FROGGIT - ATK 4 DEF 5.\n  Life is difficult for this enemy.', talk: '* You compliment Froggit.\n  It seems reluctant to fight you.' },
   whimsun: { name: 'Whimsun', asset: 'spr_whimsun', hp: 20, check: '* WHIMSUN - ATK 5 DEF 0.\n  This monster is too sensitive to fight.', talk: '* You tell Whimsun it is doing a great job.' },
 };

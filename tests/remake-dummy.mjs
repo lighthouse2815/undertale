@@ -154,6 +154,8 @@ export async function testDummy(page, root) {
   await page.keyboard.down('ArrowUp'); await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowUp');
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_ruins5');
   assert.deepEqual(await position(), { x: 150, y: 190 });
+  await page.waitForFunction(() => __remake.scene.spikeGuide.stage === 'explaining');
+  await closeWorldDialogue(2);
   await page.keyboard.down('ArrowDown'); await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowDown');
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_ruins4');
   assert.deepEqual(await position(), { x: 150, y: 75 });

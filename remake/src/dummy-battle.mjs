@@ -3,16 +3,17 @@ import { loadRoom } from './room-assets.mjs';
 
 // obj_dummymonster: không có đạn, chỉ Check/Talk và các kết thúc hướng dẫn.
 export class DummyBattle extends Battle {
-  constructor() { super('DummyBattle'); }
+  constructor(key = 'DummyBattle', roomName = 'room_ruins4') { super(key); this.assetRoom = roomName; }
 
   async create() {
     try {
       this.buttons = null; this.kind = null;
-      const data = await loadRoom(this, 'room_ruins4');
-      this.text = data.dummyDialogue;
+      const data = await loadRoom(this, this.assetRoom);
+      this.battleData = data;
+      this.text = data.dummyDialogue ?? { ...data.spikeDialogue, intro: data.spikeDialogue.battleIntro };
       super.create();
       this.title.setVisible(false); this.enemyName.setVisible(false);
-      this.enemy.setTexture('spr_dummybattle:0').setPosition(108, 68).setOrigin(0).setScale(.5);
+      this.enemy.setTexture(`${this.config.asset}:0`).setPosition(108, 68).setOrigin(0).setScale(.5);
       this.arena.setPosition(16, 125).setSize(285, 67.5);
       this.soul.setVisible(false); this.help.setVisible(false); this.enemyHpText.setVisible(false);
       this.hpText.setText(`${this.previousScene.game.registry.get('charname')}  LV ${this.previousScene.lv}     HP ${this.hp}/${this.maxHp}`)
@@ -133,12 +134,12 @@ export class DummyBattle extends Battle {
     if (this.attackX > 300) { this.showPages(['* MISS'], () => this.dummyTurn()); return; }
     if (!this.confirmPressed) return;
     const distance = Math.abs((this.attackX + 3.5) - (19 + 140.5)) * 2 || 1;
-    const base = (8 + this.previousScene.lv * 2) + (this.previousScene.weaponStrength ?? 0) + 5 + Math.random() * 2;
+    const base = (8 + this.previousScene.lv * 2) + (this.previousScene.weaponStrength ?? 0) - this.config.def + Math.random() * 2;
     this.damage = Math.round(base * (distance <= 12 ? 2.2 : (562 - distance) / 562 * 2));
     this.enemyHp = Math.max(0, this.enemyHp - this.damage);
-    this.enemy.setTexture('spr_dummybattle:1'); this.sound.play('snd_damage');
+    this.enemy.setTexture(`${this.config.asset}:1`); this.sound.play('snd_damage');
     this.showPages([String(this.damage)], () => {
-      this.enemy.setTexture('spr_dummybattle:0');
+      this.enemy.setTexture(`${this.config.asset}:0`);
       if (this.enemyHp === 0) { this.enemy.setVisible(false); this.end('kill'); }
       else this.dummyTurn();
     });
