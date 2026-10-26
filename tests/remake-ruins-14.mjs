@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 
 export async function testRuins14(page) {
-  const key = async (code) => { await page.keyboard.press(code); await page.waitForTimeout(65); };
+  const key = async (code) => {
+    await page.keyboard.press(code); await page.waitForTimeout(65);
+    await page.evaluate(() => new Promise((resolve) => __remake.game.events.once('poststep', resolve)));
+  };
   const open = async (flags = {}) => page.evaluate(async (flags) => {
     const world = __remake.scene; world.plot = 12; world.flags = flags; world.inventory = []; world.hp = 20; world.maxHp = 20;
     world.armor = 4; world.armorDefense = 0;
