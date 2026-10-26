@@ -95,6 +95,12 @@ try {
   await page.waitForTimeout(5000);
   await page.keyboard.up('ArrowRight');
   assert.ok(await page.evaluate(() => __remake.scene.cameras.main.scrollX > 200));
+  await page.evaluate(() => __remake.scene.player.setPosition(646, 140));
+  await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_area1_2');
+  assert.deepEqual(await position(), { x: 150, y: 381 });
+  await page.evaluate(() => __remake.scene.player.setPosition(150, 400));
+  await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_area1');
+  assert.deepEqual(await position(), { x: 609, y: 153 });
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

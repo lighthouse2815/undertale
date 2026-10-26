@@ -10,6 +10,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Dựng nền và tile của phòng đầu `room_area1` từ JSON/PNG gốc.
 - Mở đầu theo từng khung gốc, logo tiêu đề và nhập tên nhân vật tối đa 6 ký tự.
 - Nhân vật bốn hướng, animation, bước 3 pixel ở 30 Hz, camera cuộn theo phòng.
+- Cửa phải của phòng đầu chuyển sang `room_area1_2`, cửa dưới quay lại và đặt nhân vật tại marker gốc.
 - Vật cản chữ nhật dài/cao và mask PNG của bốn góc chéo.
 - Bàn phím, cảm ứng, thả phím khi mất tiêu điểm, toàn màn hình.
 - Tải JSON và PNG của phòng khi mở; giữ cache trong phiên chơi.

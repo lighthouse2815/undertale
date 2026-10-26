@@ -29,7 +29,7 @@ class World extends Scene {
     this.openRoom('room_area1').catch(fail);
   }
 
-  async openRoom(name) {
+  async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
     const data = await loadRoom(this, name);
     this.children.removeAll(true);
@@ -44,7 +44,8 @@ class World extends Scene {
       if (!texture.has(key)) texture.add(key, 0, tile.SourceX, tile.SourceY, tile.Width, tile.Height);
       this.add.image(tile.X, tile.Y, tile.Asset, key).setOrigin(0).setScale(tile.ScaleX, tile.ScaleY).setDepth(-tile.Depth);
     }
-    const spawn = data.room.GameObjects.find((item) => item.ObjectName === 'obj_mainchara');
+    const spawn = data.room.GameObjects.find((item) => item.ObjectName === spawnName)
+      ?? data.room.GameObjects.find((item) => item.ObjectName === 'obj_mainchara');
     if (!spawn) throw new Error(`Phòng ${name} không có vị trí nhân vật.`);
     const snap = (value) => value % 3 === 2 ? value + 1 : value % 3 === 1 ? value - 1 : value;
     this.player = this.add.image(snap(spawn.X), snap(spawn.Y), 'spr_maincharad:0').setOrigin(0);
@@ -94,6 +95,14 @@ class World extends Scene {
       movePlayer(this, this.player, this.colliders,
         (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction));
       this.elapsed -= 1000 / 30;
+    }
+    if (this.dataSource.name === 'room_area1' && this.player.x >= this.dataSource.room.Width - 35) {
+      this.openRoom('room_area1_2', 'obj_markerA').catch(fail);
+      return;
+    }
+    if (this.dataSource.name === 'room_area1_2' && this.player.y >= this.dataSource.room.Height - 35) {
+      this.openRoom('room_area1', 'obj_markerB').catch(fail);
+      return;
     }
     this.updateCamera();
   }
