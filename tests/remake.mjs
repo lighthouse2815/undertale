@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 import { buildRemake } from '../remake/build.mjs';
 import { testRuinsSwitches } from './remake-ruins-switches.mjs';
+import { testDummy } from './remake-dummy.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -78,14 +79,15 @@ try {
   await page.evaluate(async () => { __remake.scene.plot = 25; await __remake.scene.openRoom('room_area1'); });
   assert.ok(await page.evaluate(() => __remake.scene.roomObjects.some((entry) => entry.item.ObjectName === 'obj_torinteractable7')));
   await page.evaluate(async () => { __remake.scene.plot = 0; await __remake.scene.openRoom('room_area1'); });
-  await page.evaluate(() => __remake.startBattle('froggit'));
+  await page.evaluate(() => __remake.startBattle('whimsun'));
   await page.waitForFunction(() => __remake.phase === 'battle');
-  assert.deepEqual(await page.evaluate(() => ({ name: __remake.scene.config.name, hp: __remake.scene.enemyMaxHp })), { name: 'Froggit', hp: 30 });
+  assert.deepEqual(await page.evaluate(() => ({ name: __remake.scene.config.name, hp: __remake.scene.enemyMaxHp, texture: __remake.scene.enemy.texture.key })), { name: 'Whimsun', hp: 20, texture: 'battle:spr_whimsun' });
   await page.keyboard.press('x');
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_area1');
-  await page.evaluate(() => __remake.startBattle());
+  await page.evaluate(() => __remake.startBattle('froggit'));
   await page.waitForFunction(() => __remake.phase === 'battle');
   assert.equal(await page.evaluate(() => __remake.scene.mode), 'menu');
+  assert.equal(await page.evaluate(() => __remake.scene.enemy.texture.key), 'battle:spr_froggit');
   await page.keyboard.press('z');
   await page.waitForFunction(() => __remake.scene.mode === 'fight');
   await page.keyboard.press('z');
@@ -359,6 +361,7 @@ try {
   assert.equal(await page.evaluate(() => __remake.scene.dialogue), null);
   console.log('✓ Toriel đi theo path gốc, bốn nút sàn, công tắc mở cửa, hội thoại/biển, plot 3 và quay lại sau lưu/nạp');
   await testRuinsSwitches(page, root);
+  await testDummy(page, root);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

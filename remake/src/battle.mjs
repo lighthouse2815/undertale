@@ -2,19 +2,19 @@ import { Scene } from '../vendor/phaser.esm.min.js';
 
 const getState = () => window.__remake;
 export const BATTLE_CONFIGS = {
-  dummy: { name: 'Dummy', asset: 'spr_dummybattle', hp: 10, check: '* DUMMY - ATK 0 DEF 0.\n  A cotton heart and a button eye.', talk: '* You talk to the DUMMY.\n  It does not seem much for conversation.' },
+  dummy: { name: 'Dummy', asset: 'spr_dummybattle', hp: 15 },
   froggit: { name: 'Froggit', asset: 'spr_froggit', hp: 30, check: '* FROGGIT - ATK 4 DEF 5.\n  Life is difficult for this enemy.', talk: '* You compliment Froggit.\n  It seems reluctant to fight you.' },
   whimsun: { name: 'Whimsun', asset: 'spr_whimsun', hp: 20, check: '* WHIMSUN - ATK 5 DEF 0.\n  This monster is too sensitive to fight.', talk: '* You tell Whimsun it is doing a great job.' },
 };
 
 export class Battle extends Scene {
-  constructor() { super('Battle'); }
+  constructor(key = 'Battle') { super(key); }
 
   preload() {
     this.load.image('battle-heart', new URL('../assets/sprites/spr_heart/spr_heart_0.png', import.meta.url).href);
     const key = this.game.registry.get('battleConfig') ?? 'dummy';
     const config = BATTLE_CONFIGS[key] ?? BATTLE_CONFIGS.dummy;
-    this.load.image('battle-enemy', new URL(`../assets/sprites/${config.asset}/${config.asset}_0.png`, import.meta.url).href);
+    this.load.image(`battle:${config.asset}`, new URL(`../assets/sprites/${config.asset}/${config.asset}_0.png`, import.meta.url).href);
   }
 
   create() {
@@ -22,13 +22,13 @@ export class Battle extends Scene {
     this.config = BATTLE_CONFIGS[this.game.registry.get('battleConfig')] ?? BATTLE_CONFIGS.dummy;
     this.previousScene = this.game.scene.getScene('World');
     this.cameras.main.setBackgroundColor('#000');
-    this.add.text(160, 12, 'BATTLE', { fontFamily: 'monospace', fontSize: '12px', color: '#fff' }).setOrigin(.5);
-    this.enemy = this.add.image(160, 52, 'battle-enemy').setScale(this.config.asset === 'spr_froggit' ? .55 : .65);
-    this.add.text(160, 84, `* ${this.config.name}`, { fontFamily: 'monospace', fontSize: '9px', color: '#fff' }).setOrigin(.5);
-    this.add.rectangle(40, 96, 240, 100, 0x000000).setOrigin(0).setStrokeStyle(2, 0xffffff);
+    this.title = this.add.text(160, 12, 'BATTLE', { fontFamily: 'monospace', fontSize: '12px', color: '#fff' }).setOrigin(.5);
+    this.enemy = this.add.image(160, 52, `battle:${this.config.asset}`).setScale(this.config.asset === 'spr_froggit' ? .55 : .65);
+    this.enemyName = this.add.text(160, 84, `* ${this.config.name}`, { fontFamily: 'monospace', fontSize: '9px', color: '#fff' }).setOrigin(.5);
+    this.arena = this.add.rectangle(40, 96, 240, 100, 0x000000).setOrigin(0).setStrokeStyle(2, 0xffffff);
     this.soul = this.add.image(160, 146, 'battle-heart').setScale(.55);
-    this.hp = this.previousScene?.hp ?? 20; this.maxHp = 20; this.enemyHp = this.config.hp; this.enemyMaxHp = this.config.hp;
-    this.hpText = this.add.text(40, 210, 'HP 20 / 20', { fontFamily: 'monospace', fontSize: '9px', color: '#fff' });
+    this.hp = this.previousScene?.hp ?? 20; this.maxHp = this.previousScene?.maxHp ?? 20; this.enemyHp = this.config.hp; this.enemyMaxHp = this.config.hp;
+    this.hpText = this.add.text(40, 210, `HP ${this.hp} / ${this.maxHp}`, { fontFamily: 'monospace', fontSize: '9px', color: '#fff' });
     this.enemyHpText = this.add.text(200, 210, `${this.enemyHp} / ${this.enemyMaxHp}`, { fontFamily: 'monospace', fontSize: '9px', color: '#fff' });
     this.menu = this.add.text(40, 224, '', { fontFamily: 'monospace', fontSize: '8px', color: '#fff' });
     this.message = this.add.text(40, 176, '', { fontFamily: 'monospace', fontSize: '8px', color: '#fff', lineSpacing: 2 });
@@ -38,6 +38,7 @@ export class Battle extends Scene {
     this.confirmPressed = false; this.confirm = false; this.cancel = false;
     this.keys = this.input.keyboard.createCursorKeys(); this.lastMenuMove = 0;
     this.onKeyDown = (event) => {
+      if (event.repeat) return;
       if (event.code === 'KeyZ') { this.confirm = true; this.confirmPressed = true; }
       if (event.code === 'KeyX' || event.code === 'Escape') this.cancel = true;
       if (this.mode === 'menu' && event.code === 'ArrowRight') this.menuIndex = Math.min(3, this.menuIndex + 1);
@@ -153,5 +154,10 @@ export class Battle extends Scene {
     if (this.previousScene) this.previousScene.hp = this.hp;
     this.scene.stop(); this.scene.resume('World');
     const state = getState(); state.phase = 'running'; state.room = this.previousScene?.dataSource?.name ?? 'room_area1'; state.scene = this.previousScene;
+    if (this.previousScene) {
+      this.previousScene.confirmPressed = false;
+      this.previousScene.confirmDown = false;
+      this.previousScene.confirmWasDown = false;
+    }
   }
 }

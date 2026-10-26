@@ -1,4 +1,4 @@
-import { walkNpc } from './npc.mjs';
+import { inInteractionRange, walkNpc } from './npc.mjs';
 import { createCollider } from './movement.mjs';
 
 // Chuyển obj_torieltrigger2 và obj_plotswitch1/2: plot 3 → 4 → 4.5 → 5.
@@ -94,17 +94,7 @@ export class RuinsSwitches {
       'obj_readable_room1', 'obj_switchadvice1', 'obj_switchadvice2'].includes(name);
   }
 
-  // Vùng tương tác của obj_mainchara User0 theo hướng nhìn.
-  inReach(entry) {
-    const { x, y, facing } = this.world.player;
-    const regions = { r: [x + 10, y + 19, x + 35, y + 30], l: [x - 15, y + 19, x + 10, y + 30],
-      d: [x + 4, y + 20, x + 16, y + 45], u: [x + 4, y + 8, x + 16, y + 25] };
-    const [left, top, right, bottom] = regions[facing];
-    const { item, object, sprite } = entry;
-    const current = this.world.dataSource.sprites.get(object.MaskSprite ?? object.Sprite) ?? sprite;
-    return right >= item.X + current.MarginLeft && left <= item.X + current.MarginRight
-      && bottom >= item.Y + current.MarginTop && top <= item.Y + current.MarginBottom;
-  }
+  inReach(entry) { return inInteractionRange(this.world, entry); }
 
   interact(entry) {
     const name = entry.item.ObjectName;

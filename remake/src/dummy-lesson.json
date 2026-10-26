@@ -1,0 +1,71 @@
+{
+  "lesson": [
+    "* As a human living in\n  the UNDERGROUND, \n  monsters may attack you.",
+    "* You will need to be\n  prepared for this\n  situation.",
+    "* However, worry not! \n* The process is simple.",
+    "* When you encounter a \n  monster, you will enter\n  a FIGHT.",
+    "* While you are in a\n  FIGHT, strike up a\n  friendly conversation.",
+    "* Stall for time.\n  I will come to resolve\n  the conflict.",
+    "* Practice talking to\n  the dummy."
+  ],
+  "help": [
+    "* Do you need some\n  ideas for conversation\n  topics?",
+    "* Well, I often start with\n  a simple 'how do you\n  do...'",
+    "* You could ask them about\n  their favorite books...",
+    "* Jokes can be useful for\n  'breaking the ice.'",
+    "* Listen to this one...",
+    "* What did the skeleton\n  tile his roof with?",
+    "* ... SHIN-gles!",
+    "* ...",
+    "* Well, I thought it\n  was amusing."
+  ],
+  "helpRepeat": [
+    "* Practice talking to\n  the dummy.",
+    "* You can say anything... \n* The dummy will not\n  be bothered."
+  ],
+  "talkFeedback": [
+    "* Ah, very good! \n* You are very good."
+  ],
+  "killFeedback": [
+    "* Ahh, the dummies are\n  not for fighting! \n* They are for talking!",
+    "* We do not want to hurt\n  anybody, do we...?  \n* Come now."
+  ],
+  "fleeFeedback": [
+    "* ...",
+    "* ... you ran away...",
+    "* Truthfully, that was\n  not a poor choice.",
+    "* It is better to\n  avoid conflict\n  whenever possible.",
+    "* That... however, is\n  only a dummy.\n* It cannot harm you.",
+    "* It is made of cotton.\n* It has no desire\n  for revenge...",
+    "* Nevermind.\n* Stay close to me and\n  I will keep you safe."
+  ],
+  "boredFeedback": [
+    "* ...",
+    "* ...",
+    "* The next room awaits."
+  ],
+  "intro": [
+    "* You encountered the Dummy."
+  ],
+  "check": [
+    "* DUMMY - ATK 0 DEF 0 \n* A cotton heart and a button eye* You are the apple of my eye"
+  ],
+  "talk": [
+    "* You talk to the DUMMY.\n* ...",
+    "* It doesn't seem much for\n  conversation.",
+    "* TORIEL seems happy with you."
+  ],
+  "speech": [
+    " ....."
+  ],
+  "idle": [
+    "* Dummy looks like it's\n  going to fall over.",
+    "* Dummy stands around\n  absentmindedly."
+  ],
+  "bored": [
+    "* Dummy tires of your\n  aimless shenanigans."
+  ],
+  "escaped": [
+    " * Escaped..."
+  ]
+}

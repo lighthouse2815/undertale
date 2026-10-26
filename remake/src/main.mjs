@@ -6,6 +6,8 @@ import { readSave, writeSave } from './save.mjs';
 import { SaveMenu } from './save-menu.mjs';
 import { RuinsTutorial } from './ruins-tutorial.mjs';
 import { RuinsSwitches } from './ruins-switches.mjs';
+import { DummyLesson } from './dummy-lesson.mjs';
+import { DummyBattle } from './dummy-battle.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -30,7 +32,8 @@ const ROOM_EXITS = {
   room_ruins1: { A: 'room_ruins2', B: 'room_area1_2' },
   room_ruins2: { A: 'room_ruins3', B: 'room_ruins1' },
   room_ruins3: { A: 'room_ruins4', B: 'room_ruins2' },
-  room_ruins4: { B: 'room_ruins3' },
+  room_ruins4: { A: 'room_ruins5', B: 'room_ruins3' },
+  room_ruins5: { B: 'room_ruins4' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -57,6 +60,9 @@ class World extends Scene {
     this.ruinsTutorial = null;
     this.ruinsSwitches?.destroy();
     this.ruinsSwitches = null;
+    this.dummyLesson?.destroy();
+    this.dummyLesson = null;
+    this.flags ??= {};
     const facing = this.player?.facing ?? 'd';
     const data = await loadRoom(this, name);
     this.children.removeAll(true);
@@ -86,6 +92,10 @@ class World extends Scene {
         if (item.ObjectName === 'obj_toroverworld4' && this.plot >= 4) continue;
         if (item.ObjectName === 'obj_torinteractable1' && this.plot !== 4) continue;
         if (item.ObjectName === 'obj_torinteractable2' && this.plot !== 4.5) continue;
+      }
+      if (name === 'room_ruins4') {
+        if (item.ObjectName === 'obj_torinteractable4' && !(this.plot >= 5.4 && this.plot <= 6.5)) continue;
+        if (item.ObjectName === 'obj_dummy1' && this.flags[14] === 1) continue;
       }
       const object = data.objects.get(item.ObjectName);
       const interactable = Boolean(object && (inherits(item.ObjectName, 'obj_readable') || inherits(item.ObjectName, 'obj_interactable')
@@ -135,6 +145,7 @@ class World extends Scene {
     this.updateCamera();
     if (name === 'room_ruins2') this.ruinsTutorial = new RuinsTutorial(this);
     if (name === 'room_ruins3') this.ruinsSwitches = new RuinsSwitches(this);
+    if (name === 'room_ruins4') this.dummyLesson = new DummyLesson(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -183,6 +194,7 @@ class World extends Scene {
     }
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
+    if (this.dummyLesson?.update()) return;
     this.elapsed = Math.min(this.elapsed + delta, 200);
     while (this.elapsed >= 1000 / 30) {
       movePlayer(this, this.player, this.colliders,
@@ -216,6 +228,7 @@ class World extends Scene {
   }
 
   tryInteract() {
+    if (this.dummyLesson) { this.dummyLesson.interact(); return; }
     if (this.ruinsSwitches) {
       const entry = this.roomObjects.find((entry) => entry.interactable
         && this.ruinsSwitches.canInteract(entry) && this.ruinsSwitches.inReach(entry));
@@ -278,7 +291,7 @@ class World extends Scene {
   saveGame() {
     return writeSave({ name: this.game.registry.get('charname'), room: this.dataSource.name,
       x: this.player.x, y: this.player.y, hp: this.hp, maxHp: this.maxHp, lv: this.lv,
-      playTime: this.playTime, flags: { plot: this.plot } });
+      playTime: this.playTime, flags: { ...this.flags, plot: this.plot } });
   }
 
   async restoreGame() {
@@ -289,6 +302,8 @@ class World extends Scene {
     this.maxHp = save.maxHp ?? 20;
     this.lv = save.lv ?? 1;
     this.plot = save.flags?.plot ?? 0;
+    this.flags = { ...(save.flags ?? {}) };
+    delete this.flags.plot;
     this.playTime = save.playTime ?? 0;
     await this.openRoom(save.room);
     this.player.setPosition(save.x, save.y);
@@ -386,14 +401,16 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, SaveMenu],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, SaveMenu],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
+  if (state.phase !== 'running') return;
   state.game.registry.set('battleConfig', config);
   const world = state.scene;
+  state.phase = 'loading';
   world.scene.pause();
-  world.scene.launch('Battle');
+  world.scene.launch(config === 'dummy' ? 'DummyBattle' : 'Battle');
 };
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);

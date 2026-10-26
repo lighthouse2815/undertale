@@ -112,6 +112,9 @@ export async function testRuinsSwitches(page, root) {
   await page.keyboard.up('ArrowRight');
   await page.waitForFunction(() => __remake.room === 'room_ruins4' && __remake.phase === 'running');
   assert.deepEqual(await position(), { x: 20, y: 140 });
+  await page.waitForFunction(() => __remake.scene.dummyLesson.stage === 'lesson');
+  await closeDialogue(7);
+  await page.waitForFunction(() => __remake.scene.dummyLesson.stage === 'practice');
   await page.keyboard.down('ArrowLeft');
   await page.waitForFunction(() => __remake.phase === 'transition');
   await page.keyboard.up('ArrowLeft');

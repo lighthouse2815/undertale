@@ -9,6 +9,18 @@ export function touchesObject(world, actor, target, scaleX = 1, scaleY = 1) {
     && actor.y + actorSprite.MarginTop <= target.Y + (sprite.MarginBottom + 1) * scaleY - 1;
 }
 
+// Vùng tương tác của obj_mainchara User0 theo hướng nhìn.
+export function inInteractionRange(world, entry) {
+  const { x, y, facing } = world.player;
+  const regions = { r: [x + 10, y + 19, x + 35, y + 30], l: [x - 15, y + 19, x + 10, y + 30],
+    d: [x + 4, y + 20, x + 16, y + 45], u: [x + 4, y + 8, x + 16, y + 25] };
+  const [left, top, right, bottom] = regions[facing];
+  const { item, object, sprite } = entry;
+  const current = world.dataSource.sprites.get(object.MaskSprite ?? object.Sprite) ?? sprite;
+  return right >= item.X + current.MarginLeft && left <= item.X + current.MarginRight
+    && bottom >= item.Y + current.MarginTop && top <= item.Y + current.MarginBottom;
+}
+
 // path_start: tốc độ theo pixel mỗi frame 30 Hz, điểm có hệ số Speed riêng.
 export function walkNpc(world, npc, name, { absolute = true, speed = 3, onComplete } = {}) {
   const points = world.dataSource.paths.get(name).Points;
