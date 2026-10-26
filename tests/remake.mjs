@@ -52,9 +52,17 @@ try {
   page.on('request', (request) => requests.push(request.url()));
   page.on('response', (response) => { bytes += Number(response.headers()['content-length'] ?? 0); if (response.status() >= 400) errors.push(response.url()); });
   await page.goto(origin);
-  await page.waitForFunction(() => ['running', 'error'].includes(window.__remake?.phase));
-  assert.equal(await page.evaluate(() => __remake.phase), 'running');
+  await page.waitForFunction(() => ['intro', 'error'].includes(window.__remake?.phase));
+  assert.equal(await page.evaluate(() => __remake.phase), 'intro');
+  for (let i = 0; i < 11; i++) { await page.keyboard.press('z'); await page.waitForTimeout(50); }
+  await page.waitForFunction(() => __remake.phase === 'title');
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => __remake.phase === 'name');
+  for (const key of ['F', 'R', 'I', 'S', 'K']) { await page.keyboard.press(key); await page.waitForTimeout(50); }
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(() => __remake.phase === 'running');
   assert.equal(await page.evaluate(() => __remake.room), 'room_area1');
+  assert.equal(await page.evaluate(() => __remake.game.registry.get('charname')), 'FRISK');
   assert.ok(requests.every((url) => !/\.(wasm|win|gml|ogg|wav)(?:$|\?)/.test(url)));
   assert.ok(requests.filter((url) => url.includes('/assets/rooms/')).every((url) => url.endsWith('/room_area1.json')));
   assert.ok(bytes < 5 * 1024 * 1024, `Tải phòng đầu quá lớn: ${bytes} byte`);
@@ -94,6 +102,13 @@ try {
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   const touchPage = await mobile.newPage();
   await touchPage.goto(origin);
+  await touchPage.waitForFunction(() => __remake.phase === 'intro');
+  for (let i = 0; i < 11; i++) { await touchPage.keyboard.press('z'); await touchPage.waitForTimeout(50); }
+  await touchPage.waitForFunction(() => __remake.phase === 'title');
+  await touchPage.keyboard.press('z');
+  await touchPage.waitForFunction(() => __remake.phase === 'name');
+  await touchPage.keyboard.press('A');
+  await touchPage.keyboard.press('Enter');
   await touchPage.waitForFunction(() => __remake.phase === 'running');
   await touchPage.touchscreen.tap(...Object.values(await touchPage.locator('[data-direction="right"]').evaluate((button) => {
     const box = button.getBoundingClientRect(); return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
@@ -110,11 +125,25 @@ try {
   await startServer(join(root, 'tests/static-server.mjs'), fixture);
   const hosted = await browser.newPage();
   await hosted.goto(`${origin}/native/`);
-  await hosted.waitForFunction(() => ['running', 'error'].includes(window.__remake?.phase));
+  await hosted.waitForFunction(() => __remake.phase === 'intro');
+  for (let i = 0; i < 11; i++) { await hosted.keyboard.press('z'); await hosted.waitForTimeout(50); }
+  await hosted.waitForFunction(() => __remake.phase === 'title');
+  await hosted.keyboard.press('z');
+  await hosted.waitForFunction(() => __remake.phase === 'name');
+  await hosted.keyboard.press('A');
+  await hosted.keyboard.press('Enter');
+  await hosted.waitForFunction(() => __remake.phase === 'running');
   assert.equal(await hosted.evaluate(() => __remake.phase), 'running');
   const missing = await browser.newPage();
   await missing.route('**/bg_firstroom.png', (route) => route.fulfill({ status: 404, body: 'Không tìm thấy' }));
   await missing.goto(`${origin}/native/`);
+  await missing.waitForFunction(() => __remake.phase === 'intro');
+  for (let i = 0; i < 11; i++) { await missing.keyboard.press('z'); await missing.waitForTimeout(50); }
+  await missing.waitForFunction(() => __remake.phase === 'title');
+  await missing.keyboard.press('z');
+  await missing.waitForFunction(() => __remake.phase === 'name');
+  await missing.keyboard.press('A');
+  await missing.keyboard.press('Enter');
   await missing.waitForFunction(() => __remake.phase === 'error');
   assert.match(await missing.locator('#status').textContent(), /bg_firstroom/);
   console.log('✓ hosting tĩnh dưới đường dẫn con; thiếu tài nguyên phải báo lỗi');

@@ -2,7 +2,7 @@
 
 Đang phát triển thêm [bản viết lại bằng JavaScript/Phaser](remake/README.md)
 theo hướng giữ nội dung Undertale và tải tài nguyên theo phòng. Phần đã chuyển
-hiện gồm hiển thị và di chuyển ở phòng đầu; chưa phải game đầy đủ. Chạy bằng
+hiện gồm mở đầu, nhập tên, hiển thị và di chuyển ở phòng đầu; chưa phải game đầy đủ. Chạy bằng
 `npm run dev:remake`. Bản `game/` bên dưới vẫn là bản tham chiếu dùng Butterscotch.
 
 Trang chính chạy **GML Undertale được biên dịch từ nguồn rời** bằng runtime mã nguồn mở

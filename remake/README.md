@@ -8,14 +8,15 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 ## Phạm vi đã thực hiện
 
 - Dựng nền và tile của phòng đầu `room_area1` từ JSON/PNG gốc.
+- Mở đầu theo từng khung gốc, logo tiêu đề và nhập tên nhân vật tối đa 6 ký tự.
 - Nhân vật bốn hướng, animation, bước 3 pixel ở 30 Hz, camera cuộn theo phòng.
 - Vật cản chữ nhật dài/cao và mask PNG của bốn góc chéo.
 - Bàn phím, cảm ứng, thả phím khi mất tiêu điểm, toàn màn hình.
 - Tải JSON và PNG của phòng khi mở; giữ cache trong phiên chơi.
 - Đóng gói hosting tĩnh, chạy dưới đường dẫn con, không cần compiler GML.
 
-**Đây mới là bộ hiển thị và di chuyển ở phòng đầu, chưa phải Undertale đầy đủ.**
-Chưa chuyển intro/đặt tên, cửa chuyển phòng, hội thoại, Flowey/Toriel, menu,
+**Đây mới là bộ mở đầu, hiển thị và di chuyển ở phòng đầu, chưa phải Undertale đầy đủ.**
+Chưa chuyển cửa chuyển phòng, hội thoại, Flowey/Toriel, menu,
 chiến đấu, vật phẩm, lưu/nạp, những khu vực và nhánh kết thúc khác.
 Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
