@@ -23,6 +23,7 @@ import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
 import { Ruins13Lesson } from './ruins13.mjs';
 import { Ruins14Lesson } from './ruins14.mjs';
+import { RuinsPerspective } from './ruins-perspective.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -60,7 +61,11 @@ const ROOM_EXITS = {
   room_ruins12A: { A: 'room_ruins12B', B: 'room_ruins12' },
   room_ruins12B: { B: 'room_ruins12A' },
   room_ruins13: { A: 'room_ruins14' },
-  room_ruins14: { B: 'room_ruins13' },
+  room_ruins14: { A: 'room_ruins15A', B: 'room_ruins13' },
+  room_ruins15A: { A: 'room_ruins15B', B: 'room_ruins14' },
+  room_ruins15B: { A: 'room_ruins15C', B: 'room_ruins15A' },
+  room_ruins15C: { A: 'room_ruins15D', B: 'room_ruins15B' },
+  room_ruins15D: { B: 'room_ruins15C' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -103,6 +108,7 @@ class World extends Scene {
     this.ruins12?.destroy(); this.ruins12 = null;
     this.ruins13?.destroy(); this.ruins13 = null;
     this.ruins14?.destroy(); this.ruins14 = null;
+    this.ruinsPerspective?.destroy(); this.ruinsPerspective = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -172,7 +178,7 @@ class World extends Scene {
     this.player.facing = facing; this.player.frameIndex = 0;
     this.doors = data.room.GameObjects.flatMap((item) => {
       const match = /^obj_door([ABCD])(musicfade)?$/.exec(item.ObjectName);
-      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12' })[name];
+      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A' })[name];
       const destination = special || (match && ROOM_EXITS[name]?.[match[1]]);
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
@@ -213,6 +219,7 @@ class World extends Scene {
     if (name === 'room_ruins12A') this.ruins12 = new Ruins12Lesson(this);
     if (['room_ruins12B', 'room_ruins13'].includes(name)) this.ruins13 = new Ruins13Lesson(this);
     if (name === 'room_ruins14') this.ruins14 = new Ruins14Lesson(this);
+    if (/^room_ruins15[A-D]$/.test(name)) this.ruinsPerspective = new RuinsPerspective(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -290,6 +297,8 @@ class World extends Scene {
     if (this.ruins12?.update()) return;
     if (this.ruins13?.update()) return;
     if (this.ruins14?.update()) return;
+    if (this.ruinsPerspective?.update(delta)) return;
+    if (this.ruinsPerspective?.checkTrigger()) return;
     if (menuPressed && this.flags[17] !== 1) {
       this.release();
       state.phase = 'loadingMenu';
@@ -305,24 +314,29 @@ class World extends Scene {
       this.elapsed -= 1000 / 30;
       if (this.player.x !== previous.x || this.player.y !== previous.y) this.ruinsEncounter?.step();
       if (this.corridorLesson?.checkTrigger(previous)) return;
+      if (this.ruinsPerspective?.checkTrigger(previous)) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
     if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();
     const door = this.findDoor(this.player.x, this.player.y);
     if (door) {
-      state.phase = 'transition';
-      this.cameras.main.once('camerafadeoutcomplete', async () => {
-        try {
-          await this.openRoom(door.destination, door.marker);
-          this.cameras.main.fadeIn(1000 / 30 / 0.08);
-        } catch (error) { fail(error); }
-      });
-      this.cameras.main.fadeOut(door.duration);
+      this.transitionRoom(door.destination, door.marker, door.duration);
       return;
     }
     this.updateCamera();
     this.ruinsEncounter?.update();
+  }
+
+  transitionRoom(destination, marker, duration) {
+    state.phase = 'transition';
+    this.cameras.main.once('camerafadeoutcomplete', async () => {
+      try {
+        await this.openRoom(destination, marker);
+        this.cameras.main.fadeIn(1000 / 30 / 0.08);
+      } catch (error) { fail(error); }
+    });
+    this.cameras.main.fadeOut(duration);
   }
 
   findDoor(x, y) {
@@ -341,6 +355,7 @@ class World extends Scene {
     if (this.ruins12?.interact()) return;
     if (this.ruins13?.interact()) return;
     if (this.ruins14?.interact()) return;
+    if (this.ruinsPerspective?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }

@@ -27,7 +27,8 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Trận Vegetoid đơn có 72 HP, Check/Devour/Talk/Dinner, hai generator cà rốt/rau và đạn xanh hồi 1 HP cả khi đang bất tử. Dinner cần chạm đạn xanh mới tăng khả năng tha; Devour chỉ thành công khi quái đủ yếu, hồi tối đa 5 HP và không cho EXP. Tha khi còn nguyên HP cho 4G; đánh bại cho 6 EXP/1G và cập nhật số kill/dân số. Tái sử dụng FIGHT/ITEM/MERCY và Game Over của trận thường; đã nối hai Vegetoid ngoài phòng 14, chưa có encounter ngẫu nhiên Vegetoid và Parsnik Hard Mode.
 - Phòng 12B có Spider Bake Sale: mua Spider Donut 7G hoặc Spider Cider 18G, kiểm tra thiếu GOLD/túi đầy, cập nhật cờ đóng góp 59 và giữ nguyên tiền/đồ khi từ chối. Đường đi đúng là cửa phải phòng 12 → 12A → 12B; cửa trên phòng 12 ↔ phòng 13 dùng markerX và thời gian chuyển cảnh riêng.
 - Phòng 13 có biển quảng cáo, Froggit trong khe tường và ba Froggit nhỏ với lời thoại gốc: phản ứng khi nhấn X, lời nhắc F4 và lựa chọn giữ/bỏ màu vàng rồi đổi sang màu hồng. Trận Froggit/Whimsun đọc cờ màu tên 22, cờ được lưu/nạp. Cuộc gọi bánh của Toriel kích hoạt theo vùng va chạm vô hình, có nhánh thường/cờ 6 và chân dung theo trang; chỉ đặt `plot = 12` khi kết thúc. Flowey xuất hiện phía sau và chìm khi camera nhìn thấy.
-- Phòng 14 nối hai chiều với 13. Hố xuống dùng mask riêng; ba lối lên phía trên đi 400 pixel, ba lối dưới đi 510 pixel. Biển đọc lời gốc, công tắc rung camera rồi mở tường/gai ở `plot = 13`. Faded Ribbon dùng túi 8 ô và cờ 100, không mất khi túi đầy; nhặt xong bỏ va chạm. Napstablook hiện theo cờ 36/dân số/tuyến, nói bốn trang rồi mờ dần và đặt cờ 36 thành 2. Hai Vegetoid có va chạm, ngẩng lên 25 frame rồi mở trận thật ở tuyến thường; biến mất trong lần ghé hiện tại và trở lại khi vào lại phòng nếu còn đủ dân số. Lưu/nạp giữ công tắc/Ribbon/trạng thái ma; chưa nối cửa tới 15A, Parsnik Hard Mode và encounter ngẫu nhiên của phòng.
+- Phòng 14 nối hai chiều với 13 và 15A. Hố xuống dùng mask riêng; ba lối lên phía trên đi 400 pixel, ba lối dưới đi 510 pixel. Biển đọc lời gốc, công tắc mở tường/gai và rung camera ở `plot = 13`. Faded Ribbon dùng túi 8 ô và cờ 100, không mất khi túi đầy; nhặt xong bỏ va chạm. Napstablook hiện theo cờ 36/dân số/tuyến, nói bốn trang rồi mờ dần và đặt cờ 36 thành 2. Hai Vegetoid có va chạm, ngẩng lên 25 frame rồi mở trận thật ở tuyến thường; biến mất trong lần ghé hiện tại và trở lại khi vào lại phòng nếu còn đủ dân số. Lưu/nạp giữ công tắc/Ribbon/trạng thái ma; chưa chuyển Parsnik Hard Mode và encounter ngẫu nhiên của phòng.
+- Chuỗi 15A–15D có bốn góc nhìn, cột che công tắc, màu và collider đúng tài nguyên gốc. Ở 15A, các công tắc hỏi Yes/No rồi không đổi plot; có phản ứng riêng khi cờ nhấn 43 vượt 25. 15B/C/D yêu cầu xanh dương/đỏ/xanh lá: Yes đặt plot 14/15/16, phát tiếng click và mở tường/gai; No giữ khóa. Tường ở 15C nằm ngang, B/D thẳng đứng. Công tắc sai làm sàn sập ngay khi tương tác, chờ 30 frame rồi rơi/mờ 20 frame tới 15E; cửa 15E quay về markerX ở 15A. Hai lần sai tại 15B bật lời gợi ý khi vào lại phòng và chạm vùng trigger, tăng cờ 51 để không lặp. Lưu/nạp giữ lời giải và cờ; chưa nối cửa 15D tới phòng 16 hoặc encounter ngẫu nhiên của chuỗi.
 - Phòng kẹo `room_ruins7A`: chọn Yes/No bằng trái/phải rồi Z, không nhận khi túi đủ 8 món, phản hồi theo số lần lấy. Lần thứ tư làm đổ bát kẹo; nhánh cờ 6 chỉ lấy được ba viên. Lưu/nạp giữ trạng thái bát và kẹo.
 - Savepoint đầu Ruins hồi HP, hiện lời thoại gốc rồi mở Save/Return; X hoặc Return giữ file cũ, Save hiện xác nhận khi ghi thành công. Menu dùng font bitmap, con trỏ trái tim và âm thanh gốc.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
@@ -40,7 +41,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Đóng gói hosting tĩnh, chạy dưới đường dẫn con, không cần compiler GML.
 
 **Đã chuyển một phần đầu Ruins, gồm trận Napstablook; chưa phải Undertale đầy đủ.**
-Chưa chuyển nhóm nhiều quái/hard mode tại `room_ruins7`, encounter phòng 8–14, Parsnik ở phòng 14, các sự kiện còn lại từ phòng 8 và phòng 15A trở đi, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, các vật phẩm sau ID 13, các mục điện thoại sau Toriel và menu đầy đủ,
+Chưa chuyển nhóm nhiều quái/hard mode tại `room_ruins7`, encounter phòng 8–15, Parsnik ở phòng 14, các sự kiện còn lại từ phòng 8 và phòng 16 trở đi, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, các vật phẩm sau ID 13, các mục điện thoại sau Toriel và menu đầy đủ,
 ACT/ITEM/MERCY theo từng quái, toàn bộ trạng thái lưu/nạp và menu Continue, những khu vực và nhánh kết thúc khác.
 Va chạm ngoài trận/hố đọc pixel trắng trong mask gốc (pixel đen cũng có alpha 255); mask trái tim/đạn trong trận cũng đã đọc pixel trắng, gồm mask theo khung hình của dòng nước Napstablook và phép xoay/co giãn hiện có. Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
@@ -72,6 +73,8 @@ Trận Napstablook đối chiếu `obj_napstablook`, `scr_battlegroup` nhóm 20,
 Phòng 12–12A đối chiếu `obj_napstablook1`, `obj_cheesetable1`, `obj_mousehole`, `obj_door_ruins13`, `SCR_TEXT` 510/511/512 và lời thoại Napstablook.
 
 Phòng 14 đối chiếu `obj_holedown3`/`obj_holedown`, `obj_holeup2`, `obj_plotswitch3`, `obj_plotwall6`, `obj_spikes_room`, `obj_ribbon_pickup`, `SCR_TEXT` 518, `obj_napstablook2`, `obj_vegetoid_overworld` và thứ tự phòng trong `game/project/order.json`. Các kiểm thử hố xác minh độ cao/thời gian khóa/vị trí, chưa chứng minh mọi frame alarm sát biên giống hệt bản gốc.
+
+Chuỗi 15A–15E đối chiếu `obj_redswitch_1`, `obj_blueswitch_1`, `obj_greenswitch_1`, `obj_pillar_1`, `obj_plotwall_room`, `obj_spikes_room`, `obj_switchhelptrigger`, `SCR_TEXT` 519–522 và `obj_door_ruins13`. Chuyển động rơi dùng tọa độ và alarm 30 Hz; hiệu ứng gõ chữ và độ chính xác từng frame chuyển cảnh vẫn còn giới hạn chung.
 
 Phòng 10–11 đối chiếu `obj_holedown`, `obj_holeup`, `obj_pushrock1/2`, `obj_goofyrock`, `path_goofyrock`, `obj_toribuster`, `obj_rock_activator`, `obj_plotwall5`, `obj_spikes_room` và `SCR_TEXT` 1562–1593. Đá và hố đã có chuyển động; hai bảng chỉ dẫn phòng 10 dùng lời gốc và vùng tương tác theo hướng nhìn; thứ tự alarm và va chạm sát cạnh vẫn cần đối chiếu thêm.
 
@@ -137,6 +140,8 @@ thuộc tác giả Undertale; xem `CREDITS.txt` trong gói xuất.
 | `src/ruins13.json` | Hội thoại gốc phòng 12B/13 và nhánh mua đồ |
 | `src/ruins14.mjs` | Công tắc/gai/tường, Ribbon, ma và Vegetoid ngoài phòng 14 |
 | `src/ruins14.json` | Lời thoại gốc biển, Ribbon và lần gặp lại Napstablook |
+| `src/ruins-perspective.mjs` | Bốn góc nhìn/công tắc màu, gai/tường, bẫy rơi và lời gợi ý phòng 15 |
+| `src/ruins-perspective.json` | Bốn biển và các lời thoại công tắc/gợi ý gốc |
 | `src/stalker-flowey.mjs` | Flowey chìm khi camera nhìn thấy, dùng chung cho hành lang và phòng 13 |
 | `src/ruins-goofyrock.mjs` | Path Goofyrock phòng 11, nhường đường, activator, cờ 33 và gai/tường |
 | `src/ruins-rock.mjs` | Hố lên/xuống phòng 8/10, đẩy đá thường phòng 9/11 và gai/tường phòng 9 |

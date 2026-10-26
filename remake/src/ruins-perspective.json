@@ -1,0 +1,13 @@
+{
+  "signs": {
+    "room_ruins15A": ["* The far door is not an exit.\n* It simply marks a rotation\n  in perspective."],
+    "room_ruins15B": ["* If you can read this,\n  press the blue switch."],
+    "room_ruins15C": ["* If you can read this,\n  press the red switch."],
+    "room_ruins15D": ["* If you can read this,\n  press the green switch."]
+  },
+  "prompt": "* It's a switch.\n* Press it?",
+  "nothing": ["* Nothing happened."],
+  "click": ["* You hear a clicking sound."],
+  "attention": ["* You're making the switches\n  uncomfortable with all\n  this attention."],
+  "help": ["* (You noticed there was\n  a blue switch behind the\n  top pillar.)"]
+}
