@@ -31,6 +31,7 @@ import { TorielCorridor } from './toriel-corridor.mjs';
 import { HOUSE_ROOMS, stopHouseMusic } from './house-music.mjs';
 import { ChildBedroom } from './child-bedroom.mjs';
 import { TorielBedroom } from './toriel-bedroom.mjs';
+import { TorielLiving } from './toriel-living.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -77,7 +78,8 @@ const ROOM_EXITS = {
   room_ruins17: { A: 'room_ruins18OLD', B: 'room_ruins16' },
   room_ruins18OLD: { B: 'room_ruins17' },
   room_ruins19: { A: 'room_torhouse1' },
-  room_torhouse1: { B: 'room_ruins19', C: 'room_torhouse3' },
+  room_torhouse1: { A: 'room_torhouse2', B: 'room_ruins19', C: 'room_torhouse3' },
+  room_torhouse2: { B: 'room_torhouse1' },
   room_torhouse3: { D: 'room_torhouse1', C: 'room_asrielroom', A: 'room_torielroom' },
   room_torielroom: { B: 'room_torhouse3' },
   room_asrielroom: { D: 'room_torhouse3' },
@@ -132,6 +134,7 @@ class World extends Scene {
     this.torielCorridor?.destroy(); this.torielCorridor = null;
     this.childBedroom?.destroy(); this.childBedroom = null;
     this.torielBedroom = null;
+    this.torielLiving?.destroy(); this.torielLiving = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -201,7 +204,7 @@ class World extends Scene {
     this.player.facing = facing; this.player.frameIndex = 0;
     this.doors = data.room.GameObjects.flatMap((item) => {
       const match = /^obj_door([ABCD])(musicfade)?$/.exec(item.ObjectName);
-      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A', room_ruins16: 'room_ruins19', room_ruins19: 'room_ruins16' })[name];
+      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A', room_ruins16: 'room_ruins19', room_ruins19: 'room_ruins16', room_torhouse2: 'room_kitchen', room_kitchen: 'room_torhouse2' })[name];
       const destination = special || (match && ROOM_EXITS[name]?.[match[1]]);
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
@@ -250,6 +253,7 @@ class World extends Scene {
     if (name === 'room_torhouse3') this.torielCorridor = new TorielCorridor(this);
     if (name === 'room_asrielroom') this.childBedroom = new ChildBedroom(this);
     if (name === 'room_torielroom') this.torielBedroom = new TorielBedroom(this);
+    if (['room_torhouse2', 'room_kitchen'].includes(name)) this.torielLiving = new TorielLiving(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -313,6 +317,7 @@ class World extends Scene {
       this.torielCorridor?.update(delta);
       this.childBedroom?.update(delta);
       this.torielBedroom?.update(delta);
+      this.torielLiving?.update(delta);
       return;
     }
     if (state.phase !== 'running') return;
@@ -324,11 +329,12 @@ class World extends Scene {
     const bedroomLocked = this.torielCorridor?.update(delta);
     const sleepLocked = this.childBedroom?.update(delta);
     this.torielBedroom?.update(delta);
+    const livingLocked = this.torielLiving?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -408,6 +414,7 @@ class World extends Scene {
     if (this.torielCorridor?.interact()) return;
     if (this.childBedroom?.interact()) return;
     if (this.torielBedroom?.interact()) return;
+    if (this.torielLiving?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }

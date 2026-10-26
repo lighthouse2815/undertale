@@ -1,0 +1,286 @@
+{
+  "napIntro": [
+    {
+      "text": "* Hello there,\n  little one!",
+      "portrait": null
+    },
+    {
+      "text": "* The pie has not\n  cooled down yet.",
+      "portrait": null
+    }
+  ],
+  "napPrompt": [
+    {
+      "text": "* Perhaps you should\n  take a nap.",
+      "portrait": null
+    }
+  ],
+  "sweet": [
+    {
+      "text": "* Sweet dreams.",
+      "portrait": null
+    }
+  ],
+  "chatStart": [
+    {
+      "text": "* You'd rather stay\n  up and chat with\n  me, then?",
+      "portrait": "spr_face_torieltalkside"
+    }
+  ],
+  "awakeStart": [
+    {
+      "text": "* Up already, I see?",
+      "portrait": null
+    }
+  ],
+  "chat": [
+    {
+      "text": "* Um, I want you to know\n  how glad I am to\n  have someone here.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* There are so many\n  old books I want\n  to share.",
+      "portrait": null
+    },
+    {
+      "text": "* I want to show you\n  my favorite bug-\n  hunting spot.",
+      "portrait": null
+    },
+    {
+      "text": "* I've also prepared\n  a curriculum for\n  your education.",
+      "portrait": null
+    },
+    {
+      "text": "* This may come as\n  a surprise to you...",
+      "portrait": null
+    },
+    {
+      "text": "* But I have always\n  wanted to be a\n  teacher.",
+      "portrait": null
+    },
+    {
+      "text": "* ... actually, perhaps\n  that isn't very\n  surprising.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* STILL.",
+      "portrait": "spr_face_torielrevengetalk"
+    },
+    {
+      "text": "* I am glad to have\n  you living here.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Oh, did you\n  want something?",
+      "portrait": "spr_face_torieltalkside"
+    }
+  ],
+  "homePrompt": [
+    {
+      "text": "* What is it?",
+      "portrait": null
+    }
+  ],
+  "nothing": [
+    {
+      "text": "* Well, talk to me\n  again if you\n  need anything.",
+      "portrait": null
+    }
+  ],
+  "home": [
+    {
+      "text": "* What?\n* This... this IS your\n  home now.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Um... would you like\n  to hear about this\n  book I am reading?",
+      "portrait": null
+    }
+  ],
+  "bookAgain": [
+    {
+      "text": "* Oh, hello!",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Did you want to\n  hear about the\n  book I am reading?",
+      "portrait": null
+    }
+  ],
+  "book": [
+    {
+      "text": "* It is called\n  \"72 Uses for Snails.\"",
+      "portrait": "spr_face_torielhappytalk"
+    }
+  ],
+  "bookPrompt": [
+    {
+      "text": "* How about it?",
+      "portrait": null
+    }
+  ],
+  "factIntro": [
+    {
+      "text": "* Here is an exciting\n  snail fact.",
+      "portrait": null
+    }
+  ],
+  "factAvoid": [
+    {
+      "text": "* Um...\n* How about an exciting\n  snail fact?",
+      "portrait": "spr_face_torieltalkside"
+    }
+  ],
+  "factStart": [
+    {
+      "text": "* Did you know\n  that snails...",
+      "portrait": "spr_face_torieltalk"
+    }
+  ],
+  "facts": [
+    {
+      "text": "* Have a chainsaw-like\n  tongue called a\n  radula?",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Sometimes flip their\n  digestive systems\n  as they mature?",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Make terrible\n  shoelaces?",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Talk. Really. Slowly?\n* Just kidding, snails\n  don't talk.",
+      "portrait": "spr_face_torielhappytalk"
+    }
+  ],
+  "factPrompt": [
+    {
+      "text": "* Interesting.",
+      "portrait": "spr_face_torielhappytalk"
+    }
+  ],
+  "bother": [
+    {
+      "text": "* Well, bother me\n  if you need anything\n  else.",
+      "portrait": null
+    }
+  ],
+  "leave": [
+    {
+      "text": "* ... I have to do\n  something.\n* Stay here.",
+      "portrait": "spr_face_torieltalkside"
+    }
+  ],
+  "askPrompt": [
+    {
+      "text": "* What is it?",
+      "portrait": "spr_face_torielhappytalk"
+    }
+  ],
+  "anything": [
+    {
+      "text": "* If you need anything,\n  just ask.",
+      "portrait": null
+    }
+  ],
+  "empty": [
+    {
+      "text": "* (Seems like the right size\n  for Toriel.)",
+      "portrait": null
+    }
+  ],
+  "fire": [
+    {
+      "text": "* The fire isn't burning hot...\n* Just pleasantly warm.\n* You could put your hand inside.",
+      "portrait": null
+    }
+  ],
+  "tools": [
+    {
+      "text": "* The ends of the tools have\n  been filed down to\n  make them safer.",
+      "portrait": null
+    }
+  ],
+  "history": [
+    {
+      "text": "* It's a history book.\n* Here's a random page...",
+      "portrait": null
+    },
+    {
+      "text": "* Trapped behind the barrier\n  and fearful of further\n  human attacks, we retreated.",
+      "portrait": null
+    },
+    {
+      "text": "* Far, far into the earth\n  we walked, until we reached\n  the cavern's end.",
+      "portrait": null
+    },
+    {
+      "text": "* This was our new home,\n  which we named...",
+      "portrait": null
+    },
+    {
+      "text": "* \"Home.\"",
+      "portrait": null
+    },
+    {
+      "text": "* As great as our king is,\n  he is pretty lousy at\n  names.",
+      "portrait": null
+    }
+  ],
+  "fridge": [
+    {
+      "text": "* For some reason, there\n  is a brand-name chocolate\n  bar in the fridge.",
+      "portrait": null
+    }
+  ],
+  "sink": [
+    {
+      "text": "* There is some white fur\n  stuck in the drain.",
+      "portrait": null
+    }
+  ],
+  "pieHot": [
+    {
+      "text": "* What a nice smell...\n* Too hot to eat, though.",
+      "portrait": null
+    }
+  ],
+  "pieSlice": [
+    {
+      "text": "* The size of the pie\n  intimidates you too much\n  for you to eat it.",
+      "portrait": null
+    }
+  ],
+  "pieEnd": [
+    {
+      "text": "* (Most of the pie is gone.)\n* (There are dog prints in\n  it...)",
+      "portrait": null
+    }
+  ],
+  "cupboard": [
+    {
+      "text": "* Inside the cupboard are\n  cookie cutters for\n  gingerbread monsters.",
+      "portrait": null
+    }
+  ],
+  "knives": [
+    {
+      "text": "* Where are the knives.",
+      "portrait": null
+    }
+  ],
+  "stove": [
+    {
+      "text": "* The stovetop is very clean.\n* Toriel must use fire\n  magic instead.",
+      "portrait": null
+    }
+  ],
+  "stoveAfter": [
+    {
+      "text": "* No one will use this\n  anymore...",
+      "portrait": null
+    }
+  ]
+}
