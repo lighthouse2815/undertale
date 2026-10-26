@@ -24,6 +24,7 @@ import { Ruins12Lesson } from './ruins12.mjs';
 import { Ruins13Lesson } from './ruins13.mjs';
 import { Ruins14Lesson } from './ruins14.mjs';
 import { RuinsPerspective } from './ruins-perspective.mjs';
+import { RuinsOutlook } from './ruins-outlook.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -65,7 +66,10 @@ const ROOM_EXITS = {
   room_ruins15A: { A: 'room_ruins15B', B: 'room_ruins14' },
   room_ruins15B: { A: 'room_ruins15C', B: 'room_ruins15A' },
   room_ruins15C: { A: 'room_ruins15D', B: 'room_ruins15B' },
-  room_ruins15D: { B: 'room_ruins15C' },
+  room_ruins15D: { B: 'room_ruins15C', C: 'room_ruins16' },
+  room_ruins16: { A: 'room_ruins17', D: 'room_ruins15D' },
+  room_ruins17: { A: 'room_ruins18OLD', B: 'room_ruins16' },
+  room_ruins18OLD: { B: 'room_ruins17' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -109,6 +113,7 @@ class World extends Scene {
     this.ruins13?.destroy(); this.ruins13 = null;
     this.ruins14?.destroy(); this.ruins14 = null;
     this.ruinsPerspective?.destroy(); this.ruinsPerspective = null;
+    this.ruinsOutlook = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -220,6 +225,7 @@ class World extends Scene {
     if (['room_ruins12B', 'room_ruins13'].includes(name)) this.ruins13 = new Ruins13Lesson(this);
     if (name === 'room_ruins14') this.ruins14 = new Ruins14Lesson(this);
     if (/^room_ruins15[A-D]$/.test(name)) this.ruinsPerspective = new RuinsPerspective(this);
+    if (['room_ruins17', 'room_ruins18OLD'].includes(name)) this.ruinsOutlook = new RuinsOutlook(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -274,6 +280,7 @@ class World extends Scene {
     if (['running', 'menu', 'loadingMenu'].includes(state.phase)) {
       this.ruinsStart?.animate();
       this.ruins13?.animate();
+      this.ruinsOutlook?.animate();
     }
     if (['menu', 'loadingMenu'].includes(state.phase)) {
       this.spikeGuide?.updateMotion(delta);
@@ -356,6 +363,7 @@ class World extends Scene {
     if (this.ruins13?.interact()) return;
     if (this.ruins14?.interact()) return;
     if (this.ruinsPerspective?.interact()) return;
+    if (this.ruinsOutlook?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
