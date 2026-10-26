@@ -17,8 +17,9 @@ export function inInteractionRange(world, entry) {
   const [left, top, right, bottom] = regions[facing];
   const { item, object, sprite } = entry;
   const current = world.dataSource.sprites.get(object.MaskSprite ?? object.Sprite) ?? sprite;
-  return right >= item.X + current.MarginLeft && left <= item.X + current.MarginRight
-    && bottom >= item.Y + current.MarginTop && top <= item.Y + current.MarginBottom;
+  const sx = item.ScaleX ?? 1, sy = item.ScaleY ?? 1;
+  return right >= item.X + current.MarginLeft * sx && left <= item.X + current.MarginRight * sx
+    && bottom >= item.Y + current.MarginTop * sy && top <= item.Y + current.MarginBottom * sy;
 }
 
 // path_start: tốc độ theo pixel mỗi frame 30 Hz, điểm có hệ số Speed riêng.

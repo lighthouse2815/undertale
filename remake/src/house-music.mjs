@@ -17,3 +17,11 @@ export function stopHouseMusic(world) {
   for (const sound of world.houseMusic ?? []) sound.destroy();
   world.houseMusic = null;
 }
+
+export function mixHouseMusic(world, music, ideal) {
+  if (world.flags[7] === 1) return;
+  for (let i = 0; i < music.length; i++) {
+    const value = music[i].volume, target = ideal[i];
+    music[i].setVolume(value < target ? Math.min(target, value + .05) : Math.max(target, value - .05));
+  }
+}

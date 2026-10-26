@@ -132,6 +132,15 @@
       "info": [
         "* \"Toy Knife\" - Weapon AT 3\n* Made of plastic.\n* A rarity nowadays."
       ]
+    },
+    "63": {
+      "name": "Snail Pie",
+      "battleName": "Snail Pie",
+      "seriousName": "Snail Pie",
+      "use": "* You ate the Snail Pie.\n* Your HP was maxed out.",
+      "info": [
+        "* \"Snail Pie\" - Heals Some HP\n* An acquired taste."
+      ]
     }
   },
   "actions": [

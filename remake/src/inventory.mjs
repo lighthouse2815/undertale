@@ -40,8 +40,9 @@ export function itemAction(world, index, action, text, { scene = world, health =
     scene.sound.play('snd_swallow');
     scene.time.delayedCall(10 * 1000 / 30, () => scene.sound.play(id === 9 ? 'snd_spooky' : 'snd_power'));
   }
-  if (health.hp < health.maxHp) health.hp = Math.min(health.maxHp, health.hp + (id === 11 ? health.maxHp : item.heal));
-  if (id !== 11) {
+  if (id === 63) health.hp = Math.max(health.hp, health.maxHp - 1);
+  else if (health.hp < health.maxHp) health.hp = Math.min(health.maxHp, health.hp + (id === 11 ? health.maxHp : item.heal));
+  if (id !== 11 && id !== 63) {
     world.flags[260] = 1;
     line += ' \n' + (health.hp >= health.maxHp ? text.maxed : text.recover.replace(/\\\[1\]/g, String(item.heal)));
   }

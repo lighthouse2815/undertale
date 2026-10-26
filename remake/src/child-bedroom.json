@@ -1,0 +1,32 @@
+{
+  "toys": [
+    "* Look at these cool toys!\n* They don't interest you\n  at all."
+  ],
+  "frame": [
+    "* (An empty photo frame.)\n* (It's really dusty...)"
+  ],
+  "shoes": [
+    "* (A box of kids' shoes in\n  a disparity of sizes.)"
+  ],
+  "pie": [
+    "* You found a slice of\n  butterscotch-cinnamon\n  pie."
+  ],
+  "full": [
+    "* You are carrying too\n  much."
+  ],
+  "snail": [
+    "* You found a slice of\n  snail pie..."
+  ],
+  "dream": [
+    "* \\[C], please...",
+    "* Wake up!",
+    "* You are the future\n  of humans and\n  monsters..."
+  ],
+  "dreamEnd": [
+    "* (It felt strange to lie\n  in the bed.)",
+    "* (It feels entirely too\n  small for you now.)"
+  ],
+  "frameEnd": [
+    "* (An empty photo frame.)\n* (Someone's dusted it off.)"
+  ]
+}

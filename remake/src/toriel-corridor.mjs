@@ -1,5 +1,5 @@
 import { inInteractionRange, touchesObject, walkNpc } from './npc.mjs';
-import { startHouseMusic } from './house-music.mjs';
+import { startHouseMusic, mixHouseMusic } from './house-music.mjs';
 
 // obj_torieltrigger7: nắm tay tới cửa phòng, xoa đầu 90 frame rồi rời đi.
 export class TorielCorridor {
@@ -26,6 +26,8 @@ export class TorielCorridor {
   update(delta) {
     this.animate();
     const world = this.world;
+    this.musicElapsed = Math.min((this.musicElapsed ?? 0) + delta, 200);
+    while (this.musicElapsed >= 1000 / 30) { this.musicElapsed -= 1000 / 30; mixHouseMusic(world, this.music, [1, .001]); }
     if (this.stage === 'intro') {
       this.stage = 'explaining'; world.release();
       world.showDialogue(this.text.intro, { portrait: 'spr_face_torielhappytalk', onClose: () => this.lead() });
