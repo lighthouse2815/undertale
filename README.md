@@ -1,5 +1,10 @@
 # UNDERTALE — bản chạy web độc lập
 
+Đang phát triển thêm [bản viết lại bằng JavaScript/Phaser](remake/README.md)
+theo hướng giữ nội dung Undertale và tải tài nguyên theo phòng. Phần đã chuyển
+hiện gồm hiển thị và di chuyển ở phòng đầu; chưa phải game đầy đủ. Chạy bằng
+`npm run dev:remake`. Bản `game/` bên dưới vẫn là bản tham chiếu dùng Butterscotch.
+
 Trang chính chạy **GML Undertale được biên dịch từ nguồn rời** bằng runtime mã nguồn mở
 [Butterscotch](https://github.com/ButterscotchRunner/Butterscotch). Dự án đã nhập
 336 phòng, 1.709 đối tượng, 2.583 sprite, 443 mục âm thanh và toàn bộ logic gốc;
