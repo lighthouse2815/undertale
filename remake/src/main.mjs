@@ -2,6 +2,7 @@ import { Game, Scene, Scale, CANVAS } from '../vendor/phaser.esm.min.js';
 import { loadRoom } from './room-assets.mjs';
 import { createColliders, movePlayer } from './movement.mjs';
 import { Battle } from './battle.mjs';
+import { readSave, writeSave } from './save.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -17,6 +18,7 @@ const INTRO_TEXT = [
 const DIALOGUES = {
   obj_readable_flowers1: ['The flowers are growing\nthere.', 'They look like they\nhave a mind of their own.'],
   obj_torinteractable7: ['* Someone has to take\n  care of these flowers.'],
+  obj_savepoint: ['* (The strange light fills you\n  with determination.)'],
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -78,6 +80,7 @@ class World extends Scene {
     this.confirmWasDown = false;
     this.interactionCooldown = 0;
     this.dialogue = null;
+    this.hp = this.hp ?? 20;
     this.colliders = createColliders(data);
     this.elapsed = 0;
     this.cameras.main.setBounds(0, 0, data.room.Width, data.room.Height);
@@ -154,6 +157,14 @@ class World extends Scene {
       .filter(({ distance }) => distance < 45)
       .sort((a, b) => a.distance - b.distance)[0];
     if (!target) return;
+    if (target.entry.item.ObjectName === 'obj_savepoint') {
+      this.saveGame();
+      this.dialogue = { lines: ['* (The game has been saved.)'], index: 0 };
+      this.dialogueBox = this.add.rectangle(8, 160, 304, 70, 0x000000, .94).setOrigin(0).setScrollFactor(0).setDepth(100000);
+      this.dialogueText = this.add.text(18, 170, this.dialogue.lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 }).setScrollFactor(0).setDepth(100001);
+      this.interactionCooldown = 250;
+      return;
+    }
     this.dialogue = { lines: DIALOGUES[target.entry.item.ObjectName], index: 0 };
     this.dialogueBox = this.add.rectangle(8, 160, 304, 70, 0x000000, .94).setOrigin(0).setScrollFactor(0).setDepth(100000);
     this.dialogueText = this.add.text(18, 170, this.dialogue.lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 }).setScrollFactor(0).setDepth(100001);
@@ -174,6 +185,22 @@ class World extends Scene {
       this.dialogueBox.destroy(); this.dialogueText.destroy(); this.dialogue = null;
     } else this.dialogueText.setText(this.dialogue.lines[this.dialogue.index]);
     this.interactionCooldown = 250;
+  }
+
+  saveGame() {
+    return writeSave({ name: this.game.registry.get('charname'), room: this.dataSource.name,
+      x: this.player.x, y: this.player.y, hp: this.hp });
+  }
+
+  async restoreGame() {
+    const save = readSave();
+    if (!save) return false;
+    this.game.registry.set('charname', save.name);
+    this.hp = save.hp;
+    await this.openRoom(save.room);
+    this.player.setPosition(save.x, save.y);
+    this.updateCamera();
+    return true;
   }
 }
 

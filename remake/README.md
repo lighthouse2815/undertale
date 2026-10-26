@@ -13,6 +13,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Cửa phải của phòng đầu chuyển sang `room_area1_2`, cửa dưới quay lại và đặt nhân vật tại marker gốc.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
 - Khung chiến đấu đầu tiên: menu FIGHT/ACT/ITEM/MERCY, SOUL, đạn, HP và kết thúc lượt; mở qua `__remake.startBattle()` để kiểm thử engine.
+- Save/nạp phiên bản đầu lưu tên, phòng, vị trí và HP qua localStorage; `scene.saveGame()` và `scene.restoreGame()` dùng chung format.
 - Vật cản chữ nhật dài/cao và mask PNG của bốn góc chéo.
 - Bàn phím, cảm ứng, thả phím khi mất tiêu điểm, toàn màn hình.
 - Tải JSON và PNG của phòng khi mở; giữ cache trong phiên chơi.

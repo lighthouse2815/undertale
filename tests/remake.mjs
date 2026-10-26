@@ -85,10 +85,19 @@ try {
   await page.waitForFunction(() => __remake.scene.mode === 'menu');
   await page.keyboard.press('x');
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_area1');
+  const position = () => page.evaluate(() => ({ x: __remake.scene.player.x, y: __remake.scene.player.y }));
+  const saved = await page.evaluate(() => {
+    __remake.scene.player.setPosition(210, 150);
+    return __remake.scene.saveGame();
+  });
+  assert.deepEqual({ room: saved.room, x: saved.x, y: saved.y, name: saved.name }, { room: 'room_area1', x: 210, y: 150, name: 'FRISK' });
+  await page.evaluate(() => __remake.scene.player.setPosition(300, 150));
+  assert.equal(await page.evaluate(() => __remake.scene.restoreGame()), true);
+  assert.deepEqual(await position(), { x: 210, y: 150 });
+  await page.evaluate(() => __remake.scene.player.setPosition(141, 120));
   assert.ok(requests.every((url) => !/\.(wasm|win|gml|ogg|wav)(?:$|\?)/.test(url)));
   assert.ok(requests.filter((url) => url.includes('/assets/rooms/')).every((url) => url.endsWith('/room_area1.json')));
   assert.ok(bytes < 5 * 1024 * 1024, `Tải phòng đầu quá lớn: ${bytes} byte`);
-  const position = () => page.evaluate(() => ({ x: __remake.scene.player.x, y: __remake.scene.player.y }));
   assert.deepEqual(await position(), { x: 141, y: 120 });
   await page.keyboard.down('ArrowRight');
   await page.waitForTimeout(500);
