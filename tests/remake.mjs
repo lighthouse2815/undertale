@@ -63,6 +63,14 @@ try {
   await page.waitForFunction(() => __remake.phase === 'running');
   assert.equal(await page.evaluate(() => __remake.room), 'room_area1');
   assert.equal(await page.evaluate(() => __remake.game.registry.get('charname')), 'FRISK');
+  assert.ok(await page.evaluate(() => __remake.scene.roomObjects.some((entry) => entry.item.ObjectName === 'obj_torinteractable7')));
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => !!__remake.scene.dialogue);
+  assert.match(await page.locator('canvas').evaluate(() => __remake.scene.dialogueText.text), /flowers/i);
+  await page.keyboard.press('z');
+  await page.waitForTimeout(300);
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => !__remake.scene.dialogue);
   assert.ok(requests.every((url) => !/\.(wasm|win|gml|ogg|wav)(?:$|\?)/.test(url)));
   assert.ok(requests.filter((url) => url.includes('/assets/rooms/')).every((url) => url.endsWith('/room_area1.json')));
   assert.ok(bytes < 5 * 1024 * 1024, `Tải phòng đầu quá lớn: ${bytes} byte`);

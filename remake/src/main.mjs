@@ -13,6 +13,10 @@ const INTRO_TEXT = [
   '      MT. EBOTT\n         201X',
   'Legends say that those\nwho climb the mountain\nnever return.',
 ];
+const DIALOGUES = {
+  obj_readable_flowers1: ['The flowers are growing\nthere.', 'They look like they\nhave a mind of their own.'],
+  obj_torinteractable7: ['* Someone has to take\n  care of these flowers.'],
+};
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
   status.hidden = false; status.textContent = `Không mở được phòng: ${error.message}`;
@@ -44,12 +48,35 @@ class World extends Scene {
       if (!texture.has(key)) texture.add(key, 0, tile.SourceX, tile.SourceY, tile.Width, tile.Height);
       this.add.image(tile.X, tile.Y, tile.Asset, key).setOrigin(0).setScale(tile.ScaleX, tile.ScaleY).setDepth(-tile.Depth);
     }
+    this.roomObjects = [];
+    const inherits = (name, target) => {
+      for (let current = name; current; current = data.objects.get(current)?.ParentObject) if (current === target) return true;
+      return false;
+    };
+    for (const item of data.room.GameObjects) {
+      const object = data.objects.get(item.ObjectName);
+      const interactable = Boolean(object && (inherits(item.ObjectName, 'obj_readable') || inherits(item.ObjectName, 'obj_interactable')
+        || item.ObjectName.includes('readable') || item.ObjectName.includes('torinteractable')));
+      if ((!object?.Visible && !interactable) || !object.Sprite || item.ObjectName === 'obj_overworldcontroller' || item.ObjectName === 'obj_unfader') continue;
+      const sprite = data.sprites.get(object.Sprite);
+      const key = `${object.Sprite}:0`;
+      const image = object.Visible ? this.add.image(item.X, item.Y, key)
+        .setOrigin(sprite.OriginX / sprite.Width, sprite.OriginY / sprite.Height)
+        .setScale(item.ScaleX ?? 1, item.ScaleY ?? 1)
+        .setDepth(item.Depth ?? item.Y) : null;
+      this.roomObjects.push({ item, object, sprite, image, interactable });
+    }
     const spawn = data.room.GameObjects.find((item) => item.ObjectName === spawnName)
       ?? data.room.GameObjects.find((item) => item.ObjectName === 'obj_mainchara');
     if (!spawn) throw new Error(`Phòng ${name} không có vị trí nhân vật.`);
     const snap = (value) => value % 3 === 2 ? value + 1 : value % 3 === 1 ? value - 1 : value;
     this.player = this.add.image(snap(spawn.X), snap(spawn.Y), 'spr_maincharad:0').setOrigin(0);
     this.player.facing = 'd'; this.player.frameIndex = 0;
+    this.confirmDown = false;
+    this.confirmPressed = false;
+    this.confirmWasDown = false;
+    this.interactionCooldown = 0;
+    this.dialogue = null;
     this.colliders = createColliders(data);
     this.elapsed = 0;
     this.cameras.main.setBounds(0, 0, data.room.Width, data.room.Height);
@@ -74,11 +101,17 @@ class World extends Scene {
       };
     }
     this.release = () => { this.input.keyboard.resetKeys(); this.touch.clear(); };
+    this.confirmPress = (event) => { if (event.code === 'KeyZ') { this.confirmDown = true; this.confirmPressed = true; } };
+    this.confirmRelease = (event) => { if (event.code === 'KeyZ') this.confirmDown = false; };
+    window.addEventListener('keydown', this.confirmPress);
+    window.addEventListener('keyup', this.confirmRelease);
     window.addEventListener('blur', this.release);
     this.visibility = () => { if (document.hidden) this.release(); };
     document.addEventListener('visibilitychange', this.visibility);
     this.events.once('shutdown', () => {
       window.removeEventListener('blur', this.release);
+      window.removeEventListener('keydown', this.confirmPress);
+      window.removeEventListener('keyup', this.confirmRelease);
       document.removeEventListener('visibilitychange', this.visibility);
     });
   }
@@ -90,12 +123,18 @@ class World extends Scene {
 
   update(_time, delta) {
     if (state.phase !== 'running') return;
+    if (this.dialogue) {
+      if (this.justConfirmed()) this.advanceDialogue();
+      return;
+    }
     this.elapsed = Math.min(this.elapsed + delta, 200);
     while (this.elapsed >= 1000 / 30) {
       movePlayer(this, this.player, this.colliders,
         (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction));
       this.elapsed -= 1000 / 30;
     }
+    this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
+    if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();
     if (this.dataSource.name === 'room_area1' && this.player.x >= this.dataSource.room.Width - 35) {
       this.openRoom('room_area1_2', 'obj_markerA').catch(fail);
       return;
@@ -105,6 +144,35 @@ class World extends Scene {
       return;
     }
     this.updateCamera();
+  }
+
+  tryInteract() {
+    const target = this.roomObjects
+      .filter((entry) => entry.interactable && DIALOGUES[entry.item.ObjectName])
+      .map((entry) => ({ entry, distance: Math.hypot(this.player.x - entry.item.X, this.player.y - entry.item.Y) }))
+      .filter(({ distance }) => distance < 45)
+      .sort((a, b) => a.distance - b.distance)[0];
+    if (!target) return;
+    this.dialogue = { lines: DIALOGUES[target.entry.item.ObjectName], index: 0 };
+    this.dialogueBox = this.add.rectangle(8, 160, 304, 70, 0x000000, .94).setOrigin(0).setScrollFactor(0).setDepth(100000);
+    this.dialogueText = this.add.text(18, 170, this.dialogue.lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 }).setScrollFactor(0).setDepth(100001);
+    this.interactionCooldown = 250;
+  }
+
+  justConfirmed() {
+    const down = this.confirmDown;
+    const just = this.confirmPressed || (down && !this.confirmWasDown);
+    this.confirmPressed = false;
+    this.confirmWasDown = down;
+    return just;
+  }
+
+  advanceDialogue() {
+    this.dialogue.index += 1;
+    if (this.dialogue.index >= this.dialogue.lines.length) {
+      this.dialogueBox.destroy(); this.dialogueText.destroy(); this.dialogue = null;
+    } else this.dialogueText.setText(this.dialogue.lines[this.dialogue.index]);
+    this.interactionCooldown = 250;
   }
 }
 
