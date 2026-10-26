@@ -206,11 +206,15 @@ export class RuinsBattle extends DummyBattle {
     this.pendingOutcome = outcome; this.enemy.setVisible(false); for (const part of this.enemyParts) part.setVisible(false);
     const world = this.previousScene;
     this.xpReward = outcome === 'kill' ? this.config.xp : 0;
-    this.goldReward = outcome === 'kill' ? 2 : Math.floor(2 * (this.enemyMaxHp - this.enemyHp) / this.enemyMaxHp)
-      + (this.monster === 'froggit' ? Number(this.mercyModifier === 30 && this.enemyHp === this.enemyMaxHp) * 2 : Number(this.mercyModifier === 101) * 2);
+    this.goldReward = this.rewardGold(outcome);
     let line = this.dialogue.win[0].replace(/\\\[1\]/g, String(this.xpReward)).replace(/\\\[2\]/g, String(this.goldReward));
     if (LEVEL_THRESHOLDS.filter((threshold) => world.xp + this.xpReward >= threshold).length > world.lv) { line += this.dialogue.levelUp[0]; this.sound.play('snd_levelup'); }
     this.music.stop(); this.showPages([line], () => this.finishWith(outcome));
+  }
+
+  rewardGold(outcome) {
+    return outcome === 'kill' ? 2 : Math.floor(2 * (this.enemyMaxHp - this.enemyHp) / this.enemyMaxHp)
+      + (this.monster === 'froggit' ? Number(this.mercyModifier === 30 && this.enemyHp === this.enemyMaxHp) * 2 : Number(this.mercyModifier === 101) * 2);
   }
 
   finishWith(outcome) {

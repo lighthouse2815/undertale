@@ -1,0 +1,33 @@
+{
+  "intro": [
+    "* Vegetoid came out of the earth!"
+  ],
+  "speech": [
+    "Contains\nVitamin\nA",
+    "Part Of\nA\nComplete\nBreakfast",
+    "Farmed\nLocally,\nVery\nLocally",
+    "Fresh\nMorning\nTaste",
+    "Ate\nYour\nGreens",
+    "Plants\nCan't\nTalk\nDummy",
+    "Eat\nYour\nGreens"
+  ],
+  "idle": [
+    "* Vegetoid gave a mysterious\n  smile.",
+    "* Vegetoid cackles softly.",
+    "* Vegetoid's here for your\n  health.",
+    "* It smells like steamed\n  carrots and peas.",
+    "* Vegetoid seems kind of\n  bruised."
+  ],
+  "check": [
+    "* VEGETOID - ATK 6 DEF 6\n* Serving Size: 1 Monster\n* Not monitored by the USDA"
+  ],
+  "devourFail": [
+    "* You tried to eat Vegetoid,\n  but it wasn't weakened\n  enough."
+  ],
+  "devour": [
+    "* You took a bite out of\n  Vegetoid.\n* You recovered 5 HP!"
+  ],
+  "dinner": [
+    "* You pat your stomach.\n* Vegetoid offers a healthy\n  meal."
+  ]
+}
