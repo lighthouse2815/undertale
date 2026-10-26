@@ -38,11 +38,13 @@ export function walkNpc(world, npc, name, { absolute = true, speed = 3, onComple
         duration: Math.hypot(dx, dy) / (speed * 30 * point.Speed / 100) * 1000,
         onStart: () => { direction = facing; },
         onUpdate: () => {
+          // Phaser gọi onUpdate cho từng thuộc tính x/y trong cùng frame.
+          if (!npc.active) return;
           npc.setTexture(`${sprites?.[facing] ?? `spr_toriel_${facing}`}:${Math.floor(world.time.now / (1000 / frameRate)) % 4}`);
           npc.setDepth(npc.y + 8);
           onUpdate?.(npc);
         } };
     }),
-    onComplete: () => { npc.setTexture(`${sprites?.[direction] ?? `spr_toriel_${direction}`}:0`); onComplete?.(); },
+    onComplete: () => { if (npc.active) { npc.setTexture(`${sprites?.[direction] ?? `spr_toriel_${direction}`}:0`); onComplete?.(); } },
   });
 }

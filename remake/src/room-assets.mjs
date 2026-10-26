@@ -33,6 +33,8 @@ export async function loadRoom(scene, name) {
   const outlookDialogue = outlook ? await json(new URL('./ruins-outlook.json', import.meta.url).href) : null;
   const ruinsHome = name === 'room_ruins19';
   const homeDialogue = ruinsHome ? await json(new URL('./ruins-home.json', import.meta.url).href) : null;
+  const torielHall = name === 'room_torhouse1';
+  const hallDialogue = torielHall ? await json(new URL('./toriel-hall.json', import.meta.url).href) : null;
   const ruins12 = name === 'room_ruins12';
   const ruins13 = ['room_ruins12B', 'room_ruins13'].includes(name);
   const ruins13Dialogue = ruins13 ? await json(new URL('./ruins13.json', import.meta.url).href) : null;
@@ -49,7 +51,8 @@ export async function loadRoom(scene, name) {
     : ruinsSwitches ? ['path_torielwalk3', 'path_torielwalk3_2', 'path_walkright']
       : dummyLesson ? ['path_torielwalk4', 'path_torielwalk4_2']
         : spikeGuide ? ['path_torielwalk5', 'path_torielwalk5_2', 'path_walkright', 'path_froghead']
-          : corridorLesson ? ['path_walkright', 'path_torielwalk6'] : ruinsHome ? ['path_torielwalk19', 'path_torielwalk19_3', 'path_torielwalk19_4'] : goofyrock ? ['path_goofyrock'] : [];
+          : corridorLesson ? ['path_walkright', 'path_torielwalk6'] : ruinsHome ? ['path_torielwalk19', 'path_torielwalk19_3', 'path_torielwalk19_4']
+            : torielHall ? ['path_walkright', 'path_torielwalkhouse2', 'path_torielwalkhouse3'] : goofyrock ? ['path_goofyrock'] : [];
   await Promise.all(pathNames.map(async (key) => {
     paths.set(key, await json(`paths/${key}.json`));
   }));
@@ -69,7 +72,7 @@ export async function loadRoom(scene, name) {
   if (corridorLesson) await Promise.all(['obj_plotwall3', 'obj_stalkerflowey'].map(object));
   if (ruinsRock) await Promise.all(['obj_plotwall4'].map(object));
   if (ruinsHoles || perspective) await object('obj_cosmetichole');
-  if (ruinsHome) await object('obj_toroverworld3');
+  if (ruinsHome || torielHall) await object('obj_toroverworld3');
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
   if (ruinsStart) spriteNames.add('spr_exc');
   if (ruinsStart) for (const page of [...ruinsStartDialogue.call, ...ruinsStartDialogue.afterDog]) if (page.portrait) spriteNames.add(page.portrait);
@@ -77,6 +80,7 @@ export async function loadRoom(scene, name) {
   if (candyRoom) spriteNames.add('spr_candydish2');
   if (ruinsHome) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_toriel_d_phone', 'spr_exc',
     'spr_face_torielhappytalk', 'spr_face_torieltalkside', 'spr_face_torielembarrassed']) spriteNames.add(key);
+  if (torielHall) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_face_torielhappytalk', 'spr_face_torieltalkside']) spriteNames.add(key);
   if (hasSavepoint || candyRoom || ruins12 || ruins13 || perspective) spriteNames.add('spr_heartsmall');
   if (ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_face_torielhappytalk']) spriteNames.add(key);
   if (ruinsSwitches) for (const key of ['spr_face_torieltalk', 'spr_face_torieltalkside']) spriteNames.add(key);
@@ -96,7 +100,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
@@ -107,6 +111,7 @@ export async function loadRoom(scene, name) {
     ...(ruins14 ? ['snd_screenshake', 'snd_b'] : []),
     ...(perspective ? ['snd_switchpull_n', 'snd_noise', 'snd_fall2', 'snd_squeak'] : []),
     ...(ruinsHome ? ['snd_phone', 'mus_ruins', 'mus_toomuch', 'mus_reunited', 'mus_toriel'] : []),
+    ...(torielHall ? ['mus_house1', 'mus_house2', 'mus_toriel', 'mus_reunited'] : []),
     ...(hasSavepoint ? ['snd_power', 'snd_save'] : []), ...(ruinsTutorial ? ['snd_noise'] : []),
     ...(ruinsSwitches ? ['snd_screenshake', 'snd_wrongvictory'] : []),
     ...(dummyLesson ? ['snd_select', 'snd_damage', 'snd_escaped', 'snd_slidewhist'] : []),
@@ -132,5 +137,5 @@ export async function loadRoom(scene, name) {
   });
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, rockDialogue };
 }

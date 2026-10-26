@@ -26,6 +26,7 @@ import { Ruins14Lesson } from './ruins14.mjs';
 import { RuinsPerspective } from './ruins-perspective.mjs';
 import { RuinsOutlook } from './ruins-outlook.mjs';
 import { RuinsHome } from './ruins-home.mjs';
+import { TorielHall } from './toriel-hall.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -71,6 +72,8 @@ const ROOM_EXITS = {
   room_ruins16: { A: 'room_ruins17', D: 'room_ruins15D' },
   room_ruins17: { A: 'room_ruins18OLD', B: 'room_ruins16' },
   room_ruins18OLD: { B: 'room_ruins17' },
+  room_ruins19: { A: 'room_torhouse1' },
+  room_torhouse1: { B: 'room_ruins19' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -116,6 +119,7 @@ class World extends Scene {
     this.ruinsPerspective?.destroy(); this.ruinsPerspective = null;
     this.ruinsOutlook = null;
     this.ruinsHome?.destroy(); this.ruinsHome = null;
+    this.torielHall?.destroy(); this.torielHall = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -190,6 +194,7 @@ class World extends Scene {
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
       return [{ destination, direction: special ? 'X' : match[1], marker: special ? 'obj_markerX' : ({ A: 'obj_markerA', B: 'obj_markerB', C: 'obj_markerC', D: 'obj_markerD' })[match[1]] ?? 'obj_markerA',
+        musicFade: Boolean(match?.[2]),
         duration: (special ? 14 : match[2] ? 13 : 8) * 1000 / 30,
         left: item.X + (sprite.MarginLeft - sprite.OriginX) * item.ScaleX,
         right: item.X + (sprite.MarginRight - sprite.OriginX) * item.ScaleX,
@@ -229,6 +234,7 @@ class World extends Scene {
     if (/^room_ruins15[A-D]$/.test(name)) this.ruinsPerspective = new RuinsPerspective(this);
     if (['room_ruins17', 'room_ruins18OLD'].includes(name)) this.ruinsOutlook = new RuinsOutlook(this);
     if (name === 'room_ruins19') this.ruinsHome = new RuinsHome(this);
+    if (name === 'room_torhouse1') this.torielHall = new TorielHall(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -310,6 +316,7 @@ class World extends Scene {
     if (this.ruins14?.update()) return;
     if (this.ruinsPerspective?.update(delta)) return;
     if (this.ruinsPerspective?.checkTrigger()) return;
+    if (this.torielHall?.update()) return;
     if (menuPressed && this.flags[17] !== 1) {
       this.release();
       state.phase = 'loadingMenu';
@@ -322,6 +329,7 @@ class World extends Scene {
       movePlayer(this, this.player, this.colliders,
         (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction),
         (x, y, dx, dy) => this.dialogue || this.ruinsRock?.tryMove(x, y, dx, dy) || this.ruinsGoofyrock?.tryMove(x, y));
+      this.torielHall?.step();
       this.elapsed -= 1000 / 30;
       if (this.player.x !== previous.x || this.player.y !== previous.y) this.ruinsEncounter?.step();
       if (this.corridorLesson?.checkTrigger(previous)) return;
@@ -333,15 +341,19 @@ class World extends Scene {
     if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();
     const door = this.findDoor(this.player.x, this.player.y);
     if (door) {
-      this.transitionRoom(door.destination, door.marker, door.duration);
+      this.transitionRoom(door.destination, door.marker, door.duration, door.musicFade);
       return;
     }
     this.updateCamera();
     this.ruinsEncounter?.update();
   }
 
-  transitionRoom(destination, marker, duration) {
+  transitionRoom(destination, marker, duration, musicFade = false) {
     state.phase = 'transition';
+    if (musicFade && this.flags[7] !== 1) {
+      const music = this.ruinsHome?.music ?? this.torielHall?.music[0];
+      if (music) this.tweens.add({ targets: music, volume: 0, duration: 10 * 1000 / 30 });
+    }
     this.cameras.main.once('camerafadeoutcomplete', async () => {
       try {
         await this.openRoom(destination, marker);
@@ -370,6 +382,7 @@ class World extends Scene {
     if (this.ruinsPerspective?.interact()) return;
     if (this.ruinsOutlook?.interact()) return;
     if (this.ruinsHome?.interact()) return;
+    if (this.torielHall?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }

@@ -1,0 +1,69 @@
+{
+  "intro": [
+    {
+      "text": "* Do you smell that?",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Surprise!",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* It is a butterscotch-\n  cinnamon pie.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* I thought we might\n  celebrate your\n  arrival.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* I want you to have\n  a nice time living\n  here.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* So I will hold off\n  on snail pie for\n  tonight.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Here, I have another\n  surprise for you.",
+      "portrait": "spr_face_torielhappytalk"
+    }
+  ],
+  "hard": [
+    {
+      "text": "* Do you smell that?",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Er, I assume that\n  expression means you\n  do.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* S... surprise!",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* I have baked a snail\n  pie.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* I thought we might\n  celebrate your\n  arrival.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* I want you to have\n  a nice time living\n  here.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* So I...",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Here, I have another\n  surprise for you.",
+      "portrait": "spr_face_torielhappytalk"
+    }
+  ],
+  "books": [
+    "* These books are worn...\n* They must have been read\n  many times."
+  ]
+}
