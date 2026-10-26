@@ -8,7 +8,8 @@
     "dev": "node server.mjs",
     "check": "node check.mjs",
     "build:game": "node tools/build-game.mjs",
-    "build": "node tools/build-web.mjs"
+    "build": "node tools/build-web.mjs",
+    "build:pages": "node tools/build-web.mjs --pages"
   },
   "engines": { "node": ">=18" }
 }

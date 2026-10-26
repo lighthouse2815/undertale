@@ -10,6 +10,7 @@
     "check": "npm --prefix game run check",
     "build:game": "node game/tools/build-game.mjs",
     "build": "node game/tools/build-web.mjs",
+    "build:pages": "node game/tools/build-web.mjs --pages",
     "preview": "node dist/undertale-web/server.mjs",
     "test": "node tests/undertale.mjs",
     "test:build": "node tests/game-build.mjs"

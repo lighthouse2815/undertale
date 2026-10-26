@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 import { access, cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
@@ -7,6 +8,7 @@ import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 import { buildWeb } from '../game/tools/build-web.mjs';
+import { filesIn } from '../game/tools/game-assets.mjs';
 
 const executablePath = process.env.CHROME_PATH;
 assert.ok(executablePath, 'Đặt CHROME_PATH tới Chrome/Chromium có WebAssembly JSPI.');
@@ -286,6 +288,44 @@ try {
   assert.ok(staticRequests.every((url) => url.startsWith(`${origin}/undertale/`)));
   await hosted.close();
   console.log('✓ gói xuất chạy trên hosting tĩnh dưới đường dẫn con, không cần API server');
+
+  const pagesOutput = join(fixture, 'pages');
+  await buildWeb(pagesOutput, { pages: true });
+  const pagesManifest = JSON.parse(await readFile(join(pagesOutput, 'runtime.json'), 'utf8'));
+  const data = pagesManifest.files.find((file) => file.name === 'data.win');
+  assert.ok(data.parts.length > 1);
+  const chunks = await Promise.all(data.parts.map(async (part) => {
+    const bytes = await readFile(join(pagesOutput, part.url));
+    assert.equal(bytes.length, part.bytes);
+    return bytes;
+  }));
+  const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  assert.equal(Buffer.concat(chunks).length, data.bytes);
+  assert.equal(hash(Buffer.concat(chunks)), hash(await readFile(join(exported, 'runtime/game.win'))));
+  await assert.rejects(access(join(pagesOutput, 'runtime/game.win')), { code: 'ENOENT' });
+  const pagesFiles = filesIn(pagesOutput);
+  assert.ok(pagesFiles.length < 20000);
+  for (const file of pagesFiles) assert.ok((await readFile(file)).length <= 25 * 1024 * 1024, file);
+  for (const name of ['butterscotch.mjs', 'butterscotch.wasm']) {
+    assert.deepEqual(await readFile(join(pagesOutput, 'vendor/butterscotch', name)),
+      await readFile(join(root, 'game/vendor/butterscotch', name)));
+  }
+  const pagesContext = await browser.newContext();
+  const pagesPage = await pagesContext.newPage();
+  await pagesPage.goto(`${origin}/pages/`);
+  await pagesPage.waitForFunction(() => ['ready', 'error'].includes(__undertale.phase));
+  assert.equal(await pagesPage.evaluate(() => __undertale.phase), 'ready');
+  await pagesPage.click('#bootBtn');
+  await pagesPage.waitForFunction(() => __undertale.room?.name === 'room_introstory');
+  await pagesContext.close();
+  const brokenContext = await browser.newContext();
+  const brokenPage = await brokenContext.newPage();
+  await brokenPage.route('**/game.win.part2', (route) => route.fulfill({ body: 'truncated' }));
+  await brokenPage.goto(`${origin}/pages/`);
+  await brokenPage.waitForFunction(() => __undertale.phase === 'error');
+  assert.match(await brokenPage.locator('#loadStatus').textContent(), /data\.win không đầy đủ/);
+  await brokenContext.close();
+  console.log('✓ gói Pages đủ runtime, dưới giới hạn tệp, ghép đúng dữ liệu, chạy intro và phát hiện phần tải thiếu');
 } finally {
   await browser?.close();
   if (server && server.exitCode === null) {

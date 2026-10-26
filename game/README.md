@@ -94,6 +94,12 @@ bộ bằng hosting HTTP(S), kể cả dưới đường dẫn con. `runtime.jso
 Có thể tiếp tục sửa code/asset và build từ gói đã copy bằng CLI. `runtime/source.json`
 cho phép dùng lại dữ liệu chạy của bản xuất nếu nguồn chưa thay đổi.
 
+Riêng Cloudflare Pages: chạy `bash tools/build-cloudflare.sh` (Linux), hoặc
+`npm run build:pages` nếu đã cấu hình CLI. Gói `../dist/undertale-pages/` chứa đầy
+đủ runtime và tài nguyên cần chạy, chia dữ liệu thành phần tối đa 24 MiB để không
+vượt giới hạn 25 MiB/tệp. Bản này dùng cho hosting tĩnh, không chứa server Node
+hay source game để biên dịch lại; giữ source trong repository hoặc gói web đầy đủ.
+
 ## Nguồn và giới hạn kiểm thử
 
 Nội dung, GML và tài nguyên vẫn thuộc tác giả Undertale; xem `CREDITS.txt`.

@@ -72,6 +72,27 @@ Gói xuất giữ source chỉnh sửa được, kèm `runtime.json` và `runtim
 Build tự biên dịch nguồn trước khi đóng gói và kiểm tra checksum để dùng lại
 kết quả còn khớp. Thư mục xuất có sẵn phải có marker của công cụ.
 
+### Cloudflare Pages
+
+Không dùng lệnh chỉ chép `index.html`, `web/`, `assets/`: game còn cần runtime
+Butterscotch, WASM, `runtime.json` và dữ liệu biên dịch.
+
+```bash
+bash game/tools/build-cloudflare.sh
+npx wrangler@4.151.0 pages deploy --branch main
+```
+
+Script tải CLI Linux tự chứa .NET phiên bản 0.9.2.0, kiểm tra SHA-256 rồi build.
+Nếu đã có compiler, có thể đặt `UNDERTALE_MOD_CLI` và chạy `npm run build:pages`.
+Gói `dist/undertale-pages/` chỉ chứa tệp cần phục vụ, mã nguồn/giấy phép runtime;
+dữ liệu game chia thành phần tối đa 24 MiB để đáp ứng giới hạn 25 MiB/tệp của Pages.
+Trình duyệt ghép các phần vào bộ nhớ runtime trước khi bắt đầu game.
+Bản `npm run build` thông thường vẫn giữ nguyên dữ liệu một tệp và source để sửa.
+
+Với Git integration, đặt **Root directory** là thư mục gốc repository (để trống),
+**Build command** là `bash game/tools/build-cloudflare.sh`, **Build output directory**
+là `dist/undertale-pages`. `wrangler.jsonc` giữ tên project và thư mục xuất.
+
 ## Kiểm thử
 
 ```bash
@@ -87,6 +108,8 @@ game đã biên dịch. Test trình duyệt xóa toàn bộ dữ liệu chạy k
 build lại từ nguồn, kiểm tra gameplay và hosting tĩnh dưới đường dẫn con.
 `test:build` kiểm tra toàn bộ thứ tự tài nguyên, ID instance/tile, chỉnh sửa
 GML/JSON/PNG/WAV/cấu hình, cache, lỗi nguồn và hoàn tác.
+Test trình duyệt cũng kiểm tra gói Pages, checksum dữ liệu ghép, giới hạn tệp,
+chạy intro và báo lỗi khi một phần dữ liệu bị thiếu.
 
 Butterscotch có thể khác runner GameMaker ở một số hành vi. Việc nhập đủ dữ liệu
 không đồng nghĩa đã kiểm thử mọi phòng, trận đấu và cả ba tuyến đến kết thúc;

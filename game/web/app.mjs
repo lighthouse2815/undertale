@@ -139,20 +139,30 @@ async function prepare() {
     while (next < files.length) {
       const file = files[next++];
       if (!/^[A-Za-z0-9_.-]+$/.test(file.name)) throw new Error('Tên tài nguyên không hợp lệ.');
-      const result = await fetch(new URL(file.url, base), { signal: downloads.signal });
-      if (!result.ok) throw new Error(`Thiếu tài nguyên ${file.name}.`);
-      const bytes = new Uint8Array(await result.arrayBuffer());
-      // GML đã biên dịch có thể làm thay đổi kích thước data.win.
-      if (file.name === 'data.win') {
-        total += bytes.length - file.bytes;
-        progress.max = total;
-      } else if (bytes.length !== file.bytes) {
-        throw new Error(`Tài nguyên ${file.name} không đầy đủ.`);
+      const stream = module.FS.open(`/game/${file.name}`, 'w');
+      let offset = 0;
+      try {
+        for (const part of file.parts ?? [file]) {
+          const result = await fetch(new URL(part.url, base), { signal: downloads.signal });
+          if (!result.ok) throw new Error(`Thiếu tài nguyên ${file.name}.`);
+          const bytes = new Uint8Array(await result.arrayBuffer());
+          // Bản server có thể biên dịch lại data.win sau khi sửa GML.
+          if (file.name === 'data.win' && !file.parts) {
+            total += bytes.length - file.bytes;
+            progress.max = total;
+          } else if (bytes.length !== part.bytes) {
+            throw new Error(`Tài nguyên ${file.name} không đầy đủ.`);
+          }
+          module.FS.write(stream, bytes, 0, bytes.length, offset);
+          offset += bytes.length;
+          loaded += bytes.length;
+          progress.value = loaded;
+          status.textContent = `Đang tải ${Math.round(loaded / 1048576)} / ${Math.round(total / 1048576)} MB…`;
+        }
+        if (file.parts && offset !== file.bytes) throw new Error(`Tài nguyên ${file.name} không đầy đủ.`);
+      } finally {
+        module.FS.close(stream);
       }
-      module.FS.writeFile(`/game/${file.name}`, bytes);
-      loaded += bytes.length;
-      progress.value = loaded;
-      status.textContent = `Đang tải ${Math.round(loaded / 1048576)} / ${Math.round(total / 1048576)} MB…`;
     }
   });
   try {
