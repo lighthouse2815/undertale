@@ -1,7 +1,7 @@
 import { Game, Scene, Scale, CANVAS } from '../vendor/phaser.esm.min.js';
 import { loadRoom } from './room-assets.mjs';
 import { createColliders, movePlayer } from './movement.mjs';
-import { Battle } from './battle.mjs';
+import { Battle, BATTLE_CONFIGS } from './battle.mjs';
 import { readSave, writeSave } from './save.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
@@ -81,6 +81,7 @@ class World extends Scene {
     this.interactionCooldown = 0;
     this.dialogue = null;
     this.hp = this.hp ?? 20;
+    this.encounterDistance = 0;
     this.colliders = createColliders(data);
     this.elapsed = 0;
     this.cameras.main.setBounds(0, 0, data.room.Width, data.room.Height);
@@ -132,10 +133,15 @@ class World extends Scene {
       return;
     }
     this.elapsed = Math.min(this.elapsed + delta, 200);
+    const oldX = this.player.x; const oldY = this.player.y;
     while (this.elapsed >= 1000 / 30) {
       movePlayer(this, this.player, this.colliders,
         (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction));
       this.elapsed -= 1000 / 30;
+    }
+    if (this.dataSource.name === 'room_ruins1' && (this.player.x !== oldX || this.player.y !== oldY)) {
+      this.encounterDistance += Math.hypot(this.player.x - oldX, this.player.y - oldY);
+      if (this.encounterDistance >= 480) { state.startBattle('froggit'); return; }
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
     if (this.interactionCooldown === 0 && this.justConfirmed()) this.tryInteract();
@@ -303,7 +309,13 @@ class Name extends Scene {
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
   pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
-state.startBattle = () => state.game.scene.start('Battle');
+state.startBattle = (config = 'dummy') => {
+  if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
+  state.game.registry.set('battleConfig', config);
+  const world = state.scene;
+  world.scene.pause();
+  world.scene.launch('Battle');
+};
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);
   else document.querySelector('main').requestFullscreen().catch(fail);

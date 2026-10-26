@@ -71,6 +71,11 @@ try {
   await page.waitForTimeout(300);
   await page.keyboard.press('z');
   await page.waitForFunction(() => !__remake.scene.dialogue);
+  await page.evaluate(() => __remake.startBattle('froggit'));
+  await page.waitForFunction(() => __remake.phase === 'battle');
+  assert.deepEqual(await page.evaluate(() => ({ name: __remake.scene.config.name, hp: __remake.scene.enemyMaxHp })), { name: 'Froggit', hp: 30 });
+  await page.keyboard.press('x');
+  await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_area1');
   await page.evaluate(() => __remake.startBattle());
   await page.waitForFunction(() => __remake.phase === 'battle');
   assert.equal(await page.evaluate(() => __remake.scene.mode), 'menu');
