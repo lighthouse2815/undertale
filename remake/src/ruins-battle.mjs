@@ -41,6 +41,7 @@ export class RuinsBattle extends DummyBattle {
     if (this.assetError) throw this.assetError;
     if (!this.cache.bitmapFont.exists('fnt_maintext')) registerBitmapFont(this, 'fnt_maintext', this.cache.json.get('fnt_maintext'));
     colorBitmapFont(this, 'fnt_maintext', 'yellow', '#ffff00');
+    colorBitmapFont(this, 'fnt_maintext', 'pink', '#ffbbd4');
     this.monster = this.game.registry.get('battleConfig');
     this.dialogue = this.cache.json.get('ruins-battle');
     return { battleDialogue: this.monster === 'nobody' ? { intro: this.dialogue.empty } : this.dialogue[this.monster] };
@@ -108,7 +109,8 @@ export class RuinsBattle extends DummyBattle {
   drawSubmenu() {
     super.drawSubmenu();
     const yellow = (this.kind === 'mercy' || this.kind === 'fightTarget' || this.kind === 'actTarget') && this.spareable();
-    this.menu.setFont(yellow ? 'fnt_maintext:yellow' : 'fnt_maintext');
+    const preference = this.previousScene.flags[22] ?? 0;
+    this.menu.setFont(yellow && preference !== 1 ? `fnt_maintext:${preference === 2 ? 'pink' : 'yellow'}` : 'fnt_maintext');
   }
 
   updateSubmenu() {

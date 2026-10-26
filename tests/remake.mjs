@@ -17,6 +17,7 @@ import { testRuinsBattle } from './remake-ruins-battle.mjs';
 import { testRuinsPath } from './remake-ruins-path.mjs';
 import { testRuinsLate } from './remake-ruins-late.mjs';
 import { testRuins12 } from './remake-ruins-12.mjs';
+import { testRuins13 } from './remake-ruins-13.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -355,6 +356,7 @@ try {
   await testRuinsPath(page);
   await testRuinsLate(page);
   await testRuins12(page);
+  await testRuins13(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

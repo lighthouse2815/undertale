@@ -1,0 +1,193 @@
+{
+  "advice": [
+    "* Ribbit, ribbit.\n* (Sigh...)",
+    "* (My friend never listens to\n  me.)",
+    "* (Whenever I talk, they skip\n  through my words by pressing\n  X.)",
+    "* (That's right.......)\n* (Pressing X............)\n* (................)",
+    "* (Well, at least you listen\n  to me.)"
+  ],
+  "adviceEnd": [
+    "* Ribbit, ribbit.\n* (Say...)",
+    "* (Now that your journey's\n  over, maybe you'll have\n  time to listen to me.)",
+    "* (Since most people just\n  press X to skip through\n  my dialogue.)",
+    "* (That's right.......)\n* (Pressing X............)\n* (................)",
+    "* (You've really matured,\n  haven't you?)"
+  ],
+  "skipped": "* (Oh, not you too!)",
+  "skippedEnd": "* (... I suppose some things\n  never change.)",
+  "fullscreen": [
+    "* Ribbit ribbit.\n* (I heard using \"F4\" can make\n  you have a \"full screen.\")",
+    "* (But what does \"F4\" stand for?)\n* (\"Four frogs\"?)",
+    "* (I have only seen a maximum of\n  three frogs in this room...)",
+    "* (This is troubling, to say\n  the least.)\n* Ribbit."
+  ],
+  "fullscreenEnd": [
+    "* Ribbit ribbit.\n* (Did you ever find this\n  room's fourth frog?)"
+  ],
+  "sign": [
+    "* Did you miss it?\n* Spider Bakesale down and to\n  the right.",
+    "* Come eat food made by\n  spiders, for spiders,\n  of spiders!"
+  ],
+  "wall": [
+    "* (There's an ant-sized frog in\n  a crack in the wall...)\n* (It waves at you.)"
+  ],
+  "call": [
+    {
+      "text": "* Ring... ",
+      "portrait": null
+    },
+    {
+      "text": "* Hello?",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* I just realized that it\n  has been a while since\n  I have cleaned up.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* I was not expecting to\n  have company so soon.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* There are probably a lot\n  of things lying about\n  here and there.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* You can pick them up,\n  but do not carry more\n  than you need.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Someday you might see\n  something you really\n  like.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* You will want to leave\n  room in your pockets\n  for that.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "callHard": [
+    {
+      "text": "* Ring... ",
+      "portrait": null
+    },
+    {
+      "text": "* Hello?",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* I have a question.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* You like things other\n  than butterscotch or\n  cinnamon, too...",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Do you not?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* ... oh, what am I\n  asking.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* I will keep looking.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "names": {
+    "intro": [
+      "* Ribbit, ribbit.\n* (I have heard you are quite\n  merciful, for a human...)",
+      "* (Surely you know by now a\n  monster wears a YELLOW name\n  when you can SPARE it.)"
+    ],
+    "question": "* (What do you think of that?)",
+    "helpful": [
+      "* (It is rather helpful.)\n* (Remember, sparing is just\n  saying you won't fight.)",
+      "* (Maybe one day, you'll\n  have to do it even if\n  their name isn't yellow.)"
+    ],
+    "bad": [
+      "* (Really? Then, I'll tell all\n  of my friends to tell\n  their friends' friends...)",
+      "* (Never use yellow names.)\n* (How about that?)"
+    ],
+    "keep": [
+      "* (OK, they will still\n  use yellow names.)"
+    ],
+    "remove": [
+      "* (OK, I will let them\n  know not to use yellow\n  names.)"
+    ],
+    "without": [
+      "* Ribbit, ribbit.\n* (How are you doing without\n  yellow names?)"
+    ],
+    "great": [
+      "* (Glad to hear it.)\n* (Though, I do not know why\n  you dislike yellow.)",
+      "* (You had better hope you do\n  not encounter a banana-themed\n  monster.)"
+    ],
+    "restore": [
+      "* (Huh? It's rather inconvenient\n  that you changed your mind\n  like this.)",
+      "* (Since I told everyone\n  not to use yellow names,\n  everyone threw theirs out.)",
+      "* (Well, last year it was\n  fashionable to have pink \n  names.)",
+      "* (I think everyone still\n  has those in their closets\n  somewhere...)",
+      "* (I'll ask everyone to look.)\n* (But this is the last time!)"
+    ],
+    "pink": [
+      "* Ribbit, ribbit...\n* (I hope you're satisfied.)"
+    ],
+    "end": [
+      [
+        "* Ribbit ribbit.\n* (Yellow names were nice for\n  a while.)",
+        "* (Next time, we should try a\n  relaxing shade of green.)"
+      ],
+      [
+        "* Ribbit ribbit.\n* (How was your adventure?)",
+        "* (It must have been difficult\n  without being able to tell\n  the enemy's feelings.)"
+      ],
+      [
+        "* Ribbit ribbit.\n* (Finally, we can all remove\n  these aging pink names.)",
+        "* (Everyone gave you a big favor\n  today.)\n* (Try to respect that!)"
+      ]
+    ]
+  },
+  "bakesale": {
+    "sign": [
+      "* Spider Bake Sale\n* All proceeds go to real\n  spiders."
+    ],
+    "small": {
+      "prompt": "* Leave 7G in the web?",
+      "success": [
+        "* Some spiders crawled down\n  and gave you a donut."
+      ],
+      "poor": [
+        "* You didn't have enough\n  gold."
+      ],
+      "full": [
+        "* You are carrying too\n  many items."
+      ],
+      "no": [
+        "*"
+      ]
+    },
+    "big": {
+      "prompt": "* Leave 18G in the web?",
+      "success": [
+        "* Some spiders crawled down\n  and gave you a jug."
+      ],
+      "poor": [
+        "* You didn't have enough\n  gold."
+      ],
+      "full": [
+        "* You are carrying too\n  many items."
+      ],
+      "no": [
+        "*"
+      ]
+    }
+  }
+}

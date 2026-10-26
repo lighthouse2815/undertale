@@ -1,5 +1,6 @@
 import { inInteractionRange, touchesObject, walkNpc } from './npc.mjs';
 import { createCollider } from './movement.mjs';
+import { spawnStalkerFlowey, updateStalkerFlowey } from './stalker-flowey.mjs';
 
 // obj_toroverworld7, obj_torieltrigger4, obj_tordogcall và obj_stalkerflowey.
 export class CorridorLesson {
@@ -75,13 +76,8 @@ export class CorridorLesson {
     const world = this.world, npc = this.entry.image;
     npc.setTexture('spr_toriel_lt:0');
     this.stage = 'phone'; world.phone = [201, 203, 204, 205];
-    this.flowey = world.add.sprite(160, 100, 'spr_floweysink:0').setOrigin(0).setDepth(100);
-    if (!world.anims.exists('flowey-corridor-sink')) world.anims.create({ key: 'flowey-corridor-sink', frameRate: 15,
-      frames: Array.from({ length: world.dataSource.sprites.get('spr_floweysink').TextureCount }, (_, i) => ({ key: `spr_floweysink:${i}` })) });
-    this.flowey.once('animationcomplete', () => {
-      world.flags[9] = (world.flags[9] ?? 0) + 1;
-      this.flowey.destroy(); this.flowey = null;
-    });
+    this.flowey = spawnStalkerFlowey(world, 160, 100);
+    this.flowey.once('destroy', () => { this.flowey = null; });
     world.showDialogue(this.text.phone, { portrait: true, onClose: () => {
       this.stage = 'complete'; this.locked = false; this.dogFrames = 0;
       this.leavePath = walkNpc(world, npc, 'path_walkright', { absolute: false, onComplete: () => npc.destroy() });
@@ -90,12 +86,7 @@ export class CorridorLesson {
   }
 
   updateFlowey() {
-    if (!this.flowey || this.flowey.anims.isPlaying) return;
-    const camera = this.world.cameras.main;
-    if (this.flowey.x > camera.scrollX - 37 && this.flowey.x < camera.scrollX + camera.width + 37
-      && this.flowey.y > camera.scrollY - 18 && this.flowey.y < camera.scrollY + camera.height + 18) {
-      this.flowey.play('flowey-corridor-sink');
-    }
+    updateStalkerFlowey(this.world, this.flowey);
   }
 
   call(index) {

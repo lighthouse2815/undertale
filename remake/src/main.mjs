@@ -19,6 +19,7 @@ import { RuinsEncounter } from './ruins-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
+import { Ruins13Lesson } from './ruins13.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -52,7 +53,9 @@ const ROOM_EXITS = {
   room_ruins9: { A: 'room_ruins10', B: 'room_ruins8' },
   room_ruins10: { A: 'room_ruins11', B: 'room_ruins9' },
   room_ruins11: { A: 'room_ruins12', B: 'room_ruins10' },
-  room_ruins12: { B: 'room_ruins11' },
+  room_ruins12: { A: 'room_ruins12A', B: 'room_ruins11' },
+  room_ruins12A: { A: 'room_ruins12B', B: 'room_ruins12' },
+  room_ruins12B: { B: 'room_ruins12A' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -93,6 +96,7 @@ class World extends Scene {
     this.ruinsRock = null; this.ruinsHoles?.destroy(); this.ruinsHoles = null;
     this.ruinsGoofyrock?.destroy(); this.ruinsGoofyrock = null;
     this.ruins12?.destroy(); this.ruins12 = null;
+    this.ruins13?.destroy(); this.ruins13 = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -162,11 +166,12 @@ class World extends Scene {
     this.player.facing = facing; this.player.frameIndex = 0;
     this.doors = data.room.GameObjects.flatMap((item) => {
       const match = /^obj_door([ABCD])(musicfade)?$/.exec(item.ObjectName);
-      const destination = match && ROOM_EXITS[name]?.[match[1]];
+      const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12' })[name];
+      const destination = special || (match && ROOM_EXITS[name]?.[match[1]]);
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
-      return [{ destination, direction: match[1], marker: ({ A: 'obj_markerA', B: 'obj_markerB', C: 'obj_markerC', D: 'obj_markerD' })[match[1]] ?? 'obj_markerA',
-        duration: (match[2] ? 13 : 8) * 1000 / 30,
+      return [{ destination, direction: special ? 'X' : match[1], marker: special ? 'obj_markerX' : ({ A: 'obj_markerA', B: 'obj_markerB', C: 'obj_markerC', D: 'obj_markerD' })[match[1]] ?? 'obj_markerA',
+        duration: (special ? 14 : match[2] ? 13 : 8) * 1000 / 30,
         left: item.X + (sprite.MarginLeft - sprite.OriginX) * item.ScaleX,
         right: item.X + (sprite.MarginRight - sprite.OriginX) * item.ScaleX,
         top: item.Y + (sprite.MarginTop - sprite.OriginY) * item.ScaleY,
@@ -200,6 +205,7 @@ class World extends Scene {
     if (name === 'room_ruins11') this.ruinsGoofyrock = new RuinsGoofyrock(this);
     if (name === 'room_ruins12') this.ruins12 = new Ruins12Lesson(this);
     if (name === 'room_ruins12A') this.ruins12 = new Ruins12Lesson(this);
+    if (['room_ruins12B', 'room_ruins13'].includes(name)) this.ruins13 = new Ruins13Lesson(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -227,6 +233,7 @@ class World extends Scene {
         this.choiceUi[0].x = this.dialogue.choice.index === 0 ? 89 : 185;
         this.sound.play('snd_squeak');
       }
+      if (['KeyX', 'ShiftLeft', 'ShiftRight'].includes(event.code) && state.phase === 'running') this.dialogue?.onCancel?.();
       if (['KeyZ', 'Enter'].includes(event.code)) { this.confirmDown = true; this.confirmPressed = true; }
       if (['KeyC', 'ControlLeft', 'ControlRight'].includes(event.code) && state.phase === 'running' && !this.dialogue) this.menuPressed = true;
     };
@@ -250,7 +257,10 @@ class World extends Scene {
   }
 
   update(_time, delta) {
-    if (['running', 'menu', 'loadingMenu'].includes(state.phase)) this.ruinsStart?.animate();
+    if (['running', 'menu', 'loadingMenu'].includes(state.phase)) {
+      this.ruinsStart?.animate();
+      this.ruins13?.animate();
+    }
     if (['menu', 'loadingMenu'].includes(state.phase)) {
       this.spikeGuide?.updateMotion(delta);
       this.corridorLesson?.updateFlowey();
@@ -270,6 +280,7 @@ class World extends Scene {
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
     if (this.ruinsStart?.update()) return;
+    if (this.ruins13?.update()) return;
     if (menuPressed && this.flags[17] !== 1) {
       this.release();
       state.phase = 'loadingMenu';
@@ -316,6 +327,7 @@ class World extends Scene {
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;
     if (this.ruins12?.interact()) return;
+    if (this.ruins13?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
@@ -346,10 +358,10 @@ class World extends Scene {
       ? this.dataSource.tutorialDialogue.sign : DIALOGUES[target.entry.item.ObjectName]);
   }
 
-  showDialogue(lines, { portrait = false, onClose, onPage } = {}) {
+  showDialogue(lines, { portrait = false, onClose, onPage, onCancel } = {}) {
     this.confirmPressed = false;
     this.confirmWasDown = this.confirmDown;
-    this.dialogue = { lines, index: 0, onClose, onPage };
+    this.dialogue = { lines, index: 0, onClose, onPage, onCancel };
     const y = this.player.y - this.cameras.main.scrollY > 130 ? 8 : 160;
     this.dialogueBox = this.add.rectangle(8, y, 304, 70, 0x000000).setOrigin(0).setScrollFactor(0).setDepth(100000).setStrokeStyle(2, 0xffffff);
     const x = portrait ? 68 : 18;

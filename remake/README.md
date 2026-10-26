@@ -23,6 +23,8 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Phòng lá `room_ruins7`: cuộc gọi Toriel một lần đưa `plot` lên `9.2`, có nhánh sau chuỗi chó giữ điện thoại và cờ 37; Froggit nhỏ đổi hình, nói chuyện theo cờ tuyến và biến mất nếu đã đánh bại quái. Savepoint có lời thoại và tên khu vực riêng.
 - Phòng 8 nối từ cửa C phòng lá, giữ hai hố rơi có khóa điều khiển và đưa Frisk qua tầng theo mốc gốc. Phòng 9 nối cửa phải, có cột gai, tường `plotwall4` và đá đẩy một lần: chạm đá khi nhìn sang phải lùi Frisk 6 pixel, đá đi 60 pixel, đặt cờ 35, mở tường và đổi gai sang trạng thái an toàn. Lưu/nạp trong phòng 9 giữ cờ 35.
 - Phòng 10 nối từ phòng 9, giữ các hố rơi và cửa hai chiều. Phòng 12 nối tiếp sau Goofyrock: Napstablook có hộp chọn Yes/No, lời thoại ngủ và lời chia sẻ sau mốc `plot = 10.4`, rồi biến mất ở `plot = 11`. Phòng 12A giữ bảng cheese, Savepoint và cửa hai chiều. Phòng 11 có Goofyrock theo chuỗi 5 mốc tương tác; các lần hỏi/đẩy đổi vị trí đá, đặt cờ 33 ở mốc cuối, tắt tường `plotwall5` và đổi gai sang an toàn. Nạp lại phòng sau cờ 33 giữ đá ở vị trí cuối.
+- Phòng 12B có Spider Bake Sale: mua Spider Donut 7G hoặc Spider Cider 18G, kiểm tra thiếu GOLD/túi đầy, cập nhật cờ đóng góp 59 và giữ nguyên tiền/đồ khi từ chối. Đường đi đúng là cửa phải phòng 12 → 12A → 12B; cửa trên phòng 12 ↔ phòng 13 dùng markerX và thời gian chuyển cảnh riêng.
+- Phòng 13 có biển quảng cáo, Froggit trong khe tường và ba Froggit nhỏ với lời thoại gốc: phản ứng khi nhấn X, lời nhắc F4 và lựa chọn giữ/bỏ màu vàng rồi đổi sang màu hồng. Trận Froggit/Whimsun đọc cờ màu tên 22, cờ được lưu/nạp. Cuộc gọi bánh của Toriel kích hoạt theo vùng va chạm vô hình, có nhánh thường/cờ 6 và chân dung theo trang; chỉ đặt `plot = 12` khi kết thúc. Flowey xuất hiện phía sau và chìm khi camera nhìn thấy.
 - Phòng kẹo `room_ruins7A`: chọn Yes/No bằng trái/phải rồi Z, không nhận khi túi đủ 8 món, phản hồi theo số lần lấy. Lần thứ tư làm đổ bát kẹo; nhánh cờ 6 chỉ lấy được ba viên. Lưu/nạp giữ trạng thái bát và kẹo.
 - Savepoint đầu Ruins hồi HP, hiện lời thoại gốc rồi mở Save/Return; X hoặc Return giữ file cũ, Save hiện xác nhận khi ghi thành công. Menu dùng font bitmap, con trỏ trái tim và âm thanh gốc.
 - Đối tượng nhìn thấy và vùng đọc được lấy từ object JSON; Z mở hộp thoại theo đối tượng và khóa di chuyển tạm thời.
@@ -35,7 +37,7 @@ GameMaker VM, file `.win` hay thực thi GML trong bản viết lại.
 - Đóng gói hosting tĩnh, chạy dưới đường dẫn con, không cần compiler GML.
 
 **Đã chuyển một phần mở đầu đến hành lang Ruins, chưa phải Undertale đầy đủ.**
-Chưa chuyển nhóm nhiều quái/hard mode tại `room_ruins7` và các event nhân vật/phòng 12 trở đi và các sự kiện từ `room_ruins8`, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, các vật phẩm sau ID 13, các mục điện thoại sau Toriel và menu đầy đủ,
+Chưa chuyển trận Napstablook; tương tác hiện tại với Napstablook chưa tái hiện đầy đủ diễn biến gốc. Chưa chuyển lời thoại SAVE/âm thanh chuột ở phòng 12A, nhóm nhiều quái/hard mode tại `room_ruins7`, encounter phòng 8–13, các sự kiện còn lại từ phòng 8 và phòng 14 trở đi, các cửa ngoài chuỗi phòng trên, hội thoại đầy đủ, cảnh mở đầu Flowey và các cảnh Toriel khác, các vật phẩm sau ID 13, các mục điện thoại sau Toriel và menu đầy đủ,
 ACT/ITEM/MERCY theo từng quái, toàn bộ trạng thái lưu/nạp và menu Continue, những khu vực và nhánh kết thúc khác.
 Va chạm chéo hiện dùng mask để chặn; hành vi trượt dọc góc của code gốc chưa được chuyển.
 Các đối tượng/sự kiện GML trong phòng không được tự động coi là đã hỗ trợ.
@@ -118,7 +120,10 @@ thuộc tác giả Undertale; xem `CREDITS.txt` trong gói xuất.
 | `src/ruins-battle.mjs` | Trận đơn Froggit/Whimsun, ACT, FIGHT/MERCY, phần thưởng, Game Over |
 | `src/ruins-battle.json` | Lời thoại trận thường và Game Over |
 | `src/ruins-waves.mjs` | Generator đạn leapfrog, fly và butterfly |
-| `src/ruins12.mjs` | Napstablook phòng 12 và cheese phòng 12A |
+| `src/ruins12.mjs` | Tương tác Napstablook phòng 12 và cheese phòng 12A; chưa có trận Napstablook |
+| `src/ruins13.mjs` | Spider Bake Sale, Froggit nhỏ, màu tên quái và cuộc gọi Toriel phòng 13 |
+| `src/ruins13.json` | Hội thoại gốc phòng 12B/13 và nhánh mua đồ |
+| `src/stalker-flowey.mjs` | Flowey chìm khi camera nhìn thấy, dùng chung cho hành lang và phòng 13 |
 | `src/ruins-goofyrock.mjs` | Chuỗi Goofyrock phòng 11, cờ 33 và gai/tường mở |
 | `src/ruins-rock.mjs` | Hố rơi phòng 8 và đá/tường/gai phòng 9 |
 | `src/ruins-encounter.mjs` | Bộ đếm bước và nhóm encounter đơn đầu Ruins |
