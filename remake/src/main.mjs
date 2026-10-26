@@ -4,6 +4,7 @@ import { createColliders, movePlayer } from './movement.mjs';
 import { Battle, BATTLE_CONFIGS } from './battle.mjs';
 import { readSave, writeSave } from './save.mjs';
 import { SaveMenu } from './save-menu.mjs';
+import { RuinsTutorial } from './ruins-tutorial.mjs';
 
 const state = window.__remake = { phase: 'loading', room: null, error: null, scene: null };
 const status = document.getElementById('status');
@@ -26,7 +27,8 @@ const ROOM_EXITS = {
   room_area1: { A: 'room_area1_2' },
   room_area1_2: { A: 'room_ruins1', B: 'room_area1' },
   room_ruins1: { A: 'room_ruins2', B: 'room_area1_2' },
-  room_ruins2: { B: 'room_ruins1' },
+  room_ruins2: { A: 'room_ruins3', B: 'room_ruins1' },
+  room_ruins3: { B: 'room_ruins2' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -49,6 +51,8 @@ class World extends Scene {
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
+    this.ruinsTutorial?.destroy();
+    this.ruinsTutorial = null;
     const facing = this.player?.facing ?? 'd';
     const data = await loadRoom(this, name);
     this.children.removeAll(true);
@@ -73,6 +77,7 @@ class World extends Scene {
       // Create/RoomStart gốc: không đọc hoa khi mới rơi xuống; Toriel ở đây khi plot = 25.
       if (item.ObjectName === 'obj_readable_flowers1' && (this.plot ?? 0) === 0) continue;
       if (item.ObjectName === 'obj_torinteractable7' && this.plot !== 25) continue;
+      if (name === 'room_ruins2' && this.plot > 2 && ['obj_ruinsdoor1', 'obj_toroverworld3'].includes(item.ObjectName)) continue;
       const object = data.objects.get(item.ObjectName);
       const interactable = Boolean(object && (inherits(item.ObjectName, 'obj_readable') || inherits(item.ObjectName, 'obj_interactable')
         || item.ObjectName.includes('readable') || item.ObjectName.includes('torinteractable')));
@@ -98,7 +103,7 @@ class World extends Scene {
       const destination = match && ROOM_EXITS[name]?.[match[1]];
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
-      return [{ destination, marker: match[1] === 'A' ? 'obj_markerA' : 'obj_markerB',
+      return [{ destination, direction: match[1], marker: match[1] === 'A' ? 'obj_markerA' : 'obj_markerB',
         duration: (match[2] ? 13 : 8) * 1000 / 30,
         left: item.X + (sprite.MarginLeft - sprite.OriginX) * item.ScaleX,
         right: item.X + (sprite.MarginRight - sprite.OriginX) * item.ScaleX,
@@ -119,6 +124,7 @@ class World extends Scene {
     this.elapsed = 0;
     this.cameras.main.setBounds(0, 0, data.room.Width, data.room.Height);
     this.updateCamera();
+    if (name === 'room_ruins2') this.ruinsTutorial = new RuinsTutorial(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -139,7 +145,7 @@ class World extends Scene {
       };
     }
     this.release = () => { this.input.keyboard.resetKeys(); this.touch.clear(); };
-    this.confirmPress = (event) => { if (event.code === 'KeyZ') { this.confirmDown = true; this.confirmPressed = true; } };
+    this.confirmPress = (event) => { if (event.code === 'KeyZ' && !event.repeat) { this.confirmDown = true; this.confirmPressed = true; } };
     this.confirmRelease = (event) => { if (event.code === 'KeyZ') this.confirmDown = false; };
     window.addEventListener('keydown', this.confirmPress);
     window.addEventListener('keyup', this.confirmRelease);
@@ -165,6 +171,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
+    if (this.ruinsTutorial?.update()) return;
     this.elapsed = Math.min(this.elapsed + delta, 200);
     while (this.elapsed >= 1000 / 30) {
       movePlayer(this, this.player, this.colliders,
@@ -190,7 +197,8 @@ class World extends Scene {
 
   findDoor(x, y) {
     const sprite = this.dataSource.sprites.get(`spr_mainchara${this.player.facing}`);
-    return this.doors.find((entry) => x + sprite.MarginRight >= entry.left
+    return this.doors.find((entry) => !(entry.direction === 'A' && this.ruinsTutorial && !this.ruinsTutorial.gateOpen)
+      && x + sprite.MarginRight >= entry.left
       && x + sprite.MarginLeft <= entry.right
       && y + sprite.MarginBottom >= entry.top
       && y + sprite.MarginTop <= entry.bottom);
@@ -198,7 +206,8 @@ class World extends Scene {
 
   tryInteract() {
     const target = this.roomObjects
-      .filter((entry) => entry.interactable && DIALOGUES[entry.item.ObjectName])
+      .filter((entry) => entry.interactable && (DIALOGUES[entry.item.ObjectName]
+        || (this.dataSource.name === 'room_ruins2' && entry.item.ObjectName === 'obj_readable_room1')))
       .map((entry) => ({ entry, distance: Math.hypot(this.player.x - entry.item.X, this.player.y - entry.item.Y) }))
       .filter(({ distance }) => distance < 45)
       .sort((a, b) => a.distance - b.distance)[0];
@@ -206,14 +215,27 @@ class World extends Scene {
     if (target.entry.item.ObjectName === 'obj_savepoint') {
       this.hp = Math.max(this.hp, this.maxHp);
       this.sound.play('snd_power', { volume: 0.88 });
-      this.dialogue = { lines: DIALOGUES.obj_savepoint, index: 0, onClose: () => {
+      this.showDialogue(DIALOGUES.obj_savepoint, { onClose: () => {
         this.plot = Math.max(this.plot, 2);
         this.scene.pause();
         this.scene.launch('SaveMenu');
-      } };
-    } else this.dialogue = { lines: DIALOGUES[target.entry.item.ObjectName], index: 0 };
-    this.dialogueBox = this.add.rectangle(8, 160, 304, 70, 0x000000, .94).setOrigin(0).setScrollFactor(0).setDepth(100000);
-    this.dialogueText = this.add.text(18, 170, this.dialogue.lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 }).setScrollFactor(0).setDepth(100001);
+      } });
+    } else this.showDialogue(target.entry.item.ObjectName === 'obj_readable_room1'
+      ? this.dataSource.tutorialDialogue.sign : DIALOGUES[target.entry.item.ObjectName]);
+  }
+
+  showDialogue(lines, { portrait = false, onClose } = {}) {
+    this.confirmPressed = false;
+    this.confirmWasDown = this.confirmDown;
+    this.dialogue = { lines, index: 0, onClose };
+    const y = this.player.y - this.cameras.main.scrollY > 130 ? 8 : 160;
+    this.dialogueBox = this.add.rectangle(8, y, 304, 70, 0x000000).setOrigin(0).setScrollFactor(0).setDepth(100000).setStrokeStyle(2, 0xffffff);
+    const x = portrait ? 68 : 18;
+    this.dialogueText = this.cache.bitmapFont.exists('fnt_maintext')
+      ? this.add.bitmapText(x, y + 8, 'fnt_maintext', lines[0], 12).setMaxWidth(300 - x)
+      : this.add.text(x, y + 10, lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 });
+    this.dialogueText.setScrollFactor(0).setDepth(100001);
+    this.dialoguePortrait = portrait ? this.add.image(23, y + 19, 'spr_face_torielhappytalk:0').setOrigin(0).setScrollFactor(0).setDepth(100001) : null;
     this.interactionCooldown = 250;
   }
 
@@ -230,6 +252,7 @@ class World extends Scene {
     if (this.dialogue.index >= this.dialogue.lines.length) {
       const onClose = this.dialogue.onClose;
       this.dialogueBox.destroy(); this.dialogueText.destroy(); this.dialogue = null;
+      this.dialoguePortrait?.destroy();
       onClose?.();
     } else this.dialogueText.setText(this.dialogue.lines[this.dialogue.index]);
     this.interactionCooldown = 250;
