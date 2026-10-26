@@ -1,0 +1,359 @@
+{
+  "labels": {
+    "field_menu_item": "ITEM",
+    "field_menu_stat": "STAT",
+    "field_menu_cell": "CELL",
+    "stat_menu_name": "\"\\[C]\"",
+    "stat_menu_lv": "LV  \\[1]",
+    "stat_menu_hp": "HP  \\[1] / \\[2]",
+    "stat_menu_at": "AT  \\[1] (\\[2])",
+    "stat_menu_df": "DF  \\[1] (\\[2])",
+    "stat_menu_weapon": "WEAPON: \\[1]",
+    "stat_menu_armor": "ARMOR: \\[1]",
+    "stat_menu_gold": "GOLD: \\[G]",
+    "stat_menu_kills": "KILLS: \\[1]",
+    "stat_menu_exp": "EXP: \\[1]",
+    "stat_menu_next": "NEXT: \\[1]"
+  },
+  "phoneNames": {
+    "201": "Say Hello",
+    "202": "Puzzle Help",
+    "203": "About Yourself",
+    "204": "Call Her \"Mom\"",
+    "205": "Flirt"
+  },
+  "equipmentNames": {
+    "3": "Stick",
+    "4": "Bandage"
+  },
+  "hello": [
+    [
+      {
+        "text": "* Dialing... ",
+        "portrait": null
+      },
+      {
+        "text": "* This is TORIEL.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* You only wanted to\n  say hello...?\n* Well then.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* 'Hello!'",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* I hope that suffices.\n* Hee hee.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Click...",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* Dialing... ",
+        "portrait": null
+      },
+      {
+        "text": "* This is TORIEL.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* You want to say\n  hello again?",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* 'Salutations!'",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Is that enough?",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Click...",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* Dialing... ",
+        "portrait": null
+      },
+      {
+        "text": "* This is TORIEL.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Are you bored?\n* I should have given\n  a book to you.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* My apologies.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Why not use your\n  imagination to\n  divert yourself?",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Pretend you are...\n* A monarch!",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Rule over the leaf pile\n  with a fist of iron.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Can you do that for me?",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Click...",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* Dialing... ",
+        "portrait": null
+      },
+      {
+        "text": "* This is TORIEL.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Hello, my child.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Sorry, I do not have\n  much to say.",
+        "portrait": "spr_face_torieltalkside"
+      },
+      {
+        "text": "* It was nice to hear\n  your voice, though.",
+        "portrait": "spr_face_torielhappytalk"
+      },
+      {
+        "text": "* Click...",
+        "portrait": null
+      }
+    ]
+  ],
+  "help": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* This is TORIEL.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Help with a puzzle...?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Um, you have not\n  left the room, have you?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Wait patiently for\n  me and we can solve\n  it together!",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "about": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* This is TORIEL.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* You want to know\n  more about me?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Well, I am afraid there\n  is not much to say.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* I am just a silly little\n  lady who worries too\n  much!",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "mom": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* This is TORIEL.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Huh?\n* Did you just call\n  me... \"Mom\"?",
+      "portrait": "spr_face_torielembarrassed"
+    },
+    {
+      "text": "* Well...\n* I suppose...",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Would that make you\n  happy?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* To call me...\n* \"Mother?\"",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Well then, call me\n  whatever you like!/!",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "flirtFirst": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* ... huh???",
+      "portrait": "spr_face_torielembarrassed"
+    },
+    {
+      "text": "* Oh, heh.. heh...  \n* Ha ha ha!",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* How adorable... I\n  could pinch your cheek!",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* You can certainly find\n  better than an old woman\n  like me.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "flirtSecond": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* Oh dear, are you\n  serious...?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* I do not know if this is\n  pathetic, or endearing.",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "flirtMom": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* Oh dear, are you\n  serious...?",
+      "portrait": "spr_face_torieltalkside"
+    },
+    {
+      "text": "* And after you said you\n  want to call\n  me \"mother...\"",
+      "portrait": "spr_face_torielembarrassed"
+    },
+    {
+      "text": "* You are an... \n  ... \"interesting\"\n  child.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "noAnswer": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* ... ",
+      "portrait": null
+    },
+    {
+      "text": "* Nobody picked up.",
+      "portrait": null
+    }
+  ],
+  "silent": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* ... ",
+      "portrait": null
+    },
+    {
+      "text": "* But nobody came.",
+      "portrait": null
+    }
+  ],
+  "house": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* Hey, you silly\n  child.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* If you want to\n  talk to me, I am\n  right here.",
+      "portrait": "spr_face_torielhappytalk"
+    },
+    {
+      "text": "* Click...",
+      "portrait": null
+    }
+  ],
+  "busy": [
+    {
+      "text": "* Dialing... ",
+      "portrait": null
+    },
+    {
+      "text": "* ... ",
+      "portrait": null
+    },
+    {
+      "text": "* (Somewhere, signals deflected\n  by a dog.)",
+      "portrait": null
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import { registerBitmapFont, colorBitmapFont } from './fonts.mjs';
+
 // Chỉ đọc JSON/PNG của phòng đang mở. Không thực thi GML hoặc nạp data.win.
 export async function loadRoom(scene, name) {
   const base = new URL('../assets/', import.meta.url);
@@ -90,27 +92,7 @@ export async function loadRoom(scene, name) {
     for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.wav`, base).href);
     scene.load.start();
   });
-  if (font) {
-    // Chuyển metric font GameMaker sang dữ liệu BitmapText của Phaser; giữ atlas gốc.
-    const { width, height } = scene.textures.get('fnt_maintext').getSourceImage();
-    const chars = Object.fromEntries(font.Glyphs.map((glyph) => [glyph.C, {
-      x: glyph.X, y: glyph.Y, width: glyph.W, height: glyph.H,
-      centerX: Math.floor(glyph.W / 2), centerY: Math.floor(glyph.H / 2),
-      xOffset: glyph.O, yOffset: 0, xAdvance: glyph.S, data: {}, kerning: {},
-      u0: glyph.X / width, v0: glyph.Y / height,
-      u1: (glyph.X + glyph.W) / width, v1: (glyph.Y + glyph.H) / height,
-    }]));
-    scene.cache.bitmapFont.add('fnt_maintext', { texture: 'fnt_maintext', frame: null,
-      data: { font: 'fnt_maintext', size: font.EmSize, lineHeight: font.LineHeight || 16, chars } });
-    // BitmapText của Phaser Canvas không hỗ trợ tint; nhuộm atlas một lần, dùng lại cache.
-    const yellow = scene.textures.createCanvas('fnt_maintext:yellow', width, height);
-    yellow.context.drawImage(scene.textures.get('fnt_maintext').getSourceImage(), 0, 0);
-    yellow.context.globalCompositeOperation = 'source-in';
-    yellow.context.fillStyle = '#ffff00';
-    yellow.context.fillRect(0, 0, width, height);
-    yellow.refresh();
-    scene.cache.bitmapFont.add('fnt_maintext:yellow', { texture: 'fnt_maintext:yellow', frame: null,
-      data: scene.cache.bitmapFont.get('fnt_maintext').data });
-  }
+  if (font) registerBitmapFont(scene, 'fnt_maintext', font);
+  if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
   return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue };
 }

@@ -15,17 +15,13 @@ export class SpikeGuide {
     this.wall.disabled = world.plot > 7;
   }
 
-  update(delta) {
+  updateMotion(delta) {
     const world = this.world;
     for (const entry of this.tiles) {
       const contact = (this.stage !== 'escort' && touchesObject(world, world.player, entry.item))
         || (this.stage === 'following' && touchesObject(world, this.entry.image, entry.item));
       if (contact) entry.until = world.time.now + 6 * 1000 / 30;
       entry.image.setTexture(`spr_spiketile:${entry.until > world.time.now ? 1 : 0}`);
-    }
-    if (this.stage === 'intro' && !world.dialogue) {
-      this.stage = 'explaining';
-      world.showDialogue(this.text.intro, { portrait: true, onClose: () => this.follow() });
     }
     if (this.stage === 'following') {
       const npc = this.entry.image;
@@ -40,6 +36,15 @@ export class SpikeGuide {
       if (this.waitTime <= 0 && world.player.y < npc.x - 40) {
         this.chain.timeScale = 0; npc.setTexture('spr_toriel_l:0'); this.waiting = false;
       }
+    }
+  }
+
+  update(delta) {
+    const world = this.world;
+    this.updateMotion(delta);
+    if (this.stage === 'intro' && !world.dialogue) {
+      this.stage = 'explaining';
+      world.showDialogue(this.text.intro, { portrait: true, onClose: () => this.follow() });
     }
     if (!this.locked && !world.dialogue && world.flags[30] !== 1 && touchesObject(world, world.player, this.trigger, 1, 50)) {
       world.flags[30] = 1;

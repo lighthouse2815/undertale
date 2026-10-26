@@ -1,6 +1,6 @@
 import { DummyBattle } from './dummy-battle.mjs';
 
-const LEVEL_THRESHOLDS = [0, 10, 30, 70, 120, 200, 300, 500, 800, 1200, 1700, 2500, 3500, 5000, 7000, 10000, 15000, 25000, 50000, 99999];
+import { LEVEL_THRESHOLDS } from './levels.mjs';
 
 // Trận battlegroup 3 dùng cùng menu hướng dẫn; obj_fakefroggit gọi Toriel sau hành động đầu.
 export class TutorialFroggit extends DummyBattle {

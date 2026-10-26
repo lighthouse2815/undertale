@@ -4,6 +4,7 @@ import { createColliders, movePlayer } from './movement.mjs';
 import { Battle, BATTLE_CONFIGS } from './battle.mjs';
 import { readSave, writeSave } from './save.mjs';
 import { SaveMenu } from './save-menu.mjs';
+import { FieldMenu } from './field-menu.mjs';
 import { RuinsTutorial } from './ruins-tutorial.mjs';
 import { RuinsSwitches } from './ruins-switches.mjs';
 import { DummyLesson } from './dummy-lesson.mjs';
@@ -60,6 +61,8 @@ class World extends Scene {
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
+    this.scene.stop('FieldMenu');
+    state.scene = this;
     this.ruinsTutorial?.destroy();
     this.ruinsTutorial = null;
     this.ruinsSwitches?.destroy();
@@ -143,6 +146,7 @@ class World extends Scene {
         top: item.Y + (sprite.MarginTop - sprite.OriginY) * item.ScaleY,
         bottom: item.Y + (sprite.MarginBottom - sprite.OriginY) * item.ScaleY }];
     });
+    this.menuPressed = false;
     this.confirmDown = false;
     this.confirmPressed = false;
     this.confirmWasDown = false;
@@ -183,8 +187,12 @@ class World extends Scene {
       };
     }
     this.release = () => { this.input.keyboard.resetKeys(); this.touch.clear(); };
-    this.confirmPress = (event) => { if (event.code === 'KeyZ' && !event.repeat) { this.confirmDown = true; this.confirmPressed = true; } };
-    this.confirmRelease = (event) => { if (event.code === 'KeyZ') this.confirmDown = false; };
+    this.confirmPress = (event) => {
+      if (event.repeat) return;
+      if (['KeyZ', 'Enter'].includes(event.code)) { this.confirmDown = true; this.confirmPressed = true; }
+      if (['KeyC', 'ControlLeft', 'ControlRight'].includes(event.code) && state.phase === 'running' && !this.dialogue) this.menuPressed = true;
+    };
+    this.confirmRelease = (event) => { if (['KeyZ', 'Enter'].includes(event.code)) this.confirmDown = false; };
     window.addEventListener('keydown', this.confirmPress);
     window.addEventListener('keyup', this.confirmRelease);
     window.addEventListener('blur', this.release);
@@ -204,7 +212,13 @@ class World extends Scene {
   }
 
   update(_time, delta) {
+    if (['menu', 'loadingMenu'].includes(state.phase)) {
+      this.spikeGuide?.updateMotion(delta);
+      this.corridorLesson?.updateFlowey();
+      return;
+    }
     if (state.phase !== 'running') return;
+    const menuPressed = this.menuPressed; this.menuPressed = false;
     const guideLocked = this.spikeGuide?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
@@ -214,6 +228,12 @@ class World extends Scene {
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
+    if (menuPressed && this.flags[17] !== 1) {
+      this.release();
+      state.phase = 'loadingMenu';
+      this.scene.launch('FieldMenu');
+      return;
+    }
     this.elapsed = Math.min(this.elapsed + delta, 200);
     while (this.elapsed >= 1000 / 30) {
       const previous = { x: this.player.x, y: this.player.y };
@@ -288,9 +308,19 @@ class World extends Scene {
       ? this.add.bitmapText(x, y + 8, 'fnt_maintext', lines[0], 12).setMaxWidth(300 - x)
       : this.add.text(x, y + 10, lines[0], { fontFamily: 'monospace', fontSize: '9px', color: '#fff', lineSpacing: 3 });
     this.dialogueText.setScrollFactor(0).setDepth(100001);
-    this.dialoguePortrait = portrait ? this.add.image(23, y + 19, `${typeof portrait === 'string' ? portrait : 'spr_face_torielhappytalk'}:0`).setOrigin(0).setScrollFactor(0).setDepth(100001) : null;
+    this.dialoguePortrait = null;
+    this.setDialoguePortrait(portrait);
     onPage?.(0);
     this.interactionCooldown = 250;
+  }
+
+  setDialoguePortrait(portrait) {
+    const x = portrait ? 68 : 18;
+    this.dialogueText.x = x;
+    this.dialogueText.setMaxWidth?.(300 - x);
+    this.dialoguePortrait?.destroy();
+    this.dialoguePortrait = portrait ? this.add.image(23, this.dialogueBox.y + 19,
+      `${typeof portrait === 'string' ? portrait : 'spr_face_torielhappytalk'}:0`).setOrigin(0).setScrollFactor(0).setDepth(100001) : null;
   }
 
   justConfirmed() {
@@ -430,7 +460,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, TutorialFroggit, SaveMenu],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, TutorialFroggit, SaveMenu, FieldMenu],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
