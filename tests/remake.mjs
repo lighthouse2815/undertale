@@ -90,11 +90,20 @@ try {
   assert.equal(await page.evaluate(() => __remake.scene.menuIndex), 1);
   await page.keyboard.press('z');
   await page.waitForFunction(() => __remake.scene.mode === 'submenu');
+  await page.keyboard.press('ArrowDown');
+  await page.waitForTimeout(120);
   await page.keyboard.press('z');
   await page.waitForFunction(() => __remake.scene.mode === 'soul');
   await page.keyboard.press('z');
   await page.waitForFunction(() => __remake.scene.mode === 'menu');
-  await page.keyboard.press('x');
+  await page.keyboard.press('ArrowRight');
+  await page.waitForTimeout(180);
+  await page.keyboard.press('ArrowRight');
+  await page.waitForTimeout(180);
+  await page.keyboard.press('z');
+  await page.waitForFunction(() => __remake.scene.mode === 'result');
+  assert.match(await page.locator('canvas').evaluate(() => __remake.scene.message.text), /spared/i);
+  await page.keyboard.press('z');
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_area1');
   const position = () => page.evaluate(() => ({ x: __remake.scene.player.x, y: __remake.scene.player.y }));
   const saved = await page.evaluate(() => {

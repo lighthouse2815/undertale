@@ -89,7 +89,10 @@ export class Battle extends Scene {
       if (this.keys.down.isDown) { this.subIndex = Math.min(this.submenu.length - 1, this.subIndex + 1); this.lastMenuMove = 160; }
     }
     if (this.confirmPressed) {
-      if (this.menuIndex === 1) this.queueEnemyTurn(this.subIndex === 0 ? '* Dummy - ATK 0 DEF 0.\n  It is just a dummy.' : '* You talk to the dummy.');
+      if (this.menuIndex === 1) {
+        if (this.subIndex === 1) this.mercyReady = true;
+        this.queueEnemyTurn(this.subIndex === 0 ? '* Dummy - ATK 0 DEF 0.\n  It is just a dummy.' : '* You talk to the dummy.');
+      }
       else { this.hp = Math.min(this.maxHp, this.hp + 10); this.hpText.setText(`HP ${this.hp} / ${this.maxHp}`); this.queueEnemyTurn('* You eat the Monster Candy.'); }
     }
     if (this.cancel) { this.mode = 'menu'; this.updateMenuText(); }
