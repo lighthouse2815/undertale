@@ -1,4 +1,4 @@
-# Game gốc / asset lớn - không đưa lên GitHub
+# Bản cài game gốc - không đưa lên GitHub
 Undertale-AnkerGames/
 
 # Phụ thuộc
@@ -12,9 +12,15 @@ dev-*.*
 build/
 dist/
 cache/
+.cache/
 *.log
 *.tmp
 *.temp
+
+# Kết quả kiểm thử
+/test-results/
+/playwright-report/
+/coverage/
 
 # Hệ điều hành
 .DS_Store

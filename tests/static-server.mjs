@@ -25,7 +25,7 @@ const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`);
     let pathname = decodeURIComponent(url.pathname);
-    if (pathname === '/') pathname = '/duoi-dat.html';
+    if (pathname === '/') pathname = '/index.html';
 
     let filePath = normalize(join(root, pathname));
     if (!filePath.startsWith(root + sep) && filePath !== root) {
@@ -53,5 +53,5 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`\n  DƯỚI ĐẤT đang chạy tại: http://localhost:${port}\n`);
+  console.log(`\n  Server tĩnh kiểm thử tại: http://localhost:${port}\n`);
 });

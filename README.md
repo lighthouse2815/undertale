@@ -32,9 +32,7 @@ Tiến trình Undertale được lưu trong OPFS của trình duyệt tại cùn
 | F4 / nút Toàn màn hình | Bật/tắt toàn màn hình |
 | Giữ Esc | Đóng game theo logic gốc |
 
-Có nút cảm ứng ↑ ↓ ← →, Z, X, C. Bản Dưới Đất trước đây được giữ ở
-http://localhost:5174 khi chạy `npm run dev:legacy`;
-xem [hướng dẫn Dưới Đất](docs/duoi-dat.md).
+Có nút cảm ứng ↑ ↓ ← →, Z, X, C.
 
 ## Chỉnh sửa logic gốc
 
@@ -75,7 +73,7 @@ CHROME_PATH="/đường/dẫn/chrome" npm test
 UNDERTALE_MOD_CLI="/đường/dẫn/UndertaleModCli.dll" npm run test:build
 ```
 
-`check` kiểm tra JavaScript, dữ liệu Dưới Đất, liên kết asset, danh mục GML,
+`check` kiểm tra JavaScript, liên kết asset, danh mục GML,
 checksum dữ liệu Undertale và runtime. Kiểm thử trình duyệt chạy trên gói xuất
 độc lập, kiểm tra build lại từ bản copy và hosting tĩnh dưới đường dẫn con;
 không có thư mục cài game gốc. `test:build` biên dịch GML, JSON phòng, PNG sprite
@@ -100,10 +98,24 @@ game/tools/                 biên dịch GML/asset và đóng gói web
 game/vendor/butterscotch/    runtime, mã nguồn và giấy phép upstream
 game/build/undertale/        dữ liệu sau biên dịch (không commit)
 dist/undertale-web/          gói web độc lập (không commit)
-duoi-dat.html                bản Dưới Đất trước đây
-server.mjs                  server Dưới Đất, mặc định cổng 5174
-src/{main,world,battle,...}  logic JavaScript của Dưới Đất
+tests/                      kiểm thử Undertale và server tĩnh dùng trong test
 ```
+
+## Dọn dẹp và chỉnh sửa về sau
+
+Bản Dưới Đất cũ và tài nguyên riêng của bản đó đã được gỡ khỏi source hiện tại.
+Chỉ cần giữ `game/`, các file cấu hình, tài liệu và kiểm thử trong repository
+để tiếp tục phát triển. Bản cài `Undertale-AnkerGames/` không còn cần thiết.
+
+`build/`, `game/build/`, `dist/`, cache và báo cáo kiểm thử không đưa lên GitHub.
+Có thể xóa các bản build rồi tạo lại bằng `npm run build`; sau khi dọn `dist/`,
+cần build lại trước khi chạy `npm run preview`. `node_modules/` cũng không được
+commit; dùng `npm ci` để cài lại khi cần chạy kiểm thử.
+
+Giữ nguyên `game/code/`, `game/assets/`, `game/base/`, các manifest và công cụ
+trong `game/tools/`: đây là nguồn để sửa logic, hình ảnh, âm thanh và build lại.
+Giữ runtime, mã nguồn thư viện và giấy phép trong `game/vendor/` đi kèm dự án.
+Bản cũ đã commit vẫn có thể khôi phục từ lịch sử Git.
 
 ## Nguồn và giấy phép
 

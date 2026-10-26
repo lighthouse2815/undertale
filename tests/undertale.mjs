@@ -251,7 +251,7 @@ try {
   server.kill();
   await exited;
   // Server tĩnh không có API runtime.json/game.win; chỉ phục vụ tệp đã xuất.
-  await cp(join(root, 'server.mjs'), join(fixture, 'static-server.mjs'));
+  await cp(join(root, 'tests/static-server.mjs'), join(fixture, 'static-server.mjs'));
   server = spawn(process.execPath, ['static-server.mjs'], {
     cwd: fixture, env: { ...process.env, PORT: port }, stdio: ['ignore', 'pipe', 'inherit'],
   });

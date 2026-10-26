@@ -1,5 +1,5 @@
 {
-  "name": "duoi-dat",
+  "name": "undertale-web",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -7,14 +7,11 @@
   "scripts": {
     "dev": "npm --prefix game run dev",
     "start": "npm --prefix game start",
-    "dev:legacy": "node server.mjs",
-    "check": "node scripts/check.mjs && npm --prefix game run check",
+    "check": "npm --prefix game run check",
     "build:game": "node game/tools/build-game.mjs",
     "build": "node game/tools/build-web.mjs",
     "preview": "node dist/undertale-web/server.mjs",
-    "test": "node tests/undertale.mjs && node tests/gameplay.mjs",
-    "test:original": "node tests/undertale.mjs",
-    "test:legacy": "node tests/gameplay.mjs",
+    "test": "node tests/undertale.mjs",
     "test:build": "node tests/game-build.mjs"
   },
   "devDependencies": {
