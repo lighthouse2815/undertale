@@ -5,6 +5,12 @@
 - Luôn giao tiếp với người dùng bằng **tiếng Việt**.
 - Commit message phải viết bằng **tiếng Việt**, ngắn gọn và mô tả đúng thay đổi.
 
+## Tiếp tục ở phiên khác
+
+- Khi bắt đầu phiên mới hoặc người dùng nói “làm tiếp”, đọc [TIEN_DO.md](TIEN_DO.md), sau đó kiểm tra source, `git status` và lịch sử commit hiện tại.
+- Sau mỗi phần việc, cập nhật ghi chú bàn giao nếu tiến độ, hạn chế hoặc việc cần làm tiếp đã thay đổi.
+- Mục tiêu là viết lại toàn bộ game. Không coi việc render được phòng hoặc test hiện tại chạy qua là bằng chứng đã chuyển đầy đủ gameplay gốc.
+
 ## Git & GitHub
 
 - Remote chính thức: `https://github.com/lighthouse2815/undertale.git`
