@@ -1,0 +1,209 @@
+{
+  "bunlady": {
+    "normal": [
+      "* Isn't my little Cinnamon\n  just the cutest?",
+      "* Bun-buns are so adorable...\n* Tee hee!"
+    ],
+    "repeat": [
+      "* Bun-bun-bun-bun-bun..."
+    ],
+    "late": [
+      "* Huh? Yes, I'm taking\n  my bunny for a walk.",
+      "* It's just a very slow one."
+    ],
+    "end": [
+      "* That kid over there told\n  me that it's weird that\n  I have a pet bunny.",
+      "* First, there'd be nothing\n  weird about it.\n* It's cute!",
+      "* Second...\n* What?",
+      "* It's normal to walk your\n  younger brother on a\n  leash, right?"
+    ],
+    "dead": [
+      "* Ah, it's so peaceful\n  and quiet...",
+      "* Usually one of those dogs\n  chases my little Cinnamon\n  around."
+    ],
+    "papDead": [
+      "* Ah, it's so peaceful\n  and quiet...",
+      "* Usually one of those\n  skeletons chases my little\n  Cinnamon around."
+    ]
+  },
+  "bunboy": {
+    "normal": [
+      "* That lady over there...",
+      "* Something about her disturbs\n  me."
+    ],
+    "repeat": [
+      "* I think I've figured it out.\n* ... no, nevermind."
+    ],
+    "late": [
+      "* That lady over there's\n  been going for a walk\n  for a while now.",
+      "* ... but she hasn't moved\n  an inch from where she's\n  standing.",
+      "* W-well, I haven't either,\n  but I don't want her to\n  notice me over here..."
+    ],
+    "end": [
+      "* Uhhh...",
+      "* Is anyone else weirded out\n  by those giant shambling\n  amalgamates, or...?"
+    ],
+    "endRepeat": [
+      "* ......"
+    ],
+    "dead": [
+      "* That lady over there\n  seems happy today.",
+      "* Don't know why, but it's\n  sending shivers down my\n  spine..."
+    ]
+  },
+  "bear1": {
+    "normal": [
+      "* This town doesn't have a\n  mayor.",
+      "* But if there's ever a problem,\n  a skeleton will tell a fish\n  lady about it.",
+      "* Thaaaaaat's politics!"
+    ],
+    "repeat": [
+      "* Politics."
+    ],
+    "late": [
+      "* What if I ran for mayor...?",
+      "* I don't think I would do\n  a good job, and I hate\n  responsibility...",
+      "* But I love politics.\n* So I might be a perfect\n  match."
+    ],
+    "end": [
+      "* I heard Dr. Alphys told\n  the king and queen the\n  awful things she'd done.",
+      "* The king felt so bad\n  that he didn't know.\n* He gave her a big hug.",
+      "* Then the queen fired her.",
+      "* Now we don't have a Royal\n  Scientist anymore...",
+      "* Thaaaaat's politics!"
+    ],
+    "endRepeat": [
+      "* Too bad there are no\n  politics on the surface."
+    ],
+    "papDead": [
+      "* Hmmm, usually that skeleton\n  goes to meet with Undyne\n  about now.",
+      "* Where is he...?\n* I can feel our political\n  system crumbling apart..."
+    ]
+  },
+  "beartree": {
+    "normal": [
+      "* Awful teens tormented\n  a local monster by decorating\n  its tree-like horns.",
+      "* So we started giving that\n  monster presents to make it\n  feel better.",
+      "* Now it's a tradition to put\n  presents underneath a decorated\n  tree."
+    ],
+    "repeat": [
+      "* Guess it was a good thing\n  those teens tormented that\n  monster...?"
+    ],
+    "late": [
+      "* Hmm?\n* Adjusting the presents is\n  my responsibility.",
+      "* Nah, to be honest, I\n  just keep looking to see\n  if I've gotten one..."
+    ],
+    "end": [
+      "* It'll be nice to show humans\n  our presents-under-the-tree\n  tradition.",
+      "* They'll probably be weirded\n  out by it."
+    ],
+    "dead": [
+      "* You know what's cute?",
+      "* Those two married dogs\n  always put presents under\n  the tree for each other.",
+      "* It's always the same.\n* A single bone.",
+      "* But every time, they act\n  like it's the first time\n  they've gotten it.",
+      "* Then Papyrus comes to take\n  his bones back.",
+      "* Anyway, where are those\n  two...?"
+    ],
+    "papDead": [
+      "* That's strange.\n* There was a present here\n  for Papyrus...",
+      "* Now it's gone.\n* Did someone steal it?"
+    ]
+  },
+  "reddemon": {
+    "normal": [
+      "* We all know the underground\n  has problems, but we\n  smile anyway.",
+      "* Why?",
+      "* We can't do anything, so\n  why be morose about it?"
+    ],
+    "repeat": [
+      "* Smile smile."
+    ],
+    "late": [
+      "* Maybe I'll try frowning\n  for once.",
+      "* ... no.\n* I just can't do it."
+    ],
+    "end": [
+      "* Oh?\n* We're free?",
+      "* Finally...\n* I'll be able to stop\n  smiling."
+    ],
+    "papDead": [
+      "* Just now, I felt my smile\n  falter for a moment.",
+      "* What's wrong?"
+    ]
+  },
+  "unfunny": {
+    "normal": [
+      "* Everyone is always laughing\n  and cracking jokes, trying\n  to forget our modern crises...",
+      "* Dreariness.\n* Crowding.\n* Lack of sunlight.",
+      "* I would join them, but I'm\n  just not very funny."
+    ],
+    "repeat": [
+      "* At least I'm not making puns."
+    ],
+    "late": [
+      "* Wait!\n* I've got a joke!",
+      "* Knock knock!",
+      "* ... Uh.\n* That's all I've thought of."
+    ],
+    "end": [
+      "* Looks like I don't have\n  to worry about cracking\n  jokes anymore.",
+      "* ...",
+      "* I was going to say a joke\n  here, but I really don't\n  have one."
+    ],
+    "dead": [
+      "* It just feels like...\n* Like everything is getting\n  worse and worse."
+    ]
+  },
+  "monsterkid1": {
+    "normal": [
+      "* Yo!\n* You're a kid too, right?",
+      "* I can tell 'cause you're\n  wearing a striped shirt."
+    ],
+    "repeat": [
+      "* I wonder if that weird skeleton\n  is an adult or a kid."
+    ],
+    "end0": [
+      "* Yo...\n* There you are!",
+      "* I've been kinda worried\n  about you since you\n  ran away.",
+      "* ... but now I'm just kinda\n  mad, ha ha.",
+      "* If Undyne hadn't saved me,\n  that woulda been bad..."
+    ],
+    "end0Repeat": [
+      "* ..."
+    ],
+    "end2": [
+      "* Yo...\n* Uh...",
+      "* Don't talk to me."
+    ],
+    "end2Repeat": [
+      "* ..."
+    ],
+    "end1": [
+      "* Yo!!!\n* What's up!?",
+      "* I've been kinda, doing\n  some thinking...",
+      "* Maybe Undyne...\n* Isn't actually as cool as\n  we thought.",
+      "* She's just kinda... mean.",
+      "* But YO!!!\n* I just found out about\n  someone WAYYY cooler!!!",
+      "* Nyeh heh heh!!!"
+    ],
+    "end1Repeat": [
+      "* Nyeh heh heh, dude."
+    ],
+    "murder": [
+      "* Yo, everyone ran away and\n  hid somewhere.",
+      "* Man, adults can be so\n  dumb sometimes, haha...",
+      "* Don't they know we've\n  got Undyne to protect us!?"
+    ]
+  },
+  "sprites": {
+    "spr_mkid_d": 4,
+    "spr_mkid_u": 4,
+    "spr_mkid_l": 4,
+    "spr_mkid_r": 4,
+    "spr_mkid_dt": 2,
+    "spr_mkid_ut": 2,
+    "spr_mkid_lt": 2,
+    "spr_mkid_rt": 2
+  }
+}

@@ -310,3 +310,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-danger-bridge.mjs/json` nối poffzone↔cầu bẫy Papyrus7: camera120/khóa/nhạc, sáu bẫy hạ-thu hồi/đúng tọa độ, các đoạn chờ và hội thoại thường-tuyến giết, Papyrus rời/plot67/Sans-ký ức/Flowey9. Encounter Jerry chỉ khi quay lại sau67; đã qua riêng và chuỗi encounter→phòng chó→cầu. Cửa phải tới town chưa nối; các giới hạn gõ chữ/tô từng từ và thứ tự sátframe vẫn còn.
+
+
+`src/snowdin-town-npcs.mjs/json` chuyển bảy cư dân Snowdin: lời đầu/lặp/plot122/kết thúc, ba chó/cờ Papyrus/tuyến giết theo thứ tự gốc, Monster Kid98/112/mặt nói, collider và lưu/nạp. Kiểm thử riêng đã qua. Hiện mở trực tiếp town để kiểm tra; cửa/nhạc/đồ vật/dịch vụ thị trấn chưa nối đủ.

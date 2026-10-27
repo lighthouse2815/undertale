@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi nối cầu bẫy Papyrus7. Mốc code trước phần này: `572f0e9` trên `main`.
+Cập nhật: 28/10/2026, sau khi chuyển bảy NPC thị trấn Snowdin. Mốc code trước phần này: `488fdb3` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -497,3 +497,10 @@ Push002659b/558b93e/4882382/572f0e9 đã thành công, remoteac7cf838→572f0e93
 
 
 Đã sửa fixture Crossword theo nguyên nhân trên: mở ảnh thật bằng Z, trong cùng callback kiểm từngframe1–10 bằng Step và sự kiện keydown-X của Phaser, giữ ảnh/khóa di chuyển/menu; từframe11 vẫn dùng bàn phím thật X hoặc Z để đóng. Không đổi code game, không đổi mốc11/tăngtimeout/bỏ validation. Chạy lại toàn bộ helper với350ms trễ trước mỗi phímX thật đã xanh (`test-crossword-delay-v2.log`); logXđóng ởframe21–22, trước đây cùng phép thử đóng ở17 khiến kỳ vọngsheet sai. Check cú pháp qua, buildgame không đổi so với bản cầu đã kiểm. Cầu2873d94 đã push thành công. Sẽ chạy bộ tổng snapshot mới sau commit fixture, gồm cả phòng chó/cầu và sửa encounter.
+
+
+Đã chuyển riêng bảy NPC town (`snowdin-town-npcs.mjs/json`): bunlady/bunboy/bear1/beartree/reddemon/unfunny/MonsterKid. Sáu cư dân có lời đầu/lặp, plot122, kết thúc7, cờ ba chó52-53-54 và Papyrus67 theo đúng thứ tự ghi đè gốc; biến mất khi murderlv>=7 cả khi27=1. Monster Kid vẫn ở tuyến7, vắng khi plot>100 nếu chưa kết thúc; kết thúc có ba nhánh98=0/1/2 và lặp, tuyến7 ưu tiên cuối, không dựng writer ởplot112 như Alarm gốc. Có quay mặt nói4hướng/talksprites, animation.2, depth/collider, khóa di chuyển khi thoại, số lần nói reset khi vào phòng/lưu nạp. Tự dọn ảnh khi đổi phòng/shutdown.
+
+`tests/remake-snowdin-town-npcs.mjs` nối tổng: cácnhánh/ưu tiên/end/late/repeat, từng98/112/101/7-27, va chạm bằng phím/khóa, ảnhmặt nói/SAVE/dọn. Bản riêngv2 xanh (`test-town-npcs-v2.log`), check/build cuốiqua (`build-town-npcs-final.log`); chưa nối cửa town/đồ vật/nhạc/BOX/SAVE/dịch vụ, không coi toànthịtrấn đãchuyển. Bảnv1 phát hiện ảnh chỉ bị tháo khỏi displaylist khi đổi phòng mà vẫnactive; NPCcontroller giờhủyảnh mìnhquảnlý. Chưa thay cơ chế world.children.removeAll(true) chung trong phần NPC; cần rà việc hủy toàn bộ displaylist của World ở phần riêng vì PhaserList dùngtrue làm skipCallback, không phải destroy như Container.
+
+Commit488fdb3đãpush (main hiệnđồngbộ). Lượt tổng `test-danger-bridge-full-v1.log` snapshot488fdb3 đã bị ngắt: handle21324khôngcòn, không cóprocess tests/remake.mjs/serverfixture, logđếnVegetoid, khôngcókếtquảcuối/exit0. Khôngghi xanh. Sẽchạy lại saucommit NPC; mốcfullxanhvẫn2f230f9.
