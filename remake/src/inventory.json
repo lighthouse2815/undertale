@@ -150,6 +150,16 @@
       "info": [
         "* \"Tough Glove\" - Weapon AT 5\n* A worn pink leather glove.\n* For five-fingered folk."
       ]
+    },
+    "16": {
+      "name": "Snowman Piece",
+      "battleName": "SnowPiece",
+      "seriousName": "SnowPiece",
+      "use": "* You ate the Snowman Piece.",
+      "info": [
+        "* \"Snowman Piece\" - Heals 45 HP\n* Please take this to the\n  ends of the earth."
+      ],
+      "heal": 45
     }
   },
   "actions": [

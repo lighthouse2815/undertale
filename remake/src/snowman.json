@@ -1,0 +1,94 @@
+{
+  "intro": [
+    "* Hello.\n* I am a snowman.",
+    "* I want to see the world...\n* But I cannot move.",
+    "* If you would be so kind,\n  traveller, please..."
+  ],
+  "prompt": "* Take a piece of me and\n  bring it very far away.",
+  "yes": [
+    "* Thank you... good luck!",
+    "* (You got the Snowman\n  Piece.)"
+  ],
+  "no": [
+    "* I see.\n* Good journey, then."
+  ],
+  "full": [
+    "* It seems you do not\n  have enough room for me."
+  ],
+  "given": [
+    "* How am I doing?\n* By \"I\" I mean the piece\n  of me I gave you..."
+  ],
+  "lost": [
+    "* Huh? You lost it...?\n* ... I suppose I can give\n  you another piece..."
+  ],
+  "lostFull": [
+    "* You don't have any room?\n* OK... I understand I am not\n  a priority for you, then."
+  ],
+  "replacement": [
+    "* Please be careful this\n  time.",
+    "* (You got the Snowman\n  Piece.)"
+  ],
+  "twice": [
+    "* Thank you for taking care\n  of me..."
+  ],
+  "empty": [
+    "* Huh? Again...?",
+    "* I'm sorry... if I give you\n  any more, there will be\n  nothing left of me.",
+    "* I suppose it is true.\n* Travelling beyond our limits\n  is but a fantasy.",
+    "* It's no different for\n  anyone else.",
+    "* All of monsterkind\n  are doomed to stay\n  underground, forever..."
+  ],
+  "ate": [
+    "* Did you just...\n* Consume the part of me\n  I had given you?",
+    "* In front of my very eyes!?",
+    "* I have no words for you...\n* Begone!"
+  ],
+  "ateAgain": [
+    "* I shouldn't have given myself\n  away so easily..."
+  ],
+  "endNever": [
+    "* Oh?\n* About that piece I gave you?",
+    "* ...",
+    "* ... I never gave you anything."
+  ],
+  "endKept": [
+    "* Ah... I can feel that piece\n  of me has been well taken\n  care of.",
+    "* Hmmm...?\n* The barrier's opened up?",
+    "* Hmmm...\n* Then, if it's not too much\n  to ask...",
+    "* ... could you take that\n  piece of me to the surface?",
+    "* I would really appreciate\n  it."
+  ],
+  "endLost": [
+    "* So, did you take that\n  piece of me very far\n  away...?",
+    "* ...",
+    "* Where's the piece!?"
+  ],
+  "endAte": [
+    "* Ah, the barrier's open...?",
+    "* You know I cannot move.\n* Why are you telling me?\n* To mock me?",
+    "* Everyone may think you are a\n  good person, but this snowman\n  knows the truth.",
+    "* Someday, your friends will\n  realize your heart is as\n  cold as my butt."
+  ],
+  "murderFull": [
+    "* (You're carrying too many\n  items.)"
+  ],
+  "murder": [
+    [
+      "* Hello.\n* I am a snowman.\n* I cannot move.",
+      "* Traveller, if you could...",
+      "* (You got the Snowman Piece.)"
+    ],
+    [
+      "* Oh me, oh my.\n* What are you doing?",
+      "* Soon there won't be any\n  of me left...",
+      "* (You got the Snowman Piece.)"
+    ],
+    [
+      "* Stop...\n* Please...",
+      "* (You got the Snowman Piece.)"
+    ],
+    [
+      "* (A useless pile of snow.)"
+    ]
+  ]
+}

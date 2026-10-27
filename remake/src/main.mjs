@@ -34,6 +34,7 @@ import { SnowdinEncounter } from './snowdin-encounter.mjs';
 import { SnowdinCheckpoint } from './snowdin-checkpoint.mjs';
 import { DoggoRoom } from './doggo-room.mjs';
 import { SnowdinIce } from './snowdin-ice.mjs';
+import { Snowman } from './snowman.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
@@ -112,7 +113,8 @@ const ROOM_EXITS = {
   room_tundra3A: { B: 'room_tundra3' },
   room_tundra4: { D: 'room_tundra3', A: 'room_tundra5' },
   room_tundra5: { B: 'room_tundra4', A: 'room_tundra6' },
-  room_tundra6: { B: 'room_tundra5' },
+  room_tundra6: { B: 'room_tundra5', A: 'room_tundra6A' },
+  room_tundra6A: { B: 'room_tundra6' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -139,7 +141,7 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
-    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6'].includes(name)) stopSnowdinMusic(this);
+    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A'].includes(name)) stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -178,7 +180,7 @@ class World extends Scene {
     this.boxRoad = null;
     this.snowdinCheckpoint?.destroy(); this.snowdinCheckpoint = null;
     this.doggoRoom?.destroy(); this.doggoRoom = null;
-    this.snowdinIce = null;
+    this.snowdinIce = null; this.snowman = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -307,6 +309,7 @@ class World extends Scene {
     if (name === 'room_tundra4') this.snowdinCheckpoint = new SnowdinCheckpoint(this);
     if (name === 'room_tundra5') this.doggoRoom = new DoggoRoom(this);
     if (name === 'room_tundra6') this.snowdinIce = new SnowdinIce(this);
+    if (name === 'room_tundra6A') this.snowman = new Snowman(this);
     if (['room_tundra3', 'room_tundra4', 'room_tundra6'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
@@ -484,6 +487,7 @@ class World extends Scene {
     if (this.snowdinCheckpoint?.interact()) return;
     if (this.doggoRoom?.interact()) return;
     if (this.snowdinIce?.interact()) return;
+    if (this.snowman?.interact()) return;
     if (this.boxRoad) { this.boxRoad.interact(); return; }
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;

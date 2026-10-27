@@ -29,6 +29,7 @@ export function itemAction(world, index, action, text, { scene = world, health =
     return [item.use];
   }
   let line = item.use;
+  if (id === 16 && scene === world && world.dataSource.name === 'room_tundra6A') world.flags[56] = 4;
   if (id === 1) {
     const value = Math.round(Math.random() * 15);
     if (value <= 2) line += item.a;
