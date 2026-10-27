@@ -64,6 +64,8 @@ export async function loadRoom(scene, name) {
   const xoxoBig = name === 'room_tundra_xoxopuzz';
   const xoxo = xoxoSmall || xoxoBig;
   const colorTiles = name === 'room_tundra_randoblock';
+  const dogHouse = name === 'room_tundra_lesserdog';
+  const dogHouseDialogue = dogHouse ? await json(new URL('./snowdin-dog-house.json', import.meta.url).href) : null;
   const colorTilesDialogue = colorTiles ? await json(new URL('./snowdin-color-tiles.json', import.meta.url).href) : null;
   const xoxoBigDialogue = xoxoBig ? await json(new URL('./snowdin-xoxo-big.json', import.meta.url).href) : null;
   const xoxoSmallDialogue = xoxoSmall ? await json(new URL('./snowdin-xoxo-small.json', import.meta.url).href) : null;
@@ -155,6 +157,7 @@ export async function loadRoom(scene, name) {
   if (snowman) spriteNames.add('spr_sadsnowman_d1');
   if (maze) for (const key of Object.keys(mazeDialogue.sprites)) spriteNames.add(key);
   if (crossword) for (const key of Object.keys(crosswordDialogue.sprites)) spriteNames.add(key);
+  if (dogHouse) for (const key of Object.keys(dogHouseDialogue.sprites)) spriteNames.add(key);
   if (colorTiles) for (const key of Object.keys(colorTilesDialogue.sprites)) spriteNames.add(key);
   if (xoxo) for (const key of Object.keys((xoxoBigDialogue ?? xoxoSmallDialogue).sprites)) spriteNames.add(key);
   if (niceCream) for (const key of ['spr_icecreamguy_sad', 'spr_icecreamguy_anim', 'spr_icecreamguy_happy', 'spr_rollsnow', 'spr_iceflag']) spriteNames.add(key);
@@ -198,7 +201,7 @@ export async function loadRoom(scene, name) {
     ...(torielHall || torielCorridor || childBedroom || torielBedroom || living ? ['mus_house1', 'mus_house2', 'mus_toriel', 'mus_reunited'] : []),
     ...(childBedroom ? ['snd_noise'] : []),
     ...(floweyExit ? ['snd_floweylaugh', 'snd_wonderfulidea', 'mus_cymbal'] : []),
-    ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || scent || crossword || spaghetti || snowpuzz || xoxo || colorTiles ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
+    ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || scent || crossword || spaghetti || snowpuzz || xoxo || colorTiles || dogHouse ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
     ...(doggoRoom ? ['snd_bell'] : []),
     ...(niceCream ? ['snd_dumbvictory'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
@@ -239,5 +242,5 @@ export async function loadRoom(scene, name) {
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   for (const [key, data] of forestFonts) registerBitmapFont(scene, key, data);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, dogPairDialogue, xoxoSmallDialogue, xoxoBigDialogue, colorTilesDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, dogPairDialogue, xoxoSmallDialogue, xoxoBigDialogue, colorTilesDialogue, dogHouseDialogue, rockDialogue };
 }

@@ -283,3 +283,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-color-tiles.mjs/json` nối X/O lớn↔randoblock/Papyrus4:48ô,33trang/19trang nghe lại/hai câu hỏi, máy đổi7màu/alarm/pitch/chốt đỏ-hồng/collider/lối đi, nhánh từ chối đểnote, tuyến Frisk đi xuyên93pixel/đối thoại Papyrus-Sans, hậu cảnh/nhạc/plot58/SAVE và dọn. Kiểm thử chuỗi X/O lớn→ô màu đã qua. Cửa phải tới phòng tượng Lesser Dog chưa nối; gõ chữ/miệng nói và thứ tự từngframe vẫn cần hoàn thiện.
+
+
+`src/snowdin-dog-house.mjs/json` nối randoblock↔phòng tượng Lesser Dog:55/plot67 quyết định10tượng/chó chờ/tuyết nhão, đổi ảnh-bbox/vịtrí/NPC; có4nhánhNPC/biển/nhà/camera/SAVE2lời/nhãn file/nhạc/lưu nạp. Kiểm thử riêng đã qua. Cửa C tới icehole/chuỗi băng chưa nối; không coi Snowdin đã hoàn chỉnh.

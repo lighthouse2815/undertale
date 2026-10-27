@@ -1,0 +1,69 @@
+{
+  "pillar": [
+    "* Seems like the base of a\n  snowdog."
+  ],
+  "mush": [
+    "* It's a pile of mushy snow."
+  ],
+  "dog": [
+    "* This dog is staring blankly\n  into the snow, waiting for\n  it to turn into art."
+  ],
+  "neck": [
+    "* It's the broken head of\n  a snowdog."
+  ],
+  "npcBefore": [
+    "* That dog considers itself\n  an artist, but doesn't ever\n  know what to create.",
+    "* It probably doesn't help\n  that its brain is the size\n  of a piece of kibble."
+  ],
+  "npcGone": [
+    "* That dog from earlier...?\n* It's at Grillby's.\n* I think.",
+    "* After work, all of the dogs\n  go there to play cards\n  together.",
+    "* But that dog doesn't really\n  know how to express itself.",
+    "* So, it ends up playing alone,\n  instead of introducing\n  itself to the others..."
+  ],
+  "npcSculpt": [
+    "* A dog just rushed in here,\n  filled with inspiration.",
+    "* It kept trying to build\n  a snowdog that expressed\n  its own emotions...",
+    "* But, as it built, it\n  kept getting more excited\n  about the sculpture...",
+    "* Its neck got longer and\n  longer, and it added more\n  and more snow, until...",
+    "* It was rather sad to watch,\n  but I couldn't turn away."
+  ],
+  "npcEnd": [
+    "* We're all free?",
+    "* OK, OK...\n* I'll stop lounging around.\n* Does that dog know?",
+    "* ... it probably doesn't,\n  does it...?"
+  ],
+  "sign": [
+    "* AWARE OF DOG\n* pleas pet dog"
+  ],
+  "house": [
+    "* On the floor inside is\n  a box of pomeraisins."
+  ],
+  "camera": [
+    "* ...!?\n* There's a camera behind the\n  sentry station."
+  ],
+  "save": [
+    "* (Knowing that dog will\n  never give up trying to\n  make the perfect snowdog...)",
+    "* (It fills you with\n  determination.)"
+  ],
+  "saveMush": [
+    "* (Snow can always be broken\n  down and rebuilt into\n  something more useful.)",
+    "* (This simple fact fills\n  you with determination.)"
+  ],
+  "saveLeft": [
+    "* \\[1] left."
+  ],
+  "saveComedian": [
+    "* That comedian..."
+  ],
+  "saveDetermination": [
+    "* Determination."
+  ],
+  "saveSnowdrake": [
+    "* The comedian got away.\n* Failure."
+  ],
+  "sprites": {
+    "spr_dogmush": 1,
+    "spr_lessdogsnow": 1
+  }
+}
