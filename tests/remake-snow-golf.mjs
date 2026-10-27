@@ -52,8 +52,7 @@ export async function testSnowGolf(page) {
   assert.match(await page.evaluate(() => __remake.scene.dialogueText.text), /hole/); await drain();
   await open({ 202: 20, 45: 4, 52: 1 }); assert.ok(await page.evaluate(() => !!__remake.scene.snowGolf.ball));
   // Hết kích thước -> chờ10frame -> bóng từ mép trên camera rơi về generator.
-  await page.evaluate(() => { const w = __remake.scene, g = w.snowGolf; g.ball.size = .19; g.step(); w.cameras.main.setScroll(0, 0); });
-  const respawn = await page.evaluate(() => { const g = __remake.scene.snowGolf; for (let i = 0; i < 9; i++) g.step(); const before = g.ball ?? null; g.step(); const start = [g.ball.y, g.ball.falling]; for (let i = 0; i < 100 && g.ball.falling; i++) g.step(); return [before, start, g.ball.y, g.ball.falling]; });
+  const respawn = await page.evaluate(() => { const w = __remake.scene, g = w.snowGolf; g.ball.size = .19; g.step(); w.cameras.main.setScroll(0, 0); for (let i = 0; i < 9; i++) g.step(); const before = g.ball ?? null; g.step(); const start = [g.ball.y, g.ball.falling]; for (let i = 0; i < 100 && g.ball.falling; i++) g.step(); return [before, start, g.ball.y, g.ball.falling]; });
   assert.deepEqual(respawn, [null, [-10, 1], 120, 0]);
   await page.evaluate(async () => { await __remake.scene.openRoom('room_tundra6A'); }); assert.equal(await page.evaluate(() => __remake.scene.snowGolf), null);
   console.log('✓ Golf tuyết: đẩy bằng phím/lăn/ma sát/quay/co30frame/bật mép, vào lỗ/cờ trồi/7màu/biên thời gian/GOLD/387/không thưởng lặp, dân số16/co hết/sinh lại/rơi/dọn');
