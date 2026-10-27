@@ -298,3 +298,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/gyftrot-room.mjs/json` nối iceentrance↔iceexit_new,2Sans/lời chéo/váchbăng3loạiDraw/NPC/Fall388. SnowdinEncounterdùnglại ngưỡngbước160-300/840/nhóm28-LesserDog-Nobody/SAVE/GameOver, đãqua chuỗi Jerry→băng→GyftrotRoom. Nhánhiceexit/icecave1 vàpoffzone/GreaterDog chưa nối; cácgiớihạngõchữ/animationtừngframe vẫngiữ.
+
+
+`src/greater-dog-waves.mjs` cóchó ngủ/thức sau8framechuyển động/bark dựđoán vàgiáotrắng-xanh/lên-rẽtrái/blut2. Testdùngảnh/mask2x/HPthật, phânbiệtcollisionkếthừaxóađạn-chó vớigiáo giữlại. Chưacóscene105HP/ACT/poffzone, chưacoiGreaterDogđãhoànchỉnh.
