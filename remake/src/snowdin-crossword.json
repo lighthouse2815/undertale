@@ -1,0 +1,367 @@
+{
+  "intro": [
+    {
+      "text": "HUMAN!!!\nI HOPE YOU'RE\nREADY FOR...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "explain": [
+    {
+      "text": "SANS!!\nWHERE'S THE\nPUZZLE!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* it's right there.\n* on the ground.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* trust me.\n* there's no way they can\n  get past this one.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "explainMurder": [
+    {
+      "text": "SANS!!\nWHERE'S THE\nPUZZLE!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* it's right there.\n* on the ground.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* trust me.\n* there's no way they'll\n  skip this one.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "debate": [
+    {
+      "text": "SANS!!!\nTHAT DIDN'T DO\nANYTHING!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* whoops.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i knew i should have\n  used today's crossword\n  instead.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "WHAT!?\nCROSSWORD!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I CAN'T BELIEVE\nYOU SAID THAT!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IN MY OPINION...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "JUNIOR JUMBLE\nIS EASILY THE\nHARDEST.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* what? really, dude?\n* that easy-peasy word\n  scramble?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* that's for baby bones.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "UN. BELIEVABLE.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HUMAN!!!\nSOLVE THIS DISPUTE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "debateSkipped": [
+    {
+      "text": "SANS!!!\nTHEY DIDN'T EVEN\nLOOK AT IT!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* whoops.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i knew i should have\n  used today's crossword\n  instead.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "WHAT!?\nCROSSWORD!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I CAN'T BELIEVE\nYOU SAID THAT!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IN MY OPINION...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "JUNIOR JUMBLE\nIS EASILY THE\nHARDEST.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* what? really, dude?\n* that easy-peasy word\n  scramble?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* that's for baby bones.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "UN. BELIEVABLE.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HUMAN!!!\nSOLVE THIS DISPUTE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "jumble": [
+    {
+      "text": "HA! HA! YES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HUMANS MUST BE\nVERY INTELLIGENT!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IF THEY ALSO FIND\nJUNIOR JUMBLE\nSO DIFFICULT!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH! HEH! HEH HEH!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "crossword": [
+    {
+      "text": "YOU TWO ARE WEIRD!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "CROSSWORDS ARE SO\nEASY.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S THE SAME\nSOLUTION EVERY\nTIME.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I JUST FILL ALL\nTHE BOXES IN WITH\nTHE LETTER \"Z\"...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BECAUSE EVERY TIME\nI LOOK AT A\nCROSSWORD...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ALL I CAN DO IS\nSNORE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH HEH HEH!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderRead": [
+    {
+      "text": "WHAT THE HECK!!!\nTHEY DIDN'T SKIP\nIT!?!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* i'm tellin' ya.\n* everyone likes word\n  searches.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "OH MY GOD!!!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I CAN'T WORK IN\nTHIS ENVIRONMENT!!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderSkipped": [
+    {
+      "text": "SANS!!!\nTHAT DID NOTHING!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* whoops.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* knew i should have\n  put down junior jumble\n  instead.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "WHAT?!?\nJUNIOR JUMBLE!?",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FINALLY, SOMETHING\nWE CAN BOTH\nAGREE ON.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "sansJumble": [
+    {
+      "text": "* thanks for saying\n  \"junior jumble\" just\n  to appease my brother.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* yesterday he got\n  stumped trying to\n  \"solve\" the horoscope.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansCrossword": [
+    {
+      "text": "* papyrus...\n* ... finds difficulty in\n  interesting places.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* yesterday he got\n  stumped trying to\n  \"solve\" the horoscope.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansMurderRead": [
+    {
+      "text": "* i guess despite all\n  that, you still like\n  word searches, huh...?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* that means you can't\n  be all bad.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansMurderSkipped": [
+    {
+      "text": "* guess you don't like\n  word searches, huh?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* me neither.\n* i'm more of a funny\n  pages kind of guy.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* ...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* ...",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sprites": {
+    "spr_exc": 1,
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_sans": 1,
+    "spr_face_sansblink": 1,
+    "spr_face_sanschuckle": 1,
+    "spr_face_sansnoeyes": 1,
+    "spr_face_sanswink": 1,
+    "spr_papyrus_d": 4,
+    "spr_papyrus_dt": 2,
+    "spr_papyrus_l": 4,
+    "spr_papyrus_lt": 2,
+    "spr_papyrus_lt_mad": 2,
+    "spr_papyrus_r": 4,
+    "spr_papyrus_rt": 2,
+    "spr_papyrus_u": 4,
+    "spr_papyrus_ut": 1,
+    "spr_sans_d": 4,
+    "spr_sans_l": 4,
+    "spr_sans_r": 4,
+    "spr_sans_u": 4,
+    "spr_wordsearch": 2
+  },
+  "escape": [
+    {
+      "text": "SANS!!!!\nTHE HUMAN IS\nESCAPING!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU MADE THE\nPUZZLE TOO\nHARD!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HEY YOU!!!\nGET BACK HERE!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ]
+}
