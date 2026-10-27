@@ -1,0 +1,417 @@
+{
+  "intro": [
+    {
+      "text": "HUMAN!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THIS IS YOUR FINAL\nAND MOST DANGEROUS\nCHALLENGE!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BEHOLD!\nTHE GAUNTLET OF\nDEADLY TERROR!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "rules": [
+    {
+      "text": "WHEN I SAY THE\nWORD, IT WILL\nFULLY ACTIVATE!!!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "CANNONS WILL FIRE!\nSPIKES WILL SWING!\nBLADES WILL SLICE!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "EACH PART WILL\nSWING VIOLENTLY\nUP AND DOWN!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ONLY THE TINIEST\nCHANCE OF VICTORY\nWILL REMAIN!!!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ARE YOU READY!?",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BECAUSE!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AM!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ABOUT!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "TO DO IT!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "pause": [
+    {
+      "text": "* well?\n* what's the holdup?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "HOLDUP!?\nWHAT HOLDUP!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M...\nI'M ABOUT TO\nACTIVATE IT NOW!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "cancel": [
+    {
+      "text": "* that, uh, doesn't look\n  very activated.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "WELL!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THIS CHALLENGE!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT SEEMS...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MAYBE... TOO EASY\nTO DEFEAT THE\nHUMAN WITH.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YEAH!\nWE CAN'T USE\nTHIS ONE!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I AM A SKELETON\nWITH STANDARDS!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MY PUZZLES ARE\nVERY FAIR!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND MY TRAPS ARE\nEXPERTLY COOKED!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BUT THIS METHOD\nIS TOO DIRECT!\nNO CLASS AT ALL!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AWAY IT GOES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "cancelMurder": [
+    {
+      "text": "* that, uh, doesn't look\n  very activated.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "WELL!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... THEY'RE PROBABLY\nGOING TO WALK\nTHROUGH IT.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND IT WON'T BE\nANY FUN AT ALL.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* hmmm...\n* so this human thing\n  was a bust, huh?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "WELL. I MEAN.\nI'M EXCITED TO\nCAPTURE THEM.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SO I'LL BECOME\nA FAMOUS ROYAL\nGUARDSMAN!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BUT ALL THE TIME\nI PUT INTO THESE\nPUZZLES...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S KIND OF LIKE\nTHROWING A\nBIRTHDAY PARTY...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* without traps and fire?",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "EXACTLY!!\nIT'S POINTLESS!!!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MAYBE YOU WERE\nRIGHT TO BE LAZY\nABOUT PUZZLES.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* me?\n* right about something?\n* really?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YEAH!!\nWHAT AM I SAYING!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU'RE STILL\nCOMPLETELY WRONG!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I JUST HAVE THE\nWRONG AUDIENCE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THINK ABOUT HOW\nMUCH FUN UNDYNE\nWOULD HAVE HERE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FLAMES, VIOLENCE.\nIT'S RIGHT UP HER\nALLEY!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SO I WON'T WASTE\nTHIS PUZZLE ON\nYOU.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I JUST HAVE TO\nAPPRECIATE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE FRIEND I\nALREADY HAVE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "bye": [
+    {
+      "text": "PHEW!",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "last": [
+    {
+      "text": "WHAT ARE YOU\nLOOKING AT!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THIS WAS ANOTHER\nDECISIVE VICTORY\nFOR PAPYRUS!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HEH!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HEH???",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "lastMurder": [
+    {
+      "text": "A VALUABLE LIFE\nLESSON!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH HEH HEH!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "sans": [
+    {
+      "text": "* i don't know what my\n  brother's going to do\n  now.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* if i were you, i would\n  make sure i understand\n  blue attacks.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansMemory": [
+    {
+      "text": "* here, i'll give you some\n  advice about fighting\n  my brother.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* don't.\n* capiche?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansMurder": [
+    {
+      "text": "* hmmm...",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* guess we didn't need\n  your help to have a\n  good time after all.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* ...",
+      "portrait": "spr_face_sansblink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* say, i've been\n  thinking.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* seems like you're\n  gonna fight my brother\n  pretty soon.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* here's some friendly\n  advice.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* if you keep going the\n  way you are now...",
+      "portrait": "spr_face_sansblink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* ...",
+      "portrait": "spr_face_sansblink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* you're gonna have a\n  bad time.",
+      "portrait": "spr_face_sansnoeyes",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "camera": [
+    {
+      "text": "* ...!?\n* There is a camera behind the...\n  \"sentry station.\"",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "sprites": {
+    "spr_papyrus_d": 4,
+    "spr_papyrus_l": 4,
+    "spr_papyrus_r": 4,
+    "spr_papyrus_u": 4,
+    "spr_papyrus_dt": 2,
+    "spr_papyrus_lt": 2,
+    "spr_papyrus_rt": 2,
+    "spr_papyrus_ut": 1,
+    "spr_sans_d": 4,
+    "spr_sans_l": 4,
+    "spr_sans_r": 4,
+    "spr_sans_u": 4,
+    "spr_face_sans": 1,
+    "spr_face_sanschuckle": 1,
+    "spr_face_sanswink": 1,
+    "spr_face_sansblink": 1,
+    "spr_face_sansnoeyes": 1,
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_dtrapfire": 4,
+    "spr_dtrapcannon": 1,
+    "spr_dtrapspear": 1,
+    "spr_dtrapmace": 1,
+    "spr_dtrapdog": 10,
+    "spr_floweysink": 6,
+    "spr_exc": 1
+  }
+}

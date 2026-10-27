@@ -307,3 +307,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/greater-dog-room.mjs/json` nối iceentrance↔poffzone: tám đống tuyết/bộ đếm riêng/30G/cờ65, nhà/biển/NPC/va chạm; chó trồi khỏi tuyết, trận26 thật và hậu cảnh riêng theo54=1/2/3, plot61→65/nhạc/khóa/SAVE/GameOver. Kiểm thử riêng và chuỗi băng→trận→phòng đã qua. Cửa phải tới dangerbridge chưa nối, các giới hạn gõ chữ và nhịp sát frame vẫn còn.
+
+
+`src/snowdin-danger-bridge.mjs/json` nối poffzone↔cầu bẫy Papyrus7: camera120/khóa/nhạc, sáu bẫy hạ-thu hồi/đúng tọa độ, các đoạn chờ và hội thoại thường-tuyến giết, Papyrus rời/plot67/Sans-ký ức/Flowey9. Encounter Jerry chỉ khi quay lại sau67; đã qua riêng và chuỗi encounter→phòng chó→cầu. Cửa phải tới town chưa nối; các giới hạn gõ chữ/tô từng từ và thứ tự sátframe vẫn còn.

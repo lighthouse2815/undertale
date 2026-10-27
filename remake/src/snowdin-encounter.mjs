@@ -7,7 +7,7 @@ export class SnowdinEncounter {
     this.jerry = world.dataSource?.room.GameObjects.some((e) => e.ObjectName === 'obj_encounterer_jerry') ?? false;
     this.gyftrot = world.dataSource?.room.GameObjects.some((e) => e.ObjectName === 'obj_encoutnerer_gyftrot') ?? false;
     this.steps = this.threshold(this.gyftrot ? spawnName === 'obj_markerA' ? 160 : 300 : this.jerry && world.dataSource.name === 'room_tundra_snowpuzz' && world.flags[64] ? 220 : 120, 30);
-    this.disabled = !world.flags[203] && world.plot > 100;
+    this.disabled = (!world.flags[203] && world.plot > 100) || (this.jerry && world.dataSource.name === 'room_tundra_dangerbridge' && world.plot < 67);
   }
 
   threshold(base, spread) {
