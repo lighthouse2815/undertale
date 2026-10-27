@@ -10,10 +10,20 @@ export async function testSnowdinCrossword(page) {
     await place(150, 130, 'u'); await key('z');
     await page.waitForFunction(() => __remake.scene.snowdinCrossword.sheet?.active);
     assert.equal(await page.evaluate(() => __remake.scene.flags[254]), 1);
-    const position = await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y]);
-    await page.keyboard.down('ArrowUp'); await key('c'); await key('x'); await page.keyboard.up('ArrowUp');
-    assert.equal(await page.evaluate(() => __remake.phase), 'running'); assert.equal(await page.evaluate(() => __remake.scene.snowdinCrossword.stage), 'sheet');
-    assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y]), position);
+    // Kiểm tra1–10 trong cùng callback: độ trễ RPC có thể vượt11frame trước phím X.
+    // Vẫn mở/đóng ảnh bằng bàn phím thật; phát event X của Phaser cho từng frame bị khóa.
+    const early = await page.evaluate(() => {
+      const w = __remake.scene, c = w.snowdinCrossword, position = [w.player.x, w.player.y], states = [];
+      c.frames = 1; c.elapsed = 0;
+      for (let frame = 1; frame <= 10; frame++) {
+        w.keys.up.isDown = true; w.menuPressed = true; w.input.keyboard.emit('keydown-X'); w.update(0, 0);
+        states.push([c.frames, c.stage, c.sheet.active, __remake.phase, w.player.x, w.player.y]);
+        w.keys.up.isDown = false; w.menuPressed = false;
+        if (frame < 10) c.step();
+      }
+      return { position, states };
+    });
+    assert.deepEqual(early.states, Array.from({ length: 10 }, (_, i) => [i + 1, 'sheet', true, 'running', ...early.position]));
     await page.waitForFunction(() => __remake.scene.snowdinCrossword.frames >= 11); await key(exit);
     assert.equal(await page.evaluate(() => __remake.scene.snowdinCrossword.sheet.active), false);
   };
