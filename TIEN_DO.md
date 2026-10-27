@@ -507,3 +507,6 @@ Commit488fdb3đãpush (main hiệnđồngbộ). Lượt tổng `test-danger-brid
 
 
 Đã sửa nguyên nhân ảnh cũ không hủy khi đổi phòng: `World.children` là PhaserDisplayList/List; `removeAll(true)` gỡ danh sách với skipCallback, không phải destroyChild của Container. Giờ lấy snapshot getAll và gọi destroy từngGameObject trước dựng phòng mới, giữ texture/sourceCache dùngchung. Ca tái hiện trước sửa ởRuins12A có136ảnh và0sựkiện destroy (`test-room-cleanup-before.log`). `tests/remake-room-cleanup.mjs` nối tổng: rờiRuins12A/BoxRoad/town/GyftrotRoom, mỗiảnh cũ phát destroy/activefalse/bỏscene/displaylist; texture/cache/player mới giữđúng. Chuỗi cleanup→12A→townNPC→cầu xanh (`test-room-cleanup-chain-v2.log`), check/buildqua (`build-room-cleanup-final.log`). Không đổi giao diện/collision/luật chơi, không thêm dependency. Sẽ chạyfullbảnmới saucommit để kiểmhồi quyvòngđời cho toànphần hiệncó.
+
+
+Đối chiếu tiếp nguồn đồvậttown phát hiện camera cầu dùng nhầm obj_readable_room3_108 (câu tại trạm gác). Đã đổi sang128 đúng nhánhroom_tundra_dangerbridge: camera underneath the bridge. Testcầu kiểm rõcảhai dòng thay vì chỉ từcamera; toànhelper riêng xanh (`test-danger-bridge-camera-final.log`), check/buildqua cùng `build-town-final.log`. Commit lỗi thoại riêng, không gộp phần thịtrấn đangkiểm. Pushc1fff1d/42b30da trướcđó lỗi443/134s, đang thửlại cógiớihạn180s.
