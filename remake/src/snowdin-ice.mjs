@@ -7,8 +7,10 @@ import { murderLevel } from './route.mjs';
 export class SnowdinIce {
   constructor(world) {
     this.world = world; this.text = world.dataSource.iceDialogue; this.active = false; this.remaining = 0; this.vx = this.vy = 0; this.talked = 0;
-    this.tiles = world.dataSource.room.GameObjects.filter((e) => e.ObjectName === 'obj_iceevent');
+    this.tiles = world.dataSource.room.GameObjects.filter((e) => ['obj_iceevent', 'obj_iceeventx4'].includes(e.ObjectName))
+      .map((e) => e.ObjectName === 'obj_iceeventx4' ? { ...e, ScaleX: 2, ScaleY: 2 } : e);
     startSnowdinMusic(world);
+    if (world.dataSource.name !== 'room_tundra6') return;
     this.sans = world.roomObjects.find((e) => e.item.ObjectName === 'obj_sans_room');
     const f = world.flags;
     if (world.plot >= 43 || f[413] > 0 || f[67] === 1 || (murderLevel(f) >= 2 && !f[27]) || f[203] >= 16) {
@@ -35,7 +37,7 @@ export class SnowdinIce {
 
   contact(previous, input) {
     const w = this.world, p = w.player;
-    if (!this.tiles.some((tile) => touchesObject(w, p, tile))) return;
+    if (!this.tiles.some((tile) => touchesObject(w, p, tile, tile.ScaleX, tile.ScaleY))) return;
     if (!this.active) {
       p.setPosition(previous.x, previous.y);
       this.vx = input('left') ? -3 : input('right') ? 3 : 0;
@@ -46,6 +48,7 @@ export class SnowdinIce {
   }
 
   interact() {
+    if (!this.text) return false;
     const w = this.world;
     const e = w.roomObjects.find((e) => ['obj_sign_room', 'obj_sans_room'].includes(e.item.ObjectName) && inInteractionRange(w, e));
     if (!e) return false;

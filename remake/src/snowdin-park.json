@@ -1,0 +1,167 @@
+{
+  "sans": [
+    {
+      "text": "* i've been thinking\n  about selling treats\n  too.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "offers": [
+    {
+      "text": "* want some fried snow?\n* it's just 5G.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* did i say 5G?\n* i meant 50G.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* really?\n* how about 5000G?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* 50000G.\n* that's my final offer.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "no": [
+    [
+      {
+        "text": "* you're right.",
+        "portrait": "spr_face_sans",
+        "font": "fnt_comicsans"
+      },
+      {
+        "text": "* i should charge way\n  more than that.",
+        "portrait": "spr_face_sans",
+        "font": "fnt_comicsans"
+      }
+    ],
+    [
+      {
+        "text": "* you're right.",
+        "portrait": "spr_face_sans",
+        "font": "fnt_comicsans"
+      },
+      {
+        "text": "* that's still too low.",
+        "portrait": "spr_face_sans",
+        "font": "fnt_comicsans"
+      }
+    ],
+    [
+      {
+        "text": "* i have to pay for\n  the raw materials\n  somehow.",
+        "portrait": "spr_face_sans",
+        "font": "fnt_comicsans"
+      }
+    ],
+    [
+      {
+        "text": "* don't you know a\n  good deal when you\n  hear one?",
+        "portrait": "spr_face_sans",
+        "font": "fnt_comicsans"
+      }
+    ]
+  ],
+  "poor": [
+    {
+      "text": "* what?\n* you don't have the\n  money?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* hey, that's okay.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i don't have any snow.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "rich": [
+    {
+      "text": "* wow, that's a lot\n  of cash.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* that's why i'm sorry\n  to say...",
+      "portrait": "spr_face_sansblink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i can't sell you\n  this fried snow.",
+      "portrait": "spr_face_sansblink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* it's got too much\n  sentimental value.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "decahedron": [
+    {
+      "text": "* (It looks like a snow ball...)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* (Actually, it's a\n  snowdecahedron.)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "snowball": [
+    {
+      "text": "* (It's a snow ball.)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "camera": [
+    {
+      "text": "* ...!?\n* There's a camera hidden inside\n  this lump of snow.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "chill": [
+    {
+      "text": "* Guh huh huh huh.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Us teens rule these woods\n  with a smaller-than-\n  adult fist.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "chillEnd": [
+    {
+      "text": "* I'm worried about getting\n  older...\n* I'll stop being a teen.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* No! I refuse!\n* I'll just invent new numbers,\n  like twenty-teen!",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "sprites": [
+    "spr_face_sans",
+    "spr_face_sanschuckle",
+    "spr_face_sanswink",
+    "spr_face_sansblink",
+    "spr_face_sansnoeyes"
+  ]
+}

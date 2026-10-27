@@ -244,7 +244,9 @@ Nhánh6A có `src/snowman.mjs/json`: người tuyết/Yes-No/túi đầy/cấp b
 Phòng7 có `src/electric-maze.mjs/json`: intro/ký ức, Papyrus tự bị giật/path/dấu chân/trao orb, mê cung dùng mask PNG/giật 15 frame/đường đi an toàn, tám trang giải/plot43/Sans, nhánh diệt chủng/Frisk bước qua/cờ291 và dọn khi đổi phòng. Cửa6 ↔ 7/nhạc và SAVE đã nối; phòng8/Nice Cream/golf và phòng9/crossword chưa nối. Gõ chữ, chi tiết animation và alarm sát frame vẫn còn hạn chế.
 
 
-`src/nice-cream.mjs/json` điều khiển quầy Nice Cream tại Snowdin8: mở đầu/chờ31 frame, mua15G/No/thiếu tiền/đầy/cờ60/GOLD-SPACE/collider/tuyến/SAVE, ITEM17/tám lời giấy gói/hồi15HP. Phần còn lại phòng8 (bóng/golf/băng/đồ vật) đang chuyển; cửa7→8 chưa mở, không coi phòng8 đã hoàn chỉnh. Quầy ở Waterfall/Hotland chưa chuyển.
+`src/nice-cream.mjs/json` điều khiển quầy Nice Cream tại Snowdin8: mở đầu/chờ31 frame, mua15G/No/thiếu tiền/đầy/cờ60/GOLD-SPACE/collider/tuyến/SAVE, ITEM17/tám lời giấy gói/hồi15HP. Phòng8 đã nối hai chiều với7, có bóng/golf/băng và đồ vật qua các controller dưới đây. Quầy ở Waterfall/Hotland chưa chuyển.
 
 
-`src/snow-golf.mjs/json` có bóng tuyết/đẩy/ma sát/co nhỏ/bật mép/sinh lại/rơi, lỗ/cờ trồi/bảy loại theo thời gian và kích thước, GOLD/cờ387/không thưởng lặp/dân số16. Đã kiểm tra bằng phím và va chạm thật. Phòng8 còn băng x4/NPC/biển chưa chuyển và cửa7→8 chưa mở; Waterfall/Hotland cùng các phần sau vẫn còn thiếu.
+`src/snow-golf.mjs/json` có bóng tuyết/đẩy/ma sát/co nhỏ/bật mép/sinh lại/rơi, lỗ/cờ trồi/bảy loại theo thời gian và kích thước, GOLD/cờ387/không thưởng lặp/dân số16. Đã kiểm tra bằng phím và va chạm thật. Phòng8 có băng x4/NPC/biển và cửa7↔8; nhánh8A/phòng9 cùng các phần sau vẫn còn thiếu.
+
+`src/snowdin-park.mjs/json` có Sans bán fried snow/bốn mức giá/No/giàu-nghèo không giao dịch, snowdecahedron/camera/Chilldrake thường và sau kết thúc, collider/điều kiện tuyến. `snowdin-ice.mjs` dùng lại luật trượt phòng6 cho bốn vùng x4 tại8 với bbox40×40. Test phòng8 kiểm tra cửa7↔8, nhạc, trượt/khóa, lời/lựa chọn/GOLD/túi/NPC/collider/tuyến/SAVE. Hai cửa phải8 tới8A và9 chưa nối.

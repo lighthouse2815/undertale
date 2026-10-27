@@ -56,6 +56,7 @@ export async function loadRoom(scene, name) {
   const boxRoad = ['room_tundra3', 'room_tundra3A'].includes(name);
   const snowdinEncounter = ['room_tundra3', 'room_tundra4', 'room_tundra6'].includes(name);
   const niceCream = name === 'room_tundra8';
+  const parkDialogue = niceCream ? await json(new URL('./snowdin-park.json', import.meta.url).href) : null;
   const golfDialogue = niceCream ? await json(new URL('./snow-golf.json', import.meta.url).href) : null;
   const niceCreamDialogue = niceCream ? await json(new URL('./nice-cream.json', import.meta.url).href) : null;
   const maze = name === 'room_tundra7';
@@ -130,6 +131,7 @@ export async function loadRoom(scene, name) {
   if (checkpoint) for (const key of Object.keys(checkpointDialogue.sprites)) spriteNames.add(key);
   if (doggoRoom) spriteNames.add('spr_movedoge_o');
   if (ice) spriteNames.add('spr_face_sans');
+  if (niceCream) for (const key of parkDialogue.sprites) spriteNames.add(key);
   if (snowman) spriteNames.add('spr_sadsnowman_d1');
   if (maze) for (const key of Object.keys(mazeDialogue.sprites)) spriteNames.add(key);
   if (niceCream) for (const key of ['spr_icecreamguy_sad', 'spr_icecreamguy_anim', 'spr_icecreamguy_happy', 'spr_rollsnow', 'spr_iceflag']) spriteNames.add(key);
@@ -159,7 +161,7 @@ export async function loadRoom(scene, name) {
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
-  if (forest || checkpoint || ice || maze) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
+  if (forest || checkpoint || ice || maze || niceCream) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
     forestFonts.set(key, await json(`fonts/${key}/${key}.json`)); images.set(key, `fonts/${key}/${key}.png`);
   }
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
@@ -173,7 +175,7 @@ export async function loadRoom(scene, name) {
     ...(torielHall || torielCorridor || childBedroom || torielBedroom || living ? ['mus_house1', 'mus_house2', 'mus_toriel', 'mus_reunited'] : []),
     ...(childBedroom ? ['snd_noise'] : []),
     ...(floweyExit ? ['snd_floweylaugh', 'snd_wonderfulidea', 'mus_cymbal'] : []),
-    ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
+    ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
     ...(doggoRoom ? ['snd_bell'] : []),
     ...(niceCream ? ['snd_dumbvictory'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
@@ -210,5 +212,5 @@ export async function loadRoom(scene, name) {
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   for (const [key, data] of forestFonts) registerBitmapFont(scene, key, data);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, rockDialogue };
 }
