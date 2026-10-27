@@ -1,4 +1,5 @@
 import { RuinsWave } from './ruins-waves.mjs';
+import { maskContains } from './collision-mask.mjs';
 
 // obj_crygen1/2/3 và obj_sadmsggen; tọa độ gốc 640×480, 30 Hz.
 export class NapstablookWave extends RuinsWave {
@@ -111,11 +112,11 @@ export class NapstablookWave extends RuinsWave {
     const frame = data.MaskCount > 1 ? Number(bullet.image.texture.key.split(':').at(-1)) : 0;
     const mask = `${bullet.sprite}:mask${frame ? `:${frame}` : ''}`;
     for (let hx = 0; hx < 16; hx++) for (let hy = 0; hy < 16; hy++) {
-      if (!(scene.textures.getPixel(hx, hy, 'spr_heart:mask')?.red > 0)) continue;
+      if (!maskContains(scene, 'spr_heart:mask', hx, hy)) continue;
       const dx = scene.soul.x * 2 + hx - bullet.x, dy = scene.soul.y * 2 + hy - bullet.y;
       const x = Math.floor((dx * cos + dy * sin) / scale), y = Math.floor((-dx * sin + dy * cos) / scale);
       if (x < data.MarginLeft || x > data.MarginRight || y < data.MarginTop || y > data.MarginBottom) continue;
-      if (data.CollisionKind !== 'Precise' || scene.textures.getPixel(x, y, mask)?.red > 0) return true;
+      if (data.CollisionKind !== 'Precise' || maskContains(scene, mask, x, y)) return true;
     }
     return false;
   }

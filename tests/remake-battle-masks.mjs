@@ -63,6 +63,12 @@ export async function testBattleMasks(page) {
       }
     }
     const secondMaskLoaded = scene.textures.exists('spr_streambullet:mask:1');
+    const { maskContains } = await import(new URL('src/collision-mask.mjs', location.href).href);
+    let cachedMasksMatch = true;
+    for (const key of ['spr_heart:mask', 'spr_teardrop:mask', 'spr_streambullet:mask', 'spr_streambullet:mask:1']) {
+      const image = scene.textures.get(key).getSourceImage();
+      for (let x = -1; x <= image.width; x++) for (let y = -1; y <= image.height; y++) cachedMasksMatch &&= maskContains(scene, key, x, y) === (scene.textures.getPixel(x, y, key)?.red > 0);
+    }
     wave.destroy();
     // Đi qua step thật: đạn sượt góc đen không mất HP; chạm vùng trắng mới trừ máu.
     const damageWave = new NapstablookWave(scene, 'stream'); damageWave.next = Infinity;
@@ -72,9 +78,10 @@ export async function testBattleMasks(page) {
     bullet.x = 298.5; bullet.y = 299; damageWave.step();
     const hitHp = scene.hp;
     damageWave.destroy(); scene.finishBattle();
-    return { checks, secondMaskLoaded, safeHp, hitHp };
+    return { checks, secondMaskLoaded, cachedMasksMatch, safeHp, hitHp };
   });
   assert.equal(ghost.secondMaskLoaded, true);
+  assert.equal(ghost.cachedMasksMatch, true);
   for (const check of ghost.checks) assert.equal(check.hit, check.expected, JSON.stringify(check));
   assert.deepEqual({ safeHp: ghost.safeHp, hitHp: ghost.hitHp }, { safeHp: 20, hitHp: 17 });
   await page.waitForFunction(() => __remake.phase === 'running');

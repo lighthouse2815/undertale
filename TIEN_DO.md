@@ -440,3 +440,10 @@ Thưởng đối chiếu Destroy+scr_monsterdefeat: thường fullHP/mercy>10 c�
 Helper `tests/remake-gyftrot.mjs` nối tổng. Hồi quy Snowdrake/Chilldrake→IceCap/Ice→generatorGyftrot→Gyftrot (`test-gyftrot-chain-v2.log`) đãxanh: các ACT/quà/74-138/mercy-DEF/Gift35-hếtG-0G/Spare/Flee/ITEM/FIGHTđủHP/thưởng/dânsố/GameOver. Bản riêngv5đãxanh sau bổsung resetanimation từnglầnvào trận (`test-gyftrot-v5.log`), gồm cácnhánhGift-killthêm; check/build cuốiđãqua (`build-gyftrot-battle-v5.log`). ĐãxemảnhGyftrot ghép đủbody/head/mouth/quà.
 
 Bộ tổng snapshot860e0bf (`test-ice-puzzle-full-v1.log`) kếtthúc timeoutởNapstablook/testRuins12dòng137, trước phần mới. Đãtái hiện bằnghelper riêng (`test-napstablook-debug-v1.log`): phasebattle/modesoul/HP20/turn2/stream/frame112/170, mercy-1200. Không phảiGameOver; đangđốichiếu chi phíđọcmask va chạm, chưa sửa bằngtăngtimeout haybỏtest. Sẽtốiưu đọcmask vàchạy lại; khôngghi greenfull. Push47cd2bdđãthànhcông.
+
+
+Đã tìmđược nút thắt Napstablook: mỗi phép va chạm xoay/co giãn gọiPhaserTexture.getPixel cho từngđiểm, phải drawImage/readbackCanvas lặp. Benchmark cùng68đạn/680phép/hits0 trênChrome:3494.9ms trước,30.6ms sau (`benchmark-nap-mask-before/after.log`). `collision-mask.mjs` đọc toànmaskPNG mộtlần bằngCanvas/getImageData, cacheWeakMaptheoTexture, trả vềkênhđỏ như cũ. Napstablook dùng cache, giữ nguyên biếnđổi tọađộ/giới hạn/bbox/masktheokhung/côngthứcsátthương/thờilượng. Không tăngtimeout hayvôhiệu va chạm.
+
+Test mask đãđối chiếutừngpixel (cảbiênngoài) cho tim/nướcmắt/hai maskstream vớiPhaser.getPixel, giữcác phép xoay/co giãn/gócđen/HP/bất tử. Chuỗi mask→Napstablook xanh (`test-nap-mask-chain-v1.log`), bao gồm ca137trướcđây timeout, cả4wave/ACT/mũ/Flee/FIGHT/ITEM/plot/lưu nạp. Check/buildqua (`build-mask-cache-v1.log`). Mốcfullgầnnhất vẫn2f230f9; sẽchạyfullbảnmới saucommit.
+
+Push8d75cbe bịtreo hơn2phút, đãdừng tiếntrìnhpush của tácvụ (khôngsửa/xóalịchsử) đểthửlại cógiớihạn chờ; commitvẫnởmaincục bộ. Sẽpushcảcommittrận vàcachemask; cầnđốichiếu kếtquảpush trướcghi nhận đồngbộ.
