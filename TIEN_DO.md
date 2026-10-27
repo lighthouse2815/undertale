@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 27/10/2026, sau công tắc và tuyết của snowpuzz. Mốc code trước phần này: `3bdacc4` trên `main`.
+Cập nhật: 27/10/2026, sau generator đạn hai chó. Mốc code trước phần này: `e446898` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -306,3 +306,10 @@ Ca phòng Frisk với bước đợi vị trí đã xanh (`test-child-bedroom-no
 Test riêng và chuỗi spaghetti → câu đố tuyết đã xanh (`test-spaghetti-snowpuzz-chain-v1.log`): đủ400hạt/tọa độ25hạt, đứng yên/đi bằng phím/gạt64, tường chặn trước và đi qua sau công tắc,49/gai/SAVE, đọc lại, tuyến3/cờ27/giữ-1, ba lần biển/camera/IceCap/collider/dọn. Đã xem ảnh vùng tuyết, check/build cuối qua. Dao động ngẫu nhiên và thứ tự Draw/collision sát từng frame còn cần đối chiếu, không suy ra đã khớp hoàn toàn từ các ca trên.
 
 **Chưa nối cửa spaghetti→snowpuzz**: cảnh obj_forcedright, trận Dogamy/Dogaressa nhóm25, Jerry và nhóm nhiều quái35/36 chưa chuyển. Controller câu đố mới chưa phải toàn bộ gameplay phòng; không bỏ qua trận hoặc thay nhóm35/36 bằng trận đơn rồi mở cửa. Đây là ưu tiên tiếp theo; xoxosmall/xoxopuzz và Snowdin phía sau cũng còn thiếu. Bộ tổng snapshot3d61b19 vẫn đang chạy, chưa có tường mê cung3bdacc4 hoặc câu đố tuyết mới. Push3bdacc4 đã thành công.
+
+
+`dog-pair-waves.mjs` đã chuyển độc lập generator hai chó để dùng trong trận nhóm25: hai rìu trắng/mask PNG riêng hai frame, hiện sau10frame/chờ ngẫu nhiên10–23 trước phóng, ±1.8/vy-3.8/gravity.2, chạm sàn trả vị trí/chờ15/âm thanh-rung; Dogaressa còn một mình vy-3.1/chờ4/sát thương7. Rìu dùng inv45, không biến mất khi trúng. Vòng tim có chó ở hai biên, 8tim xen kẽ4trắng4xanh, generator chờ3frame/sinh lại75frame, radius1→55/tốc độ theo chu vi/drift tăng.125 và giữ radchange như source. Tim xanh chỉ trúng khi tim người chơi di chuyển, trừ thêm1 sát thương so với dmg trước tính phòng thủ, dùng origin8 đúng asset. Dogamy còn một mình có chó buồn/tim rơi/ma sát/gravity/dừng dưới sàn và reset turntimer170 ở Alarm1 sau4frame.
+
+Test generator chạy bằng scene chiến đấu Phaser/tài nguyên thật (`test-dog-pair-waves-v4.log`), đã qua đủ hai kiểu/nhánh còn1con, border/nhịp phóng/gravity/bật sàn, vòng8tim/4màu/75frame/radius/drift, đứng yên/di chuyển/sát thương/bất tử, hai mask rìu/góc đen thật, duration/reset và dọn. Check/build qua. Đây mới là phần đạn, **chưa phải trận Dogamy/Dogaressa có hai mục tiêu/HP/ACT/FIGHT/ITEM/thưởng**, chưa có scene obj_forcedright hay Jerry/nhóm35-36; cửa spaghetti→snowpuzz vẫn đóng. Thứ tự alarm/Draw/di chuyển tại frame sinh generator, chuyển kích thước arena và va chạm sàn sát pixel còn cần so sánh runtime gốc; test không chứng minh khớp hoàn toàn từng frame.
+
+Bộ tổng `test-spaghetti-full-v1.log` đã xanh snapshot3d61b19: gồm sửa test bánh, golf/phòng8/8A/crossword/spaghetti, cảm ứng/hosting/tải23216KiB. Chưa gồm tường mê cung3bdacc4, câu đố tuyếte446898 và generator hai chó mới; các phần này đã qua kiểm thử riêng như ghi ở trên. Pushe446898 đã thành công sau lần retry.

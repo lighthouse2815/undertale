@@ -260,3 +260,5 @@ Phòng7 có `src/electric-maze.mjs/json`: intro/ký ức, Papyrus tự bị gi�
 Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4pixel/nhìn phải/khóa rồi hoàn trả điều khiển; kiểm thử chạm bốn lần và giải tiếp mê cung đã qua.
 
 `src/snowdin-snowpuzz.mjs/json` chuyển phần công tắc/tường/gai/tuyết400hạt/cờ64/biển/camera/IceCap của snowpuzz, đã qua kiểm thử riêng và chuỗi spaghetti→câu đố. Chưa nối cửa từ spaghetti: cảnh hai chó/trận nhóm25/Jerry/encounter nhiều quái35-36 còn thiếu, không coi cả phòng đã hoàn chỉnh.
+
+`src/dog-pair-waves.mjs` chuyển rìu trắng/vòng tim trắng-xanh và đợt riêng khi còn Dogamy hoặc Dogaressa. Đã kiểm generator trong scene Phaser bằng tài nguyên/mask thật; chưa có trận hai mục tiêu/HP riêng hoặc cảnh gặp hai chó. Không coi đạn chạy được là đã chuyển trận nhóm25; cửa spaghetti→snowpuzz vẫn chưa nối.
