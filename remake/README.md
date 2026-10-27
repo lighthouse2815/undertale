@@ -245,3 +245,6 @@ Phòng7 có `src/electric-maze.mjs/json`: intro/ký ức, Papyrus tự bị gi�
 
 
 `src/nice-cream.mjs/json` điều khiển quầy Nice Cream tại Snowdin8: mở đầu/chờ31 frame, mua15G/No/thiếu tiền/đầy/cờ60/GOLD-SPACE/collider/tuyến/SAVE, ITEM17/tám lời giấy gói/hồi15HP. Phần còn lại phòng8 (bóng/golf/băng/đồ vật) đang chuyển; cửa7→8 chưa mở, không coi phòng8 đã hoàn chỉnh. Quầy ở Waterfall/Hotland chưa chuyển.
+
+
+`src/snow-golf.mjs/json` có bóng tuyết/đẩy/ma sát/co nhỏ/bật mép/sinh lại/rơi, lỗ/cờ trồi/bảy loại theo thời gian và kích thước, GOLD/cờ387/không thưởng lặp/dân số16. Đã kiểm tra bằng phím và va chạm thật. Phòng8 còn băng x4/NPC/biển chưa chuyển và cửa7→8 chưa mở; Waterfall/Hotland cùng các phần sau vẫn còn thiếu.

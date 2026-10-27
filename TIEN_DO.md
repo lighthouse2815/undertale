@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 27/10/2026, sau NPC Nice Cream Snowdin. Mốc code trước phần này: `be317e6` trên `main`.
+Cập nhật: 27/10/2026, sau trò golf bóng tuyết Snowdin8. Mốc code trước phần này: `5909e35` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -255,3 +255,12 @@ ITEM17 Nice Cream có tên/INFO gốc, tám lời giấy gói chọn floor(rando
 Phần này mới điều khiển NPC khi mở trực tiếp room_tundra8, chưa mở cửa7→8 vì bóng tuyết/golf, băng và đồ vật còn phải chuyển. Không coi phòng8 đã hoàn chỉnh hoặc đã đi tới được trong tuyến chơi liên tục. Ưu tiên tiếp theo là gameplay bóng/golf và các NPC/biển còn lại phòng8, rồi phòng9/crossword. Giới hạn chung gõ chữ/animation thoại/va chạm-alarm sát từng frame vẫn còn.
 
 Chuỗi mê cung điện7 → Nice Cream8 đã xanh (`test-maze-cream-chain-v1.log`), không có lỗi JavaScript/console; check/build cuối qua. Bộ tổng `test-snowman-full-v1.log` đã xanh tới2932a1c7: gồm trận/phòng Doggo, băng6, người tuyết6A, sửa chờ gain basement, cảm ứng và hosting dưới đường dẫn con. Chưa bao gồm mê cung điện be317e6 hoặc Nice Cream mới. Lần push be317e6 vẫn timeout kết nối; commit còn nguyên tại máy, cần tiếp tục push.
+
+
+`snow-golf.mjs/json` chuyển riêng obj_rollsnow/gen/golfedge/golfhole/iceflag tại phòng8. Bóng size2, góc quay theo tốc độ, ma sát .1; va chạm chân thật đẩy ngược khỏi trung tâm chân với lực4+1/size+.1, cooldown15, bắt đầu đồng hồ; đứng yên sau chạm chờ30 frame rồi co .01/frame, đang lăn không co. Có 75 mép sân/bật ngược/mất tốc độ, hút nhẹ .2 sát lỗ, vào lỗ tăng ma sát1/co .05 và .1 khi chạm lỗ, nhỏ dưới.2 thì hủy và chờ10 frame sinh bóng từ trên camera rơi về generator. Dân số203>=16 không có bóng. Thứ tự logic Step → ma sát/di chuyển → va chạm đã đối chiếu; collisionSize giữ kích thước đầu Step như image_xscale gốc, Draw dùng size sau co.
+
+Cờ trồi39 bước với mask cắt tại miệng lỗ, bị hủy khi rời camera. Bảy loại theo các mốc >180/240/330/450/600 frame và size<.6 ưu tiên. Đọc lỗ có lời/chỉ nhận một lần mỗi lượt; cờ đỏ đầu tiên50G/cờ387, các lần đỏ sau10G, các loại còn lại5/3/2/1/2/4G, đọc lặp không nhận thêm. Cờ387 ở SAVE; trạng thái bóng/cờ trong phòng được dọn khi rời phòng như các instance không persistent.
+
+Test riêng và chuỗi Nice Cream → golf (`test-cream-golf-chain-v2.log`) đã qua: đẩy bóng bằng phím tới va chạm thật rồi lăn vào lỗ, cờ/mask/trồi/GOLD/387/đọc lặp; co30frame/đang lăn/ma sát/góc quay/bật mép; toàn bộ biên thời gian/bảy cờ/thưởng, cờ đỏ sau lần đầu, cờ rời camera, dân số16/không tắt bóng chỉ vì tuyến>=3, sinh lại/rơi/dọn. Đã xem ảnh cờ; check/build qua. Các ca biên màu đặt trạng thái bóng gần lỗ rồi chạy bước vật lý/va chạm, không thay việc score bằng gán thưởng; chưa chứng minh toàn bộ đường golf từ generator khớp từng khung với bản gốc.
+
+Phòng8 vẫn chưa nối cửa từ7: Nice Cream và golf đã có, nhưng băng x4, Sans bán fried snow, biển/camera, snowdecahedron và Chilldrake NPC còn phải chuyển. Không coi toàn bộ gameplay phòng8 đã xong. Bộ tổng `test-nice-cream-full-v1.log` đang chạy snapshot5909e35 trước golf; không chạy chồng bộ tổng khác.

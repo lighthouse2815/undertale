@@ -56,6 +56,7 @@ export async function loadRoom(scene, name) {
   const boxRoad = ['room_tundra3', 'room_tundra3A'].includes(name);
   const snowdinEncounter = ['room_tundra3', 'room_tundra4', 'room_tundra6'].includes(name);
   const niceCream = name === 'room_tundra8';
+  const golfDialogue = niceCream ? await json(new URL('./snow-golf.json', import.meta.url).href) : null;
   const niceCreamDialogue = niceCream ? await json(new URL('./nice-cream.json', import.meta.url).href) : null;
   const maze = name === 'room_tundra7';
   const mazeDialogue = maze ? await json(new URL('./electric-maze.json', import.meta.url).href) : null;
@@ -111,6 +112,7 @@ export async function loadRoom(scene, name) {
   if (forest) await Promise.all(['obj_creeptree_sansmaker', 'obj_sans_interactable1', 'obj_sansbyetrigger'].map(object));
   if (checkpoint) await Promise.all(['obj_npc_room', 'obj_snowdrakedad'].map(object));
   if (doggoRoom) await object('obj_spagnot');
+  if (niceCream) await object('obj_rollsnow');
   if (maze) await Promise.all(['obj_puzzlewall1', 'obj_sans_room'].map(object));
   if (ruinsHome || torielHall || torielCorridor || living || basement) await object('obj_toroverworld3');
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
@@ -130,7 +132,7 @@ export async function loadRoom(scene, name) {
   if (ice) spriteNames.add('spr_face_sans');
   if (snowman) spriteNames.add('spr_sadsnowman_d1');
   if (maze) for (const key of Object.keys(mazeDialogue.sprites)) spriteNames.add(key);
-  if (niceCream) for (const key of ['spr_icecreamguy_sad', 'spr_icecreamguy_anim', 'spr_icecreamguy_happy']) spriteNames.add(key);
+  if (niceCream) for (const key of ['spr_icecreamguy_sad', 'spr_icecreamguy_anim', 'spr_icecreamguy_happy', 'spr_rollsnow', 'spr_iceflag']) spriteNames.add(key);
   if (gate) for (const key of ['spr_toriel_hug', 'spr_toriel_hug2', 'spr_toriel_hug3', 'spr_pbflame', 'spr_face_torielmad', 'spr_face_torielhappytalk', 'spr_face_torieltalkside']) spriteNames.add(key);
   if (basement) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_toriel_handhold_l', 'spr_face_torieltalk', 'spr_face_torielcold']) spriteNames.add(key);
   if (living) for (const key of ['spr_chairempty', 'spr_chairielgetup', 'spr_toriel_d', 'spr_toriel_r', 'spr_toriel_l', 'spr_toriel_u', 'spr_face_torielhappytalk', 'spr_face_torieltalkside', 'spr_face_torieltalk', 'spr_face_torielrevengetalk', 'spr_face_torielglasses']) spriteNames.add(key);
@@ -173,6 +175,7 @@ export async function loadRoom(scene, name) {
     ...(floweyExit ? ['snd_floweylaugh', 'snd_wonderfulidea', 'mus_cymbal'] : []),
     ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
     ...(doggoRoom ? ['snd_bell'] : []),
+    ...(niceCream ? ['snd_dumbvictory'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
     ...(snowman || niceCream ? ['snd_squeak', 'snd_swallow', 'snd_power'] : []),
     ...(checkpoint ? ['mus_papyrus', 'snd_phone', 'snd_squeak'] : []),
@@ -207,5 +210,5 @@ export async function loadRoom(scene, name) {
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   for (const [key, data] of forestFonts) registerBitmapFont(scene, key, data);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, rockDialogue };
 }

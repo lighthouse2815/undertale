@@ -37,6 +37,7 @@ import { SnowdinIce } from './snowdin-ice.mjs';
 import { Snowman } from './snowman.mjs';
 import { ElectricMaze } from './electric-maze.mjs';
 import { NiceCream } from './nice-cream.mjs';
+import { SnowGolf } from './snow-golf.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
@@ -135,7 +136,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); });
+    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
     this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -186,6 +187,7 @@ class World extends Scene {
     this.snowdinIce = null; this.snowman = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
+    this.snowGolf?.destroy(); this.snowGolf = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -316,7 +318,7 @@ class World extends Scene {
     if (name === 'room_tundra6') this.snowdinIce = new SnowdinIce(this);
     if (name === 'room_tundra6A') this.snowman = new Snowman(this);
     if (name === 'room_tundra7') this.electricMaze = new ElectricMaze(this);
-    if (name === 'room_tundra8') this.niceCream = new NiceCream(this);
+    if (name === 'room_tundra8') { this.niceCream = new NiceCream(this); this.snowGolf = new SnowGolf(this); }
     if (['room_tundra3', 'room_tundra4', 'room_tundra6'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
@@ -390,6 +392,7 @@ class World extends Scene {
       this.doggoRoom?.update(delta);
       this.electricMaze?.update(delta);
       this.niceCream?.update(delta);
+      this.snowGolf?.update(delta);
       return;
     }
     if (state.phase !== 'running') return;
@@ -411,6 +414,7 @@ class World extends Scene {
     const doggoLocked = this.doggoRoom?.update(delta);
     const mazeLocked = this.electricMaze?.update(delta);
     const creamLocked = this.niceCream?.update(delta);
+    this.snowGolf?.update(delta);
     this.boxRoad?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
@@ -502,6 +506,7 @@ class World extends Scene {
     if (this.snowman?.interact()) return;
     if (this.electricMaze?.interact()) return;
     if (this.niceCream?.interact()) return;
+    if (this.snowGolf?.interact()) return;
     if (this.boxRoad) { this.boxRoad.interact(); return; }
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;
