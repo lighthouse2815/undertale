@@ -1,0 +1,36 @@
+{
+  "poffs": [
+    "* It's a snow poff.",
+    "* And this...\n* Is a snow poff.",
+    "* This, however, is a snow poff.",
+    "* Surprisingly, it's a snow poff.",
+    "* Snow poff...",
+    "* Is it really a snow poff?",
+    "* Behold!\n* A snow poff.",
+    "* What's this called?",
+    "* Eh?\n* There's 30 G inside\n  this... what is this?"
+  ],
+  "house": [
+    "* (What a tiny doghouse!)"
+  ],
+  "houseAfter": [
+    "* (It must be bigger on the\n  inside.)"
+  ],
+  "sign": [
+    "* (Woof.)"
+  ],
+  "npc": [
+    "* We all live in the woods,\n  so no one can tell us\n  what to do!",
+    "* But now everyone ignores\n  us...",
+    "* I don't want freedom if\n  it means no one's gonna\n  pay attention to me."
+  ],
+  "npcEnd": [
+    "* Maybe someone on the surface\n  will pay attention to me.",
+    "* There're so many people,\n  someone has to, right!?"
+  ],
+  "sprites": {
+    "spr_doglick": 39,
+    "spr_dogbuttwalk": 4,
+    "spr_dogboredwalk": 4
+  }
+}

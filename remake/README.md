@@ -304,3 +304,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/greater-dog-battle.mjs/json` có trận nhóm26/105HP, năm ACT/Beckon/Pet-Play/tim chậm/142/DEF, Ignore4/phóng thân/54, Stick/ITEM/FIGHT đủ HP/Spare/thưởng/plot60/GameOver. Kiểm thử riêng và chuỗi Lesser Dog→đạn→trận đã qua. Poffzone và hậu cảnh chưa nối; gõ chữ/tan bụi/thứ tự sát frame còn cần đối chiếu.
+
+
+`src/greater-dog-room.mjs/json` nối iceentrance↔poffzone: tám đống tuyết/bộ đếm riêng/30G/cờ65, nhà/biển/NPC/va chạm; chó trồi khỏi tuyết, trận26 thật và hậu cảnh riêng theo54=1/2/3, plot61→65/nhạc/khóa/SAVE/GameOver. Kiểm thử riêng và chuỗi băng→trận→phòng đã qua. Cửa phải tới dangerbridge chưa nối, các giới hạn gõ chữ và nhịp sát frame vẫn còn.
