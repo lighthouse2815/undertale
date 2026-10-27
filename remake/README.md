@@ -286,3 +286,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-dog-house.mjs/json` nối randoblock↔phòng tượng Lesser Dog:55/plot67 quyết định10tượng/chó chờ/tuyết nhão, đổi ảnh-bbox/vịtrí/NPC; có4nhánhNPC/biển/nhà/camera/SAVE2lời/nhãn file/nhạc/lưu nạp. Kiểm thử riêng đã qua. Cửa C tới icehole/chuỗi băng chưa nối; không coi Snowdin đã hoàn chỉnh.
+
+
+`src/snowdin-ice-puzzle.mjs` dùng lại trượt/XO cho12ô, plot63/cầu mở từng8px/pause/khóa và hố388. `snowdin-ice-hole.mjs/json` có falltransition/hai người tuyết/IceCap cuối tuyến. DogHouse↔iceentrance↔icehole đã nối; kiểm thử riêng gồm rơi/trượt/cầu/SAVE/mũ/hạt/tuyến. Cửa sang iceexit_new/Gyftrot và poffzone chưa nối; hiệu ứng/nhịp từngframe vẫn cần đối chiếu thêm.

@@ -8,17 +8,19 @@ export class SnowdinXoxoPuzzle {
   constructor(world, targetPlot) {
     this.world = world; this.targetPlot = targetPlot; this.elapsed = 0; this.frames = 0; this.total = 0; this.locked = false;
     startSnowdinMusic(world);
-    if (murderLevel(world.flags) >= 4 && !world.flags[27] && world.plot < 57) world.plot = 57;
+    if (murderLevel(world.flags) >= 4 && !world.flags[27] && world.plot < Math.max(57, targetPlot)) world.plot = Math.max(57, targetPlot);
     this.tiles = world.roomObjects.filter((e) => e.item.ObjectName === 'obj_xoxo').map((e) => ({ ...e, frame: 0, touched: false }));
     this.button = world.roomObjects.find((e) => e.item.ObjectName === 'obj_xoxocontroller1'); this.button.image.setDepth(-100000); this.buttonAlarm = 0;
-    this.sign = world.roomObjects.find((e) => e.item.ObjectName === 'obj_sign_room'); world.colliders.push(createCollider(world.dataSource, this.sign.item)); this.sign.image.setDepth(this.sign.item.Y + this.sign.sprite.Height);
+    this.sign = world.roomObjects.find((e) => e.item.ObjectName === 'obj_sign_room');
+    if (this.sign) { world.colliders.push(createCollider(world.dataSource, this.sign.item)); this.sign.image.setDepth(this.sign.item.Y + this.sign.sprite.Height); }
     this.wall = world.colliders.find((e) => e.objectName === 'obj_plotwall_room');
-    Object.assign(this.wall, createCollider(world.dataSource, { ...world.dataSource.room.GameObjects.find((e) => e.ObjectName === 'obj_plotwall_room'), ScaleY: 400 }));
+    if (this.wall) Object.assign(this.wall, createCollider(world.dataSource, { ...world.dataSource.room.GameObjects.find((e) => e.ObjectName === 'obj_plotwall_room'), ScaleY: 400 }));
     this.tiles.forEach((e) => e.image.setDepth(-100000)); this.victory = false; this.sync();
   }
   sync() {
-    this.wall.disabled = this.world.plot >= this.targetPlot;
-    for (const e of this.world.roomObjects.filter((e) => e.item.ObjectName === 'obj_spikes_room')) e.image.setTexture(`${e.object.Sprite}:${this.wall.disabled ? 1 : 0}`);
+    const open = this.world.plot >= this.targetPlot;
+    if (this.wall) this.wall.disabled = open;
+    for (const e of this.world.roomObjects.filter((e) => e.item.ObjectName === 'obj_spikes_room')) e.image.setTexture(`${e.object.Sprite}:${open ? 1 : 0}`);
     this.tiles.forEach((e) => e.image.setTexture(`spr_xoxo:${e.frame}`));
   }
   update(delta) {
