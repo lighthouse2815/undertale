@@ -36,6 +36,7 @@ import { testTorielBattle } from './remake-toriel-battle.mjs';
 import { testTorielGate } from './remake-toriel-gate.mjs';
 import { testHardModeEnd } from './remake-hard-mode-end.mjs';
 import { testFloweyExit } from './remake-flowey-exit.mjs';
+import { testSnowdinStart } from './remake-snowdin-start.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -393,6 +394,7 @@ try {
   await testTorielGate(page);
   await testHardModeEnd(page);
   await testFloweyExit(page);
+  await testSnowdinStart(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

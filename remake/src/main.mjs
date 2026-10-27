@@ -20,6 +20,8 @@ import { VegetoidBattle } from './vegetoid-battle.mjs';
 import { TorielBattle } from './toriel-battle.mjs';
 import { TorielGate } from './toriel-gate.mjs';
 import { FloweyExit } from './flowey-exit.mjs';
+import { ChapterTitle } from './chapter-title.mjs';
+import { SnowdinStart, stopSnowdinMusic } from './snowdin-start.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
@@ -110,7 +112,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); });
+    this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); });
     this.openRoom('room_area1').catch(fail);
   }
 
@@ -118,6 +120,7 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
+    if (name !== 'room_tundra1') stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
     state.scene = this;
     this.ruinsTutorial?.destroy();
@@ -148,7 +151,8 @@ class World extends Scene {
     this.torielLiving?.destroy(); this.torielLiving = null;
     this.torielBasement?.destroy(); this.torielBasement = null;
     this.torielGate?.destroy(); this.torielGate = null;
-    this.floweyExit = null;
+    this.floweyExit?.destroy(); this.floweyExit = null;
+    this.snowdinStart = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -271,6 +275,7 @@ class World extends Scene {
     if (BASEMENT_ROOMS.includes(name) && name !== 'room_basement4') this.torielBasement = new TorielBasement(this);
     if (name === 'room_basement4') this.torielGate = new TorielGate(this);
     if (name === 'room_ruinsexit') this.floweyExit = new FloweyExit(this);
+    if (name === 'room_tundra1') this.snowdinStart = new SnowdinStart(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -336,6 +341,7 @@ class World extends Scene {
       this.torielBedroom?.update(delta);
       this.torielLiving?.update(delta);
       this.floweyExit?.update(delta);
+      this.snowdinStart?.update(delta);
       return;
     }
     if (state.phase !== 'running') return;
@@ -351,6 +357,7 @@ class World extends Scene {
     const basementLocked = this.torielBasement?.update(delta);
     const gateLocked = this.torielGate?.update();
     const floweyLocked = this.floweyExit?.update(delta);
+    this.snowdinStart?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
@@ -387,6 +394,7 @@ class World extends Scene {
       if (this.torielBasement?.checkTrigger(previous)) return;
       if (this.torielGate?.checkTrigger(previous)) return;
       if (this.floweyExit?.checkTrigger(previous)) return;
+      if (this.snowdinStart?.checkTrigger()) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
@@ -440,6 +448,7 @@ class World extends Scene {
     if (this.childBedroom?.interact()) return;
     if (this.torielBedroom?.interact()) return;
     if (this.torielLiving?.interact()) return;
+    if (this.snowdinStart?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }
@@ -652,7 +661,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, SaveMenu, FieldMenu],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, SaveMenu, FieldMenu],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);

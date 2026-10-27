@@ -8,6 +8,7 @@ export class FloweyExit {
     this.entry = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_floweytalker1'); this.flower = this.entry.image;
     this.flower.setDepth(this.entry.item.Y + this.entry.sprite.Height);
     this.trigger = world.dataSource.room.GameObjects.find((item) => item.ObjectName === 'obj_floweytrigger2');
+    this.exit = world.dataSource.room.GameObjects.find((item) => item.ObjectName === 'obj_demodoorA');
     try { this.memory = JSON.parse(localStorage.getItem('undertale-remake-flowey-memory') ?? '{}'); } catch { this.memory = {}; }
     if (!this.memory || typeof this.memory !== 'object' || Array.isArray(this.memory)) this.memory = {};
     this.murder = world.flags[26] > 0 ? world.flags[26] >= 2 : world.flags[202] >= 20 && world.flags[45] === 4;
@@ -19,6 +20,16 @@ export class FloweyExit {
 
   checkTrigger(previous) {
     const world = this.world;
+    if (!this.locked && touchesObject(world, world.player, this.exit)) {
+      world.release();
+      if (world.flags[7] === 1) world.transitionRoom('room_tundra1', 'obj_markers', 14 * 1000 / 30, true);
+      else {
+        this.locked = true; this.stage = 'whiteout'; this.frames = 0; world.plot = 30;
+        world.sound.stopAll(); this.cymbal = world.sound.add('mus_cymbal', { volume: .9, rate: .95 }); this.cymbal.play();
+        this.white = world.add.rectangle(0, 0, 320, 240, 0xffffff).setOrigin(0).setScrollFactor(0).setDepth(200000).setAlpha(0);
+      }
+      return true;
+    }
     if (this.stage !== 'waiting' || !touchesObject(world, world.player, this.trigger, 100, 1)) return false;
     world.player.setPosition(previous.x, previous.y); world.release(); this.locked = true; this.stage = 'talking';
     const killed = Number(localStorage.getItem('undertale-remake-toriel-kills') ?? 0), spared = Number(localStorage.getItem('undertale-remake-toriel-spares') ?? 0);
@@ -55,7 +66,14 @@ export class FloweyExit {
   step() {
     if (['waiting', 'talking', 'complete'].includes(this.stage)) return;
     const world = this.world; this.frames++;
-    if (this.stage === 'laugh' || this.stage === 'idea') {
+    if (this.stage === 'whiteout') {
+      this.white.setAlpha(Math.min(1, this.frames * .006));
+      if (this.frames === 180) {
+        this.cymbal.destroy(); this.stage = 'title';
+        world.scene.sleep(); world.scene.launch('ChapterTitle', { world });
+      }
+    } else if (this.stage === 'title') return;
+    else if (this.stage === 'laugh' || this.stage === 'idea') {
       const count = this.stage === 'idea' ? 80 : 150;
       if (this.frames === count) { world.plot = 28; this.locked = false; this.stage = 'sink'; this.frames = 2; }
       else this.flower.setTexture(`spr_flowey:${Math.floor(this.frames * .25) % this.text.sprites.spr_flowey}`);
@@ -78,4 +96,6 @@ export class FloweyExit {
       else this.flower.setTexture(`spr_floweysink:${frame}`);
     }
   }
+
+  destroy() { this.cymbal?.destroy(); }
 }

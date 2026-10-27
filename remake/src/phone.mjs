@@ -1,7 +1,17 @@
-// scr_itemuseb 201–205 và SCR_TEXT 1501–1508. Các cờ dùng chung với file SAVE.
+// scr_itemuseb 201–206, SCR_TEXT 1501–1515 và scr_torcall.
 export function callToriel(world, id, text) {
   let pages;
-  if (world.flags[37] === 1) pages = text.busy;
+  if (id === 206) {
+    const index = world.phone.indexOf(id);
+    if (index > 0) { world.phone.splice(index, 1); world.phone.unshift(id); }
+    world.sound.play('snd_phone');
+    if (world.flags[7] !== 1) pages = text.noAnswer;
+    else {
+      const read = world.flags[286] ?? 0, available = world.flags[287] ?? 0;
+      pages = read === available ? text.noNewMessages : text.endingMessages[Math.min(read, 17)];
+      if (read < available) world.flags[286] = read + 1;
+    }
+  } else if (world.flags[37] === 1) pages = text.busy;
   else {
     world.sound.play('snd_phone');
     if (world.plot >= 19.9) pages = world.flags[45] === 4 ? text.silent : text.noAnswer;

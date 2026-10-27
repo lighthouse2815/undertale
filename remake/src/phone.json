@@ -20,7 +20,8 @@
     "202": "Puzzle Help",
     "203": "About Yourself",
     "204": "Call Her \"Mom\"",
-    "205": "Flirt"
+    "205": "Flirt",
+    "206": "Toriel's Phone"
   },
   "equipmentNames": {
     "3": "Stick",
@@ -353,6 +354,338 @@
     },
     {
       "text": "* (Somewhere, signals deflected\n  by a dog.)",
+      "portrait": null
+    }
+  ],
+  "endingMessages": [
+    [
+      {
+        "text": "* (Noticed you received a\n  text from Toriel.)",
+        "portrait": null
+      },
+      {
+        "text": "* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* Sans and Alphys are teaching\n  me how to text.\n* I am learning so much.",
+        "portrait": null
+      },
+      {
+        "text": "* For example:\n* Do you know what a\n  \"smiley\" is?",
+        "portrait": null
+      },
+      {
+        "text": "* Please look at this:",
+        "portrait": null
+      },
+      {
+        "text": "  ]: )",
+        "portrait": null
+      },
+      {
+        "text": "* Now turn your head to the\n  left.",
+        "portrait": null
+      },
+      {
+        "text": "* It is a picture of me\n  smiling at you!\n* Can you see it?",
+        "portrait": null
+      },
+      {
+        "text": "* L-O-L!\n* (That stands for Lots of\n  Laughter.)",
+        "portrait": null
+      },
+      {
+        "text": "* Sincerely, Toriel",
+        "portrait": null
+      },
+      {
+        "text": "* (That's all for now.)\n* (Maybe in the next room, you\n  will receive another.)",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* How are you? You have been\n  wandering around for\n  quite some time now.",
+        "portrait": null
+      },
+      {
+        "text": "* I hope you are not getting\n  into trouble.",
+        "portrait": null
+      },
+      {
+        "text": "* Only kidding.\n* L-O-L!",
+        "portrait": null
+      },
+      {
+        "text": "* Sincerly, Toriel",
+        "portrait": null
+      },
+      {
+        "text": "* PS - Do not get into trouble.",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Excuse me,",
+        "portrait": null
+      },
+      {
+        "text": "* I did not mean to write\n  \"sincerly.\"\n* I meant to say \"sincerely.\"",
+        "portrait": null
+      },
+      {
+        "text": "* It is difficult to use this\n  with large hands.",
+        "portrait": null
+      },
+      {
+        "text": "* Perhaps I should ask Sans\n  to transcribe for me.",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Sans will be typing from\n  now on.",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)",
+        "portrait": null
+      },
+      {
+        "text": "* hey frisk.\n* it's torrrrrieellll",
+        "portrait": null
+      },
+      {
+        "text": "* i just baked 1000000 pies.\n* do you want any?",
+        "portrait": null
+      },
+      {
+        "text": "* make sure to brush your\n  teeth before crossing\n  the street, frisk",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)",
+        "portrait": null
+      },
+      {
+        "text": "* I did not say any of that.",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)",
+        "portrait": null
+      },
+      {
+        "text": "* Greetings.\n* This is Sans.\n* I love my brother very much.",
+        "portrait": null
+      },
+      {
+        "text": "* help im being slandered",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)",
+        "portrait": null
+      },
+      {
+        "text": "* This is Sans.\n* Frisk, did you know that I\n  love to \"get owned?\"",
+        "portrait": null
+      },
+      {
+        "text": "* I also think Toriel is very\n  good and fhfjkehfeaufsisf",
+        "portrait": null
+      },
+      {
+        "text": "* Excuse me",
+        "portrait": null
+      },
+      {
+        "text": "* .",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message\n  titled \"Cat Video.\")",
+        "portrait": null
+      },
+      {
+        "text": "* (Inside, she meticulously\n  describes a video she saw\n  of a small, white animal.)",
+        "portrait": null
+      },
+      {
+        "text": "* (There is no link or\n  attachment to watch it.)",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)",
+        "portrait": null
+      },
+      {
+        "text": "* Fwd: send this 2 some1 u\n  care about... or a skeleton\n  will rattle his bones at u",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* Thought you might enjoy this.\n* ]: )",
+        "portrait": null
+      },
+      {
+        "text": "* (It's ASCII art of a snail.)",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* Undyne and Papyrus want to\n  cook something together\n  with me.",
+        "portrait": null
+      },
+      {
+        "text": "* Sans is telling me that they\n  are excellent chefs.",
+        "portrait": null
+      },
+      {
+        "text": "* I am excited. ]: )\n* Maybe if you are lucky, you\n  can have some!",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* If Sans and I started a\n  band, do you know what\n  we could call it?",
+        "portrait": null
+      },
+      {
+        "text": "* \"Dreemurr\" and \"Femur.\"\n* L-O-L!",
+        "portrait": null
+      },
+      {
+        "text": "* PS - That is only a joke.\n* Do not refer to me as\n  Dreemurr.",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* Undyne is very strong.",
+        "portrait": null
+      },
+      {
+        "text": "* Papyrus made a bet with her\n  that she could not lift\n  everyone here up.",
+        "portrait": null
+      },
+      {
+        "text": "* She could.",
+        "portrait": null
+      },
+      {
+        "text": "* The only trouble is that\n  she did not know how to\n  put everyone down.",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* Alphys is telling me many\n  interesting facts about\n  the human world.",
+        "portrait": null
+      },
+      {
+        "text": "* Quite a few of them are\n  wrong, though.",
+        "portrait": null
+      },
+      {
+        "text": "* Frisk, you did not tell\n  her anything funny, did you?\n* ]: )",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* I heard that using the\n  computer for too long\n  is bad for you.",
+        "portrait": null
+      },
+      {
+        "text": "* However, I have not seen\n  you use the computer at all.",
+        "portrait": null
+      },
+      {
+        "text": "* You must be very healthy!\n* How nice.",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (TORIEL sent you a message.)\n* Dear Frisk,",
+        "portrait": null
+      },
+      {
+        "text": "* I think I may have to turn\n  off the phone for now.",
+        "portrait": null
+      },
+      {
+        "text": "* Your friends are all very\n  lovely people!",
+        "portrait": null
+      },
+      {
+        "text": "* I think I will spend this\n  time getting to know\n  them better.",
+        "portrait": null
+      },
+      {
+        "text": "* Be good, alright?",
+        "portrait": null
+      },
+      {
+        "text": "* Sincerely, Toriel.",
+        "portrait": null
+      }
+    ],
+    [
+      {
+        "text": "* (Toriel has not sent any\n  more messages.)",
+        "portrait": null
+      }
+    ]
+  ],
+  "noNewMessages": [
+    {
+      "text": "* (Toriel has not sent any\n  more messages.)",
       "portrait": null
     }
   ]

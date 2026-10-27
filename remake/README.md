@@ -201,6 +201,8 @@ Trận Toriel nối từ basement 4: lời thách đấu/lửa, Check/Talk/ký �
 
 Kết thúc Hard Mode sau Toriel có chó, Toriel và Flowey, các câu gốc, bảng HARD MODE, nhạc và màn đen cuối; mã `src/hard-mode-end.*`. Không có thưởng EXP/kill giả của tuyến thường. Cờ 6 vẫn cần được thống nhất với màn nhập tên Frisk và các encounter Hard Mode trước boss chưa đủ, nên chưa hỗ trợ trọn tuyến Hard Mode.
 
-Đường tay dùng Phaser Spline; thứ tự alarm/va chạm sát biên, hiệu ứng sinh đạn nhỏ/tan bụi, gõ chữ/ngắt/màu trong dòng vẫn cần đối chiếu từng frame. Các kiểm thử mới xác minh hành động, nhánh, phần thưởng, va chạm và kết quả, không chứng minh hình ảnh/quỹ đạo giống hoàn toàn. Flowey sau cửa Ruins và phần game Snowdin trở đi vẫn chưa nối.
+Đường tay dùng Phaser Spline; thứ tự alarm/va chạm sát biên, hiệu ứng sinh đạn nhỏ/tan bụi, gõ chữ/ngắt/màu trong dòng vẫn cần đối chiếu từng frame. Các kiểm thử mới xác minh hành động, nhánh, phần thưởng, va chạm và kết quả, không chứng minh hình ảnh/quỹ đạo giống hoàn toàn. Flowey sau cửa Ruins và lối vào Snowdin đã nối; phần từ cuộc gặp Sans trở đi chưa chuyển.
 
-Flowey sau Toriel đã có ở `src/flowey-exit.mjs/json`, nối từ basement 5. Các lời theo tha/giết/ký ức Toriel/Flowey và tuyến diệt chủng dùng dữ liệu gốc; có alarm/animation/cờ/plot28, chặn quay về Ruins ở tuyến thường và không lặp sau lưu/nạp. Màn logo chuyển chương và Snowdin chưa nối từ cửa trên.
+Flowey sau Toriel đã có ở `src/flowey-exit.mjs/json`, nối từ basement 5. Các lời theo tha/giết/ký ức Toriel/Flowey và tuyến diệt chủng dùng dữ liệu gốc; có alarm/animation/cờ/plot28, chặn quay về Ruins ở tuyến thường và không lặp sau lưu/nạp. Cửa trên đã nối màn logo chuyển chương và phòng đầu Snowdin.
+
+`src/chapter-title.mjs` chuyển logo/credit/đen đúng ba mốc 150 frame sau trắng dần 180 frame ở cửa Ruins. `src/snowdin-start.*` chuyển camera bụi cây, va chạm lối vào, nhạc theo plot/cờ và đường quay về Ruins sau kết thúc. Danh bạ chuyển thành Toriel’s Phone (206), có noAnswer và các tin nhắn kết thúc scr_torcall. Phòng 2 và cuộc gặp Sans/Papyrus chưa chuyển, cửa phải phòng 1 chưa nối.
