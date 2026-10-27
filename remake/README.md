@@ -239,3 +239,6 @@ Phòng6 có `src/snowdin-ice.mjs/json`:44ôbăng/giữ hướng/3px mỗi frame/
 
 
 Nhánh6A có `src/snowman.mjs/json`: người tuyết/Yes-No/túi đầy/cấp bù/BOX/cờ56, Snowman Piece16 hồi45HP/INFO-USE-DROP, ăn trước mặt, ba mảnh theo tuyến giết/cờ253/đổi ảnh/lưu nạp, lời sau kết thúc. Cửa6↔6A và nhạc đã nối; phòng7/câu đố điện Papyrus còn thiếu.
+
+
+Phòng7 có `src/electric-maze.mjs/json`: intro/ký ức, Papyrus tự bị giật/path/dấu chân/trao orb, mê cung dùng mask PNG/giật 15 frame/đường đi an toàn, tám trang giải/plot43/Sans, nhánh diệt chủng/Frisk bước qua/cờ291 và dọn khi đổi phòng. Cửa6 ↔ 7/nhạc và SAVE đã nối; phòng8/Nice Cream/golf và phòng9/crossword chưa nối. Gõ chữ, chi tiết animation và alarm sát frame vẫn còn hạn chế.

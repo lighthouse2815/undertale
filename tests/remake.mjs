@@ -50,6 +50,7 @@ import { testDoggoBattle } from './remake-doggo-battle.mjs';
 import { testDoggoRoom } from './remake-doggo-room.mjs';
 import { testSnowdinIce } from './remake-snowdin-ice.mjs';
 import { testSnowman } from './remake-snowman.mjs';
+import { testElectricMaze } from './remake-electric-maze.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -421,6 +422,7 @@ try {
   await testDoggoRoom(page);
   await testSnowdinIce(page);
   await testSnowman(page);
+  await testElectricMaze(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

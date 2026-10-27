@@ -1,0 +1,450 @@
+{
+  "intro": [
+    {
+      "text": "YOU'RE SO\nLAZY!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU WERE\nNAPPING\nALL NIGHT!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* i think that's called...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* sleeping.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "EXCUSES,\nEXCUSES!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "introAgain": [
+    {
+      "text": "REALLY THOUGH!!!\nTHAT HUMAN!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "DO I KNOW THAT\nPERSON???",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* do you not know...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* who you know?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "PBPBPPBPT!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OF COURSE I KNOW\nWHO I KNOW!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WANTED TO KNOW IF\nYOU KNOW...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I KNOW WHO I KNOW\nAS MUCH AS I KNOW\nI KNOW WHO I KNOW!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "...YOU KNOW?",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "explain": [
+    {
+      "text": "OH-HO!\nTHE HUMAN\nARRIVES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IN ORDER TO\nSTOP YOU...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MY BROTHER AND\nI HAVE CREATED\nSOME PUZZLES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I THINK YOU\nWILL FIND\nTHIS ONE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "QUITE\nSHOCKING!!!",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FOR YOU SEE,\nTHIS IS THE\nINVISIBLE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ELECTRICITY\nMAZE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHEN YOU TOUCH\nTHE WALLS OF\nTHIS MAZE,",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THIS ORB WILL\nADMINISTER A\nHEARTY ZAP!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SOUND LIKE\nFUN???",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BECAUSE!",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE AMOUNT OF\nFUN YOU WILL\nPROBABLY HAVE,",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IS ACTUALLY\nRATHER SMALL\nI THINK.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OK, YOU CAN\nGO AHEAD NOW.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "explainAgain": [
+    {
+      "text": "OH-HO!\nSPEAK OF THE DEVIL!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IN ORDER TO\nSTOP YOU...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MY BROTHER AND\nI HAVE CREATED\nSOME PUZZLES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I THINK YOU\nWILL FIND\nTHIS ONE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "QUITE\nSHOCKING!!!",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FOR YOU SEE,\nTHIS IS THE\nINVISIBLE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ELECTRICITY\nMAZE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHEN YOU TOUCH\nTHE WALLS OF\nTHIS MAZE,",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THIS ORB WILL\nADMINISTER A\nHEARTY ZAP!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SOUND LIKE\nFUN???",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BECAUSE!",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE AMOUNT OF\nFUN YOU WILL\nPROBABLY HAVE,",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IS ACTUALLY\nRATHER SMALL\nI THINK.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OK, YOU CAN\nGO AHEAD NOW.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "angry": [
+    {
+      "text": "SANS!!!\nWHAT DID YOU\nDO?!?!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "orbHint": [
+    {
+      "text": "* i think the human\n  has to hold the orb.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "okay": [
+    {
+      "text": "OH, OKAY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "hold": [
+    {
+      "text": "HOLD THIS PLEASE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "try": [
+    {
+      "text": "OKAY, TRY NOW!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "solved": [
+    {
+      "text": "INCREDIBLE!!\nYOU SLIPPERY\nSNAIL!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU SOLVED IT\nSO EASILY...\nTOO EASILY!",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HOWEVER!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE NEXT\nPUZZLE WILL\nNOT BE EASY!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT IS DESIGNED\nBY MY BROTHER,\nSANS!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU WILL\nSURELY BE\nCONFOUNDED!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I KNOW I AM!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH HEH HEH\nHEH HEH!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderFirst": [
+    {
+      "text": "OH-HO!\nTHE HUMAN\nARRIVES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IN ORDER TO\nSTOP YOU...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MY BROTHER AND\nI HAVE CREATED\nSOME PUZZLES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I THINK YOU\nWILL FIND\nTHIS ONE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "QUITE\nSHOCKING!!!",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FOR YOU SEE,\nTHIS IS...\nTHE, INVISIBLE...",
+      "portrait": "spr_face_papyrussweat",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderSecond": [
+    {
+      "text": "UHHHHHHH...?",
+      "portrait": "spr_face_papyrussweat",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HMMM... YOU MUST\nBE HAVING\nCULTURE SHOCK.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU SEE, WHERE I\nCOME FROM, IT'S\nA LOVING TRADITION.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "TO SUFFER THROUGH\nHORRIBLE PUZZLES\nFOR NO REASON.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SO, UH, JUST\nWALK BACK THERE,\nAND...",
+      "portrait": "spr_face_papyrussweat",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "...",
+      "portrait": "spr_face_papyrussweat",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderEnd": [
+    {
+      "text": "SIGH...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHY COULDN'T WE GET\nA HUMAN THAT LIKES\nPUZZLES???",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "sans": [
+    {
+      "text": "* hey, thanks...\n* my brother seems like\n  he's having fun.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* by the way, did you\n  see that weird outfit\n  he's wearing?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* we made that a few\n  weeks ago for a costume\n  party.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* he hasn't worn anything\n  else since...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* keeps calling it his\n  \"battle body.\"",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* man.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* isn't my brother cool?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansMurder": [
+    {
+      "text": "* it would make my\n  brother happy if you\n  played along.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sprites": {
+    "spr_exc": 1,
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_papyrussweat": 2,
+    "spr_face_sans": 1,
+    "spr_face_sansblink": 1,
+    "spr_face_sanschuckle": 1,
+    "spr_face_sansnoeyes": 1,
+    "spr_face_sanswink": 1,
+    "spr_orb": 1,
+    "spr_papyrus_d": 4,
+    "spr_papyrus_dt": 2,
+    "spr_papyrus_electrocute": 2,
+    "spr_papyrus_l": 4,
+    "spr_papyrus_lt": 2,
+    "spr_papyrus_mad1": 3,
+    "spr_papyrus_orb": 2,
+    "spr_papyrus_orbtoss": 1,
+    "spr_papyrus_r": 4,
+    "spr_papyrus_rt": 2,
+    "spr_papyrus_steps": 1,
+    "spr_papyrus_toasted": 2,
+    "spr_papyrus_u": 4,
+    "spr_papyrus_ut": 1,
+    "spr_sans_d": 4,
+    "spr_sans_l": 4,
+    "spr_sans_r": 4,
+    "spr_sans_u": 4
+  }
+}
