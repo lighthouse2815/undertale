@@ -39,6 +39,25 @@ export async function testToughGlove(page) {
       if (!punches) assert.equal(result.message, '* MISS');
       if (punches === 4) assert.ok(result.fists.includes('spr_hyperfist:0'));
     }
+    // scr_levelup đặt AT99 ở LV20; kiểm tra sát thương thật và ngưỡng MERCY ở cả hai phía.
+    for (const level of [19, 20]) {
+      const result = await page.evaluate((level) => {
+        const s = __remake.scene, w = s.previousScene; w.lv = level; s.enemyHp = 440; s.defense = 1;
+        const random = Math.random; Math.random = () => .5;
+        try {
+          s.startFight(); s.attackSpeed = 0; s.attackX = 156; s.confirmPressed = true; s.updateFight(0);
+          for (let i = 0; i < 4; i++) { s.confirmPressed = true; s.updateFight(1000 / 30); }
+          s.confirmPressed = false;
+          const hp = s.enemyHp, damage = s.damage;
+          s.enemyHp = 100; s.mercyModifier = 20;
+          const mercy = s.spareable(); w.lv = 1;
+          return { hp, damage, mercy };
+        } finally { Math.random = random; }
+      }, level);
+      const damage = level === 20 ? monster === 'froggit' ? 212 : 218 : monster === 'froggit' ? 101 : 107;
+      assert.deepEqual([result.damage, result.hp], [damage, 440 - damage]);
+      if (monster === 'froggit') assert.equal(result.mercy, level === 20);
+    }
     // Nhấn Z thật: lần dừng thanh không tính là cú đấm, bốn lần sau mới đủ sức.
     await page.evaluate(() => { const s = __remake.scene; s.enemyHp = 440; s.startFight(); s.attackSpeed = 0; s.attackX = 156; });
     await page.keyboard.press('z'); await page.waitForFunction(() => !!__remake.scene.glovePunch);
@@ -49,5 +68,5 @@ export async function testToughGlove(page) {
     await page.evaluate(() => __remake.scene.finishBattle());
     await page.evaluate(() => new Promise((resolve) => __remake.game.events.once('poststep', resolve)));
   }
-  console.log('✓ Tough Glove: INFO/USE/đổi vũ khí/AT5/lưu nạp; thanh nhanh 1.2x, Z dừng + bốn cú trong 30 frame, tỉ lệ sát thương/MISS/đấm mạnh trên Froggit và Toriel');
+  console.log('✓ Tough Glove: INFO/USE/đổi vũ khí/AT5/lưu nạp; thanh nhanh 1.2x, Z dừng + bốn cú trong 30 frame, tỉ lệ sát thương/MISS/đấm mạnh trên Froggit và Toriel; AT99/LV20/sát thương/MERCY');
 }

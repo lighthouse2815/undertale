@@ -112,7 +112,7 @@ export class RuinsBattle extends DummyBattle {
     else this.choose('mercy', ['Spare', 'Flee']);
   }
 
-  spareable() { return this.enemyHp - (8 + this.previousScene.lv * 2) - this.previousScene.weaponStrength + this.config.def - this.mercyModifier < 0; }
+  spareable() { return this.enemyHp - (this.previousScene.lv === 20 ? 99 : 8 + this.previousScene.lv * 2) - this.previousScene.weaponStrength + this.config.def - this.mercyModifier < 0; }
 
   drawSubmenu() {
     super.drawSubmenu();
