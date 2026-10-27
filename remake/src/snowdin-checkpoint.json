@@ -1,0 +1,635 @@
+{
+  "intro": [
+    {
+      "text": "SO, AS I\nWAS SAYING\nABOUT UNDYNE,",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "introMurder": [
+    {
+      "text": "SO SANS!\nWHEN'S THE HUMAN\nSHOWING UP???",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WANT TO LOOK\nMY SUNDAY BEST...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OR AT LEAST MY\nTUESDAY\nPRETTY-GOOD.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* don't you only have\n  one outfit?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "YEAH, BUT I COULD\nSTYLE MY HAIR!",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* oh. right.\n* good idea.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* say, why don't you\n  look over there?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "notice": [
+    {
+      "text": "SANS!!\nOH MY GOD!!\nIS THAT...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "A HUMAN!?!?\n!??!?!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "noticeAgain": [
+    {
+      "text": "SANS!!\nOH MY GOD!!\nIS THAT...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "A HUMAN!?!?\n!??!?!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND IT LOOKS SO\nFAMILIAR...!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "noticeMurder": [
+    {
+      "text": "SANS!!!\nOH MY GOD!!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M DIZZY.\nWHAT AM I LOOKING\nAT?",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* behold.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "rock": [
+    {
+      "text": "* uhhhh...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* actually, i think that's\n  a rock.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "rockAgain": [
+    {
+      "text": "* uhhhh...\n* i think it looks\n  familiar...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* because it's a rock?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "rockMurder": [
+    {
+      "text": "OH MY GOD!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "oh": [
+    {
+      "text": "OH.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "ohMurder": [
+    {
+      "text": "WHY ARE YOU\nTELLING ME TO\nLOOK AT A ROCK.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "front": [
+    {
+      "text": "* hey, what's that in\n  front of the rock?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "surprise": [
+    {
+      "text": "OH MY GOD!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "human": [
+    {
+      "text": "(IS... IS THAT\nA HUMAN)",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "humanMurder": [
+    {
+      "text": "I HAVE NO IDEA\nWHAT THAT IS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "yes": [
+    {
+      "text": "(yes)",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "yesMurder": [
+    {
+      "text": "* well.\n* it's not a rock.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "plan": [
+    {
+      "text": "OH MY GOD!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SANS!\nI FINALLY\nDID IT!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "UNDYNE WILL...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M GONNA...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL BE SO...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "POPULAR!!!\nPOPULAR!!!\nPOPULAR!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "...'AHEM'",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HUMAN! YOU\nSHALL NOT PASS\nTHIS AREA!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I, THE GREAT\nPAPYRUS, WILL\nSTOP YOU!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WILL THEN\nCAPTURE YOU!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU WILL BE\nDELIVERED TO\nTHE CAPITAL!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEN...\nTHEN!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M NOT SURE\nWHAT'S NEXT.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IN ANY CASE!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "CONTINUE...\nONLY IF YOU\nDARE!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "planMurder": [
+    {
+      "text": "NOT A ROCK...?",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OH NO!!!\nBY PROCESS OF\nELIMINATION!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT MEANS IT'S\nA HUMAN!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AHEM!!\nHUMAN!!",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PREPARE YOURSELF!!\nFOR HIGH JINKS!\nFOR LOW JINKS!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "DANGERS!\nPUZZLES!\nCAPERS! JAPERS!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BEING CAPTURED!!\nAND OTHER SORTS OF\nFUN ACTIVITIES.",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "REFRESHMENTS WILL\nBE PROVIDED...",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IF YOU DARE!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "laugh": [
+    {
+      "text": "NYEH HEH HEH\nHEH HEH HEH\nHEH HEH!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "bye": [
+    {
+      "text": "* well, that went well.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* don't sweat it, kid.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i'll keep an eyesocket\n  out for ya.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "byeMurder": [
+    {
+      "text": "* ... and you don't even\n  bat an eye, huh?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "checkpoint": [
+    {
+      "text": "* There's some narration on this\n  cardboard box.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "YOU OBSERVE THE\nWELL-CRAFTED\nSENTRY STATION.",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHO COULD HAVE\nBUILT THIS, YOU\nPONDER...",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I BET IT WAS\nTHAT VERY FAMOUS\nROYAL GUARDSMAN!",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(NOTE: NOT YET A\nVERY FAMOUS\nROYAL GUARDSMAN.)",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    }
+  ],
+  "checkpointEnd": [
+    {
+      "text": "* There's some narration on this\n  cardboard box.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "YOU OBSERVE THE\nWELL-CRAFTED\nSENTRY STATION.",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHO COULD HAVE\nBUILT THIS, YOU\nPONDER...",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I BET IT WAS\nTHAT VERY FAMOUS\nROYAL GUARDSMAN!",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(NOTE: NOT YET A\nVERY FAMOUS\nROYAL GUARDSMAN.)",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(UPDATE: AM I A\nROYAL GUARDSMAN\nYET???)",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    }
+  ],
+  "camera": [
+    {
+      "text": "* ...!?\n* There is a camera behind the...\n  \"sentry station.\"",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "snowdrake": [
+    {
+      "text": "* I ran away from home.\n* Why?",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* 'Cause my father was so\n  \"cold\" to me...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* WHAT!?\n* It's a JOKE!!\n* LAUGH at it!!",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "snowdrakeAgain": [
+    {
+      "text": "* I really don't!\n* I don't care if he doesn't\n  like my jokes!",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "snowdrakeEnd": [
+    {
+      "text": "* Mom might have to share her\n  mind with other people now,\n  but she's still my mom.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* And that's \"cool!\"",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* 'Cause, uhh, we're made\n  of ice and stuff.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* WHAT!?!?\n* It's a JOKE!!\n* LAUGH at it!!",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "mother": [
+    {
+      "text": "* Sn... ow... y...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "father": [
+    {
+      "text": "* The doctah.\n* She brought my wife.\n* Back from the dead.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* My son.\n* He seems happy again.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Our family.\n* It's biggah than evah.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Now that my wife.\n* Is combined.\n* With 16 othah people.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "fatherJob": [
+    {
+      "text": "* My boss stopped answering my\n  calls.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I don't know when my next\n  performance will be.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Maybe I shouldn't try to be\n  a comedian anymore...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* It's tearing my family apart.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "fatherLost": [
+    {
+      "text": "* My son...\n* He was always making these\n  weird ice puns.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I hated them, so he ran\n  away from home...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I think I should try to\n  patch things up with him.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Have you seen him?\n* Have you seen my son?",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "phoneRing": [
+    {
+      "text": "* (Ring... ring...)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "phoneGaster": [
+    {
+      "text": "* hey.",
+      "portrait": null,
+      "font": "fnt_comicsans"
+    }
+  ],
+  "phoneQuestion": [
+    {
+      "text": "* is your refrigerator\n  running?",
+      "portrait": null,
+      "font": "fnt_comicsans"
+    }
+  ],
+  "phoneYes": [
+    {
+      "text": "* nice.\n* i'll be over to deposit\n  the brewskis.",
+      "portrait": null,
+      "font": "fnt_comicsans"
+    }
+  ],
+  "phoneNo": [
+    {
+      "text": "* ok, i'll send someone\n  over to fix it.",
+      "portrait": null,
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* thanks for letting me\n  know.",
+      "portrait": null,
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* good communication is\n  important.",
+      "portrait": null,
+      "font": "fnt_comicsans"
+    }
+  ],
+  "phoneAlphys": [
+    {
+      "text": "* U-uhhh...\n* (Oh my god, help...)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I'd like to order a...\n* Um...\n* A pizza...?",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* With, uhh...\n* The toppings are, uh...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I have them copied, I'll\n  just paste them to you.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* (Your phone is too old to\n  receive texts...)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* (It reads out loud, character-\n  by-character, an ASCII art\n  of an anime catgirl.)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* ...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "phoneClick": [
+    {
+      "text": "* (Click...)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "sprites": {
+    "spr_amalgam_fridgenpc": 2,
+    "spr_exc": 1,
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_sans": 1,
+    "spr_face_sansblink": 1,
+    "spr_face_sanschuckle": 1,
+    "spr_face_sansnoeyes": 1,
+    "spr_face_sanswink": 1,
+    "spr_papyrus_d": 4,
+    "spr_papyrus_dt": 2,
+    "spr_papyrus_l": 4,
+    "spr_papyrus_lt": 2,
+    "spr_papyrus_r": 4,
+    "spr_papyrus_rt": 2,
+    "spr_papyrus_u": 4,
+    "spr_papyrus_ut": 1,
+    "spr_sans_d": 4,
+    "spr_sans_l": 4,
+    "spr_sans_r": 4,
+    "spr_sans_u": 4,
+    "spr_snowdrakedad": 2
+  }
+}

@@ -222,3 +222,6 @@ Lesser Dog đơn có ở `src/lesser-dog-battle.*` và `src/lesser-dog-waves.mjs
 
 
 Encounter tự nhiên đã nối phòng3 bằng `src/snowdin-encounter.mjs`: scr_steps theo dân số, thứ tự cờ70/plot42/tuyến, chuyển Chilldrake, hếtquái222/Nobody theo hai mốc, dấu!/skull và khóa, snapshot tự động trước trận/Game Over/nhạc. Chỉ đếm bước thật ngoài menu/thoại; 3A không sinh encounter. Phòng4/cảnh Papyrus và nhánh fun65/soundtest còn thiếu, nên chưa hoàn chỉnh Box Road hoặc toàn Snowdin.
+
+
+Phòng4 có `src/snowdin-checkpoint.mjs/json`: cảnh Papyrus/Sans nhận nhầm tảng đá, quay/pan camera, ký ức/lần gặp/tuyến/cờ27, thoại gốc/nhạc/khóa/rời đi/plot40/lưu tạm, trạm gác và camera, cuộc gọi fun40–50 (Yes/No/pizza)/cờ277. Snowdrake NPC chỉ xuất hiện sauplot100 nếu dân số203 chưa bị giết; có gia đình sau kết thúc/thoại/collider. Cửa BOX↔phòng4 và encounter đã nối, phòng5/Doggo còn thiếu. Gõ chữ/animation thoại/chi tiết alarm từng frame vẫn cần đối chiếu thêm.
