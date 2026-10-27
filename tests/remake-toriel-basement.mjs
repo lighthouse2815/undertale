@@ -30,6 +30,7 @@ export async function testTorielBasement(page) {
   await page.waitForFunction(() => __remake.room === 'room_basement1' && __remake.phase === 'running');
   assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y]), [95, 113]);
   assert.deepEqual(await page.evaluate(() => [__remake.scene.basementMusic.key, __remake.scene.basementMusic.rate]), ['mus_intronoise', .3]);
+  await page.waitForFunction(() => Math.abs(__remake.scene.basementMusic.volume - .4) < 1e-6);
   assert.ok(await page.evaluate(() => Math.abs(__remake.scene.basementMusic.volume - .4) < 1e-6));
   await page.evaluate(() => { __remake.scene.basementTrack = __remake.scene.basementMusic; });
   await warning(320); assert.equal(await page.evaluate(() => __remake.scene.dialogue.lines.length), 6);
