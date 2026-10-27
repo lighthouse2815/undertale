@@ -54,6 +54,7 @@ import { SnowdinColorTiles } from './snowdin-color-tiles.mjs';
 import { SnowdinDogHouse } from './snowdin-dog-house.mjs';
 import { SnowdinIcePuzzle } from './snowdin-ice-puzzle.mjs';
 import { SnowdinIceHole } from './snowdin-ice-hole.mjs';
+import { SnowdinTownUndyne } from './snowdin-town-undyne.mjs';
 import { SnowdinTownPapyrus } from './snowdin-town-papyrus.mjs';
 import { SnowdinTownDogs } from './snowdin-town-dogs.mjs';
 import { SnowdinTown } from './snowdin-town.mjs';
@@ -228,7 +229,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
-    this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null;
+    this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -367,7 +368,7 @@ class World extends Scene {
     if (name === 'room_tundra_lesserdog') this.snowdinDogHouse = new SnowdinDogHouse(this);
     if (name === 'room_tundra_iceentrance') this.snowdinIcePuzzle = new SnowdinIcePuzzle(this);
     if (name === 'room_tundra_icehole') this.snowdinIceHole = new SnowdinIceHole(this);
-    if (name === 'room_tundra_town') { this.snowdinTown = new SnowdinTown(this); this.snowdinTownNpcs = new SnowdinTownNpcs(this); this.snowdinTownDogs = new SnowdinTownDogs(this); this.snowdinTownPapyrus = new SnowdinTownPapyrus(this); }
+    if (name === 'room_tundra_town') { this.snowdinTown = new SnowdinTown(this); this.snowdinTownNpcs = new SnowdinTownNpcs(this); this.snowdinTownDogs = new SnowdinTownDogs(this); this.snowdinTownPapyrus = new SnowdinTownPapyrus(this); this.snowdinTownUndyne = new SnowdinTownUndyne(this); }
     if (name === 'room_tundra_dangerbridge') this.snowdinDangerBridge = new SnowdinDangerBridge(this);
     if (name === 'room_tundra_poffzone') this.greaterDogRoom = new GreaterDogRoom(this);
     if (name === 'room_tundra_iceexit_new') this.gyftrotRoom = new GyftrotRoom(this);
@@ -457,6 +458,7 @@ class World extends Scene {
       this.snowdinDogHouse?.update(delta);
       this.snowdinIcePuzzle?.update(delta);
       this.snowdinIceHole?.update(delta);
+      this.snowdinTownUndyne?.update(delta);
       this.snowdinTownPapyrus?.update(delta);
       this.snowdinTownDogs?.update(delta);
       this.snowdinTown?.update(delta);
@@ -496,6 +498,7 @@ class World extends Scene {
     this.snowdinDogHouse?.update(delta);
     const icePuzzleLocked = this.snowdinIcePuzzle?.update(delta);
     const iceHoleLocked = this.snowdinIceHole?.update(delta);
+    this.snowdinTownUndyne?.update(delta);
     const townPapyrusLocked = this.snowdinTownPapyrus?.update(delta);
     const townDogsLocked = this.snowdinTownDogs?.update(delta);
     const townLocked = this.snowdinTown?.update(delta);
@@ -621,6 +624,7 @@ class World extends Scene {
     if (this.snowdinColorTiles?.interact()) return;
     if (this.snowdinDogHouse?.interact()) return;
     if (this.snowdinIceHole?.interact()) return;
+    if (this.snowdinTownUndyne?.interact()) return;
     if (this.snowdinTownPapyrus?.interact()) return;
     if (this.snowdinTownDogs?.interact()) return;
     if (this.snowdinTownNpcs?.interact() || this.snowdinTown?.interact()) return;

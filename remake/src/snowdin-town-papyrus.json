@@ -287,5 +287,19 @@
     "spr_face_papyruswacky": 2,
     "spr_face_papyruscry": 2,
     "spr_face_papyruscool": 2
-  }
+  },
+  "shedAgain": [
+    {
+      "text": "YOU SHOULD LEARN\nA PRIVACY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "shedPunishment": [
+    {
+      "text": "READY FOR ANOTHER\nNIGHT IN THE\nPUNISHMENT SHACK?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ]
 }

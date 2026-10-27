@@ -4,7 +4,7 @@ import { inInteractionRange } from './npc.mjs';
 // obj_papyrus_houseoutside: dẫn gặp Papyrus/88=1, vòngchạy145-8-145 và chốt88=2.
 export class SnowdinTownPapyrus {
   constructor(world) {
-    this.world = world; this.text = world.dataSource.townPapyrusDialogue; this.elapsed = 0; this.frames = 0; this.total = 0; this.locked = false; this.stage = 'waiting'; this.mailTalked = 0;
+    this.world = world; this.text = world.dataSource.townPapyrusDialogue; this.elapsed = 0; this.frames = 0; this.total = 0; this.locked = false; this.stage = 'waiting'; this.mailTalked = this.shedRead = 0;
     const e = world.roomObjects.find((e) => e.item.ObjectName === 'obj_papyrus_houseoutside'), f = world.flags;
     const late = f[88] >= 4 && !f[7];
     if (f[67] === 1 || (f[88] ?? 0) !== 1 && !late || late && (world.plot <= 105 || f[354] === 2 && !f[389])) {
@@ -76,6 +76,6 @@ export class SnowdinTownPapyrus {
     const e = w.roomObjects.find((e) => ['obj_papmailbox', 'obj_readable_room2'].includes(e.item.ObjectName) && nearby(e));
     if (!e) return false;
     if (e.item.ObjectName === 'obj_papmailbox') this.show(this.mailTalked++ ? 'mailboxAgain' : 'mailbox');
-    else this.show('shed'); return true;
+    else this.show(this.shedRead++ ? 'shedAgain' : w.flags[67] < 0 ? 'shedPunishment' : 'shed'); return true;
   }
 }

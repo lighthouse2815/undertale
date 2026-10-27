@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi chuyển Papyrus ngoài nhà. Mốc code trước phần này: `e8d88f8` trên `main`.
+Cập nhật: 28/10/2026, sau khi chuyển Undyne và thư tại Town. Mốc code trước phần này: `f1b2be5` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -531,3 +531,12 @@ Lượtfull mới `test-room-cleanup-full-v1.log` đangchạy snapshot42b30da, �
 NhánhPapyrus_room ởTown sau88>=4/plot>105 cũngcóđiềukiệnẩn354=2&&389=0/7/67, lờitheo354/389/plot175/493=8-9-10 vàquaymặt4hướngkhitươngtác. MởrộngdữliệumặtPapyrus đủ0–9đểđọcemotion5/6thật, khôngcắt/chọnmặtsai. **Chưa chuyển actorUndyne_friendc/thư56-57 vàlời chéo hộpthư/kho khiUndyneởđó**; các nhánhPapyrusmuộnđã cólờitheođiềukiệngốc, khôngcoi toànnhánhUndynehoànchỉnh. Cửa vào nhà sau88>=2/hẹn hò trong nhà vẫnchưa nối; sẽ chuyển tiếp nhà/các dịchvụtrước mởcửaTowntừcầu.
 
 Helper `tests/remake-snowdin-town-papyrus.mjs` nối tổng: mườiđiềukiệnhiện/ẩn, hộpthư/kho/cửa/66, cảnhthậtbằngphím/hội thoại-vòngchạy145-8-145/khóa/camera/88=2/SAVE, các nhánhmuộn/493/mặt4hướng/dọn. Riêngv2 vàchuỗiTownNPC→Townprops→Dogs→Papyrus xanh (`test-town-papyrus-chain-v1.log`), check/buildcuốiqua (`build-town-papyrus-final.log`). Bài test dùngcáckhoảngframechốt trongcùngcallback chođườngchạy, khôngchứngminh mọi thứtựAlarm-Step-Draw từngframe; gõchữ/miệngnói giữgiớihạnchung. Fullsnapshot42b30dađãtớiSnowdrake, vẫnchưaxácnhậnkếtquảcuối.
+
+
+Đã chuyển `snowdin-town-undyne.mjs/json` choobj_undyne_friendc doPapyrus_room tạo tạiTown sau389>=3. VịtríPap-34,-14/collider/mặtnói, Createxóa430/390; cácđiềukiệnẩn củaPapyrus vẫnápdụng nênnhánhUndyne-kếtthúc193/194 tạiroomkhác khôngthuộcphầnnày. Có8trangđầu/lặp/xenPapyrus/đổifont-mặt;493=8nhậnletter56nếucònô, túiđầygiữ8/lờiriêng, thànhcông493=9/8=1.493=9hỏigiao thư,494=1hoặc2nhậnletterEX57nếucònô/494=3, túiđầygiữcờ; khôngnhậnlặp.
+
+Inventory56/57cóNAME/battle/INFO/USE/DROP gốc: USEkhôngtiêuhao/khônghồiHP, ởprelabgợiýsửdụngcửa, ởtrướcUndynelờiriêng/portrait1. DROP56khiUndynevắngxóathư/494=1; trướcmặtbịngăn/khôngxóa.57luônkhôngthểném. FieldMenuhiệnportraitUndynechocácphảnứng, ITEMtrongtrậnkhôngcoilàđồăn/khônggánHPNaN. Cóhộpthư9trangkhicầm56hoặc57, kho7trang vàPunishment9trang/cờ67<0, lầnđọcsaulờiPRIVACY. SửađếmreadcủakhoPapyrusđơn theoCreate/Alarmgốc; khônggiữlờiđầulặp mãi.
+
+Helper `tests/remake-snowdin-town-undyne.mjs` nối tổng: điều kiệnnhânvật/390-430,8trang-mặttừngtrang,56-57/túiđầy/lặp/493-494-8, INFO-USE-DROPquaMenuCthật/có-vắngUndyne/SAVE, hộpthư/kho/nhánhâm/lặpvàdọn. Testriêngv1xanh; chuỗiSnowman→Papyrus→Undyne gồmITEMtrậnFroggitthậtđãxanh (`test-town-undyne-chain-v1.log`); bảnriêngcuốibổsunggợiýprelabcũngxanh (`test-town-undyne-final.log`). Check/buildqua (`build-town-undyne-final.log`). Chưa cósựkiệncuộcgọigiao thưUndyne/tươngtáccửaAlphys/datenhánhsau/Undyneởcastle; khôngcoi toànTuyếnPacifistđãchuyển.
+
+Fullsnapshot42b30da kếtthúc lỗi testJerryEncounter dòng24: phaseđãbattlekhi testđòiencounter. ĐãquaCrosswordbảnổnđịnhvàcácphầnđếnnhóm35/36. Tái hiệnthêmdelay600ms trướcC (`test-jerry-delay-v1.log`): timer500ms, elapsed96.66ms trướcC, sau600msphasereloadingtrận, assertencounterthấtbạihợplý. Đang sửafixture dừngtimerngay lúcđượctạođểkiểmkhóabằngphímthật, kiểm delay500..666.67 rồiresume; khôngđổithờilượnggame/tăngtimeout. Bản tổngchưaxanh, mốcfullxanhvẫn2f230f9. Pushnhữngcommitmớivẫnlỗi443sau134s, maincụcbộtiếptụcđượcbảotoàn.

@@ -1,0 +1,410 @@
+{
+  "normal": [
+    {
+      "text": "* Hey, punk!\n* What's up!?",
+      "portrait": "spr_face_undyne0",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* A-ACHOO!",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Papyrus, how can you\n  stand this cold?",
+      "portrait": "spr_face_undyne2",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "I HAVE NO SKIN.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* So why don't we\n  stand in Grillby's\n  instead?",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "BECAUSE I HATE\nGREASE.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* But you don't have\n  a stomach!!",
+      "portrait": "spr_face_undyne2",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "NO, BUT I HAVE\nSTANDARDS!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "repeat": [
+    {
+      "text": "* Papyrus...",
+      "portrait": "spr_face_undyne0",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Why do you live\n  in an icy wasteland?",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "THE RENT'S CHEAP.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* Really?\n* Don't you live in\n  a huge house?",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "YEAH, BUT MY\nBROTHER PAYS\nFOR IT.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* Where's your brother\n  get the money to\n  pay for it...?",
+      "portrait": "spr_face_undyne2",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "OH, THAT'S SIMPLE.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S A MYSTERY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "letter9": [
+    {
+      "text": "* So? What are you\n  waiting for?",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* The sooner you get\n  it over with, the\n  better!",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    }
+  ],
+  "exFull": [
+    {
+      "text": "* Hey, you sure\n  are carrying a\n  lot of things.",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* If someone needed\n  to give you a thing,\n  they sure couldn't!",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    }
+  ],
+  "ex": [
+    {
+      "text": "* What?\n* You LOST the letter!?",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* What the HECK!?\n* How!? Why!?",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Ughhh...\n* This is unbelievable.",
+      "portrait": "spr_face_undyne7",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I should be really\n  disappointed in you.",
+      "portrait": "spr_face_undyne7",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* But, uh, to tell\n  you the truth, I'm\n  kind of relieved!",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* While you were gone,\n  I actually wrote\n  a WAY BETTER letter!",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* And this time, you\n  WON'T lose it!!!",
+      "portrait": "spr_face_undyne6",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I guarantee it!!!",
+      "portrait": "spr_face_undyne2",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": " \\F0",
+      "portrait": "spr_face_undyne2",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* (You got the Undyne Letter\n  EX.)",
+      "portrait": "spr_face_undyne2",
+      "font": "fnt_maintext"
+    }
+  ],
+  "letterFull": [
+    {
+      "text": "* Hey, I have something\n  to give you...",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* But you're carrying\n  way too much!!!",
+      "portrait": "spr_face_undyne2",
+      "font": "fnt_maintext"
+    }
+  ],
+  "letter": [
+    {
+      "text": "* Um, so, I have a\n  favor to ask you.",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Uuuuh, I...\n* I need you to deliver\n  this letter.",
+      "portrait": "spr_face_undyne0",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* To Dr. Alphys.",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Huh!?\n* Why don't I do it\n  myself...?",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* ... um.\n* W-well...",
+      "portrait": "spr_face_undyne8",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I-it's kind of\n  personal, but we're\n  friends... so...",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I'll t-tell you...",
+      "portrait": "spr_face_undyne8",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Hotland SUUUUCKS!!!\n* I don't wanna have\n  to go over there!!!",
+      "portrait": "spr_face_undyne6",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* So here you go.",
+      "portrait": "spr_face_undyne3",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": " \\F0",
+      "portrait": "spr_face_undyne3",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* (You got the Undyne's Letter.)",
+      "portrait": "spr_face_undyne3",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Oh, and if you\n  read it...",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I'll KILL you.",
+      "portrait": "spr_face_undyne2",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Thanks so much!\n* You're the best!!",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    }
+  ],
+  "mailbox": [
+    {
+      "text": "* Oh my god!\n* The letter's not\n  to PAPYRUS!!!",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "YEAH, UNDYNE'S\nGOT A POINT!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHY DIDN'T SHE\nWRITE A LETTER\nTO ME INSTEAD?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* Fine, you want a\n  letter!?",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* I'll give you a\n  letter!!!",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* YOU GET AN \"F\"!",
+      "portrait": "spr_face_undyne6",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "OH NO!!!",
+      "portrait": "spr_face_papyrussweat",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHAT'S THE F\nFOR?",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* Friendship!!!",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    }
+  ],
+  "shed": [
+    {
+      "text": "HELLO.\nTHAT'S NOT\nMY HOUSE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S JUST MY\nCOOL TOOLSHED.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* Do you call it\n  your COOLSHED!?",
+      "portrait": "spr_face_undyne6",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "NO!!!\nI'VE NEVER THOUGHT\nOF THAT!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S WHY WE'RE\nFRIENDS,\nUNDYNE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU ENRICH MY\nLIFE WITH SHED-\nBASED PUNS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* That's the only\n  one I've ever\n  made, dude.",
+      "portrait": "spr_face_undyne9",
+      "font": "fnt_maintext"
+    }
+  ],
+  "shedAgain": [
+    {
+      "text": "YOU SHOULD LEARN\nA PRIVACY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "shedPunishment": [
+    {
+      "text": "READY FOR ANOTHER\nNIGHT IN THE\nPUNISHMENT SHACK?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* Oh my GOD, I don't\n  even wanna KNOW.",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "DON'T BE SO\nJUDGMENTAL,\nUNDYNE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MY SHACK IS A\nFOUR STAR\nESTABLISHMENT.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* What, lemme guess.",
+      "portrait": "spr_face_undyne0",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Sometimes you cut a\n  hot dog into the\n  dog food, right?",
+      "portrait": "spr_face_undyne6",
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "WHAT!?!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HOW'D YOU KNOW?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* OH MY GOD! NO!\n* I WAS JOKING!!!\n* DON'T DO THIS!!!",
+      "portrait": "spr_face_undyne1",
+      "font": "fnt_maintext"
+    }
+  ],
+  "sprites": {
+    "spr_undyne_dt": 2,
+    "spr_undyne_lt": 2,
+    "spr_undyne_rt": 2,
+    "spr_undyne_ut": 1,
+    "spr_face_undyne0": 2,
+    "spr_face_undyne1": 1,
+    "spr_face_undyne2": 1,
+    "spr_face_undyne3": 2,
+    "spr_face_undyne4": 1,
+    "spr_face_undyne5": 1,
+    "spr_face_undyne6": 2,
+    "spr_face_undyne7": 1,
+    "spr_face_undyne8": 1,
+    "spr_face_undyne9": 2,
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_face_papyrussweat": 2,
+    "spr_face_papyrusdejected": 1,
+    "spr_face_papyruswacky": 2,
+    "spr_face_papyruscry": 2,
+    "spr_face_papyruscool": 2
+  }
+}

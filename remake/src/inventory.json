@@ -179,6 +179,33 @@
         "* \"Nice Cream\" - Heals 15 HP\n* Instead of a joke, the\n  wrapper says something nice."
       ],
       "heal": 15
+    },
+    "56": {
+      "name": "Undyne's Letter",
+      "battleName": "UndynLetr",
+      "seriousName": "Letter",
+      "info": [
+        "* \"Undyne's Letter\" - Unique\n* Letter written for Dr.\n  Alphys."
+      ],
+      "use": "* You tried to open the letter,\n  but...",
+      "useAgain": "* It's been shut so tightly,\n  you'd need a chainsaw in\n  order to open it.",
+      "prelab": "* (Maybe if you check the lab\n  door, you can slide it\n  underneath...)",
+      "undyneUse": "* OH MY GOD!!!\n* I'M GONNA FREAKIN' KILL\n  YOU!!",
+      "drop": "* (Despite what seems like\n  common sense, you threw\n  away the letter.)",
+      "undyneDrop": "* Hey! Don't throw that\n  away! Just deliver it!"
+    },
+    "57": {
+      "name": "Undyne Letter EX",
+      "battleName": "UndynLtrX",
+      "seriousName": "Letter",
+      "info": [
+        "* \"Undyne's Letter EX\" - Unique\n* It has DON'T DROP IT\n  written on it."
+      ],
+      "use": "* You tried to open the letter,\n  but...",
+      "useAgain": "* It's been shut so tightly,\n  you'd need a chainsaw in\n  order to open it.",
+      "prelab": "* (Maybe if you check the lab\n  door, you can slide it\n  underneath...)",
+      "undyneUse": "* OH MY GOD!!!\n* I'M GONNA FREAKIN' KILL\n  YOU!!",
+      "drop": "* (The letter is too powerful to\n  throw away.)\n* (It gets the better of you.)"
     }
   },
   "actions": [

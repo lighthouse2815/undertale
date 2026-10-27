@@ -322,3 +322,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-town-papyrus.mjs/json` chuyển Papyrus ngoài nhà/88=1, lời Date-Hangout/cửa/hộp thư/kho, chạy vòng theo Frisk/camera/khóa rồi vào nhà/88=2, và lời Papyrus muộn theo354/389/493. Chuỗi các phần town đã qua. Nhà/hẹn hò, Undyne/thư và cửa dịch vụ vẫn chưa chuyển đủ; chưa nối cửa cầu→town.
+
+
+`src/snowdin-town-undyne.mjs/json` có Undyne đi cùng Papyrus sau389, lời chéo/mặt-font, nhận thư56/EX57/túi đầy/cờ493-494, hộp thư/kho/lần đọc. Inventory và menu có INFO/USE/DROP gốc, không tiêu hao/hồi HP giả, thư EX không ném được, lưu/nạp giữ cờ. Chuỗi Snowman→Papyrus→Undyne đã qua; chưa có cuộc gọi giao thư/cửa Alphys/date và các phòng sau.

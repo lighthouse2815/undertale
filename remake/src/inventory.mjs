@@ -12,6 +12,15 @@ export function itemNames(world, text, battle = false) {
 export function itemAction(world, index, action, text, { scene = world, health = world } = {}) {
   const id = world.inventory[index], item = text.items[id];
   if (action === 'info') return item.info;
+  if ([56, 57].includes(id)) {
+    const undyne = scene === world && !!world.snowdinTownUndyne?.actor;
+    if (action === 'drop') {
+      if (id === 57) return [item.drop];
+      if (undyne) return [item.undyneDrop];
+      world.inventory.splice(index, 1); world.flags[494] = 1; return [item.drop];
+    }
+    return undyne ? [item.undyneUse] : world.dataSource.name === 'room_fire_prelab' ? [item.prelab] : [item.use, item.useAgain];
+  }
   if (action === 'drop') {
     const choice = Math.min(4, Math.round(Math.random() * 18));
     const line = text.drop[choice].replace(/\\\[I\]/g, item.name);

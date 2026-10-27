@@ -130,7 +130,9 @@ export class FieldMenu extends Scene {
         this.close(); callToriel(this.world, id, this.text);
       } else if (this.mode === 'action') {
         const action = ['use', 'info', 'drop'][this.actionSelection];
-        this.close(); this.world.showDialogue(itemAction(this.world, this.itemSelection, action, this.items));
+        const id = this.world.inventory[this.itemSelection];
+        const portrait = [56, 57].includes(id) && this.world.snowdinTownUndyne?.actor && (action === 'use' || id === 56 && action === 'drop') ? 'spr_face_undyne1' : false;
+        this.close(); this.world.showDialogue(itemAction(this.world, this.itemSelection, action, this.items), { portrait });
       } else if (this.mode === 'items') {
         this.mode = 'action'; this.actionSelection = 0; this.sound.play('snd_select'); this.draw();
       } else if (this.mode === 'main' && (this.selection !== 0 || this.world.inventory.length)) {
