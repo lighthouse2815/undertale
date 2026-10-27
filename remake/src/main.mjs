@@ -41,6 +41,7 @@ import { SnowGolf } from './snow-golf.mjs';
 import { SnowdinPark } from './snowdin-park.mjs';
 import { SnowdinScent } from './snowdin-scent.mjs';
 import { SnowdinCrossword } from './snowdin-crossword.mjs';
+import { SnowdinSpaghetti } from './snowdin-spaghetti.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
@@ -122,7 +123,8 @@ const ROOM_EXITS = {
   room_tundra6: { B: 'room_tundra5', A: 'room_tundra6A', C: 'room_tundra7' },
   room_tundra7: { D: 'room_tundra6', A: 'room_tundra8' },
   room_tundra8: { B: 'room_tundra7', A: 'room_tundra8A', C: 'room_tundra9' },
-  room_tundra9: { D: 'room_tundra8' },
+  room_tundra9: { D: 'room_tundra8', A: 'room_tundra_spaghetti' },
+  room_tundra_spaghetti: { B: 'room_tundra9' },
   room_tundra8A: { B: 'room_tundra8' },
   room_tundra6A: { B: 'room_tundra6' },
 };
@@ -151,7 +153,7 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
-    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9'].includes(name)) stopSnowdinMusic(this);
+    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti'].includes(name)) stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -192,7 +194,7 @@ class World extends Scene {
     this.doggoRoom?.destroy(); this.doggoRoom = null;
     this.snowdinIce = null; this.snowman = null; this.snowdinPark = null;
     this.snowdinScent?.destroy(); this.snowdinScent = null;
-    this.snowdinCrossword?.destroy(); this.snowdinCrossword = null;
+    this.snowdinCrossword?.destroy(); this.snowdinCrossword = null; this.snowdinSpaghetti = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -324,6 +326,7 @@ class World extends Scene {
     if (name === 'room_tundra4') this.snowdinCheckpoint = new SnowdinCheckpoint(this);
     if (name === 'room_tundra5') this.doggoRoom = new DoggoRoom(this);
     if (['room_tundra6', 'room_tundra8'].includes(name)) this.snowdinIce = new SnowdinIce(this);
+    if (name === 'room_tundra_spaghetti') this.snowdinSpaghetti = new SnowdinSpaghetti(this);
     if (name === 'room_tundra9') this.snowdinCrossword = new SnowdinCrossword(this);
     if (name === 'room_tundra8A') this.snowdinScent = new SnowdinScent(this);
     if (name === 'room_tundra6A') this.snowman = new Snowman(this);
@@ -402,6 +405,7 @@ class World extends Scene {
       this.doggoRoom?.update(delta);
       this.electricMaze?.update(delta);
       this.snowdinCrossword?.update(delta);
+      this.snowdinSpaghetti?.update(delta);
       this.niceCream?.update(delta);
       this.snowGolf?.update(delta);
       return;
@@ -425,6 +429,7 @@ class World extends Scene {
     const doggoLocked = this.doggoRoom?.update(delta);
     const mazeLocked = this.electricMaze?.update(delta);
     const crosswordLocked = this.snowdinCrossword?.update(delta);
+    this.snowdinSpaghetti?.update(delta);
     const creamLocked = this.niceCream?.update(delta);
     this.snowGolf?.update(delta);
     this.boxRoad?.update(delta);
@@ -523,6 +528,7 @@ class World extends Scene {
     if (this.snowdinPark?.interact()) return;
     if (this.snowdinScent?.interact()) return;
     if (this.snowdinCrossword?.interact()) return;
+    if (this.snowdinSpaghetti?.interact()) return;
     if (this.boxRoad) { this.boxRoad.interact(); return; }
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;

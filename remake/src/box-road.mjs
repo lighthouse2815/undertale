@@ -1,7 +1,5 @@
 import { inInteractionRange } from './npc.mjs';
-import { startSnowdinMusic } from './snowdin-start.mjs';
-import { colorBitmapFont } from './fonts.mjs';
-import { murderLevel } from './route.mjs';
+import { startSnowdinMusic, showSnowdinSave } from './snowdin-start.mjs';
 import { createCollider } from './movement.mjs';
 
 // room_tundra3/3A: hộp đồ, biển, SAVE và cần câu (SCR_TEXT 30/31, 224/225).
@@ -17,7 +15,6 @@ export class BoxRoad {
     this.star = world.roomObjects.find((e) => e.item.ObjectName === 'obj_savepoint');
     for (const e of world.roomObjects.filter((e) => ['obj_sansbox', 'obj_sign_room', 'obj_ladiesfishingrod'].includes(e.item.ObjectName)))
       world.colliders.push(createCollider(world.dataSource, e.item));
-    colorBitmapFont(world, 'fnt_maintext', 'red', '#ff0000');
   }
 
   update(delta) {
@@ -38,22 +35,7 @@ export class BoxRoad {
     }
   }
 
-  save() {
-    const world = this.world, f = world.flags;
-    const level = murderLevel(f);
-    let lines = this.text.save, red = false;
-    if (level >= 2 && !f[27]) {
-      const left = Math.max(0, 16 - (f[203] ?? 0));
-      lines = this.text.saveLeft.map((line) => line.replace(/\\\[1\]/g, String(left))); red = true;
-      if (level === 5) lines = this.text.saveComedian;
-      if (f[57] === 2 && left <= 0) { lines = this.text.saveDetermination; red = false; }
-      if (left <= 0 && f[57] !== 2) { lines = this.text.saveSnowdrake; red = false; }
-    }
-    if (level >= 16) { lines = this.text.saveDetermination; red = false; }
-    world.hp = Math.max(world.hp, world.maxHp); world.sound.play('snd_power');
-    world.showDialogue(lines, { onPage: () => world.dialogueText.setFont(red ? 'fnt_maintext:red' : 'fnt_maintext'),
-      onClose: () => { world.release(); world.scene.pause(); world.scene.launch('SaveMenu'); } });
-  }
+  save() { showSnowdinSave(this.world, this.text); }
 
   interact() {
     const world = this.world;

@@ -1,0 +1,99 @@
+{
+  "save": [
+    "* (Knowing the mouse might one\n  day find a way to heat\n  up the spaghetti...)",
+    "* (It fills you with\n  determination.)"
+  ],
+  "saveLeft": [
+    "* \\[1] left."
+  ],
+  "saveComedian": [
+    "* That comedian..."
+  ],
+  "saveDetermination": [
+    "* Determination."
+  ],
+  "saveSnowdrake": [
+    "* The comedian got away.\n* Failure."
+  ],
+  "spaghetti": [
+    "* (It's a plate of frozen\n  spaghetti.)",
+    "* (It's so cold, it's stuck\n  to the table...)"
+  ],
+  "spaghettiEnd": [
+    "* (It's a plate of lukewarm\n  spaghetti.)",
+    "* (Seems like something tried\n  eating it and just...)\n* (Gave up.)"
+  ],
+  "microwave": [
+    "* (It's an unplugged microwave.)",
+    "* (All of the settings\n  say \"spaghetti.\")"
+  ],
+  "note": [
+    {
+      "text": "* It's a note from Papyrus...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "HUMAN!!\nPLEASE ENJOY THIS\nSPAGHETTI.",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(LITTLE DO YOU KNOW,\nTHIS SPAGHETTI IS\nA TRAP...)",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(DESIGNED TO ENTICE\nYOU!!!)",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(YOU'LL BE SO BUSY\nEATING IT...)",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(THAT YOU WON'T\nREALIZE THAT YOU\nAREN'T PROGRESSING!!)",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(THOROUGHLY JAPED\nAGAIN BY THE GREAT\nPAPYRUS!!!)",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": " \n      NYEH-HEH-HEH,\n         PAPYRUS",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    }
+  ],
+  "noteEnd": [
+    {
+      "text": "* It's a note from Papyrus...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "SEEING AS THIS\nSPAGHETTI IS STILL\nHERE SOMEHOW...",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I HEREBY DONATE IT\nTO THE PUBLIC.",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S LIKE A\nPLAYGROUND FOR\nYOUR MOUTH!",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": " \n      NYEH-HEH-HEH,\n         PAPYRUS",
+      "portrait": null,
+      "font": "fnt_papyrus"
+    }
+  ]
+}
