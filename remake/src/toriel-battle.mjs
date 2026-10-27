@@ -1,6 +1,7 @@
 import { HardModeEnd } from './hard-mode-end.mjs';
 import hardData from './hard-mode-end.json' with { type: 'json' };
 import { RuinsBattle } from './ruins-battle.mjs';
+import { fightInput } from './fight-input.mjs';
 import { TorielWave } from './toriel-waves.mjs';
 import { registerBitmapFont, colorBitmapFont } from './fonts.mjs';
 import { LEVEL_THRESHOLDS } from './levels.mjs';
@@ -121,12 +122,10 @@ export class TorielBattle extends RuinsBattle {
   }
 
   updateFight(delta) {
-    this.attackX += this.attackSpeed * delta; this.bar.x = this.attackX;
-    if (this.attackX > 300) { this.damage = 0; this.showPages(['* MISS'], () => { this.lastAction = 'spare'; this.dummyTurn(); }); return; }
-    if (!this.confirmPressed) return;
-    const distance = Math.abs(this.attackX + 3.5 - 159.5) * 2 || 1;
-    const base = 8 + this.previousScene.lv * 2 + (this.previousScene.weaponStrength ?? 0) - this.defense + Math.random() * 2;
-    this.damage = Math.round(base * (distance <= 12 ? 2.2 : (562 - distance) / 562 * 2));
+    const hit = fightInput(this, delta, this.defense);
+    if (!hit) return;
+    if (hit.miss) { this.damage = 0; this.showPages(['* MISS'], () => { this.lastAction = 'spare'; this.dummyTurn(); }); return; }
+    this.damage = hit.damage;
     this.enemyHp = Math.max(0, this.enemyHp - this.damage);
     if (this.conversation < 4) this.conversation = 0;
     this.enemySprite = this.previousScene.flags[202] >= 20 || this.damage > 100 && this.conversation > 13 ? 'spr_torielboss_murdered'

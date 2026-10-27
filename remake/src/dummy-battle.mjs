@@ -1,6 +1,7 @@
 import { Battle } from './battle.mjs';
 import { loadRoom } from './room-assets.mjs';
 import { itemAction, itemNames } from './inventory.mjs';
+import { fightInput } from './fight-input.mjs';
 
 // obj_dummymonster: không có đạn, chỉ Check/Talk và các kết thúc hướng dẫn.
 export class DummyBattle extends Battle {
@@ -140,16 +141,16 @@ export class DummyBattle extends Battle {
 
   startFight() {
     this.mode = 'fight'; this.attackX = 11; this.attackSpeed = (11 + Math.random() * 2) * .5 * 30 / 1000;
-    this.menu.setText(''); this.message.setText(''); this.target.setVisible(true); this.bar.setPosition(this.attackX, 128).setVisible(true);
+    this.glovePunch = null;
+    if (this.previousScene.weapon === 14) this.attackSpeed *= 1.2;
+    this.menu.setText(''); this.message.setText(''); this.target.setVisible(true); this.bar.setTexture('spr_targetchoice:0').setPosition(this.attackX, 128).setVisible(true);
   }
 
   updateFight(delta) {
-    this.attackX += this.attackSpeed * delta; this.bar.x = this.attackX;
-    if (this.attackX > 300) { this.showPages(['* MISS'], () => this.dummyTurn()); return; }
-    if (!this.confirmPressed) return;
-    const distance = Math.abs((this.attackX + 3.5) - (19 + 140.5)) * 2 || 1;
-    const base = (8 + this.previousScene.lv * 2) + (this.previousScene.weaponStrength ?? 0) - this.config.def + Math.random() * 2;
-    this.damage = Math.round(base * (distance <= 12 ? 2.2 : (562 - distance) / 562 * 2));
+    const hit = fightInput(this, delta, this.config.def);
+    if (!hit) return;
+    if (hit.miss) { this.damage = undefined; this.showPages(['* MISS'], () => this.dummyTurn()); return; }
+    this.damage = hit.damage;
     this.enemyHp = Math.max(0, this.enemyHp - this.damage);
     this.enemy.setTexture(`${this.config.asset}:1`); this.sound.play('snd_damage');
     this.showPages([String(this.damage)], () => {

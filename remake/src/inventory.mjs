@@ -19,11 +19,11 @@ export function itemAction(world, index, action, text, { scene = world, health =
     return [line];
   }
   if (id === 3) return [item.use]; // Gậy gốc được nhặt lại; không tiêu hao/đổi vũ khí.
-  if (id === 12 || id === 13) {
+  if (id === 12 || id === 13 || id === 14) {
     if (id === 12) {
       world.inventory[index] = world.armor; world.armor = id; world.armorDefense = 3;
     } else {
-      world.inventory[index] = world.weapon; world.weapon = id; world.weaponStrength = 3;
+      world.inventory[index] = world.weapon; world.weapon = id; world.weaponStrength = id === 14 ? 5 : 3;
     }
     scene.sound.play('snd_item');
     return [item.use];

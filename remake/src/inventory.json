@@ -141,6 +141,15 @@
       "info": [
         "* \"Snail Pie\" - Heals Some HP\n* An acquired taste."
       ]
+    },
+    "14": {
+      "name": "Tough Glove",
+      "battleName": "TuffGlove",
+      "seriousName": "Glove",
+      "use": "* You equipped Tough Glove.",
+      "info": [
+        "* \"Tough Glove\" - Weapon AT 5\n* A worn pink leather glove.\n* For five-fingered folk."
+      ]
     }
   },
   "actions": [

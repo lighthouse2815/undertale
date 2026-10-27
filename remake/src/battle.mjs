@@ -1,5 +1,6 @@
 import { Scene } from '../vendor/phaser.esm.min.js';
 import { itemAction, itemNames } from './inventory.mjs';
+import { loadGloveAssets } from './fight-input.mjs';
 
 const getState = () => window.__remake;
 export const BATTLE_CONFIGS = {
@@ -17,6 +18,7 @@ export class Battle extends Scene {
   constructor(key = 'Battle') { super(key); }
 
   preload() {
+    loadGloveAssets(this);
     if (this.game.scene.getScene('World').inventory.length) {
       if (!this.cache.json.exists('inventory')) this.load.json('inventory', new URL('./inventory.json', import.meta.url).href);
       for (const key of ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item']) if (!this.cache.audio.exists(key))

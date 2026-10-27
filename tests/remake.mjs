@@ -39,6 +39,7 @@ import { testFloweyExit } from './remake-flowey-exit.mjs';
 import { testSnowdinStart } from './remake-snowdin-start.mjs';
 import { testSnowdinForest } from './remake-snowdin-forest.mjs';
 import { testWalkFrames } from './remake-walk-frames.mjs';
+import { testToughGlove } from './remake-tough-glove.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -399,6 +400,7 @@ try {
   await testSnowdinStart(page);
   await testWalkFrames(page);
   await testSnowdinForest(page);
+  await testToughGlove(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

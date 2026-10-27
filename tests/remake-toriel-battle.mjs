@@ -5,7 +5,7 @@ export async function testTorielBattle(page) {
   const start = async (flags = {}, hp = 20) => {
     await page.evaluate(async ([flags, hp]) => {
       const world = __remake.game.scene.getScene('World');
-      world.flags = flags; world.hp = hp; world.maxHp = 20; world.lv = 1; world.weaponStrength = 0; world.armorDefense = 0;
+      world.flags = flags; world.hp = hp; world.maxHp = 20; world.lv = 1; world.weapon = 3; world.armor = 4; world.weaponStrength = 0; world.armorDefense = 0;
       world.inventory = [11]; world.xp = 0; world.gold = 0; world.kills = 0;
       await world.openRoom('room_basement3', 'obj_markerA'); world.plot = 24;
       world.saveGame(true); __remake.startBattle('toriel');
