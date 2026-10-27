@@ -128,7 +128,8 @@ const ROOM_EXITS = {
   room_tundra7: { D: 'room_tundra6', A: 'room_tundra8' },
   room_tundra8: { B: 'room_tundra7', A: 'room_tundra8A', C: 'room_tundra9' },
   room_tundra9: { D: 'room_tundra8', A: 'room_tundra_spaghetti' },
-  room_tundra_spaghetti: { B: 'room_tundra9' },
+  room_tundra_spaghetti: { B: 'room_tundra9', A: 'room_tundra_snowpuzz' },
+  room_tundra_snowpuzz: { B: 'room_tundra_spaghetti' },
   room_tundra8A: { B: 'room_tundra8' },
   room_tundra6A: { B: 'room_tundra6' },
 };
@@ -148,7 +149,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
+    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
     this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -338,7 +339,7 @@ class World extends Scene {
     if (name === 'room_tundra6A') this.snowman = new Snowman(this);
     if (name === 'room_tundra7') this.electricMaze = new ElectricMaze(this);
     if (name === 'room_tundra8') { this.niceCream = new NiceCream(this); this.snowGolf = new SnowGolf(this); this.snowdinPark = new SnowdinPark(this); }
-    if (['room_tundra3', 'room_tundra4', 'room_tundra6'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this);
+    if (['room_tundra3', 'room_tundra4', 'room_tundra6', 'room_tundra_snowpuzz'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 

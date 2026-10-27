@@ -73,6 +73,7 @@ export class DogPairRoom {
     if (this.stage !== 'waiting' || w.dialogue || !touchesObject(w, w.player, this.trigger, 3, 1)) return false;
     this.locked = true; this.enterFacing = w.player.facing; this.volume = this.music.volume; this.originalVolume = this.volume;
     // Lưu tại điểm chạm để Game Over dựng lại cảnh, không đặt Frisk vượt qua trigger sau bước ép.
+    if (w.snowdinEncounter) { w.snowdinEncounter.steps += 200; w.snowdinEncounter.count = 0; }
     w.saveGame(true); w.release(); this.wait('forcedWalk', 30); return true;
   }
   destroy() {

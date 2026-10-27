@@ -54,7 +54,7 @@ export async function loadRoom(scene, name) {
   const forest = name === 'room_tundra2';
   const forestDialogue = forest ? await json(new URL('./snowdin-forest.json', import.meta.url).href) : null;
   const boxRoad = ['room_tundra3', 'room_tundra3A'].includes(name);
-  const snowdinEncounter = ['room_tundra3', 'room_tundra4', 'room_tundra6'].includes(name);
+  const snowdinEncounter = ['room_tundra3', 'room_tundra4', 'room_tundra6', 'room_tundra_snowpuzz'].includes(name);
   const niceCream = name === 'room_tundra8';
   const scent = name === 'room_tundra8A';
   const crossword = name === 'room_tundra9';

@@ -272,3 +272,5 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 `src/snowdin-group-waves.mjs` dùng lại generator IceCap/Drake trong cùng arena/timer cho nhóm35/36, tần suất/khoảng răng theo số attacker và Jerry kéo dài60frame. Hai trận đơn và ca generator nhóm đã qua; scene/ACT/Jerry của nhóm đang chuyển riêng, cửa snowpuzz chưa mở.
 
 `src/snowdin-group-battle.mjs/json` có nhóm35/36 nhiều HP/mục tiêu trong cùng trận: Jerry/Ditchhai lượt/chia5sátthương, Joke liênquái, Ice Cap→Ice, Drake/chill/ACT/Spare/FIGHT/ITEM/thưởng từng con/Flee/dân số/GameOver. Test riêng và chuỗi generator→nhóm đã qua; encounter và cửa snowpuzz sẽ nối tiếp, các giới hạn thoại/animation/instance từng frame vẫn giữ.
+
+Đã nối spaghetti↔snowpuzz cùng encounter Jerry35/36, LesserDog70/dânsố/Nobody, ngưỡng bước riêng và forcedright+200/reset. Chuỗi hồi quy encountercũ→côngtắc→cảnhhai chó→encountermới đã qua, gồm kill/Flee/population/GameOver/snapshot/dọn. Cửa phải snowpuzz→xoxosmall chưa nối; các phòng/tuyến sau vẫn còn thiếu.
