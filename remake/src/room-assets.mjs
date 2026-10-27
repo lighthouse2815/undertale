@@ -60,6 +60,7 @@ export async function loadRoom(scene, name) {
   const crossword = name === 'room_tundra9';
   const spaghetti = name === 'room_tundra_spaghetti';
   const snowpuzz = name === 'room_tundra_snowpuzz';
+  const dogPairDialogue = snowpuzz ? await json(new URL('./dog-pair-room.json', import.meta.url).href) : null;
   const snowpuzzDialogue = snowpuzz ? await json(new URL('./snowdin-snowpuzz.json', import.meta.url).href) : null;
   const spaghettiDialogue = spaghetti ? await json(new URL('./snowdin-spaghetti.json', import.meta.url).href) : null;
   const crosswordDialogue = crossword ? await json(new URL('./snowdin-crossword.json', import.meta.url).href) : null;
@@ -90,7 +91,7 @@ export async function loadRoom(scene, name) {
   const spikeDialogue = spikeGuide ? await json(new URL('./spike-guide.json', import.meta.url).href) : null;
   const corridorDialogue = corridorLesson ? await json(new URL('./corridor-lesson.json', import.meta.url).href) : null;
   const paths = new Map();
-  const pathNames = maze ? ['path_papyrus1', 'path_papyrus1A'] : basement ? ['path_torielwalkbasement1', 'path_torielwalkbasement2', 'path_torielwalkbasement3', 'path_walkright', 'path_walkup', 'path_walkdown'] : ruinsTutorial ? ['path_torielwalk2', 'path_torielwalk2_2', 'path_walkup']
+  const pathNames = snowpuzz ? ['path_mdog', 'path_wdog'] : maze ? ['path_papyrus1', 'path_papyrus1A'] : basement ? ['path_torielwalkbasement1', 'path_torielwalkbasement2', 'path_torielwalkbasement3', 'path_walkright', 'path_walkup', 'path_walkdown'] : ruinsTutorial ? ['path_torielwalk2', 'path_torielwalk2_2', 'path_walkup']
     : ruinsSwitches ? ['path_torielwalk3', 'path_torielwalk3_2', 'path_walkright']
       : dummyLesson ? ['path_torielwalk4', 'path_torielwalk4_2']
         : spikeGuide ? ['path_torielwalk5', 'path_torielwalk5_2', 'path_walkright', 'path_froghead']
@@ -121,6 +122,7 @@ export async function loadRoom(scene, name) {
   if (forest) await Promise.all(['obj_creeptree_sansmaker', 'obj_sans_interactable1', 'obj_sansbyetrigger'].map(object));
   if (checkpoint) await Promise.all(['obj_npc_room', 'obj_snowdrakedad'].map(object));
   if (doggoRoom) await object('obj_spagnot');
+  if (snowpuzz) await Promise.all(['obj_mandog_actor', 'obj_womandog_actor'].map(object));
   if (niceCream) await object('obj_rollsnow');
   if (maze) await Promise.all(['obj_puzzlewall1', 'obj_sans_room'].map(object));
   if (crossword) await Promise.all(['obj_puzzlewall2', 'obj_sans_room'].map(object));
@@ -190,6 +192,7 @@ export async function loadRoom(scene, name) {
     ...(niceCream ? ['snd_dumbvictory'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
     ...(crossword ? ['mus_papyrus'] : []),
+    ...(snowpuzz ? ['mus_dogmeander'] : []),
     ...(snowman || niceCream ? ['snd_squeak', 'snd_swallow', 'snd_power'] : []),
     ...(checkpoint ? ['mus_papyrus', 'snd_phone', 'snd_squeak'] : []),
     ...(boxRoad ? ['snd_squeak'] : []),
@@ -223,5 +226,5 @@ export async function loadRoom(scene, name) {
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   for (const [key, data] of forestFonts) registerBitmapFont(scene, key, data);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, dogPairDialogue, rockDialogue };
 }

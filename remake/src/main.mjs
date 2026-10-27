@@ -23,6 +23,7 @@ import { IceCapBattle } from './icecap-battle.mjs';
 import { LesserDogBattle } from './lesser-dog-battle.mjs';
 import { DoggoBattle } from './doggo-battle.mjs';
 import { DogPairBattle } from './dog-pair-battle.mjs';
+import { DogPairRoom } from './dog-pair-room.mjs';
 import { TorielGate } from './toriel-gate.mjs';
 import { FloweyExit } from './flowey-exit.mjs';
 import { ChapterTitle } from './chapter-title.mjs';
@@ -197,6 +198,7 @@ class World extends Scene {
     this.snowdinIce = null; this.snowman = null; this.snowdinPark = null;
     this.snowdinScent?.destroy(); this.snowdinScent = null;
     this.snowdinCrossword?.destroy(); this.snowdinCrossword = null; this.snowdinSpaghetti = null; this.snowdinSnowpuzz = null;
+    this.dogPairRoom?.destroy(); this.dogPairRoom = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -328,7 +330,7 @@ class World extends Scene {
     if (name === 'room_tundra4') this.snowdinCheckpoint = new SnowdinCheckpoint(this);
     if (name === 'room_tundra5') this.doggoRoom = new DoggoRoom(this);
     if (['room_tundra6', 'room_tundra8'].includes(name)) this.snowdinIce = new SnowdinIce(this);
-    if (name === 'room_tundra_snowpuzz') this.snowdinSnowpuzz = new SnowdinSnowpuzz(this);
+    if (name === 'room_tundra_snowpuzz') { this.snowdinSnowpuzz = new SnowdinSnowpuzz(this); this.dogPairRoom = new DogPairRoom(this); }
     if (name === 'room_tundra_spaghetti') this.snowdinSpaghetti = new SnowdinSpaghetti(this);
     if (name === 'room_tundra9') this.snowdinCrossword = new SnowdinCrossword(this);
     if (name === 'room_tundra8A') this.snowdinScent = new SnowdinScent(this);
@@ -406,6 +408,7 @@ class World extends Scene {
       this.boxRoad?.update(delta);
       this.snowdinCheckpoint?.update(delta);
       this.doggoRoom?.update(delta);
+      this.dogPairRoom?.update(delta);
       this.electricMaze?.update(delta);
       this.snowdinCrossword?.update(delta);
       this.snowdinSpaghetti?.update(delta);
@@ -431,6 +434,7 @@ class World extends Scene {
     const forestLocked = this.snowdinForest?.update(delta);
     const checkpointLocked = this.snowdinCheckpoint?.update(delta);
     const doggoLocked = this.doggoRoom?.update(delta);
+    const dogPairLocked = this.dogPairRoom?.update(delta);
     const mazeLocked = this.electricMaze?.update(delta);
     const crosswordLocked = this.snowdinCrossword?.update(delta);
     this.snowdinSpaghetti?.update(delta);
@@ -442,7 +446,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -482,6 +486,7 @@ class World extends Scene {
       if (this.snowdinForest?.checkTrigger(previous)) return;
       if (this.snowdinCheckpoint?.checkTrigger()) return;
       if (this.doggoRoom?.checkTrigger()) return;
+      if (this.dogPairRoom?.checkTrigger()) return;
       if (this.electricMaze?.checkTrigger(previous)) return;
       if (this.snowdinCrossword?.checkTrigger()) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
