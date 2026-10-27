@@ -233,3 +233,6 @@ Nhánh đạn trắng hiếm command100 của Doggo dùng lại generator móng 
 
 
 Phòng5 có `src/doggo-room.mjs/json`: trigger thật/Doggo trồi lên/cắt hình/hai nhánh thoại/khóa/nhạc, trận23 tự lưu snapshot, hậu trận Pet/Stick/kill và plot41→42, chuông hai tiếng/6lời/cap, bảng/treats/ghi chú từ64/collider, cửa4↔5 và lưu nạp. GameOver không mởlối hoặc trao thưởng khi chưa thắng. Phòng6/băngtrượt và6A/ngườituyết chưa nối.
+
+
+Phòng6 có `src/snowdin-ice.mjs/json`:44ôbăng/giữ hướng/3px mỗi frame/khóa menu và tương tác/alarm3/va chạm/không tăng bước encounter lúc trượt, lờiSans về đòn xanh và các điều kiện biến mất, biển/collider. Cửa5↔6/nhạc/encounter đã nối; cửa trên6→6A/ngườituyết và cửa phải6→7 còn thiếu. Màu/gõchữ trong dòng và va chạm/alarm sát từng frame vẫn cần đốichiếu thêm.
