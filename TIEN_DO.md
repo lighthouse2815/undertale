@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 27/10/2026, sau cảnh Papyrus/phòng4 Snowdin. Mốc code trước phần này: `8187475` trên `main`.
+Cập nhật: 27/10/2026, sau trận đơn Doggo. Mốc code trước phần này: `a7500b85` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -191,3 +191,14 @@ Test riêng phòng4 đã qua bốn nhánh/lần đầu-gặp lại-diệt chủn
 Bộ tổng `test-lesser-dog-full-v1.log` đã xanh tới069d1f3, gồm Ice Cap/Lesser Dog/cảm ứng/hosting tĩnh/không lỗi console. Snapshot này được xuất trước encounter tự nhiên8187475 và cảnh phòng4; không coi là bộ tổng xanh cho hai phần mới. Chuỗi riêng BOX→Drake→Ice→Lesser→Encounter đã xanh sau8187475. Push8187475 lại timeout kết nối GitHub; hai commit mới vẫn giữ tại máy, chưa xác nhận remote đã nhận.
 
 Chuỗi encounter tự nhiên → Papyrus/phòng4 đã qua (`test-encounter-checkpoint-chain-v2.log`), gồm Game Over vừa khôi phục trước cảnh mới; không có lỗi JavaScript/console. Đã sửa test pan camera đo trước/sau trong cùng frame để tránh lệch1frame giữa hai lượt evaluate; vẫn giữ kiểm tra tốc độ-1/frame, mốc-40 và+4về0. Build/check cuối đã qua.
+
+
+Doggo đơn nhóm23 đã có `doggo-battle.mjs/json`/`doggo-wave.mjs`: 70HP/DEF1/30EXP, Check/Pet trên một hàng2cột/phím trái-phải, Pet ban đầu bị từ chối; đứng yên qua kiếm xanh khiến excited0 rồi Pet được, cờ139, bốn lần Pet tăng tới4/DEF-90 và lần5 nóiEnough/DEF0. Stick không mất, mercy102→101 và nhánh52=2; Petspare giữ52=0, kill52=1 ưu tiên. Chỉ có Spare (global.mercy=1 gốc), khôngFlee. Kết thúc thật đặtplot41/27 khi tha, thưởng30G cho cả tha/giết (Destroy gốc gán tổng30 sau scr_monsterdefeat), kill30EXP/tăngkills nhưng không đổi203/202/flag0 vì encounter này dùngflag200=0. Hệ thống thưởng chung hỗ trợ populationFlag0; các quái khác vẫn giữ202/203 như trước.
+
+Kiếm xanh120frame hoặc kết thúc khi rời phòng, tăng tốc từ-.1/friction-.1, gần tim giảm về-2/friction.1 rồi tăng tốc-.3, bám độ cao±4, mask thật của tim/bbox kiếm, chỉ gây damage6 khi đang di chuyển và hết bất tử. Trúng làmexcited1/mercy-50/head cảnh giác90frame; đứng yên nguyênwave sau mới mất dấu. Có bốn lớp thân/đầu/tay/đuôi theo scale gốc, đầu13frame/2frame, tay nhún, bong bóng chính và tinyFETCH/PET-PAT-POT/MOVING, FIGHT/Glove/ITEM/GameOver/nhạc dùng hệ thống chung. Các lớp Doggo nằm dưới arena để không vẽ đè hộp trận.
+
+Test riêng đã qua Pet trước/sau đứng yên/5lầnPet/DEF/cờ, Check, kiếm tăng tốc/bám độ cao/đứng yên không mấtHP/di chuyển trúng-4HP/hồi điều kiệnPet, tiny bubble, Stick/ITEM, khôngFlee, giết/tha/30G/30EXP/plot41/dân số không đổi, GameOver do kiếm xanh thật/khôi phụcplot40/túi/nhạc. Đã xem ảnh menu và ACT; check/build qua. Chưa nối phòng5/cảnh trồi lên/hậu trận/chuông/đồ vật, không coi trận gọi bằng debug là đã có gameplay phòng5. Bước tiếp theo là phòng5/Doggo rồi đoạn Snowdin tiếp theo. Giới hạn gõ chữ/tan bụi/thứ tự alarm-physics-draw từng frame, bong bóng theo headalarm và các chi tiết trình bày vẫn cần đối chiếu thêm.
+
+GitHub đã kết nối lại: push d88e4489..a7500b85 thành công, gồm069d1f3/8187475/a7500b8. Các timeout trước đó không còn là trở ngại; không rewrite lịch sử. Bộ tổng mới `test-checkpoint-full-v1.log` đang chạy snapshot a7500b85, có encounter và phòng4 nhưng chưa có Doggo; không ghi nhận xanh trước khi có kết quả cuối.
+
+Doggo còn có nhánh hiếm command100 dùng đạn trắng obj_4sidegen/bullettype0: tái sử dụng DrakeWave xoay, đổi rate25/border6/120frame thay vì viết lại generator. Nhánh này không tự làm Doggo mất dấu (chỉ Destroy của kiếm xanh mới đặtexcited0). Test riêng bản cuối đã kiểm tra command100/khung/thời gian/bản sao và giữexcited-1, cùng toàn bộ ca còn lại (`test-doggo-battle-v3.log`); chuỗi Froggit/Whimsun→Doggo đã qua với sửa populationFlag0 (`test-ruins-doggo-chain-v2.log`). Build/check cuối xanh.

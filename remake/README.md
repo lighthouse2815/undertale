@@ -225,3 +225,8 @@ Encounter tự nhiên đã nối phòng3 bằng `src/snowdin-encounter.mjs`: scr
 
 
 Phòng4 có `src/snowdin-checkpoint.mjs/json`: cảnh Papyrus/Sans nhận nhầm tảng đá, quay/pan camera, ký ức/lần gặp/tuyến/cờ27, thoại gốc/nhạc/khóa/rời đi/plot40/lưu tạm, trạm gác và camera, cuộc gọi fun40–50 (Yes/No/pizza)/cờ277. Snowdrake NPC chỉ xuất hiện sauplot100 nếu dân số203 chưa bị giết; có gia đình sau kết thúc/thoại/collider. Cửa BOX↔phòng4 và encounter đã nối, phòng5/Doggo còn thiếu. Gõ chữ/animation thoại/chi tiết alarm từng frame vẫn cần đối chiếu thêm.
+
+
+Doggo đơn có ở `src/doggo-battle.*`/`src/doggo-wave.mjs`: Check/Pet sau khi đứng yên qua kiếm xanh, 5lầnPet/DEF, Stick/cờ52/139/27/plot41, không Flee, thưởng30G và không cộng dân số ngẫu nhiên, kiếm tăng tốc/bám độ cao/chỉ trúng khi tim di chuyển, GameOver/nhạc. Phòng5/cảnh Doggo ngoài trận chưa nối; còn các giới hạn trình bày và alarm/physics từng frame như các trận đã chuyển.
+
+Nhánh đạn trắng hiếm command100 của Doggo dùng lại generator móng vuốt xoay DrakeWave, rate25/border6/120frame; qua nhánh này không tự mở điều kiệnPet.

@@ -16,6 +16,7 @@ export const BATTLE_CONFIGS = {
   icecap: { name: 'Ice Cap', asset: 'spr_icecap', hp: 48, def: 0, xp: 17 },
   ice: { name: 'Ice', asset: 'spr_icecube', hp: 48, def: -100, xp: 25 },
   lesserDog: { name: 'Lesser Dog', asset: 'spr_lesserdoge', hp: 60, def: 0, xp: 18 },
+  doggo: { name: 'Doggo', asset: 'spr_movedoge', hp: 70, def: 1, xp: 30 },
   nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
 };
 

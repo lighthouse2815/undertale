@@ -1,0 +1,58 @@
+{
+  "actions": [
+    "Check",
+    "Pet"
+  ],
+  "intro": [
+    "* Doggo blocks the way!"
+  ],
+  "check": [
+    "* DOGGO - ATK 13 DEF 7\n* Easily excited by movement.\n* Hobbies include: squirrels."
+  ],
+  "suspicious": [
+    "* Doggo is too suspicious of\n  your movements."
+  ],
+  "pet": [
+    "* You pet Doggo.",
+    "* You pet Doggo."
+  ],
+  "speech": [
+    "Don't\nmove an\ninch!",
+    "It moved\n!! It\ndidn't\nNOT move!",
+    "Will it\nmove\nthis\ntime?",
+    "HUH!!!\nA FUN\nSTICK\nAPPEARS!",
+    "WHAT!!!\nI'VE\nBEEN\nPET!!!",
+    "WHERE'S\nTHAT\nCOMING\nFROM!",
+    "THERE'S\nNO END\nTO IT!!",
+    "WELL,\nTHIS IS\nTHOROUGH\n!!!",
+    "OK.\nThat's\nenough."
+  ],
+  "idle": [
+    "* Doggo can't seem to\n  find anything.",
+    "* Doggo is confirming the moving\n  object.",
+    "* Doggo loves fetch!!!",
+    "* Doggo has been pet."
+  ],
+  "tiny": [
+    "FETCH?",
+    "PET?",
+    "PAT?",
+    "POT?",
+    "MOVING?"
+  ],
+  "stick": [
+    "* You threw the stick and\n  the dog ran to get it.\n* You played fetch for a while."
+  ],
+  "sprites": {
+    "spr_movedoge": 2,
+    "spr_movedogeheada": 13,
+    "spr_movedogeheadb": 2,
+    "spr_movedogebody": 1,
+    "spr_movedogearms": 1,
+    "spr_movedogetail": 1,
+    "spr_bluesword": 1,
+    "spr_blconsm": 1,
+    "spr_blcontiny": 1,
+    "spr_rotclawbullet": 1
+  }
+}
