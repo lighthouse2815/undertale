@@ -2,13 +2,15 @@ import { RuinsWave } from './ruins-waves.mjs';
 
 // obj_4sidegen, blt_4sidebullet/blt_clawbullet_white: tọa độ 640×480, 30 Hz.
 export class DrakeWave extends RuinsWave {
-  constructor(scene, command, chill = false) {
+  constructor(scene, command, chill = false, options = {}) {
     super(scene, 'drake');
-    this.rotating = command > 50; this.rate = (chill ? 17 : 16) + (this.rotating ? 8 : 0);
-    this.duration = chill ? 130 : 120; this.border = { left: 227, right: 407, top: 200, bottom: 385 };
-    this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(113.5, 100, 90, 92.5).setVisible(false);
+    const population = options.population ?? 1;
+    this.rotating = command > 50; this.rate = Math.trunc((chill ? 17 : 16) * (population === 3 ? 2.4 : population === 2 ? chill ? 1.7 : 2 : 1) + (this.rotating ? 8 : 0));
+    this.duration = chill || population === 2 ? 130 : 120; this.border = options.border ?? { left: 227, right: 407, top: 200, bottom: 385 };
+    const b = this.border;
+    this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(b.left / 2, b.top / 2, (b.right - b.left) / 2, (b.bottom - b.top) / 2).setVisible(false);
     this.mask = this.clip.createGeometryMask();
-    scene.arena.setPosition(113.5, 100).setSize(90, 92.5); scene.soul.setPosition(154.5, 142.5);
+    scene.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2); scene.soul.setPosition(154.5, 142.5);
   }
 
   spawn() {

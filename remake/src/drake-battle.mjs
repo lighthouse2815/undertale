@@ -4,24 +4,25 @@ import { registerBitmapFont, colorBitmapFont } from './fonts.mjs';
 import data from './drake-battle.json' with { type: 'json' };
 import { pauseSnowdinMusicForBattle } from './snowdin-start.mjs';
 
+export function loadDrakeAssets(scene) {
+  const base = new URL('../assets/', import.meta.url);
+  // Các số khung lấy từ metadata gốc; toàn bộ dữ liệu lời thoại nằm trong JSON riêng.
+  for (const [key, count] of Object.entries(data.sprites)) {
+    if (!scene.cache.json.exists(key)) scene.load.json(key, new URL(`sprites/${key}/${key}.json`, base).href);
+    for (let i = 0; i < count; i++) if (!scene.textures.exists(`${key}:${i}`)) scene.load.image(`${key}:${i}`, new URL(`sprites/${key}/${key}_${i}.png`, base).href);
+  }
+  if (!scene.cache.audio.exists('snd_hurtdragon')) scene.load.audio('snd_hurtdragon', new URL('sounds/snd_hurtdragon/snd_hurtdragon.wav', base).href);
+  if (!scene.cache.bitmapFont.exists('fnt_plain')) {
+    scene.load.json('fnt_plain', new URL('fonts/fnt_plain/fnt_plain.json', base).href);
+    scene.load.image('fnt_plain', new URL('fonts/fnt_plain/fnt_plain.png', base).href);
+  }
+}
+
 // Nhóm 30: Snowdrake/Chilldrake đơn; dùng lại menu, ITEM, FIGHT và Game Over.
 export class DrakeBattle extends RuinsBattle {
   constructor() { super('DrakeBattle'); }
 
-  preload() {
-    super.preload();
-    const base = new URL('../assets/', import.meta.url);
-    // Các số khung lấy từ metadata gốc; toàn bộ dữ liệu lời thoại nằm trong JSON riêng.
-    for (const [key, count] of Object.entries(data.sprites)) {
-      if (!this.cache.json.exists(key)) this.load.json(key, new URL(`sprites/${key}/${key}.json`, base).href);
-      for (let i = 0; i < count; i++) if (!this.textures.exists(`${key}:${i}`)) this.load.image(`${key}:${i}`, new URL(`sprites/${key}/${key}_${i}.png`, base).href);
-    }
-    if (!this.cache.audio.exists('snd_hurtdragon')) this.load.audio('snd_hurtdragon', new URL('sounds/snd_hurtdragon/snd_hurtdragon.wav', base).href);
-    if (!this.cache.bitmapFont.exists('fnt_plain')) {
-      this.load.json('fnt_plain', new URL('fonts/fnt_plain/fnt_plain.json', base).href);
-      this.load.image('fnt_plain', new URL('fonts/fnt_plain/fnt_plain.png', base).href);
-    }
-  }
+  preload() { super.preload(); loadDrakeAssets(this); }
 
   loadBattleData() {
     super.loadBattleData();

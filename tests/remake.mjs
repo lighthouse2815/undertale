@@ -61,6 +61,7 @@ import { testSnowdinSnowpuzz } from './remake-snowdin-snowpuzz.mjs';
 import { testDogPairWaves } from './remake-dog-pair-waves.mjs';
 import { testDogPairBattle } from './remake-dog-pair-battle.mjs';
 import { testDogPairRoom } from './remake-dog-pair-room.mjs';
+import { testSnowdinGroupWaves } from './remake-snowdin-group-waves.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -443,6 +444,7 @@ try {
   await testDogPairWaves(page);
   await testDogPairBattle(page);
   await testDogPairRoom(page);
+  await testSnowdinGroupWaves(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

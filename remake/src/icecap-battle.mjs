@@ -5,25 +5,27 @@ import { registerBitmapFont, colorBitmapFont } from './fonts.mjs';
 import { pauseSnowdinMusicForBattle } from './snowdin-start.mjs';
 import data from './icecap-battle.json' with { type: 'json' };
 
+export function loadIceCapAssets(scene) {
+  const base = new URL('../assets/', import.meta.url);
+  for (const [key, count] of Object.entries(data.sprites)) {
+    if (!scene.cache.json.exists(key)) scene.load.json(key, new URL(`sprites/${key}/${key}.json`, base).href);
+    for (let i = 0; i < count; i++) if (!scene.textures.exists(`${key}:${i}`)) scene.load.image(`${key}:${i}`, new URL(`sprites/${key}/${key}_${i}.png`, base).href);
+    if (['spr_iciclebullet', 'spr_hatbullet'].includes(key)) for (let frame = 0; frame < (key === 'spr_iciclebullet' ? 2 : 1); frame++) {
+      const maskKey = `${key}:mask${frame ? `:${frame}` : ''}`;
+      if (!scene.textures.exists(maskKey)) scene.load.image(maskKey, new URL(`sprites/${key}/${key}_${frame}.mask.png`, base).href);
+    }
+  }
+  if (!scene.cache.bitmapFont.exists('fnt_plain')) {
+    scene.load.json('fnt_plain', new URL('fonts/fnt_plain/fnt_plain.json', base).href);
+    scene.load.image('fnt_plain', new URL('fonts/fnt_plain/fnt_plain.png', base).href);
+  }
+}
+
 // Nhóm 32: lấy mũ chuyển Ice Cap thành Ice với HP/DEF/EXP riêng của monstertype20.
 export class IceCapBattle extends RuinsBattle {
   constructor() { super('IceCapBattle'); }
 
-  preload() {
-    super.preload(); const base = new URL('../assets/', import.meta.url);
-    for (const [key, count] of Object.entries(data.sprites)) {
-      if (!this.cache.json.exists(key)) this.load.json(key, new URL(`sprites/${key}/${key}.json`, base).href);
-      for (let i = 0; i < count; i++) if (!this.textures.exists(`${key}:${i}`)) this.load.image(`${key}:${i}`, new URL(`sprites/${key}/${key}_${i}.png`, base).href);
-      if (['spr_iciclebullet', 'spr_hatbullet'].includes(key)) for (let frame = 0; frame < (key === 'spr_iciclebullet' ? 2 : 1); frame++) {
-        const maskKey = `${key}:mask${frame ? `:${frame}` : ''}`;
-        if (!this.textures.exists(maskKey)) this.load.image(maskKey, new URL(`sprites/${key}/${key}_${frame}.mask.png`, base).href);
-      }
-    }
-    if (!this.cache.bitmapFont.exists('fnt_plain')) {
-      this.load.json('fnt_plain', new URL('fonts/fnt_plain/fnt_plain.json', base).href);
-      this.load.image('fnt_plain', new URL('fonts/fnt_plain/fnt_plain.png', base).href);
-    }
-  }
+  preload() { super.preload(); loadIceCapAssets(this); }
 
   loadBattleData() {
     super.loadBattleData();

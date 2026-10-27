@@ -268,3 +268,5 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 `src/dog-pair-room.mjs/json` nối trigger ngoài phòng snowpuzz vào cảnh đi ép/tiến tới/đánh hơi/path_mdog-wdog/nhạc/khóa/trận dogi và hậu cảnh Pet-Stick-Kill/51, SAVE/GameOver/dọn. Đã qua test riêng và chuỗi câu đố tuyết→cảnh/trận. Jerry/encounter35-36 vẫn thiếu, nên cửa từ spaghetti chưa nối; không coi toàn bộ phòng đã xong.
 
 `src/multi-battle.mjs` dùng lại điều khiển nhiều mục tiêu/lưới ACT/FIGHT từ trận đôi để mở rộng nhóm35/36. Trận/cảnh hai chó đã qua hồi quy sau tách; Jerry/nhóm35-36 chưa có trong bản này.
+
+`src/snowdin-group-waves.mjs` dùng lại generator IceCap/Drake trong cùng arena/timer cho nhóm35/36, tần suất/khoảng răng theo số attacker và Jerry kéo dài60frame. Hai trận đơn và ca generator nhóm đã qua; scene/ACT/Jerry của nhóm đang chuyển riêng, cửa snowpuzz chưa mở.

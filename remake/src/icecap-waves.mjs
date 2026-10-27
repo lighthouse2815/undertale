@@ -2,15 +2,17 @@ import { RuinsWave } from './ruins-waves.mjs';
 
 // obj_iceteeth, obj_1sidegen bullettype11, blt_hat/blt_icicle ở 30 Hz.
 export class IceCapWave extends RuinsWave {
-  constructor(scene, command, ice = false) {
-    super(scene, 'icecap'); this.border = { left: 237, right: 397, top: 250, bottom: 385 };
-    this.kind = command < (ice ? 96 : 50) ? 'teeth' : 'hats'; this.duration = ice ? 5 : this.kind === 'teeth' ? 100 : 150;
-    this.damage = ice ? 0 : 6; this.rate = ice ? 15 : 33;
-    this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(118.5, 125, 80, 67.5).setVisible(false); this.mask = this.clip.createGeometryMask();
-    scene.arena.setPosition(118.5, 125).setSize(80, 67.5); scene.soul.setPosition(154.5, 154.5);
+  constructor(scene, command, ice = false, options = {}) {
+    super(scene, 'icecap'); this.border = options.border ?? { left: 237, right: 397, top: 250, bottom: 385 };
+    const population = options.population ?? 1, active = options.active ?? 1, b = this.border;
+    this.kind = command < (ice ? 96 : 50) ? 'teeth' : 'hats'; this.duration = ice ? 5 : this.kind === 'teeth' && population === 1 ? 100 : 150;
+    this.damage = ice ? 0 : 6; this.rate = ice ? active === 3 ? 35 : active === 2 ? 25 : 15 : population === 3 ? 60 : population === 2 ? 45 : 33;
+    this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(b.left / 2, b.top / 2, (b.right - b.left) / 2, (b.bottom - b.top) / 2).setVisible(false); this.mask = this.clip.createGeometryMask();
+    scene.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2); scene.soul.setPosition(154.5, 154.5);
     if (this.kind === 'teeth') {
-      this.y = 177.5 + Math.random() * 40; this.speed = 4.2; this.toothSpeed = -.1; this.distance = ice ? 500 : 265;
-      this.seed = Math.random() * 40; this.teeth = Array.from({ length: 32 }, (_, i) => ({ x: 237 + i * 5, phase: this.seed + i * 4 * Math.PI / 31 }));
+      this.y = b.top + (b.bottom - b.top - 40) / 2 - 120 + Math.random() * 40 - (population === 2 ? 25 : population === 3 ? 35 : 0); this.speed = 4.2; this.toothSpeed = -.1; this.distance = ice ? 500 : 265 + (population === 2 ? 50 : population === 3 ? 70 : 0);
+      this.seed = Math.random() * 40; const count = Math.ceil((b.right - b.left) / 5);
+      this.teeth = Array.from({ length: count }, (_, i) => ({ x: b.left + i * 5, phase: this.seed + i * 4 * Math.PI / (count - 1) }));
       this.lines = scene.add.graphics();
     }
   }
@@ -37,7 +39,7 @@ export class IceCapWave extends RuinsWave {
     if (this.kind === 'teeth') this.stepTeeth();
     else if (this.frames >= this.next) {
       // SCR_BORDER(0,6) đặt x trước nhánh 11; lời gọi X phía sau không ghi đè x.
-      this.hat(this.border.left + Math.round(Math.random() * 160)); this.next = this.frames + this.rate;
+      this.hat(this.border.left + Math.round(Math.random() * (this.border.right - this.border.left))); this.next = this.frames + this.rate;
     }
     for (const bullet of [...this.bullets]) {
       bullet.age++;
