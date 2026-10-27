@@ -135,16 +135,18 @@ export class RuinsBattle extends DummyBattle {
       this.showPages(this.text[key], () => this.monster === 'whimsun' && choice === 1 ? this.end('spare') : this.dummyTurn());
     } else if (this.kind === 'mercy') {
       if (this.subIndex === 0) { if (this.spareable()) this.end('spare'); else this.dummyTurn(); }
-      else {
-        const hard = this.previousScene.flags[6] === 1;
-        const value = !hard && this.previousScene.armor === 4 ? 100 : hard && this.turn === 0 ? 0 : Math.random() * 100 + 10 * (this.turn - (hard ? 1 : 0));
-        if (value > 50) {
-          this.sound.play('snd_escaped'); const random = Math.round(Math.random() * 20);
-          this.showPages([this.dialogue.escaped[random <= 1 ? 0 : random === 2 ? 1 : random === 3 ? 3 : 2]], () => this.finishWith('flee'));
-        } else this.dummyTurn();
-      }
+      else this.flee();
     } else if (this.kind === 'fightTarget') this.startFight();
     else if (this.kind === 'item') this.useInventory();
+  }
+
+  flee() {
+    const hard = this.previousScene.flags[6] === 1;
+    const value = !hard && this.previousScene.armor === 4 ? 100 : hard && this.turn === 0 ? 0 : Math.random() * 100 + 10 * (this.turn - (hard ? 1 : 0));
+    if (value > 50) {
+      this.sound.play('snd_escaped'); const random = Math.round(Math.random() * 20);
+      this.showPages([this.dialogue.escaped[random <= 1 ? 0 : random === 2 ? 1 : random === 3 ? 3 : 2]], () => this.finishWith('flee'));
+    } else this.dummyTurn();
   }
 
   dummyTurn() {

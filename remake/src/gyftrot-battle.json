@@ -1,0 +1,104 @@
+{
+  "intro": [
+    "* Gyftrot confronts you!"
+  ],
+  "actions": [
+    "Check",
+    "Undecorate",
+    "Decorate",
+    "Gift"
+  ],
+  "check": [
+    "* GYFTROT - ATK 16 DEF 8\n* Some teens \"decorated\" it as\n  a prank."
+  ],
+  "undecorate": [
+    "* You remove the striped cane\n  that says \"I use this tiny\n  cane to walk\" on it.",
+    "* You remove the box of\n  non-dog-related raisins.",
+    "* You remove the lenticular\n  bookmark of a smug teen\n  winking.",
+    "* You remove the barbed wire\n  made of pipe cleaners.",
+    "* You remove a childhood\n  photograph of Snowdrake and\n  his parent.",
+    "* You remove a small, confused\n  dog.",
+    "* You remove a stocking filled\n  with chicken nuggets.",
+    "* You remove the shirt that says\n 'I'm with stupid' and points\n  inward."
+  ],
+  "undecorateEmpty": [
+    "* You try to undecorate...?"
+  ],
+  "ungoogle": [
+    "* You remove the googly eyes."
+  ],
+  "decorate": [
+    "* You add some googly eyes\n  you found on the ground."
+  ],
+  "decorateAgain": [
+    "* You can't improve on\n  perfection."
+  ],
+  "giftFree": [
+    "* You give the cheapest gift\n  of all...\n* Friendship."
+  ],
+  "gift35": [
+    "* You give 35 G because\n  you can't think of an\n  appropriate gift."
+  ],
+  "giftRest": [
+    "* You give your remaining\n  money because you can't\n  think of a better gift."
+  ],
+  "giftFail": [
+    "* Gyftrot refuses your gift."
+  ],
+  "giftAgain": [
+    "* Hey now.\n* You aren't made of money."
+  ],
+  "giftFreeAgain": [
+    "* Hey now.\n* You aren't made of friendship."
+  ],
+  "speech": [
+    "Is this\nfunny to\nyou?",
+    "Don't\nput any\nmore on\nme!",
+    "Leave me\nalone...",
+    "Hohoho!\nGo ahead\nand\nlaugh...",
+    "Get this\noff of\nme..."
+  ],
+  "speechThanks": [
+    "Thanks."
+  ],
+  "speechGift": [
+    "Aw, you\nshouldn'\nhave...",
+    "You even\nwrapped\nit...",
+    "Keep\naway\nfrom me!",
+    "I don't\nwant\nyour\ngift!",
+    "How do\nI know\nit's not\na trick?"
+  ],
+  "speechDecorate": [
+    "GOSHDARN\nTEENAGE\nGOOGLY\nEYES!!!",
+    "I WAS\nSTARTING\nTO TRUST\nYOU!!!"
+  ],
+  "speechUndecorate": [
+    "That's\na little\nbetter.",
+    "Er...\nThose\nare\nreal.",
+    "A weight\nhas been\nlifted.",
+    "Thanks\nfor\nnothing!"
+  ],
+  "idle": [
+    "* Gyftrot laments its lack of\n  hands.",
+    "* Gyftrot eyes you with\n  suspicion.",
+    "* Gyftrot distrusts your\n  youthful demeanor.",
+    "* Ah, the scent of fresh\n  pine needles.",
+    "* Gyftrot tries vainly to\n  remove its decorations.",
+    "* Gyftrot pretends to refuse\n  your gift.",
+    "* Gyftrot politely accepts\n  your gift.",
+    "* Gyftrot stumbles blindly.",
+    "* Gyftrot is slightly less\n  irritated.",
+    "* Gyftrot's problems have\n  been taken away.",
+    "* Gyftrot looks disappointed.",
+    "* Gyftrot's antlers tremble."
+  ],
+  "sprites": {
+    "spr_gyftrot": 2,
+    "spr_gyftrothead": 2,
+    "spr_gyftrotbody": 1,
+    "spr_gyftrotmouth": 9,
+    "spr_gyfgift": 10,
+    "spr_gyftcloud": 1,
+    "spr_blconsm": 1
+  }
+}

@@ -19,6 +19,7 @@ export const BATTLE_CONFIGS = {
   snowdinGroup35: { name: 'Ice Cap', asset: 'spr_icecap', hp: 48, def: 0, xp: 17 },
   snowdinGroup36: { name: 'Ice Cap', asset: 'spr_icecap', hp: 48, def: 0, xp: 17 },
   dogi: { name: 'Dogamy', asset: 'spr_mandoge', hp: 108, def: 4, xp: 30 },
+  gyftrot: { name: 'Gyftrot', asset: 'spr_gyftrot', hp: 114, def: 3, xp: 35 },
   doggo: { name: 'Doggo', asset: 'spr_movedoge', hp: 70, def: 1, xp: 30 },
   nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
 };

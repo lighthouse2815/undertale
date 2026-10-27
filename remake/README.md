@@ -292,3 +292,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/gyftrot-waves.mjs` có6cộttrọnglực và3hộp quà/cảnhbáo/sine/hộpxanh/tăngtốc/120frame, kiểm thử bằngảnhvàPhaserthật/HP/mask/cleanup. ChưacóACT/scene/encounterGyftrot trongcommitgenerator; cửaiceexit_new chưa nối. ThứtựAlarm/Step/Draw sátframe vẫn cầnđốichiếuthêm.
+
+
+`src/gyftrot-battle.mjs/json` có nhóm28/114HP/ACT2×2/bađồ/Gift/đôi mắt/betray/74-138/MERCY/DEF/thưởng riêng, dùngmenu/FIGHT/găngtay/Flee/ITEM/GameOver sẵn có và hai generatorGyftrot. Đã qua kiểmthử riêng và hồi quyhai trậnSnowdinđơn; chưa nối encounter28/cửaiceexit_new. Tanbụi/gõchữ/thứtựinstance từngframe vẫnchưađủ.
