@@ -1,0 +1,30 @@
+{
+  "switch": [
+    "* There's a switch hidden\n  in the snow.\n* Click!"
+  ],
+  "switchAgain": [
+    "* The switch is stuck now."
+  ],
+  "switchMurder": [
+    "* There's a switch here.\n* It's been depressed with\n  vines."
+  ],
+  "camera": [
+    "* ...!?\n* There's a camera hidden inside\n  this tree."
+  ],
+  "sign": [
+    "* Warning:\n  Dog Marriage"
+  ],
+  "signAgain": [
+    "* (Yes, you read that correctly.)"
+  ],
+  "icecap": [
+    "* Hey, stop thinking about\n  my hat!",
+    "* ... you aren't thinking about\n  my hat?",
+    "* ... can you, please?"
+  ],
+  "icecapEnd": [
+    "* Ha!\n* After all this time, you're\n  still thinking about my hat!",
+    "* ...",
+    "* ... please?"
+  ]
+}

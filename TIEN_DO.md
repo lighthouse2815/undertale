@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 27/10/2026, sau phòng spaghetti/SAVE. Mốc code trước phần này: `b9e1acd` trên `main`.
+Cập nhật: 27/10/2026, sau công tắc và tuyết của snowpuzz. Mốc code trước phần này: `3bdacc4` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -299,3 +299,10 @@ Ca phòng Frisk với bước đợi vị trí đã xanh (`test-child-bedroom-no
 
 
 Đã bổ sung phần còn thiếu của obj_puzzlewall1 tại mê cung7: khi đi trái chạm tường, đẩy Frisk sang phải4pixel/nhìn phải/khóa và Papyrus nói hai trang lần đầu, hai trang lần hai, một trang từ lần ba; đếm lượt riêng trong phòng, hoàn trả đúng giai đoạn tryFirst/tryMaze sau đọc. Hỗ trợ cả bàn phím/cảm ứng, giữ collider và không thay plot/giải mê cung. Test hiện chạm bốn lần bằng phím thật trong cả hai nhánh ký ức rồi tiếp tục đi hết mê cung; chuỗi mê cung7 → crossword9 đã xanh (`test-maze-crossword-walls-v1.log`), không có lỗi JavaScript/console. Check/build bản cuối qua. Bộ tổng `test-spaghetti-full-v1.log` đang chạy snapshot3d61b19 gồm phòng8/8A/crossword/spaghetti và sửa đồng bộ test bánh, chưa có sửa tường7 mới. Push3d61b19 đã thành công.
+
+
+`snowdin-snowpuzz.mjs/json` chuyển riêng phần câu đố/đồ vật của room_tundra_snowpuzz khi mở trực tiếp phòng: 16ô tuyết, mỗi ô25hạt với tọa độ/radius gốc, dùng Graphics/Geom của Phaser; đứng yên không gạt, đi qua chân làm hạt trượt/rung và64=0→-1. Bốn vùng công tắc ẩn có lời Click/stuck/vines, đặt plot49 ngay khi tương tác,64=0→1 nhưng giữ-1, bỏ collider tường cao400 và hạ ba cụm gai. Tuyến murderlv>=3 tự mở như obj_forcedright Create, cả khi27=1; không tự đặt plot50/51 thay cho trận. Có camera trong cây, biển Dog Marriage/lời đọc lần2/rồi trở lại lời đầu, collider, Ice Cap NPC chỉ plot>100/dân số0 với lời thường/sau kết thúc/animation/collider.
+
+Test riêng và chuỗi spaghetti → câu đố tuyết đã xanh (`test-spaghetti-snowpuzz-chain-v1.log`): đủ400hạt/tọa độ25hạt, đứng yên/đi bằng phím/gạt64, tường chặn trước và đi qua sau công tắc,49/gai/SAVE, đọc lại, tuyến3/cờ27/giữ-1, ba lần biển/camera/IceCap/collider/dọn. Đã xem ảnh vùng tuyết, check/build cuối qua. Dao động ngẫu nhiên và thứ tự Draw/collision sát từng frame còn cần đối chiếu, không suy ra đã khớp hoàn toàn từ các ca trên.
+
+**Chưa nối cửa spaghetti→snowpuzz**: cảnh obj_forcedright, trận Dogamy/Dogaressa nhóm25, Jerry và nhóm nhiều quái35/36 chưa chuyển. Controller câu đố mới chưa phải toàn bộ gameplay phòng; không bỏ qua trận hoặc thay nhóm35/36 bằng trận đơn rồi mở cửa. Đây là ưu tiên tiếp theo; xoxosmall/xoxopuzz và Snowdin phía sau cũng còn thiếu. Bộ tổng snapshot3d61b19 vẫn đang chạy, chưa có tường mê cung3bdacc4 hoặc câu đố tuyết mới. Push3bdacc4 đã thành công.

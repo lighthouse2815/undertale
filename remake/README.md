@@ -258,3 +258,5 @@ Phòng7 có `src/electric-maze.mjs/json`: intro/ký ức, Papyrus tự bị gi�
 `src/snowdin-spaghetti.mjs/json` nối9↔spaghetti: đĩa/microwave/note với font Papyrus/lời kết thúc/collider, chuột đúng hướng/không chồng, sao SAVE/nhạc/tên file/lưu nạp. Hai điểm Snowdin dùng chung showSnowdinSave để giữ luật dân số/cờ/màu; kiểm thử Box Road và phòng mới đã qua. Cửa phải tới snowpuzz còn thiếu.
 
 Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4pixel/nhìn phải/khóa rồi hoàn trả điều khiển; kiểm thử chạm bốn lần và giải tiếp mê cung đã qua.
+
+`src/snowdin-snowpuzz.mjs/json` chuyển phần công tắc/tường/gai/tuyết400hạt/cờ64/biển/camera/IceCap của snowpuzz, đã qua kiểm thử riêng và chuỗi spaghetti→câu đố. Chưa nối cửa từ spaghetti: cảnh hai chó/trận nhóm25/Jerry/encounter nhiều quái35-36 còn thiếu, không coi cả phòng đã hoàn chỉnh.

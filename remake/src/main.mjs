@@ -42,6 +42,7 @@ import { SnowdinPark } from './snowdin-park.mjs';
 import { SnowdinScent } from './snowdin-scent.mjs';
 import { SnowdinCrossword } from './snowdin-crossword.mjs';
 import { SnowdinSpaghetti } from './snowdin-spaghetti.mjs';
+import { SnowdinSnowpuzz } from './snowdin-snowpuzz.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
@@ -153,7 +154,7 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
-    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti'].includes(name)) stopSnowdinMusic(this);
+    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz'].includes(name)) stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -194,7 +195,7 @@ class World extends Scene {
     this.doggoRoom?.destroy(); this.doggoRoom = null;
     this.snowdinIce = null; this.snowman = null; this.snowdinPark = null;
     this.snowdinScent?.destroy(); this.snowdinScent = null;
-    this.snowdinCrossword?.destroy(); this.snowdinCrossword = null; this.snowdinSpaghetti = null;
+    this.snowdinCrossword?.destroy(); this.snowdinCrossword = null; this.snowdinSpaghetti = null; this.snowdinSnowpuzz = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -326,6 +327,7 @@ class World extends Scene {
     if (name === 'room_tundra4') this.snowdinCheckpoint = new SnowdinCheckpoint(this);
     if (name === 'room_tundra5') this.doggoRoom = new DoggoRoom(this);
     if (['room_tundra6', 'room_tundra8'].includes(name)) this.snowdinIce = new SnowdinIce(this);
+    if (name === 'room_tundra_snowpuzz') this.snowdinSnowpuzz = new SnowdinSnowpuzz(this);
     if (name === 'room_tundra_spaghetti') this.snowdinSpaghetti = new SnowdinSpaghetti(this);
     if (name === 'room_tundra9') this.snowdinCrossword = new SnowdinCrossword(this);
     if (name === 'room_tundra8A') this.snowdinScent = new SnowdinScent(this);
@@ -406,6 +408,7 @@ class World extends Scene {
       this.electricMaze?.update(delta);
       this.snowdinCrossword?.update(delta);
       this.snowdinSpaghetti?.update(delta);
+      this.snowdinSnowpuzz?.update();
       this.niceCream?.update(delta);
       this.snowGolf?.update(delta);
       return;
@@ -430,6 +433,7 @@ class World extends Scene {
     const mazeLocked = this.electricMaze?.update(delta);
     const crosswordLocked = this.snowdinCrossword?.update(delta);
     this.snowdinSpaghetti?.update(delta);
+    this.snowdinSnowpuzz?.update();
     const creamLocked = this.niceCream?.update(delta);
     this.snowGolf?.update(delta);
     this.boxRoad?.update(delta);
@@ -461,6 +465,7 @@ class World extends Scene {
       if (!this.snowdinIce?.slide()) movePlayer(this, this.player, this.colliders, input,
         (x, y, dx, dy) => this.dialogue || this.ruinsRock?.tryMove(x, y, dx, dy) || this.ruinsGoofyrock?.tryMove(x, y));
       this.snowdinIce?.contact(previous, input);
+      this.snowdinSnowpuzz?.stepSnow(previous);
       this.torielHall?.step();
       this.elapsed -= 1000 / 30;
       if (!this.snowdinIce?.active && (this.player.x !== previous.x || this.player.y !== previous.y)) {
@@ -529,6 +534,7 @@ class World extends Scene {
     if (this.snowdinScent?.interact()) return;
     if (this.snowdinCrossword?.interact()) return;
     if (this.snowdinSpaghetti?.interact()) return;
+    if (this.snowdinSnowpuzz?.interact()) return;
     if (this.boxRoad) { this.boxRoad.interact(); return; }
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;

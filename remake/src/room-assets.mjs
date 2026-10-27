@@ -59,6 +59,8 @@ export async function loadRoom(scene, name) {
   const scent = name === 'room_tundra8A';
   const crossword = name === 'room_tundra9';
   const spaghetti = name === 'room_tundra_spaghetti';
+  const snowpuzz = name === 'room_tundra_snowpuzz';
+  const snowpuzzDialogue = snowpuzz ? await json(new URL('./snowdin-snowpuzz.json', import.meta.url).href) : null;
   const spaghettiDialogue = spaghetti ? await json(new URL('./snowdin-spaghetti.json', import.meta.url).href) : null;
   const crosswordDialogue = crossword ? await json(new URL('./snowdin-crossword.json', import.meta.url).href) : null;
   const scentDialogue = scent ? await json(new URL('./snowdin-scent.json', import.meta.url).href) : null;
@@ -183,7 +185,7 @@ export async function loadRoom(scene, name) {
     ...(torielHall || torielCorridor || childBedroom || torielBedroom || living ? ['mus_house1', 'mus_house2', 'mus_toriel', 'mus_reunited'] : []),
     ...(childBedroom ? ['snd_noise'] : []),
     ...(floweyExit ? ['snd_floweylaugh', 'snd_wonderfulidea', 'mus_cymbal'] : []),
-    ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || scent || crossword || spaghetti ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
+    ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || scent || crossword || spaghetti || snowpuzz ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
     ...(doggoRoom ? ['snd_bell'] : []),
     ...(niceCream ? ['snd_dumbvictory'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
@@ -221,5 +223,5 @@ export async function loadRoom(scene, name) {
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   for (const [key, data] of forestFonts) registerBitmapFont(scene, key, data);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, rockDialogue };
 }
