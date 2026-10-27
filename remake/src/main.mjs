@@ -23,6 +23,8 @@ import { FloweyExit } from './flowey-exit.mjs';
 import { ChapterTitle } from './chapter-title.mjs';
 import { SnowdinStart, stopSnowdinMusic } from './snowdin-start.mjs';
 import { SnowdinForest } from './snowdin-forest.mjs';
+import { BoxRoad } from './box-road.mjs';
+import { ItemBox } from './item-box.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
@@ -97,7 +99,9 @@ const ROOM_EXITS = {
   room_basement5: { A: 'room_ruinsexit', B: 'room_basement4' },
   room_ruinsexit: { B: 'room_basement5' },
   room_tundra1: { A: 'room_tundra2' },
-  room_tundra2: { B: 'room_tundra1' },
+  room_tundra2: { A: 'room_tundra3', B: 'room_tundra1' },
+  room_tundra3: { A: 'room_tundra3A', B: 'room_tundra2' },
+  room_tundra3A: { B: 'room_tundra3' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -123,8 +127,9 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
-    if (!['room_tundra1', 'room_tundra2'].includes(name)) stopSnowdinMusic(this);
+    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A'].includes(name)) stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
+    this.scene.stop('ItemBox');
     state.scene = this;
     this.ruinsTutorial?.destroy();
     this.ruinsTutorial = null;
@@ -157,6 +162,7 @@ class World extends Scene {
     this.floweyExit?.destroy(); this.floweyExit = null;
     this.snowdinStart = null;
     this.snowdinForest?.destroy(); this.snowdinForest = null;
+    this.boxRoad = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -281,6 +287,7 @@ class World extends Scene {
     if (name === 'room_ruinsexit') this.floweyExit = new FloweyExit(this);
     if (name === 'room_tundra1') this.snowdinStart = new SnowdinStart(this);
     if (name === 'room_tundra2') this.snowdinForest = new SnowdinForest(this);
+    if (['room_tundra3', 'room_tundra3A'].includes(name)) this.boxRoad = new BoxRoad(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -332,13 +339,13 @@ class World extends Scene {
   }
 
   update(_time, delta) {
-    if (['running', 'menu', 'loadingMenu'].includes(state.phase)) {
+    if (['running', 'menu', 'loadingMenu', 'itemBox', 'loadingBox'].includes(state.phase)) {
       this.ruinsStart?.animate();
       this.ruins13?.animate();
       this.ruinsOutlook?.animate();
       this.torielCorridor?.animate();
     }
-    if (['menu', 'loadingMenu'].includes(state.phase)) {
+    if (['menu', 'loadingMenu', 'itemBox', 'loadingBox'].includes(state.phase)) {
       this.spikeGuide?.updateMotion(delta);
       this.corridorLesson?.updateFlowey();
       this.torielCorridor?.update(delta);
@@ -348,6 +355,7 @@ class World extends Scene {
       this.floweyExit?.update(delta);
       this.snowdinStart?.update(delta);
       this.snowdinForest?.update(delta);
+      this.boxRoad?.update(delta);
       return;
     }
     if (state.phase !== 'running') return;
@@ -365,6 +373,7 @@ class World extends Scene {
     const floweyLocked = this.floweyExit?.update(delta);
     this.snowdinStart?.update(delta);
     const forestLocked = this.snowdinForest?.update(delta);
+    this.boxRoad?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
@@ -442,6 +451,7 @@ class World extends Scene {
   }
 
   tryInteract() {
+    if (this.boxRoad) { this.boxRoad.interact(); return; }
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;
     if (this.ruinsHoles?.interact()) return;
@@ -670,7 +680,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, SaveMenu, FieldMenu],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, SaveMenu, FieldMenu, ItemBox],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);

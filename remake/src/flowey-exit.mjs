@@ -1,5 +1,6 @@
 import { touchesObject } from './npc.mjs';
 import { createCollider } from './movement.mjs';
+import { murderLevel } from './route.mjs';
 
 // obj_floweytrigger2/obj_floweytalker1: gặp lại Flowey sau Toriel.
 export class FloweyExit {
@@ -11,7 +12,7 @@ export class FloweyExit {
     this.exit = world.dataSource.room.GameObjects.find((item) => item.ObjectName === 'obj_demodoorA');
     try { this.memory = JSON.parse(localStorage.getItem('undertale-remake-flowey-memory') ?? '{}'); } catch { this.memory = {}; }
     if (!this.memory || typeof this.memory !== 'object' || Array.isArray(this.memory)) this.memory = {};
-    this.murder = world.flags[26] > 0 ? world.flags[26] >= 2 : world.flags[202] >= 20 && world.flags[45] === 4;
+    this.murder = murderLevel(world.flags) >= 2;
     const seen = this.memory.alter > 0 || this.memory.killed > 0 || this.memory.specialKill > 0;
     this.stage = world.plot > 27 || (seen && !this.murder) || this.memory.alter2 > 0 ? 'complete' : 'waiting';
     if (this.stage === 'complete') this.flower.destroy();

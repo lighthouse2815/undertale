@@ -2,6 +2,7 @@ import { createCollider } from './movement.mjs';
 import { inInteractionRange, touchesObject } from './npc.mjs';
 import { startSnowdinMusic, stopSnowdinMusic } from './snowdin-start.mjs';
 import { spawnStalkerFlowey, updateStalkerFlowey } from './stalker-flowey.mjs';
+import { murderLevel } from './route.mjs';
 
 // room_tundra2: cây tiền cảnh, cành cây, hai Sans và cuộc gặp Papyrus đầu tiên.
 export class SnowdinForest {
@@ -9,7 +10,7 @@ export class SnowdinForest {
     this.world = world; this.text = world.dataSource.forestDialogue; this.elapsed = 0; this.frames = 0;
     this.stage = 'walking'; this.locked = false; this.oldX = world.player.x; this.played = 0; this.musicClock = 5;
     Object.assign(this, startSnowdinMusic(world, true));
-    this.murder = world.flags[26] > 0 ? world.flags[26] >= 2 : world.flags[202] >= 20 && world.flags[45] === 4;
+    this.murder = murderLevel(world.flags) >= 2;
     this.stick = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_stick');
     this.lamp = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_convenientlamp');
     this.trees = world.roomObjects.filter(({ item }) => item.ObjectName.startsWith('obj_creeptree'));

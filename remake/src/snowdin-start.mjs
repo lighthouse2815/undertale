@@ -1,12 +1,13 @@
 import { createCollider } from './movement.mjs';
 import { inInteractionRange, touchesObject } from './npc.mjs';
+import { murderLevel } from './route.mjs';
 
 export function stopSnowdinMusic(world) { world.snowdinMusic?.destroy(); world.snowdinMusic = null; }
 
 export function startSnowdinMusic(world, special = false) {
   if (world.snowdinMusic) return { music: world.snowdinMusic, fade: null };
   const end = world.flags[7] === 1, early = world.plot <= 35;
-  const murder = world.flags[26] > 0 ? world.flags[26] >= 2 : world.flags[202] >= 20 && world.flags[45] === 4;
+  const murder = murderLevel(world.flags) >= 2;
   const key = end ? 'mus_reunited' : early ? 'mus_tone2' : !special && world.flags[222] && !world.flags[27] ? 'mus_toomuch' : 'mus_snowy';
   const rate = key === 'mus_snowy' ? (!special && murder && !world.flags[27] && !world.flags[222] ? .4 : .95) : 1;
   const music = world.snowdinMusic = world.sound.add(key, { loop: true, rate, volume: key === 'mus_tone2' ? .2 : 1 });

@@ -1,0 +1,57 @@
+{
+  "box": {
+    "prompt": "* Use the box?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "inventory": "INVENTORY",
+    "title": "BOX",
+    "close": "Press X to Finish",
+    "empty": [
+      "* You have no items.\n* You put a little time into\n  the box.",
+      "* You have no items.\n* You put a little effort\n  into the box.",
+      "* You have no items.\n* You put a little feeling\n  into the box."
+    ]
+  },
+  "sign": [
+    "* (This is a box.)",
+    "* (You can put an item\n  inside or take an item\n  out.)",
+    "* (The same box will appear\n  later, so don't worry\n  about coming back.)",
+    "* (Sincerely, a box lover.)"
+  ],
+  "save": [
+    "* (The convenience of that\n  lamp still fills you\n  with determination.)"
+  ],
+  "saveLeft": [
+    "* \\[1] left."
+  ],
+  "saveComedian": [
+    "* That comedian..."
+  ],
+  "saveDetermination": [
+    "* Determination."
+  ],
+  "saveSnowdrake": [
+    "* The comedian got away.\n* Failure."
+  ],
+  "rodIntro": [
+    "* It's a fishing rod affixed\n  to the ground..."
+  ],
+  "rodPrompt": "* Reel it in?",
+  "rodPhoto": [
+    "* All that's attached to\n  the end is a photo of a\n  weird-looking monster...",
+    "* (Call Me!\n  Here's my number!)",
+    "* You decide not to call."
+  ],
+  "rodNote": [
+    "* All that's attached to\n  the end is a note.",
+    "* (Nevermind, guys!)"
+  ],
+  "rodNo": [
+    "* You leave it alone."
+  ],
+  "rodSend": [
+    "* You send the line back out."
+  ]
+}
