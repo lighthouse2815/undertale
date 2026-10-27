@@ -19,6 +19,7 @@ import { NapstablookBattle } from './napstablook-battle.mjs';
 import { VegetoidBattle } from './vegetoid-battle.mjs';
 import { TorielBattle } from './toriel-battle.mjs';
 import { TorielGate } from './toriel-gate.mjs';
+import { FloweyExit } from './flowey-exit.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
@@ -90,7 +91,8 @@ const ROOM_EXITS = {
   room_basement2: { A: 'room_basement3', B: 'room_basement1' },
   room_basement3: { A: 'room_basement4', B: 'room_basement2' },
   room_basement4: { A: 'room_basement5', B: 'room_basement3' },
-  room_basement5: { B: 'room_basement4' },
+  room_basement5: { A: 'room_ruinsexit', B: 'room_basement4' },
+  room_ruinsexit: { B: 'room_basement5' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -146,6 +148,7 @@ class World extends Scene {
     this.torielLiving?.destroy(); this.torielLiving = null;
     this.torielBasement?.destroy(); this.torielBasement = null;
     this.torielGate?.destroy(); this.torielGate = null;
+    this.floweyExit = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -267,6 +270,7 @@ class World extends Scene {
     if (['room_torhouse2', 'room_kitchen'].includes(name)) this.torielLiving = new TorielLiving(this);
     if (BASEMENT_ROOMS.includes(name) && name !== 'room_basement4') this.torielBasement = new TorielBasement(this);
     if (name === 'room_basement4') this.torielGate = new TorielGate(this);
+    if (name === 'room_ruinsexit') this.floweyExit = new FloweyExit(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -331,6 +335,7 @@ class World extends Scene {
       this.childBedroom?.update(delta);
       this.torielBedroom?.update(delta);
       this.torielLiving?.update(delta);
+      this.floweyExit?.update(delta);
       return;
     }
     if (state.phase !== 'running') return;
@@ -345,11 +350,12 @@ class World extends Scene {
     const livingLocked = this.torielLiving?.update(delta);
     const basementLocked = this.torielBasement?.update(delta);
     const gateLocked = this.torielGate?.update();
+    const floweyLocked = this.floweyExit?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -380,6 +386,7 @@ class World extends Scene {
       if (this.ruinsHome?.checkTrigger()) return;
       if (this.torielBasement?.checkTrigger(previous)) return;
       if (this.torielGate?.checkTrigger(previous)) return;
+      if (this.floweyExit?.checkTrigger(previous)) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);

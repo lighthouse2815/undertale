@@ -202,3 +202,5 @@ Trận Toriel nối từ basement 4: lời thách đấu/lửa, Check/Talk/ký �
 Kết thúc Hard Mode sau Toriel có chó, Toriel và Flowey, các câu gốc, bảng HARD MODE, nhạc và màn đen cuối; mã `src/hard-mode-end.*`. Không có thưởng EXP/kill giả của tuyến thường. Cờ 6 vẫn cần được thống nhất với màn nhập tên Frisk và các encounter Hard Mode trước boss chưa đủ, nên chưa hỗ trợ trọn tuyến Hard Mode.
 
 Đường tay dùng Phaser Spline; thứ tự alarm/va chạm sát biên, hiệu ứng sinh đạn nhỏ/tan bụi, gõ chữ/ngắt/màu trong dòng vẫn cần đối chiếu từng frame. Các kiểm thử mới xác minh hành động, nhánh, phần thưởng, va chạm và kết quả, không chứng minh hình ảnh/quỹ đạo giống hoàn toàn. Flowey sau cửa Ruins và phần game Snowdin trở đi vẫn chưa nối.
+
+Flowey sau Toriel đã có ở `src/flowey-exit.mjs/json`, nối từ basement 5. Các lời theo tha/giết/ký ức Toriel/Flowey và tuyến diệt chủng dùng dữ liệu gốc; có alarm/animation/cờ/plot28, chặn quay về Ruins ở tuyến thường và không lặp sau lưu/nạp. Màn logo chuyển chương và Snowdin chưa nối từ cửa trên.

@@ -1,0 +1,470 @@
+{
+  "fallback": [
+    {
+      "text": "* Error",
+      "portrait": "spr_floweynice"
+    }
+  ],
+  "kill": [
+    {
+      "text": "* Hee hee hee...",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* I hope you like your\n  choice.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* After all, it's not\n  as if you can go\n  back and change fate.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* In this world, it's kill\n  or be killed.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* That old hag thought\n  she could break the\n  rules.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* She tried so hard\n  to save you humans.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* But when it came\n  down to it...",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* Hee hee...",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* SHE COULDN'T EVEN\n  SAVE HERSELF.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* WHAT AN IDIOT!!",
+      "portrait": "spr_floweyevil"
+    }
+  ],
+  "killTwice": [
+    {
+      "text": "* Heheheheh.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* You just can't\n  get enough, can you!?",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* ...",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* How many more\n  times will you\n  kill her?",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* Ha ha ha ha ha...",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* You disgusting animal.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* You didn't even\n  TRY to spare her.",
+      "portrait": "spr_floweyevil"
+    }
+  ],
+  "killMany": [
+    {
+      "text": "* Wow, you really\n  can't get enough.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* You kind of remind\n  me of myself.",
+      "portrait": "spr_floweygrin"
+    }
+  ],
+  "killedAfterSpare": [
+    {
+      "text": "* Wow, you're utterly\n  repulsive.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* You spared her life...",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* Then you decided that\n  just wasn't interesting\n  enough for you.",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* So you murdered her\n  just to see what\n  would happen.",
+      "portrait": "spr_floweytoriel2"
+    },
+    {
+      "text": "* You killed her out\n  of boredom.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* Truly disgusting...",
+      "portrait": "spr_floweygrin"
+    }
+  ],
+  "explainAfterKill": [
+    {
+      "text": "* Wow, you're utterly\n  repulsive.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* You spared her life...",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* Then you decided that\n  just wasn't interesting\n  enough for you.",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* So you murdered her\n  just to see what\n  would happen.",
+      "portrait": "spr_floweytoriel2"
+    },
+    {
+      "text": "* You killed her out\n  of boredom.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* Hee hee...",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* You naive idiot.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Do you think you\n  are the only one\n  with that power?",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* The power to reshape\n  the world...",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Purely by your\n  own determination.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* The ability to\n  play God!",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* The ability to \"SAVE.\"",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* I thought I was\n  the only one with\n  that power. But...",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* I can't SAVE anymore.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* Apparently YOUR\n  desires for this\n  world override MINE.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* Well well.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* Enjoy that power\n  while you can.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* I'll be watching.",
+      "portrait": "spr_floweyevil"
+    }
+  ],
+  "murder": [
+    {
+      "text": "* Hahaha...",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* You're not really human,\n  are you?",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* No. You're empty inside.\n* Just like me.\n* In fact...",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* You're \\[C], right?",
+      "portrait": "spr_floweyplain"
+    },
+    {
+      "text": "* We're still inseparable,\n  after all these years...",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* Listen.\n* I have a plan to become\n  all powerful.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* Even more powerful than\n  you and your stolen\n  soul.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* Let's destroy everything\n  in this wretched world.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Everyone, everything in\n  these worthless\n  memories...",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* Let's turn 'em all\n  to dust.",
+      "portrait": "spr_floweygrin"
+    }
+  ],
+  "sparedWithKills": [
+    {
+      "text": "* Clever.\n* Verrrryyy clever.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* You think you're really\n  smart, don't you?",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* In this world, it's kill\n  or be killed.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* So you were able to\n  play by your own\n  rules.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* You spared the life\n  of a single person.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Hee hee hee...",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Froggit, Whimsun.\n* Vegetoid, Loox.\n* Migosp, Moldsmal.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Think about those names.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Do you think any of\n  those monsters have\n  families?",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Do you think any of\n  them have friends?",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Each one could have\n  been someone else's\n  Toriel.",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* Selfish brat.",
+      "portrait": "spr_floweytoriel2"
+    },
+    {
+      "text": "* Somebody is dead\n  because of you.",
+      "portrait": "spr_floweytoriel2"
+    }
+  ],
+  "sparedWithoutKills": [
+    {
+      "text": "* Clever.\n* Verrrryyy clever.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* You think you're really\n  smart, don't you?",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* In this world, it's kill\n  or be killed.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* So you were able to\n  play by your own\n  rules.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* You spared the life\n  of a single person.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Hee hee hee...",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* I bet you feel\n  really great.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* You didn't kill\n  anybody this time.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* But what will you\n  do if you meet a\n  relentless killer?",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* You'll die and you'll\n  die and you'll\n  die.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* Until you tire of\n  trying.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* What will you do\n  then?",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* Will you kill\n  out of frustration?",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* Or will you give\n  up entirely on\n  this world...",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* ... and let ME inherit\n  the power to control\n  it?",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* I am the prince of\n  this world's future.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* Don't worry, my little\n  monarch, my plan\n  isn't regicide.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* This is SO much\n  more interesting.",
+      "portrait": "spr_floweygrin"
+    }
+  ],
+  "sparedAfterKill": [
+    {
+      "text": "* Clever.\n* Verrrryyy clever.",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* You think you're really\n  smart, don't you?",
+      "portrait": "spr_floweysassy"
+    },
+    {
+      "text": "* In this world, it's kill\n  or be killed.",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* So you were able to\n  play by your own\n  rules.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* You spared the life\n  of a single person.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Hee hee hee...",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* But don't act so\n  cocky.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* I know what you did.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* You murdered her.",
+      "portrait": "spr_floweytoriel"
+    },
+    {
+      "text": "* And then you went\n  back, because you\n  regretted it.",
+      "portrait": "spr_floweytoriel2"
+    },
+    {
+      "text": "* Ha ha ha ha...",
+      "portrait": "spr_floweytoriel2"
+    },
+    {
+      "text": "* You naive idiot.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* Do you think you\n  are the only one\n  with that power?",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* The power to reshape\n  the world...",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* Purely by your\n  own determination.",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* The ability to\n  play God!",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* The ability to \"SAVE.\"",
+      "portrait": "spr_floweyevil"
+    },
+    {
+      "text": "* I thought I was\n  the only one with\n  that power. But...",
+      "portrait": "spr_floweynice"
+    },
+    {
+      "text": "* I can't SAVE anymore.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* Apparently YOUR\n  desires for this\n  world override MINE.",
+      "portrait": "spr_floweynicesideum"
+    },
+    {
+      "text": "* Well well.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* Enjoy that power\n  while you can.",
+      "portrait": "spr_floweygrin"
+    },
+    {
+      "text": "* I'll be watching.",
+      "portrait": "spr_floweyevil"
+    }
+  ],
+  "sprites": {
+    "spr_floweynice": 2,
+    "spr_floweynicesideum": 2,
+    "spr_floweysassy": 2,
+    "spr_floweypissed": 2,
+    "spr_floweyevil": 2,
+    "spr_floweygrin": 2,
+    "spr_floweytoriel": 2,
+    "spr_floweytoriel2": 2,
+    "spr_floweyplain": 2,
+    "spr_floweygrow": 9,
+    "spr_floweyshrink": 9,
+    "spr_floweylaughoverworld": 3,
+    "spr_floweysink": 6,
+    "spr_flowey": 2
+  }
+}
