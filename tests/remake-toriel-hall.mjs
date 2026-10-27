@@ -25,6 +25,7 @@ export async function testTorielHall(page) {
   assert.equal(await page.evaluate(() => __remake.scene.dialogueText.type), 'BitmapText');
   assert.equal(await page.evaluate(() => __remake.scene.dialogueText.text), '* Do you smell that?');
   assert.deepEqual(await page.evaluate(() => [__remake.scene.torielHall.introNpc.x, __remake.scene.torielHall.introNpc.y]), [140, 120]);
+  await page.waitForFunction(() => Math.abs(__remake.scene.torielHall.music[1].volume - .01) < .0001);
   assert.deepEqual(await page.evaluate(() => __remake.scene.torielHall.music.map((music) => [music.key, music.isPlaying, Number(music.volume.toFixed(4)), music.rate])), [['mus_house1', true, 1, 1], ['mus_house2', true, .01, 1]]);
   await key('c'); await page.keyboard.down('ArrowRight'); await page.waitForTimeout(120); await page.keyboard.up('ArrowRight');
   assert.equal(await page.evaluate(() => __remake.phase), 'running');
