@@ -242,3 +242,6 @@ Nhánh6A có `src/snowman.mjs/json`: người tuyết/Yes-No/túi đầy/cấp b
 
 
 Phòng7 có `src/electric-maze.mjs/json`: intro/ký ức, Papyrus tự bị giật/path/dấu chân/trao orb, mê cung dùng mask PNG/giật 15 frame/đường đi an toàn, tám trang giải/plot43/Sans, nhánh diệt chủng/Frisk bước qua/cờ291 và dọn khi đổi phòng. Cửa6 ↔ 7/nhạc và SAVE đã nối; phòng8/Nice Cream/golf và phòng9/crossword chưa nối. Gõ chữ, chi tiết animation và alarm sát frame vẫn còn hạn chế.
+
+
+`src/nice-cream.mjs/json` điều khiển quầy Nice Cream tại Snowdin8: mở đầu/chờ31 frame, mua15G/No/thiếu tiền/đầy/cờ60/GOLD-SPACE/collider/tuyến/SAVE, ITEM17/tám lời giấy gói/hồi15HP. Phần còn lại phòng8 (bóng/golf/băng/đồ vật) đang chuyển; cửa7→8 chưa mở, không coi phòng8 đã hoàn chỉnh. Quầy ở Waterfall/Hotland chưa chuyển.

@@ -160,6 +160,25 @@
         "* \"Snowman Piece\" - Heals 45 HP\n* Please take this to the\n  ends of the earth."
       ],
       "heal": 45
+    },
+    "17": {
+      "name": "Nice Cream",
+      "battleName": "NiceCream",
+      "seriousName": "NiceCream",
+      "wrappers": [
+        "* You're just great!",
+        "* You look nice today!",
+        "* Are those claws natural?",
+        "* You're super spiffy!",
+        "* Have a wonderful day!",
+        "* Is this as sweet as you?",
+        "* (An illustration of a hug.)",
+        "* Love yourself! I love you!"
+      ],
+      "info": [
+        "* \"Nice Cream\" - Heals 15 HP\n* Instead of a joke, the\n  wrapper says something nice."
+      ],
+      "heal": 15
     }
   },
   "actions": [

@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 27/10/2026, sau mê cung điện Papyrus phòng7. Mốc code trước phần này: `2932a1c7` trên `main`.
+Cập nhật: 27/10/2026, sau NPC Nice Cream Snowdin. Mốc code trước phần này: `be317e6` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -246,3 +246,12 @@ Test riêng bản cuối đã qua (`test-electric-maze-v3.log`): cửa hai chi�
 Push2932a1c7 đã thành công. Bộ tổng mới `test-snowman-full-v1.log` đang chạy snapshot2932a1c7 (có Doggo/băng/người tuyết và sửa test gain), chưa có phòng7; chỉ ghi nhận xanh khi có kết quả cuối.
 
 Chuỗi người tuyết6A → mê cung điện7 đã qua (`test-snowman-maze-chain-v1.log`), gồm ITEM16 trong trận trước cảnh mới; không có lỗi JavaScript/console. Check/build của bản cuối đã qua.
+
+
+`nice-cream.mjs/json` đã chuyển riêng NPC bán Nice Cream ở phòng8: lời mở đầu buồn, chờ31 frame/đổi sprite/“A CUSTOMER”, đặt60=1 rồi chào bán; mua15G kiểm tra tiền trước túi, không trừ tiền hoặc thêm đồ khi thiếu G/đầy/từ chối, mua thành công thêm17/cờ60+=15, lần sau chào ngắn. Có bảng GOLD/SPACE cập nhật sau mua, khóa di chuyển/menu trong cảnh, collider NPC, happy/sad và điều kiện biến mất plot>=101/tuyến>=3 chưa bỏ tuyến hoặc dân số203>=16 ưu tiên. NPC Waterfall/Hotland chưa chuyển trong phần này.
+
+ITEM17 Nice Cream có tên/INFO gốc, tám lời giấy gói chọn floor(random8), hồi15HP/cap/tiêu hao qua menu và hệ thống dùng đồ chung. Test riêng (`test-nice-cream-v1.log`) đã qua mở đầu/animation/khóa, mua hai lần, No/thiếuG/đầy/thứ tự ưu tiên, GOLD/SPACE, cờ/SAVE, collider/điều kiện NPC, INFO/USE thật/tám wrapper/cap và dọn bảng khi đổi phòng. Đã xem ảnh quầy/bảng tiền; build/check qua.
+
+Phần này mới điều khiển NPC khi mở trực tiếp room_tundra8, chưa mở cửa7→8 vì bóng tuyết/golf, băng và đồ vật còn phải chuyển. Không coi phòng8 đã hoàn chỉnh hoặc đã đi tới được trong tuyến chơi liên tục. Ưu tiên tiếp theo là gameplay bóng/golf và các NPC/biển còn lại phòng8, rồi phòng9/crossword. Giới hạn chung gõ chữ/animation thoại/va chạm-alarm sát từng frame vẫn còn.
+
+Chuỗi mê cung điện7 → Nice Cream8 đã xanh (`test-maze-cream-chain-v1.log`), không có lỗi JavaScript/console; check/build cuối qua. Bộ tổng `test-snowman-full-v1.log` đã xanh tới2932a1c7: gồm trận/phòng Doggo, băng6, người tuyết6A, sửa chờ gain basement, cảm ứng và hosting dưới đường dẫn con. Chưa bao gồm mê cung điện be317e6 hoặc Nice Cream mới. Lần push be317e6 vẫn timeout kết nối; commit còn nguyên tại máy, cần tiếp tục push.

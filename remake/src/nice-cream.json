@@ -1,0 +1,33 @@
+{
+  "intro": [
+    "* I don't understand why\n  these aren't selling...",
+    "* It's the perfect weather\n  for something cold..."
+  ],
+  "customer": [
+    "* OH!!!!\n* A CUSTOMER!!!"
+  ],
+  "offer": [
+    "* Hello!\n* Would you like some\n  Nice Cream?",
+    "* It's the frozen treat\n  that warms your heart!"
+  ],
+  "offerAgain": [
+    "* Nice Cream!\n* It's the frozen treat\n  that warms your heart!"
+  ],
+  "prompt": "* Now just 15G!",
+  "buy": [
+    "* Here you go!\n* Have a super-duper day!\n* (You got the Nice Cream.)"
+  ],
+  "poor": [
+    "* Huh?\n* You don't have enough\n  money...",
+    "* I wish I could make\n  Nice Cream for free..."
+  ],
+  "full": [
+    "* It looks like you're\n  holding too much stuff!\n* Oh well!"
+  ],
+  "no": [
+    "* Well then...\n* Tell your friends...",
+    "* There's ice cream...\n* Out in the middle of\n  the woods..."
+  ],
+  "gold": "$ - \\[G]G",
+  "space": "SPACE - \\[1]/8"
+}
