@@ -3,6 +3,7 @@ import { registerBitmapFont, colorBitmapFont } from './fonts.mjs';
 import { LEVEL_THRESHOLDS } from './levels.mjs';
 import { RuinsWave } from './ruins-waves.mjs';
 import { readSave } from './save.mjs';
+import { pauseSnowdinMusicForBattle } from './snowdin-start.mjs';
 
 const SPRITES = { spr_froggit: 4, spr_froghead: 2, spr_froglegs: 2, spr_whimsun: 2, spr_whimsunhurt: 1,
   spr_flybullet: 2, spr_smallfrogbullet: 2, spr_butterflybllt: 2, spr_heart: 2, spr_heartbreak: 1,
@@ -58,6 +59,7 @@ export class RuinsBattle extends DummyBattle {
     this.events.once('shutdown', () => { this.music?.destroy(); this.wave?.destroy(); });
     window.__remake.room = `battle_${this.monster}`;
     if (this.monster === 'nobody') {
+      if (this.previousScene.snowdinMusic) pauseSnowdinMusicForBattle(this);
       this.enemy.setVisible(false); this.soul.setVisible(false); this.music.stop();
       this.showPages(this.dialogue.empty, () => this.finishBattle());
     }

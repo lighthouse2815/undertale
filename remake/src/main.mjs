@@ -29,6 +29,7 @@ import { SnowdinForest } from './snowdin-forest.mjs';
 import { BoxRoad } from './box-road.mjs';
 import { ItemBox } from './item-box.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
+import { SnowdinEncounter } from './snowdin-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
@@ -122,6 +123,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
+    this.events.once('shutdown', () => this.snowdinEncounter?.destroy());
     this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -147,6 +149,7 @@ class World extends Scene {
     this.candyDish = null;
     this.ruinsStart = null;
     this.ruinsEncounter?.destroy(); this.ruinsEncounter = null;
+    this.snowdinEncounter?.destroy(); this.snowdinEncounter = null;
     this.ruinsRock = null; this.ruinsHoles?.destroy(); this.ruinsHoles = null;
     this.ruinsGoofyrock?.destroy(); this.ruinsGoofyrock = null;
     this.ruins12?.destroy(); this.ruins12 = null;
@@ -291,6 +294,7 @@ class World extends Scene {
     if (name === 'room_tundra1') this.snowdinStart = new SnowdinStart(this);
     if (name === 'room_tundra2') this.snowdinForest = new SnowdinForest(this);
     if (['room_tundra3', 'room_tundra3A'].includes(name)) this.boxRoad = new BoxRoad(this);
+    if (name === 'room_tundra3') this.snowdinEncounter = new SnowdinEncounter(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -406,7 +410,9 @@ class World extends Scene {
         (x, y, dx, dy) => this.dialogue || this.ruinsRock?.tryMove(x, y, dx, dy) || this.ruinsGoofyrock?.tryMove(x, y));
       this.torielHall?.step();
       this.elapsed -= 1000 / 30;
-      if (this.player.x !== previous.x || this.player.y !== previous.y) this.ruinsEncounter?.step();
+      if (this.player.x !== previous.x || this.player.y !== previous.y) {
+        this.ruinsEncounter?.step(); this.snowdinEncounter?.step();
+      }
       if (this.corridorLesson?.checkTrigger(previous)) return;
       if (this.ruinsPerspective?.checkTrigger(previous)) return;
       if (this.ruinsHome?.checkTrigger()) return;
@@ -426,6 +432,7 @@ class World extends Scene {
     }
     this.updateCamera();
     this.ruinsEncounter?.update();
+    this.snowdinEncounter?.update();
   }
 
   transitionRoom(destination, marker, duration, musicFade = false) {

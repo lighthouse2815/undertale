@@ -219,3 +219,6 @@ Ice Cap/Ice đơn có ở `src/icecap-battle.*` và `src/icecap-waves.mjs`: hai 
 
 
 Lesser Dog đơn có ở `src/lesser-dog-battle.*` và `src/lesser-dog-waves.mjs`: Check/5ôPet, đủ55lầnPet/20lời/cổ vòng, Stick, phòng thủ/thưởng/cờ tuyến, chó sủa-đuổi-nhảy và giáo xanh/ trắng, Game Over/nhạc. Cả ba nhóm đơn30/32/24 đã có trận riêng; selector encounter tự nhiên Snowdin vẫn đang chuyển. Các giới hạn chung về trình bày/gõ chữ/animation từng frame và nhóm nhiều quái còn giữ.
+
+
+Encounter tự nhiên đã nối phòng3 bằng `src/snowdin-encounter.mjs`: scr_steps theo dân số, thứ tự cờ70/plot42/tuyến, chuyển Chilldrake, hếtquái222/Nobody theo hai mốc, dấu!/skull và khóa, snapshot tự động trước trận/Game Over/nhạc. Chỉ đếm bước thật ngoài menu/thoại; 3A không sinh encounter. Phòng4/cảnh Papyrus và nhánh fun65/soundtest còn thiếu, nên chưa hoàn chỉnh Box Road hoặc toàn Snowdin.

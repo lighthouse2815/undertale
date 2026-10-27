@@ -54,6 +54,7 @@ export async function loadRoom(scene, name) {
   const forest = name === 'room_tundra2';
   const forestDialogue = forest ? await json(new URL('./snowdin-forest.json', import.meta.url).href) : null;
   const boxRoad = ['room_tundra3', 'room_tundra3A'].includes(name);
+  const snowdinEncounter = name === 'room_tundra3';
   const boxRoadDialogue = boxRoad ? await json(new URL('./box-road.json', import.meta.url).href) : null;
   const ruins12 = name === 'room_ruins12';
   const ruins13 = ['room_ruins12B', 'room_ruins13'].includes(name);
@@ -99,6 +100,7 @@ export async function loadRoom(scene, name) {
   if (ruinsHome || torielHall || torielCorridor || living || basement) await object('obj_toroverworld3');
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
   if (ruinsStart) spriteNames.add('spr_exc');
+  if (snowdinEncounter) for (const key of ['spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (ruinsStart) for (const page of [...ruinsStartDialogue.call, ...ruinsStartDialogue.afterDog]) if (page.portrait) spriteNames.add(page.portrait);
   if (ruins13) for (const page of [...ruins13Dialogue.call, ...ruins13Dialogue.callHard]) if (page.portrait) spriteNames.add(page.portrait);
   if (candyRoom) spriteNames.add('spr_candydish2');
@@ -150,6 +152,7 @@ export async function loadRoom(scene, name) {
     ...(floweyExit ? ['snd_floweylaugh', 'snd_wonderfulidea', 'mus_cymbal'] : []),
     ...(snowdinStart || boxRoad ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
     ...(boxRoad ? ['snd_squeak'] : []),
+    ...(snowdinEncounter ? ['snd_b'] : []),
     ...(forest ? ['mus_tone2', 'mus_tone3', 'mus_snowy', 'mus_reunited', 'mus_sticksnap', 'mus_snowwalk', 'mus_whoopee', 'mus_rimshot', 'mus_muscle', 'mus_papyrus'] : []),
     ...(basement ? ['mus_intronoise', 'mus_reunited', 'mus_toriel', 'snd_noise'] : []),
     ...(torielBedroom || living ? ['snd_squeak'] : []),
