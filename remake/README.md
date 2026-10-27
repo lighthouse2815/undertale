@@ -277,3 +277,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-xoxo-small.mjs/json` nối snowpuzz↔phòng X/O nhỏ, hai ô/nút/reset/plot53/tường-gai và Papyrus6 hỏi spaghetti/cờ62/hai lựa chọn/đi rời; có biển, nhạc xuyên phòng, SAVE và nhánh murder4/27. Kiểm thử gồm bước đi thực, đứng yên, lời/khóa/lưu nạp và mở phòng trực tiếp. Cửa phải tới xoxopuzz chưa nối; phần Papyrus5/câu đố lớn đang chuyển, chưa coi Snowdin hay toàn bộ game đã hoàn tất. Hạn chế gõ chữ/animation từng frame vẫn giữ.
+
+
+`src/snowdin-xoxo-big.mjs/json` nối phòng X/O nhỏ↔lớn, dùng chung ô/nút qua SnowdinXoxoPuzzle. Có15ô/sai63/plot56/cây Yes-No, Papyrus5/54/14trang/áo choàng/gợi ý/đáp án/hậu cảnh/path, camera, Sans/kýức, Flowey chìm/cờ9 và Chilldrake cuối tuyến. Kiểm thử riêng gồm SAVE54/56, hai cách giải và nhánh tuyến. Cửa phải tới randoblock/Papyrus4 chưa nối; các giới hạn gõ chữ/animation/tô từng từ và thứ tự instance từng frame vẫn cần hoàn thiện.

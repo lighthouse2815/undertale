@@ -1,0 +1,403 @@
+{
+  "intro": [
+    {
+      "text": "HUMAN!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HMMM...\nHOW DO I SAY\nTHIS...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU WERE TAKING A\nLONG TIME TO\nARRIVE, SO...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I DECIDED TO\nIMPROVE THIS\nPUZZLE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BY ARRANGING THE\nSNOW TO LOOK MORE\nLIKE MY FACE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "UNFORTUNATELY,\nTHE SNOW FROZE\nTO THE GROUND.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NOW THE SOLUTION\nIS DIFFERENT!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND,AS USUAL, MY\nLAZY BROTHER IS\nNOWHERE AROUND.",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I SUPPOSE WHAT\nI AM SAYING\nIS...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WORRY NOT, HUMAN!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I, THE GREAT\nPAPYRUS, WILL SOLVE\nTHIS CONUNDRUM!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEN WE CAN BOTH\nPROCEED!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MEANWHILE, FEEL\nFREE TO TRY THE\nPUZZLE YOURSELF!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL TRY NOT TO\nGIVE AWAY THE\nANSWER!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "solved": [
+    {
+      "text": "WOW!!!\nYOU SOLVED IT!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND YOU DID IT\nALL WITHOUT MY\nHELP...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "INCREDIBLE!\nI'M IMPRESSED!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU MUST CARE\nABOUT PUZZLES\nLIKE I DO!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WELL, I'M SURE\nYOU'LL LOVE THE\nNEXT PUZZLE THEN!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT MIGHT EVEN\nBE TOO EASY FOR\nYOU!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH!\nHEH HEH!\nHEHEHEH!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "solvedHelp": [
+    {
+      "text": "WOW!!!\nYOU SOLVED IT!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MY ADVICE HELPED!\nIT REALLY HELPED\nYOU!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "INCREDIBLE!\nI'M IMPRESSED!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU MUST CARE\nABOUT PUZZLES\nLIKE I DO!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WELL, I'M SURE\nYOU'LL LOVE THE\nNEXT PUZZLE THEN!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT MIGHT EVEN\nBE TOO EASY FOR\nYOU!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH!\nHEH HEH!\nHEHEHEH!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "papBefore": [
+    {
+      "text": "MY BROTHER STARTED\nA SOCK COLLECTION\nRECENTLY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HOW SADDENING...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SOMETIMES I WONDER\nWHAT HE WOULD\nDO...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WITHOUT SUCH A\nCOOL GUY TAKING\nCARE OF HIM???",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH HEH HEH!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "papHint": [
+    {
+      "text": "SO, YOU WANT\nA HINT, HUH?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WELL...\nI'VE BEEN LOOKING\nAT THE PUZZLE...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND I THINK THE\nSOLUTION...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IS TO TURN ALL\nOF THE X'S INTO\nO'S!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU SHOULD TRY\nTHAT!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ASK AGAIN FOR\nMORE GREAT HINTS!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "papHintAgain": [
+    {
+      "text": "MAYBE SOLVING\nTHE LAST PUZZLE \nAGAIN WILL HELP.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ASK AGAIN FOR\nMORE GREAT HINTS!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "answerIntro": [
+    {
+      "text": "EUREKA!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'VE FIGURED OUT\nTHE PUZZLE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU SEEM LIKE\nYOU'RE HAVING\nFUN, THOUGH...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "DO YOU ABSOLUTELY,\nDAPSOLUTELY WANT\nTHE SOLUTION???",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "answerAgain": [
+    {
+      "text": "I'VE FIGURED OUT\nTHE PUZZLE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "DO YOU ABSOLUTELY,\nDAPSOLUTELY WANT\nTHE SOLUTION???",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "answerYes": [
+    {
+      "text": "THE!\nSOLUTION!\nIS!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "(PLEASE IMAGINE\nA DRUMROLL IN\nYOUR HEAD)",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... THAT TREE\nOVER THERE HAS\nA SWITCH ON IT!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "CHECK IT\nOUTIE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "answerNo": [
+    {
+      "text": "WOW...\nYOU'RE TRULY A\nPUZZLE PASSIONEER!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M SO ENTHUSED\nBY YOUR\nENTHUSIASM!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU CAN DO IT,\nHUMAN!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "sans": [
+    {
+      "text": "* good job on solving it\n  so quickly.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* you didn't even need\n  my help.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* which is great, 'cause\n  i love doing absolutely\n  nothing.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansMemory": [
+    {
+      "text": "* ... you must be really\n  good at puzzles,\n  huh?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i mean.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* it's impossible for\n  you to have seen\n  this one before.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansFails": [
+    {
+      "text": "* hey, why didn't you\n  ask for help?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i was right here.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sign": [
+    {
+      "text": "* Turn every X into an O.\n* Then press the switch.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "tree": [
+    {
+      "text": "* (There's a switch on the\n  trunk of this tree.)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "chill": [
+    {
+      "text": "* Heh... us teens live\n  self-sufficiently off\n  the fat of the land...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Oh, and the box lunches my\n  parents bring us every\n  day.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "chillAgain": [
+    {
+      "text": "* Besides Snowy.\n* We have to share ours\n  with him..",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "chillEnd": [
+    {
+      "text": "* Heh...\n* I guess we'll have to go to\n  the surface.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* There are woods there we can\n  live in, right?",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "sprites": {
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_sans": 1,
+    "spr_face_sansblink": 1,
+    "spr_face_sanschuckle": 1,
+    "spr_face_sansnoeyes": 1,
+    "spr_face_sanswink": 1,
+    "spr_floweysink": 6,
+    "spr_papyrus_cape": 5,
+    "spr_papyrus_d": 4,
+    "spr_papyrus_dt": 2,
+    "spr_papyrus_r": 4,
+    "spr_papyrus_rt": 2,
+    "spr_papyrus_u": 4,
+    "spr_sans_d": 4
+  }
+}

@@ -61,6 +61,9 @@ export async function loadRoom(scene, name) {
   const spaghetti = name === 'room_tundra_spaghetti';
   const snowpuzz = name === 'room_tundra_snowpuzz';
   const xoxoSmall = name === 'room_tundra_xoxosmall';
+  const xoxoBig = name === 'room_tundra_xoxopuzz';
+  const xoxo = xoxoSmall || xoxoBig;
+  const xoxoBigDialogue = xoxoBig ? await json(new URL('./snowdin-xoxo-big.json', import.meta.url).href) : null;
   const xoxoSmallDialogue = xoxoSmall ? await json(new URL('./snowdin-xoxo-small.json', import.meta.url).href) : null;
   const dogPairDialogue = snowpuzz ? await json(new URL('./dog-pair-room.json', import.meta.url).href) : null;
   const snowpuzzDialogue = snowpuzz ? await json(new URL('./snowdin-snowpuzz.json', import.meta.url).href) : null;
@@ -93,7 +96,7 @@ export async function loadRoom(scene, name) {
   const spikeDialogue = spikeGuide ? await json(new URL('./spike-guide.json', import.meta.url).href) : null;
   const corridorDialogue = corridorLesson ? await json(new URL('./corridor-lesson.json', import.meta.url).href) : null;
   const paths = new Map();
-  const pathNames = snowpuzz ? ['path_mdog', 'path_wdog'] : maze ? ['path_papyrus1', 'path_papyrus1A'] : basement ? ['path_torielwalkbasement1', 'path_torielwalkbasement2', 'path_torielwalkbasement3', 'path_walkright', 'path_walkup', 'path_walkdown'] : ruinsTutorial ? ['path_torielwalk2', 'path_torielwalk2_2', 'path_walkup']
+  const pathNames = xoxoBig ? ['path_papyrus2'] : snowpuzz ? ['path_mdog', 'path_wdog'] : maze ? ['path_papyrus1', 'path_papyrus1A'] : basement ? ['path_torielwalkbasement1', 'path_torielwalkbasement2', 'path_torielwalkbasement3', 'path_walkright', 'path_walkup', 'path_walkdown'] : ruinsTutorial ? ['path_torielwalk2', 'path_torielwalk2_2', 'path_walkup']
     : ruinsSwitches ? ['path_torielwalk3', 'path_torielwalk3_2', 'path_walkright']
       : dummyLesson ? ['path_torielwalk4', 'path_torielwalk4_2']
         : spikeGuide ? ['path_torielwalk5', 'path_torielwalk5_2', 'path_walkright', 'path_froghead']
@@ -113,6 +116,7 @@ export async function loadRoom(scene, name) {
     }
   };
   await Promise.all([...new Set(room.GameObjects.map((item) => item.ObjectName))].map(object));
+  if (xoxoBig) await Promise.all(['obj_papyrus_room', 'obj_sans_room'].map(object));
   if (spikeGuide) await Promise.all(['obj_toroverworld6', 'obj_torinteractable5', 'obj_torhandhold1', 'obj_fakefroggit',
     'obj_froghead', 'obj_froglegs', 'obj_torieldisapprove'].map(object));
   if (ruins13 && name === 'room_ruins13') await object('obj_stalkerflowey');
@@ -148,12 +152,12 @@ export async function loadRoom(scene, name) {
   if (snowman) spriteNames.add('spr_sadsnowman_d1');
   if (maze) for (const key of Object.keys(mazeDialogue.sprites)) spriteNames.add(key);
   if (crossword) for (const key of Object.keys(crosswordDialogue.sprites)) spriteNames.add(key);
-  if (xoxoSmall) for (const key of Object.keys(xoxoSmallDialogue.sprites)) spriteNames.add(key);
+  if (xoxo) for (const key of Object.keys((xoxoBigDialogue ?? xoxoSmallDialogue).sprites)) spriteNames.add(key);
   if (niceCream) for (const key of ['spr_icecreamguy_sad', 'spr_icecreamguy_anim', 'spr_icecreamguy_happy', 'spr_rollsnow', 'spr_iceflag']) spriteNames.add(key);
   if (gate) for (const key of ['spr_toriel_hug', 'spr_toriel_hug2', 'spr_toriel_hug3', 'spr_pbflame', 'spr_face_torielmad', 'spr_face_torielhappytalk', 'spr_face_torieltalkside']) spriteNames.add(key);
   if (basement) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_toriel_handhold_l', 'spr_face_torieltalk', 'spr_face_torielcold']) spriteNames.add(key);
   if (living) for (const key of ['spr_chairempty', 'spr_chairielgetup', 'spr_toriel_d', 'spr_toriel_r', 'spr_toriel_l', 'spr_toriel_u', 'spr_face_torielhappytalk', 'spr_face_torieltalkside', 'spr_face_torieltalk', 'spr_face_torielrevengetalk', 'spr_face_torielglasses']) spriteNames.add(key);
-  if (hasSavepoint || candyRoom || ruins12 || ruins13 || perspective || torielBedroom || living || boxRoad || checkpoint || snowman || niceCream || crossword || spaghetti || xoxoSmall) spriteNames.add('spr_heartsmall');
+  if (hasSavepoint || candyRoom || ruins12 || ruins13 || perspective || torielBedroom || living || boxRoad || checkpoint || snowman || niceCream || crossword || spaghetti || xoxo) spriteNames.add('spr_heartsmall');
   if (ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson) for (const key of ['spr_toriel_d', 'spr_toriel_r', 'spr_toriel_u', 'spr_toriel_l', 'spr_face_torielhappytalk']) spriteNames.add(key);
   if (ruinsSwitches) for (const key of ['spr_face_torieltalk', 'spr_face_torieltalkside']) spriteNames.add(key);
   if (dummyLesson) for (const key of ['spr_face_torieltalk', 'spr_face_torielwhatside', 'spr_face_torielwhat', 'spr_face_torieltalkside',
@@ -172,11 +176,11 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxoSmall || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
-  if (forest || checkpoint || ice || maze || niceCream || crossword || spaghetti || xoxoSmall) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
+  if (forest || checkpoint || ice || maze || niceCream || crossword || spaghetti || xoxo) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
     forestFonts.set(key, await json(`fonts/${key}/${key}.json`)); images.set(key, `fonts/${key}/${key}.png`);
   }
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
@@ -190,13 +194,13 @@ export async function loadRoom(scene, name) {
     ...(torielHall || torielCorridor || childBedroom || torielBedroom || living ? ['mus_house1', 'mus_house2', 'mus_toriel', 'mus_reunited'] : []),
     ...(childBedroom ? ['snd_noise'] : []),
     ...(floweyExit ? ['snd_floweylaugh', 'snd_wonderfulidea', 'mus_cymbal'] : []),
-    ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || scent || crossword || spaghetti || snowpuzz || xoxoSmall ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
+    ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || scent || crossword || spaghetti || snowpuzz || xoxo ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
     ...(doggoRoom ? ['snd_bell'] : []),
     ...(niceCream ? ['snd_dumbvictory'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
     ...(crossword ? ['mus_papyrus'] : []),
     ...(snowpuzz ? ['mus_dogmeander'] : []),
-    ...(xoxoSmall ? ['snd_instanoise', 'snd_switchpull_n', 'snd_squeak'] : []),
+    ...(xoxo ? ['snd_instanoise', 'snd_switchpull_n', 'snd_squeak'] : []),
     ...(snowman || niceCream ? ['snd_squeak', 'snd_swallow', 'snd_power'] : []),
     ...(checkpoint ? ['mus_papyrus', 'snd_phone', 'snd_squeak'] : []),
     ...(boxRoad ? ['snd_squeak'] : []),
@@ -230,5 +234,5 @@ export async function loadRoom(scene, name) {
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   for (const [key, data] of forestFonts) registerBitmapFont(scene, key, data);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, dogPairDialogue, xoxoSmallDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, dogPairDialogue, xoxoSmallDialogue, xoxoBigDialogue, rockDialogue };
 }
