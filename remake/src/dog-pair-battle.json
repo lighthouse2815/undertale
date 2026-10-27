@@ -1,0 +1,143 @@
+{
+  "intro": [
+    "* Dogi assault you!"
+  ],
+  "stick": [
+    "* You threw the stick and\n  the dogs ran to get it.\n* You played fetch for a while."
+  ],
+  "stickAlone": [
+    "* You threw the stick.\n* But nothing happened."
+  ],
+  "dogs": [
+    {
+      "name": "Dogamy",
+      "sprite": "spr_mandoge",
+      "body": "spr_mandognormal",
+      "axe": "spr_mandogax",
+      "check": [
+        "* DOGAMY - ATK 14 DEF 5\n* Husband of Dogaressa.\n* Knows only what he smells."
+      ],
+      "sniff": [
+        [
+          "* The Dogs sniff you again...",
+          "* But you smell just as\n  weird as before!"
+        ],
+        [
+          "* The Dogs sniff you again...",
+          "* After rolling in the dirt,\n  you smell all right!"
+        ],
+        [
+          "* The Dogs already know you\n  smell fine."
+        ]
+      ],
+      "sniffAlone": [
+        "* Dogamy won't even lift\n  up his snout."
+      ],
+      "petAlone": [
+        "* Dogamy just growls at\n  you."
+      ],
+      "petFail": [
+        "* The Dogs are too suspicious\n  of your smell."
+      ],
+      "pet": [
+        "* You pet Dogamy."
+      ],
+      "roll": [
+        "* You roll around in the\n  dirt and snow.",
+        "* You smell like a weird\n  puppy."
+      ],
+      "speech": {
+        "251": "Take my\nwife...\n's fleas.",
+        "252": "Don't\ntouch my\nhot dog.",
+        "253": "No. 2\nNuzzle\nChamps\n'98!!",
+        "254": "Let's\nkick\nhuman\ntail!!",
+        "259": "Hm?\nWhat's\nthat\nsmell?",
+        "260": "What!\nSmells\nlike a\n...",
+        "264": "Paws off\nyou\nsmelly\nhuman.",
+        "267": "Wow!!!\nPet by\nanother\npup!!!",
+        "272": "Stop!\nDon't\ntouch\nher!",
+        "273": "What\nabout\nme......\n........",
+        "280": "Whine.",
+        "281": "Whimper."
+      }
+    },
+    {
+      "name": "Dogaressa",
+      "sprite": "spr_womandoge",
+      "body": "spr_womandognormal",
+      "axe": "spr_womandogax",
+      "check": [
+        "* DOGARESSA - ATK 14 DEF 5\n* This puppy finds her\n  hubby lovely. SMELLS ONLY?"
+      ],
+      "sniff": [
+        [
+          "* The Dogs sniff you again...",
+          "* But you smell just as\n  weird as before!"
+        ],
+        [
+          "* The Dogs sniff you again...",
+          "* After rolling in the dirt,\n  you smell all right!"
+        ],
+        [
+          "* The Dogs already know you\n  smell fine."
+        ]
+      ],
+      "sniffAlone": [
+        "* The Dogaressa won't even\n  lift up her snout."
+      ],
+      "petAlone": [
+        "* The Dogaressa just growls\n at you."
+      ],
+      "petFail": [
+        "* The Dogaressa is too\n  suspicious of your smell."
+      ],
+      "pet": [
+        "* You pet the Dogaressa."
+      ],
+      "roll": [
+        "* You roll around in the\n  dirt and snow.",
+        "* You smell like a weird\n  puppy."
+      ],
+      "speech": {
+        "243": "(...)",
+        "247": "(Don't,\nactually\n...)",
+        "248": "(He\nmeans\nme.)",
+        "249": "(Of\ncourse\nwe were\nsecond.)",
+        "250": "(Do\nhumans\nhave\ntails?)",
+        "256": "(Smell\nmystery)",
+        "257": "(Are you\nactually\na little\npuppy!?)",
+        "261": "(Beware\nof\ndog.)",
+        "264": "(A dog\nthat pets\ndogs...\nAmazing!)",
+        "269": "(That's\nnot your\nhusband,\nOK?)",
+        "270": "(Well.\nDon't\nleave me\nout!)",
+        "276": "(Misery\nawaits\nyou.)",
+        "277": "(Kneel\nand\nsuffer!)",
+        "278": "(I'll\nchop you\nin\nhalf!)"
+      }
+    }
+  ],
+  "idleMan": [
+    "* Dogamy is brokenhearted."
+  ],
+  "idleWoman": [
+    "* The Dogs keep shifting their\n  axes to protect each other.",
+    "* The Dogs are re-evaluating\n  your smell.",
+    "* The Dogs are practicing for\n  the next couples contest.",
+    "* The Dogs are saying sickly\n  sweet things to each other.",
+    "* The Dogs may want to\n  re-smell you.",
+    "* The Dogs think that you\n  may be a lost puppy.",
+    "* Every dog loves to play\n  fetch!!!",
+    "* The Dogs' minds have been\n  expanded.",
+    "* The Dogaressa is on the\n  warpath."
+  ],
+  "sprites": {
+    "spr_mandoge": 2,
+    "spr_womandoge": 2,
+    "spr_mandognormal": 11,
+    "spr_womandognormal": 11,
+    "spr_mandogax": 1,
+    "spr_womandogax": 1,
+    "spr_blconsm2": 1,
+    "spr_blconsm": 1
+  }
+}
