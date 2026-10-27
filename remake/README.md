@@ -280,3 +280,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-xoxo-big.mjs/json` nối phòng X/O nhỏ↔lớn, dùng chung ô/nút qua SnowdinXoxoPuzzle. Có15ô/sai63/plot56/cây Yes-No, Papyrus5/54/14trang/áo choàng/gợi ý/đáp án/hậu cảnh/path, camera, Sans/kýức, Flowey chìm/cờ9 và Chilldrake cuối tuyến. Kiểm thử riêng gồm SAVE54/56, hai cách giải và nhánh tuyến. Cửa phải tới randoblock/Papyrus4 chưa nối; các giới hạn gõ chữ/animation/tô từng từ và thứ tự instance từng frame vẫn cần hoàn thiện.
+
+
+`src/snowdin-color-tiles.mjs/json` nối X/O lớn↔randoblock/Papyrus4:48ô,33trang/19trang nghe lại/hai câu hỏi, máy đổi7màu/alarm/pitch/chốt đỏ-hồng/collider/lối đi, nhánh từ chối đểnote, tuyến Frisk đi xuyên93pixel/đối thoại Papyrus-Sans, hậu cảnh/nhạc/plot58/SAVE và dọn. Kiểm thử chuỗi X/O lớn→ô màu đã qua. Cửa phải tới phòng tượng Lesser Dog chưa nối; gõ chữ/miệng nói và thứ tự từngframe vẫn cần hoàn thiện.

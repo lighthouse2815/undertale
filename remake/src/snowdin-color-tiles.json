@@ -1,0 +1,552 @@
+{
+  "rules": [
+    {
+      "text": "HEY!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S THE HUMAN!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU'RE GONNA\nLOVE THIS\nPUZZLE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT WAS MADE\nBY THE GREAT\nDR. ALPHYS!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU SEE\nTHESE TILES\n!?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ONCE I THROW\nTHIS SWITCH...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEY WILL\nBEGIN TO\nCHANGE COLOR!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "EACH COLOR HAS\nA DIFFERENT\nFUNCTION!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "RED TILES ARE\nIMPASSABLE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU CANNOT\nWALK ON THEM!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YELLOW TILES\nARE ELECTRIC!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEY WILL\nELECTROCUTE\nYOU!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "GREEN TILES\nARE ALARM\nTILES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IF YOU STEP\nON THEM...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU WILL HAVE\nTO FIGHT A\nMONSTER!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ORANGE TILES\nARE ORANGE-\nSCENTED.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEY WILL MAKE\nYOU SMELL\nDELICIOUS!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BLUE TILES ARE\nWATER TILES.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SWIM THROUGH\nIF YOU LIKE,\nBUT...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IF YOU SMELL\nLIKE ORANGES!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE PIRANHAS\nWILL BITE\nYOU.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ALSO, IF A\nBLUE TILE IS\nNEXT TO A,",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YELLOW TILE,\nTHE WATER WILL\nALSO ZAP YOU!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PURPLE TILES\nARE SLIPPERY!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU WILL SLIDE\nTO THE NEXT\nTILE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HOWEVER, THE\nSLIPPERY\nSOAP...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SMELLS LIKE\nLEMONS!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHICH PIRANHAS\nDO NOT LIKE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PURPLE AND\nBLUE ARE OK!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FINALLY,\nPINK TILES.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEY DON'T DO\nANYTHING.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "STEP ON THEM\nALL YOU LIKE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HOW WAS THAT!?\nUNDERSTAND???",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "repeat": [
+    {
+      "text": "OKAY...\nI GUESS I'LL\nREPEAT MYSELF...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "RED TILES ARE\nIMPASSABLE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YELLOW TILES ARE\nELECTRIC AND\nDANGEROUS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BLUE TILES MAKE\nYOU FIGHT A\nMONSTER.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "GREEN TILES ARE\nWATER TILES.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ORANGE TILES ARE\nORANGE SCENTED.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IF YOU STEP ON\nORANGE, DON'T STEP\nON GREEN.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BROWN TILES ARE...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WAIT!!!\nTHERE ARE NO\nBROWN TILES...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PURPLE TILES\nSMELL LIKE\nLEMONS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHY DON'T THE\nYELLOW ONES\nSMELL LEMONY?",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "UMM...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WAIT!!\nDID I MIX UP\nGREEN AND BLUE!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE BLUE ONES\nARE WATER ONES!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PINK TILES...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I DON'T...\nREMEMBER???",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WAIT!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THOSE ONES DON'T\nDO ANYTHING.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OKAY!\nDO YOU UNDERSTAND\nBETTER NOW!?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "ready": [
+    {
+      "text": "GREAT!!\nTHEN THERE'S ONE\nLAST THING...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THIS PUZZLE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IS ENTIRELY RANDOM\n!!!!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHEN I PULL THIS\nSWITCH, IT WILL\nMAKE A PUZZLE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT HAS NEVER\nBEEN SEEN BEFORE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NOT EVEN I WILL\nKNOW THE SOLUTION!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH HEH HEH!\nGET READY...!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "refuse": [
+    {
+      "text": "..........",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OK, YOU KNOW\nWHAT???",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HOW ABOUT...\nYOU JUST...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "DO THIS PUZZLE...\nON YOUR OWN...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL LEAVE THE\nINSTRUCTIONS...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "JUST READ THEM.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEN WHEN YOU\nUNDERSTAND IT...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU CAN THROW\nTHE SWITCH.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND DO IT AT\nYOUR OWN PACE.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "GOOD LUCK.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH...\nHEH...\nHEH!",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderIntro": [
+    {
+      "text": "HEY!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S THE HUMAN!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU'RE GONNA\nLOVE THIS\nPUZZLE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT WAS MADE\nBY THE GREAT...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderComplaint": [
+    {
+      "text": "... ARE YOU\nSERIOUS?",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SANS!!!\nHELP!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEY KEEP WALKING\nTHROUGH MY PUZZLES!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEY'RE SUPPOSED\nTO LET ME\nEXPLAIN THEM.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEN THREATEN AND\nBAFFLE THEM WITH\nDANGEROUS JAPES.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* well, maybe they\n  don't like japes.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "EVERYONE LIKES\nJAPES!!!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* what about undyne?\n* doesn't she hate\n  puzzles?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "SHE HATES PUZZLES.\nBUT SHE LOVES\nJAPES.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* that makes sense.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "HUMAN!!\nWHAT DO YOU\nTHINK!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PUZZLES OR JAPES?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OKAY, THIS IS\nNORMALLY THE\nPART.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHERE YOU EITHER\nAGREE OR DISAGREE.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND DEPENDING ON\nYOUR ANSWER.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WE SAY SOMETHING\nGREAT IN RESPONSE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HERE, WHY DON'T\nYOU DO THIS\nPUZZLE YOURSELF.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "note": [
+    {
+      "text": "* It's illegible chicken-\n  scratch.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "switch": [
+    {
+      "text": "* (The machine isn't working.)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "sans": [
+    {
+      "text": "* actually, that spaghetti\n  from earlier...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* it wasn't too bad for\n  my brother.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* since he started cooking\n  lessons, he's been\n  improving a lot.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i bet if he keeps it\n  up, next year he'll even\n  make something edible.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansMurder": [
+    {
+      "text": "* hey...\n* puzzles might be fun.\n* if you tried them.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sprites": {
+    "spr_exc": 1,
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_sans": 1,
+    "spr_face_sansblink": 1,
+    "spr_face_sanschuckle": 1,
+    "spr_face_sansnoeyes": 1,
+    "spr_face_sanswink": 1,
+    "spr_notepaper": 1,
+    "spr_papyrus_d": 4,
+    "spr_papyrus_dt": 2,
+    "spr_papyrus_l": 4,
+    "spr_papyrus_lt": 2,
+    "spr_papyrus_r": 4,
+    "spr_papyrus_spin": 4,
+    "spr_papyrus_u": 4,
+    "spr_papyrus_ut": 1,
+    "spr_sans_d": 4,
+    "spr_sans_l": 4,
+    "spr_sans_u": 4
+  }
+}

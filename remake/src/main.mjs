@@ -48,6 +48,7 @@ import { SnowdinSpaghetti } from './snowdin-spaghetti.mjs';
 import { SnowdinSnowpuzz } from './snowdin-snowpuzz.mjs';
 import { SnowdinXoxoSmall } from './snowdin-xoxo-small.mjs';
 import { SnowdinXoxoBig } from './snowdin-xoxo-big.mjs';
+import { SnowdinColorTiles } from './snowdin-color-tiles.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
@@ -133,7 +134,8 @@ const ROOM_EXITS = {
   room_tundra_spaghetti: { B: 'room_tundra9', A: 'room_tundra_snowpuzz' },
   room_tundra_snowpuzz: { B: 'room_tundra_spaghetti', A: 'room_tundra_xoxosmall' },
   room_tundra_xoxosmall: { B: 'room_tundra_snowpuzz', A: 'room_tundra_xoxopuzz' },
-  room_tundra_xoxopuzz: { B: 'room_tundra_xoxosmall' },
+  room_tundra_xoxopuzz: { B: 'room_tundra_xoxosmall', A: 'room_tundra_randoblock' },
+  room_tundra_randoblock: { B: 'room_tundra_xoxopuzz' },
   room_tundra8A: { B: 'room_tundra8' },
   room_tundra6A: { B: 'room_tundra6' },
 };
@@ -153,7 +155,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
+    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
     this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -162,7 +164,7 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
-    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz'].includes(name)) stopSnowdinMusic(this);
+    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock'].includes(name)) stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -207,6 +209,7 @@ class World extends Scene {
     this.dogPairRoom?.destroy(); this.dogPairRoom = null;
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
+    this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -340,6 +343,7 @@ class World extends Scene {
     if (['room_tundra6', 'room_tundra8'].includes(name)) this.snowdinIce = new SnowdinIce(this);
     if (name === 'room_tundra_xoxosmall') this.snowdinXoxoSmall = new SnowdinXoxoSmall(this);
     if (name === 'room_tundra_xoxopuzz') this.snowdinXoxoBig = new SnowdinXoxoBig(this);
+    if (name === 'room_tundra_randoblock') this.snowdinColorTiles = new SnowdinColorTiles(this);
     if (name === 'room_tundra_snowpuzz') { this.snowdinSnowpuzz = new SnowdinSnowpuzz(this); this.dogPairRoom = new DogPairRoom(this); }
     if (name === 'room_tundra_spaghetti') this.snowdinSpaghetti = new SnowdinSpaghetti(this);
     if (name === 'room_tundra9') this.snowdinCrossword = new SnowdinCrossword(this);
@@ -422,6 +426,7 @@ class World extends Scene {
       this.dogPairRoom?.update(delta);
       this.snowdinXoxoSmall?.update(delta);
       this.snowdinXoxoBig?.update(delta);
+      this.snowdinColorTiles?.update(delta);
       this.electricMaze?.update(delta);
       this.snowdinCrossword?.update(delta);
       this.snowdinSpaghetti?.update(delta);
@@ -450,6 +455,7 @@ class World extends Scene {
     const dogPairLocked = this.dogPairRoom?.update(delta);
     const xoxoSmallLocked = this.snowdinXoxoSmall?.update(delta);
     const xoxoBigLocked = this.snowdinXoxoBig?.update(delta);
+    const colorTilesLocked = this.snowdinColorTiles?.update(delta);
     const mazeLocked = this.electricMaze?.update(delta);
     const crosswordLocked = this.snowdinCrossword?.update(delta);
     this.snowdinSpaghetti?.update(delta);
@@ -461,7 +467,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -504,6 +510,7 @@ class World extends Scene {
       if (this.dogPairRoom?.checkTrigger()) return;
       if (this.snowdinXoxoSmall?.checkTrigger(previous)) return;
       if (this.snowdinXoxoBig?.checkTrigger(previous)) return;
+      if (this.snowdinColorTiles?.checkTrigger(previous)) return;
       if (this.electricMaze?.checkTrigger(previous)) return;
       if (this.snowdinCrossword?.checkTrigger()) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
@@ -560,6 +567,7 @@ class World extends Scene {
     if (this.snowdinSnowpuzz?.interact()) return;
     if (this.snowdinXoxoSmall?.interact()) return;
     if (this.snowdinXoxoBig?.interact()) return;
+    if (this.snowdinColorTiles?.interact()) return;
     if (this.boxRoad) { this.boxRoad.interact(); return; }
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;
