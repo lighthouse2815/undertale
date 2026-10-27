@@ -22,6 +22,7 @@ import { TorielGate } from './toriel-gate.mjs';
 import { FloweyExit } from './flowey-exit.mjs';
 import { ChapterTitle } from './chapter-title.mjs';
 import { SnowdinStart, stopSnowdinMusic } from './snowdin-start.mjs';
+import { SnowdinForest } from './snowdin-forest.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
@@ -95,6 +96,8 @@ const ROOM_EXITS = {
   room_basement4: { A: 'room_basement5', B: 'room_basement3' },
   room_basement5: { A: 'room_ruinsexit', B: 'room_basement4' },
   room_ruinsexit: { B: 'room_basement5' },
+  room_tundra1: { A: 'room_tundra2' },
+  room_tundra2: { B: 'room_tundra1' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -112,7 +115,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); });
+    this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
 
@@ -120,7 +123,7 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
-    if (name !== 'room_tundra1') stopSnowdinMusic(this);
+    if (!['room_tundra1', 'room_tundra2'].includes(name)) stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
     state.scene = this;
     this.ruinsTutorial?.destroy();
@@ -153,6 +156,7 @@ class World extends Scene {
     this.torielGate?.destroy(); this.torielGate = null;
     this.floweyExit?.destroy(); this.floweyExit = null;
     this.snowdinStart = null;
+    this.snowdinForest?.destroy(); this.snowdinForest = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -276,6 +280,7 @@ class World extends Scene {
     if (name === 'room_basement4') this.torielGate = new TorielGate(this);
     if (name === 'room_ruinsexit') this.floweyExit = new FloweyExit(this);
     if (name === 'room_tundra1') this.snowdinStart = new SnowdinStart(this);
+    if (name === 'room_tundra2') this.snowdinForest = new SnowdinForest(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -342,6 +347,7 @@ class World extends Scene {
       this.torielLiving?.update(delta);
       this.floweyExit?.update(delta);
       this.snowdinStart?.update(delta);
+      this.snowdinForest?.update(delta);
       return;
     }
     if (state.phase !== 'running') return;
@@ -358,11 +364,12 @@ class World extends Scene {
     const gateLocked = this.torielGate?.update();
     const floweyLocked = this.floweyExit?.update(delta);
     this.snowdinStart?.update(delta);
+    const forestLocked = this.snowdinForest?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -395,6 +402,7 @@ class World extends Scene {
       if (this.torielGate?.checkTrigger(previous)) return;
       if (this.floweyExit?.checkTrigger(previous)) return;
       if (this.snowdinStart?.checkTrigger()) return;
+      if (this.snowdinForest?.checkTrigger(previous)) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
@@ -449,6 +457,7 @@ class World extends Scene {
     if (this.torielBedroom?.interact()) return;
     if (this.torielLiving?.interact()) return;
     if (this.snowdinStart?.interact()) return;
+    if (this.snowdinForest?.interact()) return;
     if (this.ruinsRock?.interact()) return;
     if (this.ruinsStart?.interact()) return;
     if (this.corridorLesson) { this.corridorLesson.interact(); return; }

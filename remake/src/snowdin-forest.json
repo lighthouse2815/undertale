@@ -1,0 +1,672 @@
+{
+  "greet": [
+    {
+      "text": "* Human.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Don't you know how\n  to greet a new pal?",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Turn around and shake\n  my hand.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "greetAgain": [
+    {
+      "text": "* Human.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "intro": [
+    {
+      "text": "* heheh... the old whoopee\n  cushion in the hand\n  trick.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* it's ALWAYS funny.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* anyways,\n  you're a human, right?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* that's hilarious.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i'm sans.\n* sans the skeleton.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* im actually supposed to\n  be on watch for\n  humans right now.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* but... y'know...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i dont really care about\n  capturing anybody.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* now my brother,\n  papyrus...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* he's a human-hunting\n  FANATIC.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* hey, actually, I think\n  that's him over there.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i have an idea.\n* go through this gate\n  thingy.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* yeah, go right through.\n* my bro made the bars\n  too wide to stop anyone.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "introAgain": [
+    {
+      "text": "* heh, the old whoopee\n  cushion in the hand\n  trick...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* wait a sec...\n* have you heard it before\n  or something?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* you turned around before\n  i said to...\n* ... weird.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* ... whatever.\n* you're a human, right?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i'm sans.\n* sans the skeleton.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* im actually supposed to\n  be on watch for\n  humans right now.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* but... y'know...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i dont really care about\n  capturing anybody.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* now my brother,\n  papyrus...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* he's a human-hunting\n  FANATIC.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* hey, actually, I think\n  that's him over there.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i have an idea.\n* go through this gate\n  thingy.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* yeah, go right through.\n* my bro made the bars\n  too wide to stop anyone.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "introMurder": [
+    {
+      "text": "* heheh... the old whoopee\n  cushion in the hand\n  trick.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* it's ALWAYS funny.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* ...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* that's, uh.\n* your cue to laugh.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* or, uh, to emote\n  at all...?",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* ...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* (gee, lady, you really\n  know how to pick\n  'em, huh...?)",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* OK, that's fine.\n* everyone's got their\n  own sense of humor.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i'm sans.\n* sans the skeleton.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* im actually supposed to\n  be on watch for\n  humans right now.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* but... y'know...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i dont really care about\n  capturing anybody.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* now my brother,\n  papyrus...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* he's a human-hunting\n  FANATIC.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* hey, actually, I think\n  that's him over there.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i have an idea.\n* go through this gate\n  thingy.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* yeah, go right through.\n* my bro made the bars\n  too wide to stop anyone.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "lamp": [
+    {
+      "text": "* quick, behind that\n  conveniently-shaped\n  lamp.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "brother": [
+    {
+      "text": "* sup, bro?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "YOU KNOW WHAT\n\"SUP,\" BROTHER!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S BEEN EIGHT\nDAYS AND YOU\nSTILL HAVEN'T...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "RECALIBRATED.\nYOUR.\nPUZZLES!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU JUST HANG\nAROUND OUTSIDE\nYOUR STATION!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHAT ARE YOU\nEVEN DOING?!?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* staring at this lamp.\n* it's really cool.\n* do you wanna look?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "capture": [
+    {
+      "text": "NO!!\nI DON'T HAVE\nTIME FOR THAT!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHAT IF A HUMAN\nCOMES THROUGH\nHERE!?!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WANT TO BE\nREADY!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WILL BE THE ONE!\nI MUST BE THE ONE!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WILL CAPTURE A\nHUMAN!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "royalGuard": [
+    {
+      "text": "THEN, I, THE\nGREAT PAPYRUS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WILL GET\nALL THE THINGS I\nUTTERLY DESERVE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "RESPECT...\nRECOGNITION...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WILL FINALLY\nBE ABLE TO JOIN\nTHE ROYAL GUARD!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PEOPLE WILL ASK,\nTO, BE MY,\n\"FRIEND?\"",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WILL BATHE IN A\nSHOWER OF KISSES\nEVERY MORNING.",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "helpLamp": [
+    {
+      "text": "* hmm...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* maybe this lamp will\n  help you.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "skeleton": [
+    {
+      "text": "SANS!! YOU ARE\nNOT HELPING!!\nYOU LAZYBONES!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ALL YOU DO IS SIT\nAND BOONDOGGLE!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU GET LAZIER\nAND LAZIER\nEVERY DAY!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* hey, take it easy.\n* i've gotten a ton \n  of work done today.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* a skele-ton.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "bone": [
+    {
+      "text": "SANS!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* come on.\n* you're smiling.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "I AM AND I HATE IT!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SIGH...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHY DOES SOMEONE\nAS GREAT AS ME...",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HAVE TO DO SO MUCH\nJUST TO GET SOME\nRECOGNITION...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* wow, sounds like\n  you're really working\n  yourself...",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* down to the bone.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "backbone": [
+    {
+      "text": "UGH!!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WILL ATTEND TO\nMY PUZZLES...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AS FOR YOUR WORK?",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PUT A LITTLE MORE,",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "\"BACKBONE\" INTO\nIT!!!!",
+      "portrait": "spr_face_papyrusevil",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEHEHEHEHEHE\nHEHEHEHEHEHE!!!",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "heh": [
+    {
+      "text": "HEH!",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "comeOut": [
+    {
+      "text": "* ok, you can come out\n  now.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "refuseLamp": [
+    {
+      "text": "* ...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* uh, ok, i guess you\n  don't have to.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "murderBrother": [
+    {
+      "text": "SANS!!!\nHAVE YOU FOUND A\nHUMAN YET!??!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "* yeah.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "REALLY!?!?\nWOWIE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "GUESS THAT'S\nSETTLED!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderEnd": [
+    {
+      "text": "* that worked out, huh?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "stick": [
+    {
+      "text": "* (It's a tough-looking branch.)\n* (It's too heavy to pick up.)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "brokenStick": [
+    {
+      "text": "* (It's been smashed like it\n  was nothing...)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "readLamp": [
+    {
+      "text": "* Just a conveniently-shaped\n  lamp.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "checkpoint": [
+    {
+      "text": "* It's some sort of checkpoint\n  or sentry-station.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* But there are bottles of\n  ketchup, mustard, and relish\n  sitting inside...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "bush": [],
+  "idle": [
+    {
+      "text": "* you oughta get going.\n* he might come back.\n* and if he does...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* ... you'll have to\n  sit through more of\n  my hilarious jokes.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "idleAgain": [
+    {
+      "text": "* what's the holdup?\n* look, there's nothin\n  to be afraid of.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* it's just a dark cavern\n  filled with skeletons\n  and horrible monsters.",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "idleWell": [
+    {
+      "text": "* well?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "idleMurder": [
+    {
+      "text": "* ... are you just gonna\n  stare at me, or...?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "bye": [
+    {
+      "text": "* actually, hey...\n* hate to bother ya, but\n  can you do me a favor?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* i was thinking...\n* my brother's been\n  kind of down lately...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* he's never seen a human\n  before. and seeing you\n  might just make his day.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* don't worry, he's not\n  dangerous.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* even if he tries to be.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* thanks a million.\n* i'll be up ahead.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "byeMurder": [
+    {
+      "text": "* well, i'll be straight-\n  forward with you.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* my brother'd really\n  like to see a human...",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* so, y'know, it'd\n  really help me out...",
+      "portrait": "spr_face_sanswink",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* if you kept pretending\n  to be one.",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sprites": {
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_sans": 1,
+    "spr_face_sansblink": 1,
+    "spr_face_sanschuckle": 1,
+    "spr_face_sansnoeyes": 1,
+    "spr_face_sanswink": 1,
+    "spr_papyrus_cape": 5,
+    "spr_papyrus_l": 4,
+    "spr_papyrus_l_mad": 4,
+    "spr_papyrus_lt": 2,
+    "spr_papyrus_lt_mad": 2,
+    "spr_papyrus_mad1": 3,
+    "spr_papyrus_mad2": 3,
+    "spr_papyrus_r": 4,
+    "spr_sans_d": 4,
+    "spr_sans_l": 4,
+    "spr_sans_r": 4,
+    "spr_sans_r_dark": 4,
+    "spr_sans_r_darkhand": 3,
+    "spr_sans_shrug1": 1,
+    "spr_sans_shrug2": 1,
+    "spr_treeshadow": 1
+  }
+}
