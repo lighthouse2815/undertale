@@ -53,6 +53,7 @@ import { SnowdinColorTiles } from './snowdin-color-tiles.mjs';
 import { SnowdinDogHouse } from './snowdin-dog-house.mjs';
 import { SnowdinIcePuzzle } from './snowdin-ice-puzzle.mjs';
 import { SnowdinIceHole } from './snowdin-ice-hole.mjs';
+import { GyftrotRoom } from './gyftrot-room.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
@@ -141,7 +142,8 @@ const ROOM_EXITS = {
   room_tundra_xoxopuzz: { B: 'room_tundra_xoxosmall', A: 'room_tundra_randoblock' },
   room_tundra_randoblock: { B: 'room_tundra_xoxopuzz', A: 'room_tundra_lesserdog' },
   room_tundra_lesserdog: { B: 'room_tundra_randoblock', C: 'room_tundra_iceentrance' },
-  room_tundra_iceentrance: { D: 'room_tundra_lesserdog', B: 'room_tundra_icehole' },
+  room_tundra_iceentrance: { D: 'room_tundra_lesserdog', B: 'room_tundra_icehole', A: 'room_tundra_iceexit_new' },
+  room_tundra_iceexit_new: { B: 'room_tundra_iceentrance' },
   room_tundra_icehole: { A: 'room_tundra_iceentrance' },
   room_tundra8A: { B: 'room_tundra8' },
   room_tundra6A: { B: 'room_tundra6' },
@@ -162,7 +164,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
+    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
     this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -171,7 +173,7 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
-    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole'].includes(name)) stopSnowdinMusic(this);
+    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new'].includes(name)) stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -217,7 +219,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
-    this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null;
+    this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.gyftrotRoom?.destroy(); this.gyftrotRoom = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -355,6 +357,7 @@ class World extends Scene {
     if (name === 'room_tundra_lesserdog') this.snowdinDogHouse = new SnowdinDogHouse(this);
     if (name === 'room_tundra_iceentrance') this.snowdinIcePuzzle = new SnowdinIcePuzzle(this);
     if (name === 'room_tundra_icehole') this.snowdinIceHole = new SnowdinIceHole(this);
+    if (name === 'room_tundra_iceexit_new') this.gyftrotRoom = new GyftrotRoom(this);
     if (name === 'room_tundra_snowpuzz') { this.snowdinSnowpuzz = new SnowdinSnowpuzz(this); this.dogPairRoom = new DogPairRoom(this); }
     if (name === 'room_tundra_spaghetti') this.snowdinSpaghetti = new SnowdinSpaghetti(this);
     if (name === 'room_tundra9') this.snowdinCrossword = new SnowdinCrossword(this);
@@ -362,7 +365,7 @@ class World extends Scene {
     if (name === 'room_tundra6A') this.snowman = new Snowman(this);
     if (name === 'room_tundra7') this.electricMaze = new ElectricMaze(this);
     if (name === 'room_tundra8') { this.niceCream = new NiceCream(this); this.snowGolf = new SnowGolf(this); this.snowdinPark = new SnowdinPark(this); }
-    if (['room_tundra3', 'room_tundra4', 'room_tundra6', 'room_tundra_snowpuzz'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this);
+    if (['room_tundra3', 'room_tundra4', 'room_tundra6', 'room_tundra_snowpuzz', 'room_tundra_iceexit_new'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this, spawnName);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 
@@ -441,6 +444,7 @@ class World extends Scene {
       this.snowdinDogHouse?.update(delta);
       this.snowdinIcePuzzle?.update(delta);
       this.snowdinIceHole?.update(delta);
+      this.gyftrotRoom?.update(delta);
       this.electricMaze?.update(delta);
       this.snowdinCrossword?.update(delta);
       this.snowdinSpaghetti?.update(delta);
@@ -473,6 +477,7 @@ class World extends Scene {
     this.snowdinDogHouse?.update(delta);
     const icePuzzleLocked = this.snowdinIcePuzzle?.update(delta);
     const iceHoleLocked = this.snowdinIceHole?.update(delta);
+    const gyftrotLocked = this.gyftrotRoom?.update(delta);
     const mazeLocked = this.electricMaze?.update(delta);
     const crosswordLocked = this.snowdinCrossword?.update(delta);
     this.snowdinSpaghetti?.update(delta);
@@ -484,7 +489,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -588,6 +593,7 @@ class World extends Scene {
     if (this.snowdinColorTiles?.interact()) return;
     if (this.snowdinDogHouse?.interact()) return;
     if (this.snowdinIceHole?.interact()) return;
+    if (this.gyftrotRoom?.interact()) return;
     if (this.boxRoad) { this.boxRoad.interact(); return; }
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;

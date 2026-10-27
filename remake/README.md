@@ -295,3 +295,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/gyftrot-battle.mjs/json` có nhóm28/114HP/ACT2×2/bađồ/Gift/đôi mắt/betray/74-138/MERCY/DEF/thưởng riêng, dùngmenu/FIGHT/găngtay/Flee/ITEM/GameOver sẵn có và hai generatorGyftrot. Đã qua kiểmthử riêng và hồi quyhai trậnSnowdinđơn; chưa nối encounter28/cửaiceexit_new. Tanbụi/gõchữ/thứtựinstance từngframe vẫnchưađủ.
+
+
+`src/gyftrot-room.mjs/json` nối iceentrance↔iceexit_new,2Sans/lời chéo/váchbăng3loạiDraw/NPC/Fall388. SnowdinEncounterdùnglại ngưỡngbước160-300/840/nhóm28-LesserDog-Nobody/SAVE/GameOver, đãqua chuỗi Jerry→băng→GyftrotRoom. Nhánhiceexit/icecave1 vàpoffzone/GreaterDog chưa nối; cácgiớihạngõchữ/animationtừngframe vẫngiữ.

@@ -1,0 +1,80 @@
+{
+  "sans": [
+    {
+      "text": "* what's up?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "sansAgain": [
+    {
+      "text": "* you sure do like to\n  exercise.",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "double": [
+    {
+      "text": "* say...",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    },
+    {
+      "text": "* are you following me?",
+      "portrait": "spr_face_sanschuckle",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "doubleAgain": [
+    {
+      "text": "* are you lost?",
+      "portrait": "spr_face_sans",
+      "font": "fnt_comicsans"
+    }
+  ],
+  "npc": [
+    {
+      "text": "* I've heard there's a local\n  tradition based off of\n  my own suffering.",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* ...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "npcAgain": [
+    {
+      "text": "* ...",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "npcEnd": [
+    {
+      "text": "* Everyone's leaving, eh?",
+      "portrait": null,
+      "font": "fnt_maintext"
+    },
+    {
+      "text": "* Good riddance!\n* Maybe I'll finally get\n  some peace and quiet!",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "sprites": {
+    "spr_sans_d": 4,
+    "spr_sans_l": 4,
+    "spr_sans_r": 4,
+    "spr_sans_u": 4,
+    "spr_face_sans": 1,
+    "spr_face_sanschuckle": 1,
+    "spr_face_sanswink": 1,
+    "spr_face_sansblink": 1,
+    "spr_face_sansnoeyes": 1,
+    "spr_icecavewall_2": 2,
+    "spr_icecavewall_2b": 2,
+    "spr_icecavewallb": 1
+  }
+}

@@ -2,10 +2,11 @@ import { murderLevel } from './route.mjs';
 
 // obj_encounterer_tundra1/jerry, scr_steps và obj_battleblcon.
 export class SnowdinEncounter {
-  constructor(world) {
+  constructor(world, spawnName = 'obj_mainchara') {
     this.world = world; this.count = 0; this.empty = 0;
     this.jerry = world.dataSource?.room.GameObjects.some((e) => e.ObjectName === 'obj_encounterer_jerry') ?? false;
-    this.steps = this.threshold(this.jerry && world.dataSource.name === 'room_tundra_snowpuzz' && world.flags[64] ? 220 : 120, 30);
+    this.gyftrot = world.dataSource?.room.GameObjects.some((e) => e.ObjectName === 'obj_encoutnerer_gyftrot') ?? false;
+    this.steps = this.threshold(this.gyftrot ? spawnName === 'obj_markerA' ? 160 : 300 : this.jerry && world.dataSource.name === 'room_tundra_snowpuzz' && world.flags[64] ? 220 : 120, 30);
     this.disabled = !world.flags[203] && world.plot > 100;
   }
 
@@ -21,11 +22,12 @@ export class SnowdinEncounter {
 
   select() {
     const world = this.world, flags = world.flags;
-    if (this.jerry) {
+    if (this.jerry || this.gyftrot) {
       let group = Math.round(Math.random() * 15) > 8 ? 36 : 35;
+      if (this.gyftrot) group = 28;
       if ((flags[70] ?? 0) < 3) { group = 24; flags[70] = 4; }
       if (this.empty) group = 19;
-      return group === 24 ? 'lesserDog' : group === 19 ? 'nobody' : `snowdinGroup${group}`;
+      return group === 24 ? 'lesserDog' : group === 19 ? 'nobody' : group === 28 ? 'gyftrot' : `snowdinGroup${group}`;
     }
     let group = Math.floor(Math.random() * 15) < 8 ? 30 : 32;
     const seen = flags[70] ?? 0;
@@ -43,7 +45,7 @@ export class SnowdinEncounter {
   update() {
     const world = this.world;
     if (this.disabled || window.__remake.phase !== 'running' || world.dialogue || this.count <= this.steps || this.timer) return;
-    this.steps = this.jerry ? this.threshold(840, 680) : this.threshold(140, 280); this.count = 0;
+    this.steps = this.jerry || this.gyftrot ? this.threshold(840, 680) : this.threshold(140, 280); this.count = 0;
     const config = this.select();
     // Lần đầu cạn dân số chỉ đặt cờ; lần kích hoạt kế mới vào nhóm19.
     if (this.empty === 1) { world.flags[222] = 1; this.empty = 2; return; }
