@@ -368,7 +368,7 @@ class World extends Scene {
     if (name === 'room_tundra6A') this.snowman = new Snowman(this);
     if (name === 'room_tundra7') this.electricMaze = new ElectricMaze(this);
     if (name === 'room_tundra8') { this.niceCream = new NiceCream(this); this.snowGolf = new SnowGolf(this); this.snowdinPark = new SnowdinPark(this); }
-    if (['room_tundra3', 'room_tundra4', 'room_tundra6', 'room_tundra_snowpuzz', 'room_tundra_iceexit_new', 'room_tundra_poffzone'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this, spawnName);
+    if (['room_tundra3', 'room_tundra4', 'room_tundra6', 'room_tundra_snowpuzz', 'room_tundra_iceexit_new'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this, spawnName);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
 

@@ -15,7 +15,7 @@ export async function testGreaterDogRoom(page) {
     await page.waitForFunction(() => __remake.phase === 'battle' && __remake.room === 'battle_greaterDog' && !!__remake.scene.music);
     assert.deepEqual(await page.evaluate(() => [__remake.scene.enemyHp, __remake.scene.previousScene.flags[200]]), [105, 0]);
   };
-  await open(); assert.deepEqual(await page.evaluate(() => [__remake.scene.greaterDogRoom.poffs.length, __remake.scene.greaterDogRoom.stage, !!__remake.scene.greaterDogRoom.npc, __remake.scene.snowdinMusic.key]), [8, 'waiting', false, 'mus_snowy']);
+  await open(); assert.equal(await page.evaluate(() => __remake.scene.snowdinEncounter), null); assert.deepEqual(await page.evaluate(() => [__remake.scene.greaterDogRoom.poffs.length, __remake.scene.greaterDogRoom.stage, !!__remake.scene.greaterDogRoom.npc, __remake.scene.snowdinMusic.key]), [8, 'waiting', false, 'mus_snowy']);
   // Hai cửa đặc biệt giữ markerX/nhạc, không đi tắt qua trigger.
   await place(19, 85, 'l'); await page.keyboard.down('ArrowLeft'); await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowLeft'); await page.waitForFunction(() => __remake.room === 'room_tundra_iceentrance' && __remake.phase === 'running');
   assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y]), [900, 80]); await page.evaluate(() => { __remake.scene.oldPoffMusic = __remake.scene.snowdinMusic; });
