@@ -2,6 +2,7 @@ import { RuinsBattle } from './ruins-battle.mjs';
 import { DrakeWave } from './drake-waves.mjs';
 import { registerBitmapFont, colorBitmapFont } from './fonts.mjs';
 import data from './drake-battle.json' with { type: 'json' };
+import { pauseSnowdinMusicForBattle } from './snowdin-start.mjs';
 
 // Nhóm 30: Snowdrake/Chilldrake đơn; dùng lại menu, ITEM, FIGHT và Game Over.
 export class DrakeBattle extends RuinsBattle {
@@ -30,13 +31,7 @@ export class DrakeBattle extends RuinsBattle {
   }
 
   setupEnemy() {
-    this.fieldMusic = this.previousScene.snowdinMusic;
-    this.fieldMusic?.pause();
-    this.events.once('shutdown', () => {
-      if (this.fieldMusic !== this.previousScene.snowdinMusic || this.fieldMusic?.pendingRemove) return;
-      if (this.fieldMusic?.isPaused) this.fieldMusic.resume();
-      else if (this.fieldMusic && !this.fieldMusic.isPlaying) this.fieldMusic.play();
-    });
+    this.fieldMusic = pauseSnowdinMusicForBattle(this);
     this.enemy.setPosition(108, 19).setVisible(false); this.chill = this.monster === 'chilldrake';
     this.populationFlag = 203; this.mercyModifier = 5; this.jokeTold = false; this.lastAct = null; this.showingHurt = false;
     this.bobY = 19; this.bobAcceleration = .4; this.bobDown = true; this.bobFrames = 0; this.bobElapsed = 0;

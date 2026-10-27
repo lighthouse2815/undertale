@@ -1,0 +1,112 @@
+{
+  "icecap": {
+    "check": [
+      "* ICE CAP - ATK 11 DEF 4\n* This teen wonders why\n  it isn't named 'Ice Hat.'"
+    ],
+    "ignore": [
+      "* You manage to tear your\n  eyes away from Ice Cap's\n  hat.",
+      "* It looks annoyed..."
+    ],
+    "ignoreAgain": [
+      "* You continue not looking\n  at Ice Cap's hat.",
+      "* It seems defeated..."
+    ],
+    "compliment": [
+      "* You inform Ice Cap that\n  it has a great hat!"
+    ],
+    "stealFail": [
+      "* You tried to steal Ice Cap's\n  hat...",
+      "* ... but it's not weakened\n  enough!"
+    ],
+    "steal": [
+      "* You tried to steal Ice Cap's\n  hat...",
+      "* And succeeded!\n* (It melts in your hands...)"
+    ],
+    "speech": [
+      "Where's\nYOUR\nhat?",
+      "Your\nhead\nlooks so\n...NAKED",
+      "What a\ngreat\nhat!\n(Mine)",
+      "Snow?\nNo! It's\nhat\nresidue.",
+      "I just\nlooove\nmy hat.\nOK?"
+    ],
+    "speechIgnore": [
+      "HELLO???\nMy hat's\nup here.",
+      "What?\nWhat are\nyou\ndoing?"
+    ],
+    "speechIgnoreAgain": [
+      "Fine!!!\nI don't\ncare!!!",
+      "OK!\nI'll\nignore\nyou too.",
+      "Better\na hatter\nthan a\nHATER."
+    ],
+    "speechCompliment": [
+      "DUH!\nWho\nDOESN'T\nknow?",
+      "Envious?\nTOO BAD!",
+      "My hat's\ntoo loud\nfor me to\nhear you."
+    ],
+    "speechSteal": [
+      "I KNEW\nIT!!!\nTHIEF!!",
+      "HELP!!!\nFASHION\nPOLICE!!"
+    ],
+    "idle": [
+      "* It's snowing dandruff.",
+      "* Ice Cap also wants a hat\n  for its nose.",
+      "* Ice Cap makes sure its hat\n  is still there.",
+      "* Ice Cap is thinking about a\n  certain article of clothing.",
+      "* Here comes that new clothes\n  smell.",
+      "* Ice Cap is secretly checking\n  if you're looking at\n  its hat.",
+      "* Ice Cap is desperate for\n  attention.",
+      "* Ice Cap's hat is loose."
+    ],
+    "intro": [
+      "* Icecap struts into view."
+    ],
+    "actions": [
+      "Check",
+      "Ignore",
+      "Compliment",
+      "Steal"
+    ]
+  },
+  "ice": {
+    "check": [
+      "* ICE - ATK 1 DEF 0\n* Without its cap..."
+    ],
+    "compliment": [
+      "* You inform Ice Cap that\n  it still looks fine..."
+    ],
+    "speech": [
+      "I...\nI...",
+      "What can\nI say...",
+      "What's\nthe\npoint...",
+      "So...\nCold..."
+    ],
+    "speechHappy": [
+      "Yeah...\nI like\nmy hair\ntoo.",
+      "Hmm...\nHats are\nfor\nposers.",
+      "So I can\nstill\nimpress\nyou?",
+      "I wanted\nyou to\nsee me\nas cool."
+    ],
+    "idle": [
+      "* 'Ice Cap' is no more.",
+      "* It smells like frozen despair.",
+      "* Ice doesn't mind its identity.",
+      "* It's melting."
+    ],
+    "intro": [
+      "* 'Ice Cap' is no more."
+    ],
+    "actions": [
+      "Check",
+      "Compliment"
+    ]
+  },
+  "sprites": {
+    "spr_icecap": 4,
+    "spr_icecaphurt": 1,
+    "spr_icecube": 1,
+    "spr_icecubehurt": 1,
+    "spr_hatbullet": 2,
+    "spr_iciclebullet": 2,
+    "spr_blconsm": 1
+  }
+}

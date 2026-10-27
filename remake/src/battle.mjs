@@ -13,6 +13,8 @@ export const BATTLE_CONFIGS = {
   toriel: { name: 'Toriel', asset: 'spr_torielboss', hp: 440, def: 1, xp: 150 },
   snowdrake: { name: 'Snowdrake', asset: 'spr_snowdrake', hp: 74, def: 2, xp: 22 },
   chilldrake: { name: 'Chilldrake', asset: 'spr_snowdrake', hp: 74, def: 2, xp: 22 },
+  icecap: { name: 'Ice Cap', asset: 'spr_icecap', hp: 48, def: 0, xp: 17 },
+  ice: { name: 'Ice', asset: 'spr_icecube', hp: 48, def: -100, xp: 25 },
   nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
 };
 

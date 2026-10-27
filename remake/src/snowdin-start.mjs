@@ -4,6 +4,17 @@ import { murderLevel } from './route.mjs';
 
 export function stopSnowdinMusic(world) { world.snowdinMusic?.destroy(); world.snowdinMusic = null; }
 
+export function pauseSnowdinMusicForBattle(scene) {
+  const world = scene.previousScene, music = world.snowdinMusic;
+  music?.pause();
+  scene.events.once('shutdown', () => {
+    if (music !== world.snowdinMusic || music?.pendingRemove) return;
+    if (music?.isPaused) music.resume();
+    else if (music && !music.isPlaying) music.play(); // Game Over đã gọi stopAll.
+  });
+  return music;
+}
+
 export function startSnowdinMusic(world, special = false) {
   if (world.snowdinMusic) return { music: world.snowdinMusic, fade: null };
   const end = world.flags[7] === 1, early = world.plot <= 35;
