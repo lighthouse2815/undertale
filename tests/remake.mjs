@@ -43,6 +43,7 @@ import { testToughGlove } from './remake-tough-glove.mjs';
 import { testBoxRoad } from './remake-box-road.mjs';
 import { testDrakeBattle } from './remake-drake-battle.mjs';
 import { testIceCapBattle } from './remake-icecap-battle.mjs';
+import { testLesserDogBattle } from './remake-lesser-dog-battle.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -407,6 +408,7 @@ try {
   await testBoxRoad(page);
   await testDrakeBattle(page);
   await testIceCapBattle(page);
+  await testLesserDogBattle(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);
   console.log(`✓ tải ${Math.round(bytes / 1024)} KiB, phòng gốc, bốn hướng, animation, tường, camera và cache; chạy khi tắt WASM`);

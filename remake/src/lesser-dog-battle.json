@@ -1,0 +1,87 @@
+{
+  "intro": [
+    "* Lesser Dog appears."
+  ],
+  "check": [
+    "* LESSER DOG - ATK 12 DEF 2\n* Wields a stone dogger made\n  of pomer-granite."
+  ],
+  "actions": [
+    "Check",
+    "Pet",
+    "Pet",
+    "Pet",
+    "Pet",
+    "Pet"
+  ],
+  "stick": [
+    "* You threw the stick and\n  the dog ran to get it.\n* You played fetch for a while."
+  ],
+  "pet": [
+    "* You barely lifted your\n  hand and Lesser Dog\n  got excited.",
+    "* You lightly touched the\n  Dog.\n* It's already overexcited...",
+    "* You pet the Dog.\n* It raises its head up\n  to meet your hand.",
+    "* You pet the Dog.\n* It was a good Dog.",
+    "* You pet the Dog.\n* Its excitement knows no\n  bounds.",
+    "* Critical pet!\n* Dog excitement increased.",
+    "* You have to jump up\n  to pet the Dog.",
+    "* You don't even pet it.\n* It gets more excited.",
+    "* There is no way to\n  stop this madness.",
+    "* Lesser Dog enters the\n  realm of the clouds.",
+    "* You call the Dog but it\n  is too late.\n* It cannot hear you.",
+    "* ...",
+    "* You can reach Lesser Dog\n  again.",
+    "* You pet Lesser Dog.",
+    "* It's possible that you\n  may have a problem.",
+    "* Lesser Dog is unpettable\n  but appreciates the attempt.",
+    "* Perhaps mankind was not\n  meant to pet this much.",
+    "* It continues.",
+    "* Lesser Dog is beyond\n  your reach.",
+    "* Really..."
+  ],
+  "speech": [
+    "(Pant\npant)",
+    "(Wag\nwag)",
+    "(Thinks\nof\nfood)",
+    "(Tiny\nbark)",
+    "(Pants\nfast)",
+    "(Pant!\nPant!)",
+    "(Excited\nnoises)",
+    "(Motor\nrevving)",
+    "(Plane\ntakeoff)",
+    "(Kettle\nwhistle)",
+    "(...)",
+    "(Faraway\nbark)",
+    "(...)",
+    "(Bark)",
+    "(Pant\npant)"
+  ],
+  "idle": [
+    "* Lesser Dog cocks its head\n  to one side.",
+    "* Lesser Dog thinks your\n  weapon is a dog treat.",
+    "* Lesser Dog is really not\n  paying attention.",
+    "* Smells like dog chow.",
+    "* Lesser Dog is barking\n  excitedly.",
+    "* Lesser Dog is overstimulated.",
+    "* Lesser Dog shows no signs\n  of stopping.",
+    "* Lesser Dog is lowering.",
+    "* Lesser Dog is learning\n  to read.",
+    "* Lesser Dog is whining\n  because it can't see\n  you.",
+    "* Hello there.",
+    "* Lesser Dog is questioning\n  your choices.",
+    "* Lesser Dog has gone where\n  no Dog has gone before.",
+    "* Lesser Dog tucks its tail\n  between its legs."
+  ],
+  "sprites": {
+    "spr_lesserdoge": 2,
+    "spr_lesserdogehurt": 1,
+    "spr_lesserdogehead": 2,
+    "spr_lesserdogetail": 5,
+    "spr_tinypomwag": 2,
+    "spr_tinypomwalk": 2,
+    "spr_tinypombark": 1,
+    "spr_tinypomjump": 1,
+    "spr_bluespear": 1,
+    "spr_whitespear": 1,
+    "spr_blconsm": 1
+  }
+}

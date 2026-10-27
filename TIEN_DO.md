@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 27/10/2026, sau trận đơn Ice Cap/Ice. Mốc code trước phần này: `f643c8eb` trên `main`.
+Cập nhật: 27/10/2026, sau trận đơn Lesser Dog. Mốc code trước phần này: `d88e4489` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -168,3 +168,8 @@ Test riêng đã qua ACT/các nhánh ngẫu nhiên, hai wave/alarm/bản sao/mas
 Nhóm32 đã có `icecap-battle.*`/`icecap-waves.mjs`: Ice Cap 48HP/DEF0/17EXP và Ice 48HP/DEF-100/25EXP. ACT Check/Ignore/Compliment/Steal, hai Ignore chốt mercymod300 sau lời, lấy mũ theo mercy, chuyển Ice đầy48HP/menu2lựa chọn/nhạc không ngắt, cờ137 khi khen Ice. Giữ bonus13G khi lấy mũ ở đầyHP sau Ignore trước khi cộng bonus22G của Ice, nên tha nhận35G; lấy mũ khi bị thương không có13G. Giết Cap/Ice thưởng17/40G và17/25EXP, cộng dân số203, không cộng202. Có răng băng 32 cột/đường sin/tăng tốc ngang/khoảng trống co/va chạm dòng/inv60, mũ đi lên/dừng20/shard sau40/đi xuống60, ba tinh thể trọng lực .13 và hai mask đầu lên/xuống; mũ alpha .5 không gây sát thương (dmg2=0 gốc). Ice đơn chỉ5frame wave đúng source.
 
 Nhạc Snowdin pause/resume và phát lại sau Game Over đã dùng chung cho Drake/Ice để không duplicate. Test riêng Ice đã qua hai wave/khóa phím/teeth inv60, hai mask PNG tạo vùng trúng khác nhau, alarm mũ/shards/gravity/HP, ACT/Steal/chuyểnHP/DEF/menu/bonus13/35/cờ/thưởng/dân số, ITEM/FIGHT/Spare/Flee và Game Over do răng thật/snapshot/nhạc. Chuỗi Drake → Ice đã qua sau dùng helper nhạc chung; check/build qua, đã xem ảnh lời và đạn. Chưa nối encounter vì Lesser Dog (24) còn thiếu; cần chuyển Lesser Dog rồi selector cờ70/scr_steps/hếtquái và cảnh Papyrus phòng4. Giới hạn chung về gõ chữ/tan bụi/va chạm từng frame còn giữ; các nhánh nhiều quái/Hard Mode của generator chưa chuyển trong phần này. Bộ tổng sau Drake đang chạy, chưa bao gồm Ice mới.
+
+
+Lesser Dog đơn (nhóm24) đã có `lesser-dog-battle.*`/`lesser-dog-waves.mjs`: ACT 2cột×3hàng gồm Check và5Pet, toàn bộ20lời theo55lầnPet, cổ dài ra khỏi màn hình rồi vòng xuống/đầu đảo, cờ141/55/27, Stick không mất và mercy102→103. DEF chuyển-100 sau Pet, ngừng tấn công khi mercy>250, thưởng thêm7/13/40G theo mốc (55Pet rồi tha60G). Giết18EXP/15G, dân số203; Flee đặt cờ27 như RoomEnd gốc. Hai wave110frame có chó sủa hai lần/đuổi/nhảy/trọng lực/phanh và giáo xanh chỉ gây sát thương lúc tim di chuyển, giáo trắng tăng tốc có mask chính xác. FIGHT/Glove/ITEM/MERCY/Game Over dùng hệ thống chung, nhạc Snowdin pause/resume.
+
+Test riêng đã qua điều hướng/phím thật/các giới hạn ACT, Check, 55lầnPet qua đủ5ô và20lời, cổ vòng/không đạn/thưởng/cờ, Stick/đồ ăn, hai wave/chó sủa-nhảy/giáo xanh đứng yên an toàn và di chuyển trúng/giáo trắng, giết/tha/Flee/dân số và Game Over do chó thật/khôi phục snapshot/nhạc. Đã xem ảnh ba mức cổ; check/build qua. Chưa nối encounter tự nhiên phòng3: bước tiếp theo là selector nhóm30/32/24 theo cờ70/plot42/tuyến, scr_steps dân số203 và nhánh hếtquái222, rồi Papyrus phòng4. Giới hạn gõ chữ/tan bụi/thứ tự alarm-va chạm từng frame và nhóm nhiều quái còn giữ. Bộ tổng sau Drake (`test-drake-full-v1.log`) đã xanh, gồm Box Road/trạm Sans/cảm ứng/hosting; chưa bao gồm Ice Cap và Lesser Dog mới.

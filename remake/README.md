@@ -216,3 +216,6 @@ Box Road và nhánh bờ câu (3/3A) có biển, SAVE/hồi HP/tên file/lời t
 Snowdrake/Chilldrake đơn có ở `src/drake-battle.*`, `src/drake-waves.mjs`: ACT theo đã nghe câu nói, ba nhánh Heckle/Clash, Laugh/Agree/Joke, FIGHT/Glove/ITEM/MERCY/Flee, phần thưởng/cờ57/136 và dân số Snowdin, hai đợt móng vuốt bốn phía, Game Over/snapshot/nhạc. Chưa nối encounter phòng3 cho đến khi Ice Cap/Ice và Lesser Dog được chuyển; nhóm nhiều quái, gõ chữ/lắc chữ, tan bụi và thứ tự alarm/di chuyển từng frame còn thiếu hoặc cần đối chiếu thêm.
 
 Ice Cap/Ice đơn có ở `src/icecap-battle.*` và `src/icecap-waves.mjs`: hai Ignore, Compliment/Steal, chuyển dạng/HP/DEF/menu, bonus13G trước chuyển và22G của Ice, các thưởng/cờ/dân số, răng băng32cột và mũ/tinh thể/two-mask, Game Over/nhạc. Ice có wave5frame như source; chưa nối encounter khi Lesser Dog còn thiếu. Nhánh nhiều quái/Hard Mode generator, gõ chữ/lắc chữ/tan bụi và thứ tự alarm/physics sát frame vẫn chưa đủ.
+
+
+Lesser Dog đơn có ở `src/lesser-dog-battle.*` và `src/lesser-dog-waves.mjs`: Check/5ôPet, đủ55lầnPet/20lời/cổ vòng, Stick, phòng thủ/thưởng/cờ tuyến, chó sủa-đuổi-nhảy và giáo xanh/ trắng, Game Over/nhạc. Cả ba nhóm đơn30/32/24 đã có trận riêng; selector encounter tự nhiên Snowdin vẫn đang chuyển. Các giới hạn chung về trình bày/gõ chữ/animation từng frame và nhóm nhiều quái còn giữ.
