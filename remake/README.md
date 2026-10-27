@@ -289,3 +289,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-ice-puzzle.mjs` dùng lại trượt/XO cho12ô, plot63/cầu mở từng8px/pause/khóa và hố388. `snowdin-ice-hole.mjs/json` có falltransition/hai người tuyết/IceCap cuối tuyến. DogHouse↔iceentrance↔icehole đã nối; kiểm thử riêng gồm rơi/trượt/cầu/SAVE/mũ/hạt/tuyến. Cửa sang iceexit_new/Gyftrot và poffzone chưa nối; hiệu ứng/nhịp từngframe vẫn cần đối chiếu thêm.
+
+
+`src/gyftrot-waves.mjs` có6cộttrọnglực và3hộp quà/cảnhbáo/sine/hộpxanh/tăngtốc/120frame, kiểm thử bằngảnhvàPhaserthật/HP/mask/cleanup. ChưacóACT/scene/encounterGyftrot trongcommitgenerator; cửaiceexit_new chưa nối. ThứtựAlarm/Step/Draw sátframe vẫn cầnđốichiếuthêm.
