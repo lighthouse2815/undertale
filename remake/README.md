@@ -319,3 +319,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-town-dogs.mjs/json` có chó sau kết thúc ở town theo7/52-53-54, lời ba NPC và GreaterDog+Amalgamate/mask riêng/tiếng sủa/khóa/pause-resume. Chuỗi NPC→Town→Dogs đã qua. Papyrus ngoài nhà và các dịch vụ/cửa town vẫn còn thiếu.
+
+
+`src/snowdin-town-papyrus.mjs/json` chuyển Papyrus ngoài nhà/88=1, lời Date-Hangout/cửa/hộp thư/kho, chạy vòng theo Frisk/camera/khóa rồi vào nhà/88=2, và lời Papyrus muộn theo354/389/493. Chuỗi các phần town đã qua. Nhà/hẹn hò, Undyne/thư và cửa dịch vụ vẫn chưa chuyển đủ; chưa nối cửa cầu→town.

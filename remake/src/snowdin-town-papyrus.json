@@ -1,0 +1,291 @@
+{
+  "intro": [
+    {
+      "text": "SO YOU CAME\nBACK TO SEE ME!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU MUST BE\nREALLY SERIOUS\nABOUT THIS...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL HAVE TO TAKE\nYOU SOMEPLACE\nREALLY SPECIAL...",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "A PLACE I LIKE\nTO SPEND A LOT\nOF TIME!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "introFlirt": [
+    {
+      "text": "SO YOU CAME\nBACK TO HAVE A\nDATE WITH ME!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU MUST BE\nREALLY SERIOUS\nABOUT THIS...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL HAVE TO TAKE\nYOU SOMEPLACE\nREALLY SPECIAL...",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "A PLACE I LIKE\nTO SPEND A LOT\nOF TIME!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "myHouse": [
+    {
+      "text": "MY HOUSE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "mailbox": [
+    {
+      "text": "HOW NICE OF YOU\nTO CHECK MY MAIL\nFOR ME.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WAIT, NO.\nTHAT'S VERY\nSTRANGE.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "mailboxAgain": [
+    {
+      "text": "STOP LOOKING IN\nMY EMPTY\nMAILBOX.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S MY\nEMPTINESS, NOT\nYOURS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "shed": [
+    {
+      "text": "PLEASE DON'T ENTER\nTHE MYSTERIOUS\nSHACK.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "locked": [
+    {
+      "text": "* (It's locked.)",
+      "portrait": null,
+      "font": "fnt_maintext"
+    }
+  ],
+  "doorDate": [
+    {
+      "text": "WOW, YOU'RE SO\nEAGER TO HANG\nOUT...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU'RE TRYING TO\nGO INTO MY HOUSE\nWITHOUT ME!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S REALLY\nWEIRD!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "doorFlirt": [
+    {
+      "text": "WOW, YOU'RE SO\nEAGER TO DATE\nME...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU'RE TRYING TO\nGO INTO MY HOUSE\nWITHOUT ME!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S REALLY\nWEIRD!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "late": [
+    {
+      "text": "HELLO, MY FRIEND.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHAT BRINGS YOU\nTO PAPYRUS TOWN?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "late0": [
+    {
+      "text": "HELLO...\nH-HOW ARE YOU,\nMY F-FRIEND?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M FEELING VERY\nNOT SUSPICIOUS\nTODAY.",
+      "portrait": "spr_face_papyrussweat",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "late1": [
+    {
+      "text": "HEY, I HAVE A\nGREAT IDEA.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "LET'S HANG OUT\nWITH UNDYNE\nLATER.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL CALL YOU\nWHEN I'M READY!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "lateUndyne": [
+    {
+      "text": "I'M SO GLAD YOU\nAND UNDYNE ARE\nFRIENDS NOW.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU TWO GO\nTOGETHER LIKE\nPASTA AND BURNING!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "late175": [
+    {
+      "text": "OH, HEY...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU'RE LEAVING\nSOON, RIGHT!?",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "DON'T COME HERE\nTO SAY GOODBYE!!",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "GOODBYES AREN'T\nALLOWED IN MY\nTOWN.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "JUST SEE-YOU-\nLATERS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "lateLetter8": [
+    {
+      "text": "IT SEEMS UNDYNE\nHAS SOMETHING\nFOR YOU.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SHE'S THE PERSON\nTHAT'S NOT ME.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "lateLetter9": [
+    {
+      "text": "UNDYNE WRITES A\nLOT OF LETTERS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BUT, SHE CAN NEVER\nSEEM TO FIND THE\nRIGHT WORDS.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SO WHEN SHE GOES\nTO DELIVER THEM\nHERSELF...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SHE ALWAYS QUITS\nSO SHE CAN GO\nBACK AND REWRITE.",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S WHY SHE\nASKED YOU!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BECAUSE YOU HAVE\nNO STANDARDS!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "lateLetter10": [
+    {
+      "text": "ALPHYS SEEMS TO\nHAVE DISAPPEARED.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "DON'T WORRY, THAT'S\nNORMAL.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU SHOULD GO\nTO HER LAB.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M SUPPOSED TO\nPUT THESE\nNUMBERS TOGETHER.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "sprites": {
+    "spr_papyrus_d": 4,
+    "spr_papyrus_l": 4,
+    "spr_papyrus_r": 4,
+    "spr_papyrus_u": 4,
+    "spr_papyrus_dt": 2,
+    "spr_papyrus_lt": 2,
+    "spr_papyrus_rt": 2,
+    "spr_papyrus_ut": 1,
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusmad": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_papyrusevil": 2,
+    "spr_face_papyrussweat": 2,
+    "spr_face_papyrusdejected": 1,
+    "spr_face_papyruswacky": 2,
+    "spr_face_papyruscry": 2,
+    "spr_face_papyruscool": 2
+  }
+}
