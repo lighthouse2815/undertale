@@ -247,6 +247,8 @@ Phòng7 có `src/electric-maze.mjs/json`: intro/ký ức, Papyrus tự bị gi�
 `src/nice-cream.mjs/json` điều khiển quầy Nice Cream tại Snowdin8: mở đầu/chờ31 frame, mua15G/No/thiếu tiền/đầy/cờ60/GOLD-SPACE/collider/tuyến/SAVE, ITEM17/tám lời giấy gói/hồi15HP. Phòng8 đã nối hai chiều với7, có bóng/golf/băng và đồ vật qua các controller dưới đây. Quầy ở Waterfall/Hotland chưa chuyển.
 
 
-`src/snow-golf.mjs/json` có bóng tuyết/đẩy/ma sát/co nhỏ/bật mép/sinh lại/rơi, lỗ/cờ trồi/bảy loại theo thời gian và kích thước, GOLD/cờ387/không thưởng lặp/dân số16. Đã kiểm tra bằng phím và va chạm thật. Phòng8 có băng x4/NPC/biển và cửa7↔8; nhánh8A/phòng9 cùng các phần sau vẫn còn thiếu.
+`src/snow-golf.mjs/json` có bóng tuyết/đẩy/ma sát/co nhỏ/bật mép/sinh lại/rơi, lỗ/cờ trồi/bảy loại theo thời gian và kích thước, GOLD/cờ387/không thưởng lặp/dân số16. Đã kiểm tra bằng phím và va chạm thật. Phòng8 có băng x4/NPC/biển và cửa7↔8; phòng9 cùng các phần sau vẫn còn thiếu.
 
-`src/snowdin-park.mjs/json` có Sans bán fried snow/bốn mức giá/No/giàu-nghèo không giao dịch, snowdecahedron/camera/Chilldrake thường và sau kết thúc, collider/điều kiện tuyến. `snowdin-ice.mjs` dùng lại luật trượt phòng6 cho bốn vùng x4 tại8 với bbox40×40. Test phòng8 kiểm tra cửa7↔8, nhạc, trượt/khóa, lời/lựa chọn/GOLD/túi/NPC/collider/tuyến/SAVE. Hai cửa phải8 tới8A và9 chưa nối.
+`src/snowdin-park.mjs/json` có Sans bán fried snow/bốn mức giá/No/giàu-nghèo không giao dịch, snowdecahedron/camera/Chilldrake thường và sau kết thúc, collider/điều kiện tuyến. `snowdin-ice.mjs` dùng lại luật trượt phòng6 cho bốn vùng x4 tại8 với bbox40×40. Test phòng8 kiểm tra cửa7↔8, nhạc, trượt/khóa, lời/lựa chọn/GOLD/túi/NPC/collider/tuyến/SAVE. Cửa trên bên phải8 đã nối nhánh8A; cửa dưới tới9 chưa nối.
+
+`src/snowdin-scent.mjs/json` nối8↔8A, hai nhà chó/His-Hers/biển đánh giá mùi bốn trang với chữ màu gốc trên Canvas, collider/nhạc/dọn khi đổi phòng; kiểm thử riêng và chuỗi phòng8→8A đã qua.
