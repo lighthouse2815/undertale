@@ -172,7 +172,7 @@ export class RuinsBattle extends DummyBattle {
     this.soulElapsed = Math.min(200, this.soulElapsed + delta);
     while (this.soulElapsed >= 1000 / 30 && this.mode === 'soul') {
       this.soulElapsed -= 1000 / 30; this.invFrames--;
-      const speed = this.keys.shift.isDown ? 1 : 2;
+      const speed = (this.soulSpeed ?? 4) / (this.keys.shift.isDown ? 4 : 2);
       const input = (name) => this.keys[name].isDown || [...this.previousScene.touch.values()].some((pointer) => pointer.direction === name);
       this.soul.x = Math.max(this.arena.x + 2, Math.min(this.arena.x + this.arena.width - 8, this.soul.x + (input('right') ? speed : 0) - (input('left') ? speed : 0)));
       this.soul.y = Math.max(this.arena.y + 2, Math.min(this.arena.y + this.arena.height - 8, this.soul.y + (input('down') ? speed : 0) - (input('up') ? speed : 0)));

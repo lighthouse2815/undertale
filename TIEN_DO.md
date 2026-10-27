@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi nối phòng/encounter Gyftrot và tối ưu mask. Mốc code trước phần này: `569a678` trên `main`.
+Cập nhật: 28/10/2026, sau khi chuyển trận Greater Dog. Mốc code trước phần này: `002659b` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -466,3 +466,10 @@ Push8d75cbe/569a678đãthànhcông saukết nốiphụchồi. Lượtpushchờ60
 
 
 Lượt tổng snapshot569a678 dừng khi phiên thực thi không còn: không còn process tests/remake.mjs hoặc server fixture, log tới IceCap. Không có kết quả cuối/exit0 nên chưa ghi xanh toàn bộ. Bản sửa cachemask đã qua Napstablook trong lượt này và chuỗi riêng; tiếp tục chạy tổng sau phần GreaterDog.
+
+
+Đã có `GreaterDogBattle` nhóm26/105HP/DEF4/80XP, dogsong rate.95/volume.7 và năm ACT theo lưới3+2. Beckon kéo gần; Pet qua ngủ/thức → Play lấy tuyết → Pet làm nặng/tốc độ tim3 → Pet đầy/142/mercy9999/tốc độ4; các nhánh quá xa/quá phấn khích/mệt/tummy giữ lời gốc. DEF chỉ đổi-20 từ ACT sau lần Pet đầu như Step gốc. Ignore phóng thân lần lượt1.5/2/2.5, lần4 tự tha/54=3; Stick giữ vật phẩm/mercy250 và tha54=2. MERCY chỉ Spare, không có Flee. Dùng MultiBattle/RuinsBattle cho mục tiêu/FIGHT/găng tay/ITEM/GameOver; tùy chọn soulSpeed giữ mặc định của các scene khác.
+
+Thưởng đối chiếu Destroy: fullHP/mercy>10 thêm40G; kill thêm60G/80XP, spare thêm phần mấtHP của60G. Kill54=1; không kill27=1; plot đặt60, không tăng population203. Có thân100px phóng/clip, ảnhhurt/tiếng11frame và idle theo close/pet/HP. Helper `tests/remake-greater-dog.mjs` nối tổng: đủ chuỗi Pet/Play, Ignore4, Stick, ITEM, FIGHT đủ105HP, phần thưởng/cờ/tốc độ/DEF/GameOver. Riêng v1 và chuỗi LesserDog→GreaterDogWave→GreaterDog đã xanh (`test-greater-dog-chain-v1.log`), check/build cuối qua (`build-greater-dog-final.log`), đã xem ảnh. Chưa nối poffzone/pofftrigger/hậu cảnh, không coi Greater Dog ngoài phòng hay Snowdin đã chuyển xong. Giới hạn gõ chữ/tan bụi/thứ tự sát frame vẫn còn.
+
+Push002659b tiếp tục hết thời gian chờ45s (exit124), commit vẫn ở main cục bộ; thử lại cùng commit trận. Mốc xanh bộ tổng vẫn2f230f9, các lượt bị ngắt và phạm vi kiểm thử được ghi ở trên.

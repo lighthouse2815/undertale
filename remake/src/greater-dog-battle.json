@@ -1,0 +1,85 @@
+{
+  "intro": [
+    "* It's the Greater Dog."
+  ],
+  "actions": [
+    "Check",
+    "Beckon",
+    "Ignore",
+    "Pet",
+    "Play"
+  ],
+  "stick": [
+    "* You threw the stick and\n  the dog ran to get it.\n* You played fetch for a while."
+  ],
+  "idle": [
+    "* Greater Dog is watching you\n  intently.",
+    "* Greater Dog is waiting for\n  your command.",
+    "* It smells like freshly-\n  squeezed puppy juice.",
+    "* Greater Dog is seeking\n  affection.",
+    "* Greater Dog just wants\n  affection.",
+    "* Greater Dog is making\n  puppy-dog eyes.",
+    "* Greater Dog is patting the\n  ground with its front paws.",
+    "* Greater Dog wants some TLC.",
+    "* Pet capacity is 40-percent.",
+    "* Greater Dog is contented.",
+    "* Greater Dog is panting\n  slowly."
+  ],
+  "check": [
+    "* GREATER DOG - ATK 15 DEF 8\n* It's so excited that it\n  thinks fighting is just play."
+  ],
+  "beckon": [
+    "* You call the Greater Dog.",
+    "* It bounds towards you,\n  flecking slobber into your\n  face."
+  ],
+  "beckonAgain": [
+    "* The Greater Dog's ears\n  perk up.\n* Nothing else happens."
+  ],
+  "ignore": [
+    "* Greater Dog inches closer."
+  ],
+  "ignoreEnd": [
+    "* Greater Dog decides you are\n  too boring."
+  ],
+  "petFar": [
+    "* Greater Dog is too far\n  away to pet.\n* You just pet the air."
+  ],
+  "petFirst": [
+    "* Greater Dog curls up in\n  your lap as it is\n  pet by you.",
+    "* It gets so comfortable\n  it falls asleep...",
+    "* Zzzzz...",
+    "* ...",
+    "* Then it wakes up!\n* It's so excited!"
+  ],
+  "petExcited": [
+    "* Greater Dog's excitement is\n  creating a power field that\n  prevents petting."
+  ],
+  "petSlow": [
+    "* As you pet the dog,\n  it sinks its entire weight\n  into you...",
+    "* Your movements slow.",
+    "* But, you still haven't\n  pet enough...!"
+  ],
+  "petFull": [
+    "* You pet decisively.\n* Pet capacity reaches 100\n  percent.",
+    "* The dog flops over with\n  its legs hanging in the air."
+  ],
+  "petAgain": [
+    "* Tummy rubs are forbidden."
+  ],
+  "playEarly": [
+    "* Greater Dog is not excited\n  enough to play with."
+  ],
+  "play": [
+    "* You make a snowball and\n  throw it for the dog\n  to fetch.",
+    "* It splats on the ground.",
+    "* Greater Dog picks up all\n  the snow in the area\n  and brings it to you.",
+    "* Now dog is very tired...\n* It rests its head on you..."
+  ],
+  "playAgain": [
+    "* Greater Dog is too tired\n  to play."
+  ],
+  "sprites": {
+    "spr_greatdog": 2,
+    "spr_greatdog_n": 2
+  }
+}

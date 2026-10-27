@@ -301,3 +301,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/greater-dog-waves.mjs` cóchó ngủ/thức sau8framechuyển động/bark dựđoán vàgiáotrắng-xanh/lên-rẽtrái/blut2. Testdùngảnh/mask2x/HPthật, phânbiệtcollisionkếthừaxóađạn-chó vớigiáo giữlại. Chưacóscene105HP/ACT/poffzone, chưacoiGreaterDogđãhoànchỉnh.
+
+
+`src/greater-dog-battle.mjs/json` có trận nhóm26/105HP, năm ACT/Beckon/Pet-Play/tim chậm/142/DEF, Ignore4/phóng thân/54, Stick/ITEM/FIGHT đủ HP/Spare/thưởng/plot60/GameOver. Kiểm thử riêng và chuỗi Lesser Dog→đạn→trận đã qua. Poffzone và hậu cảnh chưa nối; gõ chữ/tan bụi/thứ tự sát frame còn cần đối chiếu.
