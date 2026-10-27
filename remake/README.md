@@ -316,3 +316,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-town.mjs/json` có nhạc theo tuyến, đồ vật/biển/thư/cây/logo, BOX dùng chung và SAVE Town/HP/lưu nạp; hai igloo đưa Frisk dưới tuyết sang bên kia thị trấn với gia tốc/khóa/đích gốc, nước/cube chuyển động. Kiểm thử riêng và chuỗi BoxRoad→NPC→Town đã qua. Chưa nối cửa vào thị trấn/các dịch vụ và còn thiếu Papyrus/chó kết thúc/cửa Sans/Undyne; không coi town đã đầy đủ.
+
+
+`src/snowdin-town-dogs.mjs/json` có chó sau kết thúc ở town theo7/52-53-54, lời ba NPC và GreaterDog+Amalgamate/mask riêng/tiếng sủa/khóa/pause-resume. Chuỗi NPC→Town→Dogs đã qua. Papyrus ngoài nhà và các dịch vụ/cửa town vẫn còn thiếu.

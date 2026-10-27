@@ -68,6 +68,7 @@ export async function loadRoom(scene, name) {
   const icePuzzle = name === 'room_tundra_iceentrance';
   const iceHole = name === 'room_tundra_icehole';
   const town = name === 'room_tundra_town';
+  const townDogDialogue = town ? await json(new URL('./snowdin-town-dogs.json', import.meta.url).href) : null;
   const townDialogue = town ? await json(new URL('./snowdin-town.json', import.meta.url).href) : null;
   const townNpcDialogue = town ? await json(new URL('./snowdin-town-npcs.json', import.meta.url).href) : null;
   const dangerBridge = name === 'room_tundra_dangerbridge';
@@ -170,6 +171,7 @@ export async function loadRoom(scene, name) {
   if (snowman) spriteNames.add('spr_sadsnowman_d1');
   if (maze) for (const key of Object.keys(mazeDialogue.sprites)) spriteNames.add(key);
   if (crossword) for (const key of Object.keys(crosswordDialogue.sprites)) spriteNames.add(key);
+  if (town) for (const key of Object.keys(townDogDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townNpcDialogue.sprites)) spriteNames.add(key);
   if (dangerBridge) for (const key of Object.keys(dangerBridgeDialogue.sprites)) spriteNames.add(key);
@@ -224,7 +226,7 @@ export async function loadRoom(scene, name) {
     ...(snowdinStart || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || scent || crossword || spaghetti || snowpuzz || xoxo || colorTiles || dogHouse || icePuzzle || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom ? ['mus_tone2', 'mus_snowy', 'mus_toomuch', 'mus_reunited'] : []),
     ...(doggoRoom ? ['snd_bell'] : []),
     ...(niceCream ? ['snd_dumbvictory'] : []),
-    ...(town ? ['mus_town', 'mus_reunited', 'mus_toomuch', 'snd_escaped', 'snd_squeak'] : []),
+    ...(town ? ['mus_town', 'mus_reunited', 'mus_toomuch', 'snd_escaped', 'snd_squeak', 'snd_bluh'] : []),
     ...(dangerBridge ? ['mus_papyrus'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
     ...(crossword ? ['mus_papyrus'] : []),
@@ -265,5 +267,5 @@ export async function loadRoom(scene, name) {
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);
   for (const [key, data] of forestFonts) registerBitmapFont(scene, key, data);
   if (scene.cache.bitmapFont.exists('fnt_maintext')) colorBitmapFont(scene, 'fnt_maintext', 'yellow', '#ffff00');
-  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, dogPairDialogue, xoxoSmallDialogue, xoxoBigDialogue, colorTilesDialogue, dogHouseDialogue, iceHoleDialogue, gyftrotRoomDialogue, greaterDogRoomDialogue, dangerBridgeDialogue, townNpcDialogue, townDialogue, rockDialogue };
+  return { name, room, objects, sprites, paths, tutorialDialogue, switchDialogue, dummyDialogue, spikeDialogue, corridorDialogue, ruinsStartDialogue, ruins13Dialogue, ruins14Dialogue, perspectiveDialogue, outlookDialogue, homeDialogue, hallDialogue, bedroomDialogue, childDialogue, torielBedroomDialogue, livingDialogue, basementDialogue, gateDialogue, floweyExitDialogue, snowdinStartDialogue, forestDialogue, boxRoadDialogue, checkpointDialogue, doggoDialogue, iceDialogue, snowmanDialogue, mazeDialogue, niceCreamDialogue, golfDialogue, parkDialogue, scentDialogue, crosswordDialogue, spaghettiDialogue, snowpuzzDialogue, dogPairDialogue, xoxoSmallDialogue, xoxoBigDialogue, colorTilesDialogue, dogHouseDialogue, iceHoleDialogue, gyftrotRoomDialogue, greaterDogRoomDialogue, dangerBridgeDialogue, townNpcDialogue, townDialogue, townDogDialogue, rockDialogue };
 }

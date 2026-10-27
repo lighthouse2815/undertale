@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi chuyển đồ vật và đường hầm thị trấn. Mốc code trước phần này: `9eb70ec` trên `main`.
+Cập nhật: 28/10/2026, sau khi chuyển các chó tại thị trấn sau kết thúc. Mốc code trước phần này: `99f9b18` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -519,3 +519,8 @@ Hai igloo kích hoạt qua bbox thật/phím, khóaC/di chuyển, tiếngescaped
 `tests/remake-snowdin-town.mjs` nối tổng: sáutổhợpnhạc/tuyến, đồvật/lựa chọn, BOXNo-gửi-rút-rỗng, SAVE5nhánh/màu/HP/tên/nạp, nước-cube/độsâu, cả2hầm/phím/khóa/tốc-đích/dọn. Riêngv3 vàchuỗiBoxRoad→NPC→Town (`test-town-chain-v1.log`) xanh/khônglỗiJS-console; check/buildcuốiqua (`build-town-final.log`), đã xemảnh. Chưa chuyển các chó sau kếtthúc, Papyrus ngoài nhà/hẹn hò, mởcửaSans497>=3, cuộcgọithưUndyne/cửaShop-INN-Grillby-thưviện; cửa cầu→town/fog/Papyrusboss vẫnchưa nối. Khôngcoi toànthịtrấn/Snowdin/game đã hoànchỉnh.
 
 Lượtfull mới `test-room-cleanup-full-v1.log` đangchạy snapshot42b30da, đãqua đónggói trước sửaTown; logđãquaVegetoid. Khôngbao gồmTownprops/camera9eb70ec, chưacókếtquảcuối nên khôngghi xanhfull. Pushc1fff1d/42b30da vẫn lỗi443sau135s, đang thửlại cảcamera9eb70ec.
+
+
+Đã chuyển `snowdin-town-dogs.mjs/json`: ba NPCDoggo/Dogamy/Dogaressa chỉởtownkhi7=1, vắngtheo52hoặc53, giữlời kếtthúc gốc và lặp. GreaterDogvắngtheo54; saukếtthúc đổiBigDogSide tại1958,68 vàtạoAmalgamate tại1903,72 đúngAlarm1. Haiảnh/collider/mask dùngmetadata sprite riêng, khôngghiđèobjectSprite toàncục. Tươngtácchósủa: khóa/menu, pauseTownMusic, ảnh1/chờ15frame, snd_bluh/ảnh2modTextureCount, chờ35frame rồiảnh0/resume/mởkhóa; dọn cảkhiđổiphònggiữachừng. Dạngsaddog trongCreategốc bịAlarm1ghiđè ởtown ngayframe1, không dùnglờiNPCgiả.
+
+`tests/remake-snowdin-town-dogs.mjs` nối tổng: hiện/vắng5tổhợpcờ, ba lời/lặp, body+Amalgamvịtrí/sprite/collisionthật, bark15-35/âmthanh/khóa/pause-resume/dọn. Riêngv1vàchuỗiTownNPC→Townprops→Dogs xanh (`test-town-dogs-chain-v1.log`), check/buildcuốiqua (`build-town-dogs-final.log`). PhầnPapyrus/cácdịchvụ/Undyne/cửavàotown vẫnchưađủ; tiếp tục chuyển, khôngcoiTownhoànchỉnh. Fullsnapshot42b30dađãquaSảnhToriel, vẫnđangchạy; khônggồmTownprops/dogsmới. Pushđanglỗikếtnối443, c1fff1d/42b30da/9eb70ec/99f9b18 vẫn cần đốichiếuremote/thửlại.

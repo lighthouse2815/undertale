@@ -1,0 +1,21 @@
+{
+  "doggo": [
+    "* Having an amorphous,\n  shambling family member\n  is great.",
+    "* They're always moving, so I\n  can see them 100-percent\n  of the time!"
+  ],
+  "mandog": [
+    "* Hmmm, now that our parents\n  are the same entity...",
+    "* Does that mean I'm\n  married to my sister?",
+    "* ...",
+    "* Wait, we're dogs.\n* That stuff's normal."
+  ],
+  "womandog": [
+    "* (All of our parents have\n  been combined into one\n  horrible being.)",
+    "* (That's OK, though.)\n* (It's really \"brought our\n  families together.\")"
+  ],
+  "sprites": {
+    "spr_bigdog_side": 2,
+    "spr_amalgam_dognpc": 2,
+    "spr_npc_saddog": 3
+  }
+}
