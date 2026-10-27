@@ -266,3 +266,5 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 `src/dog-pair-battle.mjs/json` có trận dogi với hai HP108/mục tiêu riêng, ACT2×2/ngửi-lăn-pet/cờ140, Stick/ITEM/Spare, FIGHT/găng tay/hai thứ tự chết/DEF và đạn riêng khi còn một con, thưởng từng con/cờ53-27/plot50, Game Over/snapshot. Kiểm thử riêng và chuỗi Doggo→đạn đôi→trận đôi đã qua. Cảnh obj_forcedright/Jerry/nhóm35-36 chưa nối nên cửa spaghetti→snowpuzz vẫn đóng; hiệu ứng tan bụi, hurt/bong bóng/chuyển arena/gõ chữ từng frame vẫn còn cần đối chiếu.
 
 `src/dog-pair-room.mjs/json` nối trigger ngoài phòng snowpuzz vào cảnh đi ép/tiến tới/đánh hơi/path_mdog-wdog/nhạc/khóa/trận dogi và hậu cảnh Pet-Stick-Kill/51, SAVE/GameOver/dọn. Đã qua test riêng và chuỗi câu đố tuyết→cảnh/trận. Jerry/encounter35-36 vẫn thiếu, nên cửa từ spaghetti chưa nối; không coi toàn bộ phòng đã xong.
+
+`src/multi-battle.mjs` dùng lại điều khiển nhiều mục tiêu/lưới ACT/FIGHT từ trận đôi để mở rộng nhóm35/36. Trận/cảnh hai chó đã qua hồi quy sau tách; Jerry/nhóm35-36 chưa có trong bản này.

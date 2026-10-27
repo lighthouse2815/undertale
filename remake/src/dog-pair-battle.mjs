@@ -1,13 +1,12 @@
-import { RuinsBattle } from './ruins-battle.mjs';
+import { MultiBattle } from './multi-battle.mjs';
 import { DogPairWave, loadDogPairWaveAssets } from './dog-pair-waves.mjs';
-import { fightInput } from './fight-input.mjs';
 import { registerBitmapFont, colorBitmapFont } from './fonts.mjs';
 import { pauseSnowdinMusicForBattle } from './snowdin-start.mjs';
 import { LEVEL_THRESHOLDS } from './levels.mjs';
 import data from './dog-pair-battle.json' with { type: 'json' };
 
 // Nhóm25: hai HP/DEF/mục tiêu độc lập, ngửi/lăn/vuốt ve liên quan giữa đôi chó.
-export class DogPairBattle extends RuinsBattle {
+export class DogPairBattle extends MultiBattle {
   constructor() { super('DogPairBattle'); }
   preload() {
     super.preload(); loadDogPairWaveAssets(this); const base = new URL('../assets/', import.meta.url);
@@ -24,61 +23,25 @@ export class DogPairBattle extends RuinsBattle {
     if (!this.cache.bitmapFont.exists('fnt_plain')) registerBitmapFont(this, 'fnt_plain', { ...this.cache.json.get('fnt_plain'), LineHeight: 20 });
     colorBitmapFont(this, 'fnt_plain', 'black', '#000000'); return { battleDialogue: data };
   }
-  async create() {
-    await super.create(); if (window.__remake.phase === 'error') return;
-    const old = this.onKeyDown; window.removeEventListener('keydown', old);
-    this.onKeyDown = (event) => {
-      if (this.mode === 'submenu' && this.kind === 'act' && event.code.startsWith('Arrow')) {
-        if (event.repeat) return;
-        if (event.code === 'ArrowLeft') this.subIndex %= 2;
-        if (event.code === 'ArrowRight') this.subIndex = this.subIndex % 2 + 2;
-        if (event.code === 'ArrowUp') this.subIndex -= this.subIndex % 2;
-        if (event.code === 'ArrowDown') this.subIndex += 1 - this.subIndex % 2;
-      } else old(event);
-    };
-    window.addEventListener('keydown', this.onKeyDown);
-  }
   setupEnemy() {
     pauseSnowdinMusicForBattle(this); this.populationFlag = 0; this.selected = 0; this.elapsedDogs = 0; this.dogFrames = 0;
     this.enemy.destroy(); this.xpReward = this.goldReward = 0; this.lastAction = null; this.labels = [];
-    this.dogs = data.dogs.map((d, i) => ({ ...d, index: i, hp: 108, def: 4, mercy: -999, smell: 0, alive: true,
+    this.enemies = this.dogs = data.dogs.map((d, i) => ({ ...d, index: i, hp: 108, maxHp: 108, def: 4, mercy: -999, smell: 0, alive: true,
       main: this.add.image(104, 19, `${d.sprite}:0`).setOrigin(0).setScale(.5).setDepth(-10).setVisible(false),
       bodyImage: this.add.image(104, 19, `${d.body}:0`).setOrigin(0).setDepth(-10),
       axeImage: this.add.image(104, 19, `${d.axe}:0`).setOrigin(0).setDepth(-9) }));
     this.enemy = this.dogs[0].main;
   }
-  live() { return this.dogs.filter((d) => d.alive); }
-  spareable(dog = this.dogs?.[this.selected]) { return !!dog?.alive && dog.hp - (this.previousScene.lv === 20 ? 99 : 8 + this.previousScene.lv * 2) - this.previousScene.weaponStrength + dog.def - dog.mercy < 0; }
-  clearLabels() { this.labels.forEach((label) => label.destroy()); this.labels = []; this.labelsKind = null; }
-  choose(kind, items) {
-    this.clearLabels(); if (kind.endsWith('Target')) { this.targetOptions = this.live(); items = this.targetOptions.map((d) => d.name); }
-    super.choose(kind, kind === 'mercy' ? ['Spare'] : items);
-  }
-  drawSubmenu() {
-    if (!['act', 'actTarget', 'fightTarget'].includes(this.kind)) {
-      super.drawSubmenu();
-      const preference = this.previousScene.flags[22]; this.menu.setFont(this.kind === 'mercy' && this.live().some((d) => this.spareable(d)) && preference !== 1 ? `fnt_maintext:${preference === 2 ? 'pink' : 'yellow'}` : 'fnt_maintext'); return;
-    }
-    this.menu.setText(''); const act = this.kind === 'act';
-    if (this.labelsKind !== this.kind) {
-      this.clearLabels(); this.labelsKind = this.kind;
-      this.labels = this.submenu.map((_, i) => this.add.bitmapText(act && i >= 2 ? 172 : 32, 133 + (act ? i % 2 : i) * 16, 'fnt_maintext', '', 12));
-    }
-    for (const [i, label] of this.labels.entries()) {
-      label.setText(`${this.subIndex === i ? '>' : ' '} * ${this.submenu[i]}`);
-      const yellow = !act && this.spareable(this.targetOptions[i]), preference = this.previousScene.flags[22];
-      label.setFont(yellow && preference !== 1 ? `fnt_maintext:${preference === 2 ? 'pink' : 'yellow'}` : 'fnt_maintext');
-    }
-  }
+  choose(kind, items) { super.choose(kind, kind === 'mercy' ? ['Spare'] : items); }
   updateSubmenu() {
     this.drawSubmenu(); if (this.cancel) { this.clearLabels(); this.toMenu(data.intro[0]); return; } if (!this.confirmPressed) return;
     if (this.kind.endsWith('Target')) {
-      const kind = this.kind; this.selected = this.targetOptions[this.subIndex].index;
+      const kind = this.kind; this.selectTarget();
       if (kind === 'actTarget') this.choose('act', ['Check', 'Re-sniff', 'Pet', 'Roll Around']);
-      else { this.clearLabels(); this.enemy = this.dogs[this.selected].main; this.config = { ...this.config, def: this.dogs[this.selected].def }; this.startFight(); }
+      else { this.clearLabels(); this.startFight(); }
     } else if (this.kind === 'act') { const action = [0, 1, 3, 4][this.subIndex]; this.clearLabels(); this.act(action); }
     else if (this.kind === 'mercy') {
-      for (const d of this.live().filter((d) => this.spareable(d))) this.removeDog(d, false);
+      for (const d of this.live().filter((d) => this.spareable(d))) this.removeEnemy(d, false);
       if (!this.live().length) this.end(); else this.dummyTurn();
     } else if (this.kind === 'item') this.useInventory();
   }
@@ -149,17 +112,11 @@ export class DogPairBattle extends RuinsBattle {
     }
     this.toMenu(line); this.arena.setPosition(16, 125).setSize(285, 67.5);
   }
-  updateFight(delta) {
-    const dog = this.dogs[this.selected], hit = fightInput(this, delta, dog.def); if (!hit) return;
-    if (hit.miss) { this.showPages(['* MISS'], () => this.dummyTurn()); return; }
-    dog.hp = Math.max(0, dog.hp - hit.damage); this.enemyHp = dog.hp; dog.bodyImage.setVisible(false); dog.axeImage.setVisible(false); dog.main.setTexture(`${dog.sprite}:1`).setVisible(true); this.sound.play('snd_damage');
+  hurtEnemy(dog) {
+    dog.bodyImage.setVisible(false); dog.axeImage.setVisible(false); dog.main.setTexture(`${dog.sprite}:1`).setVisible(true); this.sound.play('snd_damage');
     this.time.delayedCall(11 * 1000 / 30, () => this.sound.play('snd_ehurt1'));
-    this.showPages([String(hit.damage)], () => {
-      if (!dog.hp) this.removeDog(dog, true);
-      if (!this.live().length) this.end(); else this.dummyTurn();
-    });
   }
-  removeDog(dog, killed) {
+  removeEnemy(dog, killed) {
     if (!dog.alive) return;
     dog.alive = false; dog.main.setVisible(false); dog.bodyImage.destroy(); dog.axeImage.destroy(); const w = this.previousScene;
     this.goldReward += killed ? 25 : Math.floor(25 * (108 - dog.hp) / 108) + (dog.mercy > 10 && dog.hp === 108 ? dog.index ? 10 : 30 : 0);
