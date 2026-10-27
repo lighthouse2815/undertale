@@ -55,7 +55,8 @@ export function movePlayer(scene, player, colliders, input, onMove) {
     if (scene.findDoor(x, y) || !blocked(scene, colliders, x, y)) player.setPosition(x, y);
   }
   const moved = player.x !== oldX || player.y !== oldY;
-  player.frameIndex = moved ? (player.frameIndex + 0.2) % 4 : 0;
-  player.setTexture(`spr_mainchara${player.facing}:${Math.floor(player.frameIndex)}`);
+  const sprite = `spr_mainchara${player.facing}`;
+  player.frameIndex = moved ? (player.frameIndex + 0.2) % scene.dataSource.sprites.get(sprite).TextureCount : 0;
+  player.setTexture(`${sprite}:${Math.floor(player.frameIndex)}`);
   player.setDepth(player.y + 30);
 }
