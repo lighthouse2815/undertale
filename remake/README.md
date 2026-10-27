@@ -270,3 +270,5 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 `src/multi-battle.mjs` dùng lại điều khiển nhiều mục tiêu/lưới ACT/FIGHT từ trận đôi để mở rộng nhóm35/36. Trận/cảnh hai chó đã qua hồi quy sau tách; Jerry/nhóm35-36 chưa có trong bản này.
 
 `src/snowdin-group-waves.mjs` dùng lại generator IceCap/Drake trong cùng arena/timer cho nhóm35/36, tần suất/khoảng răng theo số attacker và Jerry kéo dài60frame. Hai trận đơn và ca generator nhóm đã qua; scene/ACT/Jerry của nhóm đang chuyển riêng, cửa snowpuzz chưa mở.
+
+`src/snowdin-group-battle.mjs/json` có nhóm35/36 nhiều HP/mục tiêu trong cùng trận: Jerry/Ditchhai lượt/chia5sátthương, Joke liênquái, Ice Cap→Ice, Drake/chill/ACT/Spare/FIGHT/ITEM/thưởng từng con/Flee/dân số/GameOver. Test riêng và chuỗi generator→nhóm đã qua; encounter và cửa snowpuzz sẽ nối tiếp, các giới hạn thoại/animation/instance từng frame vẫn giữ.

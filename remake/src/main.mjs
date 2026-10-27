@@ -23,6 +23,7 @@ import { IceCapBattle } from './icecap-battle.mjs';
 import { LesserDogBattle } from './lesser-dog-battle.mjs';
 import { DoggoBattle } from './doggo-battle.mjs';
 import { DogPairBattle } from './dog-pair-battle.mjs';
+import { SnowdinGroupBattle } from './snowdin-group-battle.mjs';
 import { DogPairRoom } from './dog-pair-room.mjs';
 import { TorielGate } from './toriel-gate.mjs';
 import { FloweyExit } from './flowey-exit.mjs';
@@ -770,7 +771,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SaveMenu, FieldMenu, ItemBox],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, SaveMenu, FieldMenu, ItemBox],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
@@ -779,7 +780,7 @@ state.startBattle = (config = 'dummy') => {
   const world = state.scene;
   state.phase = 'loading';
   world.scene.pause();
-  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : ['snowdrake', 'chilldrake'].includes(config) ? 'DrakeBattle' : ['icecap', 'ice'].includes(config) ? 'IceCapBattle' : config === 'lesserDog' ? 'LesserDogBattle' : config === 'doggo' ? 'DoggoBattle' : config === 'dogi' ? 'DogPairBattle' : 'RuinsBattle');
+  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : ['snowdrake', 'chilldrake'].includes(config) ? 'DrakeBattle' : ['icecap', 'ice'].includes(config) ? 'IceCapBattle' : config === 'lesserDog' ? 'LesserDogBattle' : config === 'doggo' ? 'DoggoBattle' : config === 'dogi' ? 'DogPairBattle' : ['snowdinGroup35', 'snowdinGroup36'].includes(config) ? 'SnowdinGroupBattle' : 'RuinsBattle');
 };
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);

@@ -1,0 +1,88 @@
+{
+  "intro35": [
+    "* Icecap appears.\n* Jerry came too."
+  ],
+  "intro36": [
+    "* Icecap and Snowdrake\n  confront you, sighing.\n* Jerry."
+  ],
+  "intro36Chill": [
+    "* Icecap and Chilldrake\n  confront you, sighing.\n* Jerry."
+  ],
+  "jerry": {
+    "check": [
+      "* JERRY - ATK 0 DEF 30\n* Everyone knows Jerry.\n* Makes attacks 2 seconds longer."
+    ],
+    "ditch": [
+      "* You and the other\n  monsters ditch Jerry\n  when it looks away!"
+    ],
+    "speech": [
+      "Guys, it's COLD.\nDoes ANYONE care?",
+      "Why are we doing\nthis? What a fail.",
+      "Wow, you guys\nSUCK at this.",
+      "SHHHH! I'm\nTHINKING, guys!!",
+      "Ka-SIGH."
+    ],
+    "speechAlone": [
+      "Well... can YOU\ngive me a ride\nhome?",
+      "Huh? Did they\nditch me...? SOME\nfriends!",
+      "Awkwarrrd.",
+      "So, like, what\nare you even\ndoing?",
+      "The wi-fi here\nsucks."
+    ],
+    "speechJoke": [
+      "Hahaha!\nSay something\nelse funny!",
+      "Haha! Wow!\nDrake, you suck!",
+      "Hahaha!\nWhere do you get\nyour ideas!?!"
+    ],
+    "idle": [
+      "* Jerry eats powdery food and\n  licks its hands loudly.",
+      "* Jerry sneezes without covering\n  its nose.",
+      "* Jerry tells everyone it has to\n  go to the bathroom.",
+      "* Jerry lets out a yawn.",
+      "* Smells like....... Jerry.",
+      "* Jerry is wounded.",
+      "* The other monsters celebrate\n  Jerry's disappearance.",
+      "* Return of Jerry."
+    ]
+  },
+  "jokeGroup": [
+    "* You make a bad ice pun.",
+    "* The other monsters think\n  it's hilarious..."
+  ],
+  "jokeGroupChill": [
+    "* You make fun of Chilldrake.",
+    "* The other monsters think\n  it's hilarious..."
+  ],
+  "speechJoke": {
+    "icecap": [
+      "Haha!\nThat was\nACTUALLY\nfunny!",
+      "Ha!\nImitated\nit spot-\non!",
+      "That's\nthe best\none in\na while!"
+    ],
+    "ice": [
+      "Haha!\nThat was\nACTUALLY\nfunny!",
+      "Ha!\nImitated\nit spot-\non!",
+      "That's\nthe best\none in\na while!"
+    ],
+    "snowdrake": [
+      "That's\nnot\nlike\nme...",
+      "I don't\ndo it\nthat\nway...",
+      "It's\nbetter\nwhen I\ndo it..."
+    ],
+    "chilldrake": [
+      "Where's\nSnowy\nright\nnow?",
+      "Ha...\nHa...",
+      "Nice\ntry,\nlaugh\nPicasso."
+    ]
+  },
+  "sprites": {
+    "spr_jerry": 10,
+    "spr_jerryhurt": 1,
+    "spr_blconabove": 1
+  },
+  "speechSulking": [
+    "Do I\nreally\n...",
+    "Hey...",
+    "Guys...\nguys..."
+  ]
+}

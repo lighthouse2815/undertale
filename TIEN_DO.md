@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau cảnh gặp hai chó ngoài phòng. Mốc code trước phần này: `f6d84ac` trên `main`.
+Cập nhật: 28/10/2026, sau Jerry và trận nhóm35/36. Mốc code trước phần này: `3ebe746` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -348,3 +348,12 @@ Cú pháp/build và toàn bộ helper trận đôi (`test-multi-pair-refactor-v1
 Đã chuyển generator đạn chung cho nhóm35/36 tại `snowdin-group-waves.mjs`, dùng lại IceCapWave/DrakeWave và hai hàm tải asset tách từ trận đơn. Có cùng arena/turntimer, tần suất theo số quái có tấn công (không tính Jerry), răng36cột/khoảng mở315 khi có hai attacker, mũ/móng vuốt sinh đồng thời. Jerry tăng timer60frame tại bước10 nếu còn>1; Jerry đứng một mình kết thúc lượt không có đạn; Ice đứng một mình5frame, Ice+Jerry giữ quy tắc timer1 của source. Generator tiếp tục tới timer chung thay vì hết thời lượng trận đơn rồi ngừng. Tham số mặc định giữ nguyên hai trận đơn; dùng Phaser loader bỏ file trùng theo key có sẵn, không thêm dependency.
 
 Hồi quy Snowdrake/Chilldrake và Ice Cap/Ice đã xanh (`test-snowdin-group-wave-chain-v1.log` hai helper đầu). Ca generator nhóm bản cuối đã xanh (`test-snowdin-group-waves-v2.log`): border/timer/tần suất/dân số/36cột, mũ và móng vuốt cùng tồn tại, Jerry+60sau10frame/đạn tiếp tục, Ice/Jerry/bảnđơn và HP/mask/dọn. Check/build qua. Chưa có kiểm chứng đủ thứ tự global firingrate/instanceStep/Alarm/Draw từng frame; không coi các ca luật chơi là chứng minh quỹ đạo khớp toàn bộ bản gốc. Scene nhóm/Jerry đang triển khai trong worktree, chưa nằm trong commit generator này. Lần push7b0d3a9 timeout; đã thử lại, cần kiểm tra trạng thái remote sau đó.
+
+
+`snowdin-group-battle.mjs/json` đã có scene nhóm35(Ice Cap+Jerry) và36(thêm Snowdrake hoặc Chilldrake theo57=2), dùng MultiBattle/FIGHT/găng tay/ITEM/GameOver và generator chung. Có HP/DEF/ACT/MERCY/thưởng độc lập, mục tiêu đang sống/không bị Ditch, hai hoặc ba lời thoại cùng lúc. Jerry80HP/DEF8 nhậnceil(damage/5); Ditch tạm bỏ khỏi danh sách/hết hai lượt rồi trở lại khi còn quái khác; chỉ còn Jerry không có đạn, Ditch cuối kết thúc không tự cộng55G hoặc cờtha giả. Joke của Drake với nhiều quái đặt heard20/mercy200 cho các quái khác, bản thân heard19/mercy-25/lời riêng; khi ở một mình reset-25về0 như gốc. Có lời sulking Snowdrake sau joke, Chilldrake tương ứng.
+
+Ice Cap có Ignore hai lần/màu tên/Steal biến Ice48HP/DEF-100/bonus13G, Ice Compliment/cờ137, Snowdrake/Chilldrake có Check/Heckle-Clash/Laugh-Agree/Joke/cờ136-57, rời đi ngẫu nhiên đúng nhánh. FIGHT/Spare loại từng mục tiêu, không thành chuỗi trận đơn; thưởng theo HP/mercy/type, giết Snowdrake đặt57=2; population203 tăng số kills của cả trận khi200=203, Flee vẫn nhận thưởng đã kiếm trước đó theo scr_runaway. Dùng tiếng/ảnh gốc/fontplain; x chữ bong bóng có cộng5pixel do shake43 trong Draw, đã xem ảnh.
+
+Test riêngv5 và chuỗi generator → nhóm (`test-snowdin-group-chain-v1.log`) đã xanh: hai/baHP và mục tiêu, Check/Ditch2lượt/ẩn-trởlại/Jerryđứngmộtmình/khôngthưởnggiả, Joke/mercy200-vs-25/màu tên, Ice Cap→Ice/35G, thaDrake/chill/23-25G, sát thương Jerry chia5, giết từng mục tiêu/Flee/XP-GOLD-dânsố, giếtSnowdrake/cờ57, ITEM16, GameOver/snapshot/nhạc. Check/build qua. Thoại gõ chữ/animation chết-hurt/nhịp bong bóng/arena và thứ tự instance khi Ice Cap biến Ice còn cần đối chiếu sátframe; test luật chơi không chứng minh khớp toàn bộ runtime gốc.
+
+Cửa spaghetti→snowpuzz chưa mở trong commit nhóm; ưu tiên tiếp theo là nối obj_encounterer_jerry: bước120/220banđầu,840+random680lần sau, round(random15)>8chọn36, LesserDog khi70<3, dân số/Nobody hai mốc, cộng200bước-ngưỡng và reset đếm khi chạm forcedright. Push7b0d3a9 và3ebe746 đã thành công; bộ tổng xanh gần nhất vẫn làf6d84ac, các phần mới kiểm riêng.
