@@ -54,6 +54,7 @@ import { SnowdinColorTiles } from './snowdin-color-tiles.mjs';
 import { SnowdinDogHouse } from './snowdin-dog-house.mjs';
 import { SnowdinIcePuzzle } from './snowdin-ice-puzzle.mjs';
 import { SnowdinIceHole } from './snowdin-ice-hole.mjs';
+import { SnowdinTown } from './snowdin-town.mjs';
 import { SnowdinTownNpcs } from './snowdin-town-npcs.mjs';
 import { SnowdinDangerBridge } from './snowdin-danger-bridge.mjs';
 import { GreaterDogRoom } from './greater-dog-room.mjs';
@@ -170,7 +171,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
+    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
     this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -225,7 +226,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
-    this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null;
+    this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -364,7 +365,7 @@ class World extends Scene {
     if (name === 'room_tundra_lesserdog') this.snowdinDogHouse = new SnowdinDogHouse(this);
     if (name === 'room_tundra_iceentrance') this.snowdinIcePuzzle = new SnowdinIcePuzzle(this);
     if (name === 'room_tundra_icehole') this.snowdinIceHole = new SnowdinIceHole(this);
-    if (name === 'room_tundra_town') this.snowdinTownNpcs = new SnowdinTownNpcs(this);
+    if (name === 'room_tundra_town') { this.snowdinTown = new SnowdinTown(this); this.snowdinTownNpcs = new SnowdinTownNpcs(this); }
     if (name === 'room_tundra_dangerbridge') this.snowdinDangerBridge = new SnowdinDangerBridge(this);
     if (name === 'room_tundra_poffzone') this.greaterDogRoom = new GreaterDogRoom(this);
     if (name === 'room_tundra_iceexit_new') this.gyftrotRoom = new GyftrotRoom(this);
@@ -454,6 +455,7 @@ class World extends Scene {
       this.snowdinDogHouse?.update(delta);
       this.snowdinIcePuzzle?.update(delta);
       this.snowdinIceHole?.update(delta);
+      this.snowdinTown?.update(delta);
       this.snowdinTownNpcs?.update(delta);
       this.snowdinDangerBridge?.update(delta);
       this.greaterDogRoom?.update(delta);
@@ -490,6 +492,7 @@ class World extends Scene {
     this.snowdinDogHouse?.update(delta);
     const icePuzzleLocked = this.snowdinIcePuzzle?.update(delta);
     const iceHoleLocked = this.snowdinIceHole?.update(delta);
+    const townLocked = this.snowdinTown?.update(delta);
     this.snowdinTownNpcs?.update(delta);
     const dangerBridgeLocked = this.snowdinDangerBridge?.update(delta);
     const greaterDogLocked = this.greaterDogRoom?.update(delta);
@@ -505,7 +508,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -545,6 +548,7 @@ class World extends Scene {
       if (this.snowdinForest?.checkTrigger(previous)) return;
       if (this.snowdinCheckpoint?.checkTrigger()) return;
       if (this.doggoRoom?.checkTrigger()) return;
+      if (this.snowdinTown?.checkTrigger()) return;
       if (this.snowdinDangerBridge?.checkTrigger()) return;
       if (this.greaterDogRoom?.checkTrigger()) return;
       if (this.dogPairRoom?.checkTrigger()) return;
@@ -611,7 +615,7 @@ class World extends Scene {
     if (this.snowdinColorTiles?.interact()) return;
     if (this.snowdinDogHouse?.interact()) return;
     if (this.snowdinIceHole?.interact()) return;
-    if (this.snowdinTownNpcs?.interact()) return;
+    if (this.snowdinTownNpcs?.interact() || this.snowdinTown?.interact()) return;
     if (this.snowdinDangerBridge?.interact()) return;
     if (this.greaterDogRoom?.interact()) return;
     if (this.gyftrotRoom?.interact()) return;

@@ -1,0 +1,58 @@
+{
+  "save": [
+    "* (The sight of such a friendly\n  town fills you with\n  determination.)"
+  ],
+  "logo": [
+    "* (Welcome to Snowdin Town!)"
+  ],
+  "sign": [
+    "* (Don't want to walk to the\n  other side of town?)",
+    "* (Try the undersnow tunnels!)\n* (They're efficiently laid out.)"
+  ],
+  "shed": [
+    "* (It's locked from the\n  inside.)"
+  ],
+  "camera": [
+    "* ...!?\n* There's a camera hidden in\n  the trees here."
+  ],
+  "sansDoor": [
+    "* (It's locked.)"
+  ],
+  "sansDoorOpen": [
+    "* (You unlocked the door and\n  entered.)"
+  ],
+  "sansMailbox": [
+    "* (It's a mailbox overflowing\n  with unread junk mail.)"
+  ],
+  "papMailbox": [
+    "* (This mailbox is labelled\n  \"PAPYRUS\".)"
+  ],
+  "papMailboxYes": [
+    "* (It's empty.)"
+  ],
+  "papMailboxNo": [
+    "* (You realize that would\n  probably be illegal.)"
+  ],
+  "tree": [
+    "* (It's a carefully decorated\n  tree.)",
+    "* (Some of the presents are\n  addressed from \"Santa\" to\n  various locals.)"
+  ],
+  "treeMurder": [
+    "* (Nothing for you.)"
+  ],
+  "saveLeft": [
+    "* \\[1] left."
+  ],
+  "saveComedian": [
+    "* That comedian..."
+  ],
+  "saveDetermination": [
+    "* Determination."
+  ],
+  "saveSnowdrake": [
+    "* The comedian got away.\n* Failure."
+  ],
+  "sprites": {
+    "spr_iglootop": 1
+  }
+}

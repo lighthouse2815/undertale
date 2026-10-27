@@ -313,3 +313,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-town-npcs.mjs/json` chuyển bảy cư dân Snowdin: lời đầu/lặp/plot122/kết thúc, ba chó/cờ Papyrus/tuyến giết theo thứ tự gốc, Monster Kid98/112/mặt nói, collider và lưu/nạp. Kiểm thử riêng đã qua. Hiện mở trực tiếp town để kiểm tra; cửa/nhạc/đồ vật/dịch vụ thị trấn chưa nối đủ.
+
+
+`src/snowdin-town.mjs/json` có nhạc theo tuyến, đồ vật/biển/thư/cây/logo, BOX dùng chung và SAVE Town/HP/lưu nạp; hai igloo đưa Frisk dưới tuyết sang bên kia thị trấn với gia tốc/khóa/đích gốc, nước/cube chuyển động. Kiểm thử riêng và chuỗi BoxRoad→NPC→Town đã qua. Chưa nối cửa vào thị trấn/các dịch vụ và còn thiếu Papyrus/chó kết thúc/cửa Sans/Undyne; không coi town đã đầy đủ.

@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi chuyển bảy NPC thị trấn Snowdin. Mốc code trước phần này: `488fdb3` trên `main`.
+Cập nhật: 28/10/2026, sau khi chuyển đồ vật và đường hầm thị trấn. Mốc code trước phần này: `9eb70ec` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -510,3 +510,12 @@ Commit488fdb3đãpush (main hiệnđồngbộ). Lượt tổng `test-danger-brid
 
 
 Đối chiếu tiếp nguồn đồvậttown phát hiện camera cầu dùng nhầm obj_readable_room3_108 (câu tại trạm gác). Đã đổi sang128 đúng nhánhroom_tundra_dangerbridge: camera underneath the bridge. Testcầu kiểm rõcảhai dòng thay vì chỉ từcamera; toànhelper riêng xanh (`test-danger-bridge-camera-final.log`), check/buildqua cùng `build-town-final.log`. Commit lỗi thoại riêng, không gộp phần thịtrấn đangkiểm. Pushc1fff1d/42b30da trướcđó lỗi443/134s, đang thửlại cógiớihạn180s.
+
+
+Đã chuyển `snowdin-town.mjs/json` cho nhạc/SAVE/BOX/đồ vật và đường hầm, vẫn mở trực tiếp để kiểm tra trước nối cửa town. Nhạc town/reunited/toomuch theo7/222/27, rate thường1/tuyến7=.25/cờ222+27=.5, ưu tiênReunited. BOX dùng chung showItemBox tách từBoxRoad, giữchọnYes-No/rỗng3lời/gửi-rút8-10ô/cờ300, không sao chépUI. SAVE dùngshowSnowdinSave chung/hồiHP/5nhánh/tênSnowdin-Town/lưu nạp. Cólogo/biển/cây/nhánhNothing foryou, hộpthưSans và PapyrusYes-No/rỗng-illegal khi chưa cóPapyrus, kho khóa bêntrong/camera/cửaSans khóa. Logoẩn từmurder12, icecubeẩn kếtthúc hoặcmurder7; icecube1.5px/.1animation/vònglạix2280. Nước1.5+sine.2/animation.15-.2/vònglạix2300. Depth lấytheonguồn/iglootop-10000.
+
+Hai igloo kích hoạt qua bbox thật/phím, khóaC/di chuyển, tiếngescaped, Frisk.y=-60, tốc đầu1→tăng.5tốiđa15, ceil khiđiphải/floor khiđitrái, giảm1ở>=2100 hoặc<=960. Đíchđông2336,118 vàtây732,106, quayxuống/reset tốc/mởkhóa/camera. Testv2 đặtngangx700,y90 chồngtường cổng; đãdùnglốiđivàobên dưới x732,y106 và2336,118 điUp, không sửa collision để chiều fixture. V2cũngpháthiện thiếu snd_squeak khi mởtrực tiếpTown; đã bổsung asset, không bỏphátâmthanh.
+
+`tests/remake-snowdin-town.mjs` nối tổng: sáutổhợpnhạc/tuyến, đồvật/lựa chọn, BOXNo-gửi-rút-rỗng, SAVE5nhánh/màu/HP/tên/nạp, nước-cube/độsâu, cả2hầm/phím/khóa/tốc-đích/dọn. Riêngv3 vàchuỗiBoxRoad→NPC→Town (`test-town-chain-v1.log`) xanh/khônglỗiJS-console; check/buildcuốiqua (`build-town-final.log`), đã xemảnh. Chưa chuyển các chó sau kếtthúc, Papyrus ngoài nhà/hẹn hò, mởcửaSans497>=3, cuộcgọithưUndyne/cửaShop-INN-Grillby-thưviện; cửa cầu→town/fog/Papyrusboss vẫnchưa nối. Khôngcoi toànthịtrấn/Snowdin/game đã hoànchỉnh.
+
+Lượtfull mới `test-room-cleanup-full-v1.log` đangchạy snapshot42b30da, đãqua đónggói trước sửaTown; logđãquaVegetoid. Khôngbao gồmTownprops/camera9eb70ec, chưacókếtquảcuối nên khôngghi xanhfull. Pushc1fff1d/42b30da vẫn lỗi443sau135s, đang thửlại cảcamera9eb70ec.

@@ -2,6 +2,15 @@ import { inInteractionRange } from './npc.mjs';
 import { startSnowdinMusic, showSnowdinSave } from './snowdin-start.mjs';
 import { createCollider } from './movement.mjs';
 
+
+export function showItemBox(world, text) {
+  world.showChoice(text.prompt, text.options, (choice) => {
+    if (choice !== 0) return;
+    if (!world.inventory.length && !world.flags[300]) world.showDialogue([text.empty[Math.floor(Math.random() * 3)]]);
+    else { world.release(); world.scene.launch('ItemBox'); window.__remake.phase = 'loadingBox'; }
+  });
+}
+
 // room_tundra3/3A: hộp đồ, biển, SAVE và cần câu (SCR_TEXT 30/31, 224/225).
 export class BoxRoad {
   constructor(world) {
@@ -44,11 +53,7 @@ export class BoxRoad {
     if (target.item.ObjectName === 'obj_sign_room') world.showDialogue(this.text.sign);
     else if (target.item.ObjectName === 'obj_savepoint') this.save();
     else if (target.item.ObjectName === 'obj_sansbox') {
-      world.showChoice(this.text.box.prompt, this.text.box.options, (choice) => {
-        if (choice !== 0) return;
-        if (!world.inventory.length && !world.flags[300]) world.showDialogue([this.text.box.empty[Math.floor(Math.random() * 3)]]);
-        else { world.release(); world.scene.launch('ItemBox'); window.__remake.phase = 'loadingBox'; }
-      });
+      showItemBox(world, this.text.box);
     } else if (this.reeled) {
       this.reeled = false; this.rod.image.setTexture('spr_fishingrod:0'); world.showDialogue(this.text.rodSend);
     } else world.showDialogue(this.text.rodIntro, { onClose: () => {
