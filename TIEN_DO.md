@@ -292,3 +292,7 @@ Phòng `room_tundra_spaghetti` đã nối9A → markerA và B → markerB9, gi�
 Chuỗi Box Road → spaghetti đã xanh (`test-box-spaghetti-chain-v3.log`): hồi quy toàn bộ BOX/cần câu/Glove/SAVE; phòng mới kiểm tra cửa/marker/nhạc, hai bộ lời/note/font/GOLD-túi-plot không đổi, collider, chuột/hướng/chống phát chồng, bảy nhánh SAVE/màu/HP/tên file/lưu nạp/sao animate. Check/build đã qua. Chưa nối cửa tới snowpuzz/Dogamy-Dogaressa/Jerry, chưa coi phần còn lại Snowdin đã hoàn thành. Pushb9e1acd đã thành công.
 
 Bộ tổng snapshotd4de754 (`test-scent-full-v1.log`) dừng tại testChildBedroom: assert x>142 sau giữ ArrowRight300ms để đi qua vị trí bánh đã nhặt. Chưa ghi nhận bộ tổng xanh, chưa chạy tới các helper Snowdin mới; cần kiểm tra/sửa đồng bộ test và chạy lại. Lần xanh toàn bộ gần nhất vẫn là snapshot5909e35, trước golf/phòng8/8A/crossword/spaghetti.
+
+Test phòng Frisk đã qua khi chạy riêng bằng test cũ (`test-child-bedroom-now-v1.log`), trong khi bộ tổng d4de754 thất bại ở bước giữ phím300ms sau nhặt bánh. Đã đổi riêng bước này sang đợi điều kiện nhân vật thật vượt x142 trong tối đa3giây, luôn nhả phím bằng finally, giữ assertion x>142 và kiểm tra bánh còn chặn trước khi lấy. Không đổi controller/phép va chạm/sát thương hay bỏ kiểm tra; đang chạy lại toàn bộ helper phòng ngủ trước khi commit.
+
+Ca phòng Frisk với bước đợi vị trí đã xanh (`test-child-bedroom-now-v2.log`), toàn bộ thoại/ngủ/bánh/collider/ITEM/lưu nạp/Hard Mode vẫn qua. Cú pháp đã qua; không đổi runtime nên không có thay đổi build so với3d0d4e8. Push3d0d4e8 đã thành công.

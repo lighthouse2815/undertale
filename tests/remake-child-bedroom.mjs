@@ -58,7 +58,9 @@ export async function testChildBedroom(page) {
   await page.evaluate(() => { __remake.scene.inventory.pop(); });
   await place(142, 136); await key('z'); assert.match(await page.evaluate(() => __remake.scene.dialogueText.text), /butterscotch-cinnamon/); await drain();
   assert.deepEqual(await page.evaluate(() => [__remake.scene.inventory.at(-1), __remake.scene.flags[103], __remake.scene.childBedroom.pie.body.disabled]), [11, 2, true]);
-  await place(121, 118, 'r'); await page.keyboard.down('ArrowRight'); await page.waitForTimeout(300); await page.keyboard.up('ArrowRight');
+  await place(121, 118, 'r'); await page.keyboard.down('ArrowRight');
+  try { await page.waitForFunction(() => __remake.scene.player.x > 142, undefined, { timeout: 3000 }); }
+  finally { await page.keyboard.up('ArrowRight'); }
   assert.ok(await page.evaluate(() => __remake.scene.player.x > 142));
   await page.evaluate(() => { __remake.scene.hp = 1; }); await use(7);
   assert.equal(await page.evaluate(() => __remake.scene.hp), 20); await drain();
