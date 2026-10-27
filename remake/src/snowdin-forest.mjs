@@ -13,6 +13,9 @@ export class SnowdinForest {
     this.murder = murderLevel(world.flags) >= 2;
     this.stick = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_stick');
     this.lamp = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_convenientlamp');
+    const checkpoint = world.roomObjects.find(({ item }) => item.ObjectName === 'obj_sanscheckpoint');
+    world.colliders.push(createCollider(world.dataSource, checkpoint.item));
+    checkpoint.image.setDepth(checkpoint.item.Y + checkpoint.sprite.Height);
     this.trees = world.roomObjects.filter(({ item }) => item.ObjectName.startsWith('obj_creeptree'));
     for (const tree of this.trees) tree.image.setDepth(-10);
     this.broken = world.flags[47] >= 2 || world.flags[275] >= 1;

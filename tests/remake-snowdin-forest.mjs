@@ -113,6 +113,9 @@ export async function testSnowdinForest(page) {
     assert.equal(await page.evaluate(() => __remake.scene.snowdinForest.stick.image.active), false);
   }
   // Quay lại phòng 1 theo markerB.
+  await place(2585, 125, 'u'); await page.keyboard.down('ArrowUp'); await page.waitForTimeout(400); await page.keyboard.up('ArrowUp');
+  assert.ok(await page.evaluate(() => __remake.scene.player.y + 19 >= 130), 'Trạm gác có va chạm chân theo mask gốc.');
+  await place(2585, 113, 'u'); await key('z'); await read(2, /checkpoint/);
   await place(20, 160, 'l'); await page.keyboard.down('ArrowLeft');
   await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowLeft');
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_tundra1');
