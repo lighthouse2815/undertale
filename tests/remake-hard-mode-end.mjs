@@ -47,5 +47,7 @@ export async function testHardModeEnd(page) {
     const world = __remake.game.scene.getScene('World'); __remake.scene.scene.stop(); world.scene.resume();
     world.flags = {}; world.plot = 25; await world.openRoom('room_basement3', 'obj_markerA');
   });
+  // Phaser áp dụng resume ở frame kế; không để nó xóa phím giữ của fixture sau.
+  await page.evaluate(() => new Promise((resolve) => __remake.game.events.once('poststep', resolve)));
   console.log('✓ kết thúc Hard Mode sau tha/đánh bại: chó/Toriel/Flowey, lời gốc, alarm, bốn dòng tiêu đề/nhạc và màn đen; không thưởng EXP/kill giả');
 }
