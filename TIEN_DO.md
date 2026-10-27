@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 27/10/2026, sau hộp đồ, SAVE Box Road và nhánh cần câu. Mốc code trước phần này: `2301cdf6` trên `main`.
+Cập nhật: 27/10/2026, sau trận đơn Snowdrake/Chilldrake. Mốc code trước phần này: `96e58476` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -160,3 +160,7 @@ Chưa chuyển encounter Snowdin, phần Box Road hiện mới đầy đủ các
 Trạm gác Sans đã có collider từ margin gốc (x 2573–2623, y 110–129), depth theo scr_depth và kiểm thử đi lên bị chặn thật rồi đọc hai trang về ketchup/mustard/relish. Toàn bộ kiểm thử riêng rừng, gồm ba tuyến và lời trạm, đã qua sau sửa.
 
 Bộ tổng v3 đã qua toàn bộ (`test-snowdin-full-v3.log`): các phần Ruins/nhà/basement/Toriel/Hard Mode → Flowey → logo/Snowdin1 → kiểm tra animation 60 frame → Sans/Papyrus → Tough Glove, không có lỗi JavaScript/console, cảm ứng và hosting tĩnh dưới đường dẫn con/thiếu tài nguyên báo lỗi. Gói test được tạo trước khi nối Box Road và sửa trạm gác; hai phần mới đã qua test riêng/check/build, chưa được tính là đã qua bộ tổng này. Chrome crash ở lần cũ không tái diễn trong lần v3.
+
+Trận đơn nhóm 30 đã có `drake-battle.*`/`drake-waves.mjs`: Snowdrake và Chilldrake có 74 HP/DEF2/22EXP, ACT Check/Heckle hoặc Clash/Laugh hoặc Agree/Joke, cờ nghe chuyện, Laugh trước/sau phát biểu, cờ 136/57, ba mức Heckle và nhánh 1/6 tự bỏ đi. Dùng lại FIGHT (gồm Glove)/ITEM/MERCY/Flee/LV/Game Over; thưởng 18G khi giết, 12G/10G khi tha đủ HP được hài lòng hoặc tỉ lệ HP khi bị thương, cộng dân số 203 thay vì 202 và đặt cờ 57=2 khi Snowdrake chết. Có đầu/thân/chân nhún và kính Chilldrake, font/bong bóng gốc; Typer2 có offset +10 pixel gốc từ base_writer để chữ không bị cắt cạnh bong bóng. Hai generator bốn phía có straight/rotating claws, alarm khởi động/sinh bản sao, tăng tốc/xoay/origin/clip, va chạm và bất tử; nhịp 120/130 frame. Nhạc Snowdin pause trong trận và phát lại cả sau Game Over (stopAll đã dừng nhạc nên phải play khi không còn paused).
+
+Test riêng đã qua ACT/các nhánh ngẫu nhiên, hai wave/alarm/bản sao/mask tim/HP/bất tử, không cho Z/X rút wave, ITEM/Spare/Flee/FIGHT/thưởng/cờ/dân số, Game Over do đạn thật và snapshot Box Road/khôi phục nhạc. Chuỗi Froggit/Whimsun → Box Road → Snowdrake/Chilldrake đã qua; check/build qua, đã xem ảnh hai dạng quái và wave. Chưa nối encounter ngẫu nhiên phòng 3 vì còn thiếu Ice Cap/Ice (nhóm32) và Lesser Dog (nhóm24); không thay các nhóm thiếu bằng Snowdrake. Bước tiếp theo là Ice Cap/Ice, Lesser Dog, selector cờ70/scr_steps/hết quái, rồi cảnh Papyrus phòng4. Chưa có trận nhiều quái; lời theo đồng đội/mercymod -25/200 chưa chuyển ở nhóm nhiều. Giới hạn còn có gõ chữ/lắc chữ theo Typer2, animation tan bụi và thứ tự movement/alarm/draw từng frame; các test chưa chứng minh hình ảnh/đạn trùng từng frame toàn bộ.

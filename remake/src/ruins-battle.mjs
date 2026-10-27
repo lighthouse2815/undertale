@@ -222,7 +222,11 @@ export class RuinsBattle extends DummyBattle {
     if (outcome === 'flee') { world.flags[11] = 1; world.flags[24] = (world.flags[24] ?? 0) + 1; }
     else {
       world.xp = Math.min(99999, world.xp + this.xpReward); world.gold += this.goldReward;
-      if (outcome === 'kill') { world.kills++; world.flags[12] = 1; world.flags[202] = (world.flags[202] ?? 0) + 1; }
+      if (outcome === 'kill') {
+        world.kills++; world.flags[12] = 1;
+        const populationFlag = this.populationFlag ?? 202;
+        world.flags[populationFlag] = (world.flags[populationFlag] ?? 0) + 1;
+      }
       else { world.flags[10] = 1; world.flags[23] = (world.flags[23] ?? 0) + 1; }
       world.lv = LEVEL_THRESHOLDS.filter((threshold) => world.xp >= threshold).length;
       world.maxHp = world.lv === 20 ? 99 : 16 + world.lv * 4;

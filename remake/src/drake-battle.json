@@ -1,0 +1,149 @@
+{
+  "snowdrake": {
+    "check": [
+      "* SNOWDRAKE - ATK 12 DEF 7\n* This teen comedian fights to\n  keep a captive audience."
+    ],
+    "heckle": [
+      "* You boo the Snowdrake."
+    ],
+    "heckleAgain": [
+      "* You tell the Snowdrake that\n  they aren't funny."
+    ],
+    "heckleLeave": [
+      "* You tell the Snowdrake that\n  no one will ever love\n  them the way they are...",
+      "* They struggle to make a\n  retort, and slink away\n  utterly crushed..."
+    ],
+    "laughEarly": [
+      "* You laugh at Snowdrake before\n  it says anything funny."
+    ],
+    "laugh": [
+      "* You laugh at Snowdrake's\n  pun."
+    ],
+    "joke": [
+      "* You make a bad ice pun."
+    ],
+    "speech": [
+      "\"Ice\"\nto meet\nyou.",
+      "Ice puns\nare\n\"snow\"\nproblem",
+      "Fights\nyou in\n\"cold\"\nblood.",
+      "Better\nnot snow\n\"flake\"\nout!",
+      "My fave\nice\ncereals:\n\"frosted\"",
+      "\"Chill\"\nout...",
+      "M.. m..\nmacaroni\nand\n\"freeze\""
+    ],
+    "speechLaugh": [
+      "You have\ngood\ntaste!!\n(In jokes)",
+      "See!?\nLaughs!\nDad was\nwrong!",
+      "Thanks,\nyou're\nall\ngreat."
+    ],
+    "speechFirstLaugh": [
+      "See!?\nLaughs!\nDad was\nwrong!"
+    ],
+    "speechEarly": [
+      "What are\nYOU\nlaughin'\nat?!?"
+    ],
+    "speechHeckle": [
+      "THIS\nwon't be\nfunny\neither!",
+      "Is your\nflesh\nrotten\nas you?",
+      "(Insults\ntowards\nhumans)"
+    ],
+    "speechJoke": [
+      "Is that\ns'posed\nto be\nfunny?",
+      "Ha...\nHa...\nNice\ntry.",
+      "I've\nheard\nthat\none."
+    ],
+    "idle": [
+      "* Snowdrake is assessing the\n  crowd.",
+      "* Snowdrake is practicing\n  its next pun.",
+      "* Snowdrake is smiling at its\n  own bad joke.",
+      "* It smells like a wet\n  pillow.",
+      "* Snowdrake realized its own\n  name is a pun and is\n  freaking out.",
+      "* Snowdrake is pleased with\n  its \"cool\" joke.",
+      "* Snowdrake is laughing at\n  your imitation of its\n  cohort.",
+      "* Snowdrake pretends not to\n  care.",
+      "* Snowdrake is puffed up..",
+      "* Snowdrake is flaking\n  apart."
+    ],
+    "intro": [
+      "* Snowdrake flutters forth!"
+    ],
+    "actions": [
+      "Check",
+      "Heckle",
+      "Laugh",
+      "Joke"
+    ]
+  },
+  "chilldrake": {
+    "check": [
+      "* CHILLDRAKE - ATK 12 DEF 7\n* Rebels against everything!!\n* Looking for its friend Snowy."
+    ],
+    "heckle": [
+      "* You tell Chilldrake it's\n  all wrong."
+    ],
+    "laughEarly": [
+      "* You agree with Chilldrake\n  before it gives its speech."
+    ],
+    "laugh": [
+      "* You agree with Chilldrake.\n* It seems to get very\n  uncomfortable..."
+    ],
+    "joke": [
+      "* You make fun of Chilldrake."
+    ],
+    "speech": [
+      "Brush my\nteeth?\nNo way\nin heck!",
+      "NEVER do\nyour\nhomework\n!!",
+      "No\nbedtime!\nOnly\nDEADTIME",
+      "*turns\nmusic up\nall the\nway*"
+    ],
+    "speechLaugh": [
+      "Do you...\nreally\n...",
+      "I don't\nthink\nyou...",
+      "To tell\nyou the\ntruth..."
+    ],
+    "speechEarly": [
+      "You\ndon't\nknow my\ncause!!"
+    ],
+    "speechHeckle": [
+      "WRONG!\nLet's\nfight\nand die.",
+      "Actually\n...\nDeath?",
+      "Defiance\ncan't be\ndefied!"
+    ],
+    "speechJoke": [
+      "Only\nSnowy\ncan do\nthat.",
+      "You\nain't\nSnowy.",
+      "Stick to\npuns.\nThey're\nbetter."
+    ],
+    "idle": [
+      "* Chilldrake starts a one-\n  monster riot.",
+      "* Chilldrake is chanting an\n  anarchist spell.",
+      "* Chilldrake is eating its\n  own homework.",
+      "* It smells like \"Ice\"\n  scented body-spray.",
+      "* Chilldrake is wondering\n  where Snowy went.",
+      "* Chilldrake feels neutered\n  by your agreement.",
+      "* Chilldrake is laughing at\n  your imitation of its\n  cohort.",
+      "* Chilldrake pretends not to\n  care.",
+      "* Chilldrake is puffed up..",
+      "* Chilldrake is flaking\n  apart."
+    ],
+    "intro": [
+      "* Chilldrake saunters up!"
+    ],
+    "actions": [
+      "Check",
+      "Clash",
+      "Agree",
+      "Joke"
+    ]
+  },
+  "sprites": {
+    "spr_snowdrake": 2,
+    "spr_snowdrake_head": 20,
+    "spr_snowdrake_body": 1,
+    "spr_snowdrake_legs": 1,
+    "spr_chillglasses": 1,
+    "spr_clawbullet": 4,
+    "spr_rotclawbullet": 1,
+    "spr_blconsm": 1
+  }
+}
