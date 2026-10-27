@@ -274,3 +274,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 `src/snowdin-group-battle.mjs/json` có nhóm35/36 nhiều HP/mục tiêu trong cùng trận: Jerry/Ditchhai lượt/chia5sátthương, Joke liênquái, Ice Cap→Ice, Drake/chill/ACT/Spare/FIGHT/ITEM/thưởng từng con/Flee/dân số/GameOver. Test riêng và chuỗi generator→nhóm đã qua; encounter và cửa snowpuzz sẽ nối tiếp, các giới hạn thoại/animation/instance từng frame vẫn giữ.
 
 Đã nối spaghetti↔snowpuzz cùng encounter Jerry35/36, LesserDog70/dânsố/Nobody, ngưỡng bước riêng và forcedright+200/reset. Chuỗi hồi quy encountercũ→côngtắc→cảnhhai chó→encountermới đã qua, gồm kill/Flee/population/GameOver/snapshot/dọn. Cửa phải snowpuzz→xoxosmall chưa nối; các phòng/tuyến sau vẫn còn thiếu.
+
+
+`src/snowdin-xoxo-small.mjs/json` nối snowpuzz↔phòng X/O nhỏ, hai ô/nút/reset/plot53/tường-gai và Papyrus6 hỏi spaghetti/cờ62/hai lựa chọn/đi rời; có biển, nhạc xuyên phòng, SAVE và nhánh murder4/27. Kiểm thử gồm bước đi thực, đứng yên, lời/khóa/lưu nạp và mở phòng trực tiếp. Cửa phải tới xoxopuzz chưa nối; phần Papyrus5/câu đố lớn đang chuyển, chưa coi Snowdin hay toàn bộ game đã hoàn tất. Hạn chế gõ chữ/animation từng frame vẫn giữ.

@@ -1,0 +1,107 @@
+{
+  "intro": [
+    {
+      "text": "WHAT!?\nHOW DID YOU\nAVOID MY TRAP?",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND, MORE\nIMPORTANTLY...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IS THERE ANY\nLEFT FOR ME???",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "ate": [
+    {
+      "text": "REALLY!?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WOWIE...",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NO ONE'S EVER\nENJOYED MY\nCOOKING BEFORE...",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WELL THEN!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FRET NOT HUMAN!\nI, MASTER CHEF\nPAPYRUS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WILL MAKE YOU ALL\nTHE PASTA YOU\nCOULD EVER WANT!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HEH HEH HEH HEH\nHEH HEH NYEH!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "left": [
+    {
+      "text": "REALLY!?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WOWIE...",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU RESISTED THE\nFLAVOR OF MY\nHOMECOOKED PASTA...",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "JUST SO YOU\nCOULD SHARE\nIT WITH ME???",
+      "portrait": "spr_face_papyruslaugh",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FRET NOT HUMAN!\nI, MASTER CHEF\nPAPYRUS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WILL MAKE YOU ALL\nTHE PASTA YOU\nCOULD EVER WANT!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HEH HEH HEH HEH\nHEH HEH NYEH!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "sign": [
+    "* Turn every X into an O.\n* Then press the switch."
+  ],
+  "sprites": {
+    "spr_papyrus_r": 4,
+    "spr_papyrus_rt": 2,
+    "spr_exc": 1,
+    "spr_face_papyrusevil": 2,
+    "spr_papyrus_lt": 2,
+    "spr_face_papyruslaugh": 2,
+    "spr_face_papyrus": 2,
+    "spr_face_papyrusside": 2,
+    "spr_face_papyrusmad": 2
+  }
+}
