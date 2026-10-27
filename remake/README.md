@@ -230,3 +230,6 @@ Phòng4 có `src/snowdin-checkpoint.mjs/json`: cảnh Papyrus/Sans nhận nhầm
 Doggo đơn có ở `src/doggo-battle.*`/`src/doggo-wave.mjs`: Check/Pet sau khi đứng yên qua kiếm xanh, 5lầnPet/DEF, Stick/cờ52/139/27/plot41, không Flee, thưởng30G và không cộng dân số ngẫu nhiên, kiếm tăng tốc/bám độ cao/chỉ trúng khi tim di chuyển, GameOver/nhạc. Phòng5/cảnh Doggo ngoài trận chưa nối; còn các giới hạn trình bày và alarm/physics từng frame như các trận đã chuyển.
 
 Nhánh đạn trắng hiếm command100 của Doggo dùng lại generator móng vuốt xoay DrakeWave, rate25/border6/120frame; qua nhánh này không tự mở điều kiệnPet.
+
+
+Phòng5 có `src/doggo-room.mjs/json`: trigger thật/Doggo trồi lên/cắt hình/hai nhánh thoại/khóa/nhạc, trận23 tự lưu snapshot, hậu trận Pet/Stick/kill và plot41→42, chuông hai tiếng/6lời/cap, bảng/treats/ghi chú từ64/collider, cửa4↔5 và lưu nạp. GameOver không mởlối hoặc trao thưởng khi chưa thắng. Phòng6/băngtrượt và6A/ngườituyết chưa nối.

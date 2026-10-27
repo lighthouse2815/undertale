@@ -32,6 +32,7 @@ import { ItemBox } from './item-box.mjs';
 import { RuinsEncounter } from './ruins-encounter.mjs';
 import { SnowdinEncounter } from './snowdin-encounter.mjs';
 import { SnowdinCheckpoint } from './snowdin-checkpoint.mjs';
+import { DoggoRoom } from './doggo-room.mjs';
 import { RuinsRock, RuinsHoles } from './ruins-rock.mjs';
 import { RuinsGoofyrock } from './ruins-goofyrock.mjs';
 import { Ruins12Lesson } from './ruins12.mjs';
@@ -108,7 +109,8 @@ const ROOM_EXITS = {
   room_tundra2: { A: 'room_tundra3', B: 'room_tundra1' },
   room_tundra3: { A: 'room_tundra3A', B: 'room_tundra2', C: 'room_tundra4' },
   room_tundra3A: { B: 'room_tundra3' },
-  room_tundra4: { D: 'room_tundra3' },
+  room_tundra4: { D: 'room_tundra3', A: 'room_tundra5' },
+  room_tundra5: { B: 'room_tundra4' },
 };
 function fail(error) {
   state.phase = 'error'; state.error = error.message;
@@ -126,7 +128,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); });
+    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); });
     this.events.once('shutdown', () => { stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -135,7 +137,7 @@ class World extends Scene {
     state.phase = 'loading';
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
-    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4'].includes(name)) stopSnowdinMusic(this);
+    if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5'].includes(name)) stopSnowdinMusic(this);
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -173,6 +175,7 @@ class World extends Scene {
     this.snowdinForest?.destroy(); this.snowdinForest = null;
     this.boxRoad = null;
     this.snowdinCheckpoint?.destroy(); this.snowdinCheckpoint = null;
+    this.doggoRoom?.destroy(); this.doggoRoom = null;
     this.dialogue = null;
     this.choiceUi = [];
     this.flags ??= {};
@@ -299,6 +302,7 @@ class World extends Scene {
     if (name === 'room_tundra2') this.snowdinForest = new SnowdinForest(this);
     if (['room_tundra3', 'room_tundra3A'].includes(name)) this.boxRoad = new BoxRoad(this);
     if (name === 'room_tundra4') this.snowdinCheckpoint = new SnowdinCheckpoint(this);
+    if (name === 'room_tundra5') this.doggoRoom = new DoggoRoom(this);
     if (['room_tundra3', 'room_tundra4'].includes(name)) this.snowdinEncounter = new SnowdinEncounter(this);
     state.room = name; state.phase = 'running'; status.hidden = true;
   }
@@ -369,6 +373,7 @@ class World extends Scene {
       this.snowdinForest?.update(delta);
       this.boxRoad?.update(delta);
       this.snowdinCheckpoint?.update(delta);
+      this.doggoRoom?.update(delta);
       return;
     }
     if (state.phase !== 'running') return;
@@ -387,12 +392,13 @@ class World extends Scene {
     this.snowdinStart?.update(delta);
     const forestLocked = this.snowdinForest?.update(delta);
     const checkpointLocked = this.snowdinCheckpoint?.update(delta);
+    const doggoLocked = this.doggoRoom?.update(delta);
     this.boxRoad?.update(delta);
     if (this.dialogue) {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -429,6 +435,7 @@ class World extends Scene {
       if (this.snowdinStart?.checkTrigger()) return;
       if (this.snowdinForest?.checkTrigger(previous)) return;
       if (this.snowdinCheckpoint?.checkTrigger()) return;
+      if (this.doggoRoom?.checkTrigger()) return;
       if (this.ruinsHoles?.checkTrigger() || this.ruinsGoofyrock?.checkTrigger() || this.dialogue) return;
     }
     this.interactionCooldown = Math.max(0, this.interactionCooldown - delta);
@@ -470,6 +477,7 @@ class World extends Scene {
 
   tryInteract() {
     if (this.snowdinCheckpoint?.interact()) return;
+    if (this.doggoRoom?.interact()) return;
     if (this.boxRoad) { this.boxRoad.interact(); return; }
     if (this.candyDish) { this.candyDish.interact(); return; }
     if (this.ruinsGoofyrock?.interact()) return;
