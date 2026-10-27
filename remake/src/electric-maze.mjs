@@ -6,7 +6,7 @@ import { murderLevel } from './route.mjs';
 // obj_papyrus2: mê cung điện vô hình, quả cầu và nhánh đi thẳng trên tuyến giết.
 export class ElectricMaze {
   constructor(world) {
-    this.world = world; this.text = world.dataSource.mazeDialogue; this.elapsed = 0; this.frames = 0; this.total = 0; this.locked = false;
+    this.escapeCount = 0; this.world = world; this.text = world.dataSource.mazeDialogue; this.elapsed = 0; this.frames = 0; this.total = 0; this.locked = false;
     this.stage = world.plot >= 43 ? 'done' : 'waiting'; this.footsteps = []; this.orb = null;
     this.murder = murderLevel(world.flags) >= 3 && !world.flags[27]; this.met = Number(localStorage.getItem('undertale-remake-papyrus-meetings') ?? 0);
     this.trigger = { ...world.dataSource.room.GameObjects.find((e) => e.ObjectName === 'obj_papyrus2') };
@@ -137,6 +137,12 @@ export class ElectricMaze {
   checkTrigger(previous) {
     const w = this.world;
     if (this.locked || w.dialogue) return false;
+    if (this.wall && ['tryFirst', 'tryMaze'].includes(this.stage)
+      && (w.keys.left.isDown || [...w.touch.values()].some((p) => p.direction === 'left')) && blocked(w, [this.wall], w.player.x - 3, w.player.y)) {
+      const stage = this.stage, key = ['escapeFirst', 'escapeSecond', 'escapeRepeat'][Math.min(this.escapeCount++, 2)];
+      w.player.x += 4; w.player.facing = 'r'; w.player.setTexture('spr_maincharar:0'); w.release(); this.locked = true;
+      this.show(key, () => { this.stage = stage; this.locked = false; }); return true;
+    }
     if (['waiting', 'tryFirst', 'tryMaze'].includes(this.stage) && touchesObject(w, w.player, this.trigger, 1, 999)) {
       this.locked = true; w.release();
       if (this.stage === 'waiting') {

@@ -256,3 +256,5 @@ Phòng7 có `src/electric-maze.mjs/json`: intro/ký ức, Papyrus tự bị gi�
 `src/snowdin-crossword.mjs/json` nối8↔9 và cảnh Papyrus/Sans: word search/khóa/buffer/254, tường quay lại, Jumble-Crossword/58, xem-bỏ qua/tuyến giết, rời phòng/47/Sans/lưu nạp/dọn. Có ảnh nightmare theo5 và ký ức fun ngoài SAVE56/57; khởi tạo fun toàn game chưa chuyển. Cửa tới spaghetti đã nối; giới hạn thoại và alarm từng frame vẫn còn.
 
 `src/snowdin-spaghetti.mjs/json` nối9↔spaghetti: đĩa/microwave/note với font Papyrus/lời kết thúc/collider, chuột đúng hướng/không chồng, sao SAVE/nhạc/tên file/lưu nạp. Hai điểm Snowdin dùng chung showSnowdinSave để giữ luật dân số/cờ/màu; kiểm thử Box Road và phòng mới đã qua. Cửa phải tới snowpuzz còn thiếu.
+
+Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4pixel/nhìn phải/khóa rồi hoàn trả điều khiển; kiểm thử chạm bốn lần và giải tiếp mê cung đã qua.

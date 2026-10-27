@@ -30,6 +30,13 @@ export async function testElectricMaze(page) {
     for (let i = 8; i < 14; i++) await key('z');
     assert.equal(await page.evaluate(() => __remake.scene.electricMaze.stage), 'tryFirst');
     assert.ok(await page.evaluate(() => __remake.scene.colliders.some((c) => c.objectName === 'obj_puzzlewall1')));
+    for (const [count, pattern] of [[2, /RUDE/], [2, /MOTHER/], [1, /HUMANS/], [1, /HUMANS/]]) {
+      await place(35, 120); await page.keyboard.down('ArrowLeft'); await page.waitForFunction(() => !!__remake.scene.dialogue); await page.keyboard.up('ArrowLeft');
+      assert.equal(await page.evaluate(() => __remake.room), 'room_tundra7');
+      assert.equal(await page.evaluate(() => __remake.scene.player.facing), 'r');
+      assert.ok(await page.evaluate(() => __remake.scene.player.x >= 34)); await read(count, pattern);
+      assert.equal(await page.evaluate(() => __remake.scene.electricMaze.stage), 'tryFirst');
+    }
     await page.keyboard.down('ArrowRight'); await page.waitForFunction(() => __remake.scene.electricMaze.stage === 'papShock'); await page.keyboard.up('ArrowRight');
     const shake = await page.evaluate(() => { const s = __remake.scene.electricMaze; s.step(); return [s.pap.x, s.pap.y, s.pap.texture.key]; });
     assert.ok(shake[0] >= 238 && shake[0] <= 243); assert.match(shake[2], /electrocute/);
@@ -87,5 +94,5 @@ export async function testElectricMaze(page) {
   assert.equal(await page.evaluate(() => __remake.scene.player.visible), true); assert.equal(await page.evaluate(() => __remake.scene.dialogue), null);
   await open({}, 0, 43); await place(20, 120, 'l'); await page.keyboard.down('ArrowLeft'); await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowLeft');
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_tundra6'); assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y]), [580, 140]);
-  console.log('✓ Mê cung điện7: cửa/nhạc, intro/kýức, Papyrus giật/path/dấu chân/orb, mask trắng/đen/giật15frame/đường đi thật, giải/43/Sans/SAVE và tuyến giết đi qua/291');
+  console.log('✓ Mê cung điện7: cửa/nhạc, intro/kýức, tường kéo lại/4lần/3lời, Papyrus giật/path/dấu chân/orb, mask trắng/đen/giật15frame/đường đi thật, giải/43/Sans/SAVE và tuyến giết đi qua/291');
 }

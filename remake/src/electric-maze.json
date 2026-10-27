@@ -446,5 +446,36 @@
     "spr_sans_l": 4,
     "spr_sans_r": 4,
     "spr_sans_u": 4
-  }
+  },
+  "escapeFirst": [
+    {
+      "text": "COME ON!\nDON'T BE SO\nRUDE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I SET UP\nTHIS PUZZLE\nJUST FOR YOU!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "escapeSecond": [
+    {
+      "text": "DO YOU TREAT\nYOUR MOTHER\nTHIS WAY...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHEN SHE MAKES\nYOU A PUZZLE\n?!?!?",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "escapeRepeat": [
+    {
+      "text": "HUMANS...",
+      "portrait": "spr_face_papyrusside",
+      "font": "fnt_papyrus"
+    }
+  ]
 }
