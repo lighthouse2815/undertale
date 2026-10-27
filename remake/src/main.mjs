@@ -237,7 +237,8 @@ class World extends Scene {
     this.weaponStrength ??= 0; this.armorDefense ??= 0;
     const facing = this.player?.facing ?? 'd';
     const data = await loadRoom(this, name);
-    this.children.removeAll(true);
+    // DisplayList.removeAll(true) chỉ bỏ danh sách và skip callback, không hủy GameObject.
+    for (const child of this.children.getAll()) child.destroy();
     this.dataSource = data;
     for (const background of data.room.Backgrounds.filter((item) => item.Enabled && !item.Foreground)) {
       const image = this.add.image(background.X, background.Y, background.BackgroundAsset).setOrigin(0).setDepth(-2000000);
