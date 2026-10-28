@@ -2,6 +2,7 @@ import {RuinsWave} from './ruins-waves.mjs';
 import {MadDummyProjectile} from './mad-dummy-projectile.mjs';
 import {MadDummyShot} from './mad-dummy-shot.mjs';
 import {madDummyFirstHit} from './mad-dummy-dialogue.mjs';
+import {maskContains} from './collision-mask.mjs';
 
 export function loadMadDummyWaveAssets(scene){
   const base=new URL('../assets/',import.meta.url);
@@ -42,6 +43,11 @@ export class MadDummyWave extends RuinsWave {
   spawn(x,y,side,type=0,damage=this.damage){const actor=new MadDummyProjectile({x,y,side,type,damage}),image=this.scene.add.image(x/2,y/2,`${type===4?'spr_dummybot':'spr_dummybullet'}:${side}`).setOrigin(0).setScale(.5);this.spawners.push({actor,image});}
   summonHelpers(random=Math.random){const b=this.border;for(let i=0;i<8;i++){this.spawn(b.left+30+random()*(b.right-b.left-70),b.bottom+10+random()*10,3,2,1);this.spawn(b.left+30+random()*(b.right-b.left-70),b.top-40+random()*10,2,2,1);this.spawn(b.left-26-random()*10,b.bottom-25-random()*200,0,2,1);this.spawn(b.right+26+random()*10,b.bottom-25-random()*200,1,2,1);}this.duration=this.frames+333;}
   setHelpersMood(mood){if(!['shock','sad'].includes(mood))throw new Error(`Trạng thái Dummy không hợp lệ: ${mood}`);this.helpersMood=mood;if(mood==='sad')for(const e of this.spawners)if(e.actor.type===2)e.actor.scatter();}
+  missileTouchesHeart(shot){
+    const data=this.scene.cache.json.get('spr_hotlandmissle'),angle=shot.direction*Math.PI/180,extent=((data.MarginRight-data.MarginLeft+1)/2)*(Math.abs(Math.cos(angle))+Math.abs(Math.sin(angle))),hx=this.scene.soul.x*2,hy=this.scene.soul.y*2;
+    for(let y=0;y<16;y++)for(let x=0;x<16;x++)if(hx+x>=shot.x-extent&&hx+x<shot.x+extent&&hy+y>=shot.y-extent&&hy+y<shot.y+extent&&maskContains(this.scene,'spr_heart:mask',x,y))return true;
+    return false;
+  }
   step(){
     this.frames++;const s=this.scene,heart={x:s.soul.x*2,y:s.soul.y*2};
     if(this.firstHitTimer!==null&&--this.firstHitTimer===0){this.firstHitTimer=null;if(this.state?.phase===0){this.state.startFirstHitDialogue();this.onFirstHit(madDummyFirstHit());}}
@@ -53,7 +59,7 @@ export class MadDummyWave extends RuinsWave {
     this.spawners=this.spawners.filter(e=>!e.actor.dead);
     for(const entry of this.shots){
       const shot=entry.actor;
-      const hit=shot.step({heart,touchesHeart:()=>s.invFrames<=0&&this.touchesHeart({x:shot.x-(shot.type==='missile'?17:0),y:shot.y-(shot.type==='missile'?17:0),sprite:shot.type==='missile'?'spr_hotlandmissle':'spr_dummyshot'}),touchesDummy:()=>{const enemy=s.enemy,dx=enemy.x*2,dy=enemy.y*2,margin=shot.type==='missile'?3:8,size=shot.type==='missile'?3:12;return shot.x+size>=dx+5&&shot.x-margin<=dx+82&&shot.y+size>=dy&&shot.y-margin<=dy+103;},outside:()=>shot.x< -100||shot.x>740||shot.y< -100||shot.y>580});
+      const hit=shot.step({heart,touchesHeart:()=>s.invFrames<=0&&(shot.type==='missile'?this.missileTouchesHeart(shot):this.touchesHeart({x:shot.x,y:shot.y,sprite:'spr_dummyshot'})),touchesDummy:()=>{const enemy=s.enemy,dx=enemy.x*2,dy=enemy.y*2,extent=shot.type==='missile'?3.5*(Math.abs(Math.cos(shot.direction*Math.PI/180))+Math.abs(Math.sin(shot.direction*Math.PI/180))):0;return shot.type==='missile'?shot.x+extent>=dx+5&&shot.x-extent<=dx+82&&shot.y+extent>=dy&&shot.y-extent<=dy+103:shot.x+12>=dx+5&&shot.x+8<=dx+82&&shot.y+12>=dy&&shot.y+8<=dy+103;},outside:()=>shot.x< -100||shot.x>740||shot.y< -100||shot.y>580});
       const key=shot.type==='missile'?(shot.explosion||shot.age<6?`spr_dummymissle_shot:${shot.explosion?Math.min(6,shot.explosion-1):6-shot.age}`:`spr_hotlandmissle:${shot.frame}`):`spr_dummyshot:${Math.floor(this.frames*.25)%3}`;entry.image.setPosition(shot.x/2,shot.y/2).setTexture(key).setAngle(shot.type==='missile'?shot.direction:0);
       if(hit?.type==='dummyHit'){const previous=this.state?.phase;if(previous===0)this.firstHitTimer=30;this.state?.hit();if(previous===5&&this.state.phase===6){this.duration+=80;this.onHelpersDismissal();}this.onDummyHit();}else if(hit?.type==='heartHit')s.hurt(hit.damage);
       if(shot.dead)entry.image.destroy();

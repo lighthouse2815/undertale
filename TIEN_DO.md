@@ -1313,3 +1313,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã thêm chuỗi gọi, sa thải trợ thủ và giới thiệu robot cho mốc 6–14, nối với bộ đạn qua callback thoại. Kiểm nhịp/nhánh và tích hợp bộ đạn trong trình duyệt, check/build qua. Chưa gọi chuỗi từ giao diện trận; chuyển động Dummy và kiểu hiển thị thoại gốc vẫn cần chuyển.
 
 Đã chuyển bốn trang phản ứng khi đạn đầu trúng Mad Dummy và truyền qua callback sau 30 frame; kiểm lời/nhịp trong trình duyệt, check/build qua. Chưa nối callback vào giao diện trận hoặc màu/biểu cảm thoại gốc.
+
+Đã điều chỉnh hộp va chạm tên lửa theo góc xoay và kiểm mask tim ở biên trong trình duyệt; hồi quy đội hình/tên lửa, check/build qua. Cần đối chiếu thêm va chạm với Dummy và animation trong trận thực; giao diện trận vẫn chưa nối.
