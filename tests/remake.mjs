@@ -149,6 +149,7 @@ import { testWaterfallCrystalRoom } from './remake-waterfall-crystal-room.mjs';
 import { testWaterfallCrystalPath } from './remake-waterfall-crystal-path.mjs';
 import { testWaterfallMystery } from './remake-waterfall-mystery.mjs';
 import { testWaterfallStarPath } from './remake-waterfall-star-path.mjs';
+import { testWaterfallShyrenPath } from './remake-waterfall-shyren-path.mjs';
 import { testShyrenTrigger } from './remake-shyren-trigger.mjs';
 import { testShyrenBattle } from './remake-shyren-battle.mjs';
 import { testShyrenWave } from './remake-shyren-wave.mjs';
@@ -659,6 +660,7 @@ try {
   await testShyrenWave(page);
   await testShyrenBattle(page);
   await testShyrenTrigger(page);
+  await testWaterfallShyrenPath(page);
   await testWaterfallShyrenHall(page);
   await testWaterfallOnionsanPath(page);
   await testWaterfallOnionsan(page);

@@ -1137,3 +1137,7 @@ Một kiểm thử Onionsan tái hiện phím bị bỏ qua dù scene đã báo 
 ### Fixture nhạc đường Undyne
 
 Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để lại `mus_ambientwater` từ phòng 1 nhưng kiểm thử lại yêu cầu `mus_waterfall`. Fixture giờ đi qua phòng 2 trước khi vào phòng 3 để thiết lập đúng nhánh đang kiểm. Kiểm thử đường riêng, check/build qua; cần chạy lại bộ tổng để xác nhận toàn bộ chuỗi.
+
+### Đường tới hành lang Shyren
+
+Đã nối phòng Onionsan ↔ hành lang Shyren, marker và nhạc liên tục. `remake-waterfall-shyren-path.mjs` kiểm hai chiều bằng phím, nhạc thường/kết thúc; check/build qua. Kiểm thử cửa đặt plot 111 để tránh trận; chưa xác nhận hành trình từ cửa tới trigger Shyren bằng phím. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
