@@ -1097,3 +1097,7 @@ Bộ tổng `test-remake-6e47e0b.log` thất bại sớm khi chờ 200 ms thực
 ### Hạt sáng Waterfall
 
 Đã chuyển generator và hạt sáng ở các phòng sao, 12, chim và giày: giới hạn theo camera, chuyển động, mờ dần và dọn khi rời phòng. `remake-waterfall-glow-particles.mjs` kiểm sinh, thời gian sống, ngoài camera và dọn; hồi quy phòng 12, check/build qua. Cần đối chiếu mật độ/chuyển động hiển thị với gốc. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### Sao phòng Waterfall 11
+
+Đã thêm hoạt ảnh cho tám sao trang trí theo tốc độ ngẫu nhiên gốc. Kiểm thử phòng sao kiểm số lượng và đổi khung; hồi quy kính Sans, check/build qua. Cần đối chiếu nhịp thực tế; bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.

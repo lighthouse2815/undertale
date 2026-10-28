@@ -9,7 +9,7 @@ import boxData from './box-road.json' with { type: 'json' };
 // room_water11: Tonsil, bảng đá và kính thiên văn lạ.
 export class WaterfallStarRoom {
   constructor(world) {
-    this.world = world; this.viewer = new WaterfallStarViewer(world, 'spr_starcheckeredit2');
+    this.world = world; this.starElapsed=0; this.stars=world.roomObjects.filter(e=>e.item.ObjectName==='obj_cosmetic_glowstar').map(e=>{e.image.setDepth(-e.object.Depth);return {...e,frame:e.item.ImageIndex??0,speed:.2+Math.random()*.1};}); this.viewer = new WaterfallStarViewer(world, 'spr_starcheckeredit2');
     this.sans = world.roomObjects.find(e => e.item.ObjectName === 'obj_sans_room');
     if (this.sans && (world.flags[413] > 0 || world.flags[67] === 1 || world.plot > 200)) { this.sans.image.destroy(); this.sans = null; }
     if (this.sans) { this.sans.image.setDepth(this.sans.item.Y + this.sans.sprite.MarginBottom - this.sans.sprite.OriginY); world.colliders.push(createCollider(world.dataSource, this.sans.item)); }
@@ -24,7 +24,11 @@ export class WaterfallStarRoom {
     }
     for (const e of [this.telescope, this.box]) world.colliders.push(createCollider(world.dataSource, e.item)); startWaterfallQuietMusic(world);
   }
-  update(delta) { return this.viewer.update(delta); }
+  update(delta) {
+    this.starElapsed=Math.min(200,this.starElapsed+delta);
+    while(this.starElapsed>=1000/30) { this.starElapsed-=1000/30; for(const e of this.stars) { e.frame=(e.frame+e.speed)%e.sprite.TextureCount; e.image.setTexture(`${e.object.Sprite}:${Math.floor(e.frame)}`); } }
+    return this.viewer.update(delta);
+  }
   closeViewer() { this.viewer.closeViewer(); }
   destroy() { this.viewer.destroy(); }
   interact() {
