@@ -1205,3 +1205,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Đường tới hành lang mưa
 
 Đã nối khu lấy ô ↔ hành lang mưa, giữ ô và âm mưa/Reunited. `remake-waterfall-rain-path.mjs` kiểm hai chiều bằng phím, marker, sprite và nhạc; check/build qua. Kiểm thử đặt plot 114 để bỏ cảnh Kid, cần kiểm hành trình đầy đủ có Kid và lối sang phòng tiếp. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Hành trình cùng Monster Kid
+
+`remake-waterfall-rain-journey.mjs` kiểm bằng phím từ khu lấy ô qua hai cuộc gặp Kid và lời về Undyne; kiểm thử riêng, check/build qua. Cần nối phòng tiếp và kiểm thêm tuyến không có ô. Bộ tổng `test-remake-878f504.log` dừng vì timeout tại `testGrillbyRoom` khi chờ chuyển phòng; chưa xác định nguyên nhân, chưa có kết quả bộ tổng hoàn chỉnh.
