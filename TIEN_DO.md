@@ -1345,3 +1345,5 @@ Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm th�
 Đã bổ sung chuyển động tay và đầu Gerson khi nói và đưa về tư thế nghỉ; kiểm nhịp animation cùng hồi quy cửa hàng, check/build qua. Bộ tổng `test-remake-0148c1e.log` đang chạy trên phiên bản trước phần này.
 
 Đã nối Quiet Area ↔ Blook Acres, cửa nhà khóa theo cờ 433 và hai nhân vật sau kết thúc với các lời lặp/cờ. `remake-waterfall-blookyard.mjs` kiểm cửa, nhạc, khóa và các nhánh nhân vật; check/build qua. Nhà Napstablook, nhà bên cạnh, đường sang nông trại và sự kiện hẹn vẫn chưa chuyển.
+
+Đã chuyển tương tác TV, máy tính, tủ lạnh và ba đĩa nhạc trong nhà Napstablook; `remake-waterfall-blookhouse-objects.mjs` kiểm chọn/phát/dừng nhạc, lời thoại và callback bánh sandwich. Các đối tượng chưa nối vào phòng và cửa: cần hoàn thiện cảnh hẹn, trạng thái và chuyển phòng trước khi chơi được.
