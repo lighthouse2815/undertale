@@ -841,3 +841,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Cơ chế cầu hạt trong phòng Waterfall 5
 
 Đã nối lớp phòng cho bốn hạt: nhặt/mang, thả vào ô nước, trôi tới vật cản, bốn hạt thẳng tạo cầu và mở ô cản, chuông khôi phục, nấm, biển, cầu dựng sẵn và cờ tuyến giết. `test-waterfall-bridge-room-v4.log` kiểm nhặt/thả một hạt, trạng thái ghép cầu và chuông, tạo cầu sẵn/cờ/dọn; kiểm thử quy tắc, check/build qua. Kiểm thử ghép cầu đặt trực tiếp vị trí hạt, chưa chứng minh toàn bộ lời giải bằng điều khiển thật; va chạm, thứ tự xử lý, animation, nhạc/thoại, encounter và lối đi phòng 5 còn cần hoàn thiện, chưa nối cửa vào. Push `cd0ce27` thành công. Bộ tổng snapshot `9401df5` đang chạy (`test-undyne-full-v2.log`), chưa bao gồm thay đổi này.
+
+### Cờ hoa chuông Waterfall
+
+Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuyến thường, theo Create gốc. `test-waterfall-bridge-flag-v2.log` kiểm cờ thường và tuyến giết cùng phòng cầu; check/build qua. Các giới hạn phòng cầu ở mục trên vẫn còn. Push `a82247b` thành công; bộ tổng snapshot `9401df5` vẫn đang chạy, không gồm sửa này.

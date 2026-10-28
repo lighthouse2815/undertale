@@ -15,6 +15,7 @@ export class WaterfallBridgeRoom {
       const image = world.add.image(x, y, 'spr_bridgeseed:6').setOrigin(0).setDepth(-850000); const seed = {x,y,image}; this.openTile(seed); return seed;
     });
     this.bell = world.roomObjects.find((e) => e.item.ObjectName === 'obj_bellblossom');
+    if (this.bell) f[386] = 1;
     this.shrooms = world.roomObjects.filter((e) => e.item.ObjectName === 'obj_glowshroom');
     this.docks = world.roomObjects.filter((e) => e.item.ObjectName === 'obj_dockanim');
   }

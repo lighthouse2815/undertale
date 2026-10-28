@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 export async function testWaterfallBridgeRoom(page) {
   const open=(flags={},plot=106,spawn='obj_mainchara')=>page.evaluate(async({flags,plot,spawn})=>{const w=__remake.game.scene.getScene('World');w.flags=flags;w.plot=plot;await w.openRoom('room_water5',spawn);w.scene.pause();},{flags,plot,spawn});
   await open();
-  const initial=await page.evaluate(()=>{const w=__remake.scene,c=w.waterfallBridgeRoom,b=c.boards[0];w.player.setPosition(b.x-10,b.y);w.player.facing='r';return [c.boards.length,c.fixed.length,c.interact(),b.using,c.carried===b];});
-  assert.deepEqual(initial,[4,0,true,1,true]);
+  const initial=await page.evaluate(()=>{const w=__remake.scene,c=w.waterfallBridgeRoom,b=c.boards[0];w.player.setPosition(b.x-10,b.y);w.player.facing='r';return [c.boards.length,c.fixed.length,c.interact(),b.using,c.carried===b,w.flags[386]];});
+  assert.deepEqual(initial,[4,0,true,1,true,1]);
   const movement=await page.evaluate(()=>{const w=__remake.scene,c=w.waterfallBridgeRoom,b=c.boards[0];w.player.setPosition(190,320);w.player.facing='r';const placed=c.interact();const start=[b.x,b.y,b.using];for(let i=0;i<200&&b.using===2;i++)c.step();return [placed,start,b.using,b.x,b.y,c.carried===null];});
   assert.deepEqual(movement,[true,[220,340,2],3,260,340,true]);
   const bridge=await page.evaluate(()=>{const w=__remake.scene,c=w.waterfallBridgeRoom;c.carried=null;for(const [i,b] of c.boards.entries()){b.x=220;b.y=180+i*20;b.using=3;}c.step();const won=c.won;for(let i=0;i<31;i++)c.step();return [won,c.boards.map(b=>b.using),c.boards.map(b=>b.image.texture.key)];});
