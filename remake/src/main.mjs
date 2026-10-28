@@ -23,6 +23,7 @@ import { WaterfallShoeRoom } from './waterfall-shoe-room.mjs';
 import { WaterfallWishesRoom } from './waterfall-wishes-room.mjs';
 import { WaterfallFriendlyHub } from './waterfall-friendly-hub.mjs';
 import { WaterfallShopRoad } from './waterfall-shop-road.mjs';
+import { WaterfallBlookYard } from './waterfall-blookyard.mjs';
 import { WaterfallShop } from './waterfall-shop.mjs';
 import { WaterfallBird } from './waterfall-bird.mjs';
 import { WaterfallMystery } from './waterfall-mystery.mjs';
@@ -254,7 +255,8 @@ const ROOM_EXITS = {
   room_water_dogroom: { B: 'room_water_piano' },
   room_water_shoe: { B: 'room_water12' },
   room_water_bird: { t: 'room_water11', s: 'room_water_friendlyhub' },
-  room_water_friendlyhub: { B: 'room_water_trashzone2', s: 'room_water_bird', t: 'room_water_shop' },
+  room_water_friendlyhub: { B: 'room_water_trashzone2', s: 'room_water_bird', t: 'room_water_shop', w: 'room_water_blookyard' },
+  room_water_blookyard: { w: 'room_water_friendlyhub' },
   room_water_shop: { t: 'room_water_friendlyhub', X: 'room_shop2' },
   room_mysteryman: { s: 'room_water_fakehallway' },
   room_water3A: { B: 'room_water3' },
@@ -302,7 +304,7 @@ class World extends Scene {
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
     if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9', 'room_water_savepoint1', 'room_water11', 'room_water_fakehallway', 'room_water_bird', 'room_water_friendlyhub', 'room_water12', 'room_water_shoe', 'room_water_nicecream', 'room_water_onionsan', 'room_water14', 'room_water_piano', 'room_water_dogroom', 'room_water_statue', 'room_water_prewaterfall', 'room_water_waterfall', 'room_water_waterfall2', 'room_water_waterfall3', 'room_water_waterfall4', 'room_water_preundyne', 'room_water_undynebridge', 'room_water_undynebridgeend', 'room_water_trashzone1', 'room_water_trashsavepoint', 'room_water_trashzone2', 'room_tundra_grillby'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
-    if (this.waterfallMusic && !(name === 'room_water1' && this.waterfallMusic.key === 'mus_ambientwater') && !(name === 'room_water2' && this.waterfallMusic.key === 'mus_muscle') && !(['room_water11', 'room_water_bird', 'room_water_nicecream'].includes(name) && this.waterfallMusic.key === 'mus_waterfall') && !(['room_water_savepoint1', 'room_water11', 'room_water_fakehallway', 'room_water_bird', 'room_water_friendlyhub', 'room_water_nicecream', 'room_water_shop'].includes(name) && ['mus_waterquiet', 'mus_toomuch'].includes(this.waterfallMusic.key)) && !(['room_water_trashzone1', 'room_water_trashsavepoint', 'room_water_trashzone2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9', 'room_water12', 'room_water_shoe', 'room_water_onionsan', 'room_water14'].includes(name) && ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key))) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
+    if (this.waterfallMusic && !(name === 'room_water1' && this.waterfallMusic.key === 'mus_ambientwater') && !(name === 'room_water2' && this.waterfallMusic.key === 'mus_muscle') && !(['room_water11', 'room_water_bird', 'room_water_nicecream'].includes(name) && this.waterfallMusic.key === 'mus_waterfall') && !(['room_water_savepoint1', 'room_water11', 'room_water_fakehallway', 'room_water_bird', 'room_water_friendlyhub', 'room_water_nicecream', 'room_water_shop', 'room_water_blookyard'].includes(name) && ['mus_waterquiet', 'mus_toomuch'].includes(this.waterfallMusic.key)) && !(['room_water_trashzone1', 'room_water_trashsavepoint', 'room_water_trashzone2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9', 'room_water12', 'room_water_shoe', 'room_water_onionsan', 'room_water14'].includes(name) && ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key))) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
     if (name !== 'room_tundra_grillby') { this.grillbyMusic?.destroy(); this.grillbyMusic = null; }
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
@@ -349,6 +351,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
+    this.waterfallBlookYard?.destroy(); this.waterfallBlookYard = null;
     this.waterfallShopRoad = null;
     this.waterfallDummyEncounter?.destroy(); this.waterfallDummyEncounter = null;
     this.waterfallUndyneSecond?.destroy(); this.waterfallUndyneChase?.destroy(); this.waterfallRaft?.destroy(); this.waterfallWishingRoom?.destroy(); this.waterfallEncounter?.destroy(); this.waterfallPapyrusPhone?.destroy(); this.waterfallBridgeRoom?.destroy(); this.waterfallUndyne?.destroy(); this.waterfallRoomTiles?.destroy(); this.waterfallRockStream?.destroy(); this.waterfallSans?.destroy(); this.grillbyDate?.destroy(); this.grillbyNpcs?.destroy(); this.waterfallSentryVisuals?.destroy(); this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinFog = null; this.papyrusFogEncounter = null; this.waterfallEntrance = null; this.waterfallSentryNpcs = null; this.waterfallSentryVisuals = null; this.grillbyNpcs = null; this.grillbyDate = null; this.waterfallSans = null; this.waterfallBoxRoom = null; this.waterfallRockStream = null; this.waterfallRoomTiles = null; this.waterfallFalls = null; this.waterfallTutuRoom = null; this.waterfallGrass = null; this.waterfallUndyne = null; this.waterfallBridgeRoom = null; this.waterfallPapyrusPhone = null; this.waterfallEncounter = null; this.waterfallQuicheRoom = null; this.waterfallWishingRoom = null; this.waterfallHistoryRoom = null; this.waterfallRaft = null; this.waterfallUndyneChase = null; this.waterfallUndyneSecond = null; this.waterfallCrystalRoom = null; this.waterfallStarRoom?.destroy(); this.waterfallStarRoom = null; this.waterfallBird?.destroy(); this.waterfallBird = null; this.waterfallFriendlyHub = null; this.waterfallWishesRoom?.destroy(); this.waterfallWishesRoom = null; this.waterfallShoeRoom = null; this.waterfallNiceCreamRoom = null; this.waterfallGlowParticles?.destroy(); this.waterfallGlowParticles = null; this.waterfallOnionsan?.destroy(); this.waterfallOnionsan = null; this.waterfallShyrenHall?.destroy(); this.waterfallShyrenHall = null; this.waterfallPianoRoom?.destroy(); this.waterfallPianoRoom = null; this.waterfallDogRoom?.destroy(); this.waterfallDogRoom = null; this.waterfallMusicStatue?.destroy(); this.waterfallMusicStatue = null; this.waterfallUmbrellaRoom?.destroy(); this.waterfallUmbrellaRoom = null; this.waterfallTrashObjects = null; this.waterfallTrashStart = null; this.waterfallUndyneBridgeEnd?.destroy(); this.waterfallUndyneBridgeEnd = null; this.waterfallUndyneBridge?.destroy(); this.waterfallUndyneBridge = null; this.waterfallPreUndyne?.destroy(); this.waterfallPreUndyne = null; this.waterfallLedge?.destroy(); this.waterfallLedge = null; this.waterfallCastle?.destroy(); this.waterfallCastle = null; this.waterfallRainKid?.destroy(); this.waterfallRainKid = null; this.waterfallRainRoom?.destroy(); this.waterfallRainRoom = null; this.waterfallMystery = null; this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null; this.snowdinLibrary = null; this.sansBasement = null; this.snowdinInn = null; this.snowdinInnSleep = null; this.papyrusGarage = null;
@@ -525,6 +528,7 @@ class World extends Scene {
     if (name === 'room_water12') { this.waterfallWishesRoom = new WaterfallWishesRoom(this); this.waterfallPapyrusPhone = new WaterfallPapyrusPhone(this); this.waterfallEncounter = new WaterfallEncounter(this, spawnName); }
     if (name === 'room_water_friendlyhub') this.waterfallFriendlyHub = new WaterfallFriendlyHub(this);
     if (name === 'room_water_shop') this.waterfallShopRoad = new WaterfallShopRoad(this);
+    if (name === 'room_water_blookyard') this.waterfallBlookYard = new WaterfallBlookYard(this);
     if (name === 'room_water_bird') this.waterfallBird = new WaterfallBird(this, spawnName);
     if (name === 'room_water11') this.waterfallStarRoom = new WaterfallStarRoom(this);
     if (name === 'room_water_savepoint1') this.waterfallCrystalRoom = new WaterfallCrystalRoom(this);
@@ -820,7 +824,7 @@ class World extends Scene {
           if (this.flags[7] !== 1) { this.roomMusicFade?.stop(); this.waterfallMusic?.destroy(); this.waterfallMusic = null; }
           this.release(); this.scene.pause(); this.scene.launch('WaterfallShop'); state.phase = 'loading'; return;
         }
-        if (musicFade && this.flags[7] !== 1 && ((['room_water_bird', 'room_water_friendlyhub'].includes(this.dataSource.name) && ['room_water_bird', 'room_water_friendlyhub'].includes(destination)) || (['room_water11', 'room_water12'].includes(this.dataSource.name) && ['room_water11', 'room_water12'].includes(destination)) || (['room_water12', 'room_water_onionsan'].includes(this.dataSource.name) && ['room_water12', 'room_water_onionsan'].includes(destination)))) {
+        if (musicFade && this.flags[7] !== 1 && ((['room_water_bird', 'room_water_blookyard'].includes(this.dataSource.name) && destination === 'room_water_friendlyhub' || this.dataSource.name === 'room_water_friendlyhub' && ['room_water_bird', 'room_water_blookyard'].includes(destination)) || (['room_water11', 'room_water12'].includes(this.dataSource.name) && ['room_water11', 'room_water12'].includes(destination)) || (['room_water12', 'room_water_onionsan'].includes(this.dataSource.name) && ['room_water12', 'room_water_onionsan'].includes(destination)))) {
           this.roomMusicFade?.stop(); this.waterfallMusic?.destroy(); this.waterfallMusic = null;
         }
         await this.openRoom(destination, marker);
@@ -856,6 +860,7 @@ class World extends Scene {
     if (this.waterfallWishesRoom?.interact()) return;
     if (this.waterfallFriendlyHub?.interact()) return;
     if (this.waterfallShopRoad?.interact()) return;
+    if (this.waterfallBlookYard?.interact()) return;
     if (this.waterfallBird?.interact()) return;
     if (this.waterfallMystery?.interact()) return;
     if (this.waterfallStarRoom?.interact()) return;
