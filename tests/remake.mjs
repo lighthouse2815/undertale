@@ -130,6 +130,7 @@ import { testMoldsmalGroup } from './remake-moldsmal-group.mjs';
 import { testWaterfallGroup } from './remake-waterfall-group.mjs';
 import { testWaterfallEncounter } from './remake-waterfall-encounter.mjs';
 import { testWaterfallBridgePath } from './remake-waterfall-bridge-path.mjs';
+import { testWaterfallWishingFlowers } from './remake-waterfall-wishing-flowers.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -593,6 +594,7 @@ try {
   await testWaterfallGroup(page);
   await testWaterfallEncounter(page);
   await testWaterfallBridgePath(page);
+  await testWaterfallWishingFlowers(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

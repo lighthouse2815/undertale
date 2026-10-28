@@ -917,3 +917,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Cửa phòng cầu và quiche
 
 Đã nối cửa hai chiều Waterfall 4↔5↔5A, giữ nhạc khi qua phòng và marker đúng hướng. `test-waterfall-bridge-path-v3.log` kiểm bốn lượt cửa bằng bàn phím, marker, encounter theo hướng vào và nhạc; hồi quy phòng cầu/điện thoại/quiche, check/build qua. Nhánh quiche trong kiểm thử đặt trực tiếp bốn hạt thành cầu, chưa xác nhận lời giải bằng điều khiển thật; cửa C sang phòng 6 chưa nối vì phòng tiếp chưa được chuyển. Push encounter phòng cầu `27d7fb2` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm phần cửa này.
+
+### Hoa vọng âm Wishing Room
+
+Đã chuyển năm hoa và bảng Wishing Room, lời theo vị trí và nhánh im lặng khi tuyến giết/cờ 350, cùng collider hoa. `test-wishing-flowers-v2.log` kiểm từng hoa, bảng, hai nhánh im lặng và collider; check/build qua. Mới vào phòng trực tiếp để kiểm thử; kính thiên văn, cửa ẩn, encounter và cửa sang phòng 5 chưa nối. Push cửa phòng cầu/quiche `b3c5cd1` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm phần này.
