@@ -1,3 +1,4 @@
+import { WaterfallSentryNpcs } from './waterfall-sentry-npcs.mjs';
 import { WaterfallEntrance } from './waterfall-entrance.mjs';
 import { PapyrusFogEncounter } from './papyrus-fog-encounter.mjs';
 import { Game, Scene, Scale, CANVAS } from '../vendor/phaser.esm.min.js';
@@ -189,7 +190,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
+    this.events.once('shutdown', () => { this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
     this.events.once('shutdown', () => { this.roomMusicFade?.stop(); this.townMusic?.destroy(); this.waterfallMusic?.destroy(); stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -251,7 +252,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
-    this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinFog = null; this.papyrusFogEncounter = null; this.waterfallEntrance = null; this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null; this.snowdinLibrary = null; this.sansBasement = null; this.snowdinInn = null; this.snowdinInnSleep = null; this.papyrusGarage = null;
+    this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinFog = null; this.papyrusFogEncounter = null; this.waterfallEntrance = null; this.waterfallSentryNpcs = null; this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null; this.snowdinLibrary = null; this.sansBasement = null; this.snowdinInn = null; this.snowdinInnSleep = null; this.papyrusGarage = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -391,6 +392,7 @@ class World extends Scene {
     if (name === 'room_tundra_iceentrance') this.snowdinIcePuzzle = new SnowdinIcePuzzle(this);
     if (name === 'room_tundra_icehole') this.snowdinIceHole = new SnowdinIceHole(this);
     if (name === 'room_fogroom') { this.snowdinFog = new SnowdinFog(this); this.papyrusFogEncounter = new PapyrusFogEncounter(this); }
+    if (name === 'room_water2') this.waterfallSentryNpcs = new WaterfallSentryNpcs(this);
     if (name === 'room_water1') this.waterfallEntrance = new WaterfallEntrance(this);
     if (name === 'room_tundra_garage') this.papyrusGarage = new PapyrusGarage(this);
     if (name === 'room_tundra_inn') this.snowdinInn = new SnowdinInn(this);
@@ -487,7 +489,7 @@ class World extends Scene {
       this.snowdinDogHouse?.update(delta);
       this.snowdinIcePuzzle?.update(delta);
       this.snowdinIceHole?.update(delta);
-      this.snowdinFog?.update(delta); this.papyrusFogEncounter?.update(delta); this.waterfallEntrance?.update(delta);
+      this.snowdinFog?.update(delta); this.papyrusFogEncounter?.update(delta); this.waterfallEntrance?.update(delta); this.waterfallSentryNpcs?.update(delta);
       this.snowdinInn?.update(delta); this.snowdinInnSleep?.update(delta);
       this.snowdinLibrary?.update(delta);
       this.snowdinTownUndyne?.update(delta);
@@ -530,7 +532,7 @@ class World extends Scene {
     this.snowdinDogHouse?.update(delta);
     const icePuzzleLocked = this.snowdinIcePuzzle?.update(delta);
     const iceHoleLocked = this.snowdinIceHole?.update(delta);
-    this.snowdinFog?.update(delta); this.waterfallEntrance?.update(delta);
+    this.snowdinFog?.update(delta); this.waterfallEntrance?.update(delta); this.waterfallSentryNpcs?.update(delta);
     const papyrusFogLocked = this.papyrusFogEncounter?.update(delta);
     const innLocked = this.snowdinInn?.update(delta) || this.snowdinInnSleep?.update(delta);
     this.snowdinLibrary?.update(delta);
@@ -644,6 +646,7 @@ class World extends Scene {
   }
 
   tryInteract() {
+    if (this.waterfallSentryNpcs?.interact()) return;
     if (this.snowdinCheckpoint?.interact()) return;
     if (this.doggoRoom?.interact()) return;
     if (this.snowdinIce?.interact()) return;

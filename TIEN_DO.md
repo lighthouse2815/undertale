@@ -737,3 +737,7 @@ Các đoạn thoại của đòn xanh, chó và cảnh bắt được tạo khi 
 Đã chuyển các trang và bộ chọn theo `obj_npc_room`, `obj_echoflower` và `obj_townnpc_monsterkid1`: cá thay lời theo số lần nói và hoa đã nghe hay chưa; hoa lặp đúng lời cá hoặc im lặng khi cá vắng; Monster Kid có các nhánh lần đầu, lặp và trạng thái con 1/2. Dữ liệu này chưa nối thành NPC/tương tác hay cửa vào `room_water2`; Sans, điểm lưu và các cảnh của trạm còn phải chuyển.
 
 Kiểm thử `remake-waterfall-sentry-dialogue.mjs` qua, check/build remake qua. Push `5c31270` và `05147b4` đã thử lại nhưng hết thời gian chờ GitHub; full snapshot `eba8db3` vẫn đang chạy, không gồm thay đổi sau snapshot.
+
+### NPC cá, hoa vọng âm và Monster Kid
+
+Đã nối ba NPC vào `room_water2` khi mở trực tiếp: sprite cá, collider, hướng/hoạt họa nói của Kid, số lần trò chuyện, trạng thái hoa đã nghe, các nhánh lời và ẩn cá ở murderlv>=8/Kid khi plot>103. Có dọn NPC khi rời phòng; `test-waterfall-sentry-npcs-v1.log` kiểm tương tác hai thứ tự, collider, điều kiện ẩn và dọn. Hồi quy `test-waterfall-entrance-npcs-v1.log`, check/build qua. Trạm chưa mở đường chơi vì còn Sans/SAVE/nhạc/thác và cảnh liên quan; bộ tổng snapshot `eba8db3` vẫn chạy, không bao gồm phần này. Push `5c31270`, `05147b4`, `11aad20` đã thành công.

@@ -88,6 +88,7 @@ import { testPapyrusFogDialogue } from './remake-papyrus-fog-dialogue.mjs';
 import { testPapyrusFogEncounter } from './remake-papyrus-fog-encounter.mjs';
 import { testWaterfallEntrance } from './remake-waterfall-entrance.mjs';
 import { testWaterfallSentryDialogue } from './remake-waterfall-sentry-dialogue.mjs';
+import { testWaterfallSentryNpcs } from './remake-waterfall-sentry-npcs.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -509,6 +510,7 @@ try {
   await testPapyrusFogEncounter(page);
   await testWaterfallEntrance(page);
   await testWaterfallSentryDialogue();
+  await testWaterfallSentryNpcs(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);
