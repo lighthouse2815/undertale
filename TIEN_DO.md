@@ -1281,3 +1281,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Đường tới Mad Dummy
 
 Đã nối điểm lưu ↔ `room_water_trashzone2`, thêm xe, máy tính, DVD và tủ Astronaut Food với số lượng/túi đầy, ẩn hình nộm sau plot 115. `remake-waterfall-trash-objects.mjs` kiểm cửa, vật thể, tủ và túi đầy; hồi quy SAVE/vật phẩm, check/build qua. Cảnh và trận Mad Dummy, điện thoại và lối sang khu tiếp theo chưa chuyển; cần đối chiếu va chạm và hình trong phòng. Bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.
+
+### Lời Mad Dummy
+
+Đã chuyển lựa chọn lời mở đầu theo cờ 14, 355, tuyến giết/cờ 27 và lời sau trận theo cờ 36. `remake-mad-dummy-dialogue.mjs` kiểm các nhánh, check/build qua. Dữ liệu chưa nối vào cảnh và trận; cần chuyển hoạt ảnh, diễn biến, đạn và kết quả. Bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.

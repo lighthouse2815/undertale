@@ -171,6 +171,7 @@ import { testWaterfallStatuePath } from './remake-waterfall-statue-path.mjs';
 import { testWaterfallStatue } from './remake-waterfall-statue.mjs';
 import { testWaterfallDogPath } from './remake-waterfall-dog-path.mjs';
 import { testWaterfallDogRoom } from './remake-waterfall-dog-room.mjs';
+import { testMadDummyDialogue } from './remake-mad-dummy-dialogue.mjs';
 import { testAstronautFood } from './remake-astronaut-food.mjs';
 import { testDogResidue } from './remake-dog-residue.mjs';
 import { testWaterfallPianoPath } from './remake-waterfall-piano-path.mjs';
@@ -689,6 +690,7 @@ try {
   await testShyrenTrigger(page);
   await testWaterfallShyrenPath(page);
   await testWaterfallShyrenEnding(page);
+  testMadDummyDialogue();
   testAstronautFood();
   testDogResidue();
   await testWaterfallTrashObjects(page);
