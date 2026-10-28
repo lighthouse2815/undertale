@@ -1209,3 +1209,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Hành trình cùng Monster Kid
 
 `remake-waterfall-rain-journey.mjs` kiểm bằng phím từ khu lấy ô qua hai cuộc gặp Kid và lời về Undyne; kiểm thử riêng, check/build qua. Cần nối phòng tiếp và kiểm thêm tuyến không có ô. Bộ tổng `test-remake-878f504.log` dừng vì timeout tại `testGrillbyRoom` khi chờ chuyển phòng; chưa xác định nguyên nhân, chưa có kết quả bộ tổng hoàn chỉnh.
+
+### Hành lang mưa dọc
+
+Đã nối hai chiều sang `room_water_waterfall2`, giữ âm mưa/Reunited và tạo giọt mưa theo vùng và độ rơi của phòng gốc. `remake-waterfall-rain-path.mjs` kiểm cửa, marker, âm thanh hai tuyến và vùng giọt; hồi quy phòng mưa, check/build qua. Cảnh Kid, hoa vọng âm và cửa tiếp trong phòng mới chưa chuyển. Cặp bài Greater Dog/Grillby chạy riêng qua, chưa tái hiện timeout bộ tổng; bộ tổng `test-remake-9533de8.log` đang chạy lại từ trước phần này.
