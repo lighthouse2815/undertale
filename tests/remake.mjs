@@ -95,6 +95,7 @@ import { testWaterfallSentryMusic } from './remake-waterfall-sentry-music.mjs';
 import { testGrillbyDateDialogue } from './remake-grillby-date-dialogue.mjs';
 import { testGrillbyNpcDialogue } from './remake-grillby-npc-dialogue.mjs';
 import { testGrillbyNpcs } from './remake-grillby-npcs.mjs';
+import { testGrillbyBigdog } from './remake-grillby-bigdog.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -523,6 +524,7 @@ try {
   await testGrillbyDateDialogue();
   await testGrillbyNpcDialogue();
   await testGrillbyNpcs(page);
+  await testGrillbyBigdog(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

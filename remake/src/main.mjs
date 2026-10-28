@@ -395,7 +395,7 @@ class World extends Scene {
     if (name === 'room_tundra_iceentrance') this.snowdinIcePuzzle = new SnowdinIcePuzzle(this);
     if (name === 'room_tundra_icehole') this.snowdinIceHole = new SnowdinIceHole(this);
     if (name === 'room_fogroom') { this.snowdinFog = new SnowdinFog(this); this.papyrusFogEncounter = new PapyrusFogEncounter(this); }
-    if (name === 'room_tundra_grillby') this.grillbyNpcs = new GrillbyNpcs(this);
+    if (name === 'room_tundra_grillby') { this.grillbyNpcs = new GrillbyNpcs(this); this.snowdinTownDogs = new SnowdinTownDogs(this, true); }
     if (name === 'room_water2') {
       this.waterfallSentryNpcs = new WaterfallSentryNpcs(this); this.waterfallSentryVisuals = new WaterfallSentryVisuals(this);
       if (this.flags[67] !== 1 && !this.townMusic && !this.waterfallMusic) { this.waterfallMusic = this.sound.add('mus_muscle', { loop: true }); this.waterfallMusic.play(); }

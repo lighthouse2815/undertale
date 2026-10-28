@@ -190,6 +190,7 @@ export async function loadRoom(scene, name) {
   if (town) for (const key of Object.keys(townDogDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townNpcDialogue.sprites)) spriteNames.add(key);
+  if (name === 'room_tundra_grillby') spriteNames.add('spr_npc_saddog');
   if (name === 'room_water2') for (const key of ['spr_fishnpc_echo', 'spr_mkid_dt', 'spr_mkid_ut', 'spr_mkid_lt', 'spr_mkid_rt', ...['topleft', 'midtop', 'topright', 'midleft', 'midmid', 'midright', 'bottomleft', 'bottommid', 'bottomright'].map((part) => `spr_waterfall_${part}`)]) spriteNames.add(key);
   if (fogRoom) for (const key of ['spr_papyrus_lt', 'spr_papyrus_l', 'spr_papyrus_rt', 'spr_papyrus_shadowl', 'spr_papyrus_shadowr', 'spr_maincharar_shadow', 'spr_face_papyrus', 'spr_face_papyrusmad', 'spr_heartsmall']) spriteNames.add(key);
   if (dangerBridge) for (const key of Object.keys(dangerBridgeDialogue.sprites)) spriteNames.add(key);
@@ -251,6 +252,7 @@ export async function loadRoom(scene, name) {
     ...(fogRoom ? ['mus_papyrusboss', 'snd_break2'] : []),
     ...(name === 'room_water1' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water2' ? ['mus_muscle'] : []),
+    ...(name === 'room_tundra_grillby' ? ['snd_bluh'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
     ...(crossword ? ['mus_papyrus'] : []),
     ...(snowpuzz ? ['mus_dogmeander'] : []),

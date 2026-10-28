@@ -767,3 +767,7 @@ Bộ tổng snapshot `eba8db3` đã hoàn thành với mã thoát 0 (`test-papyr
 ### Mười khách tại Grillby
 
 Đã nối mười NPC vào phòng Grillby khi mở trực tiếp: sprite/độ sâu, collider, trò chuyện/lặp, hoạt ảnh Grillby và điều kiện ẩn theo các cờ chó, tuyến giết hoặc kết thúc; lời sau bữa Sans dùng `sansmode`. `test-grillby-npcs-v1.log` kiểm tương tác, cờ/ẩn và dọn; chuỗi `test-waterfall-station-grillby-v1.log` kiểm hồi quy trạm Waterfall; check/build qua. Greater Dog, đồ vật, âm nhạc, bữa ăn và cửa Grillby vẫn chưa được chuyển đầy đủ. Push `3e6ca0f` thất bại vì github.com:443 không kết nối; cần thử lại. Full snapshot `605ea64` đã qua, chưa bao gồm phần này.
+
+### Greater Dog trong Grillby
+
+Dùng lại cơ chế chó của town cho Greater Dog trong quán: sprite thường/buồn theo cờ 52/53, ẩn theo cờ 54 hoặc kết thúc, collider, khóa điều khiển và tiếng sủa sau 15/35 frame. `test-grillby-bigdog-v1.log` và `test-grillby-dogs-chain-v1.log` kiểm nhánh quán cùng hồi quy chó ở town và các khách; check/build qua. Âm nhạc Grillby chưa nối nên chưa kiểm dừng/tiếp nhạc quán; bữa ăn, đồ vật và cửa vẫn còn. Push `3e6ca0f` và `bcd0c4f` thành công; bộ tổng snapshot `605ea64` đã qua, không gồm phần mới.

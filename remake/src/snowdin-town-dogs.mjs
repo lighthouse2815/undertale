@@ -3,16 +3,17 @@ import { inInteractionRange } from './npc.mjs';
 
 // Các chó từGrillby raTown sau kếtthúc, GreaterDog và thànhviênAmalgamate.
 export class SnowdinTownDogs {
-  constructor(world) {
-    this.world = world; this.text = world.dataSource.townDogDialogue; this.elapsed = 0; this.frames = 0; this.locked = false; this.stage = 'waiting'; this.dogs = [];
+  constructor(world, grillby = false) {
+    this.world = world; this.grillby = grillby; this.text = world.dataSource.townDogDialogue; this.elapsed = 0; this.frames = 0; this.locked = false; this.stage = 'waiting'; this.dogs = [];
     const f = world.flags;
     for (const e of [...world.roomObjects]) {
       const name = e.item.ObjectName;
       if (!['obj_bigdog', 'obj_grillbynpc_mandog', 'obj_grillbynpc_womandog', 'obj_grillbynpc_doggo'].includes(name)) continue;
-      const big = name === 'obj_bigdog', killed = f[big ? 54 : name.endsWith('doggo') ? 52 : 53] === 1;
-      if (!f[7] || killed) { e.image.destroy(); world.roomObjects = world.roomObjects.filter((entry) => entry !== e); continue; }
-      this.add(e, big ? 'big' : name.replace('obj_grillbynpc_', ''), big ? 'spr_bigdog_side' : e.object.Sprite);
-      if (big) {
+      const big = name === 'obj_bigdog'; if (grillby && !big) continue;
+      const killed = f[big ? 54 : name.endsWith('doggo') ? 52 : 53] === 1;
+      if ((grillby ? f[7] === 1 : !f[7]) || killed) { e.image.destroy(); world.roomObjects = world.roomObjects.filter((entry) => entry !== e); continue; }
+      this.add(e, big ? 'big' : name.replace('obj_grillbynpc_', ''), big ? grillby ? (f[52] === 1 && f[53] === 1 ? 'spr_npc_saddog' : 'spr_npc_bigdog') : 'spr_bigdog_side' : e.object.Sprite);
+      if (big && !grillby) {
         const key = 'spr_amalgam_dognpc', sprite = world.dataSource.sprites.get(key), item = { ...e.item, X: e.item.X - 55, Y: e.item.Y + 4 };
         const image = world.add.image(item.X, item.Y, `${key}:0`).setOrigin(sprite.OriginX / sprite.Width, sprite.OriginY / sprite.Height);
         this.add({ item, image, object: e.object, sprite }, 'amalgam', key);
@@ -39,9 +40,9 @@ export class SnowdinTownDogs {
   interact() {
     const w = this.world, e = this.dogs.find((e) => inInteractionRange(w, { ...e, item: { ...e.item, X: e.item.X - e.sprite.OriginX, Y: e.item.Y - e.sprite.OriginY } })); if (!e) return false;
     if (['big', 'amalgam'].includes(e.name)) {
-      this.barking = e; this.locked = true; this.stage = 'beforeBark'; this.frames = 0; this.music = w.townMusic; this.music?.pause(); e.image.setTexture(`${e.object.Sprite}:1`); w.release();
+      this.barking = e; this.locked = true; this.stage = 'beforeBark'; this.frames = 0; this.music = w.townMusic ?? w.grillbyMusic; this.music?.pause(); e.image.setTexture(`${e.object.Sprite}:1`); w.release();
     } else { this.talking = e; w.showDialogue(this.text[e.name], { onClose: () => { this.talking = null; } }); }
     return true;
   }
-  destroy() { if (this.music === this.world.townMusic && this.music?.isPaused) this.music.resume(); this.dogs.forEach((e) => e.image.destroy()); }
+  destroy() { if ((this.music === this.world.townMusic || this.music === this.world.grillbyMusic) && this.music?.isPaused) this.music.resume(); this.dogs.forEach((e) => e.image.destroy()); }
 }
