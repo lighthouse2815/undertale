@@ -1257,3 +1257,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối phòng trước Undyne ↔ `room_water_undynebridge`, cảnh cảnh báo giáo, xuất hiện Undyne, âm nhạc, vùng cấm theo mask, giáo sàn và trận nhanh khi va chạm. `remake-waterfall-undyne-bridge.mjs` kiểm cửa, trigger bằng phím, mốc cảnh, mask, ảnh/dọn giáo và trận thật; hồi quy phòng trước/giáo, check/build qua. Chuyển động Undyne còn xấp xỉ, chưa kiểm toàn tuyến đường dài, chưa nối phòng cuối và tiếp diễn; cần đối chiếu timing/âm thanh. Bộ tổng `test-remake-9533de8.log` dừng tại `testWaterfallBridgePath`: nhân vật không di chuyển trong 5 giây sau `testWaterfallEncounter`, chưa xác định nguyên nhân.
 
 Đã cho bài đường cầu chờ cảnh World hoạt động sau trận trước khi nhấn phím; cặp encounter/đường cầu chạy riêng, check/build qua. Đây là một khả năng gây timeout, chưa tái hiện được lỗi để xác nhận. Bộ tổng `test-remake-ebb3c93.log` đã chạy lại trước sửa bài này.
+
+Đã tách phần vẽ/mask/va chạm giáo thành `undyne-bridge-spears.mjs` để dùng chung cho hai phòng truy đuổi; kiểm thử cầu và trận nhanh, check/build qua. Phòng cuối chưa nối và vẫn cần chuyển cảnh rơi.

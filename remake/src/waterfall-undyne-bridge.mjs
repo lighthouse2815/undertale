@@ -1,10 +1,10 @@
 import { createCollider } from './movement.mjs';
-import { UndyneTileSpears } from './undyne-tile-spears.mjs';
+import { UndyneBridgeSpears } from './undyne-bridge-spears.mjs';
 
 // obj_undyneencounter3, obj_speartilefake và obj_speartilegen.
 export class WaterfallUndyneBridge {
   constructor(world){
-    this.world=world;this.elapsed=0;this.frames=0;this.stage=world.plot<114?'waiting':'done';this.images=new Map();this.fake=[];this.barriers=[];this.fixed=[];this.xhome=300;this.yhome=140;this.route=0;
+    this.world=world;this.elapsed=0;this.frames=0;this.stage=world.plot<114?'waiting':'done';this.fake=[];this.barriers=[];this.fixed=[];this.xhome=300;this.yhome=140;this.route=0;
     if(this.stage==='done')return;
     this.undyne=world.add.image(300,140,'spr_undyne_starkd:0').setOrigin(0).setAlpha(0).setDepth(-1000090);
     this.shadow=world.add.image(300,140,'spr_undyne_shad:0').setOrigin(0).setAlpha(0).setDepth(-1000091);
@@ -32,22 +32,13 @@ export class WaterfallUndyneBridge {
       if(this.frames>=this.duration){this.music=w.sound.add('mus_undynefast',{loop:true});this.music.play();w.flags[17]=1;this.wait('approach',6);}
     }else if(this.stage==='approach'){
       this.yhome+=4;this.undyne.setTexture(`spr_undyne_starkd:${Math.floor(this.frames*.25)%4}`);
-      if(this.frames>=this.duration){this.generator=new UndyneTileSpears();this.wait('chase',0);}
+      if(this.frames>=this.duration){this.tiles=new UndyneBridgeSpears(w);this.wait('chase',0);}
     }else if(this.stage==='chase'){
       this.moveActor();this.shadow.alpha=Math.min(1,this.shadow.alpha+.1);
-      const p=w.player,down=k=>w.keys[k].isDown||[...w.touch.values()].some(t=>t.direction===k);
-      const output=this.generator.step({player:p,direction:{left:down('left'),right:down('right'),up:down('up'),down:down('down')},blocked:(x,y)=>this.blocked(x,y),touching:s=>s.x+12>=p.x&&s.x+6<=p.x+19&&s.y+37>=p.y+19&&s.y+28<=p.y+29});
-      if(output.volley)w.sound.play('snd_spearappear');if(output.rise)w.sound.play('snd_spearrise');if(output.intense){w.flags[285]=1;w.sound.play('snd_squeak');}
-      for(const spear of this.generator.spears){
-        if(!this.images.has(spear))this.images.set(spear,{base:w.add.image(spear.x,spear.y,'spr_tilespear:0').setOrigin(0),bud:w.add.image(spear.x,spear.y,'spr_tilespear:0').setOrigin(0)});
-        const {base,bud}=this.images.get(spear);base.setPosition(spear.x,spear.y).setDepth(spear.y+35).setAlpha(spear.alpha);bud.setPosition(spear.x,spear.y).setDepth(spear.y+36).setAlpha(spear.alpha).setVisible(['rise','hold','fade'].includes(spear.stage)).setTexture(`spr_tilespear:${Math.min(3,Math.floor(spear.frame))}`);
-      }
-      for(const [spear,images] of this.images)if(!this.generator.spears.includes(spear)){images.base.destroy();images.bud.destroy();this.images.delete(spear);}
-      if(output.hit){w.flags[15]=1;w.flags[16]=1;w.flags[370]=1;w.release();window.__remake.startBattle('undyneQuick');}
+      this.tiles.step();
     }
     if(this.undyne){const c=w.cameras.main;this.undyne.setPosition(this.xhome+Math.floor(Math.max(0,c.scrollX)*.2),this.yhome+Math.floor(Math.max(0,c.scrollY)*.2));this.shadow.setPosition(this.undyne.x,this.undyne.y);}
   }
-  blocked(x,y){const px=Math.floor(x/20),py=Math.floor(y/20);return px>=0&&py>=0&&px<97&&py<62&&(this.world.textures.getPixel(px,py,'spr_nospear:mask')?.red??0)>0;}
   moveActor(){
     const p=this.world.player,u=this.undyne;let dx=0,dy=0;
     if(this.route===0){if(p.x>u.x+40&&this.xhome<1110)dx=3;else if(p.x<u.x-40)dx=-3;if(this.xhome>=1110){this.xhome=1109;this.yhome=161;this.route=1;}}
@@ -56,5 +47,5 @@ export class WaterfallUndyneBridge {
     else if(this.route===3){if(p.y>u.y+60&&this.yhome>550)dy=3;else if(p.y<u.y-10&&this.yhome<800)dy=-3;if(this.yhome<=550&&p.x>u.x+60){this.yhome=551;this.xhome=801;this.route=2;}else if(this.yhome>=800&&p.x>u.x+40){this.xhome=801;this.route=4;}}
     this.xhome+=dx;this.yhome+=dy;this.undyne.setTexture(`spr_undyne_starkd:${dx||dy?Math.floor(this.frames*.2)%4:0}`);
   }
-  destroy(){this.music?.destroy();this.undyne?.destroy();this.shadow?.destroy();for(const f of this.fake)f.image.destroy();for(const image of this.fixed)image.destroy();for(const {base,bud} of this.images.values()){base.destroy();bud.destroy();}}
+  destroy(){this.music?.destroy();this.undyne?.destroy();this.shadow?.destroy();for(const f of this.fake)f.image.destroy();for(const image of this.fixed)image.destroy();this.tiles?.destroy();}
 }
