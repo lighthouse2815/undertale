@@ -1141,3 +1141,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Đường tới hành lang Shyren
 
 Đã nối phòng Onionsan ↔ hành lang Shyren, marker và nhạc liên tục. `remake-waterfall-shyren-path.mjs` kiểm hai chiều bằng phím, nhạc thường/kết thúc; check/build qua. Kiểm thử cửa đặt plot 111 để tránh trận; chưa xác nhận hành trình từ cửa tới trigger Shyren bằng phím. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
+
+### Hành trình tới trận Shyren
+
+Đã kiểm người chơi đi bằng phím từ cửa Onionsan, vòng qua vật cản vào trigger Shyren, vào trận và trốn; kiểm thử đường hai chiều cùng check/build qua. Chi tiết nhạc/hoạt ảnh và các nhánh toàn trận vẫn cần đối chiếu; bộ tổng `test-remake-878f504.log` đang chạy từ trước kiểm thử này.
