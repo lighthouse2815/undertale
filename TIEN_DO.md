@@ -1287,3 +1287,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã chuyển lựa chọn lời mở đầu theo cờ 14, 355, tuyến giết/cờ 27 và lời sau trận theo cờ 36. `remake-mad-dummy-dialogue.mjs` kiểm các nhánh, check/build qua. Dữ liệu chưa nối vào cảnh và trận; cần chuyển hoạt ảnh, diễn biến, đạn và kết quả. Bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.
 
 Đã chuyển phản hồi ACT Check/Talk và cờ 147; `remake-mad-dummy-act.mjs` kiểm nhánh, check/build qua. Chưa nối vào giao diện trận, đạn và các trạng thái lượt vẫn cần chuyển.
+
+Đã chuyển vòng đời đạn con: vào khung, dừng, nhấp nháy hoặc lùi và bắn về vị trí tim. `remake-mad-dummy-projectile.mjs` kiểm bốn hướng, bộ đếm và loại đạn; check/build qua. Mô hình chưa nối renderer/trận, còn thiếu chuyển động đạn bắn ra, va chạm, các đội hình và tiến trình trận.
