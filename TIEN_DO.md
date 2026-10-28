@@ -1297,3 +1297,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã mở rộng `mad-dummy-waves.mjs` với đội hình con2 2/3, nhánh HP và thời lượng theo game gốc; kiểm số lượng, hướng, ngưỡng HP, bắn và dọn trong trình duyệt, check/build qua. Chưa nối các đội hình vào trạng thái trận, các giai đoạn sau và sát thương thực vẫn cần chuyển.
 
 Đã thêm bốn đội hình con2 5, đạn đỏ nhấp nháy, sát thương khi đạn con chạm tim và ATK 7 ở các lượt sau. Kiểm đội hình, sát thương, nhịp và dọn trong trình duyệt cùng check/build qua. Chưa nối vào trận thật; đội hình giai đoạn sau, tên lửa, HP và chuyển lượt vẫn cần hoàn thiện.
+
+Đã thêm đội hình robot con2 14/15/16/17.5, hình tên lửa/nổ và va chạm; kiểm số lượng, chuyển mốc, hình tên lửa và dọn trong trình duyệt, check/build qua. Trận, HP và chuyển lượt chưa nối; cần đối chiếu mask xoay, timing và hiệu ứng tên lửa với game gốc.
