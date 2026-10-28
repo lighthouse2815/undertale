@@ -989,3 +989,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Phòng lưu Crystal
 
 Đã chuyển bàn phô mai, hoa/chuột, nhạc và SAVE tại phòng Crystal, gồm lời, hồi HP và tên file. `test-waterfall-crystal-v1.log` kiểm các tương tác/nhánh, lưu file và nhạc; hồi quy SAVE Waterfall, check/build qua. Mới mở phòng trực tiếp, chưa nối cửa từ phòng 9 hoặc phòng tiếp. Push cửa tuyến truy đuổi `c3204e0` thành công; bộ tổng `test-remake-4022c4c.log` đang chạy, không gồm phần này.
+
+### Đường tới Crystal
+
+Đã nối cửa phòng 9 ↔ Crystal, fade nhạc thường và giữ Reunited ở tuyến kết thúc. `test-waterfall-crystal-path-v1.log` kiểm cửa bằng phím, marker và hai nhánh nhạc; hồi quy phòng Crystal, check/build qua. Cửa từ Crystal sang phòng tiếp theo chưa được chuyển. Push phòng Crystal `7caa8a5` thành công; bộ tổng `test-remake-4022c4c.log` vẫn đang chạy, không gồm phần này.
