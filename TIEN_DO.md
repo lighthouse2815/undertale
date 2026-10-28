@@ -1013,3 +1013,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Hành lang bí mật Waterfall
 
 Đã chuyển nhánh fun 66 từ Crystal, xóa fun sau khi vào, cửa xám xác suất 1/10, phòng nhân vật bí mật, tương tác biến mất và lối ra. `remake-waterfall-mystery.mjs` kiểm nhánh, hai khả năng cửa, tương tác và đường về phòng sao; hồi quy cửa Crystal–phòng sao, check/build qua. Cần đối chiếu thêm hình, thời gian và âm thanh với game gốc; Sans và các cửa khác phòng sao vẫn thiếu. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Tái sử dụng màn kính thiên văn
+
+Đã tách màn nhìn sao khỏi Wishing Room để dùng tiếp cho kính của Sans. Hồi quy lựa chọn, điều khiển, khóa và âm lượng kính Wishing Room cùng check/build qua; kính Sans chưa được nối. Bộ tổng `test-remake-fe0840e.log` tiếp tục chạy từ trước các thay đổi mới.
