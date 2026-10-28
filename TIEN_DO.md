@@ -675,3 +675,7 @@ Bổ sung lựa chọn dòng trạng thái từ `obj_papyrusboss` theo ngưỡng
 ### ACT của Papyrus
 
 Đã chuyển chọn lời CHECK (hai nhánh thường/diệt chủng), INSULT ba phản ứng đầu rồi lời hết tác dụng, FLIRT lần đầu và hai lựa chọn spaghetti/không có ưu điểm, lần hai và lời sau khi tim xanh; cập nhật cờ hẹn hò 66, số lượt và mã `whatiheard` dùng cho lời trước đợt tiếp theo. `test-papyrus-act-v1.log` kiểm các nhánh, lượt lặp và hai lựa chọn; check/build qua. Đây là logic ACT chuẩn bị cho scene boss, chưa nối menu/thể hiện thoại hoặc trận trong phòng sương. Full snapshot `4261ced` vẫn chạy; GitHub không kết nối cổng 443, đang thử push lại `993b468` và `64f3846`.
+
+### Kiểm thử tổng và đồng bộ Git
+
+Snapshot `4261ced` đã ghi đến bước cuối hosting tĩnh trong `test-papyrus-loop-full-v1.log`, nhưng phiên theo dõi bị mất nên không có mã thoát đáng tin cậy; không khẳng định bộ tổng đã qua. Đã chạy lại snapshot `dd246e1` trong `test-papyrus-act-full-v1.log`, ghi mã thoát vào `.cache/test-papyrus-act-full-v1.exit` khi kết thúc; hiện tiến trình vẫn chạy. Lần push commit `993b468` thất bại do GitHub 443 không kết nối; đang thử đẩy các commit `993b468`, `64f3846`, `dd246e1` lên `main`. Tiếp tục bằng việc ghép scene trận Papyrus, hoàn thiện cảnh thắng/thua và phòng sương; các thành phần hiện có chưa tạo thành gameplay hoàn chỉnh.
