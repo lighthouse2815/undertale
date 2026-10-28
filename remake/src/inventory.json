@@ -234,6 +234,16 @@
       "info": [
         "* \"Ballet Shoes\" - Wpn AT 7\n* These used shoes make you\n  feel incredibly dangerous."
       ]
+    },
+    "26": {
+      "name": "Punch Card",
+      "battleName": "PunchCard",
+      "seriousName": "PunchCard",
+      "info": [
+        "* \"Punch Card\" - Battle Item\n* Use to make punching attacks\n  stronger in one battle.",
+        "* Use outside of battle to\n  look at the card."
+      ],
+      "use": "* OOOORAAAAA!!!\n* You rip up the punch card!"
     }
   },
   "actions": [

@@ -18,7 +18,7 @@ export class FieldMenu extends Scene {
       this.load.json(key, new URL(`fonts/${key}/${key}.json`, base).href);
       this.load.image(key, new URL(`fonts/${key}/${key}.png`, base).href);
     }
-    for (const key of ['spr_heartsmall', 'spr_face_torielhappytalk', 'spr_face_torieltalkside', 'spr_face_torielembarrassed']) {
+    for (const key of ['spr_heartsmall', 'spr_face_torielhappytalk', 'spr_face_torieltalkside', 'spr_face_torielembarrassed', 'spr_punchcard']) {
       if (!this.textures.exists(`${key}:0`)) this.load.image(`${key}:0`, new URL(`sprites/${key}/${key}_0.png`, base).href);
     }
     for (const key of ['snd_squeak', 'snd_select', 'snd_phone', 'snd_power', 'snd_swallow', 'snd_spooky', 'snd_item']) if (!this.cache.audio.exists(key)) this.load.audio(key, new URL(`sounds/${key}/${key}.wav`, base).href);
@@ -105,6 +105,7 @@ export class FieldMenu extends Scene {
   }
 
   key(code) {
+    if (this.mode === 'card') { if (this.time.now >= this.cardReadyAt && ['KeyZ','Enter','KeyX','ShiftLeft','ShiftRight'].includes(code)) this.close(); return; }
     const cancel = ['KeyX', 'ShiftLeft', 'ShiftRight'].includes(code);
     const menu = ['KeyC', 'ControlLeft', 'ControlRight'].includes(code);
     if (cancel || (menu && this.mode === 'main')) {
@@ -132,6 +133,7 @@ export class FieldMenu extends Scene {
         const action = ['use', 'info', 'drop'][this.actionSelection];
         const id = this.world.inventory[this.itemSelection];
         const portrait = [56, 57].includes(id) && this.world.snowdinTownUndyne?.actor && (action === 'use' || id === 56 && action === 'drop') ? 'spr_face_undyne1' : false;
+        if (id === 26 && action === 'use') { this.mode = 'card'; this.cardReadyAt = this.time.now + 200; this.children.removeAll(true); this.add.image(0,0,'spr_punchcard:0').setOrigin(0); return; }
         this.close(); this.world.showDialogue(itemAction(this.world, this.itemSelection, action, this.items), { portrait });
       } else if (this.mode === 'items') {
         this.mode = 'action'; this.actionSelection = 0; this.sound.play('snd_select'); this.draw();

@@ -21,7 +21,7 @@ export class MultiBattle extends RuinsBattle {
   live() { return this.enemies.filter((enemy) => enemy.alive && !enemy.away); }
   spareable(enemy = this.enemies?.[this.selected]) {
     const w = this.previousScene;
-    return !!enemy?.alive && !enemy.away && enemy.hp - (w.lv === 20 ? 99 : 8 + w.lv * 2) - w.weaponStrength - (this.attackBonus ?? 0) + enemy.def - enemy.mercy < 0;
+    return !!enemy?.alive && !enemy.away && enemy.hp - (w.lv === 20 ? 99 : 8 + w.lv * 2) - w.weaponStrength - (this.attackBonus ?? 0) - (this.cardAttackBonus ?? 0) + enemy.def - enemy.mercy < 0;
   }
   clearLabels() { this.labels.forEach((label) => label.destroy()); this.labels = []; this.labelsKind = null; }
   choose(kind, items) {

@@ -27,11 +27,20 @@ export function itemAction(world, index, action, text, { scene = world, health =
     world.inventory.splice(index, 1);
     return [line];
   }
+  if (id === 26 && scene !== world) {
+    world.inventory.splice(index, 1);
+    if (world.weapon !== 14) return [item.use, '* But nothing happened.'];
+    const attack = (world.lv === 20 ? 99 : 8 + world.lv * 2) + (scene.attackBonus ?? 0) + (scene.cardAttackBonus ?? 0);
+    const add = attack > 28 ? 2 : attack > 26 ? 3 : attack > 23 ? 4 : attack > 18 ? 5 : 6;
+    scene.cardAttackBonus = (scene.cardAttackBonus ?? 0) + add; world.flags[78] = 1; scene.sound.play('snd_tearcard');
+    return [item.use, `* Your hands are burning!\n* AT increased by ${add}!`];
+  }
   if (id === 3) return [item.use]; // Gậy gốc được nhặt lại; không tiêu hao/đổi vũ khí.
   if (id === 12 || id === 13 || id === 14 || id === 24 || id === 25) {
     if (id === 12 || id === 24) {
       world.inventory[index] = world.armor; world.armor = id; world.armorDefense = id === 24 ? 10 : 3;
     } else {
+      if (scene !== world && world.weapon === 14 && world.flags[78] === 1) scene.cardAttackBonus = 0;
       world.inventory[index] = world.weapon; world.weapon = id; world.weaponStrength = id === 25 ? 7 : id === 14 ? 5 : 3;
     }
     scene.sound.play('snd_item');
