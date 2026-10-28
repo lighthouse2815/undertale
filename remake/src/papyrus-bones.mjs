@@ -9,9 +9,9 @@ export function loadPapyrusBoneAssets(scene) {
 
 // Ba xương trắng mở đầu của obj_papyrusboss, cùng xương trên/dưới dùng ở các lượt sau.
 export class PapyrusBones {
-  constructor(scene, { firstWave = false, fighto = -1, turn = null } = {}) {
+  constructor(scene, { firstWave = false, fighto = -1, turn = null, xfight = 0 } = {}) {
     this.scene = scene; this.fighto = fighto; this.frames = 0; this.bullets = []; this.captured = false;
-    this.duration = firstWave ? 140 : ({ '-1': 200, 0: 300, 1: 220, 2: 240 })[turn] ?? 140;
+    this.duration = firstWave ? 140 : ({ '-1': 200, 0: 300, 1: 220, 2: 240, 3: 150, 4: 240, 5: 330 })[turn] ?? 140;
     this.border = { left: 192, right: 442, top: 250, bottom: 385 };
     const b = this.border; scene.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2);
     this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(b.left / 2, b.top / 2, (b.right - b.left) / 2, (b.bottom - b.top) / 2).setVisible(false);
@@ -23,9 +23,12 @@ export class PapyrusBones {
         '-1': [[b.right + 30, 20, -3], [b.right + 200, 20, -3], [b.right + 370, 40, -3]],
         0: [[b.right + 20, 20, -4], [b.right + 150, 40, -4], [b.right + 280, 40, -4], [b.right + 410, 40, -4], [b.right + 390, 60, -3], [b.right + 510, 60, -3], [b.right + 630, 60, -3]],
         1: [[b.left - 10, 60, 3], [b.left - 80, 40, 3, true], [b.left - 230, 20, 4], [b.left - 310, 20, 4], [b.left - 390, 20, 4], [b.left - 490, 50, 4], [b.left - 580, 40, 4, true]],
-        2: [[b.left - 30, 60, 3.5], [b.left - 160, 60, 3.5], [b.left - 290, 60, 3.5], [b.left - 390, 80, 3.5, false, true], [b.right + 1120, 30, -6]]
+        2: [[b.left - 30, 60, 3.5], [b.left - 160, 60, 3.5], [b.left - 290, 60, 3.5], [b.left - 390, 80, 3.5, false, true], [b.right + 1120, 30, -6]],
+        3: [[b.left - 40, 50, 4], [b.left - 40, 90, 4, true], [b.right + 140, 40, -4, true], ...[20, 30, 40, 50, 50, 40, 30, 20].map((height, i) => [b.left - 260 - i * 20, height, 4])],
+        4: [[b.left - 40, 30, 4], [b.left - 40, 80, 4, true], [b.left - 60, 30, 4], [b.left - 60, 80, 4, true], [b.left - 170, 60, 4], [b.left - 170, 110, 4, true], [b.left - 190, 60, 4], [b.left - 190, 110, 4, true], [b.left - 320, 90, 4, false, true], [b.right + 480, 60, -4], [b.right + 700, 30, -4], [b.right + 700, 80, -4, true], [b.left - 700, 30, 4], [b.left - 700, 80, 4, true]],
+        5: [[40, 30], [70, 45], [100, 60], [130, 45], [160, 30], [190, 15], [300, 15], [330, 30], [360, 45], [390, 60], [700, 30], [730, 45], [760, 60], [790, 45], [820, 30], [850, 15], [970, 15], [1000, 30], [1030, 45], [1060, 60]].map(([dx, height]) => [b.right + dx, height, dx < 700 ? -3 : -4])
       };
-      for (const [x, height, vx, top = false, blue = false] of patterns[turn]) this.add(x, b.bottom - height, { vx, top, blue });
+      for (const [x, height, vx, top = false, blue = false] of patterns[turn]) this.add(x, b.bottom - height, { vx: turn === 3 && xfight > 0 ? Math.sign(vx) * 4.5 : vx, top, blue });
     }
   }
   add(x, y, { vx = 0, top = false, blue = false, damage = 6, osc = 0, oscmax = 20, oscmin = 20 } = {}) {

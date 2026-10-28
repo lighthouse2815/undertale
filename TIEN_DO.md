@@ -591,3 +591,9 @@ Push Snowed Inn f24f7e6 và cửa cầu→town f7fe082 đã thành công.
 Bổ sung bốn bố trí `fighto=-1,0,1,2` vào thành phần xương: đặt tim xanh với vận tốc -1 và trạng thái đang nhảy, lần lượt 200/300/220/240 frame; chuyển chính xác vị trí, tốc độ, hướng trên/dưới và xương xanh của từng nhóm từ `obj_papyrusboss`. Đây là nhánh thông thường; hiệu ứng `xfight` khi đã gây nhiều sát thương và các lượt sau vẫn cần chuyển khi hoàn thiện trận.
 
 `tests/remake-papyrus-bones.mjs` kiểm từng nhóm xương, thời lượng và trạng thái tim, sau đó kiểm lại va chạm/bị bắt/dọn và tim xanh trên scene thật; chuỗi `test-papyrus-turns-v3.log` xanh. Check/build đã qua. Các nhóm chưa được nối vào boss hay đường chơi, full snapshot `15dd854` vẫn đang chạy và không bao gồm thay đổi này.
+
+### Ba lượt xương kế tiếp
+
+Bổ sung `fighto=3,4,5` với 150/240/330 frame: xương mọc từ hai phía, từng cặp trên/dưới, xương xanh và hai cụm hình sóng. Lượt 3 tăng tốc tất cả xương lên 4.5 khi `xfight>0`, đúng nhánh `with (blt_sizebone)` trong mã gốc. Các lượt khác và cách tăng tốc riêng của chúng vẫn chưa đủ.
+
+Chuỗi `test-papyrus-turns-345-v2.log` kiểm bố trí từng xương, thời lượng, nhánh `xfight`, va chạm/bị bắt/dọn và hồi quy tim xanh/GreaterDog; check/build qua. Chưa nối vào trận Papyrus và chưa hoàn tất game. Push commit `d67d6e4` đang chờ kết nối GitHub; full snapshot `15dd854` vẫn chạy và không gồm các đợt xương.
