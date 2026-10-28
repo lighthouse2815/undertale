@@ -853,3 +853,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Abandoned Quiche
 
 Đã thêm vật phẩm 23, tên thường/trong trận, INFO và khả năng hồi 34 HP bằng cơ chế vật phẩm hiện có; kiểm thử riêng xác nhận hồi máu, tiêu hao và âm thanh, check/build qua. Phòng ghế đá chưa được nối. Push `5983784` thành công; bộ tổng snapshot `9401df5` đang chạy, không gồm vật phẩm mới.
+
+### Phòng ghế đá Abandoned Quiche
+
+Đã chuyển ghế/hoa vọng âm, chọn lấy hoặc bỏ quiche, túi đầy, cờ 104 và hoạt ảnh cầu tàu của `room_water5A`; `test-waterfall-quiche-room-v1.log` kiểm các nhánh, vào lại và collider, kiểm lại vật phẩm 23, check/build qua. Mới kiểm khi mở phòng trực tiếp, chưa nối cửa với phòng cầu. Push `0b6561d` thành công; bộ tổng snapshot `9401df5` đang chạy, không gồm thay đổi này.

@@ -190,6 +190,7 @@ export async function loadRoom(scene, name) {
   if (town) for (const key of Object.keys(townDogDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townNpcDialogue.sprites)) spriteNames.add(key);
+  if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water5') for (const key of ['spr_floweysink', 'spr_face_papyrus', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water4') for (const key of ['spr_undynea_starku', 'spr_undynea_starkl', 'spr_undyne_starkd', 'spr_undyne_throw', 'spr_undyne_starkeye', 'spr_undyne_shad', 'spr_papyrus_r_stark', 'spr_papyrus_l_stark', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_u', 'spr_mkid_d', 'spr_mkid_trip_r', 'spr_exc', 'spr_maincharad_stark', 'spr_maincharau_stark', 'spr_maincharal_stark', 'spr_maincharar_stark']) spriteNames.add(key);
   if (name === 'room_water3A') for (const key of ['spr_tutu', 'spr_heartsmall']) spriteNames.add(key);
@@ -227,7 +228,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
