@@ -849,3 +849,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Cuộc gọi Papyrus ở phòng cầu
 
 Đã nối trigger cuộc gọi tại `room_water5`, nội dung theo năm loại giáp, lựa chọn Yes/No và cờ 75/76, plot 107, nhánh Papyrus chết không gọi, Flowey xuất hiện và chìm khi vào màn hình. `test-waterfall-phone-v1.log` kiểm hai lựa chọn, giáp và Flowey/cờ; kiểm dữ liệu năm loại giáp, hồi quy phòng cầu, check/build qua. Chưa nối cửa vào phòng, encounter, và lời/timing writer còn cần đối chiếu; bộ tổng snapshot `9401df5` đang chạy, chưa gồm thay đổi này. Push `102c0fc` thành công.
+
+### Abandoned Quiche
+
+Đã thêm vật phẩm 23, tên thường/trong trận, INFO và khả năng hồi 34 HP bằng cơ chế vật phẩm hiện có; kiểm thử riêng xác nhận hồi máu, tiêu hao và âm thanh, check/build qua. Phòng ghế đá chưa được nối. Push `5983784` thành công; bộ tổng snapshot `9401df5` đang chạy, không gồm vật phẩm mới.

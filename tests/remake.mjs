@@ -114,6 +114,7 @@ import { testWaterfallBridge } from './remake-waterfall-bridge.mjs';
 import { testWaterfallBridgeRoom } from './remake-waterfall-bridge-room.mjs';
 import { testWaterfallPapyrusCall } from './remake-waterfall-papyrus-call.mjs';
 import { testWaterfallPapyrusPhone } from './remake-waterfall-papyrus-phone.mjs';
+import { testAbandonedQuiche } from './remake-abandoned-quiche.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -561,6 +562,7 @@ try {
   await testWaterfallBridgeRoom(page);
   await testWaterfallPapyrusCall();
   await testWaterfallPapyrusPhone(page);
+  await testAbandonedQuiche();
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

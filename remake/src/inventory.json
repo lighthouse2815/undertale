@@ -215,6 +215,16 @@
       "info": [
         "* \"Old Tutu\" - Armor DF 10\n* Finally, a protective piece\n  of armor."
       ]
+    },
+    "23": {
+      "name": "Abandoned Quiche",
+      "battleName": "Ab Quiche",
+      "seriousName": "Ab Quiche",
+      "use": "* You eat the quiche.",
+      "info": [
+        "* \"Abandoned Quiche\" Heals 34 HP\n* A psychologically damaged\n  spinach egg pie."
+      ],
+      "heal": 34
     }
   },
   "actions": [
