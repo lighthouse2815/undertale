@@ -1061,3 +1061,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Phòng Ballet Shoes
 
 Đã chuyển giày ẩn, nhặt/từ chối/túi đầy, cờ 106, nấm và cỏ. `remake-waterfall-shoe-room.mjs` kiểm các nhánh và vật thể; hồi quy trang bị Ballet Shoes, check/build qua. Phòng mở trực tiếp, chưa nối cửa; hoạt ảnh đánh riêng của giày chưa chuyển. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Đường tới Ballet Shoes
+
+Đã nối cửa Waterfall 12 ↔ phòng giày, marker và nhạc liên tục ở tuyến thường/kết thúc. `remake-waterfall-shoe-path.mjs` kiểm hai chiều bằng phím; check/build qua. Hoạt ảnh đánh riêng của giày và các cửa khác của phòng 12 còn thiếu. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
