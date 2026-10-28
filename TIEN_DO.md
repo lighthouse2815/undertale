@@ -611,3 +611,9 @@ Chuỗi `test-papyrus-turns-678-v1.log` kiểm bố trí/timer, tốc độ hai 
 ### Lượt xương 9–10
 
 Bổ sung `fighto=9,10` với 355/230 frame, cặp xương trên/dưới, ba xương đối hướng và các xương dao động (`osc`, `oscmin`, `oscmax`) theo source; gán tốc độ 4.2 cho các instance. `test-papyrus-turns-910-v1.log` kiểm đếm, thời lượng, vị trí/vận tốc/tham số dao động và đảo chiều thực tế cùng hồi quy các lượt trước; check/build qua. Lượt 11 trở đi, chuyển xanh, cảnh bắt và trận hoàn chỉnh vẫn cần thực hiện. Đang rà riêng thời điểm hủy xương ngoài phòng. Push các commit sau `d67d6e4` đang thử lại do lỗi kết nối GitHub; full snapshot `15dd854` vẫn chạy và không gồm các lượt xương.
+
+### Sửa thời điểm xương rời phòng
+
+`blt_sizebone_Other_0` là sự kiện OutsideRoom, không chạy ngay khi xương rời khung chiến đấu. Đã đối chiếu `dispatchOutsideRoomEvents` của runtime và sửa để chỉ hủy khi hộp bao ra khỏi phòng 640×480 theo hướng đi; xương sinh ngoài phòng nhưng bay vào được giữ, sau khi vào mới có thể phát sự kiện rời phòng lần tiếp theo. Điều này cần thiết cho phần chuyển tim xanh, vốn chờ hết xương.
+
+Chuỗi `test-papyrus-outside-v1.log` kiểm xương ngoài khung vẫn tồn tại, biên phòng, sinh ngoài/đi vào/ra, cùng các hồi quy lượt xương và tim xanh. Check/build qua. Trận, cảnh bắt, các lượt tiếp theo và tuyến đi vẫn chưa hoàn thành; full snapshot `15dd854` đang chạy. GitHub đang được thử push lại sau lỗi kết nối 443.

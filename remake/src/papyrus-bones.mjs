@@ -44,7 +44,7 @@ export class PapyrusBones {
     const tip = scene.add.image(x / 2, y / 2, `${key}:${frame}`).setOrigin(0).setScale(.5).setMask(this.mask);
     const base = scene.add.image(x / 2, (top ? b.top + 6 : b.bottom - 10) / 2, `${top ? 'spr_bonetop' : 'spr_bonebottom'}:${frame}`).setOrigin(0).setScale(.5).setMask(this.mask);
     const stem = scene.add.graphics().setMask(this.mask);
-    const bone = { x, y, startY: y, vx, top, blue, damage, osc, oscmax, oscmin, drawn: false, tip, base, stem };
+    const bone = { x, y, startY: y, vx, top, blue, damage, osc, oscmax, oscmin, drawn: false, outsideRoom: false, tip, base, stem };
     this.bullets.push(bone); this.draw(bone); return bone;
   }
   draw(bone) {
@@ -85,7 +85,12 @@ export class PapyrusBones {
         } else { scene.invFrames = 3 * (30 + (w.armor === 44 ? 30 : 0) + (w.armor === 64 ? 15 : 0) + (w.weapon === 45 ? 15 : 0)); this.remove(bone); }
         scene.refreshHp();
         if (this.captured) break;
-      } else if (bone.x < b.left - 10 && bone.vx < 0 || bone.x > b.right + 10 && bone.vx > 0) this.remove(bone);
+      } else {
+        // OutsideRoom được phát khi hộp bao rời phòng 640×480, không phải khi rời khung đấu.
+        const outside = bone.x + 10 < 0 || bone.x + 2 > 640 || bone.y + 11 < 0 || bone.y + 4 > 480;
+        if (outside && !bone.outsideRoom && (bone.x < b.left - 10 && bone.vx < 0 || bone.x > b.right + 10 && bone.vx > 0)) this.remove(bone);
+        else bone.outsideRoom = outside;
+      }
     }
     this.oldHeart = { x: hx, y: hy }; return this.frames >= this.duration;
   }

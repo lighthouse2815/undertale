@@ -33,6 +33,10 @@ export async function testPapyrusBones(page) {
     const oscillatingTurns = [9, 10].map((turn) => {
       const w = new papyrusBones.PapyrusBones(s, { turn }); const initial = [w.duration, w.bullets.map((b) => [b.x, b.y, b.vx, b.top, b.osc, b.oscmin, b.oscmax])]; s.invFrames = 9999; let early; for (let i = 1; i < w.duration; i++) early = w.step(); const done = w.step(); w.destroy(); return [initial, early, done];
     });
+    const exiting = new papyrusBones.PapyrusBones(s); s.invFrames = 9999;
+    const edgeBone = exiting.add(183, 355, { vx: -2 }); exiting.step(); const beyondArena = [edgeBone.x, edgeBone.tip.active];
+    edgeBone.x = -8; exiting.step(); const atRoomEdge = [edgeBone.x, edgeBone.tip.active]; exiting.step(); const beyondRoom = edgeBone.tip.active;
+    const approaching = exiting.add(700, 355, { vx: -4 }); exiting.step(); const spawnedOutside = [approaching.tip.active, approaching.outsideRoom]; approaching.x = 630; exiting.step(); const entered = approaching.outsideRoom; approaching.x = -9; exiting.step(); const exited = approaching.tip.active; exiting.destroy();
     const oscillating = new papyrusBones.PapyrusBones(s); s.invFrames = 9999; const bouncing = oscillating.add(300, 330, { osc: -3, oscmin: -1, oscmax: 60 }); for (let i = 0; i < 20; i++) oscillating.step(); const low = [bouncing.y, bouncing.osc]; oscillating.step(); const reverse = [bouncing.y, bouncing.osc]; oscillating.destroy();
     const fastTurns = [1, 2, 7].map((turn) => { const w = new papyrusBones.PapyrusBones(s, { turn, xfight: 1 }); const values = w.bullets.map((b) => b.vx); w.destroy(); return values; });
     const fasterWave = new papyrusBones.PapyrusBones(s, { turn: 3, xfight: 1 }); const faster = fasterWave.bullets.map((b) => b.vx); fasterWave.destroy();
@@ -46,7 +50,7 @@ export async function testPapyrusBones(page) {
     s.hp = 20; s.invFrames = 0; s.soul.setPosition(150, 130); const upper = wave.add(300, 290, { top: true }); wave.step(); const topHit = [s.hp, upper.tip.active];
     s.soul.setPosition(150, 176); s.hp = 2; s.invFrames = 0; wave.add(300, 350); wave.add(400, 340); wave.step(); const captured = [s.hp, s.invFrames, wave.captured, wave.bullets.length, s.soulVSpeed];
     const clip = wave.clip; wave.destroy(); const cleaned = !clip.active;
-    s.finishBattle(); return { first, after, beforeEnd, done, turns, nextTurns, laterTurns, oscillatingTurns, low, reverse, fastTurns, faster, corner, hit, immune, still, moved, topHit, captured, cleaned };
+    s.finishBattle(); return { first, after, beforeEnd, done, turns, nextTurns, laterTurns, oscillatingTurns, beyondArena, atRoomEdge, beyondRoom, spawnedOutside, entered, exited, low, reverse, fastTurns, faster, corner, hit, immune, still, moved, topHit, captured, cleaned };
   });
   assert.deepEqual(result.first, [96, 125, 125, 67.5, [452, 355, -3], [532, 355, -3], [612, 355, -3]]);
   assert.deepEqual(result.after, [449, 529, 609]); assert.equal(result.beforeEnd, 139); assert.equal(result.done, true);
@@ -69,6 +73,8 @@ export async function testPapyrusBones(page) {
   assert.deepEqual(nine[0][1].slice(-4), [[1432,355,-4.2,false,-1,-1,30],[1432,315,-4.2,true,-1,-1,30],[1572,335,-4.2,false,-2,-20,30],[1572,295,-4.2,true,-2,-20,30]]);
   assert.deepEqual([ten[0][0], ten[0][1].length, ten[1], ten[2]], [230, 16, false, true]);
   assert.deepEqual(ten[0][1].slice(-3), [[1042,355,-4.2,false,-3,-1,60],[1062,355,-4.2,false,-3,-1,60],[1082,355,-4.2,false,-3,-1,60]]);
+  assert.deepEqual(result.beyondArena, [181, true]); assert.deepEqual(result.atRoomEdge, [-10, true]); assert.equal(result.beyondRoom, false);
+  assert.deepEqual(result.spawnedOutside, [true, true]); assert.equal(result.entered, false); assert.equal(result.exited, false);
   assert.deepEqual(result.low, [270, -3]); assert.deepEqual(result.reverse, [273, 3]);
   assert.deepEqual(result.fastTurns, [[4.5,4.5,4.5,4.5,4.5,4.5,4.5], [4,4,4,4,-4], [4.4,4.4,4.4,4.4,-4.4,-4.4,-4.4,-4.4]]);
   assert.deepEqual(result.faster, [4.5, 4.5, -4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]);
@@ -77,5 +83,5 @@ export async function testPapyrusBones(page) {
   assert.deepEqual(result.topHit, [16, false]);
   assert.deepEqual(result.captured, [1, 50, true, 0, 0]); assert.equal(result.cleaned, true);
   await page.evaluate(() => new Promise((resolve) => __remake.game.events.once('poststep', resolve)));
-  console.log('✓ Xương Papyrus: ba xương đầu/140frame, mười hai lượt tim xanh/timer/đội hình/xfight, biên/hộp bao, trắng-xanh/đứng-di chuyển, sát thương/bất tử, bắt ở 1HP và dọn');
+  console.log('✓ Xương Papyrus: ba xương đầu/140frame, mười hai lượt tim xanh/timer/đội hình/xfight, biên/phòng/hộp bao, trắng-xanh/đứng-di chuyển, sát thương/bất tử, bắt ở 1HP và dọn');
 }
