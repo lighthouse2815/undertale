@@ -1073,3 +1073,7 @@ Bộ tổng `test-remake-fe0840e.log` thất bại lại khi kích hoạt cảnh
 ### Lối tắt Waterfall 12
 
 Đã nối cửa đặc biệt một chiều từ phòng 12 về phòng sao, giữ nhạc khi đi qua. Kiểm thử đường Waterfall 12 kiểm lối này bằng phím cùng các cửa trước; check/build qua. Những cửa và sự kiện khác còn thiếu. Bộ tổng `test-remake-6e47e0b.log` đang chạy với chẩn đoán timeout cảnh Undyne, không gồm phần này.
+
+### Đồng bộ kiểm thử thời gian lưu
+
+Bộ tổng `test-remake-6e47e0b.log` thất bại sớm khi chờ 200 ms thực rồi yêu cầu đồng hồ game tăng 100 ms. Kiểm thử giờ chờ trực tiếp đồng hồ tăng trong lúc giữ phím, vẫn kiểm nhân vật không di chuyển. Bộ `test-remake-timer.log` đã qua phần savepoint này và đang chạy tiếp; check/build qua. Timeout cảnh Undyne của bộ trước vẫn chưa được chẩn đoán.

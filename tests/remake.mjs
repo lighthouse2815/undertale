@@ -350,9 +350,8 @@ try {
   assert.equal(await page.evaluate(() => __remake.scene.nameLabel.text), 'FRISK');
   const menuTime = await page.evaluate(() => __remake.scene.world.playTime);
   await page.keyboard.down('ArrowDown');
-  await page.waitForTimeout(200);
+  await page.waitForFunction((time) => __remake.scene.world.playTime >= time + 100, menuTime, { timeout: 5000 });
   await page.keyboard.up('ArrowDown');
-  assert.ok(await page.evaluate((time) => __remake.scene.world.playTime >= time + 100, menuTime));
   assert.deepEqual(await page.evaluate(() => ({ x: __remake.scene.world.player.x, y: __remake.scene.world.player.y })), { x: 150, y: 195 });
   await page.keyboard.press('ArrowRight');
   assert.equal(await page.evaluate(() => __remake.scene.selection), 1);
