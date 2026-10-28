@@ -195,7 +195,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
   if (name === 'room_water_prewaterfall') spriteNames.add('spr_heartsmall');
-  if (name === 'room_water_statue') for (const key of ['spr_statueshadow','spr_statuelight','spr_heartsmall']) spriteNames.add(key);
+  if (name === 'room_water_statue') for (const key of ['spr_statueshadow','spr_statuelight','spr_statuedrop','spr_statueplink','spr_plinkmask','spr_umbrellamask','spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_dogroom') for (const key of ['spr_tobdogl','spr_tobdogr','spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_piano') for (const key of ['spr_heartsmall','spr_pxquit','spr_neutralpbutton','spr_leftpbutton','spr_downpbutton','spr_rightpbutton','spr_uppbutton']) spriteNames.add(key);
   if (name === 'room_water14') spriteNames.add('spr_centeredhole');
@@ -242,6 +242,7 @@ export async function loadRoom(scene, name) {
     for (let i = 0; i < data.TextureCount; i++) images.set(`${key}:${i}`, `sprites/${key}/${key}_${i}.png`);
     if (data.MaskCount && data.CollisionKind === 'Precise') images.set(`${key}:mask`, `sprites/${key}/${key}_0.mask.png`);
   }
+  if (name === 'room_water_statue') images.set('spr_plinkmask:mask1', 'sprites/spr_plinkmask/spr_plinkmask_1.mask.png');
   for (const key of new Set([
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),

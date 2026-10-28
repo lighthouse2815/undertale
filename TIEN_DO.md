@@ -1189,3 +1189,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Đường tới khu lấy ô
 
 Đã nối tượng ↔ khu lấy ô, giữ tiếng mưa và Reunited khi đổi phòng. `remake-waterfall-umbrella-path.mjs` kiểm cửa hai chiều, marker, âm thanh và dọn khi rời khu; hồi quy tượng/ô, check/build qua. Chưa nối phòng tiếp, lớp mưa thứ hai và fade âm mưa đầy đủ; bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Giọt mưa trên tượng
+
+Đã thêm giọt rơi theo nhịp, va chạm mask tượng theo trạng thái ô, hạt bắn và dọn tài nguyên. `remake-waterfall-statue.mjs` kiểm va chạm cả hai mask và nhánh tượng; check/build qua. Va chạm với ô người chơi đang dùng vùng chữ nhật, cần đối chiếu mask và hình/timing; bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
