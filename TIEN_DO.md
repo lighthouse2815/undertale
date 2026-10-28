@@ -1305,3 +1305,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối tùy chọn trạng thái vào bộ đạn: bắt đầu lượt cập nhật HP và đạn trúng Dummy gọi `hit()`; kiểm tương tác thật trong fixture trình duyệt, check/build qua. Chưa có giao diện trận hoặc các cảnh chuyển giai đoạn. Bộ tổng `test-remake-d92715f.log` đã dừng mà không ghi mã thoát; chưa có kết quả hoàn chỉnh.
 
 Đã thêm nhóm 32 trợ thủ con2 7, hình ngạc nhiên/buồn và chuyển động rời đi; kiểm đội hình, tốc độ, hình và dọn cùng hồi quy đạn, check/build qua. Nhóm này xuất hiện trong lượt đang diễn ra ở game gốc; chưa nối thời điểm, thoại và chuyển tiếp vào trận. Bộ tổng `test-remake-2102c41-workspace.log` đang chạy từ trước phần này.
+
+Đã nối bộ đếm 30 frame sau đạn đầu trúng Dummy và giữ lượt đến khi hoàn thành thoại chuyển tiếp; kiểm bằng đạn/đích trong trình duyệt, check/build qua. Callback chưa nối vào giao diện trận, còn thiếu hiển thị thoại và xử lý tạm dừng thực tế.

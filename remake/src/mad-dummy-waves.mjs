@@ -12,10 +12,10 @@ export function loadMadDummyWaveAssets(scene){
 
 // obj_maddummy: đội hình theo con2 và HP; toạ độ gốc 640×480.
 export class MadDummyWave extends RuinsWave {
-  constructor(scene,{border={left:237,right:397,top:250,bottom:385},random=Math.random,onDummyHit=()=>{},state=null,phase=0,hp=300,damage,type2=0}={}){
+  constructor(scene,{border={left:237,right:397,top:250,bottom:385},random=Math.random,onDummyHit=()=>{},onFirstHit=()=>{},state=null,phase=0,hp=300,damage,type2=0}={}){
     if(state)({phase,hp,type2}=state.beginWave());
     damage ??= phase===0?0:7;
-    super(scene,'madDummy');this.border=border;this.onDummyHit=onDummyHit;this.state=state;this.spawners=[];this.shots=[];this.phase=phase;this.damage=damage;
+    super(scene,'madDummy');this.border=border;this.onDummyHit=onDummyHit;this.onFirstHit=onFirstHit;this.firstHitTimer=null;this.state=state;this.spawners=[];this.shots=[];this.phase=phase;this.damage=damage;
     const b=border,top=(offset)=>this.spawn(b.left+random()*(b.right-b.left)-20,b.top-offset,2);
     const bottom=(offset)=>this.spawn(b.left+30+random()*(b.right-b.left-70),b.bottom+offset+random()*10,3);
     if(phase===0){this.duration=360;for(const offset of [40,45,50,130,135,140,220,225,230])top(offset);for(let i=0;i<6;i++)for(const offset of [310,360,410])bottom(offset);}
@@ -42,6 +42,7 @@ export class MadDummyWave extends RuinsWave {
   setHelpersMood(mood){if(!['shock','sad'].includes(mood))throw new Error(`Trạng thái Dummy không hợp lệ: ${mood}`);this.helpersMood=mood;if(mood==='sad')for(const e of this.spawners)if(e.actor.type===2)e.actor.scatter();}
   step(){
     this.frames++;const s=this.scene,heart={x:s.soul.x*2,y:s.soul.y*2};
+    if(this.firstHitTimer!==null&&--this.firstHitTimer===0){this.firstHitTimer=null;if(this.state?.phase===0){this.state.startFirstHitDialogue();this.onFirstHit();}}
     for(const entry of this.spawners){
       const result=entry.actor.step({border:this.border,heart}),sprite=entry.actor.type===2&&this.helpersMood?`spr_dummybullet_${this.helpersMood}`:entry.actor.type===4?'spr_dummybot':entry.actor.red?'spr_dummybullet_red':'spr_dummybullet';entry.image.setPosition(entry.actor.x/2,entry.actor.y/2).setTexture(`${sprite}:${entry.actor.side}`);if(s.invFrames<=0&&this.touchesHeart({x:entry.actor.x,y:entry.actor.y,sprite})){s.hurt(entry.actor.damage);entry.actor.dead=true;}
       if(result){const shot=new MadDummyShot(result),image=s.add.image(result.x/2,result.y/2,result.type==='missile'?'spr_dummymissle_shot:6':'spr_dummyshot:0').setOrigin(result.type==='missile'?.5:0).setScale(.5);this.shots.push({actor:shot,image});}
@@ -52,10 +53,10 @@ export class MadDummyWave extends RuinsWave {
       const shot=entry.actor;
       const hit=shot.step({heart,touchesHeart:()=>s.invFrames<=0&&this.touchesHeart({x:shot.x-(shot.type==='missile'?17:0),y:shot.y-(shot.type==='missile'?17:0),sprite:shot.type==='missile'?'spr_hotlandmissle':'spr_dummyshot'}),touchesDummy:()=>{const enemy=s.enemy,dx=enemy.x*2,dy=enemy.y*2,margin=shot.type==='missile'?3:8,size=shot.type==='missile'?3:12;return shot.x+size>=dx+5&&shot.x-margin<=dx+82&&shot.y+size>=dy&&shot.y-margin<=dy+103;},outside:()=>shot.x< -100||shot.x>740||shot.y< -100||shot.y>580});
       const key=shot.type==='missile'?(shot.explosion||shot.age<6?`spr_dummymissle_shot:${shot.explosion?Math.min(6,shot.explosion-1):6-shot.age}`:`spr_hotlandmissle:${shot.frame}`):`spr_dummyshot:${Math.floor(this.frames*.25)%3}`;entry.image.setPosition(shot.x/2,shot.y/2).setTexture(key).setAngle(shot.type==='missile'?shot.direction:0);
-      if(hit?.type==='dummyHit'){this.state?.hit();this.onDummyHit();}else if(hit?.type==='heartHit')s.hurt(hit.damage);
+      if(hit?.type==='dummyHit'){if(this.state?.phase===0)this.firstHitTimer=30;this.state?.hit();this.onDummyHit();}else if(hit?.type==='heartHit')s.hurt(hit.damage);
       if(shot.dead)entry.image.destroy();
     }
-    this.shots=this.shots.filter(e=>!e.actor.dead);return this.frames>=this.duration;
+    this.shots=this.shots.filter(e=>!e.actor.dead);return this.frames>=this.duration&&this.firstHitTimer===null&&this.state?.phase!==1;
   }
   destroy(){for(const e of [...this.spawners,...this.shots])e.image.destroy();this.spawners=[];this.shots=[];super.destroy();}
 }
