@@ -1173,3 +1173,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Hành trình giải piano vào kho báu
 
 Đã kiểm liên tục bằng phím: chơi tám nốt, chờ cửa mở và tự đi qua lối hẹp vào kho báu. `remake-waterfall-piano.mjs`, check/build qua. Các chuỗi thay thế và cảm ứng còn cần kiểm; bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Tượng âm nhạc
+
+Đã chuyển tượng, lựa chọn đặt ô/cờ 85–86, nhạc hộp, tiếng mưa và gợi ý piano sau 450 frame. `remake-waterfall-statue.mjs` kiểm các nhánh, nhạc và gợi ý; hồi quy piano, check/build qua. Phòng mở trực tiếp, chưa nối cửa; hiệu ứng giọt mưa, chuyển nhạc giữa phòng và sprite mang ô chưa đầy đủ, timing/âm lượng cần đối chiếu. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
