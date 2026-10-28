@@ -1351,3 +1351,5 @@ Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm th�
 Đã nối nhà Napstablook với Blook Acres và các vật thể, lời chào, sandwich, lựa chọn nằm hoặc từ chối, nhạc và cờ 17/93/94/458. `remake-waterfall-blookhouse.mjs` kiểm đường cửa, tương tác tủ lạnh, hai nhánh, nằm/chờ/đứng dậy và trở lại; hồi quy vật thể/khu nhà, check/build qua. Cần đối chiếu thêm tốc độ di chuyển, camera và hiệu ứng sóng khi nằm với game gốc; nhà bên cạnh và nông trại vẫn chưa chuyển.
 
 Đã thêm biến dạng sóng từng hàng cho bầu trời khi nằm, dùng ảnh và nhịp lệch sin của game gốc; kiểm số hàng, chuyển động, dọn hiệu ứng và ảnh trong trình duyệt, check/build qua. Nhịp mờ khi kết thúc và chuyển động nhân vật vẫn cần đối chiếu thêm.
+
+Đã nối cửa nhà nhật ký với Blook Acres khi cờ 433 được mở và thêm nội dung sáu quyển nhật ký. `remake-waterfall-blookdiary.mjs` kiểm điều kiện khóa, cửa hai chiều và từng quyển; hồi quy nhà Napstablook/khu nhà, check/build qua. Cơ chế lấy chìa khóa và tuyến dẫn tới nhà vẫn cần chuyển.

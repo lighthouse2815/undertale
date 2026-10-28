@@ -19,6 +19,7 @@ export class WaterfallBlookYard {
       world.dataSource.objects.set('obj_npc_room',object);this.mettaton={item,object,sprite,image:world.add.image(item.X,item.Y,'spr_mettex_npc:0').setOrigin(0).setDepth(item.Y+sprite.MarginBottom)};world.colliders.push(createCollider(world.dataSource,item));
     }
     if(!world.flags[433]){const item={ObjectName:'obj_solidsmall',X:172,Y:116,ScaleX:1,ScaleY:1},object=world.dataSource.objects.get(item.ObjectName),sprite=world.dataSource.sprites.get(object.Sprite);this.locked={item,object,sprite};world.colliders.push(createCollider(world.dataSource,item));}
+    if(world.flags[433]){const sprite=world.dataSource.sprites.get(world.dataSource.objects.get('obj_doorCmusicfade').Sprite);world.doors.push({destination:'room_water_hapstablook',direction:'C',marker:'obj_markerC',musicFade:true,duration:13*1000/30,left:172+sprite.MarginLeft-sprite.OriginX,right:172+sprite.MarginRight-sprite.OriginX,top:112+sprite.MarginTop-sprite.OriginY,bottom:112+sprite.MarginBottom-sprite.OriginY});}
     startWaterfallQuietMusic(world);
   }
   interact(){
