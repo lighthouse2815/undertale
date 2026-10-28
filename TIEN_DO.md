@@ -929,3 +929,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Cửa ẩn Wishing Room
 
 Đã chuyển tương tác mở tường, tháo collider, khóa 30 frame, âm thanh, plot 108 và tự mở lại theo plot/tuyến giết. `test-wishing-door-v1.log` kiểm mở, chờ, vào lại và hai nhánh tuyến; hồi quy hoa/kính khi chạy riêng, check/build qua. Một lượt hồi quy kính chạy song song thất bại ở âm lượng, chạy riêng qua; cần điều tra nếu tái hiện. Cửa sang phòng 5 và phòng kế tiếp chưa nối; push kính `6c1826a` thành công.
+
+### Đường và encounter Wishing Room
+
+Đã nối cửa 5↔6 với marker và nhạc liên tục, thêm encounter phòng 6 và nhạc khi vào trực tiếp. `test-wishing-path-v1.log` kiểm cửa bằng phím, marker, nhạc, ngưỡng 110–140 và vào trận nhóm; hồi quy hoa/cửa/kính, check/build qua. Kiểm kính tuần tự năm lần đều qua sau một lần sai âm lượng; nguyên nhân chưa xác định. Cửa Wishing Room sang phòng kế tiếp chưa nối và cần kiểm thêm tuyến hết quái cùng lời giải cầu thực tế. Push cửa ẩn `3161871` thành công; bộ tổng cũ thất bại ở cửa town→fog như mục trước.
