@@ -1329,3 +1329,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối trigger khu rác với cảnh gặp Dummy, hai nhánh Mad/Glad, hậu cảnh Napstablook, plot 116/117, dọn collider và mở cửa Quiet Area. `remake-waterfall-dummy-encounter.mjs` kiểm đi vào trigger, hai nhánh, Spare/kill và trở lại phòng; lượt cuối Mad Dummy được tua tới để kiểm kết thúc. Hồi quy tương tác/đạn/trận và check/build qua. Cần kiểm chơi liên tục toàn trận, căn lại camera, animation, mask và nhịp thoại với game gốc; nhiều phòng, tuyến và kết thúc khác vẫn chưa chuyển.
 
 Đã sửa thời gian kết thúc lượt sau cảnh trợ thủ: khi giới thiệu robot, bộ đếm còn mười frame theo mã gốc và chờ hết thoại trước khi chuyển lượt. Kiểm chuỗi trợ thủ và hồi quy bộ đạn/trận, check/build qua.
+
+Đã thêm chuyển động Mad Dummy theo các pha HP 3 và 5, kể cả khi đang chọn lệnh; kiểm vị trí trong scene thật cùng hồi quy trận/đạn, check/build qua. Cần tiếp tục đối chiếu va chạm và hoàn thiện kiểm thử toàn trận liên tục.

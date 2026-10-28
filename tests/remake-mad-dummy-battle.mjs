@@ -14,8 +14,9 @@ export async function testMadDummyBattle(page){
     const shot=new MadDummyShot({type:'shot',x:s.enemy.x*2+10,y:s.enemy.y*2+10,vx:1,vy:0});w.shots.push({actor:shot,image:s.add.image(0,0,'spr_dummyshot:0')});
     w.step();for(let i=0;i<30;i++)w.step();const reaction=[s.dummyState.hp,s.dummyState.phase,s.overlay.pages.length];
     while(s.overlay)s.advanceOverlay();const phase=s.dummyState.phase;
-    w.destroy();s.wave=null;s.scene.resume();s.finishBattle();return [first,reaction,phase];
+    s.dummyState.phase=3;s.update(0,1000/30);const move3=s.enemy.x!==135;s.dummyState.phase=5;s.mode='menu';s.update(0,1000/30);const move5=s.enemy.x!==135;
+    w.destroy();s.wave=null;s.scene.resume();s.finishBattle();return [first,reaction,phase,move3,move5];
   });
-  assert.deepEqual(result,[['soul',27,false,4],[299,1,4],2]);
+  assert.deepEqual(result,[['soul',27,false,4],[299,1,4],2,true,true]);
   await page.waitForFunction(()=>__remake.phase==='running');console.log('✓ Trận Mad Dummy: ACT, giao diện, đạn đầu trúng và hội thoại');
 }

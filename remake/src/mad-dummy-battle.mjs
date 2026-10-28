@@ -31,7 +31,7 @@ export class MadDummyBattle extends RuinsBattle {
   }
   setupEnemy(){
     const music=this.previousScene.waterfallMusic;music?.pause();this.events.once('shutdown',()=>{if(music===this.previousScene.waterfallMusic&&music?.isPaused)music.resume();});
-    this.musicKey='mus_dummybattle';this.dummyState=new MadDummyState();this.storyTurn=0;this.attacked=false;this.face=0;this.anim=0;this.robotSiner=0;this.motionElapsed=0;this.wave=null;this.helpers=null;this.ending=null;this.overlay=null;
+    this.musicKey='mus_dummybattle';this.dummyState=new MadDummyState();this.storyTurn=0;this.attacked=false;this.face=0;this.anim=0;this.motionSiner=0;this.motionPhase=0;this.motionElapsed=0;this.wave=null;this.helpers=null;this.ending=null;this.overlay=null;
     this.enemy.setPosition(135,40).setVisible(false);
     this.enemyParts=['spr_maddum_base','spr_maddum_torso','spr_maddum_leg','spr_maddum_head'].map(key=>this.add.image(0,0,`${key}:0`));
     this.events.once('shutdown',()=>{this.clearOverlay();this.ending?.destroy();});this.drawDummy();
@@ -92,8 +92,11 @@ export class MadDummyBattle extends RuinsBattle {
     const advance=this.mode==='soul'&&this.overlay&&this.confirmPressed;super.update(time,delta);
     if(advance)this.advanceOverlay();
     if(this.mode==='soul'&&this.helpers&&this.helpers.stage!=='done'){this.helpersElapsed=Math.min(200,this.helpersElapsed+delta);while(this.helpersElapsed>=1000/30){this.helpersElapsed-=1000/30;this.enemy.x+=(135-this.enemy.x)*.25;this.enemy.y+=(40-this.enemy.y)*.25;this.helpers.step();}}
-    if(this.mode==='soul'){this.motionElapsed=Math.min(200,this.motionElapsed+delta);while(this.motionElapsed>=1000/30){this.motionElapsed-=1000/30;const phase=this.dummyState.phase;
-      if(phase>=14&&phase<=17.5){this.robotSiner+=.2;this.enemy.x=135+Math.sin(this.robotSiner/2)*30;this.enemy.y-=Math.sin(this.robotSiner*2)*4;}
+    if(this.mode!=='dead'){this.motionElapsed=Math.min(200,this.motionElapsed+delta);while(this.motionElapsed>=1000/30){this.motionElapsed-=1000/30;const phase=this.dummyState.phase;
+      if(phase!==this.motionPhase&&(phase===5||phase===14))this.motionSiner=0;this.motionPhase=phase;
+      if(phase===3){this.motionSiner++;this.enemy.x=135+Math.sin(this.motionSiner/20)*45;this.enemy.y-=Math.sin(this.motionSiner/5);}
+      else if(phase===5){const remaining=this.mode==='soul'?this.wave.duration-this.wave.frames:0;this.motionSiner+=this.mode==='soul'?Math.max(0,remaining/500-.16):.25;this.enemy.x=135+Math.sin(this.motionSiner/4)*100;this.enemy.y=40+Math.sin(this.motionSiner/2)*25;}
+      else if(phase>=14&&phase<=17.5){this.motionSiner+=.2;this.enemy.x=135+Math.sin(this.motionSiner/2)*30;this.enemy.y-=Math.sin(this.motionSiner*2)*4;}
       else if(phase>=18&&phase<20){const dx=135-this.enemy.x,dy=40-this.enemy.y,d=Math.hypot(dx,dy);if(d>0){const speed=Math.min(5,d);this.enemy.x+=dx/d*speed;this.enemy.y+=dy/d*speed;}}
     }}
     if(this.mode==='soul'&&this.ending){this.endingElapsed=Math.min(200,this.endingElapsed+delta);while(this.endingElapsed>=1000/30&&this.ending.stage!=='done'){this.endingElapsed-=1000/30;this.ending.step();}}
