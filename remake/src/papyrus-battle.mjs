@@ -48,7 +48,11 @@ export class PapyrusBattle extends MultiBattle {
     this.body = this.add.image(125, 21, 'spr_papyrusboss_anim:0').setOrigin(0); this.enemyParts = [this.body];
     this.enemies = [{ index: 0, name: 'Papyrus', main: this.enemy, hp: 680, maxHp: 680, def: this.murder ? -20000 : 2, mercy: this.mercy, alive: true }];
   }
-  async create() { await super.create(); if (this.music) this.music.setVolume(this.musicVolume); }
+  async create() {
+    await super.create();
+    if (this.music) this.music.setVolume(this.musicVolume);
+    if (this.murder) { this.status = '* Papyrus is sparing you.'; this.message.setText(this.status); }
+  }
   update(time, delta) {
     this.dustElapsed = Math.min(200, this.dustElapsed + delta);
     while (this.dustElapsed >= 1000 / 30) { this.dustElapsed -= 1000 / 30; this.stepPapyrusHead(); this.dusts = this.dusts.filter((dust) => { if (!dust.step()) return true; dust.destroy(); return false; }); }

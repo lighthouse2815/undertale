@@ -711,3 +711,7 @@ Các đoạn thoại của đòn xanh, chó và cảnh bắt được tạo khi 
 Đã chuyển dữ liệu và lựa chọn lời từ `obj_papyrus8`/`SCR_TEXT` 544–545: gặp lần đầu hoặc có ký ức, hai lần bị bắt, lần thứ ba có lựa chọn đánh tiếp, ba đoạn tuyến diệt chủng và lời sau trận theo tuyến/hẹn hò. `papyrus-fog-dialogue.mjs` trả dữ liệu cho cảnh sắp nối; chưa tạo trigger, camera, lựa chọn thực tế hay chuyển trận/garage, nên chưa coi đường chơi hoặc game hoàn chỉnh. Các mã màu/chờ trong lời vẫn cần phục hồi theo giới hạn hệ thoại hiện tại.
 
 `test-papyrus-fog-dialogue-v1.log` kiểm số trang, điều kiện ưu tiên, lựa chọn, lời tuyến giết và sau trận; kiểm tra phòng sương riêng `test-papyrus-fog-dialogue-chain-v1.log`, check/build qua. Full snapshot `eba8db3` đang chạy và không bao gồm thay đổi mới; push `728236e` thành công.
+
+### Lời mở đầu trận trên tuyến diệt chủng
+
+Đối chiếu battlegroup 27: khi murderlv>=7, dòng đầu phải là “Papyrus is sparing you”, không phải dòng chặn đường thông thường. Đã sửa cả dòng đang hiển thị lẫn trạng thái menu; `test-papyrus-murder-intro-v1.log` kiểm điều kiện cùng chuỗi trận và hồi quy, check/build qua. Cảnh phòng sương và toàn bộ game vẫn chưa hoàn thành; full snapshot `eba8db3` đang chạy. Push `bdbc54b` đang chờ GitHub.
