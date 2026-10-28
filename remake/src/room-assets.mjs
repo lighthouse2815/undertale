@@ -195,6 +195,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
   if (name === 'room_water_waterfall') for (const key of ['spr_mkid_d','spr_mkid_u','spr_mkid_l','spr_mkid_r','spr_mkid_dt','spr_mkid_lt','spr_mkid_rt','spr_mkid_dfall','spr_mkid_ufall','spr_mkid_lfall','spr_mkid_rfall','spr_mkid_rtfall','spr_statuedrop','spr_statueplink',...['d','u','l','r'].flatMap(d=>[`spr_mainchara${d}_fall`,`spr_mainchara${d}_umbrellafall`])]) spriteNames.add(key);
+  if (['room_water_trashzone1','room_water_trashsavepoint'].includes(name)) for (const part of ['topleft','midtop','topright','midleft','midmid','midright','bottomleft','bottommid','bottomright']) spriteNames.add(`spr_waterfall_${part}`);
   if (name === 'room_water_undynebridgeend') for (const key of ['spr_nospear2','spr_tilespear','spr_undynea_starkr','spr_undynespear',...['d','u','l','r'].map(d=>`spr_mainchara${d}_stark`)]) spriteNames.add(key);
   if (name === 'room_water_undynebridge') for (const key of ['spr_tilespear','spr_undyne_starkd','spr_undyne_shad']) spriteNames.add(key);
   if (name === 'room_water_waterfall3') for (const key of ['spr_twinklestar','spr_mkid_r_shadow','spr_mkid_l_shadow','spr_mkid_u_shadow',...['d','u','l','r'].map(d=>`spr_mainchara${d}_shadow`)]) spriteNames.add(key);

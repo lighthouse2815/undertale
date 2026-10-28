@@ -495,7 +495,7 @@ class World extends Scene {
     if (data.room.GameObjects.some(e => e.ObjectName === 'obj_glowparticlegen_1')) this.waterfallGlowParticles = new WaterfallGlowParticles(this);
     if (name === 'room_water_nicecream') { this.waterfallNiceCreamRoom = new WaterfallNiceCreamRoom(this); this.niceCream = new NiceCream(this); }
     if (name === 'room_water_waterfall') this.waterfallRainKid = new WaterfallRainKid(this, spawnName);
-    if (['room_water_trashzone1','room_water_trashsavepoint'].includes(name)) this.waterfallTrashStart = new WaterfallTrashStart(this);
+    if (['room_water_trashzone1','room_water_trashsavepoint'].includes(name)) { this.waterfallTrashStart = new WaterfallTrashStart(this); this.waterfallRoomTiles = new WaterfallSentryVisuals(this); }
     if (name === 'room_water_undynebridgeend') this.waterfallUndyneBridgeEnd = new WaterfallUndyneBridgeEnd(this);
     if (name === 'room_water_undynebridge') this.waterfallUndyneBridge = new WaterfallUndyneBridge(this);
     if (name === 'room_water_preundyne') this.waterfallPreUndyne = new WaterfallPreUndyne(this);
