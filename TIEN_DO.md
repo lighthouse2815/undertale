@@ -1025,3 +1025,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Chim chở qua vực
 
 Đã nối phòng sao ↔ phòng chim, điều kiện xuất hiện/vị trí, lựa chọn, nhánh ô, hai chiều bay và chuyển nhạc. `remake-waterfall-bird.mjs` kiểm cửa, từ chối, mô phỏng hai chuyến và các điều kiện; hồi quy Sans, check/build qua. Cần đối chiếu hình rung, timing, nhạc và kiểm trọn chuyến bằng thời gian thực; cửa sang friendly hub chưa nối. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Khu yên tĩnh Waterfall
+
+Đã thêm SAVE Quiet Area, biển và Clam Girl theo fun, tuyến, số lần nói và cờ 279. `remake-waterfall-friendly-hub.mjs` kiểm các nhánh, hồi HP và lưu file; check/build qua. Phòng hiện mở trực tiếp; các cửa, cảnh Napstablook/trigger và màu chữ tên Suzy chưa chuyển. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
