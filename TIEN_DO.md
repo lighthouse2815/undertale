@@ -869,3 +869,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Trận Aaron đơn
 
 Đã ghép ACT, FIGHT, ITEM, MERCY, hai đợt đạn, tăng sức tấn công khi Flex, thưởng và nhạc vào scene trận Aaron đơn; sửa sát thương mặc định của đạn theo chỉ số gốc. Kiểm thử riêng các nhánh Check/Flex/Shoo, tha/giết và thưởng, hồi quy Gyftrot/đạn Aaron, check/build qua. Trận mới mở trực tiếp để kiểm thử, chưa nối encounter Waterfall; còn cần Woshua, Moldsmal, nhóm quái và đối chiếu animation/timing với game gốc. Bộ tổng snapshot `9401df5` bị gián đoạn trước khi kết thúc, chưa có kết quả cuối; thay đổi chẩn đoán timeout Papyrus fog vẫn chưa được xác minh và chưa commit.
+
+### ACT Woshua
+
+Đã chuyển Check, Touch, Clean, Joke, ảnh hưởng đến Aaron và thứ tự lời trạng thái Woshua. Kiểm thử riêng các nhánh và ngưỡng, check/build qua; chưa có scene trận, đạn, va chạm giọt xanh hoặc encounter Woshua. Push trận Aaron `0756fcc` thành công.
