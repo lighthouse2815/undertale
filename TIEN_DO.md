@@ -973,3 +973,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Hiệu ứng và chuyển động truy đuổi
 
 Đã thêm năm giáo chắn đường, sao khi tạo giáo, âm thanh lúc phóng và nhịp di chuyển Undyne 20 frame. Hồi quy `test-undyne-chase-effects.log`, kiểm thử generator, check/build qua; các giới hạn phòng 8 ở mục trước vẫn còn. Push cảnh truy đuổi `4022c4c` thành công. Bộ tổng `test-remake-4022c4c.log` đang chạy, chưa gồm phần này và chưa có kết quả cuối.
+
+### Cảnh Undyne và Monster Kid
+
+Đã chuyển các giai đoạn Undyne tiếp cận/nâng Kid/rời đi, Kid đến nói theo cờ 284, vấp và rời, cập nhật plot 110 và cờ. `test-undyne-kid-v4.log` kiểm các giai đoạn cùng hai nhánh thoại trong fixture; check/build qua. Cảnh chưa nối phòng 9, cần ghép truy đuổi và đối chiếu vị trí/hoạt hình/âm thanh/timing với gốc. Push hiệu ứng truy đuổi `11eca15` thành công; bộ tổng `test-remake-4022c4c.log` vẫn đang chạy, không gồm phần này.
