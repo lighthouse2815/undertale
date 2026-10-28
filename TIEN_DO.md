@@ -1277,3 +1277,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Astronaut Food
 
 Đã thêm vật phẩm 35 với tên, mô tả và hồi 21 HP theo game gốc. `remake-astronaut-food.mjs` kiểm tên, INFO, USE và tiêu thụ; check/build qua. Hộp lấy vật phẩm trong phòng rác tiếp theo chưa nối; bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.
+
+### Đường tới Mad Dummy
+
+Đã nối điểm lưu ↔ `room_water_trashzone2`, thêm xe, máy tính, DVD và tủ Astronaut Food với số lượng/túi đầy, ẩn hình nộm sau plot 115. `remake-waterfall-trash-objects.mjs` kiểm cửa, vật thể, tủ và túi đầy; hồi quy SAVE/vật phẩm, check/build qua. Cảnh và trận Mad Dummy, điện thoại và lối sang khu tiếp theo chưa chuyển; cần đối chiếu va chạm và hình trong phòng. Bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.

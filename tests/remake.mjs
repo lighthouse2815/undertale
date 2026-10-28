@@ -149,6 +149,7 @@ import { testWaterfallCrystalRoom } from './remake-waterfall-crystal-room.mjs';
 import { testWaterfallCrystalPath } from './remake-waterfall-crystal-path.mjs';
 import { testWaterfallMystery } from './remake-waterfall-mystery.mjs';
 import { testWaterfallStarPath } from './remake-waterfall-star-path.mjs';
+import { testWaterfallTrashObjects } from './remake-waterfall-trash-objects.mjs';
 import { testWaterfallTrashPath } from './remake-waterfall-trash-path.mjs';
 import { testWaterfallTrashStart } from './remake-waterfall-trash-start.mjs';
 import { testWaterfallUndyneBridgeEnd } from './remake-waterfall-undyne-bridge-end.mjs';
@@ -690,6 +691,7 @@ try {
   await testWaterfallShyrenEnding(page);
   testAstronautFood();
   testDogResidue();
+  await testWaterfallTrashObjects(page);
   await testWaterfallTrashPath(page);
   await testWaterfallTrashStart(page);
   await testWaterfallUndyneBridgeEnd(page);
