@@ -829,3 +829,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Đường tới hành lang Undyne
 
 Đã nối cửa C/D giữa Waterfall 3 và 4, marker hai chiều và duy trì bài nhạc đang phát; khi vào trực tiếp, obj_watermusic chọn waterfall/toomuch và pitch tuyến giết theo cờ. `test-waterfall-undyne-path-v1.log` kiểm đi bộ hai chiều, marker, nhạc liên tục và pitch; hồi quy đường Tutu và hai nhánh cảnh Undyne, check/build qua. Cảnh vẫn có giới hạn biểu cảm/timing như trên; phòng tiếp theo chưa nối. Push `b52ccd7` thành công. Bộ tổng snapshot `e6b3b82` đã bị ngắt, không có kết quả cuối.
+
+### Quy tắc cầu hạt Waterfall
+
+Đã chuyển phần nhận diện bốn hạt đã dừng liên tiếp theo hàng/cột và tọa độ cầu có sẵn theo plot và hướng vào phòng 5. Kiểm thử riêng bao gồm thứ tự hạt, khoảng trống, hạt chưa dừng, cầu ngang/dọc và các điều kiện vào phòng; check/build qua. Chưa nối vào phòng 5: thao tác mang/thả, dòng nước, chuông đặt lại, va chạm và encounter vẫn cần chuyển. Push `9401df5` thành công. Bộ tổng snapshot `9401df5` đang chạy (`test-undyne-full-v2.log`); chưa có kết quả cuối.
