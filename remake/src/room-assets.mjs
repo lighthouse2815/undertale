@@ -248,6 +248,7 @@ export async function loadRoom(scene, name) {
     ...(town ? ['mus_town', 'mus_reunited', 'mus_toomuch', 'snd_escaped', 'snd_squeak', 'snd_bluh', 'mus_doorclose', 'snd_item'] : []),
     ...(dangerBridge || fogRoom ? ['mus_papyrus'] : []),
     ...(fogRoom ? ['mus_papyrusboss', 'snd_break2'] : []),
+    ...(name === 'room_water1' ? ['mus_ambientwater'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
     ...(crossword ? ['mus_papyrus'] : []),
     ...(snowpuzz ? ['mus_dogmeander'] : []),

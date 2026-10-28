@@ -725,3 +725,9 @@ Các đoạn thoại của đòn xanh, chó và cảnh bắt được tạo khi 
 Đã nối cửa X có fade hai chiều giữa town và fog (không nhầm cửa cửa hàng), giữ Reunited khi kết thúc. `PapyrusFogEncounter` thực hiện trigger/hồi HP/khóa điều khiển, camera và bóng/sương, các lời theo ký ức/lần bắt/tuyến giết, lựa chọn lần thứ ba, mở trận Papyrus, trở về garage khi bị bắt, hậu cảnh tha/giết, lựa chọn kết bạn, cờ 27/88, ký ức và plot 101. Đường đến Waterfall, cuộc gọi Undyne cùng các sự kiện sau phòng này vẫn chưa được chuyển; hiệu ứng writer, biểu cảm, animation và nhịp nhạc của cảnh còn cần đối chiếu tiếp với gốc, không coi game hoàn chỉnh.
 
 `test-papyrus-fog-encounter-v2.log` chạy chuỗi phòng sương và trận Papyrus; `test-papyrus-fog-encounter-v4.log` kiểm trigger, lời, trận thật/tha, nhánh từ chối và tuyến giết, chuyển garage khi giả lập kết quả bị bắt, đi bộ qua cửa hai chiều và nhạc Reunited. Check/build remake qua. Full snapshot `eba8db3` vẫn đang chạy và chưa gồm cảnh mới. Push `19c3cf6` thành công.
+
+### Phòng đầu Waterfall
+
+Đã mở cửa A/B có fade giữa fog và `room_water1`, chuyển 16 gợn nước đổi hướng/rẽ và quay về điểm đầu, băng trôi theo `path_icecube_water1` (ẩn khi kết thúc hoặc murderlv>=7), ba dải thác thị sai 20 ảnh và nhạc `ambientwater`; nhạc Reunited vẫn được giữ qua các cửa khi kết thúc. `room_water2` và lối đi tiếp chưa được chuyển, cửa phía đông phòng đầu chưa nối. Cuộc gọi thư Undyne là sự kiện sau plot 198, cũng chưa được chuyển.
+
+`test-waterfall-entrance-v7.log` kiểm chuyển phòng bằng điều khiển thật, nước, băng, thị sai, nhạc và điều kiện ẩn; `test-papyrus-fog-waterfall-v1.log` kiểm hồi quy cảnh Papyrus sau nối cửa. Check/build remake qua; full snapshot `eba8db3` vẫn đang chạy, không bao gồm hai phần mới. Push `5c31270` thất bại vì không kết nối được github.com:443, cần thử lại cả hai commit.
