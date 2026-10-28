@@ -621,3 +621,9 @@ Chuỗi `test-papyrus-outside-v1.log` kiểm xương ngoài khung vẫn tồn t�
 ### Lượt xương 11–13
 
 Đã thêm `fighto=11,12,13` với 250/200/220 frame: dãy xương xanh/trắng xen kẽ, hai làn xương ngược chiều và các nhóm xương dao động trên/dưới. Chuỗi `test-papyrus-turns-111213-v1.log` kiểm bố trí, màu, vận tốc, dao động, thời lượng và hồi quy tim/xương/GreaterDog; check/build qua. Cần tiếp tục lượt 14–16, chuyển tim xanh, cảnh bắt, thoại/ACT/FIGHT/MERCY và nối vào phòng sương. Full snapshot `15dd854` vẫn chạy; các commit gần đây đang thử push lại sau lỗi mạng.
+
+### Nhánh lặp lượt 14 của Papyrus
+
+Đã chuyển hai bố trí `fighto=14` theo `mycommand` 0–19 và 20–39, gồm thời lượng, tốc độ và màu xương; khi `mycommand>=40` chọn lại ngẫu nhiên một lượt 2–12 và áp dụng nhánh tăng tốc sau khi tăng `xfight`. Khi `xfight>3` game gốc chuyển sang đòn đặc biệt; thành phần xương hiện báo rõ nhánh chưa hỗ trợ thay vì tạo nhầm đợt thường. Cảnh đòn đặc biệt, diễn tiến boss và tuyến phòng sương vẫn chưa nối.
+
+Chuỗi `test-papyrus-turn-14-v2.log` kiểm biên 19/20/39/40, bố trí, timer, nhánh ngẫu nhiên và từ chối đòn chưa chuyển, cùng hồi quy GreaterDog/tim xanh/các lượt xương; check/build qua. Máy chủ fixture bị dừng giữa phiên nên lần test đầu báo kết nối bị từ chối; đã khởi động lại và chạy thành công. Bộ tổng snapshot `15dd854` không còn tiến trình và không có kết quả cuối, vì vậy chưa thể xác nhận pass; sẽ chạy lại bộ tổng trên snapshot mới. Các commit đến `3316dc8` đã push thành công.

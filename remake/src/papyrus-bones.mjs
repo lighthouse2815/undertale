@@ -7,9 +7,11 @@ export function loadPapyrusBoneAssets(scene) {
 
 // Ba xương trắng mở đầu của obj_papyrusboss, cùng xương trên/dưới dùng ở các lượt sau.
 export class PapyrusBones {
-  constructor(scene, { firstWave = false, fighto = -1, turn = null, xfight = 0 } = {}) {
+  constructor(scene, { firstWave = false, fighto = -1, turn = null, xfight = 0, command = 0 } = {}) {
+    if (turn === 14 && xfight > 3) throw new RangeError('Đòn đặc biệt của Papyrus chưa được chuyển.');
     this.scene = scene; this.fighto = fighto; this.frames = 0; this.bullets = []; this.captured = false;
-    this.duration = firstWave ? 140 : ({ '-1': 200, 0: 300, 1: 220, 2: 240, 3: 150, 4: 240, 5: 330, 6: 200, 7: 150, 8: 230, 9: 355, 10: 230, 11: 250, 12: 200, 13: 220 })[turn] ?? 140;
+    if (turn === 14 && xfight <= 3 && command >= 40) { turn = 2 + Math.floor(Math.random() * 11); this.rolledTurn = turn; xfight++; }
+    this.duration = firstWave ? 140 : turn === 14 ? (command < 20 ? 210 : 200) : ({ '-1': 200, 0: 300, 1: 220, 2: 240, 3: 150, 4: 240, 5: 330, 6: 200, 7: 150, 8: 230, 9: 355, 10: 230, 11: 250, 12: 200, 13: 220 })[turn] ?? 140;
     this.border = { left: 192, right: 442, top: 250, bottom: 385 };
     const b = this.border; scene.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2);
     this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(b.left / 2, b.top / 2, (b.right - b.left) / 2, (b.bottom - b.top) / 2).setVisible(false);
@@ -32,7 +34,8 @@ export class PapyrusBones {
         10: [[b.left - 40, 30, 4], ...[[60,40], [80,50], [100,60], [280,50], [295,40], [310,30]].flatMap(([dx, height]) => [[b.left - dx, height, 4], [b.left - dx, height + 50, 4, true]]), ...[600, 620, 640].map((dx) => [b.right + dx, 30, -4])],
         11: [...[60, 140, 220, 300, 380, 460, 540, 620, 1250, 1330].map((dx, i) => [b.right + dx, i % 2 ? 20 : 80, i < 8 ? -4.5 : -7, false, i % 2 === 0])],
         12: [...[30, 40, 50, 60, 50, 40, 30].map((height, i) => [b.left - 60 - 27 * i, height, 4]), ...[30, 40, 50, 60, 50, 40, 30].map((height, i) => [b.right + 600 + 40 * i, height, -6.4])],
-        13: [...[20, 60, 100].map((dx) => [b.right + dx, 30, -4]), ...[240, 270, 300].map((dx) => [b.right + dx, 10, -4, true]), [b.right + 460, 30, -4], [b.right + 460, 40, -4, true], [b.right + 580, 50, -4], [b.right + 580, 60, -4, true]]
+        13: [...[20, 60, 100].map((dx) => [b.right + dx, 30, -4]), ...[240, 270, 300].map((dx) => [b.right + dx, 10, -4, true]), [b.right + 460, 30, -4], [b.right + 460, 40, -4, true], [b.right + 580, 50, -4], [b.right + 580, 60, -4, true]],
+        14: command < 20 ? [...[30, 40, 50, 60, 50, 40, 30].map((height, i) => [b.left - 60 - 30 * i, height, 4]), ...[30, 40, 50, 60, 50, 40, 30].map((height, i) => [b.right + 680 + 40 * i, height, -6.4])] : [10, 90, 170, 250, 330, 410, 490, 570, 1150, 1230].map((dx, i) => [b.right + dx, i % 2 ? 20 : 80, i < 8 ? -5 : -8, false, i % 2 === 0])
       };
       for (const [x, height, vx, top = false, blue = false] of patterns[turn]) this.add(x, b.bottom - height, { vx: turn === 3 && xfight > 0 ? Math.sign(vx) * 4.5 : vx, top, blue });
       // Gán biến qua tên object trong GML áp dụng cho mọi instance, kể cả object con.
