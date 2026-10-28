@@ -316,6 +316,16 @@
       "info": [
         "* \"Annoying Dog\" - Dog\n* A little white dog.\n* It's fast asleep..."
       ]
+    },
+    "35": {
+      "name": "Astronaut Food",
+      "battleName": "AstroFood",
+      "seriousName": "Astr.Food",
+      "use": "* You eat the Astronaut Food.",
+      "heal": 21,
+      "info": [
+        "* \"Astronaut Food\" Heals 21 HP\n* For feeding a pet\n  astronaut."
+      ]
     }
   },
   "actions": [

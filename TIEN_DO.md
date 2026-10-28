@@ -1273,3 +1273,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối hai chiều tới `room_water_trashsavepoint`, giữ âm nước và thêm SAVE Trash Zone với lời lần đầu/lặp, cờ 91 và nhánh dân số. `remake-waterfall-trash-path.mjs` kiểm cửa, marker, nhạc, lưu thật và nhánh lời; hồi quy phòng tỉnh dậy, check/build qua. Hiệu ứng nước/thác, rác trôi và lối sang phòng sau còn thiếu; bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.
 
 Đã tái sử dụng renderer thác cho cả hai phòng rác, gồm hoạt ảnh điểm lưu; kiểm hoạt ảnh và hồi quy hai phòng, check/build qua. Vùng nước, rác trôi và cửa tiếp vẫn cần chuyển.
+
+### Astronaut Food
+
+Đã thêm vật phẩm 35 với tên, mô tả và hồi 21 HP theo game gốc. `remake-astronaut-food.mjs` kiểm tên, INFO, USE và tiêu thụ; check/build qua. Hộp lấy vật phẩm trong phòng rác tiếp theo chưa nối; bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.
