@@ -27,6 +27,12 @@ export function itemAction(world, index, action, text, { scene = world, health =
     world.inventory.splice(index, 1);
     return [line];
   }
+  if (id >= 29 && id <= 34) {
+    const hadSpace=world.inventory.length<8; world.inventory.splice(index,1);
+    while(world.inventory.length<8)world.inventory.push(28+Math.floor(Math.random()*7));
+    scene.sound.play('snd_item');scene.time.delayedCall(10*1000/30,()=>scene.sound.play('snd_dogresidue'));
+    return [item.use,hadSpace?'* The rest of your inventory\n  filled up with Dog Residue.':'* ...'];
+  }
   if (id === 26 && scene !== world) {
     world.inventory.splice(index, 1);
     if (world.weapon !== 14) return [item.use, '* But nothing happened.'];
@@ -47,6 +53,8 @@ export function itemAction(world, index, action, text, { scene = world, health =
     return [item.use];
   }
   let line = item.use;
+  let heal = item.heal;
+  if (id === 28) { const roll=Math.floor(Math.random()*4); heal=[30,10,2,999][roll]; line+=['\n* Oh. Tastes yappy...','\n* Oh. Fried tennis ball...','\n* Oh. There are bones...','\n* It\'s literally garbage???'][roll]; }
   if (id === 17) line = item.wrappers[Math.floor(Math.random() * 8)];
   if (id === 16 && scene === world && world.dataSource.name === 'room_tundra6A') world.flags[56] = 4;
   if (id === 1) {
@@ -58,13 +66,13 @@ export function itemAction(world, index, action, text, { scene = world, health =
   if (id === 4) scene.sound.play('snd_power');
   else {
     scene.sound.play('snd_swallow');
-    scene.time.delayedCall(10 * 1000 / 30, () => scene.sound.play(id === 9 ? 'snd_spooky' : 'snd_power'));
+    scene.time.delayedCall(10 * 1000 / 30, () => scene.sound.play(id === 9 ? 'snd_spooky' : id === 28 ? 'snd_dogresidue' : 'snd_power'));
   }
   if (id === 63) health.hp = Math.max(health.hp, health.maxHp - 1);
-  else if (health.hp < health.maxHp) health.hp = Math.min(health.maxHp, health.hp + (id === 11 ? health.maxHp : item.heal));
+  else if (health.hp < health.maxHp) health.hp = Math.min(health.maxHp, health.hp + (id === 11 ? health.maxHp : heal));
   if (id !== 11 && id !== 63) {
     world.flags[260] = 1;
-    line += ' \n' + (health.hp >= health.maxHp ? text.maxed : text.recover.replace(/\\\[1\]/g, String(item.heal)));
+    line += ' \n' + (health.hp >= health.maxHp ? text.maxed : text.recover.replace(/\\\[1\]/g, String(heal)));
   }
   world.inventory.splice(index, 1);
   return [line];

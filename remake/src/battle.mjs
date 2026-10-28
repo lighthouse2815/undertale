@@ -39,7 +39,7 @@ export class Battle extends Scene {
     loadGloveAssets(this);
     if (this.game.scene.getScene('World').inventory.length) {
       if (!this.cache.json.exists('inventory')) this.load.json('inventory', new URL('./inventory.json', import.meta.url).href);
-      for (const key of ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item', 'snd_tearcard']) if (!this.cache.audio.exists(key))
+      for (const key of ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item', 'snd_dogresidue', 'snd_tearcard']) if (!this.cache.audio.exists(key))
         this.load.audio(key, new URL(`../assets/sounds/${key}/${key}.wav`, import.meta.url).href);
     }
     this.load.image('battle-heart', new URL('../assets/sprites/spr_heart/spr_heart_0.png', import.meta.url).href);

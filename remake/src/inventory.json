@@ -244,6 +244,69 @@
         "* Use outside of battle to\n  look at the card."
       ],
       "use": "* OOOORAAAAA!!!\n* You rip up the punch card!"
+    },
+    "28": {
+      "name": "Dog Salad",
+      "battleName": "Dog Salad",
+      "seriousName": "Dog Salad",
+      "use": "* You eat the Dog Salad.",
+      "info": [
+        "* \"Dog Salad\" - Heals ?? HP\n* Recovers HP.\n* (Hit Poodles.)"
+      ]
+    },
+    "29": {
+      "name": "Dog Residue",
+      "battleName": "DogResidu",
+      "seriousName": "D.Residue",
+      "use": "* You used the Dog Residue.",
+      "info": [
+        "* \"Dog Residue\" - Dog Item\n* Shiny trail left\n  behind by a dog."
+      ]
+    },
+    "30": {
+      "name": "Dog Residue",
+      "battleName": "DogResidu",
+      "seriousName": "D.Residue",
+      "use": "* You used the Dog Residue.",
+      "info": [
+        "* \"Dog Residue\" - Dog Item\n* Dog-shaped husk shed\n  from a dog's carapace."
+      ]
+    },
+    "31": {
+      "name": "Dog Residue",
+      "battleName": "DogResidu",
+      "seriousName": "D.Residue",
+      "use": "* You used the Dog Residue.",
+      "info": [
+        "* \"Dog Residue\" - Dog Item\n* Dirty dishes left\n  unwashed by a dog."
+      ]
+    },
+    "32": {
+      "name": "Dog Residue",
+      "battleName": "DogResidu",
+      "seriousName": "D.Residue",
+      "use": "* You used the Dog Residue.",
+      "info": [
+        "* \"Dog Residue\" - Dog Item\n* Glowing crystals secreted\n  by a dog."
+      ]
+    },
+    "33": {
+      "name": "Dog Residue",
+      "battleName": "DogResidu",
+      "seriousName": "D.Residue",
+      "use": "* You used the Dog Residue.",
+      "info": [
+        "* \"Dog Residue\" - Dog Item\n* Jigsaw puzzle left\n  unfinished by a dog."
+      ]
+    },
+    "34": {
+      "name": "Dog Residue",
+      "battleName": "DogResidu",
+      "seriousName": "D.Residue",
+      "use": "* You used the Dog Residue.",
+      "info": [
+        "* \"Dog Residue\" - Dog Item\n* Web spun by a dog\n  to ensnare prey."
+      ]
     }
   },
   "actions": [

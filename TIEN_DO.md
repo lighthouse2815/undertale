@@ -1157,3 +1157,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Cửa phòng piano
 
 Đã nối hành lang Shyren ↔ phòng piano, fade nhạc thường và giữ Reunited. `remake-waterfall-piano-path.mjs` kiểm hai chiều bằng phím và hai nhánh nhạc; check/build qua. Cửa phòng kho báu trong piano chưa nối; các hạn chế câu đố ở mục trước còn áp dụng. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
+
+### Dog Residue và Dog Salad
+
+Đã thêm sáu biến thể Dog Residue, nhân vật phẩm lấp túi và Dog Salad với bốn mức hồi máu ngẫu nhiên. `remake-dog-residue.mjs` kiểm thông tin, sinh vật phẩm, túi đầy, âm thanh và hồi HP; check/build qua. Chưa nối nguồn vật phẩm trong phòng kho báu và chưa kiểm từng scene trận; bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
