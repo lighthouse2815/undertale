@@ -12,5 +12,9 @@ export async function testWaterfallWishesPath(page) {
   assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x,__remake.scene.player.y,__remake.scene.waterfallMusic === window.wishesBirdMusic]),[20,100,true]);
   await page.keyboard.down('ArrowLeft'); await page.waitForFunction(() => __remake.phase==='transition'); await page.keyboard.up('ArrowLeft'); await page.waitForFunction(() => __remake.phase==='running' && __remake.room==='room_water11');
   assert.equal(await page.evaluate(() => __remake.scene.waterfallMusic === window.wishesBirdMusic), true);
+  await page.evaluate(async () => { const w=__remake.scene; await w.openRoom('room_water12'); w.waterfallEncounter.disabled=true; w.player.setPosition(80,20); window.wishesShortcutMusic=w.waterfallMusic; });
+  await page.keyboard.down('ArrowUp'); await page.waitForFunction(() => __remake.phase==='transition'); await page.keyboard.up('ArrowUp');
+  await page.waitForFunction(() => __remake.phase==='running' && __remake.room==='room_water11');
+  assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x,__remake.scene.player.y,__remake.scene.waterfallMusic===window.wishesShortcutMusic]),[15,120,true]);
   await page.evaluate(async () => { await __remake.scene.openRoom('room_water1'); }); console.log('✓ Cửa phòng sao ↔ Waterfall 12 và lối sang chim');
 }

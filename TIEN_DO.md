@@ -1069,3 +1069,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Chẩn đoán kiểm thử tổng cảnh Undyne
 
 Bộ tổng `test-remake-fe0840e.log` thất bại lại khi kích hoạt cảnh Undyne dù đã chờ scene; giả thuyết ở mục đồng bộ trước chưa được xác nhận. Chuỗi cỏ → SAVE hành lang → cảnh Undyne chạy riêng qua, check/build qua. Kiểm thử giờ ghi trạng thái scene, phím và nhân vật khi timeout để tìm nguyên nhân trong lần chạy tổng tiếp theo; chưa khẳng định đã sửa lỗi.
+
+### Lối tắt Waterfall 12
+
+Đã nối cửa đặc biệt một chiều từ phòng 12 về phòng sao, giữ nhạc khi đi qua. Kiểm thử đường Waterfall 12 kiểm lối này bằng phím cùng các cửa trước; check/build qua. Những cửa và sự kiện khác còn thiếu. Bộ tổng `test-remake-6e47e0b.log` đang chạy với chẩn đoán timeout cảnh Undyne, không gồm phần này.
