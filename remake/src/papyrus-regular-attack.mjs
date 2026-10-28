@@ -11,7 +11,7 @@ export function loadPapyrusRegularAssets(scene) {
 // Đòn thường cuối của Papyrus: xương, chó, xe buýt và xương lớn.
 export class PapyrusRegularAttack extends PapyrusBones {
   constructor(scene) {
-    super(scene, { fighto: 16 }); this.duration = 1300; this.actors = [];
+    super(scene, { fighto: 16 }); this.duration = 1300; this.actors = []; this.expanded = false;
     scene.soulMovement = 2; scene.soulJumpStage = 2; scene.soulVSpeed = -1;
     const b = this.border, bone = (x, height, vx, extra = {}) => this.add(x, b.bottom - height, { vx, ...extra });
     for (const dx of [10, 60]) bone(b.left - dx, 20, 4);
@@ -39,11 +39,10 @@ export class PapyrusRegularAttack extends PapyrusBones {
     for (const actor of [...this.actors]) {
       actor.age++; actor.x += actor.vx;
       if (actor.kind === 'super' && actor.x < b.right + 40 && actor.x > b.right + 10 && hx > b.right - 60 && !actor.appeared) { actor.appeared = true; actor.y = hy; }
-      if (actor.kind === 'super' && actor.x < b.left + 20) { b.top = 250; s.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2); }
+      if (actor.kind === 'super' && actor.x < b.left + 20) { this.expanded = false; b.right = 442; b.top = 250; }
       const up = s.keys.up.isDown || [...s.previousScene.touch.values()].some((pointer) => pointer.direction === 'up');
       if (actor.kind === 'bus' && superBone && actor.x < b.right && up && hx < superBone.x + 20 && hy > 50) {
-        if (hy < 270) b.top = Math.round((hy - 20) / 5) * 5;
-        s.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2);
+        this.expanded = true;
         if (s.soulVSpeed >= -2 && previousY > hy) s.soulVSpeed = -2;
       }
       actor.image.setPosition(actor.x / 2, actor.y / 2);
@@ -56,6 +55,8 @@ export class PapyrusRegularAttack extends PapyrusBones {
         else { for (const other of [...this.actors]) this.removeActor(other); break; }
       } else if (actor.kind === 'dog' && actor.x < 0 || actor.kind === 'bus' && actor.x < b.left - 100 || actor.kind === 'super' && actor.x < b.left - 40) this.removeActor(actor);
     }
+    if (this.expanded) { b.right = 512; b.top = hy < 270 ? Math.round((hy - 20) / 5) * 5 : 250; }
+    s.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2);
     this.clip.clear().fillStyle(0xffffff).fillRect(b.left / 2, b.top / 2, (b.right - b.left) / 2, (b.bottom - b.top) / 2);
     return done;
   }

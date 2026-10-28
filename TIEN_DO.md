@@ -657,3 +657,7 @@ Chuỗi `test-papyrus-turn-14-v2.log` kiểm biên 19/20/39/40, bố trí, timer
 Đã chuyển đợt `fighto=15` thành `papyrus-regular-attack.mjs`: 1300 frame, 21 xương các độ cao/tốc độ/dao động, sáu chó mang chữ và ván trượt, chín xe buýt và xương lớn với sprite gốc. Có va chạm hộp bao, sát thương/bắt, hoạt họa chó, cắt theo khung và cơ chế nâng mép trên khi nhảy trước xương lớn, trả khung khi xương lớn tới bên trái. Tách tính sát thương chung từ `PapyrusBones` để các đối tượng dùng cùng quy tắc HP/bất tử, không nhân đôi công thức.
 
 `tests/remake-papyrus-regular-attack.mjs` kiểm bố trí, vận tốc, hoạt họa, đổi khung, va chạm/bắt, thời lượng và dọn. Chuỗi `test-papyrus-regular-chain-v2.log` qua cùng toàn bộ thành phần Papyrus, garage, tim xanh và GreaterDog; check/build qua. Đợt này chưa được nối scene boss, chưa có thoại kết thúc đợt, chưa coi trận/game hoàn chỉnh. Full snapshot `4261ced` đang chạy và không bao gồm các phần mới; push `9e1eddc` đã thành công.
+
+### Sửa khung đòn cuối Papyrus
+
+Đối chiếu `SCR_BORDERSETUP`: border 51 không chỉ nâng mép trên theo tim mà còn mở mép phải từ 442 đến 512. Đã giữ border 51 khi nhả phím, cập nhật mép trên theo độ cao tim mỗi frame và khôi phục border 5 khi xương lớn sang trái. `test-papyrus-regular-border-v2.log` kiểm mở rộng/nhả phím/khôi phục cùng chuỗi hồi quy; check/build qua. Đòn vẫn chưa được nối vào scene boss. Push `20f6597` thành công; full snapshot `4261ced` đang chạy, không bao gồm sửa này.
