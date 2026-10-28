@@ -328,3 +328,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-library.mjs/json` chuyển sáu sách/bốn NPC/plot122/kết thúc/Jumbler58/tuyến giết/collider. Town↔Library nối cửa_u đúng marker, giữ cùng bài nhạc; đã qua test riêng và chuỗi Town→Dogs→Library. Chưa nối cầu vào town hoặc các dịch vụ còn thiếu.
+
+
+`src/sans-basement.mjs/json` nối cửa sau nhà Sans theo cờ497, đọc ngăn ảnh/thiết kế/huy hiệu/máy và giữ nhạc đúng tuyến khi qua cửa. Kiểm thử riêng và chuỗi Town→Library→Basement đã qua; cách nhận chìa khóa cùng các phòng còn lại chưa hoàn chỉnh.

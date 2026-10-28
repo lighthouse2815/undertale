@@ -54,6 +54,7 @@ import { SnowdinColorTiles } from './snowdin-color-tiles.mjs';
 import { SnowdinDogHouse } from './snowdin-dog-house.mjs';
 import { SnowdinIcePuzzle } from './snowdin-ice-puzzle.mjs';
 import { SnowdinIceHole } from './snowdin-ice-hole.mjs';
+import { SansBasement } from './sans-basement.mjs';
 import { SnowdinLibrary } from './snowdin-library.mjs';
 import { SnowdinTownUndyne } from './snowdin-town-undyne.mjs';
 import { SnowdinTownPapyrus } from './snowdin-town-papyrus.mjs';
@@ -157,6 +158,7 @@ const ROOM_EXITS = {
   room_tundra_dangerbridge: { B: 'room_tundra_poffzone' },
   room_tundra_town: { u: 'room_tundra_library' },
   room_tundra_library: { u: 'room_tundra_town' },
+  room_tundra_sansbasement: { s: 'room_tundra_town' },
   room_tundra_icehole: { A: 'room_tundra_iceentrance' },
   room_tundra8A: { B: 'room_tundra8' },
   room_tundra6A: { B: 'room_tundra6' },
@@ -177,7 +179,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
+    this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
     this.events.once('shutdown', () => { this.townMusic?.destroy(); stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -187,7 +189,7 @@ class World extends Scene {
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
-    if (!['room_tundra_town', 'room_tundra_library'].includes(name)) { this.townMusic?.destroy(); this.townMusic = null; }
+    if (!['room_tundra_town', 'room_tundra_library'].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -233,7 +235,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
-    this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null; this.snowdinLibrary = null;
+    this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null; this.snowdinLibrary = null; this.sansBasement = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -306,14 +308,14 @@ class World extends Scene {
       spawnName === 'obj_mainchara' ? snap(spawn.Y) : spawn.Y, `spr_mainchara${facing}:0`).setOrigin(0);
     this.player.facing = facing; this.player.frameIndex = 0;
     this.doors = data.room.GameObjects.flatMap((item) => {
-      const match = /^obj_door([ABCD])(musicfade)?$/.exec(item.ObjectName) ?? (item.ObjectName === 'obj_door_u' ? [item.ObjectName, 'u'] : null);
+      const match = /^obj_door([ABCD])(musicfade)?$/.exec(item.ObjectName) ?? (item.ObjectName === 'obj_door_u' ? [item.ObjectName, 'u'] : item.ObjectName === 'obj_door_s_musfade' ? [item.ObjectName, 's', true] : null);
       const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A', room_ruins16: 'room_ruins19', room_ruins19: 'room_ruins16', room_torhouse2: 'room_kitchen', room_kitchen: 'room_torhouse2', room_torhouse1: 'room_basement1', room_basement1: 'room_torhouse1', room_tundra_iceentrance: 'room_tundra_poffzone', room_tundra_poffzone: 'room_tundra_iceentrance' })[name];
       const destination = special || (match && ROOM_EXITS[name]?.[match[1]]);
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
-      return [{ destination, direction: special ? 'X' : match[1], marker: special ? 'obj_markerX' : ({ A: 'obj_markerA', B: 'obj_markerB', C: 'obj_markerC', D: 'obj_markerD', u: 'obj_markeru' })[match[1]] ?? 'obj_markerA',
+      return [{ destination, direction: special ? 'X' : match[1], marker: special ? 'obj_markerX' : ({ A: 'obj_markerA', B: 'obj_markerB', C: 'obj_markerC', D: 'obj_markerD', u: 'obj_markeru', s: 'obj_markers' })[match[1]] ?? 'obj_markerA',
         musicFade: Boolean(match?.[2]),
-        duration: (special || match[1] === 'u' ? 14 : match[2] ? 13 : 8) * 1000 / 30,
+        duration: (special || ['u', 's'].includes(match[1]) ? 14 : match[2] ? 13 : 8) * 1000 / 30,
         left: item.X + (sprite.MarginLeft - sprite.OriginX) * item.ScaleX,
         right: item.X + (sprite.MarginRight - sprite.OriginX) * item.ScaleX,
         top: item.Y + (sprite.MarginTop - sprite.OriginY) * item.ScaleY,
@@ -372,6 +374,7 @@ class World extends Scene {
     if (name === 'room_tundra_lesserdog') this.snowdinDogHouse = new SnowdinDogHouse(this);
     if (name === 'room_tundra_iceentrance') this.snowdinIcePuzzle = new SnowdinIcePuzzle(this);
     if (name === 'room_tundra_icehole') this.snowdinIceHole = new SnowdinIceHole(this);
+    if (name === 'room_tundra_sansbasement') this.sansBasement = new SansBasement(this);
     if (name === 'room_tundra_library') this.snowdinLibrary = new SnowdinLibrary(this);
     if (name === 'room_tundra_town') { this.snowdinTown = new SnowdinTown(this); this.snowdinTownNpcs = new SnowdinTownNpcs(this); this.snowdinTownDogs = new SnowdinTownDogs(this); this.snowdinTownPapyrus = new SnowdinTownPapyrus(this); this.snowdinTownUndyne = new SnowdinTownUndyne(this); }
     if (name === 'room_tundra_dangerbridge') this.snowdinDangerBridge = new SnowdinDangerBridge(this);
@@ -591,7 +594,7 @@ class World extends Scene {
   transitionRoom(destination, marker, duration, musicFade = false) {
     state.phase = 'transition';
     if (musicFade && this.flags[7] !== 1) {
-      const music = this.ruinsHome?.music ?? this.torielHall?.music[0] ?? this.torielGate?.music;
+      const music = this.ruinsHome?.music ?? this.torielHall?.music[0] ?? this.torielGate?.music ?? this.townMusic ?? this.sansBasement?.music;
       if (music) this.tweens.add({ targets: music, volume: 0, duration: 10 * 1000 / 30 });
     }
     this.cameras.main.once('camerafadeoutcomplete', async () => {
@@ -631,6 +634,7 @@ class World extends Scene {
     if (this.snowdinColorTiles?.interact()) return;
     if (this.snowdinDogHouse?.interact()) return;
     if (this.snowdinIceHole?.interact()) return;
+    if (this.sansBasement?.interact()) return;
     if (this.snowdinLibrary?.interact()) return;
     if (this.snowdinTownUndyne?.interact()) return;
     if (this.snowdinTownPapyrus?.interact()) return;

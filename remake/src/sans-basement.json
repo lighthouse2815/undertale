@@ -1,0 +1,31 @@
+{
+  "drawer": [
+    "* (There's a photo album inside\n  the drawer.)",
+    "* (There are photos of Sans with\n  a lot of people you don't\n  recognize.)",
+    "* (He looks happy.)"
+  ],
+  "drawerEnd": [
+    "* (There's a photo album inside\n  the drawer.)",
+    "* (There are photos of Sans with\n  a lot of people you don't\n  recognize.)",
+    "* (... and, one photo of you\n  standing with Sans and all\n  your friends.)",
+    "* (He looks happy.)"
+  ],
+  "drawerFriends": [
+    "* (There's a photo album inside\n  the drawer.)",
+    "* (There are photos of... Huh?)",
+    "* (A card is sticking out from\n  the back flap of the binder.)",
+    "* (It's a poorly drawn picture\n  of three smiling people.)\n* (Written on it...)",
+    "* \"don't forget.\""
+  ],
+  "badge": [
+    "* (You look in the drawer.)\n* (There's some kind of badge.)"
+  ],
+  "blueprints": [
+    "* (Blueprints.)\n* (You can't read the symbols\n  they're written in...)",
+    "* (... or maybe it's just the\n  handwriting.)",
+    "* (Looks like they relate to\n  some kind of strange machine.)"
+  ],
+  "machine": [
+    "* (There's a strange machine\n  behind the curtain.)\n* (It seems to be broken.)"
+  ]
+}

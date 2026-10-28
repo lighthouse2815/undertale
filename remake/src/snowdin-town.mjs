@@ -61,6 +61,7 @@ export class SnowdinTown {
     const name = e.item.ObjectName;
     if (name === 'obj_savepoint') showSnowdinSave(w, this.text);
     else if (name === 'obj_sansbox') showItemBox(w, boxData.box);
+    else if (name === 'obj_readable_room4' && w.flags[497] >= 3) { w.sound.play('snd_item'); w.showDialogue(this.text.sansDoorOpen, { onClose: () => { w.release(); w.transitionRoom('room_tundra_sansbasement', 'obj_markers', 14 * 1000 / 30, true); } }); }
     else if (name === 'obj_papmailbox') w.showDialogue(this.text.papMailbox, { onClose: () => w.showChoice('* (Look inside?)', boxData.box.options, (choice) => w.showDialogue(choice ? this.text.papMailboxNo : this.text.papMailboxYes)) });
     else w.showDialogue(this.text[name === 'obj_snowdinlogo' ? 'logo' : name === 'obj_sign_room' ? 'sign' : name === 'obj_xmastree' ? murderLevel(w.flags) >= 7 ? 'treeMurder' : 'tree' : name === 'obj_sansmailbox' ? 'sansMailbox' : name === 'obj_readable_room2' ? 'shed' : name === 'obj_readable_room3' ? 'camera' : 'sansDoor']);
     return true;

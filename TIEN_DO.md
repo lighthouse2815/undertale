@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi chuyển thư viện Snowdin. Mốc code trước phần này: `f1d64af` trên `main`.
+Cập nhật: 28/10/2026, sau khi chuyển phòng bí mật của Sans. Mốc code trước phần này: `c752be9` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -550,3 +550,10 @@ Fullsnapshot42b30da kếtthúc lỗi testJerryEncounter dòng24: phaseđãbattle
 TownMusic giờđượcWorldgiữkhiđiquaTown/Libraryvàdọnkhirờinhóm/shutdown, Towncontrollerdùngcùnginstance khiquayvề; librarykhôngtạobàimớikhimởtrựctiếpnhưdữliệugốc. Không thêm wrapper haythưviệnmới. Helper `tests/remake-snowdin-library.mjs` nốitổng: mọisách/đọclại,4NPC/late-end-58/tuyến7/collider/khóa, cửa/marker/giữbàivịtrí/SAVE/nạp/dọn. Riêngv1vàchuỗiTownprops→Dogs→Library (`test-library-chain-v1.log`) xanh; check/buildqua (`build-library-final.log`), đãxemảnh. Cửa cầu→Town/cácdịchvụkhác/cửaSans/nhàPapyruschưanối, gamevẫncònnhữngphầnthiếuđãghi.
 
 Pushđãthànhcông488fdb32→f1d64af2, gồmc1fff1d/42b30da/9eb70ec/99f9b18/e8d88f8/f1b2be5/a7e38e0/f1d64af. Bộ tổng `test-town-undyne-full-v1.log` đangchạysnapshotf1d64af,đãquabướcđónggóitrướcsửaLibrary, logtớiHànhlangToriel; chưaxanhfull vàkhônggồmLibrarymới.
+
+
+Đã chuyển phòng `room_tundra_sansbasement`: cửa sau nhà Sans chỉ mở khi cờ497>=3, hiệulờimở/tiếngitem rồi chuyển qua cửa14frame; cờ thấp hơn giữ lời khóa. Cửa về town dùng marker2238,124; cửa vào đặt player tại50,110. Phòng có ngăn ảnh (ba nhánh cờ7/279, 279 ưu tiên), huy hiệu, hai vị trí bản thiết kế và ba vị trí máy sau màn, dùng đúng lời gốc/hướng tương tác. Nhạc `mus_sansdate` volume.9/rate.8 khi67!=1; sau kết thúc giữ cùng Reunited xuyên town↔basement, cờ67=1 trước kết thúc không phát nhạc. Quản lý âm thanh khi rời phòng/shutdown và fade theo cửa có sẵn.
+
+Helper `tests/remake-sans-basement.mjs` nối tổng: điều kiện khóa/mở, cả hai cửa/marker, bốn nhánh ngăn ảnh và đọc lại, huy hiệu/bản vẽ/máy, nhạc các trường hợp/cùng instance, SAVE-nạp/va chạm/dọn. Riêngv2 và chuỗi Town→Library→Sansbasement (`test-sans-basement-chain-v1.log`) đã qua; check/build cuối qua (`build-sans-basement-resume.log`), đã xem ảnh. Kiểm thử âm lượng chờ Web Audio cập nhật thay vì so sánh ngay trước khi âm lượng áp dụng. Chưa chuyển đường lấy chìa khóa cờ497, nhà Papyrus, nhà trọ, cửa hàng và các dịch vụ khác; chưa nối cầu→town.
+
+Push thư viện c752be9 trước đó timeout180s, commit còn cục bộ; sẽ thử đẩy cùng commit phòng Sans. Bộ tổng snapshot f1d64af vẫn đang chạy (process tests/remake.mjs và server fixture còn sống), đã qua Ruins16–18OLD; chưa có kết quả cuối và không bao gồm thư viện/phòng Sans. Mốc full xanh vẫn 2f230f9.
