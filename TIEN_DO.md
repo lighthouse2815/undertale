@@ -755,3 +755,7 @@ Bộ tổng snapshot `eba8db3` đã hoàn thành với mã thoát 0 (`test-papyr
 ### Nhạc trạm Waterfall
 
 Đã nối `obj_sansmusic` cho `room_water2`: phát `mus_muscle` khi Papyrus còn sống và không có nhạc đang tiếp tục; giữ Reunited tuyến kết thúc, không phát khi Papyrus chết, dừng/chuyển đúng giữa âm nước phòng trước và trạm. `test-waterfall-sentry-music-v1.log` kiểm các trường hợp âm thanh/dọn; chuỗi `test-waterfall-station-music-chain-v1.log` kiểm hồi quy NPC, SAVE và thác; check/build qua. Bộ tổng snapshot `605ea64` đã qua mã 0 (`test-waterfall-station-full-v1.log`) và không gồm thay đổi nhạc này. Push `605ea64` thành công; Sans/cửa vào trạm chưa xong.
+
+### Lời bữa ăn tại Grillby
+
+Đã chuyển lời `obj_grillbynpc_sansdate` và các nhánh SCR_TEXT 570–578: chào khách, gọi fries/burger và cờ món 391, câu trả lời về Papyrus, ketchup, lời về hoa, món nợ và lời tạm biệt. Các bộ chọn trả lời được kiểm bằng `remake-grillby-date-dialogue.mjs`; check/build qua. Đây mới là dữ liệu cho cảnh, chưa có hoạt cảnh, lựa chọn thực tế hoặc đường đến Grillby; trạm vẫn chưa mở đường chơi. Bộ tổng snapshot `605ea64` đã qua; push `7f33736` thành công.
