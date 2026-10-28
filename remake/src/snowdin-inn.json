@@ -1,0 +1,63 @@
+{
+  "intro": [
+    "* Welcome to Snowed Inn!\n* Snowdin's premier hotel!"
+  ],
+  "introFree": [
+    "* Back again?\n* Well, stay as long as you\n  like."
+  ],
+  "end": [
+    "* Hello!\n* Sorry, no time for a\n  nap...",
+    "* Snowed Inn is shutting\n  down so we can all go\n  to the surface."
+  ],
+  "endFree": [
+    "* Oh, there you are.\n* I was worrying about\n  you!",
+    "* Things are going to be OK,\n  you hear?",
+    "* We're all going to the\n  surface world soon...",
+    "* There's bound to be a\n  place you can stay there!"
+  ],
+  "key": [
+    "* Here's your room key.\n* Make sure to bundle up!"
+  ],
+  "keyFree": [
+    "* Here's your room key.\n* Make sure to bundle up!"
+  ],
+  "poor": [
+    "* ... You don't even have 80G?",
+    "* Oh! You poor thing.\n* I can only imagine what\n  you've been through.",
+    "* One of the rooms upstairs\n  is empty.",
+    "* You can sleep there for\n  free, okay?"
+  ],
+  "noMoney": [
+    "* You aren't carrying enough\n  money."
+  ],
+  "leave": [
+    "* Well, feel free to come\n  back any time."
+  ],
+  "error": [
+    "Error."
+  ],
+  "returned": [
+    "* Hiya!\n* You look like you\n  had a great sleep.",
+    "* Which is incredible, because\n  you were only up there for\n  about two minutes..."
+  ],
+  "returnPaid": [
+    "* Here's your money back.\n* You can pay me if you're\n  going to stay overnight."
+  ],
+  "returnFree": [
+    "* Feel free to come back\n  if you get tired."
+  ],
+  "sign": [
+    "* Mom says that sleeping\n  can recover your health\n  above your maximum HP.",
+    "* ... what's maximum HP?"
+  ],
+  "signEnd": [
+    "* Mom says that we can\n  go to the surface world\n  now!",
+    "* ... what's so great about\n  that, anyway?\n* I don't wanna move."
+  ],
+  "signMurder": [
+    "* (It's merely a decoy.)"
+  ],
+  "sprites": {
+    "spr_zzz": 3
+  }
+}

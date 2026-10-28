@@ -83,6 +83,7 @@ import { testSnowdinTownPapyrus } from './remake-snowdin-town-papyrus.mjs';
 import { testSnowdinTownUndyne } from './remake-snowdin-town-undyne.mjs';
 import { testSnowdinLibrary } from './remake-snowdin-library.mjs';
 import { testSansBasement } from './remake-sans-basement.mjs';
+import { testSnowdinInn } from './remake-snowdin-inn.mjs';
 import { testRoomCleanup } from './remake-room-cleanup.mjs';
 
 assert.ok(process.env.CHROME_PATH, 'Đặt CHROME_PATH tới Chrome/Chromium.');
@@ -488,6 +489,7 @@ try {
   await testSnowdinTownUndyne(page);
   await testSnowdinLibrary(page);
   await testSansBasement(page);
+  await testSnowdinInn(page);
   await testRoomCleanup(page);
   await page.screenshot({ path: join(root, 'test-results/remake-room.png') });
   assert.deepEqual(errors, []);

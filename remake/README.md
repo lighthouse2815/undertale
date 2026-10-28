@@ -331,3 +331,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/sans-basement.mjs/json` nối cửa sau nhà Sans theo cờ497, đọc ngăn ảnh/thiết kế/huy hiệu/máy và giữ nhạc đúng tuyến khi qua cửa. Kiểm thử riêng và chuỗi Town→Library→Basement đã qua; cách nhận chìa khóa cùng các phòng còn lại chưa hoàn chỉnh.
+
+
+`src/snowdin-inn.mjs/json` nối nhà trọ Snowed Inn/tầng ngủ, lựa chọn và các nhánh80G/miễn phí, cảnh ngáy/đánh thức, HP vượt max và cờ72/73. Kiểm thử riêng và chuỗi Town→Library→Inn đã qua. Các dịch vụ và tiến trình Snowdin còn thiếu được ghi trong TIEN_DO.md.

@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi chuyển phòng bí mật của Sans. Mốc code trước phần này: `c752be9` trên `main`.
+Cập nhật: 28/10/2026, sau khi chuyển nhà trọ Snowed Inn. Mốc code trước phần này: `aba6101` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -557,3 +557,12 @@ Pushđãthànhcông488fdb32→f1d64af2, gồmc1fff1d/42b30da/9eb70ec/99f9b18/e8d
 Helper `tests/remake-sans-basement.mjs` nối tổng: điều kiện khóa/mở, cả hai cửa/marker, bốn nhánh ngăn ảnh và đọc lại, huy hiệu/bản vẽ/máy, nhạc các trường hợp/cùng instance, SAVE-nạp/va chạm/dọn. Riêngv2 và chuỗi Town→Library→Sansbasement (`test-sans-basement-chain-v1.log`) đã qua; check/build cuối qua (`build-sans-basement-resume.log`), đã xem ảnh. Kiểm thử âm lượng chờ Web Audio cập nhật thay vì so sánh ngay trước khi âm lượng áp dụng. Chưa chuyển đường lấy chìa khóa cờ497, nhà Papyrus, nhà trọ, cửa hàng và các dịch vụ khác; chưa nối cầu→town.
 
 Push thư viện c752be9 trước đó timeout180s, commit còn cục bộ; sẽ thử đẩy cùng commit phòng Sans. Bộ tổng snapshot f1d64af vẫn đang chạy (process tests/remake.mjs và server fixture còn sống), đã qua Ruins16–18OLD; chưa có kết quả cuối và không bao gồm thư viện/phòng Sans. Mốc full xanh vẫn 2f230f9.
+
+
+Đã chuyển `snowdin-inn.mjs/json` cho Snowed Inn và phòng ngủ tầng hai. Cửa_t Town↔Inn dùng marker630,120/128,196, nhạc Town/Reunited giữ cùng instance. Chủ trọ ẩn khi murderlv>=7; lời kết thúc theo cờ7/72, biển có ba nhánh. Chọn Stay/Leave: nếu có ít nhất80G đặt72=1 và nhận chìa; nếu thiếu80G lần đầu đặt72=2 cho ngủ miễn phí; lần đã trả mà thiếu tiền thì từ chối; nhánh72=2 được ngủ miễn phí về sau. Theo source gốc phần này kiểm80G và nói hoàn tiền sau ngủ, không trừG giả.
+
+Sau lời chìa khóa, khóa điều khiển/fade nhạc/chờ20frame rồi chuyển lên tầng: `obj_innevent1` khóa tương tác trước Create của Frisk, do đó dùng vị trí mặc định50,66 căn lưới thành51,66, không lấy markerA40,80. Đặt73=1, phát `mus_snoresymphony`, phủ đen.5, ba nhóm Z nổi theo timer/alpha/chuyển động gốc. Xác nhận sau khi âm lượng>.6 hoặc chờ880frame để fade, chờ10/15frame rồi về phòng dưới. Chủ trọ hồiHP tới ít nhấtmaxHP và thay20→30,24→32,28→34,32→36,36→38; lời thức dậy và72/73 được giữ đúng, HP trên max không bị hạ.
+
+`tests/remake-snowdin-inn.mjs` nối tổng: 2 cửa/marker/nhạc, chọn ở lại/rời, thiếu tiền/lần đầu/trở lại, cờ72/73, phòng ngủ/Z/tự kết thúc880frame/khóa, bảy mức HP, lời kết thúc/diệt chủng và SAVE. Riêngv3 và chuỗi Town→Library→Inn bản cuối (`test-inn-chain-v2.log`) xanh; check/build qua (`build-inn-final-v2.log`), đã xem ảnh. Đã sửa vị trí phòng ngủ từ markerA sau khi đối chiếu thứ tự Create; không coi render được phòng là đủ game. Chưa nối cầu→town, cửa hàng/Grillby/Papyrusboss/nhà Papyrus và các tuyến sau.
+
+Push c752be9 và aba6101 đã thành công (remote f1d64af2→aba61016). Bộ tổng snapshot f1d64af vẫn chạy, đã qua Snowdrake/Chilldrake; chưa có kết quả cuối và không bao gồm thư viện, phòng Sans, nhà trọ mới.
