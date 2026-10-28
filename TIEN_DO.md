@@ -1065,3 +1065,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Đường tới Ballet Shoes
 
 Đã nối cửa Waterfall 12 ↔ phòng giày, marker và nhạc liên tục ở tuyến thường/kết thúc. `remake-waterfall-shoe-path.mjs` kiểm hai chiều bằng phím; check/build qua. Hoạt ảnh đánh riêng của giày và các cửa khác của phòng 12 còn thiếu. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Chẩn đoán kiểm thử tổng cảnh Undyne
+
+Bộ tổng `test-remake-fe0840e.log` thất bại lại khi kích hoạt cảnh Undyne dù đã chờ scene; giả thuyết ở mục đồng bộ trước chưa được xác nhận. Chuỗi cỏ → SAVE hành lang → cảnh Undyne chạy riêng qua, check/build qua. Kiểm thử giờ ghi trạng thái scene, phím và nhân vật khi timeout để tìm nguyên nhân trong lần chạy tổng tiếp theo; chưa khẳng định đã sửa lỗi.
