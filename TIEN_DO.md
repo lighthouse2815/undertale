@@ -1193,3 +1193,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Giọt mưa trên tượng
 
 Đã thêm giọt rơi theo nhịp, va chạm mask tượng theo trạng thái ô, hạt bắn và dọn tài nguyên. `remake-waterfall-statue.mjs` kiểm va chạm cả hai mask và nhánh tượng; check/build qua. Va chạm với ô người chơi đang dùng vùng chữ nhật, cần đối chiếu mask và hình/timing; bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Monster Kid dưới mưa
+
+Đã chuyển các nhánh gặp Kid theo ô/cờ 90, đi cùng, thoại Undyne/cờ 91 và rời/tạo lại khi quay đầu. `remake-waterfall-rain-kid.mjs` kiểm các nhánh và trạng thái trong fixture; check/build qua. Phòng mở trực tiếp, chưa nối cửa, mưa hoặc va chạm theo đường đi thực; cần đối chiếu quỹ đạo/timing và kiểm cả hành trình bằng phím. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
