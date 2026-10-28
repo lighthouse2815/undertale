@@ -957,3 +957,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Quy tắc giáo truy đuổi Undyne
 
 Đã bắt đầu chuyển generator ba giáo, nhịp tăng dần, thời gian ngắm/phóng, hai frame va chạm và các cờ trận nhanh. Kiểm thử logic riêng, check/build qua; chưa nối cảnh truy đuổi, hình, mask, chặn tường hoặc trận nhanh, cần đối chiếu timing/motion với gốc trước khi mở phòng 8. Push cửa phòng lịch sử `033f734` thành công. Bộ tổng `test-remake-033f734.log` bị gián đoạn trước khi có kết quả, cần chạy lại.
+
+### Đợt giáo trận nhanh Undyne
+
+Đã chuyển mưa giáo của `room_fastbattle` khi cờ 370 bằng 1: sinh mỗi ba frame, gia tốc, mask khung và sát thương/bất tử. `test-undyne-quick-wave-v1.log` kiểm nhịp, va chạm và dọn; check/build qua. Chưa ghép scene trận nhanh, Game Over, hiệu ứng chuyển cảnh hoặc cảnh truy đuổi; cần đối chiếu timing với gốc. Push quy tắc giáo truy đuổi `f1f5665` thành công.
