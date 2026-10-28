@@ -26,6 +26,7 @@ import { WaterfallShopRoad } from './waterfall-shop-road.mjs';
 import { WaterfallBlookYard } from './waterfall-blookyard.mjs';
 import { WaterfallBlookHouse } from './waterfall-blookhouse.mjs';
 import { WaterfallBlookDiary } from './waterfall-blookdiary.mjs';
+import { WaterfallSnailFarm } from './waterfall-snail-farm.mjs';
 import { WaterfallShop } from './waterfall-shop.mjs';
 import { WaterfallBird } from './waterfall-bird.mjs';
 import { WaterfallMystery } from './waterfall-mystery.mjs';
@@ -257,8 +258,9 @@ const ROOM_EXITS = {
   room_water_dogroom: { B: 'room_water_piano' },
   room_water_shoe: { B: 'room_water12' },
   room_water_bird: { t: 'room_water11', s: 'room_water_friendlyhub' },
-  room_water_friendlyhub: { B: 'room_water_trashzone2', s: 'room_water_bird', t: 'room_water_shop', w: 'room_water_blookyard' },
-  room_water_blookyard: { w: 'room_water_friendlyhub', A: 'room_water_blookhouse' },
+  room_water_friendlyhub: { B: 'room_water_trashzone2', s: 'room_water_bird', t: 'room_water_shop', w: 'room_water_blookyard', v: 'room_water_farm' },
+  room_water_blookyard: { w: 'room_water_friendlyhub', A: 'room_water_blookhouse', s: 'room_water_farm' },
+  room_water_farm: { s: 'room_water_blookyard', v: 'room_water_friendlyhub' },
   room_water_blookhouse: { B: 'room_water_blookyard' },
   room_water_hapstablook: { D: 'room_water_blookyard' },
   room_water_shop: { t: 'room_water_friendlyhub', X: 'room_shop2' },
@@ -307,7 +309,7 @@ class World extends Scene {
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
-    if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9', 'room_water_savepoint1', 'room_water11', 'room_water_fakehallway', 'room_water_bird', 'room_water_friendlyhub', 'room_water12', 'room_water_shoe', 'room_water_nicecream', 'room_water_onionsan', 'room_water14', 'room_water_piano', 'room_water_dogroom', 'room_water_statue', 'room_water_prewaterfall', 'room_water_waterfall', 'room_water_waterfall2', 'room_water_waterfall3', 'room_water_waterfall4', 'room_water_preundyne', 'room_water_undynebridge', 'room_water_undynebridgeend', 'room_water_trashzone1', 'room_water_trashsavepoint', 'room_water_trashzone2', 'room_tundra_grillby'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
+    if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9', 'room_water_savepoint1', 'room_water11', 'room_water_fakehallway', 'room_water_bird', 'room_water_friendlyhub', 'room_water_blookyard', 'room_water_blookhouse', 'room_water_hapstablook', 'room_water_farm', 'room_water_shop', 'room_water12', 'room_water_shoe', 'room_water_nicecream', 'room_water_onionsan', 'room_water14', 'room_water_piano', 'room_water_dogroom', 'room_water_statue', 'room_water_prewaterfall', 'room_water_waterfall', 'room_water_waterfall2', 'room_water_waterfall3', 'room_water_waterfall4', 'room_water_preundyne', 'room_water_undynebridge', 'room_water_undynebridgeend', 'room_water_trashzone1', 'room_water_trashsavepoint', 'room_water_trashzone2', 'room_tundra_grillby'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
     if (this.waterfallMusic && !(name === 'room_water1' && this.waterfallMusic.key === 'mus_ambientwater') && !(name === 'room_water2' && this.waterfallMusic.key === 'mus_muscle') && !(['room_water11', 'room_water_bird', 'room_water_nicecream'].includes(name) && this.waterfallMusic.key === 'mus_waterfall') && !(['room_water_savepoint1', 'room_water11', 'room_water_fakehallway', 'room_water_bird', 'room_water_friendlyhub', 'room_water_nicecream', 'room_water_shop', 'room_water_blookyard'].includes(name) && ['mus_waterquiet', 'mus_toomuch'].includes(this.waterfallMusic.key)) && !(['room_water_trashzone1', 'room_water_trashsavepoint', 'room_water_trashzone2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9', 'room_water12', 'room_water_shoe', 'room_water_onionsan', 'room_water14'].includes(name) && ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key))) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
     if (name !== 'room_tundra_grillby') { this.grillbyMusic?.destroy(); this.grillbyMusic = null; }
     this.scene.stop('FieldMenu');
@@ -355,6 +357,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
+    this.waterfallSnailFarm?.destroy(); this.waterfallSnailFarm = null;
     this.waterfallBlookDiary = null;
     this.waterfallBlookHouse?.destroy(); this.waterfallBlookHouse = null;
     this.waterfallBlookYard?.destroy(); this.waterfallBlookYard = null;
@@ -537,6 +540,7 @@ class World extends Scene {
     if (name === 'room_water_blookyard') this.waterfallBlookYard = new WaterfallBlookYard(this);
     if (name === 'room_water_blookhouse') this.waterfallBlookHouse = new WaterfallBlookHouse(this);
     if (name === 'room_water_hapstablook') this.waterfallBlookDiary = new WaterfallBlookDiary(this);
+    if (name === 'room_water_farm') this.waterfallSnailFarm = new WaterfallSnailFarm(this);
     if (name === 'room_water_bird') this.waterfallBird = new WaterfallBird(this, spawnName);
     if (name === 'room_water11') this.waterfallStarRoom = new WaterfallStarRoom(this);
     if (name === 'room_water_savepoint1') this.waterfallCrystalRoom = new WaterfallCrystalRoom(this);
@@ -719,6 +723,7 @@ class World extends Scene {
     const trashStartLocked = this.waterfallTrashStart?.update(delta);
     const dummyEncounterLocked = this.waterfallDummyEncounter?.update(delta);
     const blookHouseLocked = this.waterfallBlookHouse?.update(delta);
+    const snailFarmLocked = this.waterfallSnailFarm?.update(delta);
     const bridgeEndLocked = this.waterfallUndyneBridgeEnd?.update(delta);
     const bridgeChaseLocked = this.waterfallUndyneBridge?.update(delta);
     const chaseLocked = this.waterfallUndyneChase?.update(delta);
@@ -746,7 +751,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || blookHouseLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || blookHouseLocked || snailFarmLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -873,6 +878,7 @@ class World extends Scene {
     if (this.waterfallBlookYard?.interact()) return;
     if (this.waterfallBlookHouse?.interact()) return;
     if (this.waterfallBlookDiary?.interact()) return;
+    if (this.waterfallSnailFarm?.interact()) return;
     if (this.waterfallBird?.interact()) return;
     if (this.waterfallMystery?.interact()) return;
     if (this.waterfallStarRoom?.interact()) return;

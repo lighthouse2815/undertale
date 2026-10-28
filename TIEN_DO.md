@@ -1353,3 +1353,5 @@ Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm th�
 Đã thêm biến dạng sóng từng hàng cho bầu trời khi nằm, dùng ảnh và nhịp lệch sin của game gốc; kiểm số hàng, chuyển động, dọn hiệu ứng và ảnh trong trình duyệt, check/build qua. Nhịp mờ khi kết thúc và chuyển động nhân vật vẫn cần đối chiếu thêm.
 
 Đã nối cửa nhà nhật ký với Blook Acres khi cờ 433 được mở và thêm nội dung sáu quyển nhật ký. `remake-waterfall-blookdiary.mjs` kiểm điều kiện khóa, cửa hai chiều và từng quyển; hồi quy nhà Napstablook/khu nhà, check/build qua. Cơ chế lấy chìa khóa và tuyến dẫn tới nhà vẫn cần chuyển.
+
+Đã nối nông trại với Blook Acres và Quiet Area, thêm NPC theo tuyến và cuộc đua Thundersnail với phí, cổ vũ, ba kết quả và thưởng. `remake-waterfall-snail-farm.mjs` kiểm cửa, lời NPC, phí, áp lực và thưởng; check/build qua. Cần đối chiếu thêm nhịp đếm ngược, biểu cảm và âm thanh cuộc đua với game gốc; các phòng sau Waterfall vẫn chưa chuyển.
