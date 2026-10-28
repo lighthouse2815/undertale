@@ -104,6 +104,7 @@ import { testWaterfallRockStream } from './remake-waterfall-rock-stream.mjs';
 import { testWaterfallFalls } from './remake-waterfall-falls.mjs';
 import { testOldTutu } from './remake-old-tutu.mjs';
 import { testWaterfallTutuRoom } from './remake-waterfall-tutu-room.mjs';
+import { testWaterfallBoxPath } from './remake-waterfall-box-path.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -541,6 +542,7 @@ try {
   await testWaterfallFalls(page);
   await testOldTutu();
   await testWaterfallTutuRoom(page);
+  await testWaterfallBoxPath(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

@@ -805,3 +805,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Phòng bí mật Old Tutu
 
 Đã chuyển hai nấm phát sáng bật/tắt và Old Tutu tại `room_water3A`: lựa chọn nhận/từ chối, kiểm túi đầy, cờ 105 và xóa vật phẩm sau khi nhận. Kiểm thử riêng qua các nhánh, nấm và vào lại phòng; hồi quy thác phòng 3, check/build qua. Phòng còn mở trực tiếp, chưa nối cửa qua thác; bộ tổng snapshot `e6b3b82` đang chạy với chẩn đoán lỗi cửa fog, chưa gồm phần này. Push `5f9a3a5` thành công.
+
+### Đường tới BOX và phòng Old Tutu
+
+Đã nối cửa trạm↔Waterfall 3 và cửa thác↔phòng 3A, marker và fade theo cửa, nhạc ambient/waterfall/toomuch theo plot/cờ và giữ nhạc giữa phòng 3–3A. `test-waterfall-box-path-v1.log` kiểm đi bộ qua cửa và các nhánh nhạc; kiểm lại phòng Tutu và dòng đá, check/build qua. Cửa C tới phòng tiếp theo và gameplay Waterfall vẫn còn thiếu. Push `fafda87` thành công; bộ tổng snapshot `e6b3b82` đang chạy để điều tra lỗi cửa fog, không gồm phần này.
