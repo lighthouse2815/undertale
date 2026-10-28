@@ -937,3 +937,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Bia lịch sử Waterfall
 
 Đã chuyển năm bia lịch sử và lời Woshua ở `room_water7`, kể cả điều kiện xuất hiện, lời lặp và nhánh kết thúc. `test-waterfall-history-v1.log` kiểm năm bia và các nhánh Woshua; check/build qua. Phòng mới mở trực tiếp, còn thiếu chuyến bè, nhân vật khác, va chạm/nhạc và cửa, chưa nối từ Wishing Room. Push đường Wishing Room `a1ddb3a` thành công. Bộ tổng `test-remake-a1ddb3a.log` đang chạy, chưa có kết quả cuối và không gồm phần bia.
+
+### Bè qua phòng lịch sử
+
+Đã chuyển kích hoạt bè khi bước lên, lưu tạm, đi 480 pixel, chờ 8 frame, trả điều khiển, bè quay lại, đổi nhạc và thay bằng vật cản sau plot 108. `test-waterfall-raft-v4.log` kiểm bước lên bằng phím và mô phỏng đủ chuyến/nhánh plot; hồi quy bia, check/build qua. Chưa kiểm trọn chuyến bằng phím và đối chiếu fade nhạc với gốc; các NPC/cửa phòng vẫn chưa hoàn thiện. Push bia `807b987` thành công; bộ tổng `test-remake-a1ddb3a.log` đang chạy, chưa gồm phần này.
