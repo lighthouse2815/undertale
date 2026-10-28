@@ -1021,3 +1021,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Sans và kính phòng sao
 
 Đã chuyển điều kiện xuất hiện, lời thoại theo cờ, lựa chọn kính, kính premium, trò đùa thay sprite và lời hoàn tiền khi nói lại. `remake-waterfall-star-sans.mjs` kiểm các nhánh, điều khiển kính, âm lượng và sprite; hồi quy phòng sao/kính Wishing Room, check/build qua. Cần đối chiếu chân dung/timing với gốc; các cửa khác và hiệu ứng phòng sao chưa đầy đủ. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Chim chở qua vực
+
+Đã nối phòng sao ↔ phòng chim, điều kiện xuất hiện/vị trí, lựa chọn, nhánh ô, hai chiều bay và chuyển nhạc. `remake-waterfall-bird.mjs` kiểm cửa, từ chối, mô phỏng hai chuyến và các điều kiện; hồi quy Sans, check/build qua. Cần đối chiếu hình rung, timing, nhạc và kiểm trọn chuyến bằng thời gian thực; cửa sang friendly hub chưa nối. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.

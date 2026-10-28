@@ -193,6 +193,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
+  if (name === 'room_water_bird') for (const key of ['spr_smallbird_fly', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water11') for (const key of ['spr_tonsildude', 'spr_face_sans', 'spr_heartsmall', 'spr_starpattern', 'spr_starcheckeredit2', 'spr_maincharad_pranked', 'spr_maincharal_pranked']) spriteNames.add(key);
   if (name === 'room_water_savepoint1') for (const key of ['spr_crystaltable', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water9') for (const key of ['spr_undyne_starkd', 'spr_undynespear', 'spr_undynea_r', 'spr_undynea_l', 'spr_undynea_r_raise', 'spr_undynea_r_raiseup', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_trip_r']) spriteNames.add(key);
@@ -234,7 +235,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
@@ -271,6 +272,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
+    ...(name === 'room_water_bird' ? ['mus_birdsong', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water11' ? ['snd_squeak', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water_savepoint1' ? ['snd_movemenu', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water9' ? ['snd_arrow', 'snd_grab', 'snd_splash', 'mus_ambientwater', 'mus_waterfall', 'mus_toomuch', 'mus_undynefast'] : []),
