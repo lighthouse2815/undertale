@@ -1333,3 +1333,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã thêm chuyển động Mad Dummy theo các pha HP 3 và 5, kể cả khi đang chọn lệnh; kiểm vị trí trong scene thật cùng hồi quy trận/đạn, check/build qua. Cần tiếp tục đối chiếu va chạm và hoàn thiện kiểm thử toàn trận liên tục.
 
 Đã bổ sung `remake-mad-dummy-full-battle.mjs`: điều khiển đạn trúng và tua thời gian trong scene thật, đi qua các pha HP, trợ thủ, robot, dao, nước mắt và kết thúc mà không sửa trực tiếp HP hay pha. Kiểm thử giữ bất tử và bỏ qua chờ nhập để xác minh chuyển pha; chưa thay thế việc chơi thủ công, đối chiếu mask và nhịp trình bày.
+
+Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm thử kính thiên văn: getter âm lượng Web Audio có thể cập nhật sau khi viewer đóng. Đã sửa kiểm thử chờ giá trị âm lượng thực tế về 0,8 và vẫn xác nhận trạng thái nhạc; cần chạy lại bộ tổng trên phiên bản mới.

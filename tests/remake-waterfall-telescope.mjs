@@ -4,11 +4,13 @@ export async function testWaterfallTelescope(page) {
   assert.match(await page.evaluate(() => __remake.scene.dialogue.lines[0]), /Look through the telescope/);
   await page.waitForTimeout(130); await page.keyboard.press('z');
   await page.waitForFunction(() => __remake.scene.waterfallWishingRoom.view?.frames >= 2);
+  await page.waitForFunction(() => Math.abs(__remake.scene.waterfallMusic.volume - .4) < .0001);
   const before = await page.evaluate(() => { const w = __remake.scene; return [w.player.x, w.player.y, w.waterfallMusic.volume, w.waterfallWishingRoom.view.x, w.waterfallWishingRoom.view.y]; });
   assert.ok(Math.abs(before[2] - .4) < .0001); await page.keyboard.down('ArrowRight'); await page.waitForTimeout(400); await page.keyboard.up('ArrowRight');
   const moving = await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y, __remake.scene.waterfallWishingRoom.view.x]);
   assert.deepEqual(moving.slice(0, 2), before.slice(0, 2)); assert.ok(moving[2] > 0);
   await page.keyboard.press('x'); await page.waitForFunction(() => !__remake.scene.waterfallWishingRoom.view);
+  await page.waitForFunction(() => Math.abs(__remake.scene.waterfallMusic.volume - .8) < .0001);
   const restored = await page.evaluate(() => [__remake.scene.waterfallMusic.volume, __remake.scene.waterfallMusic.pendingRemove, __remake.scene.waterfallMusic.isPlaying]);
   assert.ok(Math.abs(restored[0] - .8) < .0001, JSON.stringify({ before, restored }));
   await page.evaluate(() => __remake.scene.waterfallWishingRoom.interact()); await page.waitForTimeout(130); await page.keyboard.press('ArrowRight'); await page.keyboard.press('z');
