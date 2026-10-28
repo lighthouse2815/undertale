@@ -23,6 +23,7 @@ import { WaterfallShoeRoom } from './waterfall-shoe-room.mjs';
 import { WaterfallWishesRoom } from './waterfall-wishes-room.mjs';
 import { WaterfallFriendlyHub } from './waterfall-friendly-hub.mjs';
 import { WaterfallShopRoad } from './waterfall-shop-road.mjs';
+import { WaterfallShop } from './waterfall-shop.mjs';
 import { WaterfallBird } from './waterfall-bird.mjs';
 import { WaterfallMystery } from './waterfall-mystery.mjs';
 import { AaronBattle } from './aaron-battle.mjs';
@@ -254,7 +255,7 @@ const ROOM_EXITS = {
   room_water_shoe: { B: 'room_water12' },
   room_water_bird: { t: 'room_water11', s: 'room_water_friendlyhub' },
   room_water_friendlyhub: { B: 'room_water_trashzone2', s: 'room_water_bird', t: 'room_water_shop' },
-  room_water_shop: { t: 'room_water_friendlyhub' },
+  room_water_shop: { t: 'room_water_friendlyhub', X: 'room_shop2' },
   room_mysteryman: { s: 'room_water_fakehallway' },
   room_water3A: { B: 'room_water3' },
   room_tundra_library: { u: 'room_tundra_town' },
@@ -815,6 +816,10 @@ class World extends Scene {
     }
     this.cameras.main.once('camerafadeoutcomplete', async () => {
       try {
+        if (destination === 'room_shop2') {
+          if (this.flags[7] !== 1) { this.roomMusicFade?.stop(); this.waterfallMusic?.destroy(); this.waterfallMusic = null; }
+          this.release(); this.scene.pause(); this.scene.launch('WaterfallShop'); state.phase = 'loading'; return;
+        }
         if (musicFade && this.flags[7] !== 1 && ((['room_water_bird', 'room_water_friendlyhub'].includes(this.dataSource.name) && ['room_water_bird', 'room_water_friendlyhub'].includes(destination)) || (['room_water11', 'room_water12'].includes(this.dataSource.name) && ['room_water11', 'room_water12'].includes(destination)) || (['room_water12', 'room_water_onionsan'].includes(this.dataSource.name) && ['room_water12', 'room_water_onionsan'].includes(destination)))) {
           this.roomMusicFade?.stop(); this.waterfallMusic?.destroy(); this.waterfallMusic = null;
         }
@@ -1122,7 +1127,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, ShyrenBattle, MadDummyBattle, GladDummyBattle, WoshuaBattle, MoldsmalGroupBattle, WaterfallGroupBattle, UndyneQuickBattle, SaveMenu, FieldMenu, ItemBox],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, ShyrenBattle, MadDummyBattle, GladDummyBattle, WoshuaBattle, MoldsmalGroupBattle, WaterfallGroupBattle, UndyneQuickBattle, WaterfallShop, SaveMenu, FieldMenu, ItemBox],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);

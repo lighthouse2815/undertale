@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+
+export async function testWaterfallShop(page){
+  const enter=async flags=>{await page.waitForFunction(()=>!__remake.scene.cameras.main.fadeEffect.isRunning);await page.evaluate(async flags=>{const w=__remake.scene;w.flags=flags;w.plot=117;w.gold=100;w.inventory=[];await w.openRoom('room_water_shop');w.player.setPosition(150,90);w.updateCamera();},flags);await page.keyboard.down('ArrowUp');await page.waitForFunction(()=>__remake.phase==='shop'||__remake.phase==='error');await page.keyboard.up('ArrowUp');assert.equal(await page.evaluate(()=>__remake.phase),'shop');};
+  await enter({});
+  const buy=await page.evaluate(()=>{const s=__remake.scene;s.key('KeyZ');s.key('KeyZ');s.key('KeyZ');const success=[s.world.gold,[...s.world.inventory],s.side];s.world.gold=500;for(let i=1;i<4;i++){s.selection=i;s.key('KeyZ');s.key('KeyZ');}const all=[s.world.gold,[...s.world.inventory]];s.world.gold=0;s.key('KeyZ');s.key('KeyZ');const poor=[s.side,s.world.inventory.length];s.world.gold=100;s.world.inventory=Array(8).fill(1);s.key('KeyZ');s.key('KeyZ');return [success,all,poor,[s.side,s.world.gold,s.world.inventory.length]];});
+  assert.deepEqual(buy,[[75,[37],1],[397,[37,41,44,45]],[3,4],[4,100,8]]);
+  const talks=await page.evaluate(()=>{const s=__remake.scene;s.key('KeyX');s.selection=2;s.key('KeyZ');s.selection=1;const rows=[];for(let i=0;i<4;i++){s.key('KeyZ');rows.push([s.world.flags[96],s.pages.length,s.pages[0]]);while(s.mode==='pages')s.key('KeyZ');}return rows;});
+  assert.deepEqual(talks.map(r=>r.slice(0,2)),[[1,6],[2,4],[3,7],[3,2]]);assert.match(talks[0][2],/don't know/);
+  const sell=await page.evaluate(()=>{const s=__remake.scene;s.key('KeyX');s.selection=1;s.key('KeyZ');const first=[s.pages.length,s.pages[0]];while(s.mode==='pages')s.key('KeyZ');s.selection=1;s.key('KeyZ');const repeat=[s.pages.length,s.pages[0]];while(s.mode==='pages')s.key('KeyZ');return [first,repeat];});assert.deepEqual(sell.map(x=>x[0]),[5,1]);assert.match(sell[1][1],/last time/);
+  await page.evaluate(()=>{const s=__remake.scene;s.selection=3;s.key('KeyZ');while(s.mode==='pages'&&__remake.scene===s)s.key('KeyZ');});await page.waitForFunction(()=>__remake.phase==='running');
+  assert.deepEqual(await page.evaluate(()=>[__remake.room,__remake.scene.player.x,__remake.scene.player.y,__remake.scene.waterfallMusic?.key]),['room_water_shop',150,90,'mus_waterquiet']);
+  await enter({26:10});const violent=await page.evaluate(()=>{const s=__remake.scene;const titles=s.titles();s.mode='talk';s.selection=1;s.key('KeyZ');return [s.violent,titles,s.pages.length,s.pages[0],s.world.flags[96]];});assert.equal(violent[0],true);assert.deepEqual(violent[1],['Fate','Threat','Fight','Hero']);assert.equal(violent[2],4);assert.match(violent[3],/lived too long/);assert.equal(violent[4],1);
+  await page.evaluate(()=>{const s=__remake.scene;s.leave();});await page.waitForFunction(()=>__remake.phase==='running');await enter({7:1});
+  assert.deepEqual(await page.evaluate(()=>__remake.scene.titles()),['Fluffybuns Why?','Is ASGORE a goat','ASGORE and TORIEL','Undyne']);await page.evaluate(()=>__remake.scene.leave());await page.waitForFunction(()=>__remake.phase==='running');await page.evaluate(async()=>__remake.scene.openRoom('room_water1'));
+  console.log('✓ Cửa hàng Gerson: mua hàng, túi đầy, thiếu tiền, thoại và ba tuyến');
+}
