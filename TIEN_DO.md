@@ -1247,3 +1247,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối mỏm đá ↔ `room_water_preundyne`, chuyển hai bia, bóng tối cửa hang, âm mưa và SAVE Bridge với nhánh ô trên tượng/dân số. `remake-waterfall-preundyne.mjs` kiểm cửa, bia, lưu thật, tên file và âm thanh; hồi quy SAVE/mỏm đá, check/build qua. Thị sai nền cầu và cửa sang trận Undyne chưa chuyển; hiệu ứng và toàn tuyến cần đối chiếu. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
 
 Đã thêm thị sai 72 ô nền cầu và kiểm độ dịch/độ tối theo camera; kiểm thử phòng, check/build qua. Cửa và cảnh truy đuổi Undyne tiếp theo vẫn chưa chuyển.
+
+### Giáo sàn truy đuổi Undyne
+
+Đã chuyển bộ sinh giáo sàn: tám vị trí, lệch hướng theo chuyển động, vùng cấm, trồi/mờ, tăng tần suất và tạm nghỉ sau va chạm. `remake-undyne-tile-spears.mjs` kiểm nhịp, vùng cấm, va chạm, tăng tốc và nhánh phòng cuối; check/build qua. Bộ sinh chưa nối cảnh/ảnh/mask hoặc trận thật; cần chuyển toàn bộ màn truy đuổi, cửa và các mốc Undyne. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
