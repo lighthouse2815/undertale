@@ -821,3 +821,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### SAVE hành lang Waterfall
 
 Đã bổ sung điểm lưu `room_water4` với lời cảm giác bất an, các nhánh dân số/Determination dùng chung, hồi HP và tên file `Waterfall - Hallway`; kiểm thử riêng các nhánh/lưu file, hồi quy SAVE trạm, check/build qua. Phòng chưa có cảnh Undyne hoặc cửa vào. Push `4d04fee` thành công; bộ tổng snapshot `e6b3b82` đang chạy, chưa gồm phần này.
+
+### Cảnh đầu Undyne
+
+Đã nối trigger, camera, hai nhánh Papyrus sống/chết, báo cáo, Undyne phát hiện và giương giáo, bóng/sprite tối của Frisk, Monster Kid chạy/ngã, nhạc và plot 106 trong `room_water4` khi mở trực tiếp. `test-waterfall-undyne-v4.log` kiểm hai nhánh, các giai đoạn/cờ/camera, thao tác kích hoạt bằng phím và không lặp; kiểm lại cỏ/SAVE, xem ảnh, check/build qua. Hoạt cảnh, biểu cảm `\M`, bóng và nhịp âm thanh còn cần đối chiếu chi tiết; đường từ phòng 3 chưa nối, không coi Waterfall hoàn chỉnh. Bộ tổng snapshot `e6b3b82` bị dừng giữa chừng khi phiên bị ngắt, không có mã thoát; cần chạy lại, không coi đã qua. Push `3c600af` thành công.
