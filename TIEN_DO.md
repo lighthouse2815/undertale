@@ -1325,3 +1325,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối mốc cuối lượt robot với chuyển động Dummy, dao, nước mắt, lời Napstablook và trở lại phòng. `remake-mad-dummy-ending.mjs` kiểm các mốc, đạn và kết thúc trong scene; hồi quy scene/đội hình, check/build qua. Cần nối cảnh trước/sau trận trong phòng, nhánh tuyến giết, và đối chiếu thêm animation, mask dao, nhịp thoại và chuyển động thực tế.
 
 Đã thêm scene Glad Dummy cho tuyến giết: Check, Spare, FIGHT, tự rời sau bảy lượt và cờ 27/252. `remake-glad-dummy-battle.mjs` kiểm các kết quả, số kill và thưởng theo mã gốc; check/build qua. Scene vẫn chưa được kích hoạt từ cảnh ở khu rác.
+
+Đã nối trigger khu rác với cảnh gặp Dummy, hai nhánh Mad/Glad, hậu cảnh Napstablook, plot 116/117, dọn collider và mở cửa Quiet Area. `remake-waterfall-dummy-encounter.mjs` kiểm đi vào trigger, hai nhánh, Spare/kill và trở lại phòng; lượt cuối Mad Dummy được tua tới để kiểm kết thúc. Hồi quy tương tác/đạn/trận và check/build qua. Cần kiểm chơi liên tục toàn trận, căn lại camera, animation, mask và nhịp thoại với game gốc; nhiều phòng, tuyến và kết thúc khác vẫn chưa chuyển.

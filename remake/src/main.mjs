@@ -1,4 +1,5 @@
 import { WaterfallTrashObjects } from './waterfall-trash-objects.mjs';
+import { WaterfallDummyEncounter } from './waterfall-dummy-encounter.mjs';
 import { WaterfallTrashStart } from './waterfall-trash-start.mjs';
 import { WaterfallUndyneBridgeEnd } from './waterfall-undyne-bridge-end.mjs';
 import { WaterfallUndyneBridge } from './waterfall-undyne-bridge.mjs';
@@ -345,6 +346,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
+    this.waterfallDummyEncounter?.destroy(); this.waterfallDummyEncounter = null;
     this.waterfallUndyneSecond?.destroy(); this.waterfallUndyneChase?.destroy(); this.waterfallRaft?.destroy(); this.waterfallWishingRoom?.destroy(); this.waterfallEncounter?.destroy(); this.waterfallPapyrusPhone?.destroy(); this.waterfallBridgeRoom?.destroy(); this.waterfallUndyne?.destroy(); this.waterfallRoomTiles?.destroy(); this.waterfallRockStream?.destroy(); this.waterfallSans?.destroy(); this.grillbyDate?.destroy(); this.grillbyNpcs?.destroy(); this.waterfallSentryVisuals?.destroy(); this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinFog = null; this.papyrusFogEncounter = null; this.waterfallEntrance = null; this.waterfallSentryNpcs = null; this.waterfallSentryVisuals = null; this.grillbyNpcs = null; this.grillbyDate = null; this.waterfallSans = null; this.waterfallBoxRoom = null; this.waterfallRockStream = null; this.waterfallRoomTiles = null; this.waterfallFalls = null; this.waterfallTutuRoom = null; this.waterfallGrass = null; this.waterfallUndyne = null; this.waterfallBridgeRoom = null; this.waterfallPapyrusPhone = null; this.waterfallEncounter = null; this.waterfallQuicheRoom = null; this.waterfallWishingRoom = null; this.waterfallHistoryRoom = null; this.waterfallRaft = null; this.waterfallUndyneChase = null; this.waterfallUndyneSecond = null; this.waterfallCrystalRoom = null; this.waterfallStarRoom?.destroy(); this.waterfallStarRoom = null; this.waterfallBird?.destroy(); this.waterfallBird = null; this.waterfallFriendlyHub = null; this.waterfallWishesRoom?.destroy(); this.waterfallWishesRoom = null; this.waterfallShoeRoom = null; this.waterfallNiceCreamRoom = null; this.waterfallGlowParticles?.destroy(); this.waterfallGlowParticles = null; this.waterfallOnionsan?.destroy(); this.waterfallOnionsan = null; this.waterfallShyrenHall?.destroy(); this.waterfallShyrenHall = null; this.waterfallPianoRoom?.destroy(); this.waterfallPianoRoom = null; this.waterfallDogRoom?.destroy(); this.waterfallDogRoom = null; this.waterfallMusicStatue?.destroy(); this.waterfallMusicStatue = null; this.waterfallUmbrellaRoom?.destroy(); this.waterfallUmbrellaRoom = null; this.waterfallTrashObjects = null; this.waterfallTrashStart = null; this.waterfallUndyneBridgeEnd?.destroy(); this.waterfallUndyneBridgeEnd = null; this.waterfallUndyneBridge?.destroy(); this.waterfallUndyneBridge = null; this.waterfallPreUndyne?.destroy(); this.waterfallPreUndyne = null; this.waterfallLedge?.destroy(); this.waterfallLedge = null; this.waterfallCastle?.destroy(); this.waterfallCastle = null; this.waterfallRainKid?.destroy(); this.waterfallRainKid = null; this.waterfallRainRoom?.destroy(); this.waterfallRainRoom = null; this.waterfallMystery = null; this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null; this.snowdinLibrary = null; this.sansBasement = null; this.snowdinInn = null; this.snowdinInnSleep = null; this.papyrusGarage = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
@@ -500,7 +502,7 @@ class World extends Scene {
     if (data.room.GameObjects.some(e => e.ObjectName === 'obj_glowparticlegen_1')) this.waterfallGlowParticles = new WaterfallGlowParticles(this);
     if (name === 'room_water_nicecream') { this.waterfallNiceCreamRoom = new WaterfallNiceCreamRoom(this); this.niceCream = new NiceCream(this); }
     if (name === 'room_water_waterfall') this.waterfallRainKid = new WaterfallRainKid(this, spawnName);
-    if (name === 'room_water_trashzone2') { this.waterfallTrashStart = new WaterfallTrashStart(this); this.waterfallTrashObjects = new WaterfallTrashObjects(this); }
+    if (name === 'room_water_trashzone2') { this.waterfallTrashStart = new WaterfallTrashStart(this); this.waterfallTrashObjects = new WaterfallTrashObjects(this); this.waterfallDummyEncounter = new WaterfallDummyEncounter(this); }
     if (['room_water_trashzone1','room_water_trashsavepoint'].includes(name)) { this.waterfallTrashStart = new WaterfallTrashStart(this); this.waterfallRoomTiles = new WaterfallSentryVisuals(this); }
     if (name === 'room_water_undynebridgeend') this.waterfallUndyneBridgeEnd = new WaterfallUndyneBridgeEnd(this);
     if (name === 'room_water_undynebridge') this.waterfallUndyneBridge = new WaterfallUndyneBridge(this);
@@ -698,6 +700,7 @@ class World extends Scene {
     const starViewerLocked = this.waterfallStarRoom?.update(delta);
     const raftLocked = this.waterfallRaft?.update(delta);
     const trashStartLocked = this.waterfallTrashStart?.update(delta);
+    const dummyEncounterLocked = this.waterfallDummyEncounter?.update(delta);
     const bridgeEndLocked = this.waterfallUndyneBridgeEnd?.update(delta);
     const bridgeChaseLocked = this.waterfallUndyneBridge?.update(delta);
     const chaseLocked = this.waterfallUndyneChase?.update(delta);
@@ -725,7 +728,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -771,6 +774,7 @@ class World extends Scene {
       this.waterfallGrass?.syncPlayer();
       if (this.waterfallRainKid?.checkTrigger(previous)) return;
       if (this.waterfallShyrenHall?.checkTrigger()) return;
+      if (this.waterfallDummyEncounter?.checkTrigger()) return;
       if (this.waterfallFriendlyHub?.checkTrigger()) return;
       if (this.waterfallUndyne?.checkTrigger() || this.waterfallUndyne?.checkWalk(previous) || this.waterfallUndyneChase?.checkTrigger() || this.waterfallUndyneBridge?.checkTrigger() || this.waterfallUndyneBridgeEnd?.checkTrigger()) return;
       if (this.waterfallPapyrusPhone?.checkTrigger()) return;

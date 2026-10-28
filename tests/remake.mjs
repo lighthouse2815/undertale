@@ -175,6 +175,7 @@ import { testWaterfallDogRoom } from './remake-waterfall-dog-room.mjs';
 import { testMadDummyFirstWave } from './remake-mad-dummy-first-wave.mjs';
 import { testMadDummyBattle } from './remake-mad-dummy-battle.mjs';
 import { testGladDummyBattle } from './remake-glad-dummy-battle.mjs';
+import { testWaterfallDummyEncounter } from './remake-waterfall-dummy-encounter.mjs';
 import { testMadDummyEnding } from './remake-mad-dummy-ending.mjs';
 import { testMadDummyShot } from './remake-mad-dummy-shot.mjs';
 import { testMadDummyProjectile } from './remake-mad-dummy-projectile.mjs';
@@ -700,6 +701,7 @@ try {
   await testShyrenTrigger(page);
   await testWaterfallShyrenPath(page);
   await testWaterfallShyrenEnding(page);
+  await testWaterfallDummyEncounter(page);
   await testGladDummyBattle(page);
   await testMadDummyBattle(page);
   await testMadDummyEnding(page);
