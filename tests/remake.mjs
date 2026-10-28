@@ -145,6 +145,7 @@ import { testWaterfallUndyneChase } from './remake-waterfall-undyne-chase.mjs';
 import { testWaterfallUndyneKid } from './remake-waterfall-undyne-kid.mjs';
 import { testWaterfallUndyneSecond } from './remake-waterfall-undyne-second.mjs';
 import { testWaterfallChasePath } from './remake-waterfall-chase-path.mjs';
+import { testWaterfallCrystalRoom } from './remake-waterfall-crystal-room.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -623,6 +624,7 @@ try {
   await testWaterfallUndyneKid(page);
   await testWaterfallUndyneSecond(page);
   await testWaterfallChasePath(page);
+  await testWaterfallCrystalRoom(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

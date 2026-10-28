@@ -9,6 +9,7 @@ export function showWaterfallSave(world) {
     : red ? `* ${left} left.` : world.dataSource.name === 'room_water4' ? '* (A feeling of dread hangs\n  over you...)\n* (But you stay determined.)' : '* (The sound of rushing water\n  fills you with\n  determination.)';
   colorBitmapFont(world, 'fnt_maintext', 'red', '#ff0000');
   world.hp = Math.max(world.hp, world.maxHp); world.sound.play('snd_power');
-  world.showDialogue([line], { onPage: () => world.dialogueText.setFont(red ? 'fnt_maintext:red' : 'fnt_maintext'),
+  const pages = !red && level < 16 && !(level >= 8 && !world.flags[27] && left === 0) && world.dataSource.name === 'room_water_savepoint1' ? ['* (Knowing the mouse might one\n  day extract the cheese from\n  the mystical crystal...)', '* (It fills you with\n  determination.)'] : [line];
+  world.showDialogue(pages, { onPage: () => world.dialogueText.setFont(red ? 'fnt_maintext:red' : 'fnt_maintext'),
     onClose: () => { world.release(); world.scene.pause(); world.scene.launch('SaveMenu'); } });
 }

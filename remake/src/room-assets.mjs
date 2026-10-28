@@ -193,6 +193,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
+  if (name === 'room_water_savepoint1') for (const key of ['spr_crystaltable', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water9') for (const key of ['spr_undyne_starkd', 'spr_undynespear', 'spr_undynea_r', 'spr_undynea_l', 'spr_undynea_r_raise', 'spr_undynea_r_raiseup', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_trip_r']) spriteNames.add(key);
   if (name === 'room_water8') for (const key of ['spr_undyne_starkd', 'spr_undyne_starkd_arm', 'spr_undyne_shad', 'spr_undynespear', 'spr_undynespear_stabbed', 'spr_magicstar']) spriteNames.add(key);
   if (name === 'room_water5') for (const key of ['spr_floweysink', 'spr_face_papyrus', 'spr_heartsmall', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
@@ -267,6 +268,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water6' ? ['snd_squeak', 'snd_bluh', 'snd_b', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water7' ? ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
+    ...(name === 'room_water_savepoint1' ? ['snd_movemenu', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water9' ? ['snd_arrow', 'snd_grab', 'snd_splash', 'mus_ambientwater', 'mus_waterfall', 'mus_toomuch', 'mus_undynefast'] : []),
     ...(name === 'room_water4' ? ['snd_splash', 'snd_b', 'snd_undynedis', 'mus_undynescary', 'mus_undynetheme', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_tundra_grillby' ? ['snd_bluh', 'mus_muscle', 'mus_rimshot', 'mus_whoopee', 'mus_mysteriousroom2', 'snd_noise', 'snd_chug', 'snd_swallow'] : []),

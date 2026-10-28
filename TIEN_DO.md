@@ -985,3 +985,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Cửa tuyến truy đuổi
 
 Đã nối 7↔8↔9, giữ nhạc khi chuyển từ phòng 8 sang 9. `test-chase-path-v4-1` đến `v4-3` kiểm cửa bằng phím, marker và nhạc; hồi quy phòng 9, check/build qua. Để kiểm cửa 8→9, test đặt nhân vật tại lối ra và tăng nhanh cảnh đầu; chưa xác nhận người chơi vượt trọn đợt giáo. Cửa tiếp theo từ phòng 9 và người chở đò chưa được chuyển, cùng các hạn chế timing/mask ở trên. Push phòng 9 `3f89812` thành công; bộ tổng `test-remake-4022c4c.log` vẫn đang chạy, không gồm phần này.
+
+### Phòng lưu Crystal
+
+Đã chuyển bàn phô mai, hoa/chuột, nhạc và SAVE tại phòng Crystal, gồm lời, hồi HP và tên file. `test-waterfall-crystal-v1.log` kiểm các tương tác/nhánh, lưu file và nhạc; hồi quy SAVE Waterfall, check/build qua. Mới mở phòng trực tiếp, chưa nối cửa từ phòng 9 hoặc phòng tiếp. Push cửa tuyến truy đuổi `c3204e0` thành công; bộ tổng `test-remake-4022c4c.log` đang chạy, không gồm phần này.
