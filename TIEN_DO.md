@@ -639,3 +639,9 @@ Chuỗi `test-papyrus-turn-14-v2.log` kiểm biên 19/20/39/40, bố trí, timer
 Đã chuyển `room_tundra_garage`: bát thức ăn đổi lời theo cờ 67, giường chó và đồ gặm, bức thư Papyrus với các nhánh 0/-1/-2/-3 và lời kết thúc, font Papyrus; bốn vật thể có va chạm và tương tác. Hai cửa `obj_door_v` đưa người chơi sang marker v của Town (2405,125), giữ cờ và dùng fade 14 frame theo source. Phòng vẫn chỉ mở trực tiếp để kiểm thử: chưa nối kết quả bị bắt qua `obj_papyrus8`, chưa có trận hoàn chỉnh.
 
 `tests/remake-papyrus-garage.mjs` kiểm lời các lần bắt/kết thúc, cả bốn vật thể/collider, cửa/marker và dọn khi chuyển phòng. Chuỗi `test-papyrus-garage-chain-v1.log` qua cùng GreaterDog/tim/xương/chuyển xanh; check/build qua. Full snapshot `4261ced` vẫn đang chạy, không bao gồm phần này hay trình tự chuyển xanh. Push `583468b` đang chờ GitHub phản hồi.
+
+### Cảnh chó ăn đòn đặc biệt
+
+Đã chuyển `obj_papyrusboss` Alarm 7 thành `papyrus-special-intro.mjs`: tim xanh, khung 50, chó nhai xương tại vị trí gốc, chờ 80 frame, năm nhóm lời Papyrus, chó ngạc nhiên hai khung rồi vừa chạy vừa hoạt họa; khung trở về border 5 ở nhóm thoại cuối, dọn chó khi cảnh xong. Scene boss tương lai hiển thị từng nhóm thoại qua callback và nhận trạng thái kết thúc, hiện chưa nối; chưa có đợt regular attack, kết quả trận hoặc phòng sương.
+
+`test-papyrus-special-intro.mjs` kiểm thời gian, từng trạng thái sprite, chờ xác nhận, dịch chuyển, khung và dọn. Chuỗi `test-papyrus-special-chain-v1.log` qua cùng tim/xương/cảnh chuyển xanh/phòng giam/GreaterDog; check/build qua. Full snapshot `4261ced` vẫn chạy và không bao gồm các phần mới. Push `583468b` và `c1cecd2` đang thử lại sau lỗi GitHub 443.
