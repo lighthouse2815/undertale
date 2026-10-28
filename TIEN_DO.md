@@ -1331,3 +1331,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã sửa thời gian kết thúc lượt sau cảnh trợ thủ: khi giới thiệu robot, bộ đếm còn mười frame theo mã gốc và chờ hết thoại trước khi chuyển lượt. Kiểm chuỗi trợ thủ và hồi quy bộ đạn/trận, check/build qua.
 
 Đã thêm chuyển động Mad Dummy theo các pha HP 3 và 5, kể cả khi đang chọn lệnh; kiểm vị trí trong scene thật cùng hồi quy trận/đạn, check/build qua. Cần tiếp tục đối chiếu va chạm và hoàn thiện kiểm thử toàn trận liên tục.
+
+Đã bổ sung `remake-mad-dummy-full-battle.mjs`: điều khiển đạn trúng và tua thời gian trong scene thật, đi qua các pha HP, trợ thủ, robot, dao, nước mắt và kết thúc mà không sửa trực tiếp HP hay pha. Kiểm thử giữ bất tử và bỏ qua chờ nhập để xác minh chuyển pha; chưa thay thế việc chơi thủ công, đối chiếu mask và nhịp trình bày.

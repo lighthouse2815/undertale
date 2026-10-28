@@ -177,6 +177,7 @@ import { testMadDummyBattle } from './remake-mad-dummy-battle.mjs';
 import { testGladDummyBattle } from './remake-glad-dummy-battle.mjs';
 import { testWaterfallDummyEncounter } from './remake-waterfall-dummy-encounter.mjs';
 import { testMadDummyEnding } from './remake-mad-dummy-ending.mjs';
+import { testMadDummyFullBattle } from './remake-mad-dummy-full-battle.mjs';
 import { testMadDummyShot } from './remake-mad-dummy-shot.mjs';
 import { testMadDummyProjectile } from './remake-mad-dummy-projectile.mjs';
 import { testMadDummyHelpersSequence } from './remake-mad-dummy-helpers-sequence.mjs';
@@ -705,6 +706,7 @@ try {
   await testGladDummyBattle(page);
   await testMadDummyBattle(page);
   await testMadDummyEnding(page);
+  await testMadDummyFullBattle(page);
   await testMadDummyFirstWave(page);
   testMadDummyShot();
   testMadDummyProjectile();
