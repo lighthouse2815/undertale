@@ -1303,3 +1303,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã thêm trạng thái HP nội bộ và các mốc chuyển đợt Mad Dummy; `remake-mad-dummy-state.mjs` kiểm ngưỡng, nhịp đợt và chuyển robot, check/build qua. Trạng thái chưa nối vào trận và chưa bao gồm toàn bộ cảnh giữa lượt.
 
 Đã nối tùy chọn trạng thái vào bộ đạn: bắt đầu lượt cập nhật HP và đạn trúng Dummy gọi `hit()`; kiểm tương tác thật trong fixture trình duyệt, check/build qua. Chưa có giao diện trận hoặc các cảnh chuyển giai đoạn. Bộ tổng `test-remake-d92715f.log` đã dừng mà không ghi mã thoát; chưa có kết quả hoàn chỉnh.
+
+Đã thêm nhóm 32 trợ thủ con2 7, hình ngạc nhiên/buồn và chuyển động rời đi; kiểm đội hình, tốc độ, hình và dọn cùng hồi quy đạn, check/build qua. Nhóm này xuất hiện trong lượt đang diễn ra ở game gốc; chưa nối thời điểm, thoại và chuyển tiếp vào trận. Bộ tổng `test-remake-2102c41-workspace.log` đang chạy từ trước phần này.
