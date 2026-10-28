@@ -719,3 +719,9 @@ Các đoạn thoại của đòn xanh, chó và cảnh bắt được tạo khi 
 ### Bổ sung lời sau trận Papyrus
 
 Đối chiếu `SCR_TEXT` 540–541: thay câu dự phòng `obj_papyrus8_386` bằng năm trang mở đầu, 13 trang nhánh diệt chủng, hai câu trả lời kết bạn, nhánh hẹn hò và chỉ đường. Bộ chọn dữ liệu cung cấp các nhánh này; cảnh thực tế, lựa chọn và đường vào trận vẫn chưa được nối. Kiểm thử riêng xác nhận nội dung và điều kiện các nhánh; check/build remake chạy cùng thay đổi. Full snapshot `eba8db3` vẫn đang chạy và chưa bao gồm thay đổi này. Push `a84e4b0` thành công.
+
+### Nối cảnh Papyrus tại phòng sương
+
+Đã nối cửa X có fade hai chiều giữa town và fog (không nhầm cửa cửa hàng), giữ Reunited khi kết thúc. `PapyrusFogEncounter` thực hiện trigger/hồi HP/khóa điều khiển, camera và bóng/sương, các lời theo ký ức/lần bắt/tuyến giết, lựa chọn lần thứ ba, mở trận Papyrus, trở về garage khi bị bắt, hậu cảnh tha/giết, lựa chọn kết bạn, cờ 27/88, ký ức và plot 101. Đường đến Waterfall, cuộc gọi Undyne cùng các sự kiện sau phòng này vẫn chưa được chuyển; hiệu ứng writer, biểu cảm, animation và nhịp nhạc của cảnh còn cần đối chiếu tiếp với gốc, không coi game hoàn chỉnh.
+
+`test-papyrus-fog-encounter-v2.log` chạy chuỗi phòng sương và trận Papyrus; `test-papyrus-fog-encounter-v4.log` kiểm trigger, lời, trận thật/tha, nhánh từ chối và tuyến giết, chuyển garage khi giả lập kết quả bị bắt, đi bộ qua cửa hai chiều và nhạc Reunited. Check/build remake qua. Full snapshot `eba8db3` vẫn đang chạy và chưa gồm cảnh mới. Push `19c3cf6` thành công.
