@@ -861,3 +861,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### ACT và trạng thái Aaron
 
 Đã chuyển Check, Shoo (kể cả cờ 95), ba lần Flex, tăng ATK, cờ 143 và thứ tự trạng thái theo máu/đòn theo `obj_aaron`. Kiểm thử riêng các nhánh, ngưỡng và ưu tiên; check/build qua. Chưa có scene trận, đạn hoặc encounter thật, nên chưa mở đường Waterfall 5. Push `67baa21` thành công; bộ tổng snapshot `9401df5` đang chạy, không gồm thay đổi này.
+
+### Hai đợt đạn Aaron
+
+Đã chuyển generator tay cơ và mồ hôi: biên trận, tay trái/phải xen kẽ, chu kỳ rút ngắn, đổi hình/dao động, bốn hướng giọt và tăng alpha, va chạm tim/dọn. `test-aaron-waves-v3.log` kiểm nhịp sinh, vận tốc bốn hướng, va chạm và dọn; check/build qua. Chưa nối scene Aaron/nhóm quái, cần đối chiếu timing/mask và tần suất với gốc trong trận thật. Push `8ea119a` thành công; bộ tổng snapshot `9401df5` vẫn đang chạy, không gồm phần này.
