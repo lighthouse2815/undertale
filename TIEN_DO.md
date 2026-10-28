@@ -925,3 +925,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Kính thiên văn Wishing Room
 
 Đã nối lựa chọn Yes/No, màn nhìn sao theo ống kính di chuyển, giới hạn màn, khóa nhân vật và giảm/khôi phục âm lượng. `test-wishing-telescope-v2.log` kiểm lựa chọn, di chuyển, thoát và âm lượng; hồi quy hoa, check/build qua. Chưa nối cửa ẩn, encounter và cửa phòng; hình/timing kính còn cần đối chiếu. Push hoa `f6ce3d2` thành công. Bộ tổng `test-remake-52ee79e-v2.log` thất bại ở cửa town→fog: phím phải không được ghi nhận, cần tìm nguyên nhân; bộ này không gồm các thay đổi mới sau `52ee79e`.
+
+### Cửa ẩn Wishing Room
+
+Đã chuyển tương tác mở tường, tháo collider, khóa 30 frame, âm thanh, plot 108 và tự mở lại theo plot/tuyến giết. `test-wishing-door-v1.log` kiểm mở, chờ, vào lại và hai nhánh tuyến; hồi quy hoa/kính khi chạy riêng, check/build qua. Một lượt hồi quy kính chạy song song thất bại ở âm lượng, chạy riêng qua; cần điều tra nếu tái hiện. Cửa sang phòng 5 và phòng kế tiếp chưa nối; push kính `6c1826a` thành công.

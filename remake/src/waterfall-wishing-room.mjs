@@ -9,11 +9,14 @@ export class WaterfallWishingRoom {
     this.flowers = world.roomObjects.filter(e => e.item.ObjectName === 'obj_echoflower');
     this.signs = world.roomObjects.filter(e => e.item.ObjectName === 'obj_readable_room3');
     this.telescope = world.roomObjects.find(e => e.item.ObjectName === 'obj_telescope');
+    this.door = world.roomObjects.find(e => e.item.ObjectName === 'obj_fakedoor');
     world.colliders.push(createCollider(world.dataSource, this.telescope.item));
     for (const flower of this.flowers) {
       world.colliders.push(createCollider(world.dataSource, flower.item));
       flower.image.setDepth(flower.item.Y + flower.sprite.MarginBottom - flower.sprite.OriginY);
     }
+    if (murderLevel(world.flags) >= 8 && !world.flags[27]) world.plot = Math.max(world.plot, 108);
+    if (world.plot > 107) this.openDoor(false);
   }
   flowerText(x) {
     const flags = this.world.flags;
@@ -31,8 +34,16 @@ export class WaterfallWishingRoom {
     if (inInteractionRange(world, { ...this.telescope, item: { ...this.telescope.item, X: this.telescope.item.X - this.telescope.sprite.OriginX, Y: this.telescope.item.Y - this.telescope.sprite.OriginY } })) {
       world.showChoice('* (Look through the telescope?)', ['Yes', 'No'], choice => { if (choice === 0) this.openViewer(); }); return true;
     }
+    if (!this.doorOpen && world.plot < 108 && inInteractionRange(world, this.door)) { this.openDoor(true); world.plot = 108; return true; }
     if (this.signs.some(e => inInteractionRange(world, e))) { world.showDialogue(['* WISHING ROOM']); return true; }
     return false;
+  }
+  openDoor(animate) {
+    const world = this.world, door = this.door; this.doorOpen = true;
+    const index = world.colliders.findIndex(c => c.objectName === 'obj_solidtall_2' && c.rectangle.contains(door.item.X + 10, door.item.Y + 20));
+    if (index >= 0) world.colliders.splice(index, 1);
+    door.image = world.add.image(door.item.X, door.item.Y, 'spr_fakedoor:0').setOrigin(0).setDepth(door.item.Depth ?? door.item.Y);
+    if (animate) { this.doorFrames = 30; this.doorElapsed = 0; world.release(); world.sound.play('snd_bluh'); world.cameras.main.shake(1000 / 15, .006); }
   }
   openViewer() {
     const world = this.world, music = world.waterfallMusic ?? world.townMusic;
@@ -48,6 +59,7 @@ export class WaterfallWishingRoom {
     v.lens.setPosition(v.x, v.y); v.cover.clear().fillStyle(0x000000).fillRect(0, 0, 320, top).fillRect(0, bottom, 320, 240 - bottom).fillRect(0, top, left, bottom - top).fillRect(right, top, 320 - right, bottom - top);
   }
   update(delta) {
+    if (this.doorFrames > 0) { this.doorElapsed += delta; while (this.doorElapsed >= 1000 / 30 && this.doorFrames > 0) { this.doorElapsed -= 1000 / 30; this.doorFrames--; } return true; }
     const v = this.view; if (!v) return false; const world = this.world;
     v.elapsed = Math.min(200, v.elapsed + delta);
     while (v.elapsed >= 1000 / 30) {
