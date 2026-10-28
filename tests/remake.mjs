@@ -127,6 +127,7 @@ import { testWoshuaSoap } from './remake-woshua-soap.mjs';
 import { testWoshuaBattle } from './remake-woshua-battle.mjs';
 import { testMoldsmalAct } from './remake-moldsmal-act.mjs';
 import { testMoldsmalWaves } from './remake-moldsmal-waves.mjs';
+import { testMoldbyggWaves } from './remake-moldbygg-waves.mjs';
 import { testMoldsmalGroup } from './remake-moldsmal-group.mjs';
 import { testWaterfallGroup } from './remake-waterfall-group.mjs';
 import { testWaterfallEncounter } from './remake-waterfall-encounter.mjs';
@@ -686,6 +687,7 @@ try {
   await testWoshuaBattle(page);
   await testMoldsmalAct();
   await testMoldsmalWaves(page);
+  await testMoldbyggWaves(page);
   await testMoldsmalGroup(page);
   await testWaterfallGroup(page);
   await testWaterfallEncounter(page);
