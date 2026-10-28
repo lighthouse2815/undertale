@@ -582,7 +582,7 @@ Push Snowed Inn f24f7e6 và cửa cầu→town f7fe082 đã thành công.
 
 ### Xương đầu trận Papyrus
 
-Đã chuyển thành phần `papyrus-bones.mjs`: khung border5 (192–442, 250–385), ba xương trắng đầu có độ cao ngẫu nhiên và tốc độ -3 trong lượt 140 frame; dựng đầu/chân bằng sprite gốc, thân trắng/xanh và cắt trong khung. Có xương mọc từ trên/dưới, dao động, va chạm theo mask tim, xương xanh chỉ gây thương tích khi tim đang di chuyển, công thức sát thương tối thiểu 3 và giảm thương ở lượt cuối khi HP thấp; bất tử theo trang bị. Khi hết HP đánh dấu bị bắt, giữ 1 HP và dừng xương thay vì Game Over.
+Đã chuyển thành phần `papyrus-bones.mjs`: khung border5 (192–442, 250–385), ba xương trắng đầu có độ cao ngẫu nhiên và tốc độ -3 trong lượt 140 frame; dựng đầu/chân bằng sprite gốc, thân trắng/xanh và cắt trong khung. Có xương mọc từ trên/dưới, dao động, va chạm theo hộp bao tim, xương xanh chỉ gây thương tích khi tim đang di chuyển, công thức sát thương tối thiểu 3 và giảm thương ở lượt cuối khi HP thấp; bất tử theo trang bị. Khi hết HP đánh dấu bị bắt, giữ 1 HP và dừng xương thay vì Game Over.
 
 `tests/remake-papyrus-bones.mjs` chạy trên scene thật: tọa độ/vận tốc/140 frame, xương trên-dưới, trắng-xanh, đứng yên/di chuyển, bất tử, HP/bị bắt và dọn. Chuỗi GreaterDog→tim xanh→xương→tim xanh (`test-papyrus-bones-chain-v3.log`) qua, check/build qua. Đây là thành phần cho trận, **chưa nối cảnh bắt, hội thoại, ACT/FIGHT/MERCY, chuyển sang tim xanh và các đợt còn lại**, chưa thể coi trận Papyrus hay game đã hoàn chỉnh. Full snapshot `15dd854` đang chạy, chưa gồm xương.
 
@@ -597,3 +597,7 @@ Bổ sung bốn bố trí `fighto=-1,0,1,2` vào thành phần xương: đặt t
 Bổ sung `fighto=3,4,5` với 150/240/330 frame: xương mọc từ hai phía, từng cặp trên/dưới, xương xanh và hai cụm hình sóng. Lượt 3 tăng tốc tất cả xương lên 4.5 khi `xfight>0`, đúng nhánh `with (blt_sizebone)` trong mã gốc. Các lượt khác và cách tăng tốc riêng của chúng vẫn chưa đủ.
 
 Chuỗi `test-papyrus-turns-345-v2.log` kiểm bố trí từng xương, thời lượng, nhánh `xfight`, va chạm/bị bắt/dọn và hồi quy tim xanh/GreaterDog; check/build qua. Chưa nối vào trận Papyrus và chưa hoàn tất game. Push commit `d67d6e4` đang chờ kết nối GitHub; full snapshot `15dd854` vẫn chạy và không gồm các đợt xương.
+
+### Sửa va chạm thân xương Papyrus
+
+Đối chiếu lại `collision_rectangle(..., obj_heart, 0, 1)` trong Draw gốc: đối số `prec=0` dùng hộp bao tim 16×16, không dùng mask pixel. Đã sửa `PapyrusBones.touches` để phần góc trong suốt của tim cũng có thể va vào thân xương; vẫn giữ điều kiện khoảng cách X và xét xương xanh khi tim di chuyển. Chuỗi `test-papyrus-hitbox-v1.log` qua, có trường hợp góc tim và các hồi quy xương/tim xanh/GreaterDog; check/build qua. Trận Papyrus, cảnh bắt và tuyến đi vẫn chưa được nối.

@@ -1,5 +1,3 @@
-import { maskContains } from './collision-mask.mjs';
-
 export function loadPapyrusBoneAssets(scene) {
   const base = new URL('../assets/', import.meta.url);
   for (const key of ['spr_bonetop', 'spr_bonebottom']) {
@@ -55,10 +53,8 @@ export class PapyrusBones {
     if (Math.abs(hx - x) >= 15) return false;
     const y1 = top ? Math.min(y, b.top + 10) : Math.min(y + 2, b.bottom - 2);
     const y2 = top ? Math.max(y, b.top + 10) : Math.max(y + 2, b.bottom - 2);
-    for (let px = 0; px < 16; px++) for (let py = 0; py < 16; py++) {
-      if (hx + px >= x + 3 && hx + px <= x + 9 && hy + py >= y1 && hy + py <= y2 && maskContains(this.scene, 'spr_heart:mask', px, py)) return true;
-    }
-    return false;
+    // collision_rectangle của GML truyền prec=false, nên dùng hộp bao thay vì mask pixel.
+    return hx <= x + 9 && hx + 15 >= x + 3 && hy <= y2 && hy + 15 >= y1;
   }
   remove(bone) { bone.tip.destroy(); bone.base.destroy(); bone.stem.destroy(); this.bullets.splice(this.bullets.indexOf(bone), 1); }
   step() {
