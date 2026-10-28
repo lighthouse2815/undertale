@@ -24,6 +24,7 @@ export const BATTLE_CONFIGS = {
   shyren: { name: 'Shyren', asset: 'spr_shyren', hp: 66, def: 2, xp: 52 },
   madDummy: { name: 'Mad Dummy', asset: 'spr_dummybattle', hp: 200, def: -40, xp: 0 },
   gladDummy: { name: 'Glad Dummy', asset: 'spr_dummybattle_glad', hp: 5, def: -5, xp: 0 },
+  temmie: { name: 'Temmie', asset: 'spr_tembattle', hp: 5, def: -20, xp: 40 },
   aaron: { name: 'Aaron', asset: 'spr_aaron', hp: 98, def: 2, xp: 52 },
   woshua: { name: 'Woshua', asset: 'spr_woshua', hp: 70, def: 1, xp: 52 },
   moldsmalGroup53: { name: 'Moldsmal', asset: 'spr_moldsmal', hp: 50, def: 0, xp: 3 },

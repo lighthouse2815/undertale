@@ -6,7 +6,7 @@ import { AaronWave, loadAaronWaveAssets } from './aaron-waves.mjs';
 
 // Battlegroup 40: Aaron một mình, ACT/FIGHT/ITEM/MERCY và hai đợt đạn.
 export class AaronBattle extends MultiBattle {
-  constructor() { super('AaronBattle'); }
+  constructor(key = 'AaronBattle') { super(key); }
   preload() {
     super.preload(); loadAaronWaveAssets(this); const base = new URL('../assets/', import.meta.url);
     for (const [key,count] of [['spr_aaron',2],['spr_aaronbody',1],['spr_blconsm',1]]) {

@@ -119,6 +119,7 @@ import { testWaterfallQuicheRoom } from './remake-waterfall-quiche-room.mjs';
 import { testAaronAct } from './remake-aaron-act.mjs';
 import { testAaronWaves } from './remake-aaron-waves.mjs';
 import { testAaronBattle } from './remake-aaron-battle.mjs';
+import { testTemmieBattle } from './remake-temmie-battle.mjs';
 import { testWoshuaAct } from './remake-woshua-act.mjs';
 import { testWoshuaAttack } from './remake-woshua-attack.mjs';
 import { testWoshuaSpiral } from './remake-woshua-spiral.mjs';
@@ -677,6 +678,7 @@ try {
   await testAaronAct();
   await testAaronWaves(page);
   await testAaronBattle(page);
+  await testTemmieBattle(page);
   await testWoshuaAct();
   await testWoshuaAttack();
   await testWoshuaSpiral(page);

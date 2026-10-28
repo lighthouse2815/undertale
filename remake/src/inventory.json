@@ -216,6 +216,14 @@
         "* \"Old Tutu\" - Armor DF 10\n* Finally, a protective piece\n  of armor."
       ]
     },
+    "22": {
+      "name": "Temmie Flakes",
+      "battleName": "TemFlakes",
+      "seriousName": "TemFlakes",
+      "use": "* You eat the Temmie Flakes.",
+      "info": ["* \"Temmie Flakes\" - Heals 2 HP\n* It's just torn up pieces\n  of colored construction paper."],
+      "heal": 2
+    },
     "23": {
       "name": "Abandoned Quiche",
       "battleName": "Ab Quiche",
