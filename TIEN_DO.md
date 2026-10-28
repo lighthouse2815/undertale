@@ -1237,3 +1237,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Kid giúp trèo mỏm đá
 
 Đã chuyển Kid chạy tới mỏm, hai lượt thoại, điều kiện trả ô, trèo, tường đổi phía, nhánh lời theo tuyến và Kid rời đi/plot 112–113/cờ 91. `remake-waterfall-ledge.mjs` kiểm nhánh ô, tuyến, mở lại, tường và hành trình bằng phím; hồi quy đường mỏm đá, check/build qua. Quỹ đạo/animation và timing còn cần đối chiếu game gốc; Aaron và cửa sang phòng sau vẫn thiếu. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
+
+### Aaron ở mỏm đá
+
+Đã thêm Aaron theo plot/dân số, va chạm và các nhánh thoại lặp, ma và kết thúc. `remake-waterfall-ledge-aaron.mjs` kiểm điều kiện và các nhánh; hồi quy cảnh Kid, check/build qua. Cửa sang phòng trước Undyne vẫn chưa nối; bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.

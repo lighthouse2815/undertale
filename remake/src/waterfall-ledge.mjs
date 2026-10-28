@@ -1,18 +1,28 @@
 import { Geom } from '../vendor/phaser.esm.min.js';
 import { inInteractionRange } from './npc.mjs';
 import { murderLevel } from './route.mjs';
+import { createCollider } from './movement.mjs';
 
 // obj_monsterkidtrigger6: mỏm đá, tương tác và Kid cho người chơi trèo qua.
 export class WaterfallLedge {
   constructor(world,spawn){
     this.world=world;this.elapsed=0;this.frames=0;this.timer=0;this.side=spawn==='obj_markerB'?1:0;this.stage='done';
+    this.aaron=world.roomObjects.find(e=>e.item.ObjectName==='obj_aaronnpc');this.aaronTalked=0;
+    if(this.aaron){if(world.plot<=121||(world.flags[204]??0)!==0){this.aaron.image.destroy();this.aaron=null;}else{world.colliders.push(createCollider(world.dataSource,this.aaron.item));this.aaron.image.setDepth(this.aaron.item.Y+this.aaron.sprite.MarginBottom);}}
     this.wall={objectName:'obj_solidextall_2',rectangle:new Geom.Rectangle(this.side?320:340,60,20,80)};world.colliders.push(this.wall);
     if(world.plot<112&&spawn==='obj_markerA'){this.stage='following';this.kid=world.add.image(world.player.x-8,world.player.y,'spr_mkid_d:0').setOrigin(0);this.sprite='spr_mkid_d';}
     else if(world.plot===112){this.stage='ready';this.kid=world.add.image(320,100,'spr_mkid_prostrate:0').setOrigin(0);this.sprite='spr_mkid_prostrate';}
   }
   pose(key){this.sprite=key;this.kid.setTexture(`${key}:0`);}
   interact(){
-    const w=this.world;if(!this.kid||!['waiting','thinking','ready'].includes(this.stage))return false;
+    const w=this.world;
+    if(this.aaron&&inInteractionRange(w,this.aaron)){
+      let lines=this.aaronTalked?['* And flexing ; )']:['* Since you flexed at me,\n  I\'ve been thinking of a\n  lot of things ; )','* Like...\n* Flexing ; )'];
+      if(w.flags[7]===1)lines=['* You came all this way to\n  see me flex ; )','* This really says something\n  about you ; )'];
+      if(w.flags[95]===1)lines=w.flags[7]===1?["* First ghosts, are real, now\n  anime's real ; )\n* All my nightmares are true ; )"]:["* I... I'm sc-scared... ; )","* Ghosts aren't real, right?\n* ; )","* What? They are real?\n* Oh nooooooo ; )"];
+      this.aaronTalked++;w.showDialogue(lines);return true;
+    }
+    if(!this.kid||!['waiting','thinking','ready'].includes(this.stage))return false;
     const item={X:this.kid.x,Y:this.kid.y,ScaleX:1,ScaleY:1},sprite=w.dataSource.sprites.get(this.sprite),entry={item,sprite,object:{Sprite:this.sprite}};
     if(!inInteractionRange(w,entry))return false;
     if(this.stage==='ready'){

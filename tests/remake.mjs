@@ -149,6 +149,7 @@ import { testWaterfallCrystalRoom } from './remake-waterfall-crystal-room.mjs';
 import { testWaterfallCrystalPath } from './remake-waterfall-crystal-path.mjs';
 import { testWaterfallMystery } from './remake-waterfall-mystery.mjs';
 import { testWaterfallStarPath } from './remake-waterfall-star-path.mjs';
+import { testWaterfallLedgeAaron } from './remake-waterfall-ledge-aaron.mjs';
 import { testWaterfallLedge } from './remake-waterfall-ledge.mjs';
 import { testWaterfallLedgePath } from './remake-waterfall-ledge-path.mjs';
 import { testWaterfallCastle } from './remake-waterfall-castle.mjs';
@@ -681,6 +682,7 @@ try {
   await testWaterfallShyrenPath(page);
   await testWaterfallShyrenEnding(page);
   testDogResidue();
+  await testWaterfallLedgeAaron(page);
   await testWaterfallLedge(page);
   await testWaterfallLedgePath(page);
   await testWaterfallCastle(page);
