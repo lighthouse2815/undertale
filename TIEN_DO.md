@@ -1341,3 +1341,5 @@ Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm th�
 Đã thêm Crab Apple, Sea Tea, Cloudy Glasses và Torn Notebook: hồi HP, tăng tốc trong một trận, đổi trang bị và tăng thời gian bất tử. `remake-waterfall-shop-items.mjs` kiểm ngoài trận, trong trận và đặt lại tốc độ; check/build qua. Cần chuyển giao diện cửa hàng để người chơi mua các món này và đối chiếu các trận có luật tốc độ/bất tử riêng.
 
 Đã nối cửa hàng Gerson: bốn món, mua/thiếu tiền/túi đầy, từ chối bán, lời thoại theo tuyến và tiến trình emblem, ra cửa trở lại phòng. `remake-waterfall-shop.mjs` kiểm cửa thực, bốn món và ba nhánh; check/build qua. Cần đối chiếu thêm hiệu ứng chuyển cảnh, animation và nội dung hiển thị. Bộ tổng `test-remake-ac23c82.log` đã dừng mà không ghi mã thoát, chưa có kết quả hoàn chỉnh.
+
+Đã bổ sung chuyển động tay và đầu Gerson khi nói và đưa về tư thế nghỉ; kiểm nhịp animation cùng hồi quy cửa hàng, check/build qua. Bộ tổng `test-remake-0148c1e.log` đang chạy trên phiên bản trước phần này.

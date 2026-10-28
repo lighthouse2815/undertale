@@ -22,7 +22,7 @@ export class WaterfallShop extends Scene {
   create(){
     if(this.assetError){Object.assign(window.__remake,{phase:'error',error:this.assetError.message});return;}
     if(!this.cache.bitmapFont.exists('fnt_maintext'))registerBitmapFont(this,'fnt_maintext',this.cache.json.get('fnt_maintext'));
-    this.world=this.game.scene.getScene('World');this.violent=murderLevel(this.world.flags)>=10;this.mode='main';this.selection=0;this.selected=0;this.side=0;this.sales=0;this.mainMessage=0;this.pages=null;this.pageIndex=0;
+    this.world=this.game.scene.getScene('World');this.violent=murderLevel(this.world.flags)>=10;this.mode='main';this.selection=0;this.selected=0;this.side=0;this.sales=0;this.mainMessage=0;this.pages=null;this.pageIndex=0;this.speakingFrames=0;this.speakingTime=100;this.animationElapsed=0;
     if(this.world.flags[7]!==1){this.music=this.sound.add('mus_shop',{loop:true,volume:.8,rate:this.violent?.2:.93});this.music.play();}
     this.events.once('shutdown',()=>this.music?.destroy());this.onKey=event=>{if(!event.repeat)this.key(event.code);};window.addEventListener('keydown',this.onKey);this.events.once('shutdown',()=>window.removeEventListener('keydown',this.onKey));
     Object.assign(window.__remake,{phase:'shop',room:'room_shop2',scene:this});this.draw();
@@ -31,7 +31,7 @@ export class WaterfallShop extends Scene {
   box(x,y,w,h){this.add.rectangle(x,y,w,h,0xffffff).setOrigin(0);this.add.rectangle(x+4,y+4,w-8,h-8,0).setOrigin(0);}
   draw(){
     this.children.removeAll(true);const w=this.world;this.add.image(0,0,'spr_shop2_bg:0').setOrigin(0);
-    for(const [key,x,y] of [['spr_shopkeeper2_arm',100,68],['spr_shopkeeper2_body',146,84],['spr_shopkeeper2_mouthbottom',142,75],['spr_shopkeeper2_mouthtop',130,44],['spr_shopkeeper2_eyes',130,59]])this.add.image(x,y,`${key}:0`).setOrigin(0);
+    this.keeperParts=[['spr_shopkeeper2_arm',100,68],['spr_shopkeeper2_body',146,84],['spr_shopkeeper2_mouthbottom',142,75],['spr_shopkeeper2_mouthtop',130,44],['spr_shopkeeper2_eyes',130,59]].map(([key,x,y])=>({x,y,image:this.add.image(x,y,`${key}:0`).setOrigin(0)}));this.animateKeeper();
     const divided=this.mode!=='pages';this.box(0,120,320,120);if(divided)this.add.rectangle(210,124,4,112,0xffffff).setOrigin(0);
     if(this.mode==='main'){
       const msg=this.violent?237:w.flags[7]===1?236:this.mainMessage?234:235;this.text(10,129,dialogue[`obj_shop2_${msg}`]);
@@ -46,8 +46,18 @@ export class WaterfallShop extends Scene {
     }else if(this.mode==='pages')this.text(10,128,this.pages[this.pageIndex]);
     if(divided){this.text(230,210,`${w.gold}G`);this.text(280,210,`${w.inventory.length}/8`);}
   }
+  update(_time,delta){
+    if(window.__remake.phase!=='shop'||window.__remake.scene!==this)return;
+    this.animationElapsed=Math.min(200,this.animationElapsed+delta);
+    while(this.animationElapsed>=1000/30){this.animationElapsed-=1000/30;if(this.speakingTime>0){this.speakingTime--;this.speakingFrames=(this.speakingFrames+1)%12;}else if(this.speakingFrames>0)this.speakingFrames=(this.speakingFrames+1)%12;}
+    this.animateKeeper();
+  }
+  animateKeeper(){
+    if(!this.keeperParts)return;const phase=this.speakingFrames>=6?4:this.speakingFrames>=3?2:0;
+    for(const [index,part] of this.keeperParts.entries())part.image.setPosition(part.x+(index===0?phase:0),part.y+(index===0?phase/2:index>=3?phase:0));
+  }
   titles(){const f=this.world.flags;if(f[7]===1)return [5,6,7,8].map(n=>dialogue[`shop2_talk${n}_title`]);if(this.violent)return [9,10,11,12].map(n=>dialogue[`shop2_talk${n}_title`]);return [dialogue.shop2_talk1_title,dialogue[`shop2_talk2${['a','b','c','d'][Math.min(3,f[96]??0)]}_title`],dialogue.shop2_talk3_title,dialogue.shop2_talk4_title];}
-  show(pages,after){this.mode='pages';this.pages=pages;this.pageIndex=0;this.afterPages=after;}
+  show(pages,after){this.mode='pages';this.pages=pages;this.pageIndex=0;this.afterPages=after;this.speakingTime=pages[0].length*2;}
   talk(index){
     const f=this.world.flags,violent=this.violent;let pages;
     if(index===0)pages=f[7]===1?range(478,489):violent?range(468,473):range(462,463);
@@ -62,6 +72,7 @@ export class WaterfallShop extends Scene {
       if(this.mode==='buy'||this.mode==='talk'){this.mode='main';this.selection=0;this.mainMessage=1;}else if(this.mode==='confirm'){this.mode='buy';this.side=2;}this.draw();return;
     }
     if(!['KeyZ','Enter'].includes(code))return;
+    if(this.mode!=='pages')this.speakingTime=0;
     if(this.mode==='pages')this.nextPage();
     else if(this.mode==='main'){
       const choice=this.selection;this.mainMessage=1;this.selection=0;
@@ -78,7 +89,7 @@ export class WaterfallShop extends Scene {
     }else if(this.mode==='talk'){if(this.selection===4){this.mode='main';this.selection=0;}else this.talk(this.selection);}
     if(window.__remake.scene===this)this.draw();
   }
-  nextPage(){if(++this.pageIndex>=this.pages.length)this.afterPages();}
+  nextPage(){if(++this.pageIndex>=this.pages.length){this.speakingTime=0;this.afterPages();}else this.speakingTime=this.pages[this.pageIndex].length*2;}
   leave(){
     const w=this.world;this.scene.stop();this.scene.resume('World');w.player.setPosition(150,90);w.player.facing='d';w.player.setTexture('spr_maincharad:0');w.updateCamera();w.release();w.confirmDown=false;w.confirmPressed=false;w.confirmWasDown=false;w.interactionCooldown=250;
     Object.assign(window.__remake,{phase:'running',room:'room_water_shop',scene:w});if(w.flags[7]!==1)startWaterfallQuietMusic(w);w.cameras.main.fadeIn(13*1000/30);
