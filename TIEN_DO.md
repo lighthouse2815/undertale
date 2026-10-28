@@ -1133,3 +1133,7 @@ Một kiểm thử Onionsan tái hiện phím bị bỏ qua dù scene đã báo 
 ### Trigger trận Shyren
 
 Đã nối vùng kích hoạt phòng 14 tới scene Shyren, cập nhật plot 111 và lưu snapshot tạm; không kích hoạt lại sau khi rời trận hoặc vào phòng lần nữa. `remake-shyren-trigger.mjs` kiểm va chạm bằng phím, trốn và không lặp; hồi quy scene trận/bia, check/build qua. Chưa kiểm toàn bộ đường từ Onionsan đến trận; cửa phòng 14 còn thiếu và chi tiết trận cần đối chiếu thêm.
+
+### Fixture nhạc đường Undyne
+
+Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để lại `mus_ambientwater` từ phòng 1 nhưng kiểm thử lại yêu cầu `mus_waterfall`. Fixture giờ đi qua phòng 2 trước khi vào phòng 3 để thiết lập đúng nhánh đang kiểm. Kiểm thử đường riêng, check/build qua; cần chạy lại bộ tổng để xác nhận toàn bộ chuỗi.

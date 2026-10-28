@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 export async function testWaterfallUndynePath(page) {
-  await page.evaluate(async()=>{const w=__remake.game.scene.getScene('World');w.flags={};w.plot=106;await w.openRoom('room_water3');w.savedWaterfallMusic=w.waterfallMusic;w.player.setPosition(540,115);});
+  await page.evaluate(async()=>{const w=__remake.game.scene.getScene('World');w.flags={};w.plot=106;await w.openRoom('room_water2');await w.openRoom('room_water3');w.savedWaterfallMusic=w.waterfallMusic;w.player.setPosition(540,115);});
   await page.keyboard.down('ArrowRight');await page.waitForFunction(()=>__remake.phase==='transition');await page.keyboard.up('ArrowRight');await page.waitForFunction(()=>__remake.phase==='running'&&__remake.room==='room_water4');
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.player.x,w.player.y,w.waterfallMusic.key,w.waterfallMusic===w.savedWaterfallMusic,w.waterfallUndyne.stage];}),[15,275,'mus_waterfall',true,'done']);
   await page.keyboard.down('ArrowLeft');await page.waitForFunction(()=>__remake.phase==='transition');await page.keyboard.up('ArrowLeft');await page.waitForFunction(()=>__remake.phase==='running'&&__remake.room==='room_water3');
