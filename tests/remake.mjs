@@ -127,6 +127,7 @@ import { testWoshuaBattle } from './remake-woshua-battle.mjs';
 import { testMoldsmalAct } from './remake-moldsmal-act.mjs';
 import { testMoldsmalWaves } from './remake-moldsmal-waves.mjs';
 import { testMoldsmalGroup } from './remake-moldsmal-group.mjs';
+import { testWaterfallGroup } from './remake-waterfall-group.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -587,6 +588,7 @@ try {
   await testMoldsmalAct();
   await testMoldsmalWaves(page);
   await testMoldsmalGroup(page);
+  await testWaterfallGroup(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

@@ -905,3 +905,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Sửa khung đạn Aaron
 
 Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không phải border 6 (đỉnh 250); đã sửa cả vị trí tim và kiểm kích thước khung. Push trận hai Moldsmal `85cf14f` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy và không gồm sửa này.
+
+### Nhóm Woshua và Aaron
+
+Đã ghép nhóm 54: chọn từng mục tiêu, ACT của cả hai, Joke làm Aaron có thể tha, Flex tăng ATK/rời trận, hai đợt đạn cùng lúc, tính thưởng và dân số từng quái. `test-waterfall-group-v2.log` kiểm Joke, đạn đồng thời, tha Aaron rồi giết Woshua, ba lần Flex và Flee; check/build qua. Nhóm mới mở trực tiếp để kiểm thử, chưa nối encounter; còn cần đối chiếu hoạt hình, thoại, nhịp và va chạm với gốc. Push sửa khung Aaron `7557021` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm scene này.
