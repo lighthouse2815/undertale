@@ -6,6 +6,7 @@ import { WaterfallEncounter } from './waterfall-encounter.mjs';
 import { WaterfallWishingRoom } from './waterfall-wishing-room.mjs';
 import { WaterfallHistoryRoom } from './waterfall-history-room.mjs';
 import { WaterfallRaft } from './waterfall-raft.mjs';
+import { murderLevel } from './route.mjs';
 import { WaterfallQuicheRoom } from './waterfall-quiche-room.mjs';
 import { WaterfallPapyrusPhone } from './waterfall-papyrus-phone.mjs';
 import { WaterfallBridgeRoom } from './waterfall-bridge-room.mjs';
@@ -320,6 +321,8 @@ class World extends Scene {
       if (item.ObjectName === 'obj_readable_flowers1' && (this.plot ?? 0) === 0) continue;
       if (item.ObjectName === 'obj_torinteractable7' && this.plot !== 25) continue;
       if (name === 'room_water7' && item.ObjectName === 'obj_woshuanpc' && !(this.plot > 121 && (this.flags[204] ?? 0) === 0)) continue;
+      if (name === 'room_water7' && item.ObjectName === 'obj_purpledude' && (this.plot < 110 || murderLevel(this.flags) >= 8 && !this.flags[27])) continue;
+      if (name === 'room_water7' && item.ObjectName === 'obj_mkid_goner' && (this.plot < 110 || this.flags[7] === 1 || (this.flags[5] ?? 0) < 90 || Number(localStorage.getItem('undertale-remake-fun') ?? 0) < 90)) continue;
       if (name === 'room_ruins2' && this.plot > 2 && ['obj_ruinsdoor1', 'obj_toroverworld3'].includes(item.ObjectName)) continue;
       if (name === 'room_ruins3') {
         if (item.ObjectName === 'obj_toroverworld4' && this.plot >= 4) continue;

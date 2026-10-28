@@ -945,3 +945,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Đồng bộ kiểm thử cửa town–fog
 
 Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau `resume()` trước khi gửi phím. Một kiểm thử bè tái hiện được phím bị bỏ qua khi gửi ngay sau resume và qua sau khi chờ; chuỗi `test-fog-resume-v1.log` (trận Papyrus, phòng giam, sương, encounter và cửa) qua, check/build qua. Đây là nguyên nhân có khả năng của timeout bộ tổng trước, cần xác nhận bằng bộ tổng hoàn chỉnh. Push bè `5646484` thành công; bộ tổng `test-remake-a1ddb3a.log` đã khởi chạy trước sửa này.
+
+### Nhân vật ẩn phòng lịch sử
+
+Đã chuyển điều kiện xuất hiện, tương tác và cờ của nhân vật bí mật; ẩn người chở đò khi chưa đến plot hoặc theo tuyến gốc. `test-waterfall-goner-v3.log` kiểm điều kiện và các nhánh, check/build qua. Người chở đò chưa có tương tác; phòng lịch sử chưa nối cửa. Push kiểm thử town–fog `76e0097` thành công. Bộ tổng `test-remake-76e0097.log` bị gián đoạn khi môi trường kết thúc, không có kết quả cuối.

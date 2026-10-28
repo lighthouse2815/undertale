@@ -192,6 +192,7 @@ export async function loadRoom(scene, name) {
   if (town) for (const key of Object.keys(townNpcDialogue.sprites)) spriteNames.add(key);
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
+  if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
   if (name === 'room_water5') for (const key of ['spr_floweysink', 'spr_face_papyrus', 'spr_heartsmall', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water4') for (const key of ['spr_undynea_starku', 'spr_undynea_starkl', 'spr_undyne_starkd', 'spr_undyne_throw', 'spr_undyne_starkeye', 'spr_undyne_shad', 'spr_papyrus_r_stark', 'spr_papyrus_l_stark', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_u', 'spr_mkid_d', 'spr_mkid_trip_r', 'spr_exc', 'spr_maincharad_stark', 'spr_maincharau_stark', 'spr_maincharal_stark', 'spr_maincharar_stark']) spriteNames.add(key);
   if (name === 'room_water3A') for (const key of ['spr_tutu', 'spr_heartsmall']) spriteNames.add(key);
