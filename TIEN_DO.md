@@ -791,3 +791,9 @@ Dùng lại cơ chế chó của town cho Greater Dog trong quán: sprite thư�
 ### Dòng đá phòng Waterfall 3
 
 Đã chuyển nhịp sinh tám đá, tốc độ theo cao độ, đẩy Frisk theo bbox và hướng giữ, vệt đá trôi/mờ, khóa và trôi xuống khi vào thác, điều kiện dừng sinh trên tuyến giết và tạm dừng khi mở menu. `test-waterfall-rock-v2.log` kiểm chu kỳ đầu, đẩy, rơi, vệt/dọn, tạm dừng và cờ; `test-waterfall-box-rock-v1.log` hồi quy BOX; check/build qua. Cần đối chiếu mask/timing với game gốc trên đường đi thật; thác hiển thị, nhạc và cửa của phòng chưa nối. Push `f7c798e` thành công; bộ tổng snapshot `13ca033` đang chạy, chưa gồm phần này.
+
+### Các lớp thác phòng Waterfall 3
+
+Đã dùng lại lớp vẽ thác cho bốn instance trong phòng 3, bổ sung màn nước phản ứng với va chạm Frisk, gợn nước crop theo vùng và tiếng nước; test riêng kiểm vị trí, khung, va chạm, crop và dọn, kiểm hồi quy thác trạm, check/build qua. Chưa nối đường phòng 3; các chi tiết vẽ và timing vẫn cần đối chiếu thực tế. Push `a7cee67` thành công.
+
+Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua cửa town→fog sau các bài khác (`test-waterfall-sans-full-v1.log`); chuỗi rút gọn trận Papyrus, garage, fog và cảnh gặp chạy lại qua (`test-fog-full-repro-v3.log`). Nguyên nhân chưa xác định; cần chạy lại bộ tổng có chẩn đoán trạng thái, không coi snapshot này đã qua.
