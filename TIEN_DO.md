@@ -913,3 +913,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Encounter phòng cầu Waterfall
 
 Đã nối đếm bước, ngưỡng theo dân số, ba trận đầu Aaron/Woshua/hai Moldsmal, chọn ngẫu nhiên bốn nhóm, cờ 357/223, lần cạn dân số và hiệu ứng bắt đầu trận cho phòng 5. `test-waterfall-encounter-v3.log` kiểm bước bằng bàn phím vào Aaron và hai trận tiếp, các ngưỡng/ngẫu nhiên/cạn dân số; hồi quy phòng cầu, điện thoại, quiche, check/build qua. Chưa nối cửa vào phòng, cần kiểm tuyến hết quái và phối hợp puzzle/encounter qua chơi thực tế; encounter phòng 6 chưa được nối. Push nhóm Woshua–Aaron `bf4f103` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm thay đổi này.
+
+### Cửa phòng cầu và quiche
+
+Đã nối cửa hai chiều Waterfall 4↔5↔5A, giữ nhạc khi qua phòng và marker đúng hướng. `test-waterfall-bridge-path-v3.log` kiểm bốn lượt cửa bằng bàn phím, marker, encounter theo hướng vào và nhạc; hồi quy phòng cầu/điện thoại/quiche, check/build qua. Nhánh quiche trong kiểm thử đặt trực tiếp bốn hạt thành cầu, chưa xác nhận lời giải bằng điều khiển thật; cửa C sang phòng 6 chưa nối vì phòng tiếp chưa được chuyển. Push encounter phòng cầu `27d7fb2` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm phần cửa này.
