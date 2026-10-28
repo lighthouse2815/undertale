@@ -20,6 +20,7 @@ export class GrillbyNpcs {
     }
   }
   update(delta) {
+    if (this.suspended) return;
     this.elapsed = Math.min(200, this.elapsed + delta);
     while (this.elapsed >= 1000 / 30) {
       this.elapsed -= 1000 / 30; this.frames++;

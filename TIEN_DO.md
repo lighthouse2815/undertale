@@ -775,3 +775,7 @@ Dùng lại cơ chế chó của town cho Greater Dog trong quán: sprite thư�
 ### Cửa và sinh hoạt cơ bản ở Grillby
 
 Đã nối cửa `w` hai chiều town↔Grillby, marker và fade 14 frame; nhạc `mus_muscle` khi Papyrus còn sống, im khi chết và giữ Reunited sau kết thúc. Bàn/quầy dùng độ sâu theo sprite, hai bảng có lời máy hát/cửa thoát hiểm; Greater Dog dừng và tiếp nhạc quán khi sủa. `test-grillby-room-v1.log` kiểm điều khiển qua cửa thật, marker, nhạc và bảng; `test-grillby-room-dogs-v1.log` kiểm hồi quy khách/chó town và dừng-tiếp nhạc; check/build qua. Bữa ăn với Sans và các biến thể hoạt cảnh trong quán chưa hoàn thành, trạm Waterfall chưa mở đường. Push `7c67170` thành công; full snapshot `605ea64` đã qua, không gồm các commit sau.
+
+### Bữa ăn cùng Sans tại Grillby
+
+Đã nối cảnh khi cờ 89=1: dẫn Frisk tới quầy, chào khách/câu đùa, ngồi, năm lựa chọn món/Papyrus/ketchup/hoa/hóa đơn, Grillby đi nấu và phục vụ, hai sprite món ăn, nhánh đổ/uống ketchup, đoạn phòng tối và Sans rời đi; cờ món 391, cờ 89=2 và lời sau bữa được cập nhật. `test-grillby-date-v3.log` chạy cả hai nhánh lựa chọn, kiểm vị trí Grillby/món, đoạn hoa, kết cảnh và cờ; chuỗi chó/quán `test-grillby-date-dogs-chain-v1.log`, `test-grillby-date-room-v1.log`, check/build qua. Phần này còn cần đối chiếu hoạt ảnh các khách, biểu cảm/đổi màu writer, fade nhạc và timing chi tiết; mới kích hoạt khi mở phòng trực tiếp với cờ 89=1, Sans tại trạm và đường mời chưa nối. Bộ tổng snapshot `605ea64` đã qua; push `7b2a749` thành công.
