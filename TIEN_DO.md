@@ -1009,3 +1009,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Đường tới phòng sao
 
 Đã nối cửa Crystal ↔ phòng sao theo marker và giữ nhạc liên tục, kể cả nhánh kết thúc. `remake-waterfall-star-path.mjs` kiểm hai chiều bằng phím và hai nhánh nhạc; check/build qua. Nhánh fun 66 dẫn hành lang bí mật chưa chuyển; Sans, hiệu ứng và các cửa khác của phòng sao còn thiếu. Bộ tổng `test-remake-fe0840e.log` đang chạy với thay đổi cửa này, chưa có kết quả cuối.
+
+### Hành lang bí mật Waterfall
+
+Đã chuyển nhánh fun 66 từ Crystal, xóa fun sau khi vào, cửa xám xác suất 1/10, phòng nhân vật bí mật, tương tác biến mất và lối ra. `remake-waterfall-mystery.mjs` kiểm nhánh, hai khả năng cửa, tương tác và đường về phòng sao; hồi quy cửa Crystal–phòng sao, check/build qua. Cần đối chiếu thêm hình, thời gian và âm thanh với game gốc; Sans và các cửa khác phòng sao vẫn thiếu. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
