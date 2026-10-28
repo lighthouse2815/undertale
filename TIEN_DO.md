@@ -1041,3 +1041,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Hoa vọng âm phòng Waterfall 12
 
 Đã chuyển bốn hoa, bia SOUL, nhạc và encounter phòng 12 theo logic hiện có. `remake-waterfall-wishes-room.mjs` kiểm nội dung theo vị trí/tuyến, bia, nhạc và ngưỡng gặp quái; check/build qua. Phòng mở trực tiếp, chưa nối cửa, cuộc gọi Papyrus/Flowey hay hiệu ứng thác sáng; kiểm thử mới chưa vào trận thật tại phòng này. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Cửa Waterfall 12
+
+Đã nối phòng sao ↔ phòng 12 và lối một chiều 12 → phòng chim theo marker gốc; giữ nhạc khi đi qua cửa thường và đổi nhạc qua cửa fade. `remake-waterfall-wishes-path.mjs` kiểm các lối bằng phím, marker và nhánh nhạc thường/kết thúc; hồi quy cửa khu yên tĩnh, check/build qua. Các cửa còn lại, cuộc gọi và hiệu ứng thác sáng phòng 12 chưa chuyển. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước các phần này.
