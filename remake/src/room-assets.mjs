@@ -195,6 +195,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
   if (name === 'room_water_waterfall') for (const key of ['spr_mkid_d','spr_mkid_u','spr_mkid_l','spr_mkid_r','spr_mkid_dt','spr_mkid_lt','spr_mkid_rt','spr_mkid_dfall','spr_mkid_ufall','spr_mkid_lfall','spr_mkid_rfall','spr_mkid_rtfall','spr_statuedrop','spr_statueplink',...['d','u','l','r'].flatMap(d=>[`spr_mainchara${d}_fall`,`spr_mainchara${d}_umbrellafall`])]) spriteNames.add(key);
+  if (name === 'room_water_waterfall3') for (const key of ['spr_mkid_r_shadow','spr_mkid_l_shadow','spr_mkid_u_shadow',...['d','u','l','r'].map(d=>`spr_mainchara${d}_shadow`)]) spriteNames.add(key);
   if (name === 'room_water_waterfall2') for (const key of ['spr_mkid_d','spr_mkid_u','spr_mkid_l','spr_mkid_r','spr_mkid_dt','spr_mkid_rt','spr_statuedrop','spr_statueplink']) spriteNames.add(key);
   if (name === 'room_water_prewaterfall') spriteNames.add('spr_heartsmall');
   if (name === 'room_water_statue') for (const key of ['spr_statueshadow','spr_statuelight','spr_statuedrop','spr_statueplink','spr_plinkmask','spr_umbrellamask','spr_heartsmall']) spriteNames.add(key);
@@ -286,7 +287,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
-    ...(['room_water_waterfall', 'room_water_waterfall2'].includes(name) ? ['mus_rain','mus_rain_deep'] : []),
+    ...(['room_water_waterfall', 'room_water_waterfall2', 'room_water_waterfall3'].includes(name) ? ['mus_rain','mus_rain_deep'] : []),
     ...(name === 'room_water_prewaterfall' ? ['snd_squeak','mus_rain_deep'] : []),
     ...(name === 'room_water_statue' ? ['mus_rain_deep','mus_musicbox','snd_squeak'] : []),
     ...(name === 'room_water_dogroom' ? ['snd_squeak','snd_grab','mus_dogsong'] : []),
