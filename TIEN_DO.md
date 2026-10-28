@@ -671,3 +671,7 @@ Chuỗi `test-papyrus-turn-14-v2.log` kiểm biên 19/20/39/40, bố trí, timer
 ### Trạng thái lượt Papyrus
 
 Bổ sung lựa chọn dòng trạng thái từ `obj_papyrusboss` theo ngưỡng random 15/16/20/30/40/60/80/90/97, mười trạng thái hẹn hò và thứ tự ghi đè khi HP dưới 100, Papyrus đang tha hoặc tuyến giết. Lệnh -1 giữ trạng thái hiện có nếu không có điều kiện ghi đè. `test-papyrus-status-v2.log` kiểm các ngưỡng, đếm hẹn hò và ưu tiên; check/build qua. Phần lựa chọn chưa nối scene boss và vẫn thiếu đổi màu/chờ gốc. Full snapshot `4261ced` đang chạy; push `993b468` đang chờ GitHub.
+
+### ACT của Papyrus
+
+Đã chuyển chọn lời CHECK (hai nhánh thường/diệt chủng), INSULT ba phản ứng đầu rồi lời hết tác dụng, FLIRT lần đầu và hai lựa chọn spaghetti/không có ưu điểm, lần hai và lời sau khi tim xanh; cập nhật cờ hẹn hò 66, số lượt và mã `whatiheard` dùng cho lời trước đợt tiếp theo. `test-papyrus-act-v1.log` kiểm các nhánh, lượt lặp và hai lựa chọn; check/build qua. Đây là logic ACT chuẩn bị cho scene boss, chưa nối menu/thể hiện thoại hoặc trận trong phòng sương. Full snapshot `4261ced` vẫn chạy; GitHub không kết nối cổng 443, đang thử push lại `993b468` và `64f3846`.

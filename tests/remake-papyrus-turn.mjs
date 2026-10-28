@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { preparePapyrusTurn, papyrusTurnStatus } from '../remake/src/papyrus-turn.mjs';
+import { preparePapyrusTurn, papyrusTurnStatus, papyrusAct } from '../remake/src/papyrus-turn.mjs';
 
 export async function testPapyrusTurn() {
   const make = (values = {}) => ({ previousScene: { flags: {} }, conversation: 0, talked: 0, heard: -1, murder: false, enemyHp: 680, prevHp: 680, truefight: false, fighto: -1, xfight: 0, hearthp: 20, hearthp2: 20, xxtalk: 0, insult: 0, ...values });
@@ -22,5 +22,12 @@ export async function testPapyrusTurn() {
   b.flirt2 = 9; assert.match(papyrusTurnStatus(b, 0), /ears/); assert.equal(b.flirt2, 10);
   b.enemyHp = 99; assert.match(papyrusTurnStatus(b, 0), /defeat/); b.mercy = 8000; assert.match(papyrusTurnStatus(b, 0), /sparing/);
   b.mercy = 0; b.murder = true; assert.match(papyrusTurnStatus(b, 0), /sparing/);
+  b = make({ hotcha: 0 }); assert.match(papyrusAct(b, 'check').text[0], /ATK 20 DEF 20/); assert.equal(b.heard, 0);
+  b.murder = true; assert.match(papyrusAct(b, 'check').text[0], /ATK 3 DEF 3/); b.murder = false;
+  for (const [expected, count] of [[/SELFLESS/, 2], [/LIE/, 1], [/DON'T/, 1], [/no avail/, 1]]) { const result = papyrusAct(b, 'insult'); assert.equal(result.text.length, count); assert.match(result.text[0], expected); }
+  b.truefight = true; assert.match(papyrusAct(b, 'insult').text[0], /busy FIGHTing/);
+  b = make({ hotcha: 0 }); let act = papyrusAct(b, 'flirt'); assert.equal(act.choice, true); assert.equal(b.previousScene.flags[66], 1); assert.equal(act.text.length, 3);
+  assert.match(papyrusAct(b, 'flirtChoice', 0).text[1], /DATE/); assert.equal(b.heard, 6); assert.match(papyrusAct(b, 'flirtChoice', 1).text[0], /HUMILITY/); assert.equal(b.heard, 7);
+  assert.match(papyrusAct(b, 'flirt').text[0], /OH NO/); assert.match(papyrusAct(b, 'flirt').text[0], /no avail/); b.truefight = true; assert.match(papyrusAct(b, 'flirt').text[0], /busy FIGHTing/);
   console.log('✓ Lời lượt Papyrus: bắt đầu/đổi xanh, hướng dẫn nhảy, flirt/insult, mốc HP, đòn đặc biệt và tuyến diệt chủng');
 }

@@ -42,3 +42,29 @@ export function papyrusTurnStatus(battle, command) {
   if (battle.mercy >= 8000 || battle.murder) id = 1611;
   return id === null ? battle.status : text[id];
 }
+
+// ACT của Papyrus: phản ứng trước/sau đòn xanh và lựa chọn khi FLIRT lần đầu.
+export function papyrusAct(battle, action, choice = null) {
+  if (action === 'check') { battle.heard = 0; return { text: [text[battle.murder ? 1647 : 1645]], speaker: 'player' }; }
+  if (action === 'insult') {
+    battle.heard = 1;
+    if (!battle.truefight && battle.insult <= 2) {
+      const pages = battle.insult === 0 ? [text[1661], text[1662]] : [text[battle.insult === 1 ? 1663 : 1664]];
+      battle.insult++; return { text: pages, speaker: 'papyrus' };
+    }
+    return { text: [text[battle.truefight ? 1680 : 1678]], speaker: 'player' };
+  }
+  if (action === 'flirtChoice') {
+    battle.heard = choice === 0 ? 6 : 7;
+    return { text: choice === 0 ? [text[1754], text[1755]] : [text[1769], text[1770], text[1771]], speaker: 'papyrus' };
+  }
+  if (action === 'flirt') {
+    battle.heard = 3; battle.hotcha++;
+    if (battle.hotcha <= 2 && !battle.truefight) {
+      battle.previousScene.flags[66] = 1;
+      return { text: battle.hotcha === 1 ? [text[1696], text[1697], text[1698]] : [text[1700]], speaker: 'papyrus', choice: battle.hotcha === 1 };
+    }
+    return { text: [text[battle.truefight ? 1715 : 1713]], speaker: 'player' };
+  }
+  throw new RangeError(`ACT không hợp lệ: ${action}`);
+}
