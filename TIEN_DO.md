@@ -953,3 +953,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Nối phòng lịch sử
 
 Đã nối cửa Wishing Room ↔ phòng lịch sử, marker và nhạc. `test-waterfall-history-path-v1.log` kiểm hai chiều bằng phím và đi trọn chuyến bè; hồi quy Wishing Room/phòng lịch sử, check/build qua. Cửa tiếp sang phòng 8 và tương tác người chở đò chưa chuyển; bè còn cần đối chiếu fade nhạc. Push nhân vật ẩn `1dd1b05` thành công.
+
+### Quy tắc giáo truy đuổi Undyne
+
+Đã bắt đầu chuyển generator ba giáo, nhịp tăng dần, thời gian ngắm/phóng, hai frame va chạm và các cờ trận nhanh. Kiểm thử logic riêng, check/build qua; chưa nối cảnh truy đuổi, hình, mask, chặn tường hoặc trận nhanh, cần đối chiếu timing/motion với gốc trước khi mở phòng 8. Push cửa phòng lịch sử `033f734` thành công. Bộ tổng `test-remake-033f734.log` bị gián đoạn trước khi có kết quả, cần chạy lại.
