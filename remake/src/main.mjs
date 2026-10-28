@@ -216,7 +216,8 @@ const ROOM_EXITS = {
   room_water_fakehallway: { u: 'room_water11' },
   room_water11: { A: 'room_water_nicecream', t: 'room_water_bird', C: 'room_water12' },
   room_water_nicecream: { B: 'room_water11' },
-  room_water12: { A: 'room_water_shoe', D: 'room_water11', t: 'room_water_bird' },
+  room_water12: { A: 'room_water_shoe', D: 'room_water11', t: 'room_water_bird', w: 'room_water_onionsan' },
+  room_water_onionsan: { w: 'room_water12' },
   room_water_shoe: { B: 'room_water12' },
   room_water_bird: { t: 'room_water11', s: 'room_water_friendlyhub' },
   room_water_friendlyhub: { s: 'room_water_bird' },
@@ -744,7 +745,7 @@ class World extends Scene {
     }
     this.cameras.main.once('camerafadeoutcomplete', async () => {
       try {
-        if (musicFade && this.flags[7] !== 1 && ((['room_water_bird', 'room_water_friendlyhub'].includes(this.dataSource.name) && ['room_water_bird', 'room_water_friendlyhub'].includes(destination)) || (['room_water11', 'room_water12'].includes(this.dataSource.name) && ['room_water11', 'room_water12'].includes(destination)))) {
+        if (musicFade && this.flags[7] !== 1 && ((['room_water_bird', 'room_water_friendlyhub'].includes(this.dataSource.name) && ['room_water_bird', 'room_water_friendlyhub'].includes(destination)) || (['room_water11', 'room_water12'].includes(this.dataSource.name) && ['room_water11', 'room_water12'].includes(destination)) || (['room_water12', 'room_water_onionsan'].includes(this.dataSource.name) && ['room_water12', 'room_water_onionsan'].includes(destination)))) {
           this.roomMusicFade?.stop(); this.waterfallMusic?.destroy(); this.waterfallMusic = null;
         }
         await this.openRoom(destination, marker);
