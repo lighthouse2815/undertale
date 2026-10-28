@@ -1,0 +1,7 @@
+import assert from 'node:assert/strict';
+export async function testMadDummyFirstWave(page){
+  await page.evaluate(async()=>{const w=__remake.scene;w.flags={};w.hp=w.maxHp=20;await w.openRoom('room_water1');__remake.startBattle('froggit');});await page.waitForFunction(()=>__remake.phase==='battle');
+  await page.evaluate(async()=>{const s=__remake.scene;window.madWave=await import('/src/mad-dummy-first-wave.mjs');madWave.loadMadDummyWaveAssets(s);if(s.load.list.size)await new Promise(resolve=>{s.load.once('complete',resolve);s.load.start();});s.scene.pause();});
+  const result=await page.evaluate(()=>{const s=__remake.scene,b={left:237,right:397,top:250,bottom:385};let hits=0;const w=new madWave.MadDummyFirstWave(s,{border:b,random:()=>.5,onDummyHit:()=>hits++});const first=[w.spawners.length,w.spawners.filter(e=>e.actor.side===2).length,w.spawners.filter(e=>e.actor.side===3).length,w.spawners[0].actor.y,w.spawners[9].actor.y,w.duration];for(let i=0;i<90;i++)w.step();const shots=w.shots.length;if(shots){w.shots[0].actor.x=s.enemy.x*2+10;w.shots[0].actor.y=s.enemy.y*2+10;w.step();}const images=[...w.spawners,...w.shots].map(e=>e.image);w.destroy();s.scene.resume();return [first,shots>0,hits,images.every(i=>!i.active)];});
+  assert.deepEqual(result,[[27,9,18,210,700,360],true,1,true]);await page.waitForFunction(()=>__remake.scene.scene.isActive());await page.evaluate(()=>__remake.scene.finishBattle());await page.waitForFunction(()=>__remake.phase==='running');console.log('✓ Đợt đầu Mad Dummy: đội hình, đạn bắn và dọn');
+}

@@ -1291,3 +1291,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã chuyển vòng đời đạn con: vào khung, dừng, nhấp nháy hoặc lùi và bắn về vị trí tim. `remake-mad-dummy-projectile.mjs` kiểm bốn hướng, bộ đếm và loại đạn; check/build qua. Mô hình chưa nối renderer/trận, còn thiếu chuyển động đạn bắn ra, va chạm, các đội hình và tiến trình trận.
 
 Đã chuyển chuyển động đạn bắn thẳng và tên lửa đuổi tim, va chạm tim/Mad Dummy và thời gian nổ. `remake-mad-dummy-shot.mjs` kiểm chuyển hướng, gia tốc, va chạm và nổ; check/build qua. Chưa nối hình/mask, HP và tiến trình trận; các đội hình và cảnh vẫn thiếu.
+
+Đã thêm renderer và đội hình đợt đầu gồm chín đạn trên, 18 đạn dưới, bắn về tim và callback khi trúng Mad Dummy. `remake-mad-dummy-first-wave.mjs` kiểm đội hình, đạn bắn, va chạm mục tiêu và dọn trong trình duyệt; check/build qua. Đợt này chưa nối vào trận thật, vị trí khung và sát thương cần đối chiếu, các đợt sau và diễn biến trận còn thiếu.
