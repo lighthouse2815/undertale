@@ -6,6 +6,7 @@ import { WaterfallEncounter } from './waterfall-encounter.mjs';
 import { WaterfallWishingRoom } from './waterfall-wishing-room.mjs';
 import { WaterfallHistoryRoom } from './waterfall-history-room.mjs';
 import { WaterfallRaft } from './waterfall-raft.mjs';
+import { UndyneQuickBattle } from './undyne-quick-battle.mjs';
 import { murderLevel } from './route.mjs';
 import { WaterfallQuicheRoom } from './waterfall-quiche-room.mjs';
 import { WaterfallPapyrusPhone } from './waterfall-papyrus-phone.mjs';
@@ -978,7 +979,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, WoshuaBattle, MoldsmalGroupBattle, WaterfallGroupBattle, SaveMenu, FieldMenu, ItemBox],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, WoshuaBattle, MoldsmalGroupBattle, WaterfallGroupBattle, UndyneQuickBattle, SaveMenu, FieldMenu, ItemBox],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
@@ -987,7 +988,7 @@ state.startBattle = (config = 'dummy') => {
   const world = state.scene;
   state.phase = 'loading';
   world.scene.pause();
-  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : ['snowdrake', 'chilldrake'].includes(config) ? 'DrakeBattle' : ['icecap', 'ice'].includes(config) ? 'IceCapBattle' : config === 'lesserDog' ? 'LesserDogBattle' : config === 'doggo' ? 'DoggoBattle' : config === 'dogi' ? 'DogPairBattle' : config === 'gyftrot' ? 'GyftrotBattle' : config === 'greaterDog' ? 'GreaterDogBattle' : config === 'aaron' ? 'AaronBattle' : config === 'woshua' ? 'WoshuaBattle' : config === 'moldsmalGroup53' ? 'MoldsmalGroupBattle' : config === 'waterfallGroup54' ? 'WaterfallGroupBattle' : config === 'papyrus' ? 'PapyrusBattle' : ['snowdinGroup35', 'snowdinGroup36'].includes(config) ? 'SnowdinGroupBattle' : 'RuinsBattle');
+  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : ['snowdrake', 'chilldrake'].includes(config) ? 'DrakeBattle' : ['icecap', 'ice'].includes(config) ? 'IceCapBattle' : config === 'lesserDog' ? 'LesserDogBattle' : config === 'doggo' ? 'DoggoBattle' : config === 'dogi' ? 'DogPairBattle' : config === 'gyftrot' ? 'GyftrotBattle' : config === 'greaterDog' ? 'GreaterDogBattle' : config === 'aaron' ? 'AaronBattle' : config === 'woshua' ? 'WoshuaBattle' : config === 'moldsmalGroup53' ? 'MoldsmalGroupBattle' : config === 'waterfallGroup54' ? 'WaterfallGroupBattle' : config === 'undyneQuick' ? 'UndyneQuickBattle' : config === 'papyrus' ? 'PapyrusBattle' : ['snowdinGroup35', 'snowdinGroup36'].includes(config) ? 'SnowdinGroupBattle' : 'RuinsBattle');
 };
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);

@@ -961,3 +961,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Đợt giáo trận nhanh Undyne
 
 Đã chuyển mưa giáo của `room_fastbattle` khi cờ 370 bằng 1: sinh mỗi ba frame, gia tốc, mask khung và sát thương/bất tử. `test-undyne-quick-wave-v1.log` kiểm nhịp, va chạm và dọn; check/build qua. Chưa ghép scene trận nhanh, Game Over, hiệu ứng chuyển cảnh hoặc cảnh truy đuổi; cần đối chiếu timing với gốc. Push quy tắc giáo truy đuổi `f1f5665` thành công.
+
+### Scene trận nhanh Undyne
+
+Đã ghép đợt né giáo vào scene trận nhanh, trả HP về phòng và dùng Game Over hiện có khi hết máu. `test-undyne-quick-battle-v3.log` kiểm vào trận, kết thúc và nhánh hết HP; check/build qua. Mới mở trực tiếp để kiểm thử, chưa nối cảnh truy đuổi, chuyển cảnh và nhạc; chỉ hỗ trợ loại cờ 370 bằng 1. Push đợt giáo `4ee2b47` thành công.

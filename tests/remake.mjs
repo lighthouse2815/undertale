@@ -140,6 +140,7 @@ import { testWaterfallGoner } from './remake-waterfall-goner.mjs';
 import { testWaterfallHistoryPath } from './remake-waterfall-history-path.mjs';
 import { testUndyneChaseSpears } from './remake-undyne-chase-spears.mjs';
 import { testUndyneQuickWave } from './remake-undyne-quick-wave.mjs';
+import { testUndyneQuickBattle } from './remake-undyne-quick-battle.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -613,6 +614,7 @@ try {
   await testWaterfallHistoryPath(page);
   await testUndyneChaseSpears();
   await testUndyneQuickWave(page);
+  await testUndyneQuickBattle(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);
