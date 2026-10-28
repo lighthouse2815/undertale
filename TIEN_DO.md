@@ -1149,3 +1149,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Shyren và chị ở tuyến kết thúc
 
 Đã thêm hai nhân vật ở phòng 14 theo cờ kết thúc, hoạt ảnh nổi, bóng và ba câu nói luân phiên với chữ nhiều vị trí. `remake-waterfall-shyren-ending.mjs` kiểm điều kiện, tương tác và chu kỳ thoại; hồi quy bia/trigger, check/build qua. Cần đối chiếu nhịp và hiệu ứng chữ với gốc. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
+
+### Piano Waterfall
+
+Đã chuyển lựa chọn chơi, năm nốt theo hướng, ba chuỗi lời giải, mở cửa/cờ 356, âm thanh và trạng thái vào lại. `remake-waterfall-piano.mjs` chơi tám nốt bằng phím, kiểm khóa người chơi, cửa và thoát; check/build qua. Phòng mở trực tiếp, chưa nối cửa; chuỗi khác, cảm ứng và timing/hiệu ứng cần kiểm thêm. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
