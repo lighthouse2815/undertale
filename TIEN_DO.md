@@ -809,3 +809,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Đường tới BOX và phòng Old Tutu
 
 Đã nối cửa trạm↔Waterfall 3 và cửa thác↔phòng 3A, marker và fade theo cửa, nhạc ambient/waterfall/toomuch theo plot/cờ và giữ nhạc giữa phòng 3–3A. `test-waterfall-box-path-v1.log` kiểm đi bộ qua cửa và các nhánh nhạc; kiểm lại phòng Tutu và dòng đá, check/build qua. Cửa C tới phòng tiếp theo và gameplay Waterfall vẫn còn thiếu. Push `fafda87` thành công; bộ tổng snapshot `e6b3b82` đang chạy để điều tra lỗi cửa fog, không gồm phần này.
+
+### Cỏ phòng gặp Undyne
+
+Đã chuyển 16 bụi cỏ `room_water4`: đổi khung theo va chạm chân Frisk, giữ khung hai frame và âm thanh dùng chung có thời gian chờ; test riêng kiểm va chạm, hồi và dọn, check/build qua. Chỉ mở phòng trực tiếp để kiểm; cảnh Undyne/Papyrus, ánh sáng, SAVE và lối từ phòng 3 còn thiếu. Push `7b6a3bd` thành công; bộ tổng snapshot `e6b3b82` vẫn đang chạy và chưa gồm phần này.
