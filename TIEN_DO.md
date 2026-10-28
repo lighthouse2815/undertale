@@ -1153,3 +1153,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Piano Waterfall
 
 Đã chuyển lựa chọn chơi, năm nốt theo hướng, ba chuỗi lời giải, mở cửa/cờ 356, âm thanh và trạng thái vào lại. `remake-waterfall-piano.mjs` chơi tám nốt bằng phím, kiểm khóa người chơi, cửa và thoát; check/build qua. Phòng mở trực tiếp, chưa nối cửa; chuỗi khác, cảm ứng và timing/hiệu ứng cần kiểm thêm. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
+
+### Cửa phòng piano
+
+Đã nối hành lang Shyren ↔ phòng piano, fade nhạc thường và giữ Reunited. `remake-waterfall-piano-path.mjs` kiểm hai chiều bằng phím và hai nhánh nhạc; check/build qua. Cửa phòng kho báu trong piano chưa nối; các hạn chế câu đố ở mục trước còn áp dụng. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
