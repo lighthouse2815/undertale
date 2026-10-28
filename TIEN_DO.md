@@ -1299,3 +1299,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã thêm bốn đội hình con2 5, đạn đỏ nhấp nháy, sát thương khi đạn con chạm tim và ATK 7 ở các lượt sau. Kiểm đội hình, sát thương, nhịp và dọn trong trình duyệt cùng check/build qua. Chưa nối vào trận thật; đội hình giai đoạn sau, tên lửa, HP và chuyển lượt vẫn cần hoàn thiện.
 
 Đã thêm đội hình robot con2 14/15/16/17.5, hình tên lửa/nổ và va chạm; kiểm số lượng, chuyển mốc, hình tên lửa và dọn trong trình duyệt, check/build qua. Trận, HP và chuyển lượt chưa nối; cần đối chiếu mask xoay, timing và hiệu ứng tên lửa với game gốc.
+
+Đã thêm trạng thái HP nội bộ và các mốc chuyển đợt Mad Dummy; `remake-mad-dummy-state.mjs` kiểm ngưỡng, nhịp đợt và chuyển robot, check/build qua. Trạng thái chưa nối vào trận và chưa bao gồm toàn bộ cảnh giữa lượt.
