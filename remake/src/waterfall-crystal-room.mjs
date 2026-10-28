@@ -1,6 +1,7 @@
 import { createCollider } from './movement.mjs';
 import { inInteractionRange } from './npc.mjs';
 import { murderLevel } from './route.mjs';
+import { startWaterfallQuietMusic } from './waterfall-music.mjs';
 
 // room_water_savepoint1: chuột, hoa vọng âm và miếng phô mai trong tinh thể.
 export class WaterfallCrystalRoom {
@@ -13,11 +14,7 @@ export class WaterfallCrystalRoom {
     this.table.image.setTexture('spr_crystaltable:0').setOrigin(0).setDepth(this.table.item.Y + this.table.sprite.Height);
     for (const entry of [this.table, this.flower]) world.colliders.push(createCollider(world.dataSource, entry.item));
     this.flower.image.setDepth(this.flower.item.Y + this.flower.sprite.MarginBottom - this.flower.sprite.OriginY);
-    if (!world.townMusic && !world.waterfallMusic && world.flags[7] !== 1 && !world.flags[94]) {
-      const bleak = world.flags[223] && !world.flags[27], key = bleak ? 'mus_toomuch' : 'mus_waterquiet';
-      const music = world.waterfallMusic = world.sound.add(key, { loop: true, volume: bleak ? 1 : .8 });
-      music.play(); music.setRate(bleak ? 1 : murderLevel(world.flags) >= 8 && !world.flags[27] ? .5 : .9);
-    }
+    startWaterfallQuietMusic(world);
   }
   interact() {
     const w = this.world;

@@ -10,3 +10,10 @@ export function startWaterfallMusic(world, ambient = false) {
   const configure = () => { music.setVolume(bleak ? 1 : .8); music.setRate(rate); };
   music.once('play', configure); music.play(); configure(); return music;
 }
+
+export function startWaterfallQuietMusic(world) {
+  if (world.townMusic || world.waterfallMusic || world.flags[7] === 1 || world.flags[94]) return;
+  const bleak = world.flags[223] && !world.flags[27], key = bleak ? 'mus_toomuch' : 'mus_waterquiet';
+  const music = world.waterfallMusic = world.sound.add(key, { loop: true, volume: bleak ? 1 : .8 });
+  music.play(); music.setRate(bleak ? 1 : murderLevel(world.flags) >= 8 && !world.flags[27] ? .5 : .9);
+}

@@ -10,6 +10,7 @@ import { UndyneQuickBattle } from './undyne-quick-battle.mjs';
 import { WaterfallUndyneChase } from './waterfall-undyne-chase.mjs';
 import { WaterfallUndyneSecond } from './waterfall-undyne-second.mjs';
 import { WaterfallCrystalRoom } from './waterfall-crystal-room.mjs';
+import { WaterfallStarRoom } from './waterfall-star-room.mjs';
 import { murderLevel } from './route.mjs';
 import { WaterfallQuicheRoom } from './waterfall-quiche-room.mjs';
 import { WaterfallPapyrusPhone } from './waterfall-papyrus-phone.mjs';
@@ -294,7 +295,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
-    this.waterfallUndyneSecond?.destroy(); this.waterfallUndyneChase?.destroy(); this.waterfallRaft?.destroy(); this.waterfallWishingRoom?.destroy(); this.waterfallEncounter?.destroy(); this.waterfallPapyrusPhone?.destroy(); this.waterfallBridgeRoom?.destroy(); this.waterfallUndyne?.destroy(); this.waterfallRoomTiles?.destroy(); this.waterfallRockStream?.destroy(); this.waterfallSans?.destroy(); this.grillbyDate?.destroy(); this.grillbyNpcs?.destroy(); this.waterfallSentryVisuals?.destroy(); this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinFog = null; this.papyrusFogEncounter = null; this.waterfallEntrance = null; this.waterfallSentryNpcs = null; this.waterfallSentryVisuals = null; this.grillbyNpcs = null; this.grillbyDate = null; this.waterfallSans = null; this.waterfallBoxRoom = null; this.waterfallRockStream = null; this.waterfallRoomTiles = null; this.waterfallFalls = null; this.waterfallTutuRoom = null; this.waterfallGrass = null; this.waterfallUndyne = null; this.waterfallBridgeRoom = null; this.waterfallPapyrusPhone = null; this.waterfallEncounter = null; this.waterfallQuicheRoom = null; this.waterfallWishingRoom = null; this.waterfallHistoryRoom = null; this.waterfallRaft = null; this.waterfallUndyneChase = null; this.waterfallUndyneSecond = null; this.waterfallCrystalRoom = null; this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null; this.snowdinLibrary = null; this.sansBasement = null; this.snowdinInn = null; this.snowdinInnSleep = null; this.papyrusGarage = null;
+    this.waterfallUndyneSecond?.destroy(); this.waterfallUndyneChase?.destroy(); this.waterfallRaft?.destroy(); this.waterfallWishingRoom?.destroy(); this.waterfallEncounter?.destroy(); this.waterfallPapyrusPhone?.destroy(); this.waterfallBridgeRoom?.destroy(); this.waterfallUndyne?.destroy(); this.waterfallRoomTiles?.destroy(); this.waterfallRockStream?.destroy(); this.waterfallSans?.destroy(); this.grillbyDate?.destroy(); this.grillbyNpcs?.destroy(); this.waterfallSentryVisuals?.destroy(); this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinFog = null; this.papyrusFogEncounter = null; this.waterfallEntrance = null; this.waterfallSentryNpcs = null; this.waterfallSentryVisuals = null; this.grillbyNpcs = null; this.grillbyDate = null; this.waterfallSans = null; this.waterfallBoxRoom = null; this.waterfallRockStream = null; this.waterfallRoomTiles = null; this.waterfallFalls = null; this.waterfallTutuRoom = null; this.waterfallGrass = null; this.waterfallUndyne = null; this.waterfallBridgeRoom = null; this.waterfallPapyrusPhone = null; this.waterfallEncounter = null; this.waterfallQuicheRoom = null; this.waterfallWishingRoom = null; this.waterfallHistoryRoom = null; this.waterfallRaft = null; this.waterfallUndyneChase = null; this.waterfallUndyneSecond = null; this.waterfallCrystalRoom = null; this.waterfallStarRoom = null; this.snowdinIcePuzzle?.destroy(); this.snowdinIcePuzzle = null; this.snowdinIceHole = null; this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.gyftrotRoom = null; this.greaterDogRoom = null; this.snowdinDangerBridge = null; this.snowdinTownNpcs = null; this.snowdinTown = null; this.snowdinTownDogs = null; this.snowdinTownPapyrus = null; this.snowdinTownUndyne = null; this.snowdinLibrary = null; this.sansBasement = null; this.snowdinInn = null; this.snowdinInnSleep = null; this.papyrusGarage = null;
     this.electricMaze?.destroy(); this.electricMaze = null;
     this.niceCream?.destroy(); this.niceCream = null;
     this.snowGolf?.destroy(); this.snowGolf = null;
@@ -329,6 +330,7 @@ class World extends Scene {
       // Create/RoomStart gốc: không đọc hoa khi mới rơi xuống; Toriel ở đây khi plot = 25.
       if (item.ObjectName === 'obj_readable_flowers1' && (this.plot ?? 0) === 0) continue;
       if (item.ObjectName === 'obj_torinteractable7' && this.plot !== 25) continue;
+      if (name === 'room_water11' && item.ObjectName === 'obj_npc_room' && murderLevel(this.flags) >= 8) continue;
       if (name === 'room_water7' && item.ObjectName === 'obj_woshuanpc' && !(this.plot > 121 && (this.flags[204] ?? 0) === 0)) continue;
       if (['room_water7', 'room_water9'].includes(name) && item.ObjectName === 'obj_purpledude' && (this.plot < 110 || murderLevel(this.flags) >= 8 && !this.flags[27])) continue;
       if (name === 'room_water7' && item.ObjectName === 'obj_mkid_goner' && (this.plot < 110 || this.flags[7] === 1 || (this.flags[5] ?? 0) < 90 || Number(localStorage.getItem('undertale-remake-fun') ?? 0) < 90)) continue;
@@ -442,6 +444,7 @@ class World extends Scene {
       if (this.flags[67] !== 1 && !this.townMusic && !this.grillbyMusic) { this.grillbyMusic = this.sound.add('mus_muscle', { loop: true }); this.grillbyMusic.play(); }
       this.grillbyDate = new GrillbyDate(this);
     }
+    if (name === 'room_water11') this.waterfallStarRoom = new WaterfallStarRoom(this);
     if (name === 'room_water_savepoint1') this.waterfallCrystalRoom = new WaterfallCrystalRoom(this);
     if (name === 'room_water9') { if (this.plot >= 110) startWaterfallMusic(this); this.waterfallGrass = new WaterfallGrass(this); this.waterfallUndyneSecond = new WaterfallUndyneSecond(this); }
     if (name === 'room_water8') this.waterfallUndyneChase = new WaterfallUndyneChase(this);
@@ -724,6 +727,7 @@ class World extends Scene {
   }
 
   tryInteract() {
+    if (this.waterfallStarRoom?.interact()) return;
     if (this.waterfallCrystalRoom?.interact()) return;
     if (this.waterfallHistoryRoom?.interact()) return;
     if (this.waterfallWishingRoom?.interact()) return;

@@ -993,3 +993,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Đường tới Crystal
 
 Đã nối cửa phòng 9 ↔ Crystal, fade nhạc thường và giữ Reunited ở tuyến kết thúc. `test-waterfall-crystal-path-v1.log` kiểm cửa bằng phím, marker và hai nhánh nhạc; hồi quy phòng Crystal, check/build qua. Cửa từ Crystal sang phòng tiếp theo chưa được chuyển. Push phòng Crystal `7caa8a5` thành công; bộ tổng `test-remake-4022c4c.log` vẫn đang chạy, không gồm phần này.
+
+### Phòng sao Waterfall
+
+Đã chuyển Tonsil, bảng đá, lời kính lạ và nhạc nền phòng 11; tái sử dụng nhạc yên tĩnh với phòng Crystal. `test-waterfall-star-v1.log` kiểm các nhánh thoại/điều kiện Tonsil, bảng, kính và nhạc; hồi quy Crystal, check/build qua. Phòng mới mở trực tiếp; Sans, hộp đồ, các cửa và hiệu ứng còn thiếu. Push đường Crystal `8db38a3` thành công; bộ tổng `test-remake-4022c4c.log` vẫn đang chạy, không gồm phần này.
