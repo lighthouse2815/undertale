@@ -1335,3 +1335,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã bổ sung `remake-mad-dummy-full-battle.mjs`: điều khiển đạn trúng và tua thời gian trong scene thật, đi qua các pha HP, trợ thủ, robot, dao, nước mắt và kết thúc mà không sửa trực tiếp HP hay pha. Kiểm thử giữ bất tử và bỏ qua chờ nhập để xác minh chuyển pha; chưa thay thế việc chơi thủ công, đối chiếu mask và nhịp trình bày.
 
 Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm thử kính thiên văn: getter âm lượng Web Audio có thể cập nhật sau khi viewer đóng. Đã sửa kiểm thử chờ giá trị âm lượng thực tế về 0,8 và vẫn xác nhận trạng thái nhạc; cần chạy lại bộ tổng trên phiên bản mới.
+
+Đã nối hai chiều Quiet Area ↔ `room_water_shop`, giữ nhạc và tái dùng BOX chung tại đây. `remake-waterfall-shop-road.mjs` kiểm cửa, marker, nhạc, chuyển vật phẩm và hộp rỗng; check/build qua. Cửa hàng, bến đò, đường Waterfall 15 và cuộc gọi Undyne cuối game vẫn cần chuyển. Bộ tổng `test-remake-ac23c82.log` đang chạy trên phiên bản trước phần này.
