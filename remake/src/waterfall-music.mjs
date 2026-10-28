@@ -17,3 +17,10 @@ export function startWaterfallQuietMusic(world) {
   const music = world.waterfallMusic = world.sound.add(key, { loop: true, volume: bleak ? 1 : .8 });
   music.play(); music.setRate(bleak ? 1 : murderLevel(world.flags) >= 8 && !world.flags[27] ? .5 : .9);
 }
+
+export function updateWaterfallRain(world, deep) {
+  const rain=world.waterfallRainLight, muted=world.waterfallRain, mix=world.waterfallRainMix;if(!rain||!muted||!mix)return;
+  if(deep){if(mix.normal>.08)mix.normal=Math.max(.08,mix.normal-.02);if(mix.deep<.5)mix.deep=Math.min(.5,mix.deep+.02);}
+  else {if(mix.deep>.02)mix.deep=Math.max(.02,mix.deep-.02);if(mix.normal<.5)mix.normal=Math.min(.5,mix.normal+.02);}
+  rain.setVolume(mix.normal);muted.setVolume(mix.deep);
+}

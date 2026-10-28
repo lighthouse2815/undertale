@@ -1,3 +1,4 @@
+import {updateWaterfallRain} from './waterfall-music.mjs';
 import {createCollider} from './movement.mjs';
 import {inInteractionRange} from './npc.mjs';
 
@@ -24,7 +25,7 @@ export class WaterfallMusicStatue {
     this.elapsed=Math.min(200,this.elapsed+delta);while(this.elapsed>=1000/30){this.elapsed-=1000/30;this.step();}
   }
   step(){
-    this.stepRain();
+    updateWaterfallRain(this.world,true);this.stepRain();
     if(!this.music)return;this.frames++;const w=this.world,e=this.statue,p=w.player;
     const left=e.item.X+e.sprite.MarginLeft,top=e.item.Y+e.sprite.MarginTop,right=e.item.X+e.sprite.MarginRight,bottom=e.item.Y+e.sprite.MarginBottom;
     const dx=Math.max(left-p.x,0,p.x-right),dy=Math.max(top-p.y,0,p.y-bottom),dist=Math.hypot(dx,dy);

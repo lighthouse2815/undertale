@@ -1,3 +1,4 @@
+import {updateWaterfallRain} from './waterfall-music.mjs';
 import {createCollider} from './movement.mjs';
 import {inInteractionRange} from './npc.mjs';
 
@@ -14,7 +15,7 @@ export class WaterfallUmbrellaRoom {
     if(inInteractionRange(w,this.sign)){w.showDialogue(['* (Please take one.)']);return true;}
     return false;
   }
-  update(delta){this.elapsed=Math.min(200,this.elapsed+delta);while(this.elapsed>=1000/30){this.elapsed-=1000/30;this.anim=(this.anim+3)%180;}this.draw();}
+  update(delta){this.elapsed=Math.min(200,this.elapsed+delta);while(this.elapsed>=1000/30){this.elapsed-=1000/30;this.anim=(this.anim+3)%180;updateWaterfallRain(this.world,true);}this.draw();}
   draw(){const w=this.world,view=Math.max(0,Math.min(w.dataSource.room.Width-320,w.cameras.main.scrollX));for(const f of this.falls)for(const [i,tile] of f.tiles.entries())tile.setPosition(f.x-view*.5,f.y-210+i*30+this.anim);}
   destroy(){for(const f of this.falls)for(const tile of f.tiles)tile.destroy();}
 }

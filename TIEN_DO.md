@@ -1197,3 +1197,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Monster Kid dưới mưa
 
 Đã chuyển các nhánh gặp Kid theo ô/cờ 90, đi cùng, thoại Undyne/cờ 91 và rời/tạo lại khi quay đầu. `remake-waterfall-rain-kid.mjs` kiểm các nhánh và trạng thái trong fixture; check/build qua. Phòng mở trực tiếp, chưa nối cửa, mưa hoặc va chạm theo đường đi thực; cần đối chiếu quỹ đạo/timing và kiểm cả hành trình bằng phím. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Hành lang mưa Waterfall
+
+Đã thêm giọt/hạt mưa, phản chiếu nhân vật và Kid, màn thác cùng hai lớp âm mưa chuyển dần giữa phòng. `remake-waterfall-rain-room.mjs` kiểm sinh, phản chiếu, chuyển âm và dọn; hồi quy Kid/tượng/đường ô, check/build qua. Phòng chưa nối cửa; mask ô, phối cảnh phản chiếu và fade khi rời vùng mưa còn cần đối chiếu. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
