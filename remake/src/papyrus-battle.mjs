@@ -40,7 +40,7 @@ export class PapyrusBattle extends MultiBattle {
     this.murder = murderLevel(w.flags) >= 7; this.truefight = flag < 0; this.conversation = Number(this.truefight);
     this.soulColor = this.truefight ? 'blue' : null;
     w.flags[67] = flag === -2 ? -3 : flag === -1 ? -2 : flag === 0 ? -1 : flag; w.flags[68] = 1; if (this.murder) w.flags[290] = 1;
-    this.labels = []; this.selected = 0; this.wave = null; this.blueAttack = false; this.captureFinished = false; this.speechWaveElapsed = 0; this.dusts = []; this.dustElapsed = 0; this.headMotion = null;
+    this.labels = []; this.selected = 0; this.wave = null; this.blueAttack = false; this.captureFinished = false; this.dusts = []; this.dustElapsed = 0; this.headMotion = null;
     this.events.once('shutdown', () => { this.dusts.forEach((dust) => dust.destroy()); this.dusts = []; });
     this.fighto = -1; this.xfight = 0; this.heard = -1; this.talked = 0; this.insult = 0; this.hotcha = 0; this.flirt2 = 0; this.xxtalk = 0;
     this.hearthp = this.hearthp2 = this.hp; this.prevHp = 680; this.mercy = this.murder ? 8000 : 0; this.status = INTRO;
@@ -53,9 +53,10 @@ export class PapyrusBattle extends MultiBattle {
     this.dustElapsed = Math.min(200, this.dustElapsed + delta);
     while (this.dustElapsed >= 1000 / 30) { this.dustElapsed -= 1000 / 30; this.stepPapyrusHead(); this.dusts = this.dusts.filter((dust) => { if (!dust.step()) return true; dust.destroy(); return false; }); }
     if (this.mode === 'pages' && (this.wave instanceof PapyrusBlueAttack || this.wave instanceof PapyrusSpecialIntro || this.wave instanceof PapyrusCapture)) {
-      this.speechWaveElapsed = Math.min(200, (this.speechWaveElapsed ?? 0) + delta);
-      while (this.speechWaveElapsed >= 1000 / 30 && this.mode === 'pages') { this.speechWaveElapsed -= 1000 / 30; this.wave.step(); }
-    } else this.speechWaveElapsed = 0;
+      // Đòn đang chạy giữ global.mnfight=2 trong khi writer còn hiện.
+      const wave = this.wave; this.mode = 'soul'; this.updateSoul(delta);
+      if (this.wave === wave && this.mode === 'soul') this.mode = 'pages';
+    }
     super.update(time, delta);
   }
   animateEnemy() {}

@@ -701,3 +701,7 @@ Trong lúc ghép đã sửa lỗi vòng lặp `fighto=14` khi chọn lại ngẫ
 ### Chuyển động đầu Papyrus
 
 Đã thay tween đầu Papyrus bằng vận tốc, trọng lực và hai ngưỡng dừng theo `obj_papyrusdeadhead`, chạy ở 30 Hz; vị trí hạt dùng đúng gốc sprite khi đầu tan. Chuỗi `test-papyrus-head-resume-v2.log` qua, kiểm cả hai lần rơi, hạt và các phần trận; check/build qua. Full snapshot `dd246e1` đã dừng giữa chừng khi phiên tạm dừng, không có mã thoát; chưa thể coi đã qua. Push `01e4b62` đã thành công; trận và đường phòng sương vẫn chưa hoàn thiện như ghi phía trên.
+
+### Di chuyển tim trong thoại giữa đợt
+
+Các đoạn thoại của đòn xanh, chó và cảnh bắt được tạo khi `global.mnfight=2`, nên tim và đợt tấn công vẫn cập nhật trong lúc writer hiện. `PapyrusBattle` giờ tiếp tục gọi cập nhật tim/đạn ở chế độ thoại thay vì chỉ chạy bước đạn; vẫn giữ đúng xử lý đóng thoại và hoàn tất đợt. `test-papyrus-dialogue-motion-v5.log` kiểm di chuyển tim trong cảnh chó cùng chuỗi trận/xương/garage, trong đó bước kiểm tim được tua trực tiếp ở 30 Hz; check/build qua. Bộ tổng snapshot `eba8db3` đang chạy, không gồm thay đổi này; push `eba8db3` thành công.

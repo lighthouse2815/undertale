@@ -42,6 +42,7 @@ export async function testPapyrusBattle(page) {
   await page.evaluate(() => {const s=__remake.scene; s.wave.destroy(); s.wave=null; s.fighto=14; s.xfight=4; s.beginWave(); s.scene.pause(); for(let i=0;i<80 && s.mode==='soul';i++)s.updateSoul(1000/30); s.scene.resume();});
   for (const [stage, pages] of [[0,2],[1,1],[2,2],[3,2],[4,3]]) {
     await page.waitForFunction((stage) => __remake.scene.mode==='pages' && __remake.scene.wave?.stage===stage, stage);
+    if (stage===0) { const motion=await page.evaluate(() => {const s=__remake.scene;s.scene.pause();s.soul.x=150;s.keys.right.isDown=true;s.update(0,1000/30);s.keys.right.isDown=false;const result=[s.soul.x,s.mode];s.scene.resume();return result;}); assert.deepEqual(motion,[152,'pages']); }
     if (stage===3) { const x=await page.evaluate(() => __remake.scene.wave.dog.x); await page.waitForTimeout(150); assert.ok(await page.evaluate((x) => __remake.scene.wave.dog.x>x, x)); }
     for(let i=0;i<pages;i++)await key('z');
   }
