@@ -745,3 +745,9 @@ Kiểm thử `remake-waterfall-sentry-dialogue.mjs` qua, check/build remake qua.
 ### Điểm lưu tại trạm Waterfall
 
 Đã nối lời SAVE phòng `room_water2`: âm nước thường, số quái Waterfall còn lại màu đỏ, Determination khi hết quái/tuyến 16, ngoại lệ cờ 27, hồi HP và tên file `Waterfall - Checkpoint`. `test-waterfall-save-v1.log` kiểm các nhánh, font, HP và lưu file; `test-waterfall-npcs-save-v1.log` kiểm hồi quy NPC; check/build qua. Cửa vào trạm, Sans/nhạc/thác còn chưa chuyển. Push `ed037bb` thành công; full snapshot `eba8db3` vẫn chạy và không bao gồm phần mới.
+
+### Thác và hoạt ảnh SAVE tại trạm
+
+Đã chuyển lệnh vẽ `obj_waterfall_waterfall` cho bố cục 3×4 của `room_water2`, gồm thứ tự 20 ảnh chồng/góc/cạnh, tốc độ đổi khung và hoạt ảnh điểm SAVE; dọn khi đổi phòng. `test-waterfall-visuals-v1.log` kiểm vị trí/khung/dọn; `test-waterfall-station-chain-v1.log` chạy cùng NPC và SAVE, check/build qua. Sans, nhạc và cửa vào trạm vẫn chưa nối. Push `fbfaaa3` thành công.
+
+Bộ tổng snapshot `eba8db3` đã hoàn thành với mã thoát 0 (`test-papyrus-head-full-v1.log`), không bao gồm những commit mới hơn; không suy ra toàn bộ game đã hoàn thành.
