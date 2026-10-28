@@ -1185,3 +1185,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Ô Waterfall
 
 Đã thêm hộp lấy/trả ô, biển, màn thác và sprite mang ô theo hướng, giữ trạng thái khi đổi phòng. `remake-waterfall-umbrella.mjs` kiểm lấy/từ chối/trả, sprite và đổi phòng; hồi quy tượng/Sans, check/build qua. Phòng mở trực tiếp, chưa nối cửa; âm mưa, hiệu ứng và các cảnh liên quan ô còn thiếu, cần kiểm va chạm/hình trong các phòng khác. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Đường tới khu lấy ô
+
+Đã nối tượng ↔ khu lấy ô, giữ tiếng mưa và Reunited khi đổi phòng. `remake-waterfall-umbrella-path.mjs` kiểm cửa hai chiều, marker, âm thanh và dọn khi rời khu; hồi quy tượng/ô, check/build qua. Chưa nối phòng tiếp, lớp mưa thứ hai và fade âm mưa đầy đủ; bộ tổng `test-remake-878f504.log` chạy từ trước phần này.

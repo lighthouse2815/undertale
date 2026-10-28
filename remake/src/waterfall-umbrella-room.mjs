@@ -3,7 +3,7 @@ import {inInteractionRange} from './npc.mjs';
 
 export class WaterfallUmbrellaRoom {
   constructor(world){
-    this.world=world;this.elapsed=0;this.anim=0;this.box=world.roomObjects.find(e=>e.item.ObjectName==='obj_umbrellabox');this.sign=world.roomObjects.find(e=>e.item.ObjectName==='obj_sign_room');
+    this.world=world;if(world.flags[7]!==1){this.rain=world.waterfallRain ??= world.sound.add('mus_rain_deep',{loop:true,volume:.5,rate:.9});if(!this.rain.isPlaying)this.rain.play();}this.elapsed=0;this.anim=0;this.box=world.roomObjects.find(e=>e.item.ObjectName==='obj_umbrellabox');this.sign=world.roomObjects.find(e=>e.item.ObjectName==='obj_sign_room');
     for(const e of [this.box,this.sign]){world.colliders.push(createCollider(world.dataSource,e.item));e.image.setDepth(e.item.Y+e.sprite.Height);}
     this.falls=world.roomObjects.filter(e=>e.item.ObjectName==='obj_foreground_waterfall').map(e=>{e.image.destroy();return {x:e.item.X,y:e.item.Y,tiles:Array.from({length:20},()=>world.add.image(0,0,'spr_waterfall_anim:0').setOrigin(0).setScale(2).setAlpha(.2).setDepth(-e.object.Depth))};});
     this.draw();

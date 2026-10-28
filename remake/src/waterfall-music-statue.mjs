@@ -8,7 +8,7 @@ export class WaterfallMusicStatue {
     this.shadow=world.add.image(0,0,'spr_statueshadow:0').setOrigin(0).setAlpha(.4).setDepth(-1000);
     this.light=world.add.image(0,0,'spr_statuelight:0').setOrigin(0).setAlpha(.1).setDepth(-1000);
     this.clue.image.setVisible(false).setAlpha(0).setDepth(-this.clue.object.Depth);
-    if(world.flags[7]!==1){this.rain=world.sound.add('mus_rain_deep',{loop:true,volume:.5,rate:.9});this.rain.play();}
+    if(world.flags[7]!==1){this.rain=world.waterfallRain ??= world.sound.add('mus_rain_deep',{loop:true,volume:.5,rate:.9});if(!this.rain.isPlaying)this.rain.play();}
     if(world.flags[86]===1)this.startMusic();
   }
   startMusic(){if(this.music)return;this.statue.image.setTexture('spr_statue:1');this.music=this.world.sound.add('mus_musicbox',{loop:true,volume:.25,rate:.9});this.music.play();}
@@ -31,5 +31,5 @@ export class WaterfallMusicStatue {
     if(this.frames>=450){const alpha=Math.min(1,(this.frames-449)*.005)*Math.abs(Math.sin(this.frames/60))*.8*Math.max(0,(100-dist)/100);
       this.clue.image.setVisible(true).setAlpha(alpha).setPosition(this.clue.item.X+Math.sin(this.frames/20)*3,this.clue.item.Y+Math.cos(this.frames/33)*2).setTexture(`spr_pianosolution:${Math.floor((this.frames-449)*.06)%this.clue.sprite.TextureCount}`);}
   }
-  destroy(){this.rain?.destroy();this.music?.destroy();this.shadow.destroy();this.light.destroy();}
+  destroy(){this.music?.destroy();this.shadow.destroy();this.light.destroy();}
 }
