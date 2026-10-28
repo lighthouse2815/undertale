@@ -207,8 +207,8 @@ class World extends Scene {
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
-    if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
-    if (name !== 'room_water1') { this.waterfallMusic?.destroy(); this.waterfallMusic = null; }
+    if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
+    if (this.waterfallMusic && (name !== 'room_water1' || this.waterfallMusic.key !== 'mus_ambientwater') && (name !== 'room_water2' || this.waterfallMusic.key !== 'mus_muscle')) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -394,7 +394,10 @@ class World extends Scene {
     if (name === 'room_tundra_iceentrance') this.snowdinIcePuzzle = new SnowdinIcePuzzle(this);
     if (name === 'room_tundra_icehole') this.snowdinIceHole = new SnowdinIceHole(this);
     if (name === 'room_fogroom') { this.snowdinFog = new SnowdinFog(this); this.papyrusFogEncounter = new PapyrusFogEncounter(this); }
-    if (name === 'room_water2') { this.waterfallSentryNpcs = new WaterfallSentryNpcs(this); this.waterfallSentryVisuals = new WaterfallSentryVisuals(this); }
+    if (name === 'room_water2') {
+      this.waterfallSentryNpcs = new WaterfallSentryNpcs(this); this.waterfallSentryVisuals = new WaterfallSentryVisuals(this);
+      if (this.flags[67] !== 1 && !this.townMusic && !this.waterfallMusic) { this.waterfallMusic = this.sound.add('mus_muscle', { loop: true }); this.waterfallMusic.play(); }
+    }
     if (name === 'room_water1') this.waterfallEntrance = new WaterfallEntrance(this);
     if (name === 'room_tundra_garage') this.papyrusGarage = new PapyrusGarage(this);
     if (name === 'room_tundra_inn') this.snowdinInn = new SnowdinInn(this);
