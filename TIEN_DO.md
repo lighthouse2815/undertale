@@ -1049,3 +1049,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Cuộc gọi Papyrus ở Waterfall 12
 
 Đã chuyển trigger/cờ 354, Flowey và bốn nhánh cuộc gọi theo câu trả lời, trang bị đã báo và trang bị lúc bị Undyne phát hiện. `remake-waterfall-second-phone.mjs` kiểm bốn nhánh, kích hoạt bằng phím, không lặp và Papyrus vắng mặt; hồi quy cuộc gọi trước/phòng 12, check/build qua. Màu chữ và biểu cảm từng trang chưa đối chiếu đầy đủ; thác sáng và các cửa khác còn thiếu. Bộ tổng `test-remake-fe0840e.log` vẫn chạy từ trước phần này.
+
+### Thác sáng Waterfall 12
+
+Đã ghép sáu thác sáng theo các ô và khung hình trong mã gốc. `remake-waterfall-wishes-room.mjs` kiểm 81 ô, vị trí và đổi khung; hồi quy cuộc gọi, check/build qua. Cần đối chiếu hiển thị và nhịp thực tế; các cửa khác của phòng 12 chưa chuyển. Bộ tổng `test-remake-fe0840e.log` vẫn chạy từ trước phần này.
