@@ -15,7 +15,7 @@ export class MadDummyHelpersSequence {
         onClose:()=>{this.wave.setHelpersMood('sad');this.state.phase=11;this.stage='leaving';this.timer=40;}
       });
     }else if(this.stage==='leaving'&&--this.timer<=0){
-      this.state.phase=13;this.stage='robots';
+      this.state.phase=13;this.stage='robots';this.wave.duration=this.wave.frames+10;
       this.show(['Hahaha.\nHahaha!\nHAHAHA!',"Now you'll see\nmy true power:","Relying on people\nthat aren't garbage!"],{onClose:()=>{this.state.phase=14;this.stage='done';}});
     }
   }
