@@ -166,10 +166,11 @@ const ROOM_EXITS = {
   room_tundra_iceexit_new: { B: 'room_tundra_iceentrance' },
   room_tundra_poffzone: { A: 'room_tundra_dangerbridge' },
   room_tundra_dangerbridge: { B: 'room_tundra_poffzone', A: 'room_tundra_town' },
-  room_tundra_town: { B: 'room_tundra_dangerbridge', u: 'room_tundra_library', t: 'room_tundra_inn', X: 'room_fogroom' },
+  room_tundra_town: { B: 'room_tundra_dangerbridge', u: 'room_tundra_library', t: 'room_tundra_inn', w: 'room_tundra_grillby', X: 'room_fogroom' },
   room_fogroom: { X: 'room_tundra_town', A: 'room_water1' },
   room_water1: { B: 'room_fogroom' },
   room_tundra_library: { u: 'room_tundra_town' },
+  room_tundra_grillby: { w: 'room_tundra_town' },
   room_tundra_garage: { v: 'room_tundra_town' },
   room_tundra_inn: { t: 'room_tundra_town' },
   room_tundra_sansbasement: { s: 'room_tundra_town' },
@@ -194,7 +195,7 @@ class World extends Scene {
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
     this.events.once('shutdown', () => { this.grillbyNpcs?.destroy(); this.waterfallSentryVisuals?.destroy(); this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
-    this.events.once('shutdown', () => { this.roomMusicFade?.stop(); this.townMusic?.destroy(); this.waterfallMusic?.destroy(); stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
+    this.events.once('shutdown', () => { this.roomMusicFade?.stop(); this.townMusic?.destroy(); this.waterfallMusic?.destroy(); this.grillbyMusic?.destroy(); stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
 
@@ -208,8 +209,9 @@ class World extends Scene {
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
-    if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
+    if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2', 'room_tundra_grillby'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
     if (this.waterfallMusic && (name !== 'room_water1' || this.waterfallMusic.key !== 'mus_ambientwater') && (name !== 'room_water2' || this.waterfallMusic.key !== 'mus_muscle')) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
+    if (name !== 'room_tundra_grillby') { this.grillbyMusic?.destroy(); this.grillbyMusic = null; }
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
     state.scene = this;
@@ -328,14 +330,14 @@ class World extends Scene {
       spawnName === 'obj_mainchara' ? snap(spawn.Y) : spawn.Y, `spr_mainchara${facing}:0`).setOrigin(0);
     this.player.facing = facing; this.player.frameIndex = 0;
     this.doors = data.room.GameObjects.flatMap((item) => {
-      const match = /^obj_door([ABCDX])(musicfade)?$/.exec(item.ObjectName) ?? (['obj_door_u', 'obj_door_t', 'obj_door_v'].includes(item.ObjectName) ? [item.ObjectName, item.ObjectName.slice(-1)] : item.ObjectName === 'obj_door_s_musfade' ? [item.ObjectName, 's', true] : null);
+      const match = /^obj_door([ABCDX])(musicfade)?$/.exec(item.ObjectName) ?? (['obj_door_u', 'obj_door_t', 'obj_door_v', 'obj_door_w'].includes(item.ObjectName) ? [item.ObjectName, item.ObjectName.slice(-1)] : item.ObjectName === 'obj_door_s_musfade' ? [item.ObjectName, 's', true] : null);
       const special = item.ObjectName === 'obj_door_ruins13' && ({ room_ruins12: 'room_ruins13', room_ruins13: 'room_ruins12', room_ruins15E: 'room_ruins15A', room_ruins16: 'room_ruins19', room_ruins19: 'room_ruins16', room_torhouse2: 'room_kitchen', room_kitchen: 'room_torhouse2', room_torhouse1: 'room_basement1', room_basement1: 'room_torhouse1', room_tundra_iceentrance: 'room_tundra_poffzone', room_tundra_poffzone: 'room_tundra_iceentrance' })[name];
       const destination = special || (match && !(name === 'room_tundra_town' && match[1] === 'X' && item.X <= data.room.Width - 80) && ROOM_EXITS[name]?.[match[1]]);
       if (!destination) return [];
       const sprite = data.sprites.get(data.objects.get(item.ObjectName).Sprite);
-      return [{ destination, direction: special ? 'X' : match[1], marker: special ? 'obj_markerX' : ({ A: 'obj_markerA', B: 'obj_markerB', C: 'obj_markerC', D: 'obj_markerD', X: 'obj_markerX', u: 'obj_markeru', t: 'obj_markert', s: 'obj_markers', v: 'obj_markerv' })[match[1]] ?? 'obj_markerA',
-        musicFade: Boolean(match?.[2] || match?.[1] === 'v'),
-        duration: (special || ['u', 's', 't', 'v'].includes(match[1]) ? 14 : match[2] ? 13 : 8) * 1000 / 30,
+      return [{ destination, direction: special ? 'X' : match[1], marker: special ? 'obj_markerX' : ({ A: 'obj_markerA', B: 'obj_markerB', C: 'obj_markerC', D: 'obj_markerD', X: 'obj_markerX', u: 'obj_markeru', t: 'obj_markert', s: 'obj_markers', v: 'obj_markerv', w: 'obj_markerw' })[match[1]] ?? 'obj_markerA',
+        musicFade: Boolean(match?.[2] || ['v', 'w'].includes(match?.[1])),
+        duration: (special || ['u', 's', 't', 'v', 'w'].includes(match[1]) ? 14 : match[2] ? 13 : 8) * 1000 / 30,
         left: item.X + (sprite.MarginLeft - sprite.OriginX) * item.ScaleX,
         right: item.X + (sprite.MarginRight - sprite.OriginX) * item.ScaleX,
         top: item.Y + (sprite.MarginTop - sprite.OriginY) * item.ScaleY,
@@ -395,7 +397,10 @@ class World extends Scene {
     if (name === 'room_tundra_iceentrance') this.snowdinIcePuzzle = new SnowdinIcePuzzle(this);
     if (name === 'room_tundra_icehole') this.snowdinIceHole = new SnowdinIceHole(this);
     if (name === 'room_fogroom') { this.snowdinFog = new SnowdinFog(this); this.papyrusFogEncounter = new PapyrusFogEncounter(this); }
-    if (name === 'room_tundra_grillby') { this.grillbyNpcs = new GrillbyNpcs(this); this.snowdinTownDogs = new SnowdinTownDogs(this, true); }
+    if (name === 'room_tundra_grillby') {
+      this.grillbyNpcs = new GrillbyNpcs(this); this.snowdinTownDogs = new SnowdinTownDogs(this, true);
+      if (this.flags[67] !== 1 && !this.townMusic && !this.grillbyMusic) { this.grillbyMusic = this.sound.add('mus_muscle', { loop: true }); this.grillbyMusic.play(); }
+    }
     if (name === 'room_water2') {
       this.waterfallSentryNpcs = new WaterfallSentryNpcs(this); this.waterfallSentryVisuals = new WaterfallSentryVisuals(this);
       if (this.flags[67] !== 1 && !this.townMusic && !this.waterfallMusic) { this.waterfallMusic = this.sound.add('mus_muscle', { loop: true }); this.waterfallMusic.play(); }
@@ -630,7 +635,7 @@ class World extends Scene {
   transitionRoom(destination, marker, duration, musicFade = false) {
     state.phase = 'transition';
     if (musicFade && this.flags[7] !== 1) {
-      const music = this.ruinsHome?.music ?? this.torielHall?.music[0] ?? this.torielGate?.music ?? this.townMusic ?? this.waterfallMusic ?? this.sansBasement?.music ?? this.snowdinMusic;
+      const music = this.ruinsHome?.music ?? this.torielHall?.music[0] ?? this.torielGate?.music ?? this.townMusic ?? this.grillbyMusic ?? this.waterfallMusic ?? this.sansBasement?.music ?? this.snowdinMusic;
       if (music) this.roomMusicFade = this.tweens.add({ targets: music, volume: 0, duration: 10 * 1000 / 30 });
     }
     this.cameras.main.once('camerafadeoutcomplete', async () => {

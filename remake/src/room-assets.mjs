@@ -252,7 +252,7 @@ export async function loadRoom(scene, name) {
     ...(fogRoom ? ['mus_papyrusboss', 'snd_break2'] : []),
     ...(name === 'room_water1' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water2' ? ['mus_muscle'] : []),
-    ...(name === 'room_tundra_grillby' ? ['snd_bluh'] : []),
+    ...(name === 'room_tundra_grillby' ? ['snd_bluh', 'mus_muscle'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
     ...(crossword ? ['mus_papyrus'] : []),
     ...(snowpuzz ? ['mus_dogmeander'] : []),

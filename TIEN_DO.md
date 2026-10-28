@@ -771,3 +771,7 @@ Bộ tổng snapshot `eba8db3` đã hoàn thành với mã thoát 0 (`test-papyr
 ### Greater Dog trong Grillby
 
 Dùng lại cơ chế chó của town cho Greater Dog trong quán: sprite thường/buồn theo cờ 52/53, ẩn theo cờ 54 hoặc kết thúc, collider, khóa điều khiển và tiếng sủa sau 15/35 frame. `test-grillby-bigdog-v1.log` và `test-grillby-dogs-chain-v1.log` kiểm nhánh quán cùng hồi quy chó ở town và các khách; check/build qua. Âm nhạc Grillby chưa nối nên chưa kiểm dừng/tiếp nhạc quán; bữa ăn, đồ vật và cửa vẫn còn. Push `3e6ca0f` và `bcd0c4f` thành công; bộ tổng snapshot `605ea64` đã qua, không gồm phần mới.
+
+### Cửa và sinh hoạt cơ bản ở Grillby
+
+Đã nối cửa `w` hai chiều town↔Grillby, marker và fade 14 frame; nhạc `mus_muscle` khi Papyrus còn sống, im khi chết và giữ Reunited sau kết thúc. Bàn/quầy dùng độ sâu theo sprite, hai bảng có lời máy hát/cửa thoát hiểm; Greater Dog dừng và tiếp nhạc quán khi sủa. `test-grillby-room-v1.log` kiểm điều khiển qua cửa thật, marker, nhạc và bảng; `test-grillby-room-dogs-v1.log` kiểm hồi quy khách/chó town và dừng-tiếp nhạc; check/build qua. Bữa ăn với Sans và các biến thể hoạt cảnh trong quán chưa hoàn thành, trạm Waterfall chưa mở đường. Push `7c67170` thành công; full snapshot `605ea64` đã qua, không gồm các commit sau.

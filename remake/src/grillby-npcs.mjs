@@ -7,6 +7,7 @@ import { grillbyNpcDialogue } from './grillby-npc-dialogue.mjs';
 export class GrillbyNpcs {
   constructor(world) {
     this.world = world; this.elapsed = 0; this.frames = 0; this.talking = null; this.sansmode = false; this.npcs = [];
+    for (const e of world.roomObjects) if (['obj_booth', 'obj_pokertable', 'obj_bottomtable', 'obj_lessdogtable'].includes(e.item.ObjectName)) e.image.setDepth(e.item.Y + e.sprite.Height);
     for (const e of [...world.roomObjects]) {
       const name = e.item.ObjectName.replace(/^obj_/, '');
       if (!['grillbynpc_hotandbothered', 'grillbynpc_foodmonster', 'grillbynpc_lesserdog', 'grillbynpc_womandog', 'grillbynpc_mandog', 'grillbynpc_doggo', 'grillbynpc_grillby', 'grillbynpc_hot2', 'townnpc_weirdfish', 'townnpc_hatescity'].includes(name)) continue;
@@ -30,7 +31,11 @@ export class GrillbyNpcs {
   }
   interact() {
     const w = this.world, e = this.npcs.find((n) => inInteractionRange(w, { ...n, item: { ...n.item, X: n.item.X - n.sprite.OriginX, Y: n.item.Y - n.sprite.OriginY } }));
-    if (!e) return false;
+    if (!e) {
+      const sign = w.roomObjects.find((n) => ['obj_readable_room1', 'obj_readable_room2'].includes(n.item.ObjectName) && inInteractionRange(w, n));
+      if (!sign) return false;
+      w.showDialogue([sign.item.ObjectName === 'obj_readable_room1' ? '* (The jukebox is broken.)' : "* (You can't go through the\n  fire exit because you're\n  not made of fire.)"]); return true;
+    }
     const pages = grillbyNpcDialogue(e.name, w.flags, w.plot, e.talked, this.sansmode); e.talked++; this.talking = e;
     w.showDialogue(pages, { onClose: () => { this.talking = null; } }); return true;
   }
