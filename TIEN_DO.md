@@ -1169,3 +1169,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Cửa kho báu piano
 
 Đã nối phòng piano ↔ kho báu, marker và nhạc tuyến kết thúc. `remake-waterfall-dog-path.mjs` kiểm hai chiều bằng phím và dọn chó tạm; check/build qua. Kiểm thử đặt sẵn cờ mở cửa; cần kiểm liền mạch giải piano rồi vào kho. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Hành trình giải piano vào kho báu
+
+Đã kiểm liên tục bằng phím: chơi tám nốt, chờ cửa mở và tự đi qua lối hẹp vào kho báu. `remake-waterfall-piano.mjs`, check/build qua. Các chuỗi thay thế và cảm ứng còn cần kiểm; bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
