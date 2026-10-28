@@ -1295,3 +1295,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã thêm renderer và đội hình đợt đầu gồm chín đạn trên, 18 đạn dưới, bắn về tim và callback khi trúng Mad Dummy. `remake-mad-dummy-first-wave.mjs` kiểm đội hình, đạn bắn, va chạm mục tiêu và dọn trong trình duyệt; check/build qua. Đợt này chưa nối vào trận thật, vị trí khung và sát thương cần đối chiếu, các đợt sau và diễn biến trận còn thiếu.
 
 Đã mở rộng `mad-dummy-waves.mjs` với đội hình con2 2/3, nhánh HP và thời lượng theo game gốc; kiểm số lượng, hướng, ngưỡng HP, bắn và dọn trong trình duyệt, check/build qua. Chưa nối các đội hình vào trạng thái trận, các giai đoạn sau và sát thương thực vẫn cần chuyển.
+
+Đã thêm bốn đội hình con2 5, đạn đỏ nhấp nháy, sát thương khi đạn con chạm tim và ATK 7 ở các lượt sau. Kiểm đội hình, sát thương, nhịp và dọn trong trình duyệt cùng check/build qua. Chưa nối vào trận thật; đội hình giai đoạn sau, tên lửa, HP và chuyển lượt vẫn cần hoàn thiện.

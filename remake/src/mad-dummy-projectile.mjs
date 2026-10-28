@@ -9,7 +9,7 @@ export class MadDummyProjectile {
     if(this.phase==='enter'){
       this.x+=inward[0]*this.speed;this.y+=inward[1]*this.speed;
       const inside=[this.x>border.left+4,this.x<border.right-22,this.y>border.top+4,this.y<border.bottom-22][this.side];
-      if(inside){this.speed=0;this.phase='aim';this.timer=this.type===1?1:this.type===2?Infinity:20;}
+      if(inside){this.speed=0;this.phase='aim';this.timer=this.type===1?1:this.type===2?Infinity:20;if(this.type===1)this.red=true;}
     }else if(this.phase==='aim'){
       if(--this.timer<=0){
         if(this.type===1){this.red=!this.red;this.flash++;if(this.flash>4){this.phase='escape';this.speed=2;this.timer=90;}else this.timer=5;}
