@@ -1315,3 +1315,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã chuyển bốn trang phản ứng khi đạn đầu trúng Mad Dummy và truyền qua callback sau 30 frame; kiểm lời/nhịp trong trình duyệt, check/build qua. Chưa nối callback vào giao diện trận hoặc màu/biểu cảm thoại gốc.
 
 Đã điều chỉnh hộp va chạm tên lửa theo góc xoay và kiểm mask tim ở biên trong trình duyệt; hồi quy đội hình/tên lửa, check/build qua. Cần đối chiếu thêm va chạm với Dummy và animation trong trận thực; giao diện trận vẫn chưa nối.
+
+Đã thêm tương tác hình nộm ở `room_water_trashzone2`: Yes/No, bốn mức LV, cờ 355 và lời lặp. `remake-waterfall-training-dummy.mjs` kiểm các nhánh và điều kiện ẩn sau plot 115; hồi quy đồ vật khu rác, check/build qua. Cảnh kích hoạt và trận Mad Dummy vẫn chưa nối.
