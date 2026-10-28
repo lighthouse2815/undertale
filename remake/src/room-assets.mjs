@@ -190,7 +190,7 @@ export async function loadRoom(scene, name) {
   if (town) for (const key of Object.keys(townDogDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townNpcDialogue.sprites)) spriteNames.add(key);
-  if (name === 'room_water3') spriteNames.add('spr_heartsmall');
+  if (name === 'room_water3') for (const key of ['spr_heartsmall', 'spr_waterpushrock']) spriteNames.add(key);
   if (name === 'room_tundra_grillby') for (const key of ['spr_npc_saddog', 'spr_heartsmall', 'spr_face_sans', 'spr_sans_d', 'spr_sans_u', 'spr_sans_l', 'spr_sans_r', 'spr_sans_shrug2', 'spr_sans_stool_u', 'spr_sans_stool_l', 'spr_sans_stoolcomb', 'spr_sans_stool_chup', 'spr_sans_stool_buttscratch', 'spr_grillby_l', 'spr_grillby_r', 'spr_grillby_u', 'spr_grillby_d', 'spr_sansfries', 'spr_sansburger', 'spr_grillbyshadow', 'spr_grillbycounter']) spriteNames.add(key);
   if (name === 'room_water2') for (const key of ['spr_face_sans', 'spr_sans_d', 'spr_sans_u', 'spr_sans_l', 'spr_sans_r', 'spr_heartsmall', 'spr_fishnpc_echo', 'spr_mkid_dt', 'spr_mkid_ut', 'spr_mkid_lt', 'spr_mkid_rt', ...['topleft', 'midtop', 'topright', 'midleft', 'midmid', 'midright', 'bottomleft', 'bottommid', 'bottomright'].map((part) => `spr_waterfall_${part}`)]) spriteNames.add(key);
   if (fogRoom) for (const key of ['spr_papyrus_lt', 'spr_papyrus_l', 'spr_papyrus_rt', 'spr_papyrus_shadowl', 'spr_papyrus_shadowr', 'spr_maincharar_shadow', 'spr_face_papyrus', 'spr_face_papyrusmad', 'spr_heartsmall']) spriteNames.add(key);
@@ -253,6 +253,7 @@ export async function loadRoom(scene, name) {
     ...(fogRoom ? ['mus_papyrusboss', 'snd_break2'] : []),
     ...(name === 'room_water1' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water2' ? ['mus_muscle'] : []),
+    ...(name === 'room_water3' ? ['snd_fall2'] : []),
     ...(name === 'room_tundra_grillby' ? ['snd_bluh', 'mus_muscle', 'mus_rimshot', 'mus_whoopee', 'mus_mysteriousroom2', 'snd_noise', 'snd_chug', 'snd_swallow'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
     ...(crossword ? ['mus_papyrus'] : []),

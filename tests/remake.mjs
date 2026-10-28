@@ -100,6 +100,7 @@ import { testGrillbyRoom } from './remake-grillby-room.mjs';
 import { testGrillbyDate } from './remake-grillby-date.mjs';
 import { testWaterfallSans } from './remake-waterfall-sans.mjs';
 import { testWaterfallBoxRoom } from './remake-waterfall-box-room.mjs';
+import { testWaterfallRockStream } from './remake-waterfall-rock-stream.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -533,6 +534,7 @@ try {
   await testGrillbyDate(page);
   await testWaterfallSans(page);
   await testWaterfallBoxRoom(page);
+  await testWaterfallRockStream(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

@@ -787,3 +787,7 @@ Dùng lại cơ chế chó của town cho Greater Dog trong quán: sprite thư�
 ### Biển và BOX phòng Waterfall 3
 
 Đã nối tương tác biển BOX hater, hộp đồ dùng lại menu chung và dữ liệu BOX, hoa vọng âm theo vị trí, hai điểm camera và collider của biển/hộp/hoa khi mở `room_water3` trực tiếp. `test-waterfall-box-v3.log` kiểm lời, BOX thật và va chạm; `test-waterfall-box-chain-v1.log` hồi quy BOX ở Snowdin cùng phòng mới; check/build qua. Đá rơi đẩy người, thác/va chạm nước, nhạc và các cửa của phòng vẫn chưa chuyển nên chưa mở đường từ trạm. Push `13ca033` thành công; bộ tổng snapshot `13ca033` đang chạy, không gồm phần này.
+
+### Dòng đá phòng Waterfall 3
+
+Đã chuyển nhịp sinh tám đá, tốc độ theo cao độ, đẩy Frisk theo bbox và hướng giữ, vệt đá trôi/mờ, khóa và trôi xuống khi vào thác, điều kiện dừng sinh trên tuyến giết và tạm dừng khi mở menu. `test-waterfall-rock-v2.log` kiểm chu kỳ đầu, đẩy, rơi, vệt/dọn, tạm dừng và cờ; `test-waterfall-box-rock-v1.log` hồi quy BOX; check/build qua. Cần đối chiếu mask/timing với game gốc trên đường đi thật; thác hiển thị, nhạc và cửa của phòng chưa nối. Push `f7c798e` thành công; bộ tổng snapshot `13ca033` đang chạy, chưa gồm phần này.
