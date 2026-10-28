@@ -1289,3 +1289,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã chuyển phản hồi ACT Check/Talk và cờ 147; `remake-mad-dummy-act.mjs` kiểm nhánh, check/build qua. Chưa nối vào giao diện trận, đạn và các trạng thái lượt vẫn cần chuyển.
 
 Đã chuyển vòng đời đạn con: vào khung, dừng, nhấp nháy hoặc lùi và bắn về vị trí tim. `remake-mad-dummy-projectile.mjs` kiểm bốn hướng, bộ đếm và loại đạn; check/build qua. Mô hình chưa nối renderer/trận, còn thiếu chuyển động đạn bắn ra, va chạm, các đội hình và tiến trình trận.
+
+Đã chuyển chuyển động đạn bắn thẳng và tên lửa đuổi tim, va chạm tim/Mad Dummy và thời gian nổ. `remake-mad-dummy-shot.mjs` kiểm chuyển hướng, gia tốc, va chạm và nổ; check/build qua. Chưa nối hình/mask, HP và tiến trình trận; các đội hình và cảnh vẫn thiếu.
