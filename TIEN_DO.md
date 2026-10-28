@@ -1101,3 +1101,7 @@ Bộ tổng `test-remake-6e47e0b.log` thất bại sớm khi chờ 200 ms thực
 ### Sao phòng Waterfall 11
 
 Đã thêm hoạt ảnh cho tám sao trang trí theo tốc độ ngẫu nhiên gốc. Kiểm thử phòng sao kiểm số lượng và đổi khung; hồi quy kính Sans, check/build qua. Cần đối chiếu nhịp thực tế; bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### Cảnh Onionsan
+
+Đã chuyển xuất hiện xúc tu/Onionsan, theo nhân vật, hội thoại theo vị trí, cờ 496, lựa chọn khi quay lại, nhánh kết thúc và tuyến giết. `remake-waterfall-onionsan.mjs` kiểm các giai đoạn bằng mô phỏng, một trigger bằng phím, các nhánh quay lại và điều kiện; hồi quy phòng 12, check/build qua. Phòng mở trực tiếp, chưa nối cửa; chuyển động, hoạt ảnh và timing còn cần đối chiếu với gốc và kiểm hành trình thời gian thực. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.

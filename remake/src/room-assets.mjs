@@ -194,6 +194,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
+  if (name === 'room_water_onionsan') for (const key of ['spr_onionblue','spr_oniontblue','spr_onionsan_kawaii','spr_onionsan_yhear','spr_onionsan_wistful','spr_onionsan_disappoint','spr_oniont_l','spr_oniont_r','spr_oniont_coyl','spr_oniont_coyd','spr_oniont_bye','spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_nicecream') for (const key of ['spr_chestbox','spr_heartsmall','spr_icecreamguy_sad','spr_icecreamguy_anim','spr_icecreamguy_happy']) spriteNames.add(key);
   if (name === 'room_water_shoe') for (const key of ['spr_balletshoes', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water12') for (const key of ['spr_exc', 'spr_exc_f', 'spr_floweysink', 'spr_face_papyrus', ...['lt','mt','rt','lm','mm','rm','bl','bm','br'].map(part => `spr_waterfall_bright_${part}`)]) spriteNames.add(key);
@@ -240,7 +241,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (name === 'room_water_nicecream' || name === 'room_water_shoe' || name === 'room_water12' || name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (name === 'room_water_onionsan' || name === 'room_water_nicecream' || name === 'room_water_shoe' || name === 'room_water12' || name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
@@ -277,6 +278,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
+    ...(name === 'room_water_onionsan' ? ['snd_splash','snd_squeak','mus_ambientwater'] : []),
     ...(name === 'room_water_nicecream' ? ['snd_movemenu','snd_squeak'] : []),
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
     ...(name === 'room_water12' ? ['snd_b', 'snd_phone', 'mus_waterfall', 'mus_toomuch'] : []),
