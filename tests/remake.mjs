@@ -77,6 +77,7 @@ import { testBlueSoul } from './remake-blue-soul.mjs';
 import { testPapyrusBones } from './remake-papyrus-bones.mjs';
 import { testPapyrusBlueAttack } from './remake-papyrus-blue-attack.mjs';
 import { testPapyrusSpecialIntro } from './remake-papyrus-special-intro.mjs';
+import { testPapyrusRegularAttack } from './remake-papyrus-regular-attack.mjs';
 import { testPapyrusCapture } from './remake-papyrus-capture.mjs';
 import { testPapyrusGarage } from './remake-papyrus-garage.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
@@ -490,6 +491,7 @@ try {
   await testPapyrusBones(page);
   await testPapyrusBlueAttack(page);
   await testPapyrusSpecialIntro(page);
+  await testPapyrusRegularAttack(page);
   await testPapyrusCapture(page);
   await testPapyrusGarage(page);
   await testGreaterDog(page);

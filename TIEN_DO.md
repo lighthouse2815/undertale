@@ -651,3 +651,9 @@ Chuỗi `test-papyrus-turn-14-v2.log` kiểm biên 19/20/39/40, bố trí, timer
 Đã chuyển chuỗi Alarm 2–6 của xương vào `papyrus-capture.mjs`: ba nhóm lời theo cờ 67=-1/-2/-3, giảm nhạc, đợi hết thoại, fade và âm thanh, chờ 50 frame rồi hồi HP tối đa và báo scene boss quay về phòng đang đánh. Scene boss cần nối callback thoại và chuyển về phòng sương, sau đó `obj_papyrus8` đưa người chơi tới garage; chưa tự chuyển phòng hoặc giả vờ trận đã hoàn chỉnh.
 
 `tests/remake-papyrus-capture.mjs` kiểm ba nhóm lời, không chuyển khi thoại chưa hết, mốc fade/chờ 50 frame và hồi HP; chuỗi `test-papyrus-capture-chain-v1.log` qua cùng cảnh chó, chuyển xanh, phòng giam và các hồi quy trước; check/build qua. Full snapshot `4261ced` vẫn chạy, không gồm các phần sau snapshot. Push các commit đến `2a10cc0` đã thành công sau khi kết nối GitHub phục hồi.
+
+### Đòn thường cuối của Papyrus
+
+Đã chuyển đợt `fighto=15` thành `papyrus-regular-attack.mjs`: 1300 frame, 21 xương các độ cao/tốc độ/dao động, sáu chó mang chữ và ván trượt, chín xe buýt và xương lớn với sprite gốc. Có va chạm hộp bao, sát thương/bắt, hoạt họa chó, cắt theo khung và cơ chế nâng mép trên khi nhảy trước xương lớn, trả khung khi xương lớn tới bên trái. Tách tính sát thương chung từ `PapyrusBones` để các đối tượng dùng cùng quy tắc HP/bất tử, không nhân đôi công thức.
+
+`tests/remake-papyrus-regular-attack.mjs` kiểm bố trí, vận tốc, hoạt họa, đổi khung, va chạm/bắt, thời lượng và dọn. Chuỗi `test-papyrus-regular-chain-v2.log` qua cùng toàn bộ thành phần Papyrus, garage, tim xanh và GreaterDog; check/build qua. Đợt này chưa được nối scene boss, chưa có thoại kết thúc đợt, chưa coi trận/game hoàn chỉnh. Full snapshot `4261ced` đang chạy và không bao gồm các phần mới; push `9e1eddc` đã thành công.

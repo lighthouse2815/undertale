@@ -74,6 +74,17 @@ export class PapyrusBones {
     return hx <= x + 9 && hx + 15 >= x + 3 && hy <= y2 && hy + 15 >= y1;
   }
   remove(bone) { bone.tip.destroy(); bone.base.destroy(); bone.stem.destroy(); this.bullets.splice(this.bullets.indexOf(bone), 1); }
+  hit(damage) {
+    const scene = this.scene, w = scene.previousScene, df = w.lv === 20 ? 99 : 9 + Math.ceil(w.lv / 4);
+    let amount = Math.max(3, Math.round(damage - (df + w.armorDefense) / 5));
+    if (w.flags[6] !== 1 && this.fighto > 13) amount -= Number(scene.hp < 10) + Number(scene.hp < 5);
+    scene.hp -= amount; scene.sound.play('snd_hurt1'); scene.cameras.main.shake(1000 / 15, .006);
+    if (scene.hp <= 0) {
+      scene.hp = 1; scene.invFrames = 50; scene.soulVSpeed = 0; this.captured = true;
+      for (const other of [...this.bullets]) this.remove(other);
+    } else scene.invFrames = 3 * (30 + (w.armor === 44 ? 30 : 0) + (w.armor === 64 ? 15 : 0) + (w.weapon === 45 ? 15 : 0));
+    scene.refreshHp();
+  }
   step() {
     const scene = this.scene, b = this.border, hx = scene.soul.x * 2, hy = scene.soul.y * 2;
     const moving = Math.abs(hx - this.oldHeart.x) > .01 || Math.abs(hy - this.oldHeart.y) > .01;
@@ -82,15 +93,8 @@ export class PapyrusBones {
       if (bone.drawn) { if (bone.y <= bone.startY - bone.oscmax || bone.y >= bone.startY - bone.oscmin) bone.osc = -bone.osc; bone.y += bone.osc; }
       bone.x += bone.vx; this.draw(bone);
       if (scene.invFrames <= 0 && (!bone.blue || moving) && this.touches(bone)) {
-        const w = scene.previousScene, df = w.lv === 20 ? 99 : 9 + Math.ceil(w.lv / 4);
-        let damage = Math.max(3, Math.round(bone.damage - (df + w.armorDefense) / 5));
-        if (w.flags[6] !== 1 && this.fighto > 13) damage -= Number(scene.hp < 10) + Number(scene.hp < 5);
-        scene.hp -= damage; scene.sound.play('snd_hurt1'); scene.cameras.main.shake(1000 / 15, .006);
-        if (scene.hp <= 0) {
-          scene.hp = 1; scene.invFrames = 50; scene.soulVSpeed = 0; this.captured = true;
-          for (const other of [...this.bullets]) this.remove(other);
-        } else { scene.invFrames = 3 * (30 + (w.armor === 44 ? 30 : 0) + (w.armor === 64 ? 15 : 0) + (w.weapon === 45 ? 15 : 0)); this.remove(bone); }
-        scene.refreshHp();
+        this.hit(bone.damage);
+        if (!this.captured) this.remove(bone);
         if (this.captured) break;
       } else {
         // OutsideRoom được phát khi hộp bao rời phòng 640×480, không phải khi rời khung đấu.
