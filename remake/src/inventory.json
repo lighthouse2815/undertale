@@ -225,6 +225,15 @@
         "* \"Abandoned Quiche\" Heals 34 HP\n* A psychologically damaged\n  spinach egg pie."
       ],
       "heal": 34
+    },
+    "25": {
+      "name": "Ballet Shoes",
+      "battleName": "BallShoes",
+      "seriousName": "Shoes",
+      "use": "* You equipped Ballet Shoes.",
+      "info": [
+        "* \"Ballet Shoes\" - Wpn AT 7\n* These used shoes make you\n  feel incredibly dangerous."
+      ]
     }
   },
   "actions": [

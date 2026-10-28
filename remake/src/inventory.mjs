@@ -28,11 +28,11 @@ export function itemAction(world, index, action, text, { scene = world, health =
     return [line];
   }
   if (id === 3) return [item.use]; // Gậy gốc được nhặt lại; không tiêu hao/đổi vũ khí.
-  if (id === 12 || id === 13 || id === 14 || id === 24) {
+  if (id === 12 || id === 13 || id === 14 || id === 24 || id === 25) {
     if (id === 12 || id === 24) {
       world.inventory[index] = world.armor; world.armor = id; world.armorDefense = id === 24 ? 10 : 3;
     } else {
-      world.inventory[index] = world.weapon; world.weapon = id; world.weaponStrength = id === 14 ? 5 : 3;
+      world.inventory[index] = world.weapon; world.weapon = id; world.weaponStrength = id === 25 ? 7 : id === 14 ? 5 : 3;
     }
     scene.sound.play('snd_item');
     return [item.use];

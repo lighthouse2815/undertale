@@ -1053,3 +1053,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Thác sáng Waterfall 12
 
 Đã ghép sáu thác sáng theo các ô và khung hình trong mã gốc. `remake-waterfall-wishes-room.mjs` kiểm 81 ô, vị trí và đổi khung; hồi quy cuộc gọi, check/build qua. Cần đối chiếu hiển thị và nhịp thực tế; các cửa khác của phòng 12 chưa chuyển. Bộ tổng `test-remake-fe0840e.log` vẫn chạy từ trước phần này.
+
+### Vũ khí Ballet Shoes
+
+Đã thêm thông tin, trang bị và AT 7 của Ballet Shoes, giữ vũ khí cũ trong túi và lưu chỉ số. `remake-ballet-shoes.mjs` kiểm INFO, trang bị và lưu; check/build qua. Chưa chuyển hoạt ảnh đánh riêng của giày và vị trí nhặt trong phòng shoe. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
