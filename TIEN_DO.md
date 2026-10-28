@@ -1089,3 +1089,7 @@ Bộ tổng `test-remake-6e47e0b.log` thất bại sớm khi chờ 200 ms thực
 ### Người bán Nice Cream Waterfall
 
 Đã chuyển hội thoại mở đầu, điều kiện xuất hiện, mua 25G, giảm giá với ô, cờ thẻ trong hộp và đổi ba thẻ lấy kem. `remake-waterfall-nice-cream-shop.mjs` kiểm các nhánh, túi đầy và cờ; hồi quy quầy Snowdin/hộp thẻ, check/build qua. Phòng chưa nối cửa; cần đối chiếu biểu cảm và timing. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### Cửa quầy Nice Cream Waterfall
+
+Đã nối phòng sao ↔ quầy Nice Cream, marker và nhạc liên tục. `remake-waterfall-nice-cream-path.mjs` kiểm hai chiều bằng phím với nhạc thường/kết thúc; check/build qua. Cần đối chiếu biểu cảm/timing quầy và các phần Waterfall còn thiếu. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
