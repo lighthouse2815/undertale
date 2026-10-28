@@ -857,3 +857,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Phòng ghế đá Abandoned Quiche
 
 Đã chuyển ghế/hoa vọng âm, chọn lấy hoặc bỏ quiche, túi đầy, cờ 104 và hoạt ảnh cầu tàu của `room_water5A`; `test-waterfall-quiche-room-v1.log` kiểm các nhánh, vào lại và collider, kiểm lại vật phẩm 23, check/build qua. Mới kiểm khi mở phòng trực tiếp, chưa nối cửa với phòng cầu. Push `0b6561d` thành công; bộ tổng snapshot `9401df5` đang chạy, không gồm thay đổi này.
+
+### ACT và trạng thái Aaron
+
+Đã chuyển Check, Shoo (kể cả cờ 95), ba lần Flex, tăng ATK, cờ 143 và thứ tự trạng thái theo máu/đòn theo `obj_aaron`. Kiểm thử riêng các nhánh, ngưỡng và ưu tiên; check/build qua. Chưa có scene trận, đạn hoặc encounter thật, nên chưa mở đường Waterfall 5. Push `67baa21` thành công; bộ tổng snapshot `9401df5` đang chạy, không gồm thay đổi này.
