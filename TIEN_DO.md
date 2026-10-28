@@ -697,3 +697,7 @@ Trong lúc ghép đã sửa lỗi vòng lặp `fighto=14` khi chọn lại ngẫ
 Đã chuyển dữ liệu hàng 9/10 từ `scr_newvapordata` và trình tự `obj_vaporized_new`: đọc bốn hàng mỗi frame, tạo hạt trắng theo đoạn/hàng, vận tốc ngang và trọng lực, hoạt họa 12 khung, crop dần thân/đầu và phát `snd_vaporized`. Hạt được nối vào cả hai thời điểm thân và đầu tan trong scene trận, tự dọn khi xong hoặc shutdown. Cảnh đánh bại vẫn cần đối chiếu chuyển động đầu và timing từng frame, ký ức và đường trở về phòng sương.
 
 `tests/remake-papyrus-dust.mjs` kiểm dữ liệu, bốn hàng đầu, vận tốc, hoàn tất/dọn của đầu và thân; `tests/remake-papyrus-battle.mjs` kiểm hạt xuất hiện ở hai thời điểm trong trận FIGHT thật. Chuỗi `test-papyrus-dust-chain-v2.log` qua cùng các cảnh Papyrus và phòng sương; check/build qua. Full snapshot `dd246e1` vẫn chạy, không bao gồm thay đổi này; push `4908c9a` thành công.
+
+### Chuyển động đầu Papyrus
+
+Đã thay tween đầu Papyrus bằng vận tốc, trọng lực và hai ngưỡng dừng theo `obj_papyrusdeadhead`, chạy ở 30 Hz; vị trí hạt dùng đúng gốc sprite khi đầu tan. Chuỗi `test-papyrus-head-resume-v2.log` qua, kiểm cả hai lần rơi, hạt và các phần trận; check/build qua. Full snapshot `dd246e1` đã dừng giữa chừng khi phiên tạm dừng, không có mã thoát; chưa thể coi đã qua. Push `01e4b62` đã thành công; trận và đường phòng sương vẫn chưa hoàn thiện như ghi phía trên.
