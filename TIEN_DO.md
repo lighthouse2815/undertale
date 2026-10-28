@@ -901,3 +901,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Trận hai Moldsmal Waterfall
 
 Đã ghép nhóm 53 gồm hai Moldsmal: chọn mục tiêu, ACT, hai generator đồng thời, tha/giết từng quái, thưởng, dân số và nhạc. `test-moldsmal-group-v1.log` kiểm điều khiển chọn ACT, tha cả hai, giết một rồi tha một, số generator và thưởng/cờ; check/build qua. Mới mở trực tiếp để kiểm thử, chưa nối encounter, cần đối chiếu animation, timing/va chạm với gốc. Push đạn Moldsmal `8654fda` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm scene này.
+
+### Sửa khung đạn Aaron
+
+Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không phải border 6 (đỉnh 250); đã sửa cả vị trí tim và kiểm kích thước khung. Push trận hai Moldsmal `85cf14f` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy và không gồm sửa này.

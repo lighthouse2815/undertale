@@ -12,8 +12,8 @@ export function loadAaronWaveAssets(scene) {
 export class AaronWave extends RuinsWave {
   constructor(scene, command, { population = 1, damage = 7 } = {}) {
     super(scene,'aaron'); this.kind = command <= 50 ? 'muscle' : 'sweat'; this.duration = 160; this.damage = damage;
-    const b = this.border = { left: 227, right: 407, top: 250, bottom: 385 };
-    scene.arena.setPosition(b.left / 2,b.top / 2).setSize((b.right - b.left) / 2,(b.bottom - b.top) / 2); scene.soul.setPosition(154.5,154.5);
+    const b = this.border = { left: 227, right: 407, top: 200, bottom: 385 };
+    scene.arena.setPosition(b.left / 2,b.top / 2).setSize((b.right - b.left) / 2,(b.bottom - b.top) / 2); scene.soul.setPosition(154.5,142.5);
     this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(b.left / 2,b.top / 2,(b.right - b.left) / 2,(b.bottom - b.top) / 2).setVisible(false); this.mask = this.clip.createGeometryMask();
     this.side = Math.floor(Math.random() * 2) === 1 ? -1 : 1; this.offset = population > 1 ? 1 : 0;
     this.rate = this.kind === 'muscle' ? Math.trunc(25 * (population === 3 ? 2.4 : population === 2 ? 1.7 : 1)) + 1 : Math.trunc(5 * (population === 3 ? 2.7 : population === 2 ? 1.8 : 1));
