@@ -84,6 +84,7 @@ import { testPapyrusBattle } from './remake-papyrus-battle.mjs';
 import { testPapyrusDust } from './remake-papyrus-dust.mjs';
 import { testPapyrusGarage } from './remake-papyrus-garage.mjs';
 import { testSnowdinFog } from './remake-snowdin-fog.mjs';
+import { testPapyrusFogDialogue } from './remake-papyrus-fog-dialogue.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -502,6 +503,7 @@ try {
   await testPapyrusDust(page);
   await testPapyrusGarage(page);
   await testSnowdinFog(page);
+  await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);
   await testSnowdinDangerBridge(page);

@@ -1,0 +1,696 @@
+{
+  "first": [
+    {
+      "text": "HUMAN.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ALLOW ME TO TELL\nYOU ABOUT SOME\nCOMPLEX FEELINGS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FEELINGS LIKE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE JOY OF FINDING\nANOTHER PASTA\nLOVER.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE ADMIRATION FOR\nANOTHER'S PUZZLE-\nSOLVING SKILLS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE DESIRE TO HAVE\nA COOL, SMART PERSON\nTHINK YOU ARE COOL.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THESE FEELINGS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEY MUST BE WHAT\nYOU ARE FEELING\nRIGHT NOW!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I CAN HARDLY IMAGINE\nWHAT IT MUST BE LIKE\nTO FEEL THAT WAY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AFTER ALL, I AM\nVERY GREAT.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I DON'T EVER WONDER\nWHAT HAVING LOTS\nOF FRIENDS IS LIKE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I PITY YOU...\nLONELY HUMAN...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WORRY NOT!!!\nYOU SHALL BE\nLONELY NO LONGER!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I, THE GREAT\nPAPYRUS, WILL BE\nYOUR...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": " ...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NO...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NO, THIS IS ALL\nWRONG!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I CAN'T BE YOUR\nFRIEND!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU ARE A HUMAN!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I MUST CAPTURE\nYOU!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEN, I CAN FULFILL\nMY LIFELONG DREAM!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "POWERFUL!\nPOPULAR!\nPRESTIGIOUS!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S PAPYRUS!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE NEWEST MEMBER...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "OF THE ROYAL GUARD!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "remembered": [
+    {
+      "text": "HUMAN.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ALLOW ME TO TELL\nYOU ABOUT SOME\nCOMPLEX FEELINGS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SOMEHOW, I FEEL LIKE\nYOU'RE AN OLD FRIEND...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "EVEN THOUGH I'VE\nNEVER ACTUALLY MET\nYOU BEFORE!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I CAN'T EXPLAIN\nWHY I FEEL THIS\nWAY...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "DID I MEET YOU\nONLINE???",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I HAVE MANY \"SOCIAL\nMEDIA CONNECTIONS.\"",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S HARD TO KEEP\nTRACK OF THEM\nALL.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "JUST A DOZEN MORE,\nAND...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL FINALLY REACH\nDOUBLE DIGITS!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... HEY, WAIT A\nSECOND!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU CAN'T BE MY\nFRIEND!!!\nYOU'RE HUMAN!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I CAN'T BELIEVE YOU\nALMOST TRICKED ME INTO\nNOT DEFEATING YOU!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHOOPSIE DOOPSIE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "retry1": [
+    {
+      "text": "OH...\nWHERE COULD THAT\nHUMAN HAVE GONE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... WAIT...\nIT'S RIGHT IN\nFRONT OF ME!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HELLO!\nI WAS WORRIED THAT\nYOU HAD GOTTEN LOST!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT SURE IS A RELIEF\nTO KNOW THAT\nYOU'RE RIGHT HERE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... WAIT A SECOND!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU'RE NOT SUPPOSED\nTO ESCAPE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "GET BACK THERE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "retry1Remembered": [
+    {
+      "text": "I SUPPOSE THIS PROVES\nWHAT I SAID.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WE REALLY ARE BOUND\nTOGETHER.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "TWO BONES IN THE\nSKELETAL ANATOMY OF\nFATE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S HOW YOU APPEAR\nHERE NOW...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "EVEN THOUGH IT'S VERY\nIMPOSSIBLE FOR YOU\nTO ESCAPE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AMAZING!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I FEEL A SINCERE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WAAAAAIT A SECOND!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I STILL HAVE TO\nCAPTURE YOU!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHOOPSIE-DOOPSIE!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "retry2": [
+    {
+      "text": "BACK AGAIN, EH?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I SUPPOSE IT'S MY\nFAULT...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I TOLD YOU BEFORE\nTHAT I WOULD MAKE\nYOU SPAGHETTI.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT'S ONLY NATURAL\nTHAT YOU WOULD\nWANT TO SEE ME...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IN THE DIRE HOPE\nTHAT I WOULD MAKE\nYOU SOME.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WELL... I UNDERSTAND.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "PAPYRUS IS HUNGRY,\nTOO!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HUNGRY FOR JUSTICE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "retry3": [
+    {
+      "text": "YOU'RE BACK AGAIN?!?!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I FINALLY REALIZE\nTHE TRUE REASON WHY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "JUST MISS SEEING MY\nFACE SO MUCH...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M NOT SURE I\nCAN FIGHT SOMEONE\nWHO FEELS THIS WAY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BUT MOSTLY... I'M GETTING\nREALLY TIRED OF\nCAPTURING YOU!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "retry3Yes": [
+    {
+      "text": "OKAY...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I GUESS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IF YOU WANT ME TO\nCAPTURE YOU.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL TRY AGAIN!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "retry3No": [
+    {
+      "text": "... OKAY...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I GUESS I'LL ACCEPT\nMY FAILURE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murderIntro": [
+    {
+      "text": "HALT, HUMAN!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murder1": [
+    {
+      "text": "HEY, QUIT MOVING\nWHILE I'M TALKING\nTO YOU!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I, THE GREAT PAPYRUS,\nHAVE SOME THINGS\nTO SAY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FIRST: YOU'RE A\nFREAKING WEIRDO!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NOT ONLY DO YOU\nNOT LIKE PUZZLES.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BUT THE WAY YOU\nSHAMBLE ABOUT FROM\nPLACE TO PLACE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE WAY YOUR HANDS\nARE ALWAYS COVERED\nIN DUSTY POWDER.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IT FEELS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "LIKE YOUR LIFE IS\nGOING DOWN A\nDANGEROUS PATH.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HOWEVER!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I, PAPYRUS, SEE\nGREAT POTENTIAL\nWITHIN YOU!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "EVERYONE CAN BE\nA GREAT PERSON\nIF THEY TRY!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND ME, I HARDLY\nHAVE TO TRY AT\nALL!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH HEH HEH\nHEH HEH HEH!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murder2": [
+    {
+      "text": "HEY, QUIT MOVING!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THIS IS EXACTLY\nWHAT I AM TALKING\nABOUT!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HUMAN! I THINK\nYOU ARE IN NEED\nOF GUIDANCE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SOMEONE NEEDS TO\nKEEP YOU ON THE\nSTRAIGHT AND NARROW!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BUT WORRY NOT!\nI, PAPYRUS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WILL GLADLY BE\nYOUR FRIEND AND\nTUTOR!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I WILL TURN YOUR\nLIFE RIGHT\nAROUND!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "murder3": [
+    {
+      "text": "I SEE YOU ARE\nAPPROACHING.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ARE YOU OFFERING A\nHUG OF ACCEPTANCE?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WOWIE!! MY LESSONS\nARE ALREADY\nWORKING!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I, PAPYRUS,\nWELCOME YOU\nWITH OPEN ARMS!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterIntro": [
+    {
+      "text": "I WAS NEVER ONE\n  TO BEPIS.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterKing": [
+    {
+      "text": "OH, I ALMOST\nFORGOT TO TELL\nYOU...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "TO REACH THE EXIT,\nYOU WILL HAVE\nTO PASS...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THROUGH THE KING'S\nCASTLE.",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE KING OF\nALL MONSTERS...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HE IS...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... WELL...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterKingMurder": [
+    {
+      "text": "OH, I ALMOST\nFORGOT TO TELL\nYOU...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "TO REACH THE EXIT,\nYOU WILL HAVE\nTO MEET...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE KING.",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THE KING OF\nALL MONSTERS...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HE IS...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... WELL...",
+      "portrait": "spr_face_papyrusmad",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterFriends": [
+    {
+      "text": "HE'S A BIG FUZZY\nPUSHOVER!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "EVERYBODY LOVES\nTHAT GUY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I AM CERTAIN IF\nYOU JUST SAY...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "\"EXCUSE ME, MR.\nDREEMURR... CAN I\nPLEASE GO HOME?\"",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HE'LL GUIDE YOU\nRIGHT TO THE\nBARRIER HIMSELF!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ANYWAY!!!\nTHAT'S ENOUGH\nTALKING!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL BE AT HOME\nBEING A COOL\nFRIEND!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FEEL FREE TO\nCOME BY AND\nHANG OUT!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH HEH HEH HEH\nHEH HEH HEH!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterDate": [
+    {
+      "text": "HE'S A BIG FUZZY\nPUSHOVER!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "EVERYBODY LOVES\nTHAT GUY.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I AM CERTAIN IF\nYOU JUST SAY...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "\"EXCUSE ME, MR.\nDREEMURR... CAN I\nPLEASE GO HOME?\"",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HE'LL GUIDE YOU\nRIGHT TO THE\nBARRIER HIMSELF!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ANYWAY!!!\nTHAT'S ENOUGH\nTALKING!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL BE AT HOME\nBEING A COOL\nFRIEND!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "FEEL FREE TO\nCOME BY AND HAVE\nTHAT DATE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NYEH HEH HEH HEH\nHEH HEH HEH!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ]
+}

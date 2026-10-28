@@ -705,3 +705,9 @@ Trong lúc ghép đã sửa lỗi vòng lặp `fighto=14` khi chọn lại ngẫ
 ### Di chuyển tim trong thoại giữa đợt
 
 Các đoạn thoại của đòn xanh, chó và cảnh bắt được tạo khi `global.mnfight=2`, nên tim và đợt tấn công vẫn cập nhật trong lúc writer hiện. `PapyrusBattle` giờ tiếp tục gọi cập nhật tim/đạn ở chế độ thoại thay vì chỉ chạy bước đạn; vẫn giữ đúng xử lý đóng thoại và hoàn tất đợt. `test-papyrus-dialogue-motion-v5.log` kiểm di chuyển tim trong cảnh chó cùng chuỗi trận/xương/garage, trong đó bước kiểm tim được tua trực tiếp ở 30 Hz; check/build qua. Bộ tổng snapshot `eba8db3` đang chạy, không gồm thay đổi này; push `eba8db3` thành công.
+
+### Lời Papyrus phòng sương
+
+Đã chuyển dữ liệu và lựa chọn lời từ `obj_papyrus8`/`SCR_TEXT` 544–545: gặp lần đầu hoặc có ký ức, hai lần bị bắt, lần thứ ba có lựa chọn đánh tiếp, ba đoạn tuyến diệt chủng và lời sau trận theo tuyến/hẹn hò. `papyrus-fog-dialogue.mjs` trả dữ liệu cho cảnh sắp nối; chưa tạo trigger, camera, lựa chọn thực tế hay chuyển trận/garage, nên chưa coi đường chơi hoặc game hoàn chỉnh. Các mã màu/chờ trong lời vẫn cần phục hồi theo giới hạn hệ thoại hiện tại.
+
+`test-papyrus-fog-dialogue-v1.log` kiểm số trang, điều kiện ưu tiên, lựa chọn, lời tuyến giết và sau trận; kiểm tra phòng sương riêng `test-papyrus-fog-dialogue-chain-v1.log`, check/build qua. Full snapshot `eba8db3` đang chạy và không bao gồm thay đổi mới; push `728236e` thành công.
