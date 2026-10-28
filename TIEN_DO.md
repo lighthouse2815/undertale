@@ -759,3 +759,7 @@ Bộ tổng snapshot `eba8db3` đã hoàn thành với mã thoát 0 (`test-papyr
 ### Lời bữa ăn tại Grillby
 
 Đã chuyển lời `obj_grillbynpc_sansdate` và các nhánh SCR_TEXT 570–578: chào khách, gọi fries/burger và cờ món 391, câu trả lời về Papyrus, ketchup, lời về hoa, món nợ và lời tạm biệt. Các bộ chọn trả lời được kiểm bằng `remake-grillby-date-dialogue.mjs`; check/build qua. Đây mới là dữ liệu cho cảnh, chưa có hoạt cảnh, lựa chọn thực tế hoặc đường đến Grillby; trạm vẫn chưa mở đường chơi. Bộ tổng snapshot `605ea64` đã qua; push `7f33736` thành công.
+
+### Lời khách tại Grillby
+
+Đã chuyển dữ liệu và thứ tự ghi đè theo Alarm 0 của mười NPC Grillby (kể cả Grillby, hai cá/chuột và các chó), với lượt lặp, plot, Sans, các cờ chó/Papyrus/kết thúc. `remake-grillby-npc-dialogue.mjs` kiểm các tổ hợp và ưu tiên; check/build qua. Dữ liệu chưa nối nhân vật hoặc cảnh phòng, Greater Dog và đồ vật còn phải chuyển. Bộ tổng snapshot `605ea64` đã qua; push `fffcdfa` thành công.
