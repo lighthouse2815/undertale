@@ -244,12 +244,12 @@ const ROOM_EXITS = {
   room_water_undynebridge: { B: 'room_water_preundyne', A: 'room_water_undynebridgeend' },
   room_water_trashzone1: { A: 'room_water_trashsavepoint' },
   room_water_trashsavepoint: { B: 'room_water_trashzone1', A: 'room_water_trashzone2' },
-  room_water_trashzone2: { B: 'room_water_trashsavepoint' },
+  room_water_trashzone2: { B: 'room_water_trashsavepoint', A: 'room_water_friendlyhub' },
   room_water_piano: { B: 'room_water14', A: 'room_water_dogroom' },
   room_water_dogroom: { B: 'room_water_piano' },
   room_water_shoe: { B: 'room_water12' },
   room_water_bird: { t: 'room_water11', s: 'room_water_friendlyhub' },
-  room_water_friendlyhub: { s: 'room_water_bird' },
+  room_water_friendlyhub: { B: 'room_water_trashzone2', s: 'room_water_bird' },
   room_mysteryman: { s: 'room_water_fakehallway' },
   room_water3A: { B: 'room_water3' },
   room_tundra_library: { u: 'room_tundra_town' },
@@ -818,6 +818,7 @@ class World extends Scene {
   findDoor(x, y) {
     const sprite = this.dataSource.sprites.get(`spr_mainchara${this.player.facing}`);
     return this.doors.find((entry) => !(entry.direction === 'A' && this.torielGate && this.plot < 25)
+      && !(entry.direction === 'A' && this.dataSource.name === 'room_water_trashzone2' && this.plot <= 115)
       && !(entry.direction === 'A' && this.ruinsTutorial && !this.ruinsTutorial.gateOpen)
       && x + sprite.MarginRight >= entry.left
       && x + sprite.MarginLeft <= entry.right
