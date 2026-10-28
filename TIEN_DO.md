@@ -1227,3 +1227,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Đường nhìn về lâu đài
 
 Đã nối hành lang dọc ↔ `room_water_waterfall3`, chuyển bóng nhân vật/Kid, Kid chạy trước rồi đợi theo cờ 91, nền lâu đài thị sai và chuyển lớp mưa. `remake-waterfall-castle.mjs` kiểm cửa hai chiều, bóng, cờ, nhánh plot và Reunited; hồi quy hành lang dọc, check/build qua. Sao nền, hiệu ứng phòng và cửa sang phòng tiếp chưa đầy đủ; quỹ đạo/timing và toàn tuyến thực cần đối chiếu. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
+
+Đã thêm 70 sao ba nhóm kích thước, độ sáng, animation và thị sai; kiểm số lượng/độ sáng và hồi quy phòng, check/build qua. Cần đối chiếu hình/timing sao, các hiệu ứng còn lại và cửa tiếp.

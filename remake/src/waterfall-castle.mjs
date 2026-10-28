@@ -14,6 +14,12 @@ export class WaterfallCastle {
     }
     this.background = world.children.getAll().find(e => e.texture?.key === 'bg_waterfall_castle');
     this.ground = world.add.rectangle(140,195,world.dataSource.room.Width-290,46,0x000000).setOrigin(0).setDepth(-100000);
+    this.stars = [];
+    for (const [count, min, range] of [[10,.9,.3],[20,.5,.4],[40,.4,.3]]) for (let i=0;i<count;i++) {
+      const size=min+Math.random()*range, home=Math.round(Math.random()*world.dataSource.room.Width/6)*6;
+      const image=world.add.image(home,-13+Math.random()*5+30/size,'spr_twinklestar:0').setOrigin(0).setScale(size).setAlpha(size/2+.2).setDepth(-900000);
+      this.stars.push({home,size,frame:Math.random()*10,image});
+    }
     const object = world.roomObjects.find(e => e.item.ObjectName === 'obj_mkid_shadow');
     this.kid = object?.image;
     if (this.kid && world.plot > 112) { this.kid.destroy(); this.kid = null; }
@@ -27,10 +33,14 @@ export class WaterfallCastle {
   update(delta) {
     this.elapsed=Math.min(200,this.elapsed+delta);
     while(this.elapsed>=1000/30){this.elapsed-=1000/30;this.step();}
-    if(this.background){const c=this.world.cameras.main,scroll=Math.max(0,Math.min(this.world.dataSource.room.Width-320,c.scrollX));this.background.x=200+Math.round(scroll*.92);}
+    const c=this.world.cameras.main,scroll=Math.max(0,Math.min(this.world.dataSource.room.Width-320,c.scrollX));
+    if(this.background)this.background.x=200+Math.round(scroll*.92);
+    for(const star of this.stars){while(star.home<scroll-20)star.home+=350;while(star.home>scroll+340)star.home-=350;star.image.x=star.home+Math.round(scroll*(.9-star.size/5));}
   }
   step() {
-    const w=this.world; this.frames++; updateWaterfallRain(w,true); if(!this.kid)return;
+    const w=this.world; this.frames++; updateWaterfallRain(w,true);
+    const count=w.dataSource.sprites.get('spr_twinklestar').TextureCount;for(const star of this.stars){star.frame=(star.frame+.25)%count;star.image.setTexture(`spr_twinklestar:${Math.floor(star.frame)}`);}
+    if(!this.kid)return;
     const p=w.player;let moving=false;
     if(this.stage==='following'){
       const distance=p.x-this.kid.x;
@@ -42,5 +52,5 @@ export class WaterfallCastle {
     } else if(this.stage==='watching'&&--this.timer<=0){this.stage='following';this.speedup=true;}
     const sprite=w.dataSource.sprites.get(this.sprite);this.kid.setTexture(`${this.sprite}:${moving?Math.floor(this.frames*.25)%sprite.TextureCount:0}`).setDepth(p.y+30);
   }
-  destroy(){this.ground.destroy();}
+  destroy(){this.ground.destroy();for(const star of this.stars)star.image.destroy();}
 }
