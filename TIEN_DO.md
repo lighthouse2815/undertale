@@ -588,7 +588,7 @@ Push Snowed Inn f24f7e6 và cửa cầu→town f7fe082 đã thành công.
 
 ### Bốn lượt xương đầu khi tim xanh
 
-Bổ sung bốn bố trí `fighto=-1,0,1,2` vào thành phần xương: đặt tim xanh với vận tốc -1 và trạng thái đang nhảy, lần lượt 200/300/220/240 frame; chuyển chính xác vị trí, tốc độ, hướng trên/dưới và xương xanh của từng nhóm từ `obj_papyrusboss`. Đây là nhánh thông thường; hiệu ứng `xfight` khi đã gây nhiều sát thương và các lượt sau vẫn cần chuyển khi hoàn thiện trận.
+Bổ sung bốn bố trí `fighto=-1,0,1,2` vào thành phần xương: đặt tim xanh với vận tốc -1 và trạng thái đang nhảy, lần lượt 200/300/220/240 frame; chuyển chính xác vị trí, tốc độ, hướng trên/dưới và xương xanh của từng nhóm từ `obj_papyrusboss`. Các lượt sau và nhánh `xfight` được bổ sung tiếp ở các mục bên dưới.
 
 `tests/remake-papyrus-bones.mjs` kiểm từng nhóm xương, thời lượng và trạng thái tim, sau đó kiểm lại va chạm/bị bắt/dọn và tim xanh trên scene thật; chuỗi `test-papyrus-turns-v3.log` xanh. Check/build đã qua. Các nhóm chưa được nối vào boss hay đường chơi, full snapshot `15dd854` vẫn đang chạy và không bao gồm thay đổi này.
 
@@ -601,3 +601,9 @@ Chuỗi `test-papyrus-turns-345-v2.log` kiểm bố trí từng xương, thời 
 ### Sửa va chạm thân xương Papyrus
 
 Đối chiếu lại `collision_rectangle(..., obj_heart, 0, 1)` trong Draw gốc: đối số `prec=0` dùng hộp bao tim 16×16, không dùng mask pixel. Đã sửa `PapyrusBones.touches` để phần góc trong suốt của tim cũng có thể va vào thân xương; vẫn giữ điều kiện khoảng cách X và xét xương xanh khi tim di chuyển. Chuỗi `test-papyrus-hitbox-v1.log` qua, có trường hợp góc tim và các hồi quy xương/tim xanh/GreaterDog; check/build qua. Trận Papyrus, cảnh bắt và tuyến đi vẫn chưa được nối.
+
+### Lượt xương 6–8 và nhánh tăng tốc
+
+Bổ sung `fighto=6,7,8` với thời lượng 200/150/230 frame, các dãy hai phía và cặp xương trên/dưới. Bổ sung tăng tốc khi `xfight>0` ở lượt 1/2/7, tốc độ lượt 7 thông thường và lượt 8. Đã kiểm tra `vm.c` của runtime GML trong dự án: phép gán qua tên object áp dụng cho toàn bộ instance của object và object con, trong khi đọc chỉ chọn instance đầu; vì vậy cập nhật tốc độ mọi xương, vẫn giữ hướng.
+
+Chuỗi `test-papyrus-turns-678-v1.log` kiểm bố trí/timer, tốc độ hai nhánh và hồi quy xương/tim xanh/GreaterDog; check/build qua. Lượt 9 trở đi, cảnh chuyển tim xanh, bắt và boss chưa hoàn thiện. Full snapshot `15dd854` vẫn đang chạy, không bao gồm các lượt xương mới.
