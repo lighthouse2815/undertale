@@ -909,3 +909,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Nhóm Woshua và Aaron
 
 Đã ghép nhóm 54: chọn từng mục tiêu, ACT của cả hai, Joke làm Aaron có thể tha, Flex tăng ATK/rời trận, hai đợt đạn cùng lúc, tính thưởng và dân số từng quái. `test-waterfall-group-v2.log` kiểm Joke, đạn đồng thời, tha Aaron rồi giết Woshua, ba lần Flex và Flee; check/build qua. Nhóm mới mở trực tiếp để kiểm thử, chưa nối encounter; còn cần đối chiếu hoạt hình, thoại, nhịp và va chạm với gốc. Push sửa khung Aaron `7557021` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm scene này.
+
+### Encounter phòng cầu Waterfall
+
+Đã nối đếm bước, ngưỡng theo dân số, ba trận đầu Aaron/Woshua/hai Moldsmal, chọn ngẫu nhiên bốn nhóm, cờ 357/223, lần cạn dân số và hiệu ứng bắt đầu trận cho phòng 5. `test-waterfall-encounter-v3.log` kiểm bước bằng bàn phím vào Aaron và hai trận tiếp, các ngưỡng/ngẫu nhiên/cạn dân số; hồi quy phòng cầu, điện thoại, quiche, check/build qua. Chưa nối cửa vào phòng, cần kiểm tuyến hết quái và phối hợp puzzle/encounter qua chơi thực tế; encounter phòng 6 chưa được nối. Push nhóm Woshua–Aaron `bf4f103` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm thay đổi này.
