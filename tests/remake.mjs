@@ -149,6 +149,7 @@ import { testWaterfallCrystalRoom } from './remake-waterfall-crystal-room.mjs';
 import { testWaterfallCrystalPath } from './remake-waterfall-crystal-path.mjs';
 import { testWaterfallMystery } from './remake-waterfall-mystery.mjs';
 import { testWaterfallStarPath } from './remake-waterfall-star-path.mjs';
+import { testWaterfallSecondPhone } from './remake-waterfall-second-phone.mjs';
 import { testWaterfallWishesPath } from './remake-waterfall-wishes-path.mjs';
 import { testWaterfallWishesRoom } from './remake-waterfall-wishes-room.mjs';
 import { testWaterfallFriendlyNap } from './remake-waterfall-friendly-nap.mjs';
@@ -640,6 +641,7 @@ try {
   await testWaterfallCrystalPath(page);
   await testWaterfallMystery(page);
   await testWaterfallStarPath(page);
+  await testWaterfallSecondPhone(page);
   await testWaterfallWishesPath(page);
   await testWaterfallWishesRoom(page);
   await testWaterfallFriendlyNap(page);

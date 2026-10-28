@@ -193,7 +193,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
-  if (name === 'room_water12') for (const key of ['spr_exc', 'spr_exc_f']) spriteNames.add(key);
+  if (name === 'room_water12') for (const key of ['spr_exc', 'spr_exc_f', 'spr_floweysink', 'spr_face_papyrus']) spriteNames.add(key);
   if (name === 'room_water_friendlyhub') for (const key of ['spr_clamgirl_b', 'spr_napstablook_u', 'spr_napstablook_d']) spriteNames.add(key);
   if (name === 'room_water_bird') for (const key of ['spr_smallbird_fly', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water11') for (const key of ['spr_tonsildude', 'spr_face_sans', 'spr_heartsmall', 'spr_starpattern', 'spr_starcheckeredit2', 'spr_maincharad_pranked', 'spr_maincharal_pranked']) spriteNames.add(key);
@@ -241,7 +241,7 @@ export async function loadRoom(scene, name) {
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
-  if (name === 'room_water11' || name === 'room_water5' || name === 'room_water4' || name === 'room_water2' || name === 'room_tundra_grillby' || fogRoom || garage || forest || checkpoint || ice || maze || niceCream || crossword || spaghetti || xoxo || colorTiles || town || dangerBridge || gyftrotRoom) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
+  if (name === 'room_water12' || name === 'room_water11' || name === 'room_water5' || name === 'room_water4' || name === 'room_water2' || name === 'room_tundra_grillby' || fogRoom || garage || forest || checkpoint || ice || maze || niceCream || crossword || spaghetti || xoxo || colorTiles || town || dangerBridge || gyftrotRoom) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
     forestFonts.set(key, await json(`fonts/${key}/${key}.json`)); images.set(key, `fonts/${key}/${key}.png`);
   }
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
@@ -274,7 +274,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
-    ...(name === 'room_water12' ? ['snd_b', 'mus_waterfall', 'mus_toomuch'] : []),
+    ...(name === 'room_water12' ? ['snd_b', 'snd_phone', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water_friendlyhub' ? ['mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water_bird' ? ['mus_birdsong', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water11' ? ['snd_squeak', 'mus_waterquiet', 'mus_toomuch'] : []),

@@ -1,3 +1,4 @@
+import { waterfallPapyrusSecondCall } from './waterfall-papyrus-second-call.mjs';
 import { touchesObject } from './npc.mjs';
 import { waterfallPapyrusCall } from './waterfall-papyrus-call.mjs';
 
@@ -5,7 +6,8 @@ import { waterfallPapyrusCall } from './waterfall-papyrus-call.mjs';
 export class WaterfallPapyrusPhone {
   constructor(world) {
     this.world = world; this.elapsed = 0; this.frames = 0; this.trigger = world.dataSource.room.GameObjects.find((e) => e.ObjectName === 'obj_phonecall_room');
-    this.done = world.plot > 106;
+    this.second = world.dataSource.name === 'room_water12';
+    this.done = this.second ? (world.flags[354] ?? 0) > 0 : world.plot > 106;
   }
   show(pages, next) {
     const w = this.world;
@@ -17,9 +19,14 @@ export class WaterfallPapyrusPhone {
   checkTrigger() {
     const w = this.world;
     if (this.done || w.dialogue || !touchesObject(w, w.player, this.trigger, 1, 5)) return false;
-    this.done = true; w.plot = 107; this.flowey = w.add.image(40,340,'spr_floweysink:0').setOrigin(0).setDepth(365); this.floweyFrame = 0;
+    this.done = true;
+    if (this.second) w.flags[354] = 1; else w.plot = 107;
+    const [x,y] = this.second ? [380,40] : [40,340];
+    this.flowey = w.add.image(x,y,'spr_floweysink:0').setOrigin(0).setDepth(y+25); this.floweyFrame = 0;
     if (w.flags[67] === 1) return false;
-    w.flags[75] = w.armor; w.sound.play('snd_phone'); w.release();
+    w.sound.play('snd_phone'); w.release();
+    if (this.second) { this.show(waterfallPapyrusSecondCall(w.flags), () => w.release()); return true; }
+    w.flags[75] = w.armor;
     this.show(waterfallPapyrusCall(w.armor), () => w.showChoice('* (What will you say?)', ['Yes','No'], (choice) => {
       w.flags[76] = choice; this.show(waterfallPapyrusCall(w.armor, choice), () => w.release());
     })); return true;

@@ -1045,3 +1045,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Cửa Waterfall 12
 
 Đã nối phòng sao ↔ phòng 12 và lối một chiều 12 → phòng chim theo marker gốc; giữ nhạc khi đi qua cửa thường và đổi nhạc qua cửa fade. `remake-waterfall-wishes-path.mjs` kiểm các lối bằng phím, marker và nhánh nhạc thường/kết thúc; hồi quy cửa khu yên tĩnh, check/build qua. Các cửa còn lại, cuộc gọi và hiệu ứng thác sáng phòng 12 chưa chuyển. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước các phần này.
+
+### Cuộc gọi Papyrus ở Waterfall 12
+
+Đã chuyển trigger/cờ 354, Flowey và bốn nhánh cuộc gọi theo câu trả lời, trang bị đã báo và trang bị lúc bị Undyne phát hiện. `remake-waterfall-second-phone.mjs` kiểm bốn nhánh, kích hoạt bằng phím, không lặp và Papyrus vắng mặt; hồi quy cuộc gọi trước/phòng 12, check/build qua. Màu chữ và biểu cảm từng trang chưa đối chiếu đầy đủ; thác sáng và các cửa khác còn thiếu. Bộ tổng `test-remake-fe0840e.log` vẫn chạy từ trước phần này.
