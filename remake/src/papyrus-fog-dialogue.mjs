@@ -15,7 +15,10 @@ export function papyrusFogOffer(choice) {
 }
 
 export function papyrusFogAfter(flags, murder) {
-  return { intro: data.afterIntro, king: murder ? data.afterKingMurder : data.afterKing, friends: flags[66] === 1 ? data.afterDate : data.afterFriends };
+  return { intro: murder ? data.afterIntroMurder : data.afterIntro, choice: !murder,
+    answer: (choice) => [...(choice === 0 ? data.afterChoiceYes : data.afterChoiceNo),
+      ...(flags[66] === 1 ? data.afterChoiceDate : data.afterChoiceFriends), ...data.afterDirections],
+    king: murder ? data.afterKingMurder : data.afterKing, friends: flags[66] === 1 ? data.afterDate : data.afterFriends };
 }
 
 export const papyrusFogMurderSpeech = [data.murder1, data.murder2, data.murder3];

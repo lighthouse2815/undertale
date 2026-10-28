@@ -530,7 +530,27 @@
   ],
   "afterIntro": [
     {
-      "text": "I WAS NEVER ONE\n  TO BEPIS.",
+      "text": "NYOO HOO HOO...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I CAN'T EVEN\nSTOP SOMEONE AS\nWEAK AS YOU...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "UNDYNE'S GOING TO\nBE DISAPPOINTED\nIN ME.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL NEVER JOIN THE\nROYAL GUARD...\nAND...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "MY FRIEND QUANTITY\nWILL REMAIN\nSTAGNANT!",
       "portrait": "spr_face_papyrus",
       "font": "fnt_papyrus"
     }
@@ -689,6 +709,223 @@
     },
     {
       "text": "NYEH HEH HEH HEH\nHEH HEH HEH!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterIntroMurder": [
+    {
+      "text": "WOWIE!!\nYOU DID IT!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU DIDN'T DO A\nVIOLENCE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "TO BE HONEST,\nI WAS A LITTLE\nAFRAID...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BUT YOU'RE ALREADY\nBECOMING A GREAT\nPERSON!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'M SO PROUD I\nCOULD CRY!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... WAIT, WASN'T I\nSUPPOSED TO\nCAPTURE YOU...?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WELL, FORGET IT!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I JUST WANT YOU\nTO BE THE BEST\nPERSON YOU CAN BE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "SO LET'S LET\nBYBONES BE\nBYBONES.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I'LL EVEN TELL YOU\nHOW TO LEAVE THE\nUNDERGROUND!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "JUST KEEP GOING\nEAST!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "EVENTUALLY YOU'LL\nREACH THE KING'S\nCASTLE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEN YOU CAN\nLEAVE!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterChoiceYes": [
+    {
+      "text": "REALLY!?\nYOU WANT TO BE\nFRIENDS, WITH ME???",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WELL THEN...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I GUESS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I GUESS\nI CAN MAKE AN\nALLOWANCE FOR YOU!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterChoiceNo": [
+    {
+      "text": "HUH?\nWHY WOULD YOU...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "BERATE YOURSELF\nSO LOUDLY???",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "IS IT BECAUSE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU DON'T THINK\nYOU'RE GOOD ENOUGH\nTO BE MY FRIEND?",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "NO!!!\nYOU'RE GREAT!!!\nI'LL BE YOUR FRIEND!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterChoiceDate": [
+    {
+      "text": "WOWIE!!\nWE HAVEN'T EVEN HAD\nOUR FIRST DATE...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND I'VE ALREADY\nMANAGED TO HIT\nTHE FRIEND ZONE!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "WHO KNEW THAT\nALL I NEEDED TO\nMAKE PALS...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterChoiceFriends": [
+    {
+      "text": "WOW!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I HAVE FRIENDS!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND WHO KNEW THAT\nALL I NEEDED TO\nMAKE THEM...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    }
+  ],
+  "afterDirections": [
+    {
+      "text": "WAS TO GIVE PEOPLE\nAWFUL PUZZLES AND\nTHEN FIGHT THEM??",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "YOU TAUGHT ME A\nLOT, HUMAN.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "I HEREBY GRANT\nYOU PERMISSION\nTO PASS THROUGH!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "AND I'LL GIVE\nYOU DIRECTIONS\nTO THE SURFACE.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "CONTINUE FORWARD\nUNTIL YOU REACH THE\nEND OF THE CAVERN.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEN... WHEN YOU\nREACH THE CAPITAL,\nCROSS THE BARRIER.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S THE MAGICAL\nSEAL TRAPPING US\nALL UNDERGROUND.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "ANYTHING CAN ENTER\nTHROUGH IT, BUT\nNOTHING CAN EXIT...",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... EXCEPT SOMEONE\nWITH A POWERFUL\nSOUL.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "... LIKE YOU!!!",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THAT'S WHY THE\nKING WANTS TO\nACQUIRE A HUMAN.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "HE WANTS TO OPEN\nTHE BARRIER WITH\nSOUL POWER.",
+      "portrait": "spr_face_papyrus",
+      "font": "fnt_papyrus"
+    },
+    {
+      "text": "THEN US MONSTERS\nCAN RETURN TO\nTHE SURFACE!",
       "portrait": "spr_face_papyrus",
       "font": "fnt_papyrus"
     }

@@ -715,3 +715,7 @@ Các đoạn thoại của đòn xanh, chó và cảnh bắt được tạo khi 
 ### Lời mở đầu trận trên tuyến diệt chủng
 
 Đối chiếu battlegroup 27: khi murderlv>=7, dòng đầu phải là “Papyrus is sparing you”, không phải dòng chặn đường thông thường. Đã sửa cả dòng đang hiển thị lẫn trạng thái menu; `test-papyrus-murder-intro-v1.log` kiểm điều kiện cùng chuỗi trận và hồi quy, check/build qua. Cảnh phòng sương và toàn bộ game vẫn chưa hoàn thành; full snapshot `eba8db3` đang chạy. Push `bdbc54b` đang chờ GitHub.
+
+### Bổ sung lời sau trận Papyrus
+
+Đối chiếu `SCR_TEXT` 540–541: thay câu dự phòng `obj_papyrus8_386` bằng năm trang mở đầu, 13 trang nhánh diệt chủng, hai câu trả lời kết bạn, nhánh hẹn hò và chỉ đường. Bộ chọn dữ liệu cung cấp các nhánh này; cảnh thực tế, lựa chọn và đường vào trận vẫn chưa được nối. Kiểm thử riêng xác nhận nội dung và điều kiện các nhánh; check/build remake chạy cùng thay đổi. Full snapshot `eba8db3` vẫn đang chạy và chưa bao gồm thay đổi này. Push `a84e4b0` thành công.

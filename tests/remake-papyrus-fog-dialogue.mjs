@@ -10,6 +10,10 @@ export async function testPapyrusFogDialogue() {
   assert.deepEqual([papyrusFogOffer(0).fight,papyrusFogOffer(1).fight],[true,false]);
   assert.match(papyrusFogOffer(1).pages.at(-1).text,/FAILURE/);
   assert.match(papyrusFogAfter({},false).king[2].text,/CASTLE/); assert.match(papyrusFogAfter({},true).king[2].text,/KING/);
+  assert.match(papyrusFogAfter({},false).intro[0].text,/NYOO/); assert.match(papyrusFogAfter({},true).intro[0].text,/WOWIE/);
+  assert.equal(papyrusFogAfter({},false).choice,true); assert.equal(papyrusFogAfter({},true).choice,false);
+  assert.match(papyrusFogAfter({},false).answer(0)[0].text,/REALLY/); assert.match(papyrusFogAfter({},false).answer(1)[0].text,/HUH/);
+  assert.match(papyrusFogAfter({66:1},false).answer(0)[4].text,/DATE/); assert.match(papyrusFogAfter({},false).answer(0).at(-1).text,/SURFACE/);
   assert.match(papyrusFogAfter({66:1},false).friends.at(-2).text,/DATE/); assert.match(papyrusFogAfter({},false).friends.at(-2).text,/HANG OUT/);
   console.log('✓ Lời Papyrus phòng sương: ký ức, ba lần bắt/lựa chọn, tuyến giết và lời sau trận/date');
 }
