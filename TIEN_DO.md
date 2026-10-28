@@ -633,3 +633,9 @@ Chuỗi `test-papyrus-turn-14-v2.log` kiểm biên 19/20/39/40, bố trí, timer
 Đã chuyển phần điều khiển `obj_blueattackgen` vào `papyrus-blue-attack.mjs`: sinh xương xanh ngẫu nhiên, tăng timer, chờ, giảm âm và dừng nhạc cũ, sau 100 frame đổi tim xanh với vận tốc -2 và tiếng chuông; chờ tim xuống thấp, sinh xương trắng từ phía đối diện, đợi hết xương/bất tử rồi gọi phần hiển thị lời Papyrus và đợi xác nhận kết thúc lời. Hàm callback cho scene boss thực tế sẽ chịu trách nhiệm hiển thị lời và nối nhạc `mus_papyrusboss`; phần này chưa được nối, không coi trận đã hoàn chỉnh. Các alarm dùng thứ tự tick và chuyển số nguyên như runtime hiện có; không tự bỏ qua trận/cảnh.
 
 `tests/remake-papyrus-blue-attack.mjs` kiểm trên scene trận: sinh xương, timer, fade, chuông/đổi tim, cả hai phía, chờ bất tử và kết thúc thoại. Chuỗi `test-papyrus-blue-chain-v1.log` qua cùng hồi quy xương/tim đỏ/tim xanh/GreaterDog; check/build qua. Full snapshot `4261ced` đang chạy nhưng không bao gồm trình tự mới. Push `4261ced` đã thành công; đòn đặc biệt, cảnh bắt, boss và phòng sương vẫn cần hoàn tất.
+
+### Phòng giam Papyrus
+
+Đã chuyển `room_tundra_garage`: bát thức ăn đổi lời theo cờ 67, giường chó và đồ gặm, bức thư Papyrus với các nhánh 0/-1/-2/-3 và lời kết thúc, font Papyrus; bốn vật thể có va chạm và tương tác. Hai cửa `obj_door_v` đưa người chơi sang marker v của Town (2405,125), giữ cờ và dùng fade 14 frame theo source. Phòng vẫn chỉ mở trực tiếp để kiểm thử: chưa nối kết quả bị bắt qua `obj_papyrus8`, chưa có trận hoàn chỉnh.
+
+`tests/remake-papyrus-garage.mjs` kiểm lời các lần bắt/kết thúc, cả bốn vật thể/collider, cửa/marker và dọn khi chuyển phòng. Chuỗi `test-papyrus-garage-chain-v1.log` qua cùng GreaterDog/tim/xương/chuyển xanh; check/build qua. Full snapshot `4261ced` vẫn đang chạy, không bao gồm phần này hay trình tự chuyển xanh. Push `583468b` đang chờ GitHub phản hồi.
