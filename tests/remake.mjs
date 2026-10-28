@@ -174,6 +174,7 @@ import { testWaterfallDogRoom } from './remake-waterfall-dog-room.mjs';
 import { testMadDummyFirstWave } from './remake-mad-dummy-first-wave.mjs';
 import { testMadDummyShot } from './remake-mad-dummy-shot.mjs';
 import { testMadDummyProjectile } from './remake-mad-dummy-projectile.mjs';
+import { testMadDummyHelpersSequence } from './remake-mad-dummy-helpers-sequence.mjs';
 import { testMadDummyState } from './remake-mad-dummy-state.mjs';
 import { testMadDummyAct } from './remake-mad-dummy-act.mjs';
 import { testMadDummyDialogue } from './remake-mad-dummy-dialogue.mjs';
@@ -698,6 +699,7 @@ try {
   await testMadDummyFirstWave(page);
   testMadDummyShot();
   testMadDummyProjectile();
+  testMadDummyHelpersSequence();
   testMadDummyState();
   testMadDummyAct();
   testMadDummyDialogue();

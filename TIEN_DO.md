@@ -1309,3 +1309,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối bộ đếm 30 frame sau đạn đầu trúng Dummy và giữ lượt đến khi hoàn thành thoại chuyển tiếp; kiểm bằng đạn/đích trong trình duyệt, check/build qua. Callback chưa nối vào giao diện trận, còn thiếu hiển thị thoại và xử lý tạm dừng thực tế.
 
 Đã nối ngưỡng HP giai đoạn 5 với callback chuyển cảnh, cộng 80 frame và hỗ trợ sinh trợ thủ trong lượt hiện tại; giữ lượt qua các mốc 6–13. Kiểm đạn trúng, HP, thời gian và sinh 32 trợ thủ trong trình duyệt, check/build qua. Cảnh/thoại và trận thực vẫn chưa nối; thời điểm cụ thể và animation cần đối chiếu.
+
+Đã thêm chuỗi gọi, sa thải trợ thủ và giới thiệu robot cho mốc 6–14, nối với bộ đạn qua callback thoại. Kiểm nhịp/nhánh và tích hợp bộ đạn trong trình duyệt, check/build qua. Chưa gọi chuỗi từ giao diện trận; chuyển động Dummy và kiểu hiển thị thoại gốc vẫn cần chuyển.
