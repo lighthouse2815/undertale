@@ -1,11 +1,16 @@
 import { createCollider } from './movement.mjs';
-import { inInteractionRange } from './npc.mjs';
+import { inInteractionRange, touchesObject } from './npc.mjs';
 import { murderLevel } from './route.mjs';
 import { startWaterfallQuietMusic } from './waterfall-music.mjs';
 
 export class WaterfallFriendlyHub {
   constructor(world) {
-    this.world = world; this.talked = 0;
+    this.world = world; this.talked = 0; this.elapsed = 0; this.stage = 'done';
+    world.flags[17] = 0; if (world.flags[389] === 4) world.flags[389] = 5;
+    if (world.plot <= 116) {
+      this.trigger = world.dataSource.room.GameObjects.find(e => e.ObjectName === 'obj_napstablookfriendtrigger');
+      this.nap = world.add.image(300, 60, 'spr_napstablook_u:0').setOrigin(0).setDepth(93); this.stage = 'waiting';
+    }
     this.sign = world.roomObjects.find(e => e.item.ObjectName === 'obj_sign_room');
     this.clam = world.roomObjects.find(e => e.item.ObjectName === 'obj_clamgirl');
     const fun = world.flags[5] ?? 0;
@@ -14,6 +19,28 @@ export class WaterfallFriendlyHub {
       e.image.setDepth(e.item.Y + e.sprite.MarginBottom - e.sprite.OriginY); world.colliders.push(createCollider(world.dataSource, e.item));
     }
     startWaterfallQuietMusic(world);
+  }
+  checkTrigger() {
+    const w = this.world;
+    if (this.stage !== 'waiting' || w.dialogue || !touchesObject(w, w.player, this.trigger, 5, 1)) return false;
+    w.release(); this.stage = 'turn'; this.timer = 15; return true;
+  }
+  update(delta) {
+    if (['waiting', 'done'].includes(this.stage)) return false;
+    this.elapsed = Math.min(200, this.elapsed + delta);
+    while (this.elapsed >= 1000 / 30) { this.elapsed -= 1000 / 30; this.step(); }
+    return true;
+  }
+  step() {
+    if (this.stage === 'talking' || ['waiting', 'done'].includes(this.stage)) return;
+    if (this.stage === 'leave') { this.nap.y -= 3; this.nap.setDepth(this.nap.y + 33); }
+    if (--this.timer > 0) return;
+    if (this.stage === 'turn') { this.nap.setTexture('spr_napstablook_d:0'); this.stage = 'beforeTalk'; this.timer = 20; }
+    else if (this.stage === 'beforeTalk') {
+      this.stage = 'talking'; const w = this.world;
+      const lines = w.flags[36] > 0 ? ['* hey...\n* my house is up here...', '* in case you want to see...', '* or in case...', "* you don't..."] : ['* oh hey... you...\n* followed me...', '* my house is up here...', "* so you probably don't want to\n  come this way...", '* hope that helps...'];
+      w.showDialogue(lines, { onClose: () => { this.stage = 'leave'; this.timer = 30; } });
+    } else if (this.stage === 'leave') { this.world.plot = 117; this.stage = 'done'; this.world.release(); }
   }
   interact() {
     const w = this.world;

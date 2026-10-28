@@ -1033,3 +1033,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Cửa khu yên tĩnh
 
 Đã nối hai chiều phòng chim ↔ Quiet Area, fade/khởi động lại nhạc thường và giữ Reunited. `remake-waterfall-friendly-path.mjs` kiểm hai chiều bằng phím, marker và hai nhánh nhạc; hồi quy phòng chim/Quiet Area, check/build qua. Các cửa khác và cảnh trigger Quiet Area còn thiếu; bộ tổng `test-remake-fe0840e.log` chạy từ trước các phần này.
+
+### Cảnh Napstablook khu yên tĩnh
+
+Đã chuyển trigger, hai nhánh thoại, Napstablook quay/rời đi, plot 117 và cờ 17/389. `remake-waterfall-friendly-nap.mjs` kích hoạt bằng phím và kiểm cả hai nhánh, trạng thái khi vào lại; hồi quy Quiet Area/cửa, check/build qua. Chưa đối chiếu chuyển động nổi/timing với gốc; trigger trận đặc biệt và các cửa khác chưa chuyển. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.

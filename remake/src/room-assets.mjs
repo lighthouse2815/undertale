@@ -193,7 +193,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
-  if (name === 'room_water_friendlyhub') spriteNames.add('spr_clamgirl_b');
+  if (name === 'room_water_friendlyhub') for (const key of ['spr_clamgirl_b', 'spr_napstablook_u', 'spr_napstablook_d']) spriteNames.add(key);
   if (name === 'room_water_bird') for (const key of ['spr_smallbird_fly', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water11') for (const key of ['spr_tonsildude', 'spr_face_sans', 'spr_heartsmall', 'spr_starpattern', 'spr_starcheckeredit2', 'spr_maincharad_pranked', 'spr_maincharal_pranked']) spriteNames.add(key);
   if (name === 'room_water_savepoint1') for (const key of ['spr_crystaltable', 'spr_heartsmall']) spriteNames.add(key);

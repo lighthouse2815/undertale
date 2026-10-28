@@ -149,6 +149,7 @@ import { testWaterfallCrystalRoom } from './remake-waterfall-crystal-room.mjs';
 import { testWaterfallCrystalPath } from './remake-waterfall-crystal-path.mjs';
 import { testWaterfallMystery } from './remake-waterfall-mystery.mjs';
 import { testWaterfallStarPath } from './remake-waterfall-star-path.mjs';
+import { testWaterfallFriendlyNap } from './remake-waterfall-friendly-nap.mjs';
 import { testWaterfallFriendlyPath } from './remake-waterfall-friendly-path.mjs';
 import { testWaterfallFriendlyHub } from './remake-waterfall-friendly-hub.mjs';
 import { testWaterfallBird } from './remake-waterfall-bird.mjs';
@@ -637,6 +638,7 @@ try {
   await testWaterfallCrystalPath(page);
   await testWaterfallMystery(page);
   await testWaterfallStarPath(page);
+  await testWaterfallFriendlyNap(page);
   await testWaterfallFriendlyPath(page);
   await testWaterfallFriendlyHub(page);
   await testWaterfallBird(page);

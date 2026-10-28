@@ -619,6 +619,7 @@ class World extends Scene {
     const waterfallBridgeLocked = this.waterfallBridgeRoom?.update(delta);
     this.waterfallMystery?.update(delta);
     const wishingLocked = this.waterfallWishingRoom?.update(delta);
+    const friendlyLocked = this.waterfallFriendlyHub?.update(delta);
     const birdLocked = this.waterfallBird?.update(delta);
     const starViewerLocked = this.waterfallStarRoom?.update(delta);
     const raftLocked = this.waterfallRaft?.update(delta);
@@ -647,7 +648,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || raftLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || raftLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -691,6 +692,7 @@ class World extends Scene {
       if (this.snowdinDangerBridge?.checkTrigger()) return;
       if (this.papyrusFogEncounter?.checkTrigger()) return;
       this.waterfallGrass?.syncPlayer();
+      if (this.waterfallFriendlyHub?.checkTrigger()) return;
       if (this.waterfallUndyne?.checkTrigger() || this.waterfallUndyne?.checkWalk(previous) || this.waterfallUndyneChase?.checkTrigger()) return;
       if (this.waterfallPapyrusPhone?.checkTrigger()) return;
       if (this.greaterDogRoom?.checkTrigger()) return;
