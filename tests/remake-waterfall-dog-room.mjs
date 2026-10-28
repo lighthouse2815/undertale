@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+export async function testWaterfallDogRoom(page){
+  const open=(flags={},items=[])=>page.evaluate(async({flags,items})=>{const w=__remake.scene;w.flags=flags;w.inventory=items;w.plot=111;await w.openRoom('room_water_dogroom');},{flags,items});
+  const talk=()=>page.evaluate(()=>{const w=__remake.scene,e=w.waterfallDogRoom.pendant;w.player.setPosition(e.item.X,e.item.Y+e.sprite.MarginBottom-18);w.player.facing='u';if(!w.waterfallDogRoom.interact())throw Error('Không tương tác hiện vật');});
+  await open();await page.waitForFunction(()=>__remake.scene.flags[107]===2);assert.deepEqual(await page.evaluate(()=>__remake.scene.inventory),[27]);
+  await talk();await page.evaluate(()=>{const w=__remake.scene;w.advanceDialogue();w.dialogue.choice.readyAt=0;w.advanceDialogue();});assert.match(await page.evaluate(()=>__remake.scene.dialogue.lines[0]),/too many/);await page.evaluate(()=>__remake.scene.advanceDialogue());
+  await page.evaluate(()=>{__remake.scene.menuSelection=0;});await page.keyboard.press('c');await page.waitForFunction(()=>__remake.phase==='menu');await page.keyboard.press('z');await page.waitForFunction(()=>__remake.scene.mode==='items');await page.keyboard.press('z');await page.waitForFunction(()=>__remake.scene.mode==='action');await page.evaluate(()=>{const s=__remake.scene;s.key('KeyZ');});await page.waitForFunction(()=>__remake.phase==='running'&&!!__remake.scene.dialogue);assert.match(await page.evaluate(()=>__remake.scene.dialogue.lines[0]),/deployed/);await page.waitForFunction(()=>!__remake.game.scene.isActive('FieldMenu'));await page.keyboard.press('z');
+  await page.waitForFunction(()=>__remake.scene.waterfallDogRoom.stage==='talk',null,{timeout:15000});assert.match(await page.evaluate(()=>__remake.scene.dialogue.lines[0]),/absorbs/);await page.keyboard.press('z');await page.waitForFunction(()=>__remake.scene.waterfallDogRoom.stage==='idle'&&__remake.scene.flags[107]===1,null,{timeout:15000});
+  assert.deepEqual(await page.evaluate(()=>[__remake.scene.inventory.length,__remake.scene.inventory[0]>=29&&__remake.scene.inventory[0]<=33,__remake.scene.waterfallDogRoom.pendant.image.texture.key]),[1,true,'spr_magicpendant:1']);
+  await open({7:1});assert.equal(await page.evaluate(()=>__remake.scene.flags[107]),1);
+  await open({},Array(8).fill(1));await talk();await page.evaluate(()=>{const w=__remake.scene;w.advanceDialogue();w.dialogue.choice.readyAt=0;w.advanceDialogue();});assert.match(await page.evaluate(()=>__remake.scene.dialogue.lines[0]),/too much/);
+  await open();await page.waitForFunction(()=>__remake.scene.flags[107]===2);await page.evaluate(async()=>{await __remake.scene.openRoom('room_water1');});assert.deepEqual(await page.evaluate(()=>[__remake.scene.flags[107],__remake.scene.inventory.includes(27)]),[0,false]);
+  console.log('✓ Kho báu: chó trong túi, hấp thụ hiện vật, Dog Residue và các nhánh');
+}

@@ -194,6 +194,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
+  if (name === 'room_water_dogroom') for (const key of ['spr_tobdogl','spr_tobdogr','spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_piano') for (const key of ['spr_heartsmall','spr_pxquit','spr_neutralpbutton','spr_leftpbutton','spr_downpbutton','spr_rightpbutton','spr_uppbutton']) spriteNames.add(key);
   if (name === 'room_water14') spriteNames.add('spr_centeredhole');
   if (name === 'room_water_onionsan') for (const key of ['spr_onionblue','spr_oniontblue','spr_onionsan_kawaii','spr_onionsan_yhear','spr_onionsan_wistful','spr_onionsan_disappoint','spr_oniont_l','spr_oniont_r','spr_oniont_coyl','spr_oniont_coyd','spr_oniont_bye','spr_heartsmall']) spriteNames.add(key);
@@ -243,7 +244,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (name === 'room_water_piano' || name === 'room_water14' || name === 'room_water_onionsan' || name === 'room_water_nicecream' || name === 'room_water_shoe' || name === 'room_water12' || name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (name === 'room_water_dogroom' || name === 'room_water_piano' || name === 'room_water14' || name === 'room_water_onionsan' || name === 'room_water_nicecream' || name === 'room_water_shoe' || name === 'room_water12' || name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
@@ -280,6 +281,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
+    ...(name === 'room_water_dogroom' ? ['snd_squeak','snd_grab','mus_dogsong'] : []),
     ...(name === 'room_water_piano' ? ['snd_squeak','snd_bluh','mus_piano1','mus_piano2','mus_piano3','mus_piano4','mus_piano5'] : []),
     ...(name === 'room_water14' ? ['mus_ambientwater','mus_sfx_generate'] : []),
     ...(name === 'room_water_onionsan' ? ['snd_splash','snd_squeak','mus_ambientwater'] : []),

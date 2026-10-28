@@ -27,6 +27,7 @@ export function itemAction(world, index, action, text, { scene = world, health =
     world.inventory.splice(index, 1);
     return [line];
   }
+  if (id === 27) { world.inventory.splice(index,1); return [item.use]; }
   if (id >= 29 && id <= 34) {
     const hadSpace=world.inventory.length<8; world.inventory.splice(index,1);
     while(world.inventory.length<8)world.inventory.push(28+Math.floor(Math.random()*7));

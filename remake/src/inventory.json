@@ -307,6 +307,15 @@
       "info": [
         "* \"Dog Residue\" - Dog Item\n* Web spun by a dog\n  to ensnare prey."
       ]
+    },
+    "27": {
+      "name": "Annoying Dog",
+      "battleName": "Annoy Dog",
+      "seriousName": "Dog",
+      "use": "* You deployed the dog.",
+      "info": [
+        "* \"Annoying Dog\" - Dog\n* A little white dog.\n* It's fast asleep..."
+      ]
     }
   },
   "actions": [

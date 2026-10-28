@@ -134,7 +134,7 @@ export class FieldMenu extends Scene {
         const id = this.world.inventory[this.itemSelection];
         const portrait = [56, 57].includes(id) && this.world.snowdinTownUndyne?.actor && (action === 'use' || id === 56 && action === 'drop') ? 'spr_face_undyne1' : false;
         if (id === 26 && action === 'use') { this.mode = 'card'; this.cardReadyAt = this.time.now + 200; this.children.removeAll(true); this.add.image(0,0,'spr_punchcard:0').setOrigin(0); return; }
-        this.close(); this.world.showDialogue(itemAction(this.world, this.itemSelection, action, this.items), { portrait });
+        this.close(); this.world.showDialogue(itemAction(this.world, this.itemSelection, action, this.items), { portrait, onClose: id === 27 && action === 'use' ? () => this.world.waterfallDogRoom?.deploy() : undefined });
       } else if (this.mode === 'items') {
         this.mode = 'action'; this.actionSelection = 0; this.sound.play('snd_select'); this.draw();
       } else if (this.mode === 'main' && (this.selection !== 0 || this.world.inventory.length)) {

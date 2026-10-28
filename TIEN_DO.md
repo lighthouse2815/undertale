@@ -1161,3 +1161,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Dog Residue và Dog Salad
 
 Đã thêm sáu biến thể Dog Residue, nhân vật phẩm lấp túi và Dog Salad với bốn mức hồi máu ngẫu nhiên. `remake-dog-residue.mjs` kiểm thông tin, sinh vật phẩm, túi đầy, âm thanh và hồi HP; check/build qua. Chưa nối nguồn vật phẩm trong phòng kho báu và chưa kiểm từng scene trận; bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
+
+### Phòng hiện vật và chó
+
+Đã chuyển hiện vật, chó xuất hiện trong túi, lựa chọn/túi đầy, triển khai chó qua ITEM, cảnh lấy hiện vật, Dog Residue và cờ 107; xóa chó tạm khi rời phòng. `remake-waterfall-dog-room.mjs` kiểm tương tác, menu thật, cảnh, tuyến kết thúc và dọn; hồi quy piano/Punch Card, check/build qua. Phòng mở trực tiếp, chưa nối cửa; cần đối chiếu chuyển động/âm nhạc, kiểm thao tác bỏ chó và các cạnh của túi. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
