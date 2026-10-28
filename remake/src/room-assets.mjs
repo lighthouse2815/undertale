@@ -193,6 +193,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
+  if (name === 'room_water9') for (const key of ['spr_undyne_starkd', 'spr_undynespear', 'spr_undynea_r', 'spr_undynea_l', 'spr_undynea_r_raise', 'spr_undynea_r_raiseup', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_trip_r']) spriteNames.add(key);
   if (name === 'room_water8') for (const key of ['spr_undyne_starkd', 'spr_undyne_starkd_arm', 'spr_undyne_shad', 'spr_undynespear', 'spr_undynespear_stabbed', 'spr_magicstar']) spriteNames.add(key);
   if (name === 'room_water5') for (const key of ['spr_floweysink', 'spr_face_papyrus', 'spr_heartsmall', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water4') for (const key of ['spr_undynea_starku', 'spr_undynea_starkl', 'spr_undyne_starkd', 'spr_undyne_throw', 'spr_undyne_starkeye', 'spr_undyne_shad', 'spr_papyrus_r_stark', 'spr_papyrus_l_stark', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_u', 'spr_mkid_d', 'spr_mkid_trip_r', 'spr_exc', 'spr_maincharad_stark', 'spr_maincharau_stark', 'spr_maincharal_stark', 'spr_maincharar_stark']) spriteNames.add(key);
@@ -231,7 +232,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
@@ -266,6 +267,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water6' ? ['snd_squeak', 'snd_bluh', 'snd_b', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water7' ? ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
+    ...(name === 'room_water9' ? ['snd_arrow', 'snd_grab', 'snd_splash', 'mus_ambientwater', 'mus_waterfall', 'mus_toomuch', 'mus_undynefast'] : []),
     ...(name === 'room_water4' ? ['snd_splash', 'snd_b', 'snd_undynedis', 'mus_undynescary', 'mus_undynetheme', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_tundra_grillby' ? ['snd_bluh', 'mus_muscle', 'mus_rimshot', 'mus_whoopee', 'mus_mysteriousroom2', 'snd_noise', 'snd_chug', 'snd_swallow'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),

@@ -14,9 +14,9 @@ export class UndyneChaseSpears {
     return { x, y, offset, rotationSpeed, rotation, direction, speed: 3.2, alpha: .2, state: 'windup', age: 0,
       launchAt: Math.floor(30 + random() * 4), contact: 0 };
   }
-  step({ x, y, player, room = 'room_water8', moving = 0, interacting = false, touching = () => false, flags = {} }) {
+  step({ x, y, player, room = 'room_water8', moving = 0, interacting = false, delay = false, touching = () => false, flags = {} }) {
     this.frame++; let volley = false, hit = false, sound = false, launched = 0;
-    if (interacting) this.next++;
+    if (interacting || delay) this.next++;
     if (this.frame >= this.next) {
       const originX = room === 'room_water9' ? -100 : x, originY = room === 'room_water9' ? (this.random() < .5 ? 240 : 0) : y;
       for (let i = 0; i < 3; i++) this.spears.push(this.create(originX - 5, originY + 5, player, room));
