@@ -51,7 +51,7 @@ export class RuinsBattle extends DummyBattle {
   async create() {
     await super.create();
     if (window.__remake.phase === 'error') return;
-    this.invFrames = 0; this.soulElapsed = 0; this.soulMovement = 1; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
+    this.invFrames = 0; this.soulElapsed = 0; this.soulMovement = 1; this.soulColor = null; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
     this.previousScene.flags[30] = this.monster === 'froggit' ? 1 : this.previousScene.flags[30] ?? 0;
     this.enemyParts = [];
     this.setupEnemy();
@@ -190,7 +190,7 @@ export class RuinsBattle extends DummyBattle {
         if (this.soul.y >= this.arena.y + this.arena.height - 8) { this.soul.y = this.arena.y + this.arena.height - 8; this.soulJumpStage = 1; this.soulVSpeed = 0; }
       } else this.soul.y = Math.max(this.arena.y + 2, Math.min(this.arena.y + this.arena.height - 8, this.soul.y + (input('down') ? speed : 0) - (input('up') ? speed : 0)));
       const done = this.wave.step(); this.bullets = this.wave.bullets;
-      this.soul.setTexture(`${this.soulMovement === 2 ? 'spr_heartblue' : 'spr_heart'}:${this.invFrames > 0 ? Math.floor(this.invFrames * .5) % 2 : 0}`);
+      this.soul.setTexture(`${this.soulMovement === 2 || this.soulColor === 'blue' ? 'spr_heartblue' : 'spr_heart'}:${this.invFrames > 0 ? Math.floor(this.invFrames * .5) % 2 : 0}`);
       if (this.hp <= 0) { this.die(); break; }
       if (done) this.finishSoul();
     }
