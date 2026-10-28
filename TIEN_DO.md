@@ -617,3 +617,7 @@ Bổ sung `fighto=9,10` với 355/230 frame, cặp xương trên/dưới, ba xư
 `blt_sizebone_Other_0` là sự kiện OutsideRoom, không chạy ngay khi xương rời khung chiến đấu. Đã đối chiếu `dispatchOutsideRoomEvents` của runtime và sửa để chỉ hủy khi hộp bao ra khỏi phòng 640×480 theo hướng đi; xương sinh ngoài phòng nhưng bay vào được giữ, sau khi vào mới có thể phát sự kiện rời phòng lần tiếp theo. Điều này cần thiết cho phần chuyển tim xanh, vốn chờ hết xương.
 
 Chuỗi `test-papyrus-outside-v1.log` kiểm xương ngoài khung vẫn tồn tại, biên phòng, sinh ngoài/đi vào/ra, cùng các hồi quy lượt xương và tim xanh. Check/build qua. Trận, cảnh bắt, các lượt tiếp theo và tuyến đi vẫn chưa hoàn thành; full snapshot `15dd854` đang chạy. GitHub đang được thử push lại sau lỗi kết nối 443.
+
+### Lượt xương 11–13
+
+Đã thêm `fighto=11,12,13` với 250/200/220 frame: dãy xương xanh/trắng xen kẽ, hai làn xương ngược chiều và các nhóm xương dao động trên/dưới. Chuỗi `test-papyrus-turns-111213-v1.log` kiểm bố trí, màu, vận tốc, dao động, thời lượng và hồi quy tim/xương/GreaterDog; check/build qua. Cần tiếp tục lượt 14–16, chuyển tim xanh, cảnh bắt, thoại/ACT/FIGHT/MERCY và nối vào phòng sương. Full snapshot `15dd854` vẫn chạy; các commit gần đây đang thử push lại sau lỗi mạng.
