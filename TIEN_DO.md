@@ -1093,3 +1093,7 @@ Bộ tổng `test-remake-6e47e0b.log` thất bại sớm khi chờ 200 ms thực
 ### Cửa quầy Nice Cream Waterfall
 
 Đã nối phòng sao ↔ quầy Nice Cream, marker và nhạc liên tục. `remake-waterfall-nice-cream-path.mjs` kiểm hai chiều bằng phím với nhạc thường/kết thúc; check/build qua. Cần đối chiếu biểu cảm/timing quầy và các phần Waterfall còn thiếu. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### Hạt sáng Waterfall
+
+Đã chuyển generator và hạt sáng ở các phòng sao, 12, chim và giày: giới hạn theo camera, chuyển động, mờ dần và dọn khi rời phòng. `remake-waterfall-glow-particles.mjs` kiểm sinh, thời gian sống, ngoài camera và dọn; hồi quy phòng 12, check/build qua. Cần đối chiếu mật độ/chuyển động hiển thị với gốc. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.

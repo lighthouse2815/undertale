@@ -165,6 +165,7 @@ export async function loadRoom(scene, name) {
   if (crossword) await Promise.all(['obj_puzzlewall2', 'obj_sans_room'].map(object));
   if (ruinsHome || torielHall || torielCorridor || living || basement) await object('obj_toroverworld3');
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
+  if (room.GameObjects.some(e => e.ObjectName === 'obj_glowparticlegen_1')) spriteNames.add('spr_glowparticle_1');
   if (fogRoom) spriteNames.add('spr_tundrafog');
   if (ruinsStart) spriteNames.add('spr_exc');
   if (snowdinEncounter) for (const key of ['spr_exc', 'spr_exc_f']) spriteNames.add(key);
