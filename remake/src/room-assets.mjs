@@ -241,7 +241,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (name === 'room_water_onionsan' || name === 'room_water_nicecream' || name === 'room_water_shoe' || name === 'room_water12' || name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (name === 'room_water14' || name === 'room_water_onionsan' || name === 'room_water_nicecream' || name === 'room_water_shoe' || name === 'room_water12' || name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
@@ -278,6 +278,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
+    ...(name === 'room_water14' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water_onionsan' ? ['snd_splash','snd_squeak','mus_ambientwater'] : []),
     ...(name === 'room_water_nicecream' ? ['snd_movemenu','snd_squeak'] : []),
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
