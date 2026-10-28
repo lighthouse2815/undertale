@@ -731,3 +731,9 @@ Các đoạn thoại của đòn xanh, chó và cảnh bắt được tạo khi 
 Đã mở cửa A/B có fade giữa fog và `room_water1`, chuyển 16 gợn nước đổi hướng/rẽ và quay về điểm đầu, băng trôi theo `path_icecube_water1` (ẩn khi kết thúc hoặc murderlv>=7), ba dải thác thị sai 20 ảnh và nhạc `ambientwater`; nhạc Reunited vẫn được giữ qua các cửa khi kết thúc. `room_water2` và lối đi tiếp chưa được chuyển, cửa phía đông phòng đầu chưa nối. Cuộc gọi thư Undyne là sự kiện sau plot 198, cũng chưa được chuyển.
 
 `test-waterfall-entrance-v7.log` kiểm chuyển phòng bằng điều khiển thật, nước, băng, thị sai, nhạc và điều kiện ẩn; `test-papyrus-fog-waterfall-v1.log` kiểm hồi quy cảnh Papyrus sau nối cửa. Check/build remake qua; full snapshot `eba8db3` vẫn đang chạy, không bao gồm hai phần mới. Push `5c31270` thất bại vì không kết nối được github.com:443, cần thử lại cả hai commit.
+
+### Lời cá, hoa vọng âm và Monster Kid tại trạm Waterfall
+
+Đã chuyển các trang và bộ chọn theo `obj_npc_room`, `obj_echoflower` và `obj_townnpc_monsterkid1`: cá thay lời theo số lần nói và hoa đã nghe hay chưa; hoa lặp đúng lời cá hoặc im lặng khi cá vắng; Monster Kid có các nhánh lần đầu, lặp và trạng thái con 1/2. Dữ liệu này chưa nối thành NPC/tương tác hay cửa vào `room_water2`; Sans, điểm lưu và các cảnh của trạm còn phải chuyển.
+
+Kiểm thử `remake-waterfall-sentry-dialogue.mjs` qua, check/build remake qua. Push `5c31270` và `05147b4` đã thử lại nhưng hết thời gian chờ GitHub; full snapshot `eba8db3` vẫn đang chạy, không gồm thay đổi sau snapshot.
