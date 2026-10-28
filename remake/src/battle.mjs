@@ -21,6 +21,7 @@ export const BATTLE_CONFIGS = {
   dogi: { name: 'Dogamy', asset: 'spr_mandoge', hp: 108, def: 4, xp: 30 },
   papyrus: { name: 'Papyrus', asset: 'spr_papyrusboss', hp: 680, def: 2, xp: 200 },
   greaterDog: { name: 'Greater Dog', asset: 'spr_greatdog', hp: 105, def: 4, xp: 80 },
+  shyren: { name: 'Shyren', asset: 'spr_shyren', hp: 66, def: 2, xp: 52 },
   aaron: { name: 'Aaron', asset: 'spr_aaron', hp: 98, def: 2, xp: 52 },
   woshua: { name: 'Woshua', asset: 'spr_woshua', hp: 70, def: 1, xp: 52 },
   moldsmalGroup53: { name: 'Moldsmal', asset: 'spr_moldsmal', hp: 50, def: 0, xp: 3 },

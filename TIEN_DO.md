@@ -1125,3 +1125,7 @@ Một kiểm thử Onionsan tái hiện phím bị bỏ qua dù scene đã báo 
 ### Đạn nhạc Shyren
 
 Đã chuyển generator nốt nhạc, nhịp theo lần hát/cảm xúc, quỹ đạo, trọng lực, sát thương và âm nốt. `remake-shyren-wave.mjs` kiểm hai nhịp, trọng lực, va chạm và dọn trong fixture trận; check/build qua. Chưa ghép scene Shyren, chuyển nhạc dài, kết thúc buổi diễn hay trigger; cần đối chiếu mask/timing với gốc. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### Scene trận Shyren
+
+Đã ghép ACT, đạn nhạc, hình, thưởng và các kết quả tha/giết/hoàn thành buổi diễn vào scene trận mở trực tiếp. `remake-shyren-battle.mjs` kiểm Hum, vào đợt, tha, buổi diễn và giết; hồi quy đạn, check/build qua. Chưa nối trigger hành lang; chưa kiểm toàn trận bằng thao tác thực và cần đối chiếu chi tiết nhạc/hoạt ảnh. Bộ tổng `test-remake-timer.log` đã vượt cảnh Undyne nhưng thất bại ở kiểm thử nhạc cửa 3→4 do phòng 3 giữ `mus_ambientwater`; cần kiểm tra fixture và cách xử lý nhạc.
