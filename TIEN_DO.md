@@ -1117,3 +1117,7 @@ Một kiểm thử Onionsan tái hiện phím bị bỏ qua dù scene đã báo 
 ### Bia hành lang Shyren
 
 Đã chuyển ba bia, hai màn thác tiền cảnh và nhạc nước của phòng 14. `remake-waterfall-shyren-hall.mjs` kiểm nội dung bia, vị trí/nhịp thác và nhạc; check/build qua. Phòng mở trực tiếp: trận Shyren, nhân vật ở tuyến kết thúc và các cửa chưa chuyển; chưa đối chiếu hình/timing thác. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### ACT của Shyren
+
+Đã chuyển quy tắc Check/Hum/Smile/Conduct, số lần hát, DEF/mercy và lời trạng thái. `remake-shyren-act.mjs` kiểm các nhánh và thứ tự ưu tiên; check/build qua. Logic này chưa ghép scene trận, đạn, âm nhạc hay trigger hành lang; không thể coi trận Shyren đã hoàn tất. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
