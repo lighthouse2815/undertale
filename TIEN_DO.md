@@ -1259,3 +1259,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã cho bài đường cầu chờ cảnh World hoạt động sau trận trước khi nhấn phím; cặp encounter/đường cầu chạy riêng, check/build qua. Đây là một khả năng gây timeout, chưa tái hiện được lỗi để xác nhận. Bộ tổng `test-remake-ebb3c93.log` đã chạy lại trước sửa bài này.
 
 Đã tách phần vẽ/mask/va chạm giáo thành `undyne-bridge-spears.mjs` để dùng chung cho hai phòng truy đuổi; kiểm thử cầu và trận nhanh, check/build qua. Phòng cuối chưa nối và vẫn cần chuyển cảnh rơi.
+
+### Cuối cầu Undyne
+
+Đã nối phòng cuối, giữ nhạc truy đuổi, thêm giáo sàn, cảnh Undyne phá cầu, rơi, lời gọi và chuyển sang `room_water_trashzone1`. `remake-waterfall-undyne-bridge-end.mjs` kiểm cửa, mask, trận nhanh, trigger bằng phím, các mốc cảnh và phòng đích; hồi quy cầu, check/build qua. Hình, âm thanh, timing và hành trình liên tục còn cần đối chiếu; phòng rác chưa chuyển đầy đủ. Bộ tổng `test-remake-ebb3c93.log` dừng tại `testWaterfallBridgePath`, chạy trước sửa chờ cảnh World ở commit `da098b7`.
