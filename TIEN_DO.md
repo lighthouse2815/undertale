@@ -1121,3 +1121,7 @@ Một kiểm thử Onionsan tái hiện phím bị bỏ qua dù scene đã báo 
 ### ACT của Shyren
 
 Đã chuyển quy tắc Check/Hum/Smile/Conduct, số lần hát, DEF/mercy và lời trạng thái. `remake-shyren-act.mjs` kiểm các nhánh và thứ tự ưu tiên; check/build qua. Logic này chưa ghép scene trận, đạn, âm nhạc hay trigger hành lang; không thể coi trận Shyren đã hoàn tất. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### Đạn nhạc Shyren
+
+Đã chuyển generator nốt nhạc, nhịp theo lần hát/cảm xúc, quỹ đạo, trọng lực, sát thương và âm nốt. `remake-shyren-wave.mjs` kiểm hai nhịp, trọng lực, va chạm và dọn trong fixture trận; check/build qua. Chưa ghép scene Shyren, chuyển nhạc dài, kết thúc buổi diễn hay trigger; cần đối chiếu mask/timing với gốc. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
