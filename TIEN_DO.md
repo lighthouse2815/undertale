@@ -1217,3 +1217,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Monster Kid trong hành lang dọc
 
 Đã thêm Kid theo người chơi, chuyện lớp học khi qua hoa, lời tiếp theo và cờ 91; bổ sung tài nguyên để mở trực tiếp phòng. `remake-waterfall-rain-vertical-kid.mjs` kiểm thoại/cờ/giới hạn plot, hồi quy cửa và hành trình mưa, check/build qua. Chưa kiểm toàn tuyến bằng phím qua cả hai phòng, quỹ đạo Kid còn gần đúng; hoa vọng âm và cửa tiếp vẫn thiếu. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
+
+`remake-waterfall-rain-journey.mjs` đã kiểm tiếp bằng phím qua cửa và hai đoạn thoại phòng dọc; qua khi chờ phòng đích thay vì trạng thái chuyển có thể quá ngắn. Bài vẫn đặt vị trí gần cửa trước khi qua; cần kiểm toàn tuyến liên tục và nhánh không có ô.
