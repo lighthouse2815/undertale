@@ -482,6 +482,7 @@ class World extends Scene {
     if (data.room.GameObjects.some(e => e.ObjectName === 'obj_glowparticlegen_1')) this.waterfallGlowParticles = new WaterfallGlowParticles(this);
     if (name === 'room_water_nicecream') { this.waterfallNiceCreamRoom = new WaterfallNiceCreamRoom(this); this.niceCream = new NiceCream(this); }
     if (name === 'room_water_waterfall') this.waterfallRainKid = new WaterfallRainKid(this, spawnName);
+    if (name === 'room_water_waterfall2') this.waterfallRainKid = new WaterfallRainKid(this, spawnName, true);
     if (['room_water_waterfall', 'room_water_waterfall2'].includes(name)) this.waterfallRainRoom = new WaterfallRainRoom(this, name === 'room_water_waterfall2');
     if (name === 'room_water_prewaterfall') this.waterfallUmbrellaRoom = new WaterfallUmbrellaRoom(this);
     if (name === 'room_water_statue') this.waterfallMusicStatue = new WaterfallMusicStatue(this);

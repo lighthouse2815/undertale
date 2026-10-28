@@ -1213,3 +1213,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Hành lang mưa dọc
 
 Đã nối hai chiều sang `room_water_waterfall2`, giữ âm mưa/Reunited và tạo giọt mưa theo vùng và độ rơi của phòng gốc. `remake-waterfall-rain-path.mjs` kiểm cửa, marker, âm thanh hai tuyến và vùng giọt; hồi quy phòng mưa, check/build qua. Cảnh Kid, hoa vọng âm và cửa tiếp trong phòng mới chưa chuyển. Cặp bài Greater Dog/Grillby chạy riêng qua, chưa tái hiện timeout bộ tổng; bộ tổng `test-remake-9533de8.log` đang chạy lại từ trước phần này.
+
+### Monster Kid trong hành lang dọc
+
+Đã thêm Kid theo người chơi, chuyện lớp học khi qua hoa, lời tiếp theo và cờ 91; bổ sung tài nguyên để mở trực tiếp phòng. `remake-waterfall-rain-vertical-kid.mjs` kiểm thoại/cờ/giới hạn plot, hồi quy cửa và hành trình mưa, check/build qua. Chưa kiểm toàn tuyến bằng phím qua cả hai phòng, quỹ đạo Kid còn gần đúng; hoa vọng âm và cửa tiếp vẫn thiếu. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
