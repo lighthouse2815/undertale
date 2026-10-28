@@ -19,7 +19,7 @@ export function fightInput(scene, delta, defense) {
     if (!scene.confirmPressed) return null;
     const distance = Math.abs(scene.attackX + 3.5 - 159.5) * 2 || 1;
     const attack = scene.previousScene.lv === 20 ? 99 : 8 + scene.previousScene.lv * 2;
-    const base = attack + (scene.previousScene.weaponStrength ?? 0) - defense + Math.random() * 2;
+    const base = attack + (scene.attackBonus ?? 0) + (scene.previousScene.weaponStrength ?? 0) - defense + Math.random() * 2;
     const damage = Math.round(base * (distance <= 12 ? glove ? 2.1 : 2.2 : (562 - distance) / 562 * 2));
     if (!glove) return { damage };
     const enemy = scene.enemy.getBounds();

@@ -118,6 +118,7 @@ import { testAbandonedQuiche } from './remake-abandoned-quiche.mjs';
 import { testWaterfallQuicheRoom } from './remake-waterfall-quiche-room.mjs';
 import { testAaronAct } from './remake-aaron-act.mjs';
 import { testAaronWaves } from './remake-aaron-waves.mjs';
+import { testAaronBattle } from './remake-aaron-battle.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -569,6 +570,7 @@ try {
   await testWaterfallQuicheRoom(page);
   await testAaronAct();
   await testAaronWaves(page);
+  await testAaronBattle(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

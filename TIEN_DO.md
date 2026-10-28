@@ -865,3 +865,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Hai đợt đạn Aaron
 
 Đã chuyển generator tay cơ và mồ hôi: biên trận, tay trái/phải xen kẽ, chu kỳ rút ngắn, đổi hình/dao động, bốn hướng giọt và tăng alpha, va chạm tim/dọn. `test-aaron-waves-v3.log` kiểm nhịp sinh, vận tốc bốn hướng, va chạm và dọn; check/build qua. Chưa nối scene Aaron/nhóm quái, cần đối chiếu timing/mask và tần suất với gốc trong trận thật. Push `8ea119a` thành công; bộ tổng snapshot `9401df5` vẫn đang chạy, không gồm phần này.
+
+### Trận Aaron đơn
+
+Đã ghép ACT, FIGHT, ITEM, MERCY, hai đợt đạn, tăng sức tấn công khi Flex, thưởng và nhạc vào scene trận Aaron đơn; sửa sát thương mặc định của đạn theo chỉ số gốc. Kiểm thử riêng các nhánh Check/Flex/Shoo, tha/giết và thưởng, hồi quy Gyftrot/đạn Aaron, check/build qua. Trận mới mở trực tiếp để kiểm thử, chưa nối encounter Waterfall; còn cần Woshua, Moldsmal, nhóm quái và đối chiếu animation/timing với game gốc. Bộ tổng snapshot `9401df5` bị gián đoạn trước khi kết thúc, chưa có kết quả cuối; thay đổi chẩn đoán timeout Papyrus fog vẫn chưa được xác minh và chưa commit.
