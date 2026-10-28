@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 export async function testWaterfallBridgePath(page) {
   await page.evaluate(async () => { const w = __remake.game.scene.getScene('World'); w.flags = {}; w.plot = 106; await w.openRoom('room_water4'); w.player.setPosition(530, 280); w.updateCamera(); window.testBridgeMusic = w.waterfallMusic; });
+  await page.waitForFunction(() => __remake.scene.scene.isActive());
   const walkTo = async (key, room) => { await page.keyboard.down(key); await page.waitForFunction(room => __remake.phase === 'running' && __remake.room === room, room, { timeout: 5000 }).catch(async error => { console.log('Cửa bị chặn:', await page.evaluate(() => ({ room: __remake.room, phase: __remake.phase, x: __remake.scene.player.x, y: __remake.scene.player.y, doors: __remake.scene.doors }))); throw error; }); await page.keyboard.up(key); };
   await walkTo('ArrowRight', 'room_water5');
   assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y, __remake.scene.waterfallEncounter.firstEntrance, __remake.scene.waterfallMusic === window.testBridgeMusic]), [20, 340, true, true]);
