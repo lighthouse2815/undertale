@@ -8,6 +8,7 @@ export async function testWaterfallPreUndyne(page){
   }
   const open=flags=>page.evaluate(async flags=>{const w=__remake.scene;w.flags=flags;w.plot=114;w.hp=1;w.maxHp=20;await w.openRoom('room_water_preundyne');},flags);
   await open({});
+  assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene,c=w.waterfallPreUndyne;w.scene.pause();w.cameras.main.scrollX=100;c.update(1000/30);const result=[c.dockTiles.length,c.dockTiles[0].image.x-c.dockTiles[0].x,c.shade.alpha];w.scene.resume();return result;}),[72,20,0]);await page.waitForFunction(()=>__remake.scene.scene.isActive());
   const signs=await page.evaluate(()=>{const w=__remake.scene;return [1,2].map(n=>{const e=w.waterfallPreUndyne.signs.find(e=>e.item.ObjectName===`obj_readable_room${n}`),s=e.sprite;w.player.setPosition(e.item.X+(s.MarginLeft+s.MarginRight)/2-10,e.item.Y+s.MarginBottom-18);w.player.facing='u';if(!w.waterfallPreUndyne.interact())throw Error('Bia không phản hồi');const lines=[...w.dialogue.lines];while(w.dialogue)w.advanceDialogue();return lines;});});assert.match(signs[0][0],/declared war/);assert.match(signs[1][2],/dust/);
   for(const [flags,pattern] of [[{},/muffled rain/],[{86:1},/music box/],[{26:8,204:5},/13 left/]]){
     await open(flags);await page.evaluate(()=>{const w=__remake.scene,e=w.roomObjects.find(e=>e.item.ObjectName==='obj_savepoint');w.player.setPosition(e.item.X,e.item.Y+1);w.player.facing='u';w.tryInteract();});assert.match(await page.evaluate(()=>__remake.scene.dialogue.lines[0]),pattern);assert.equal(await page.evaluate(()=>__remake.scene.hp),20);
