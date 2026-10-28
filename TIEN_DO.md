@@ -661,3 +661,9 @@ Chuỗi `test-papyrus-turn-14-v2.log` kiểm biên 19/20/39/40, bố trí, timer
 ### Sửa khung đòn cuối Papyrus
 
 Đối chiếu `SCR_BORDERSETUP`: border 51 không chỉ nâng mép trên theo tim mà còn mở mép phải từ 442 đến 512. Đã giữ border 51 khi nhả phím, cập nhật mép trên theo độ cao tim mỗi frame và khôi phục border 5 khi xương lớn sang trái. `test-papyrus-regular-border-v2.log` kiểm mở rộng/nhả phím/khôi phục cùng chuỗi hồi quy; check/build qua. Đòn vẫn chưa được nối vào scene boss. Push `20f6597` thành công; full snapshot `4261ced` đang chạy, không bao gồm sửa này.
+
+### Chọn lời và lượt Papyrus
+
+Đã chuyển điều kiện Alarm 6 vào `papyrus-turn.mjs` và lời gốc vào `papyrus-turn-dialogue.json`: cảnh báo đòn xanh lần đầu, phản ứng với CHECK/INSULT/FLIRT, lời theo các lượt và cờ hẹn hò, hai lần hướng dẫn nhảy khi bị thương, ngưỡng 140/80 HP và lời tuyến diệt chủng. Các lệnh đổi màu/chờ trong chuỗi gốc hiện được bỏ khi chuyển thành text thường; cần phục hồi khi nối hệ thoại trận. Hàm này và các thành phần đòn chưa được ghép thành boss hoàn chỉnh, chưa nối vào phòng sương.
+
+`tests/remake-papyrus-turn.mjs` kiểm các nhánh hội thoại, thay đổi `fighto`/`xfight`/`xxtalk`, mốc HP và tuyến giết; test riêng qua, chuỗi các thành phần trận `test-papyrus-turn-chain-v2.log` qua, check/build qua. Lần chuỗi đầu không chạy vì server fixture đã dừng, sau khởi động lại đã qua. Push `50f5d94` thành công; bộ tổng snapshot `4261ced` vẫn đang chạy và không chứa phần này.
