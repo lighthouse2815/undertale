@@ -9,7 +9,7 @@ export function loadPapyrusBoneAssets(scene) {
 export class PapyrusBones {
   constructor(scene, { firstWave = false, fighto = -1, turn = null, xfight = 0 } = {}) {
     this.scene = scene; this.fighto = fighto; this.frames = 0; this.bullets = []; this.captured = false;
-    this.duration = firstWave ? 140 : ({ '-1': 200, 0: 300, 1: 220, 2: 240, 3: 150, 4: 240, 5: 330, 6: 200, 7: 150, 8: 230 })[turn] ?? 140;
+    this.duration = firstWave ? 140 : ({ '-1': 200, 0: 300, 1: 220, 2: 240, 3: 150, 4: 240, 5: 330, 6: 200, 7: 150, 8: 230, 9: 355, 10: 230 })[turn] ?? 140;
     this.border = { left: 192, right: 442, top: 250, bottom: 385 };
     const b = this.border; scene.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2);
     this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(b.left / 2, b.top / 2, (b.right - b.left) / 2, (b.bottom - b.top) / 2).setVisible(false);
@@ -27,12 +27,16 @@ export class PapyrusBones {
         5: [[40, 30], [70, 45], [100, 60], [130, 45], [160, 30], [190, 15], [300, 15], [330, 30], [360, 45], [390, 60], [700, 30], [730, 45], [760, 60], [790, 45], [820, 30], [850, 15], [970, 15], [1000, 30], [1030, 45], [1060, 60]].map(([dx, height]) => [b.right + dx, height, dx < 700 ? -3 : -4]),
         6: [...[10, 110, 210].map((dx) => [b.left - dx, 35, 2]), ...[10, 110, 210].map((dx) => [b.right + dx, 35, -2])],
         7: [...[10, 110, 210, 310].map((dx) => [b.left - dx, 20, 2]), ...[10, 110, 210, 310].map((dx) => [b.right + dx, 20, -2])],
-        8: [[b.right + 40, 20, -4], ...[[170,20], [310,30], [460,40], [610,50], [760,60]].flatMap(([dx, height]) => [[b.right + dx, height, -4], [b.right + dx, height + 50, -4, true]])]
+        8: [[b.right + 40, 20, -4], ...[[170,20], [310,30], [460,40], [610,50], [760,60]].flatMap(([dx, height]) => [[b.right + dx, height, -4], [b.right + dx, height + 50, -4, true]])],
+        9: [[b.right + 60, 60, -4], ...[[220,60], [360,50], [500,40], [640,30], [780,10], [990,30], [1130,50]].flatMap(([dx, height]) => [[b.right + dx, height, -4], [b.right + dx, height + 40, -4, true]])],
+        10: [[b.left - 40, 30, 4], ...[[60,40], [80,50], [100,60], [280,50], [295,40], [310,30]].flatMap(([dx, height]) => [[b.left - dx, height, 4], [b.left - dx, height + 50, 4, true]]), ...[600, 620, 640].map((dx) => [b.right + dx, 30, -4])]
       };
       for (const [x, height, vx, top = false, blue = false] of patterns[turn]) this.add(x, b.bottom - height, { vx: turn === 3 && xfight > 0 ? Math.sign(vx) * 4.5 : vx, top, blue });
       // Gán biến qua tên object trong GML áp dụng cho mọi instance, kể cả object con.
-      const speed = turn === 1 && xfight > 0 ? 4.5 : turn === 2 && xfight > 0 ? 4 : turn === 7 ? (xfight > 0 ? 4.4 : 4) : turn === 8 ? 4.4 : null;
+      const speed = turn === 1 && xfight > 0 ? 4.5 : turn === 2 && xfight > 0 ? 4 : turn === 7 ? (xfight > 0 ? 4.4 : 4) : turn === 8 ? 4.4 : turn === 9 || turn === 10 ? 4.2 : null;
       if (speed !== null) for (const bone of this.bullets) bone.vx = Math.sign(bone.vx) * speed;
+      if (turn === 9) for (const bone of this.bullets.slice(-4)) Object.assign(bone, bone.x === b.right + 990 ? { osc: -1, oscmin: -1, oscmax: 30 } : { osc: -2, oscmin: -20, oscmax: 30 });
+      if (turn === 10) for (const bone of this.bullets.slice(-3)) Object.assign(bone, { osc: -3, oscmin: -1, oscmax: 60 });
     }
   }
   add(x, y, { vx = 0, top = false, blue = false, damage = 6, osc = 0, oscmax = 20, oscmin = 20 } = {}) {

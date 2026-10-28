@@ -607,3 +607,7 @@ Chuỗi `test-papyrus-turns-345-v2.log` kiểm bố trí từng xương, thời 
 Bổ sung `fighto=6,7,8` với thời lượng 200/150/230 frame, các dãy hai phía và cặp xương trên/dưới. Bổ sung tăng tốc khi `xfight>0` ở lượt 1/2/7, tốc độ lượt 7 thông thường và lượt 8. Đã kiểm tra `vm.c` của runtime GML trong dự án: phép gán qua tên object áp dụng cho toàn bộ instance của object và object con, trong khi đọc chỉ chọn instance đầu; vì vậy cập nhật tốc độ mọi xương, vẫn giữ hướng.
 
 Chuỗi `test-papyrus-turns-678-v1.log` kiểm bố trí/timer, tốc độ hai nhánh và hồi quy xương/tim xanh/GreaterDog; check/build qua. Lượt 9 trở đi, cảnh chuyển tim xanh, bắt và boss chưa hoàn thiện. Full snapshot `15dd854` vẫn đang chạy, không bao gồm các lượt xương mới.
+
+### Lượt xương 9–10
+
+Bổ sung `fighto=9,10` với 355/230 frame, cặp xương trên/dưới, ba xương đối hướng và các xương dao động (`osc`, `oscmin`, `oscmax`) theo source; gán tốc độ 4.2 cho các instance. `test-papyrus-turns-910-v1.log` kiểm đếm, thời lượng, vị trí/vận tốc/tham số dao động và đảo chiều thực tế cùng hồi quy các lượt trước; check/build qua. Lượt 11 trở đi, chuyển xanh, cảnh bắt và trận hoàn chỉnh vẫn cần thực hiện. Đang rà riêng thời điểm hủy xương ngoài phòng. Push các commit sau `d67d6e4` đang thử lại do lỗi kết nối GitHub; full snapshot `15dd854` vẫn chạy và không gồm các lượt xương.
