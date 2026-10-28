@@ -51,7 +51,7 @@ export class RuinsBattle extends DummyBattle {
   async create() {
     await super.create();
     if (window.__remake.phase === 'error') return;
-    this.invFrames = 0; this.soulElapsed = 0; this.soulMovement = 1; this.soulColor = null; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
+    this.invFrames = 0; this.soulElapsed = 0; this.soulMovement = 1; this.soulSpeed = 4; this.soulColor = null; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
     this.previousScene.flags[30] = this.monster === 'froggit' ? 1 : this.previousScene.flags[30] ?? 0;
     this.enemyParts = [];
     this.setupEnemy();
@@ -200,7 +200,7 @@ export class RuinsBattle extends DummyBattle {
     if (this.invFrames > 0) return;
     const df = this.previousScene.lv === 20 ? 99 : 9 + Math.ceil(this.previousScene.lv / 4);
     this.hp = Math.max(0, this.hp - Math.max(1, Math.round(damage - (df + this.previousScene.armorDefense) / 5)));
-    this.invFrames = 30; this.sound.play('snd_hurt1'); this.cameras.main.shake(1000 / 15, .006); this.refreshHp();
+    this.invFrames = 30 + (this.previousScene.armor === 44 ? 30 : 0) + (this.previousScene.weapon === 45 ? 15 : 0); this.sound.play('snd_hurt1'); this.cameras.main.shake(1000 / 15, .006); this.refreshHp();
   }
 
   refreshHp() { this.hpText.setText(`${this.previousScene.game.registry.get('charname')}  LV ${this.previousScene.lv}     HP ${this.hp}/${this.maxHp}`); }

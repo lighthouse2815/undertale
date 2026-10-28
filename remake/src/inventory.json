@@ -326,6 +326,46 @@
       "info": [
         "* \"Astronaut Food\" Heals 21 HP\n* For feeding a pet\n  astronaut."
       ]
+    },
+    "37": {
+      "name": "Crab Apple",
+      "battleName": "CrabApple",
+      "seriousName": "CrabApple",
+      "use": "* You eat the Crab Apple.",
+      "info": [
+        "* \"Crab Apple\" Heals 18 HP\n* An aquatic fruit that\n  resembles a crustacean."
+      ],
+      "heal": 18
+    },
+    "41": {
+      "name": "Sea Tea",
+      "battleName": "Sea Tea",
+      "seriousName": "Sea Tea",
+      "use": "* You drink the Sea Tea.",
+      "info": [
+        "* \"Sea Tea\" Heals 10 HP\n* Made from glowing marshwater.\n* Increases SPEED for one battle."
+      ],
+      "heal": 10
+    },
+    "44": {
+      "name": "Cloudy Glasses",
+      "battleName": "ClodGlass",
+      "seriousName": "Glasses",
+      "use": "* You equipped the glasses.",
+      "info": [
+        "* \"Cloudy Glasses\" - Armor DF 6\n* Glasses marred with wear.\n* Increases INV by 9.",
+        "* (After you get hurt by an\n  attack, you stay invulnerable\n  for longer.)"
+      ]
+    },
+    "45": {
+      "name": "Torn Notebook",
+      "battleName": "TornNotbo",
+      "seriousName": "Notebook",
+      "use": "* You equipped the Torn Notebook.",
+      "info": [
+        "* \"Torn Notebook\" - Weapon AT 2\n* Contains illegible scrawls.\n* Increases INV by 6.",
+        "* (After you get hurt by an\n  attack, you stay invulnerable\n  for longer.)"
+      ]
     }
   },
   "actions": [

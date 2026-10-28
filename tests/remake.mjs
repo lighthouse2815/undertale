@@ -177,6 +177,7 @@ import { testMadDummyBattle } from './remake-mad-dummy-battle.mjs';
 import { testGladDummyBattle } from './remake-glad-dummy-battle.mjs';
 import { testWaterfallDummyEncounter } from './remake-waterfall-dummy-encounter.mjs';
 import { testWaterfallShopRoad } from './remake-waterfall-shop-road.mjs';
+import { testWaterfallShopItems } from './remake-waterfall-shop-items.mjs';
 import { testMadDummyEnding } from './remake-mad-dummy-ending.mjs';
 import { testMadDummyFullBattle } from './remake-mad-dummy-full-battle.mjs';
 import { testMadDummyShot } from './remake-mad-dummy-shot.mjs';
@@ -705,6 +706,7 @@ try {
   await testWaterfallShyrenEnding(page);
   await testWaterfallDummyEncounter(page);
   await testWaterfallShopRoad(page);
+  await testWaterfallShopItems(page);
   await testGladDummyBattle(page);
   await testMadDummyBattle(page);
   await testMadDummyEnding(page);

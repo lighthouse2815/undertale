@@ -43,18 +43,19 @@ export function itemAction(world, index, action, text, { scene = world, health =
     return [item.use, `* Your hands are burning!\n* AT increased by ${add}!`];
   }
   if (id === 3) return [item.use]; // Gậy gốc được nhặt lại; không tiêu hao/đổi vũ khí.
-  if (id === 12 || id === 13 || id === 14 || id === 24 || id === 25) {
-    if (id === 12 || id === 24) {
-      world.inventory[index] = world.armor; world.armor = id; world.armorDefense = id === 24 ? 10 : 3;
+  if (id === 12 || id === 13 || id === 14 || id === 24 || id === 25 || id === 44 || id === 45) {
+    if (id === 12 || id === 24 || id === 44) {
+      world.inventory[index] = world.armor; world.armor = id; world.armorDefense = id === 24 ? 10 : id === 44 ? 5 : 3;
     } else {
       if (scene !== world && world.weapon === 14 && world.flags[78] === 1) scene.cardAttackBonus = 0;
-      world.inventory[index] = world.weapon; world.weapon = id; world.weaponStrength = id === 25 ? 7 : id === 14 ? 5 : 3;
+      world.inventory[index] = world.weapon; world.weapon = id; world.weaponStrength = id === 25 ? 7 : id === 14 ? 5 : id === 45 ? 2 : 3;
     }
     scene.sound.play('snd_item');
     return [item.use];
   }
   let line = item.use;
   let heal = item.heal;
+  if (id === 41 && scene !== world && (scene.soulSpeed ?? 4) < 8) { scene.soulSpeed = (scene.soulSpeed ?? 4) + 1; line += '\n* Your SPEED boosts!'; }
   if (id === 28) { const roll=Math.floor(Math.random()*4); heal=[30,10,2,999][roll]; line+=['\n* Oh. Tastes yappy...','\n* Oh. Fried tennis ball...','\n* Oh. There are bones...','\n* It\'s literally garbage???'][roll]; }
   if (id === 17) line = item.wrappers[Math.floor(Math.random() * 8)];
   if (id === 16 && scene === world && world.dataSource.name === 'room_tundra6A') world.flags[56] = 4;
@@ -67,7 +68,7 @@ export function itemAction(world, index, action, text, { scene = world, health =
   if (id === 4) scene.sound.play('snd_power');
   else {
     scene.sound.play('snd_swallow');
-    scene.time.delayedCall(10 * 1000 / 30, () => scene.sound.play(id === 9 ? 'snd_spooky' : id === 28 ? 'snd_dogresidue' : 'snd_power'));
+    scene.time.delayedCall(10 * 1000 / 30, () => scene.sound.play(id === 9 ? 'snd_spooky' : id === 28 ? 'snd_dogresidue' : id === 41 ? 'snd_speedup' : 'snd_power'));
   }
   if (id === 63) health.hp = Math.max(health.hp, health.maxHp - 1);
   else if (health.hp < health.maxHp) health.hp = Math.min(health.maxHp, health.hp + (id === 11 ? health.maxHp : heal));

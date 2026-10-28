@@ -1337,3 +1337,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm thử kính thiên văn: getter âm lượng Web Audio có thể cập nhật sau khi viewer đóng. Đã sửa kiểm thử chờ giá trị âm lượng thực tế về 0,8 và vẫn xác nhận trạng thái nhạc; cần chạy lại bộ tổng trên phiên bản mới.
 
 Đã nối hai chiều Quiet Area ↔ `room_water_shop`, giữ nhạc và tái dùng BOX chung tại đây. `remake-waterfall-shop-road.mjs` kiểm cửa, marker, nhạc, chuyển vật phẩm và hộp rỗng; check/build qua. Cửa hàng, bến đò, đường Waterfall 15 và cuộc gọi Undyne cuối game vẫn cần chuyển. Bộ tổng `test-remake-ac23c82.log` đang chạy trên phiên bản trước phần này.
+
+Đã thêm Crab Apple, Sea Tea, Cloudy Glasses và Torn Notebook: hồi HP, tăng tốc trong một trận, đổi trang bị và tăng thời gian bất tử. `remake-waterfall-shop-items.mjs` kiểm ngoài trận, trong trận và đặt lại tốc độ; check/build qua. Cần chuyển giao diện cửa hàng để người chơi mua các món này và đối chiếu các trận có luật tốc độ/bất tử riêng.
