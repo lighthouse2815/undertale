@@ -1241,3 +1241,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Aaron ở mỏm đá
 
 Đã thêm Aaron theo plot/dân số, va chạm và các nhánh thoại lặp, ma và kết thúc. `remake-waterfall-ledge-aaron.mjs` kiểm điều kiện và các nhánh; hồi quy cảnh Kid, check/build qua. Cửa sang phòng trước Undyne vẫn chưa nối; bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
+
+### Phòng trước Undyne
+
+Đã nối mỏm đá ↔ `room_water_preundyne`, chuyển hai bia, bóng tối cửa hang, âm mưa và SAVE Bridge với nhánh ô trên tượng/dân số. `remake-waterfall-preundyne.mjs` kiểm cửa, bia, lưu thật, tên file và âm thanh; hồi quy SAVE/mỏm đá, check/build qua. Thị sai nền cầu và cửa sang trận Undyne chưa chuyển; hiệu ứng và toàn tuyến cần đối chiếu. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
