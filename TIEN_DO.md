@@ -1177,3 +1177,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Tượng âm nhạc
 
 Đã chuyển tượng, lựa chọn đặt ô/cờ 85–86, nhạc hộp, tiếng mưa và gợi ý piano sau 450 frame. `remake-waterfall-statue.mjs` kiểm các nhánh, nhạc và gợi ý; hồi quy piano, check/build qua. Phòng mở trực tiếp, chưa nối cửa; hiệu ứng giọt mưa, chuyển nhạc giữa phòng và sprite mang ô chưa đầy đủ, timing/âm lượng cần đối chiếu. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Đường tới tượng âm nhạc
+
+Đã nối hành lang Shyren ↔ tượng, fade nhạc và giữ Reunited. `remake-waterfall-statue-path.mjs` kiểm hai chiều bằng phím, marker và âm thanh theo tuyến; check/build qua. Đường từ tượng sang phòng tiếp và chuyển âm mưa liên phòng chưa đầy đủ; các hạn chế tượng ở mục trước còn áp dụng. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
