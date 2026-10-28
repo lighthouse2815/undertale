@@ -1233,3 +1233,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Đường tới mỏm đá
 
 Đã nối phòng lâu đài ↔ `room_water_waterfall4`, giữ âm mưa/Reunited, thêm mưa theo hai vùng phòng gốc và hộp lấy/trả ô. `remake-waterfall-ledge-path.mjs` kiểm cửa, marker, âm thanh, mưa, trả ô và mở trực tiếp; hồi quy ô/lâu đài, check/build qua. Cảnh Kid leo mỏm đá, tường động, Aaron và cửa tiếp chưa chuyển; hình/timing mưa còn cần đối chiếu. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
+
+### Kid giúp trèo mỏm đá
+
+Đã chuyển Kid chạy tới mỏm, hai lượt thoại, điều kiện trả ô, trèo, tường đổi phía, nhánh lời theo tuyến và Kid rời đi/plot 112–113/cờ 91. `remake-waterfall-ledge.mjs` kiểm nhánh ô, tuyến, mở lại, tường và hành trình bằng phím; hồi quy đường mỏm đá, check/build qua. Quỹ đạo/animation và timing còn cần đối chiếu game gốc; Aaron và cửa sang phòng sau vẫn thiếu. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
