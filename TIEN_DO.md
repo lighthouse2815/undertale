@@ -825,3 +825,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Cảnh đầu Undyne
 
 Đã nối trigger, camera, hai nhánh Papyrus sống/chết, báo cáo, Undyne phát hiện và giương giáo, bóng/sprite tối của Frisk, Monster Kid chạy/ngã, nhạc và plot 106 trong `room_water4` khi mở trực tiếp. `test-waterfall-undyne-v4.log` kiểm hai nhánh, các giai đoạn/cờ/camera, thao tác kích hoạt bằng phím và không lặp; kiểm lại cỏ/SAVE, xem ảnh, check/build qua. Hoạt cảnh, biểu cảm `\M`, bóng và nhịp âm thanh còn cần đối chiếu chi tiết; đường từ phòng 3 chưa nối, không coi Waterfall hoàn chỉnh. Bộ tổng snapshot `e6b3b82` bị dừng giữa chừng khi phiên bị ngắt, không có mã thoát; cần chạy lại, không coi đã qua. Push `3c600af` thành công.
+
+### Đường tới hành lang Undyne
+
+Đã nối cửa C/D giữa Waterfall 3 và 4, marker hai chiều và duy trì bài nhạc đang phát; khi vào trực tiếp, obj_watermusic chọn waterfall/toomuch và pitch tuyến giết theo cờ. `test-waterfall-undyne-path-v1.log` kiểm đi bộ hai chiều, marker, nhạc liên tục và pitch; hồi quy đường Tutu và hai nhánh cảnh Undyne, check/build qua. Cảnh vẫn có giới hạn biểu cảm/timing như trên; phòng tiếp theo chưa nối. Push `b52ccd7` thành công. Bộ tổng snapshot `e6b3b82` đã bị ngắt, không có kết quả cuối.

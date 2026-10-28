@@ -1,3 +1,4 @@
+import { startWaterfallMusic } from './waterfall-music.mjs';
 import { WaterfallUndyne } from './waterfall-undyne.mjs';
 import { WaterfallGrass } from './waterfall-grass.mjs';
 import { WaterfallTutuRoom } from './waterfall-tutu-room.mjs';
@@ -178,7 +179,8 @@ const ROOM_EXITS = {
   room_fogroom: { X: 'room_tundra_town', A: 'room_water1' },
   room_water1: { B: 'room_fogroom', A: 'room_water2' },
   room_water2: { B: 'room_water1', A: 'room_water3' },
-  room_water3: { B: 'room_water2', A: 'room_water3A' },
+  room_water3: { B: 'room_water2', A: 'room_water3A', C: 'room_water4' },
+  room_water4: { D: 'room_water3' },
   room_water3A: { B: 'room_water3' },
   room_tundra_library: { u: 'room_tundra_town' },
   room_tundra_grillby: { w: 'room_tundra_town' },
@@ -220,8 +222,8 @@ class World extends Scene {
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
-    if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2', 'room_water3', 'room_water3A', 'room_tundra_grillby'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
-    if (this.waterfallMusic && !(name === 'room_water1' && this.waterfallMusic.key === 'mus_ambientwater') && !(name === 'room_water2' && this.waterfallMusic.key === 'mus_muscle') && !(['room_water3', 'room_water3A'].includes(name) && ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key))) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
+    if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2', 'room_water3', 'room_water3A', 'room_water4', 'room_tundra_grillby'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
+    if (this.waterfallMusic && !(name === 'room_water1' && this.waterfallMusic.key === 'mus_ambientwater') && !(name === 'room_water2' && this.waterfallMusic.key === 'mus_muscle') && !(['room_water3', 'room_water3A', 'room_water4'].includes(name) && ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key))) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
     if (name !== 'room_tundra_grillby') { this.grillbyMusic?.destroy(); this.grillbyMusic = null; }
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');
@@ -413,7 +415,7 @@ class World extends Scene {
       if (this.flags[67] !== 1 && !this.townMusic && !this.grillbyMusic) { this.grillbyMusic = this.sound.add('mus_muscle', { loop: true }); this.grillbyMusic.play(); }
       this.grillbyDate = new GrillbyDate(this);
     }
-    if (name === 'room_water4') { this.waterfallGrass = new WaterfallGrass(this); this.waterfallUndyne = new WaterfallUndyne(this); }
+    if (name === 'room_water4') { startWaterfallMusic(this); this.waterfallGrass = new WaterfallGrass(this); this.waterfallUndyne = new WaterfallUndyne(this); }
     if (name === 'room_water3A') this.waterfallTutuRoom = new WaterfallTutuRoom(this);
     if (name === 'room_water3') { this.waterfallBoxRoom = new WaterfallBoxRoom(this); this.waterfallRockStream = new WaterfallRockStream(this); this.waterfallRoomTiles = new WaterfallSentryVisuals(this); this.waterfallFalls = new WaterfallFalls(this); }
     if (name === 'room_water2') {

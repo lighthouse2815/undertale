@@ -1,19 +1,14 @@
 import { createCollider } from './movement.mjs';
 import { inInteractionRange } from './npc.mjs';
 import { showItemBox } from './box-road.mjs';
-import { murderLevel } from './route.mjs';
+import { startWaterfallMusic } from './waterfall-music.mjs';
 import boxData from './box-road.json' with { type: 'json' };
 
 // Biển, BOX, hoa vọng âm và camera trong room_water3.
 export class WaterfallBoxRoom {
   constructor(world) {
     this.world = world; world.flags[300] ??= 14;
-    if (!world.townMusic && !world.waterfallMusic) {
-      const late = world.plot > 105, bleak = late && world.flags[223] && !world.flags[27];
-      const key = !late ? 'mus_ambientwater' : bleak ? 'mus_toomuch' : 'mus_waterfall';
-      const rate = key === 'mus_waterfall' && murderLevel(world.flags) >= 8 && !world.flags[27] ? .13 : 1;
-      world.waterfallMusic = world.sound.add(key, { loop: true, rate }); world.waterfallMusic.play(); world.waterfallMusic.setVolume(bleak ? 1 : .8);
-    }
+    startWaterfallMusic(world, world.plot <= 105);
     for (const e of world.roomObjects) if (['obj_sansbox', 'obj_sign_room', 'obj_echoflower'].includes(e.item.ObjectName)) {
       world.colliders.push(createCollider(world.dataSource, e.item)); e.image.setDepth(e.item.Y + e.sprite.MarginBottom - e.sprite.OriginY);
     }
