@@ -1267,3 +1267,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Tỉnh dậy ở khu rác
 
 Đã thêm cảnh tỉnh dậy sau cú rơi, bỏ khóa cờ 17, đặt plot 115, âm nước và các lời đọc rác. `remake-waterfall-trash-start.mjs` kiểm thời gian, vị trí, nhánh plot và lời rác; hồi quy cảnh cuối cầu, check/build qua. Nước, đống rác và lối sang phòng tiếp chưa đầy đủ; hộp quyên góp nhánh nền tảng đặc biệt chưa chuyển. Bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.
+
+### Điểm lưu khu rác
+
+Đã nối hai chiều tới `room_water_trashsavepoint`, giữ âm nước và thêm SAVE Trash Zone với lời lần đầu/lặp, cờ 91 và nhánh dân số. `remake-waterfall-trash-path.mjs` kiểm cửa, marker, nhạc, lưu thật và nhánh lời; hồi quy phòng tỉnh dậy, check/build qua. Hiệu ứng nước/thác, rác trôi và lối sang phòng sau còn thiếu; bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.

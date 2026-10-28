@@ -54,7 +54,7 @@ export class SaveMenu extends Scene {
     this.levelLabel.setText(`LV ${save?.lv ?? (save ? 1 : 0)}`);
     const seconds = Math.floor((save?.playTime ?? 0) / 1000);
     this.timeLabel.setText(`${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`);
-    this.roomLabel.setText(({ room_ruins1: 'Ruins - Entrance', room_ruins7: 'Ruins - Leaf Pile', room_ruins12A: 'Ruins - Mouse Hole', room_ruins19: 'Ruins - Home', room_tundra3: 'Snowdin - Box Road', room_tundra_spaghetti: 'Snowdin - Spaghetti', room_tundra_lesserdog: 'Snowdin - Dog House', room_tundra_town: 'Snowdin - Town', room_water2: 'Waterfall - Checkpoint', room_water4: 'Waterfall - Hallway', room_water_savepoint1: 'Waterfall - Crystal', room_water_friendlyhub: 'Waterfall - Quiet Area', room_water_preundyne: 'Waterfall - Bridge' })[save?.room] ?? ' ');
+    this.roomLabel.setText(({ room_ruins1: 'Ruins - Entrance', room_ruins7: 'Ruins - Leaf Pile', room_ruins12A: 'Ruins - Mouse Hole', room_ruins19: 'Ruins - Home', room_tundra3: 'Snowdin - Box Road', room_tundra_spaghetti: 'Snowdin - Spaghetti', room_tundra_lesserdog: 'Snowdin - Dog House', room_tundra_town: 'Snowdin - Town', room_water2: 'Waterfall - Checkpoint', room_water4: 'Waterfall - Hallway', room_water_savepoint1: 'Waterfall - Crystal', room_water_friendlyhub: 'Waterfall - Quiet Area', room_water_preundyne: 'Waterfall - Bridge', room_water_trashsavepoint: 'Waterfall - Trash Zone' })[save?.room] ?? ' ');
   }
 
   close() {

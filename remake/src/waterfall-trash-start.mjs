@@ -4,7 +4,7 @@ import { startWaterfallMusic } from './waterfall-music.mjs';
 // obj_wakeupchara và các đống rác ở điểm rơi Waterfall.
 export class WaterfallTrashStart {
   constructor(world){
-    this.world=world;this.elapsed=0;this.stage=world.plot<114?'lying':'done';this.timer=60;this.talked=0;
+    this.world=world;this.elapsed=0;this.stage=world.dataSource.name==='room_water_trashzone1'&&world.plot<114?'lying':'done';this.timer=60;this.talked=0;
     this.piles=world.roomObjects.filter(e=>e.item.ObjectName==='obj_garbagepile');
     const donation=world.roomObjects.find(e=>e.item.ObjectName==='obj_npc_room');donation?.image?.destroy();
     if(this.stage==='lying'){world.flags[17]=0;world.player.setAngle(-90);world.player.y+=10;world.player.facing='d';}
