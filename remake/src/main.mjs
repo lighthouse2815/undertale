@@ -156,8 +156,8 @@ const ROOM_EXITS = {
   room_tundra_iceentrance: { D: 'room_tundra_lesserdog', B: 'room_tundra_icehole', A: 'room_tundra_iceexit_new' },
   room_tundra_iceexit_new: { B: 'room_tundra_iceentrance' },
   room_tundra_poffzone: { A: 'room_tundra_dangerbridge' },
-  room_tundra_dangerbridge: { B: 'room_tundra_poffzone' },
-  room_tundra_town: { u: 'room_tundra_library', t: 'room_tundra_inn' },
+  room_tundra_dangerbridge: { B: 'room_tundra_poffzone', A: 'room_tundra_town' },
+  room_tundra_town: { B: 'room_tundra_dangerbridge', u: 'room_tundra_library', t: 'room_tundra_inn' },
   room_tundra_library: { u: 'room_tundra_town' },
   room_tundra_inn: { t: 'room_tundra_town' },
   room_tundra_sansbasement: { s: 'room_tundra_town' },
@@ -182,12 +182,17 @@ class World extends Scene {
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
     this.events.once('shutdown', () => { this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
-    this.events.once('shutdown', () => { this.townMusic?.destroy(); stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
+    this.events.once('shutdown', () => { this.roomMusicFade?.stop(); this.townMusic?.destroy(); stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
+    // Dừng tween trước khi audio cũ bị hủy bởi đổi phòng.
+    this.roomMusicFade?.stop(); this.roomMusicFade = null;
+    // Tuyến kết thúc giữ cùng Reunited khi qua cửa không fade giữa rừng và thị trấn.
+    if (this.flags?.[7] === 1 && name === 'room_tundra_town' && this.snowdinMusic?.key === 'mus_reunited' && !this.townMusic) { this.townMusic = this.snowdinMusic; this.snowdinMusic = null; }
+    if (this.flags?.[7] === 1 && name === 'room_tundra_dangerbridge' && this.townMusic?.key === 'mus_reunited' && !this.snowdinMusic) { this.snowdinMusic = this.townMusic; this.townMusic = null; }
     if (!HOUSE_ROOMS.includes(name)) stopHouseMusic(this);
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
@@ -600,8 +605,8 @@ class World extends Scene {
   transitionRoom(destination, marker, duration, musicFade = false) {
     state.phase = 'transition';
     if (musicFade && this.flags[7] !== 1) {
-      const music = this.ruinsHome?.music ?? this.torielHall?.music[0] ?? this.torielGate?.music ?? this.townMusic ?? this.sansBasement?.music;
-      if (music) this.tweens.add({ targets: music, volume: 0, duration: 10 * 1000 / 30 });
+      const music = this.ruinsHome?.music ?? this.torielHall?.music[0] ?? this.torielGate?.music ?? this.townMusic ?? this.sansBasement?.music ?? this.snowdinMusic;
+      if (music) this.roomMusicFade = this.tweens.add({ targets: music, volume: 0, duration: 10 * 1000 / 30 });
     }
     this.cameras.main.once('camerafadeoutcomplete', async () => {
       try {

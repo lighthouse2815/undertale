@@ -334,3 +334,6 @@ Tường mê cung7 có ba lời Papyrus theo số lần cố quay lại, đẩy4
 
 
 `src/snowdin-inn.mjs/json` nối nhà trọ Snowed Inn/tầng ngủ, lựa chọn và các nhánh80G/miễn phí, cảnh ngáy/đánh thức, HP vượt max và cờ72/73. Kiểm thử riêng và chuỗi Town→Library→Inn đã qua. Các dịch vụ và tiến trình Snowdin còn thiếu được ghi trong TIEN_DO.md.
+
+
+Cửa cầu Papyrus7↔thị trấn đã nối hai chiều với marker gốc; nhạc thường fade và Reunited được giữ liên tục sau kết thúc. Đã kiểm thử đường đi thật và hồi quy cảnh cầu. Cửa qua fog/Papyrusboss cùng các dịch vụ, phòng và tuyến sau vẫn còn thiếu.
