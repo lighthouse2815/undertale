@@ -817,3 +817,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Lời cuộc gặp Undyne
 
 Đã chuyển dữ liệu báo cáo Papyrus với mã biểu cảm `\M`, giữ thứ tự ghi đè trang 157 bằng 158 và tách writer kết thúc ở 169 khỏi ba trang tiếp theo; thêm hai nhánh lời Monster Kid theo cờ Papyrus. Kiểm thử riêng số trang, biểu cảm và lựa chọn nhánh qua, check/build qua. Chưa nối vào hoạt cảnh/camera/nhạc và phòng 4 chưa có đường vào. Push `8721849` thành công; bộ tổng snapshot `e6b3b82` tiếp tục chạy, chưa gồm phần này.
+
+### SAVE hành lang Waterfall
+
+Đã bổ sung điểm lưu `room_water4` với lời cảm giác bất an, các nhánh dân số/Determination dùng chung, hồi HP và tên file `Waterfall - Hallway`; kiểm thử riêng các nhánh/lưu file, hồi quy SAVE trạm, check/build qua. Phòng chưa có cảnh Undyne hoặc cửa vào. Push `4d04fee` thành công; bộ tổng snapshot `e6b3b82` đang chạy, chưa gồm phần này.
