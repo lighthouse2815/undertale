@@ -1001,3 +1001,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### BOX phòng sao
 
 Đã nối BOX của phòng 11 với kho vật phẩm chung và collider. `test-star-box-v2.log` kiểm mở hộp bằng phím, rút găng tay và cập nhật túi; hồi quy tương tác phòng sao, check/build qua. Sans, hiệu ứng và các cửa phòng sao còn thiếu. Push tương tác phòng sao `0c12a2e` thành công; bộ tổng `test-remake-4022c4c.log` đang chạy, không gồm phần này.
+
+### Đồng bộ kiểm thử cảnh Undyne
+
+Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt cảnh Undyne sau `resume()`. Kiểm thử giờ chờ scene hoạt động trước khi gửi phím; kiểm thử cảnh chạy riêng, check/build qua. Đây là nguyên nhân có khả năng của timeout, cần xác nhận bằng bộ tổng chạy lại; bộ cũ không bao gồm các thay đổi sau `4022c4c`.

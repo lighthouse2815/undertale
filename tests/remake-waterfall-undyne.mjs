@@ -17,6 +17,7 @@ export async function testWaterfallUndyne(page) {
     assert.equal(result.dialogues.some(t=>/DAILY REPORT/.test(t)),!killed);assert.ok(result.dialogues.some(t=>/AWESOME/.test(t)));assert.ok(result.stages.includes('throw'));assert.ok(result.stages.includes('kidTrip'));
   }
   await page.evaluate(async()=>{const w=__remake.scene;w.flags={};w.plot=101;await w.openRoom('room_water4');w.player.setPosition(235,275);w.updateCamera();});
+  await page.waitForFunction(()=>__remake.scene.scene.isActive());
   await page.keyboard.down('ArrowRight');await page.waitForFunction(()=>__remake.scene.waterfallUndyne.locked);await page.keyboard.up('ArrowRight');assert.equal(await page.evaluate(()=>__remake.scene.waterfallUndyne.stage),'start');
   await page.evaluate(async()=>{const w=__remake.scene;w.flags={};w.plot=106;await w.openRoom('room_water4');});assert.equal(await page.evaluate(()=>__remake.scene.waterfallUndyne.stage),'done');
   await page.evaluate(async()=>{await __remake.scene.openRoom('room_water1');});console.log('✓ Gặp Undyne: hai nhánh Papyrus, camera, phát hiện, ngắm giáo, Monster Kid và plot');
