@@ -15,7 +15,7 @@ export class UndyneChaseSpears {
       launchAt: Math.floor(30 + random() * 4), contact: 0 };
   }
   step({ x, y, player, room = 'room_water8', moving = 0, interacting = false, touching = () => false, flags = {} }) {
-    this.frame++; let volley = false, hit = false, sound = false;
+    this.frame++; let volley = false, hit = false, sound = false, launched = 0;
     if (interacting) this.next++;
     if (this.frame >= this.next) {
       const originX = room === 'room_water9' ? -100 : x, originY = room === 'room_water9' ? (this.random() < .5 ? 240 : 0) : y;
@@ -29,6 +29,7 @@ export class UndyneChaseSpears {
       if (spear.state === 'windup' && spear.age >= spear.launchAt) {
         spear.direction = aim(spear.x, spear.y, player.x + (room === 'room_water9' ? 400 : 7) + spear.offset, player.y + 15);
         spear.rotation = spear.direction; spear.speed = 5; spear.state = 'flying';
+        launched++;
       }
       if (spear.state === 'windup') {
         spear.rotation += spear.rotationSpeed;
@@ -50,6 +51,6 @@ export class UndyneChaseSpears {
     }
     if (hit) { this.spears = []; this.next += 20; flags[15] = 1; flags[16] = 1; flags[370] = 1; }
     else this.spears = this.spears.filter(spear => !spear.dead);
-    return { volley, hit, sound };
+    return { volley, hit, sound, launched };
   }
 }

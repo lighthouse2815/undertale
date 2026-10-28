@@ -969,3 +969,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Bắt đầu truy đuổi Undyne
 
 Đã nối cảnh giáo mở đầu, camera/Undyne/nhạc, generator giáo và va chạm dẫn tới trận nhanh trong phòng 8. `test-undyne-chase-v3.log` kiểm trigger bằng phím, các giai đoạn, cờ, va chạm nhân tạo và trở về sau trận; check/build qua. Phòng 8 chưa nối cửa, chưa kiểm hành trình né giáo thực tế, va chạm và nhịp/hoạt ảnh cần đối chiếu với gốc; hiệu ứng chuyển cảnh, va chạm tường và lối ra còn thiếu. Push scene trận nhanh `18fce10` thành công.
+
+### Hiệu ứng và chuyển động truy đuổi
+
+Đã thêm năm giáo chắn đường, sao khi tạo giáo, âm thanh lúc phóng và nhịp di chuyển Undyne 20 frame. Hồi quy `test-undyne-chase-effects.log`, kiểm thử generator, check/build qua; các giới hạn phòng 8 ở mục trước vẫn còn. Push cảnh truy đuổi `4022c4c` thành công. Bộ tổng `test-remake-4022c4c.log` đang chạy, chưa gồm phần này và chưa có kết quả cuối.
