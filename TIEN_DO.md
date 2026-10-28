@@ -1005,3 +1005,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Đồng bộ kiểm thử cảnh Undyne
 
 Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt cảnh Undyne sau `resume()`. Kiểm thử giờ chờ scene hoạt động trước khi gửi phím; kiểm thử cảnh chạy riêng, check/build qua. Đây là nguyên nhân có khả năng của timeout, cần xác nhận bằng bộ tổng chạy lại; bộ cũ không bao gồm các thay đổi sau `4022c4c`.
+
+### Đường tới phòng sao
+
+Đã nối cửa Crystal ↔ phòng sao theo marker và giữ nhạc liên tục, kể cả nhánh kết thúc. `remake-waterfall-star-path.mjs` kiểm hai chiều bằng phím và hai nhánh nhạc; check/build qua. Nhánh fun 66 dẫn hành lang bí mật chưa chuyển; Sans, hiệu ứng và các cửa khác của phòng sao còn thiếu. Bộ tổng `test-remake-fe0840e.log` đang chạy với thay đổi cửa này, chưa có kết quả cuối.
