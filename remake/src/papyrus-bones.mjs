@@ -9,13 +9,24 @@ export function loadPapyrusBoneAssets(scene) {
 
 // Ba xương trắng mở đầu của obj_papyrusboss, cùng xương trên/dưới dùng ở các lượt sau.
 export class PapyrusBones {
-  constructor(scene, { firstWave = false, fighto = -1 } = {}) {
+  constructor(scene, { firstWave = false, fighto = -1, turn = null } = {}) {
     this.scene = scene; this.fighto = fighto; this.frames = 0; this.bullets = []; this.captured = false;
+    this.duration = firstWave ? 140 : ({ '-1': 200, 0: 300, 1: 220, 2: 240 })[turn] ?? 140;
     this.border = { left: 192, right: 442, top: 250, bottom: 385 };
     const b = this.border; scene.arena.setPosition(b.left / 2, b.top / 2).setSize((b.right - b.left) / 2, (b.bottom - b.top) / 2);
     this.clip = scene.add.graphics().fillStyle(0xffffff).fillRect(b.left / 2, b.top / 2, (b.right - b.left) / 2, (b.bottom - b.top) / 2).setVisible(false);
     this.mask = this.clip.createGeometryMask(); this.oldHeart = { x: scene.soul.x * 2, y: scene.soul.y * 2 };
     if (firstWave) for (const dx of [10, 90, 170]) this.add(b.right + dx, b.bottom - (20 + Math.round(Math.random() * 20)), { vx: -3 });
+    if (turn !== null) {
+      scene.soulMovement = 2; scene.soulVSpeed = -1; scene.soulJumpStage = 2;
+      const patterns = {
+        '-1': [[b.right + 30, 20, -3], [b.right + 200, 20, -3], [b.right + 370, 40, -3]],
+        0: [[b.right + 20, 20, -4], [b.right + 150, 40, -4], [b.right + 280, 40, -4], [b.right + 410, 40, -4], [b.right + 390, 60, -3], [b.right + 510, 60, -3], [b.right + 630, 60, -3]],
+        1: [[b.left - 10, 60, 3], [b.left - 80, 40, 3, true], [b.left - 230, 20, 4], [b.left - 310, 20, 4], [b.left - 390, 20, 4], [b.left - 490, 50, 4], [b.left - 580, 40, 4, true]],
+        2: [[b.left - 30, 60, 3.5], [b.left - 160, 60, 3.5], [b.left - 290, 60, 3.5], [b.left - 390, 80, 3.5, false, true], [b.right + 1120, 30, -6]]
+      };
+      for (const [x, height, vx, top = false, blue = false] of patterns[turn]) this.add(x, b.bottom - height, { vx, top, blue });
+    }
   }
   add(x, y, { vx = 0, top = false, blue = false, damage = 6, osc = 0, oscmax = 20, oscmin = 20 } = {}) {
     const scene = this.scene, b = this.border, frame = Number(blue), key = top ? 'spr_bonebottom' : 'spr_bonetop';
@@ -67,7 +78,7 @@ export class PapyrusBones {
         if (this.captured) break;
       } else if (bone.x < b.left - 10 && bone.vx < 0 || bone.x > b.right + 10 && bone.vx > 0) this.remove(bone);
     }
-    this.oldHeart = { x: hx, y: hy }; return this.frames >= 140;
+    this.oldHeart = { x: hx, y: hy }; return this.frames >= this.duration;
   }
   destroy() { for (const bone of [...this.bullets]) this.remove(bone); this.mask.destroy(); this.clip.destroy(); }
 }

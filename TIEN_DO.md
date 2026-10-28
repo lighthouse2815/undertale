@@ -585,3 +585,9 @@ Push Snowed Inn f24f7e6 và cửa cầu→town f7fe082 đã thành công.
 Đã chuyển thành phần `papyrus-bones.mjs`: khung border5 (192–442, 250–385), ba xương trắng đầu có độ cao ngẫu nhiên và tốc độ -3 trong lượt 140 frame; dựng đầu/chân bằng sprite gốc, thân trắng/xanh và cắt trong khung. Có xương mọc từ trên/dưới, dao động, va chạm theo mask tim, xương xanh chỉ gây thương tích khi tim đang di chuyển, công thức sát thương tối thiểu 3 và giảm thương ở lượt cuối khi HP thấp; bất tử theo trang bị. Khi hết HP đánh dấu bị bắt, giữ 1 HP và dừng xương thay vì Game Over.
 
 `tests/remake-papyrus-bones.mjs` chạy trên scene thật: tọa độ/vận tốc/140 frame, xương trên-dưới, trắng-xanh, đứng yên/di chuyển, bất tử, HP/bị bắt và dọn. Chuỗi GreaterDog→tim xanh→xương→tim xanh (`test-papyrus-bones-chain-v3.log`) qua, check/build qua. Đây là thành phần cho trận, **chưa nối cảnh bắt, hội thoại, ACT/FIGHT/MERCY, chuyển sang tim xanh và các đợt còn lại**, chưa thể coi trận Papyrus hay game đã hoàn chỉnh. Full snapshot `15dd854` đang chạy, chưa gồm xương.
+
+### Bốn lượt xương đầu khi tim xanh
+
+Bổ sung bốn bố trí `fighto=-1,0,1,2` vào thành phần xương: đặt tim xanh với vận tốc -1 và trạng thái đang nhảy, lần lượt 200/300/220/240 frame; chuyển chính xác vị trí, tốc độ, hướng trên/dưới và xương xanh của từng nhóm từ `obj_papyrusboss`. Đây là nhánh thông thường; hiệu ứng `xfight` khi đã gây nhiều sát thương và các lượt sau vẫn cần chuyển khi hoàn thiện trận.
+
+`tests/remake-papyrus-bones.mjs` kiểm từng nhóm xương, thời lượng và trạng thái tim, sau đó kiểm lại va chạm/bị bắt/dọn và tim xanh trên scene thật; chuỗi `test-papyrus-turns-v3.log` xanh. Check/build đã qua. Các nhóm chưa được nối vào boss hay đường chơi, full snapshot `15dd854` vẫn đang chạy và không bao gồm thay đổi này.
