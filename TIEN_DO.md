@@ -965,3 +965,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Scene trận nhanh Undyne
 
 Đã ghép đợt né giáo vào scene trận nhanh, trả HP về phòng và dùng Game Over hiện có khi hết máu. `test-undyne-quick-battle-v3.log` kiểm vào trận, kết thúc và nhánh hết HP; check/build qua. Mới mở trực tiếp để kiểm thử, chưa nối cảnh truy đuổi, chuyển cảnh và nhạc; chỉ hỗ trợ loại cờ 370 bằng 1. Push đợt giáo `4ee2b47` thành công.
+
+### Bắt đầu truy đuổi Undyne
+
+Đã nối cảnh giáo mở đầu, camera/Undyne/nhạc, generator giáo và va chạm dẫn tới trận nhanh trong phòng 8. `test-undyne-chase-v3.log` kiểm trigger bằng phím, các giai đoạn, cờ, va chạm nhân tạo và trở về sau trận; check/build qua. Phòng 8 chưa nối cửa, chưa kiểm hành trình né giáo thực tế, va chạm và nhịp/hoạt ảnh cần đối chiếu với gốc; hiệu ứng chuyển cảnh, va chạm tường và lối ra còn thiếu. Push scene trận nhanh `18fce10` thành công.

@@ -193,6 +193,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
+  if (name === 'room_water8') for (const key of ['spr_undyne_starkd', 'spr_undyne_starkd_arm', 'spr_undyne_shad', 'spr_undynespear', 'spr_undynespear_stabbed']) spriteNames.add(key);
   if (name === 'room_water5') for (const key of ['spr_floweysink', 'spr_face_papyrus', 'spr_heartsmall', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water4') for (const key of ['spr_undynea_starku', 'spr_undynea_starkl', 'spr_undyne_starkd', 'spr_undyne_throw', 'spr_undyne_starkeye', 'spr_undyne_shad', 'spr_papyrus_r_stark', 'spr_papyrus_l_stark', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_u', 'spr_mkid_d', 'spr_mkid_trip_r', 'spr_exc', 'spr_maincharad_stark', 'spr_maincharau_stark', 'spr_maincharal_stark', 'spr_maincharar_stark']) spriteNames.add(key);
   if (name === 'room_water3A') for (const key of ['spr_tutu', 'spr_heartsmall']) spriteNames.add(key);
@@ -264,6 +265,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water5' ? ['snd_bell', 'snd_movemenu', 'snd_phone', 'snd_b'] : []),
     ...(name === 'room_water6' ? ['snd_squeak', 'snd_bluh', 'snd_b', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water7' ? ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'] : []),
+    ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water4' ? ['snd_splash', 'snd_b', 'snd_undynedis', 'mus_undynescary', 'mus_undynetheme', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_tundra_grillby' ? ['snd_bluh', 'mus_muscle', 'mus_rimshot', 'mus_whoopee', 'mus_mysteriousroom2', 'snd_noise', 'snd_chug', 'snd_swallow'] : []),
     ...(maze ? ['mus_papyrus', 'snd_shock'] : []),
