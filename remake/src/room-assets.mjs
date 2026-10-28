@@ -194,6 +194,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
+  if (name === 'room_water14') spriteNames.add('spr_centeredhole');
   if (name === 'room_water_onionsan') for (const key of ['spr_onionblue','spr_oniontblue','spr_onionsan_kawaii','spr_onionsan_yhear','spr_onionsan_wistful','spr_onionsan_disappoint','spr_oniont_l','spr_oniont_r','spr_oniont_coyl','spr_oniont_coyd','spr_oniont_bye','spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_nicecream') for (const key of ['spr_chestbox','spr_heartsmall','spr_icecreamguy_sad','spr_icecreamguy_anim','spr_icecreamguy_happy']) spriteNames.add(key);
   if (name === 'room_water_shoe') for (const key of ['spr_balletshoes', 'spr_heartsmall']) spriteNames.add(key);
@@ -278,7 +279,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
-    ...(name === 'room_water14' ? ['mus_ambientwater'] : []),
+    ...(name === 'room_water14' ? ['mus_ambientwater','mus_sfx_generate'] : []),
     ...(name === 'room_water_onionsan' ? ['snd_splash','snd_squeak','mus_ambientwater'] : []),
     ...(name === 'room_water_nicecream' ? ['snd_movemenu','snd_squeak'] : []),
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
@@ -323,7 +324,7 @@ export async function loadRoom(scene, name) {
     scene.load.on('loaderror', failed);
     scene.load.once('complete', complete);
     for (const [key, path] of queued) scene.load.image(key, new URL(path, base).href);
-    for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.${key === 'snd_fall2' || key.startsWith('mus_') ? 'ogg' : 'wav'}`, base).href);
+    for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.${key === 'snd_fall2' || key.startsWith('mus_') && key !== 'mus_sfx_generate' ? 'ogg' : 'wav'}`, base).href);
     scene.load.start();
   });
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);

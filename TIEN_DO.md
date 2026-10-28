@@ -1145,3 +1145,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Hành trình tới trận Shyren
 
 Đã kiểm người chơi đi bằng phím từ cửa Onionsan, vòng qua vật cản vào trigger Shyren, vào trận và trốn; kiểm thử đường hai chiều cùng check/build qua. Chi tiết nhạc/hoạt ảnh và các nhánh toàn trận vẫn cần đối chiếu; bộ tổng `test-remake-878f504.log` đang chạy từ trước kiểm thử này.
+
+### Shyren và chị ở tuyến kết thúc
+
+Đã thêm hai nhân vật ở phòng 14 theo cờ kết thúc, hoạt ảnh nổi, bóng và ba câu nói luân phiên với chữ nhiều vị trí. `remake-waterfall-shyren-ending.mjs` kiểm điều kiện, tương tác và chu kỳ thoại; hồi quy bia/trigger, check/build qua. Cần đối chiếu nhịp và hiệu ứng chữ với gốc. Bộ tổng `test-remake-878f504.log` đang chạy từ trước phần này.
