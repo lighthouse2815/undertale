@@ -222,7 +222,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();

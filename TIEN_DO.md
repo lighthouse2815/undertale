@@ -763,3 +763,7 @@ Bộ tổng snapshot `eba8db3` đã hoàn thành với mã thoát 0 (`test-papyr
 ### Lời khách tại Grillby
 
 Đã chuyển dữ liệu và thứ tự ghi đè theo Alarm 0 của mười NPC Grillby (kể cả Grillby, hai cá/chuột và các chó), với lượt lặp, plot, Sans, các cờ chó/Papyrus/kết thúc. `remake-grillby-npc-dialogue.mjs` kiểm các tổ hợp và ưu tiên; check/build qua. Dữ liệu chưa nối nhân vật hoặc cảnh phòng, Greater Dog và đồ vật còn phải chuyển. Bộ tổng snapshot `605ea64` đã qua; push `fffcdfa` thành công.
+
+### Mười khách tại Grillby
+
+Đã nối mười NPC vào phòng Grillby khi mở trực tiếp: sprite/độ sâu, collider, trò chuyện/lặp, hoạt ảnh Grillby và điều kiện ẩn theo các cờ chó, tuyến giết hoặc kết thúc; lời sau bữa Sans dùng `sansmode`. `test-grillby-npcs-v1.log` kiểm tương tác, cờ/ẩn và dọn; chuỗi `test-waterfall-station-grillby-v1.log` kiểm hồi quy trạm Waterfall; check/build qua. Greater Dog, đồ vật, âm nhạc, bữa ăn và cửa Grillby vẫn chưa được chuyển đầy đủ. Push `3e6ca0f` thất bại vì github.com:443 không kết nối; cần thử lại. Full snapshot `605ea64` đã qua, chưa bao gồm phần này.
