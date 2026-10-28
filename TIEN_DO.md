@@ -783,3 +783,7 @@ Dùng lại cơ chế chó của town cho Greater Dog trong quán: sprite thư�
 ### Sans tại trạm và đường tắt Grillby
 
 Đã mở cửa A/B có fade giữa `room_water1` và trạm `room_water2`; Sans có collider, lời mời Yes/No, nhánh tuyến giết/đã đi ăn, điều kiện ẩn theo 67/413/plot, đi qua trạm rồi chuyển sang Grillby với cờ 89=1. `test-waterfall-sans-v2.log` đi bộ hai cửa, kiểm cả hai lựa chọn, đường tắt và chạy toàn bộ bữa ăn tới cờ 89=2; còn kiểm các điều kiện ẩn. Chuỗi `test-waterfall-sans-station-v1.log`, `test-waterfall-sans-date-v1.log`, check/build qua. Chưa nối đường phía đông trạm tới Waterfall tiếp theo; cảnh Grillby vẫn có các giới hạn biểu cảm, writer và timing đã ghi ở trên. Full snapshot `605ea64` qua, không bao gồm phần này; push `065d15d` thành công.
+
+### Biển và BOX phòng Waterfall 3
+
+Đã nối tương tác biển BOX hater, hộp đồ dùng lại menu chung và dữ liệu BOX, hoa vọng âm theo vị trí, hai điểm camera và collider của biển/hộp/hoa khi mở `room_water3` trực tiếp. `test-waterfall-box-v3.log` kiểm lời, BOX thật và va chạm; `test-waterfall-box-chain-v1.log` hồi quy BOX ở Snowdin cùng phòng mới; check/build qua. Đá rơi đẩy người, thác/va chạm nước, nhạc và các cửa của phòng vẫn chưa chuyển nên chưa mở đường từ trạm. Push `13ca033` thành công; bộ tổng snapshot `13ca033` đang chạy, không gồm phần này.
