@@ -40,5 +40,5 @@ export class WaterfallUndyneSecond {
   }
   removeBarriers() { this.world.colliders = this.world.colliders.filter(c => !this.barriers.includes(c)); }
   clearSpears() { for (const image of this.images.values()) image.destroy(); this.images.clear(); if (this.generator) this.generator.spears = []; }
-  destroy() { this.clearSpears(); this.undyne?.destroy(); this.kid?.destroy(); this.world.chaseMusic?.destroy(); this.world.chaseMusic = null; }
+  destroy() { this.cutscene?.destroy(); this.clearSpears(); this.undyne?.destroy(); this.kid?.destroy(); this.world.chaseMusic?.destroy(); this.world.chaseMusic = null; }
 }

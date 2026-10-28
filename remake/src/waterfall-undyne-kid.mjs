@@ -5,8 +5,9 @@ export class WaterfallUndyneKid {
   constructor(world, { undyne, kid, cleanup }) {
     this.world = world; this.undyne = undyne; this.kid = kid; this.cleanup = cleanup;
     this.stage = 'pause'; this.frames = 0; this.elapsed = 0; this.locked = true; world.release();
-    if (world.chaseMusic) world.tweens.add({ targets: world.chaseMusic, volume: 0, duration: 100 * 1000 / 30 });
+    if (world.chaseMusic) this.musicFade = world.tweens.add({ targets: world.chaseMusic, volume: 0, duration: 100 * 1000 / 30 });
   }
+  destroy() { this.musicFade?.stop(); this.musicFade = null; }
   wait(stage) { this.stage = stage; this.frames = 0; }
   pose(actor, sprite, frame = 0) { actor.setTexture(`${sprite}:${frame}`); }
   update(delta) {
@@ -46,7 +47,7 @@ export class WaterfallUndyneKid {
     } else if (this.stage === 'waitPlayer') {
       if (w.player.x + 19 >= 200 && w.player.x <= 220 || w.player.x + 19 >= 780 && w.player.x <= 790) {
         this.locked = true; w.release(); this.left = w.player.x < 400; kid.y = w.player.y > 120 ? 100 : 130;
-        w.chaseMusic?.destroy(); w.chaseMusic = null; w.waterfallMusic = w.sound.add('mus_ambientwater', { loop: true, volume: 0 });
+        this.musicFade?.stop(); this.musicFade = null; w.chaseMusic?.destroy(); w.chaseMusic = null; w.waterfallMusic = w.sound.add('mus_ambientwater', { loop: true, volume: 0 });
         this.wait('kidWalk');
       }
     } else if (this.stage === 'kidWalk') {

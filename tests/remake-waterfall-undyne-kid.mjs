@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 export async function testWaterfallUndyneKid(page) {
+  const errors = []; const onError = error => errors.push(error); page.on('pageerror', onError);
   await page.evaluate(async () => { const w = __remake.game.scene.getScene('World'); w.flags = { 17: 1 }; w.plot = 108; await w.openRoom('room_water8');
     const base = '/assets/'; for (const [key, count] of Object.entries({ spr_undynea_r: 4, spr_undynea_l: 4, spr_undynea_r_raise: 6, spr_undynea_r_raiseup: 14, spr_mkid_r: 4, spr_mkid_l: 4, spr_mkid_trip_r: 20 })) for (let i = 0; i < count; i++) if (!w.textures.exists(`${key}:${i}`)) w.load.image(`${key}:${i}`, `${base}sprites/${key}/${key}_${i}.png`);
     for (const [key, ext] of [['snd_grab', 'wav'], ['mus_ambientwater', 'ogg']]) if (!w.cache.audio.exists(key)) w.load.audio(key, `${base}sounds/${key}/${key}.${ext}`);
@@ -14,5 +15,6 @@ export async function testWaterfallUndyneKid(page) {
   const alternate = await page.evaluate(() => { const w = __remake.scene, c = w.kidFixture; w.flags[284] = 1; c.stage = 'kidPause3'; c.frames = 19; c.step(); const count = w.dialogue.lines.length; while (w.dialogue) w.advanceDialogue(); return count; });
   assert.equal(alternate, 8);
   await page.evaluate(async () => { const w = __remake.scene; w.scene.resume(); await w.openRoom('room_water1'); });
+  await page.waitForTimeout(150); page.off('pageerror', onError); assert.deepEqual(errors, []);
   console.log('✓ Cảnh Undyne và Monster Kid: hoạt ảnh, thoại, khóa và plot 110');
 }
