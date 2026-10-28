@@ -921,3 +921,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Hoa vọng âm Wishing Room
 
 Đã chuyển năm hoa và bảng Wishing Room, lời theo vị trí và nhánh im lặng khi tuyến giết/cờ 350, cùng collider hoa. `test-wishing-flowers-v2.log` kiểm từng hoa, bảng, hai nhánh im lặng và collider; check/build qua. Mới vào phòng trực tiếp để kiểm thử; kính thiên văn, cửa ẩn, encounter và cửa sang phòng 5 chưa nối. Push cửa phòng cầu/quiche `b3c5cd1` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm phần này.
+
+### Kính thiên văn Wishing Room
+
+Đã nối lựa chọn Yes/No, màn nhìn sao theo ống kính di chuyển, giới hạn màn, khóa nhân vật và giảm/khôi phục âm lượng. `test-wishing-telescope-v2.log` kiểm lựa chọn, di chuyển, thoát và âm lượng; hồi quy hoa, check/build qua. Chưa nối cửa ẩn, encounter và cửa phòng; hình/timing kính còn cần đối chiếu. Push hoa `f6ce3d2` thành công. Bộ tổng `test-remake-52ee79e-v2.log` thất bại ở cửa town→fog: phím phải không được ghi nhận, cần tìm nguyên nhân; bộ này không gồm các thay đổi mới sau `52ee79e`.
