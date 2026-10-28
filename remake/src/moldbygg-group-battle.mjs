@@ -5,7 +5,7 @@ import { moldsmalAct, moldsmalStatus } from './moldsmal-act.mjs';
 
 // Battlegroup 42: một Moldsmal thường và một Moldbygg giả dạng.
 export class MoldbyggGroupBattle extends MoldsmalGroupBattle {
-  constructor() { super('MoldbyggGroupBattle'); }
+  constructor(key = 'MoldbyggGroupBattle') { super(key); }
   preload() {
     super.preload(); loadMoldbyggWaveAssets(this); const base = new URL('../assets/', import.meta.url);
     for (const [key, count] of [['spr_moldsmalx_up', 2], ['spr_moldsmalx_part', 1]]) {

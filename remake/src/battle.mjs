@@ -27,6 +27,7 @@ export const BATTLE_CONFIGS = {
   temmie: { name: 'Temmie', asset: 'spr_tembattle', hp: 5, def: -20, xp: 40 },
   aaron: { name: 'Aaron', asset: 'spr_aaron', hp: 98, def: 2, xp: 52 },
   woshua: { name: 'Woshua', asset: 'spr_woshua', hp: 70, def: 1, xp: 52 },
+  moldbyggGroup55: { name: 'Woshua', asset: 'spr_woshua', hp: 70, def: 1, xp: 52 },
   moldbyggGroup42: { name: 'Moldsmal', asset: 'spr_moldsmal', hp: 50, def: 0, xp: 3 },
   moldsmalGroup53: { name: 'Moldsmal', asset: 'spr_moldsmal', hp: 50, def: 0, xp: 3 },
   waterfallGroup54: { name: 'Woshua', asset: 'spr_woshua', hp: 70, def: 1, xp: 52 },
