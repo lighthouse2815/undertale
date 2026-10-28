@@ -28,6 +28,11 @@ export class WaterfallBlookHouse {
     }return this.objects.interact();
   }
   startSandwich(){if(!this.ghost||(this.world.flags[93]??0)>=2)return;this.stage='hungryWait';this.timer=20;this.world.release();this.pose('l');}
+  createStars(){
+    const w=this.world;this.starPhase=0;this.starRows=Array.from({length:240},(_,y)=>w.add.image(0,0,'spr_st:0').setOrigin(0).setCrop(0,y,320,1));
+    this.stars=w.add.container(0,0,this.starRows).setScrollFactor(0).setDepth(99999).setAlpha(0);
+  }
+  animateStars(){if(!this.stars)return;this.starPhase++;for(const [y,row] of this.starRows.entries())row.x=Math.sin((this.starPhase+y+1)/38.25)*7;this.starPhase+=240;}
   update(delta){
     this.objects.update(delta);this.elapsed=Math.min(200,this.elapsed+delta);
     while(this.elapsed>=1000/30){this.elapsed-=1000/30;this.step();}
@@ -54,11 +59,11 @@ export class WaterfallBlookHouse {
     else if(this.stage==='lieText'&&--this.timer<=0){this.stage='talk';w.showDialogue(['* here we go...\n* you\'ll lie down as long\n  as you don\'t move.','* so... only move around when\n  you want to get up, i\n  guess.'],{onClose:()=>{this.stage='lying';this.timer=0;this.startX=p.x;this.startY=p.y;w.flags[17]=1;w.release();}});}
     else if(this.stage==='lying'){
       this.timer++;if(this.timer===230){this.objects.music?.pause();this.chords=w.sound.add('mus_napstachords',{loop:true,volume:.5,rate:.4});this.chords.play();}
-      if(this.timer===300)this.stars=w.add.image(0,0,'spr_st:0').setOrigin(0).setScrollFactor(0).setDepth(99999).setAlpha(0);
-      if(this.stars)this.stars.alpha=Math.min(1,this.stars.alpha+.005);
+      if(this.timer===300)this.createStars();
+      if(this.stars){this.stars.alpha=Math.min(1,this.stars.alpha+.005);this.animateStars();}
       if(p.x!==this.startX||p.y!==this.startY){w.flags[458]=1;w.flags[17]=0;p.setPosition(this.startX,this.startY).setVisible(true);this.lying.destroy();this.lying=null;this.chords?.destroy();this.chords=null;this.objects.music?.resume();this.stage='getUp';this.timer=this.stars?90:30;w.release();}
     }
-    else if(this.stage==='getUp'){if(this.stars)this.stars.alpha=Math.max(0,this.stars.alpha-1/90);if(--this.timer<=0){this.stars?.destroy();this.stars=null;g.y-=20;this.pose('l');this.stage='talk';w.showDialogue(['* well, that was nice...\n* thank you...'],{onClose:()=>{w.flags[93]=3;this.objects.cdBuffer=240;this.stage='done';w.release();}});}}
+    else if(this.stage==='getUp'){if(this.stars){this.stars.alpha=Math.max(0,this.stars.alpha-1/90);this.animateStars();}if(--this.timer<=0){this.stars?.destroy();this.stars=null;this.starRows=null;g.y-=20;this.pose('l');this.stage='talk';w.showDialogue(['* well, that was nice...\n* thank you...'],{onClose:()=>{w.flags[93]=3;this.objects.cdBuffer=240;this.stage='done';w.release();}});}}
     else if(this.stage==='leaveUp'){g.y+=2;if(--this.timer<=0){this.stage='leaveRight';this.timer=150;this.pose('r');}}
     else if(this.stage==='leaveRight'){g.x+=2;if(--this.timer<=0){g.destroy();this.ghost=null;this.objects.ghost=null;if(this.collider)this.collider.disabled=true;this.stage='done';w.release();}}
   }

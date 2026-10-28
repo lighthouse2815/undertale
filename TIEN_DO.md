@@ -1349,3 +1349,5 @@ Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm th�
 Đã chuyển tương tác TV, máy tính, tủ lạnh và ba đĩa nhạc trong nhà Napstablook; `remake-waterfall-blookhouse-objects.mjs` kiểm chọn/phát/dừng nhạc, lời thoại và callback bánh sandwich. Các đối tượng chưa nối vào phòng và cửa: cần hoàn thiện cảnh hẹn, trạng thái và chuyển phòng trước khi chơi được.
 
 Đã nối nhà Napstablook với Blook Acres và các vật thể, lời chào, sandwich, lựa chọn nằm hoặc từ chối, nhạc và cờ 17/93/94/458. `remake-waterfall-blookhouse.mjs` kiểm đường cửa, tương tác tủ lạnh, hai nhánh, nằm/chờ/đứng dậy và trở lại; hồi quy vật thể/khu nhà, check/build qua. Cần đối chiếu thêm tốc độ di chuyển, camera và hiệu ứng sóng khi nằm với game gốc; nhà bên cạnh và nông trại vẫn chưa chuyển.
+
+Đã thêm biến dạng sóng từng hàng cho bầu trời khi nằm, dùng ảnh và nhịp lệch sin của game gốc; kiểm số hàng, chuyển động, dọn hiệu ứng và ảnh trong trình duyệt, check/build qua. Nhịp mờ khi kết thúc và chuyển động nhân vật vẫn cần đối chiếu thêm.
