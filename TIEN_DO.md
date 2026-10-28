@@ -1311,3 +1311,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối ngưỡng HP giai đoạn 5 với callback chuyển cảnh, cộng 80 frame và hỗ trợ sinh trợ thủ trong lượt hiện tại; giữ lượt qua các mốc 6–13. Kiểm đạn trúng, HP, thời gian và sinh 32 trợ thủ trong trình duyệt, check/build qua. Cảnh/thoại và trận thực vẫn chưa nối; thời điểm cụ thể và animation cần đối chiếu.
 
 Đã thêm chuỗi gọi, sa thải trợ thủ và giới thiệu robot cho mốc 6–14, nối với bộ đạn qua callback thoại. Kiểm nhịp/nhánh và tích hợp bộ đạn trong trình duyệt, check/build qua. Chưa gọi chuỗi từ giao diện trận; chuyển động Dummy và kiểu hiển thị thoại gốc vẫn cần chuyển.
+
+Đã chuyển bốn trang phản ứng khi đạn đầu trúng Mad Dummy và truyền qua callback sau 30 frame; kiểm lời/nhịp trong trình duyệt, check/build qua. Chưa nối callback vào giao diện trận hoặc màu/biểu cảm thoại gốc.

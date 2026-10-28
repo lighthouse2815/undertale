@@ -10,3 +10,11 @@ export function madDummyIntro(flags){
   return ids.map(id=>text[id]);
 }
 export function madDummyAfter(flags){return ((flags[36]??0)===0?[354,355,356,357]:[344,345,346,347,348,349,350]).map(id=>text[id]);}
+
+// obj_maddummy Alarm 10: phản ứng đầu tiên khi chính đạn của Dummy bắn trúng.
+export function madDummyFirstHit(){return [
+  'OWWWW, you\nDUMMIES!!',
+  "Watch where you're\naiming your MAGIC\nattacks!",
+  '...',
+  'Hey!\nYou! Forget\nI said anything\nabout MAGIC!!!',
+];}
