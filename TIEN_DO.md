@@ -1201,3 +1201,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Hành lang mưa Waterfall
 
 Đã thêm giọt/hạt mưa, phản chiếu nhân vật và Kid, màn thác cùng hai lớp âm mưa chuyển dần giữa phòng. `remake-waterfall-rain-room.mjs` kiểm sinh, phản chiếu, chuyển âm và dọn; hồi quy Kid/tượng/đường ô, check/build qua. Phòng chưa nối cửa; mask ô, phối cảnh phản chiếu và fade khi rời vùng mưa còn cần đối chiếu. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
+
+### Đường tới hành lang mưa
+
+Đã nối khu lấy ô ↔ hành lang mưa, giữ ô và âm mưa/Reunited. `remake-waterfall-rain-path.mjs` kiểm hai chiều bằng phím, marker, sprite và nhạc; check/build qua. Kiểm thử đặt plot 114 để bỏ cảnh Kid, cần kiểm hành trình đầy đủ có Kid và lối sang phòng tiếp. Bộ tổng `test-remake-878f504.log` chạy từ trước phần này.
