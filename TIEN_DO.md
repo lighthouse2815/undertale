@@ -1251,3 +1251,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Giáo sàn truy đuổi Undyne
 
 Đã chuyển bộ sinh giáo sàn: tám vị trí, lệch hướng theo chuyển động, vùng cấm, trồi/mờ, tăng tần suất và tạm nghỉ sau va chạm. `remake-undyne-tile-spears.mjs` kiểm nhịp, vùng cấm, va chạm, tăng tốc và nhánh phòng cuối; check/build qua. Bộ sinh chưa nối cảnh/ảnh/mask hoặc trận thật; cần chuyển toàn bộ màn truy đuổi, cửa và các mốc Undyne. Bộ tổng `test-remake-9533de8.log` chạy từ trước phần này.
+
+### Cầu truy đuổi Undyne
+
+Đã nối phòng trước Undyne ↔ `room_water_undynebridge`, cảnh cảnh báo giáo, xuất hiện Undyne, âm nhạc, vùng cấm theo mask, giáo sàn và trận nhanh khi va chạm. `remake-waterfall-undyne-bridge.mjs` kiểm cửa, trigger bằng phím, mốc cảnh, mask, ảnh/dọn giáo và trận thật; hồi quy phòng trước/giáo, check/build qua. Chuyển động Undyne còn xấp xỉ, chưa kiểm toàn tuyến đường dài, chưa nối phòng cuối và tiếp diễn; cần đối chiếu timing/âm thanh. Bộ tổng `test-remake-9533de8.log` dừng tại `testWaterfallBridgePath`: nhân vật không di chuyển trong 5 giây sau `testWaterfallEncounter`, chưa xác định nguyên nhân.

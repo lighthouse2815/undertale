@@ -154,7 +154,7 @@ export async function loadRoom(scene, name) {
   if (corridorLesson) await Promise.all(['obj_plotwall3', 'obj_stalkerflowey'].map(object));
   if (ruinsRock) await Promise.all(['obj_plotwall4'].map(object));
   if (ruinsHoles || perspective) await object('obj_cosmetichole');
-  if (floweyExit) await object('obj_solidsmall');
+  if (floweyExit || name === 'room_water_undynebridge') await object('obj_solidsmall');
   if (snowdinStart) await Promise.all(['obj_sul', 'obj_door_s_musfade'].map(object));
   if (forest) await Promise.all(['obj_creeptree_sansmaker', 'obj_sans_interactable1', 'obj_sansbyetrigger'].map(object));
   if (checkpoint) await Promise.all(['obj_npc_room', 'obj_snowdrakedad'].map(object));
@@ -195,6 +195,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
   if (name === 'room_water_waterfall') for (const key of ['spr_mkid_d','spr_mkid_u','spr_mkid_l','spr_mkid_r','spr_mkid_dt','spr_mkid_lt','spr_mkid_rt','spr_mkid_dfall','spr_mkid_ufall','spr_mkid_lfall','spr_mkid_rfall','spr_mkid_rtfall','spr_statuedrop','spr_statueplink',...['d','u','l','r'].flatMap(d=>[`spr_mainchara${d}_fall`,`spr_mainchara${d}_umbrellafall`])]) spriteNames.add(key);
+  if (name === 'room_water_undynebridge') for (const key of ['spr_tilespear','spr_undyne_starkd','spr_undyne_shad']) spriteNames.add(key);
   if (name === 'room_water_waterfall3') for (const key of ['spr_twinklestar','spr_mkid_r_shadow','spr_mkid_l_shadow','spr_mkid_u_shadow',...['d','u','l','r'].map(d=>`spr_mainchara${d}_shadow`)]) spriteNames.add(key);
   if (name === 'room_water_waterfall4') for (const key of ['spr_statuedrop','spr_statueplink','spr_mkid_d','spr_mkid_r','spr_mkid_l','spr_mkid_rt','spr_mkid_prostrate','spr_mkid_trip_l']) spriteNames.add(key);
   if (name === 'room_water_waterfall2') for (const key of ['spr_mkid_d','spr_mkid_u','spr_mkid_l','spr_mkid_r','spr_mkid_dt','spr_mkid_rt','spr_statuedrop','spr_statueplink']) spriteNames.add(key);
@@ -285,6 +286,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water5' ? ['snd_bell', 'snd_movemenu', 'snd_phone', 'snd_b'] : []),
     ...(name === 'room_water6' ? ['snd_squeak', 'snd_bluh', 'snd_b', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water7' ? ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'] : []),
+    ...(name === 'room_water_undynebridge' ? ['snd_spearappear','snd_spearrise','snd_impact','snd_squeak','mus_fearsting','mus_undynefast'] : []),
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
