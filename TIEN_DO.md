@@ -845,3 +845,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Cờ hoa chuông Waterfall
 
 Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuyến thường, theo Create gốc. `test-waterfall-bridge-flag-v2.log` kiểm cờ thường và tuyến giết cùng phòng cầu; check/build qua. Các giới hạn phòng cầu ở mục trên vẫn còn. Push `a82247b` thành công; bộ tổng snapshot `9401df5` vẫn đang chạy, không gồm sửa này.
+
+### Cuộc gọi Papyrus ở phòng cầu
+
+Đã nối trigger cuộc gọi tại `room_water5`, nội dung theo năm loại giáp, lựa chọn Yes/No và cờ 75/76, plot 107, nhánh Papyrus chết không gọi, Flowey xuất hiện và chìm khi vào màn hình. `test-waterfall-phone-v1.log` kiểm hai lựa chọn, giáp và Flowey/cờ; kiểm dữ liệu năm loại giáp, hồi quy phòng cầu, check/build qua. Chưa nối cửa vào phòng, encounter, và lời/timing writer còn cần đối chiếu; bộ tổng snapshot `9401df5` đang chạy, chưa gồm thay đổi này. Push `102c0fc` thành công.
