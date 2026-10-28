@@ -1263,3 +1263,7 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 ### Cuối cầu Undyne
 
 Đã nối phòng cuối, giữ nhạc truy đuổi, thêm giáo sàn, cảnh Undyne phá cầu, rơi, lời gọi và chuyển sang `room_water_trashzone1`. `remake-waterfall-undyne-bridge-end.mjs` kiểm cửa, mask, trận nhanh, trigger bằng phím, các mốc cảnh và phòng đích; hồi quy cầu, check/build qua. Hình, âm thanh, timing và hành trình liên tục còn cần đối chiếu; phòng rác chưa chuyển đầy đủ. Bộ tổng `test-remake-ebb3c93.log` dừng tại `testWaterfallBridgePath`, chạy trước sửa chờ cảnh World ở commit `da098b7`.
+
+### Tỉnh dậy ở khu rác
+
+Đã thêm cảnh tỉnh dậy sau cú rơi, bỏ khóa cờ 17, đặt plot 115, âm nước và các lời đọc rác. `remake-waterfall-trash-start.mjs` kiểm thời gian, vị trí, nhánh plot và lời rác; hồi quy cảnh cuối cầu, check/build qua. Nước, đống rác và lối sang phòng tiếp chưa đầy đủ; hộp quyên góp nhánh nền tảng đặc biệt chưa chuyển. Bộ tổng `test-remake-d92715f.log` chạy từ trước phần này.
