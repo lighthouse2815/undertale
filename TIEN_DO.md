@@ -837,3 +837,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Đặt và trôi hạt cầu
 
 Đã chuyển phép chọn điểm đặt hạt theo bốn hướng, kiểm tra nước/vật cản và bước trôi 2 pixel cùng điểm dò/dừng, căn lưới theo `obj_waterboard`. Kiểm thử riêng qua bốn hướng và ô bị chặn/không có nước; check/build qua. Logic chưa nối tương tác thực tế trong phòng 5, tiếp tục cần chuông, vật cản, chuyển cầu và encounter. Push `0d2f981` thành công; bộ tổng `test-undyne-full-v2.log` vẫn đang chạy, không gồm phần này.
+
+### Cơ chế cầu hạt trong phòng Waterfall 5
+
+Đã nối lớp phòng cho bốn hạt: nhặt/mang, thả vào ô nước, trôi tới vật cản, bốn hạt thẳng tạo cầu và mở ô cản, chuông khôi phục, nấm, biển, cầu dựng sẵn và cờ tuyến giết. `test-waterfall-bridge-room-v4.log` kiểm nhặt/thả một hạt, trạng thái ghép cầu và chuông, tạo cầu sẵn/cờ/dọn; kiểm thử quy tắc, check/build qua. Kiểm thử ghép cầu đặt trực tiếp vị trí hạt, chưa chứng minh toàn bộ lời giải bằng điều khiển thật; va chạm, thứ tự xử lý, animation, nhạc/thoại, encounter và lối đi phòng 5 còn cần hoàn thiện, chưa nối cửa vào. Push `cd0ce27` thành công. Bộ tổng snapshot `9401df5` đang chạy (`test-undyne-full-v2.log`), chưa bao gồm thay đổi này.
