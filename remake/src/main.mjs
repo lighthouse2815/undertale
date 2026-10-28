@@ -1,3 +1,4 @@
+import { showWaterfallSave } from './waterfall-save.mjs';
 import { WaterfallSentryNpcs } from './waterfall-sentry-npcs.mjs';
 import { WaterfallEntrance } from './waterfall-entrance.mjs';
 import { PapyrusFogEncounter } from './papyrus-fog-encounter.mjs';
@@ -711,6 +712,7 @@ class World extends Scene {
       .sort((a, b) => a.distance - b.distance)[0];
     if (!target) return;
     if (target.entry.item.ObjectName === 'obj_savepoint') {
+      if (this.dataSource.name === 'room_water2') { showWaterfallSave(this); return; }
       this.hp = Math.max(this.hp, this.maxHp);
       this.sound.play('snd_power', { volume: 0.88 });
       this.showDialogue(this.ruinsHome?.saveDialogue ?? this.ruins12?.saveDialogue ?? this.ruinsStart?.text.save ?? DIALOGUES.obj_savepoint, { onClose: () => {

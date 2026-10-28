@@ -741,3 +741,7 @@ Kiểm thử `remake-waterfall-sentry-dialogue.mjs` qua, check/build remake qua.
 ### NPC cá, hoa vọng âm và Monster Kid
 
 Đã nối ba NPC vào `room_water2` khi mở trực tiếp: sprite cá, collider, hướng/hoạt họa nói của Kid, số lần trò chuyện, trạng thái hoa đã nghe, các nhánh lời và ẩn cá ở murderlv>=8/Kid khi plot>103. Có dọn NPC khi rời phòng; `test-waterfall-sentry-npcs-v1.log` kiểm tương tác hai thứ tự, collider, điều kiện ẩn và dọn. Hồi quy `test-waterfall-entrance-npcs-v1.log`, check/build qua. Trạm chưa mở đường chơi vì còn Sans/SAVE/nhạc/thác và cảnh liên quan; bộ tổng snapshot `eba8db3` vẫn chạy, không bao gồm phần này. Push `5c31270`, `05147b4`, `11aad20` đã thành công.
+
+### Điểm lưu tại trạm Waterfall
+
+Đã nối lời SAVE phòng `room_water2`: âm nước thường, số quái Waterfall còn lại màu đỏ, Determination khi hết quái/tuyến 16, ngoại lệ cờ 27, hồi HP và tên file `Waterfall - Checkpoint`. `test-waterfall-save-v1.log` kiểm các nhánh, font, HP và lưu file; `test-waterfall-npcs-save-v1.log` kiểm hồi quy NPC; check/build qua. Cửa vào trạm, Sans/nhạc/thác còn chưa chuyển. Push `ed037bb` thành công; full snapshot `eba8db3` vẫn chạy và không bao gồm phần mới.
