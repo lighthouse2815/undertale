@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi chuyển Undyne và thư tại Town. Mốc code trước phần này: `f1b2be5` trên `main`.
+Cập nhật: 28/10/2026, sau khi chuyển thư viện Snowdin. Mốc code trước phần này: `f1d64af` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -543,3 +543,10 @@ Fullsnapshot42b30da kếtthúc lỗi testJerryEncounter dòng24: phaseđãbattle
 
 
 Đã sửa riêng fixtureJerryEncounter: giữtimerPhaser ngaytrongupdatekhi đượctạo để kiểm khóa/menu/không bước bằngphímthật; xácminhdelay500..666.67msrồiresumechuyểntrậnthật. Không đổicodegame/tăngtimeout/bỏkiểmcờ-thưởng-Nobody-GameOver. Tái hiệncó600mstrễRPCv2đãxanh (`test-jerry-delay-v2.log`): quađủ7lầnkíchhoạt, phaseluônencounterkhitimerđanggiữ, resumexongđúngtrận. Checkqua; buildkhôngđổi soUndyne đãbuildxanh. Fulltrướcsnapshot42b30dakếtthúcexit1ởfixtureJerry; sẽchạylạisnapshotmớisausửatest.
+
+
+Đã chuyển `snowdin-library.mjs/json`: sáu sách room1..5/modernbook theo lời gốc, modernbook rút cònunfinishedkhi murder>=7; các sáchkhác giữlờibìnhthường. Bốn NPC lizard1/lizard2/wordsearch/jumbler cócácnhánhplot122/kếtthúc7, Jumblerđọc58=0/1củacâuđốtrướcvànhánherror58khác. NPCẩn từmurder7cảkhi27=1, collider/mặt nói/độsâu, đọc lại không đổi plot/đồ. NốiTown↔Libraryquaobj_door_u/obj_markeru(150,180/1840,96),14frame/fade, đi bằngphímthật.
+
+TownMusic giờđượcWorldgiữkhiđiquaTown/Libraryvàdọnkhirờinhóm/shutdown, Towncontrollerdùngcùnginstance khiquayvề; librarykhôngtạobàimớikhimởtrựctiếpnhưdữliệugốc. Không thêm wrapper haythưviệnmới. Helper `tests/remake-snowdin-library.mjs` nốitổng: mọisách/đọclại,4NPC/late-end-58/tuyến7/collider/khóa, cửa/marker/giữbàivịtrí/SAVE/nạp/dọn. Riêngv1vàchuỗiTownprops→Dogs→Library (`test-library-chain-v1.log`) xanh; check/buildqua (`build-library-final.log`), đãxemảnh. Cửa cầu→Town/cácdịchvụkhác/cửaSans/nhàPapyruschưanối, gamevẫncònnhữngphầnthiếuđãghi.
+
+Pushđãthànhcông488fdb32→f1d64af2, gồmc1fff1d/42b30da/9eb70ec/99f9b18/e8d88f8/f1b2be5/a7e38e0/f1d64af. Bộ tổng `test-town-undyne-full-v1.log` đangchạysnapshotf1d64af,đãquabướcđónggóitrướcsửaLibrary, logtớiHànhlangToriel; chưaxanhfull vàkhônggồmLibrarymới.

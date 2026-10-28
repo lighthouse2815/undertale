@@ -1,0 +1,117 @@
+{
+  "room1": [
+    "* (It's a school report about\n  monster funerals.)",
+    "* Monster funerals, technically\n  speaking, are cool as heck.",
+    "* When monsters get old and\n  kick the bucket, they turn\n  into dust.",
+    "* At funerals, we take that\n  dust and spread it on that\n  person's favorite thing.",
+    "* Then their essence will live\n  on in that thing...",
+    "* Uhhh, am I at the page\n  minimum yet?\n* I'm kinda sick of writing this."
+  ],
+  "room2": [
+    "* While monsters are mostly made\n  of magic, human beings are\n  mostly made of water.",
+    "* Humans, with their physical\n  forms, are far stronger\n  than us.",
+    "* But they will never know\n  the joy of expressing\n  themselves through magic.",
+    "* They'll never get a bullet-\n   pattern birthday card..."
+  ],
+  "room3": [
+    "* Because they are made of\n  magic, monsters' bodies are\n  attuned to their SOUL.",
+    "* If a monster doesn't want\n  to fight, its defenses will\n  weaken.",
+    "* And the crueller the intentions\n  of our enemies, the more\n  their attacks will hurt us.",
+    "* Therefore, if a being with\n  a powerful SOUL struck with\n  the desire to kill...",
+    "* Um, let's end the chapter\n  here..."
+  ],
+  "room4": [
+    "* \"MONSTER HISTORY PART 4\"",
+    "* Fearing the humans no longer,\n  we moved out of our old\n  city, HOME.",
+    "* We braved harsh cold, damp\n  swampland, and searing heat...",
+    "* Until we reached what we now\n  call our capital.",
+    "* \"NEW HOME.\"",
+    "* Again, our King is really\n  bad at names...?"
+  ],
+  "room5": [
+    "* Love, hope, compassion...\n* This is what people say\n  monster SOULs are made of.",
+    "* But the absolute nature of\n  \"SOUL\" is unknown.",
+    "* After all, humans have proven\n  their SOULs don't need these\n  things to exist."
+  ],
+  "modern": [
+    "* (Here I am...\n* Writing this book.)",
+    "* (A person comes in and picks\n  up the book...)",
+    "* (They start reading it...!)",
+    "* Oh, sorry.\n* I'm still writing that one."
+  ],
+  "modernMurder": [
+    "* (Some unfinished book.)"
+  ],
+  "lizard1": {
+    "normal": [
+      "* Welcome to the library.\n* Yes, we know.\n* The sign is misspelled."
+    ],
+    "late": [
+      "* Yes, we know.\n* The sign is misspelled.",
+      "* We have someone working on\n  it!"
+    ],
+    "end": [
+      "* Welcome to the library.",
+      "* This is the last day we'll\n  be open, so make as much\n  noise as you want."
+    ]
+  },
+  "lizard2": {
+    "normal": [
+      "* I love working on the\n  newspaper.",
+      "* There's so little to report\n  that we just fill it with\n  comics and games."
+    ],
+    "late": [
+      "* Yes.\n* I illustrate all of the\n  comics myself.",
+      "* Yes.\n* I give everyone huge beautiful\n  eyes and giant muscles."
+    ],
+    "end": [
+      "* Oh my, there's so much\n  news to report, I don't know\n  where to begin!",
+      "* How about this headline...\n* \"Monsters Go Free From The\n  Underground.\"",
+      "* Nah, that doesn't have\n  enough pizazz...",
+      "* How about \"Top 10 Monsters\n  You Won't Believe Got Freed\n  From The Underground?\""
+    ]
+  },
+  "wordsearch": {
+    "normal": [
+      "* (cough, cough)",
+      "* When I was younger, my teachers\n  gave me word searches when\n  they ran out of assignments.",
+      "* I thought they were a waste\n  of time.",
+      "* But look at me now...",
+      "* I'm the number-one word-search\n  creator in the entire\n  underground!"
+    ],
+    "late": [
+      "* (cough, cough)",
+      "* There's a day I just don't\n  want to work.",
+      "* It's called \"Today.\""
+    ],
+    "end": [
+      "* This will be our newspaper's\n  last issue...",
+      "* Why don't we just put a\n  big \"THE END\" on the front\n  and call it a day?"
+    ]
+  },
+  "jumbler": {
+    "normal": [
+      "* Beautiful.\n* An error message."
+    ],
+    "jumble": [
+      "* That look in your eye...",
+      "* You're someone that has\n  difficulty solving Junior\n  Jumble, aren't you?"
+    ],
+    "crossword": [
+      "* That look in your eye...",
+      "* You're someone that has\n  trouble doing crosswords,\n  aren't you?"
+    ],
+    "late": [
+      "* That look in your eye...",
+      "* You think Sudoku is just\n  moderately challenging,\n  don't you?"
+    ],
+    "endJumble": [
+      "* The greatest struggle of\n  my life is over...",
+      "* I just solved today's\n  Junior Jumble."
+    ],
+    "endCrossword": [
+      "* The greatest struggle of\n  my life is over...",
+      "* I just solved today's\n  crossword."
+    ]
+  }
+}

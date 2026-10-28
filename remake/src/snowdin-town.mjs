@@ -13,7 +13,8 @@ export class SnowdinTown {
     const f = world.flags, level = murderLevel(f);
     const key = f[7] === 1 ? 'mus_reunited' : f[222] && !f[27] ? 'mus_toomuch' : 'mus_town';
     const rate = key !== 'mus_town' ? 1 : f[222] && f[27] ? .5 : level >= 7 && !f[27] ? .25 : 1;
-    this.music = world.townMusic = world.sound.add(key, { loop: true, rate, volume: 1 }); this.music.play();
+    if (!world.townMusic) { world.townMusic = world.sound.add(key, { loop: true, rate, volume: 1 }); world.townMusic.play(); }
+    this.music = world.townMusic;
     this.star = world.roomObjects.find((e) => e.item.ObjectName === 'obj_savepoint');
     this.logo = world.roomObjects.find((e) => e.item.ObjectName === 'obj_snowdinlogo');
     if (level >= 12 && this.logo) { this.logo.image.destroy(); world.roomObjects = world.roomObjects.filter((e) => e !== this.logo); this.logo = null; }
@@ -64,5 +65,5 @@ export class SnowdinTown {
     else w.showDialogue(this.text[name === 'obj_snowdinlogo' ? 'logo' : name === 'obj_sign_room' ? 'sign' : name === 'obj_xmastree' ? murderLevel(w.flags) >= 7 ? 'treeMurder' : 'tree' : name === 'obj_sansmailbox' ? 'sansMailbox' : name === 'obj_readable_room2' ? 'shed' : name === 'obj_readable_room3' ? 'camera' : 'sansDoor']);
     return true;
   }
-  destroy() { this.music.destroy(); if (this.world.townMusic === this.music) this.world.townMusic = null; }
+  destroy() { this.igloos.forEach((e) => e.top.destroy()); }
 }
