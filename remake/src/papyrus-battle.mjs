@@ -8,6 +8,7 @@ import { PapyrusBlueAttack } from './papyrus-blue-attack.mjs';
 import { PapyrusSpecialIntro, loadPapyrusSpecialAssets } from './papyrus-special-intro.mjs';
 import { PapyrusRegularAttack, loadPapyrusRegularAssets } from './papyrus-regular-attack.mjs';
 import { PapyrusCapture } from './papyrus-capture.mjs';
+import { PapyrusDust } from './papyrus-dust.mjs';
 import { papyrusAct, papyrusTurnStatus, preparePapyrusTurn } from './papyrus-turn.mjs';
 
 const INTRO = '* Papyrus blocks the way!';
@@ -19,12 +20,12 @@ export class PapyrusBattle extends MultiBattle {
   preload() {
     super.preload(); loadPapyrusBoneAssets(this); loadPapyrusSpecialAssets(this); loadPapyrusRegularAssets(this);
     const base = new URL('../assets/', import.meta.url);
-    for (const [key, count] of [['spr_papyrusboss', 2], ['spr_papyrusboss_anim', 1], ['spr_papyrusboss_head', 1], ['spr_papyrusboss_body', 1], ['spr_blconwdshrt', 1]]) {
+    for (const [key, count] of [['spr_papyrusboss', 2], ['spr_papyrusboss_anim', 1], ['spr_papyrusboss_head', 1], ['spr_papyrusboss_body', 1], ['spr_blconwdshrt', 1], ['spr_pixwht', 12]]) {
       if (!this.cache.json.exists(key)) this.load.json(key, new URL(`sprites/${key}/${key}.json`, base).href);
       for (let i = 0; i < count; i++) if (!this.textures.exists(`${key}:${i}`)) this.load.image(`${key}:${i}`, new URL(`sprites/${key}/${key}_${i}.png`, base).href);
     }
     if (!this.cache.bitmapFont.exists('fnt_papyrus')) { this.load.json('fnt_papyrus', new URL('fonts/fnt_papyrus/fnt_papyrus.json', base).href); this.load.image('fnt_papyrus', new URL('fonts/fnt_papyrus/fnt_papyrus.png', base).href); }
-    for (const key of ['snd_bell', 'snd_txtasg', 'snd_txtpap']) if (!this.cache.audio.exists(key)) this.load.audio(key, new URL(`sounds/${key}/${key}.wav`, base).href);
+    for (const key of ['snd_bell', 'snd_txtasg', 'snd_txtpap', 'snd_vaporized']) if (!this.cache.audio.exists(key)) this.load.audio(key, new URL(`sounds/${key}/${key}.wav`, base).href);
     for (const key of ['mus_papyrus', 'mus_papyrusboss']) if (!this.cache.audio.exists(key)) this.load.audio(key, new URL(`sounds/${key}/${key}.ogg`, base).href);
   }
   loadBattleData() {
@@ -39,7 +40,8 @@ export class PapyrusBattle extends MultiBattle {
     this.murder = murderLevel(w.flags) >= 7; this.truefight = flag < 0; this.conversation = Number(this.truefight);
     this.soulColor = this.truefight ? 'blue' : null;
     w.flags[67] = flag === -2 ? -3 : flag === -1 ? -2 : flag === 0 ? -1 : flag; w.flags[68] = 1; if (this.murder) w.flags[290] = 1;
-    this.labels = []; this.selected = 0; this.wave = null; this.blueAttack = false; this.captureFinished = false; this.speechWaveElapsed = 0;
+    this.labels = []; this.selected = 0; this.wave = null; this.blueAttack = false; this.captureFinished = false; this.speechWaveElapsed = 0; this.dusts = []; this.dustElapsed = 0;
+    this.events.once('shutdown', () => { this.dusts.forEach((dust) => dust.destroy()); this.dusts = []; });
     this.fighto = -1; this.xfight = 0; this.heard = -1; this.talked = 0; this.insult = 0; this.hotcha = 0; this.flirt2 = 0; this.xxtalk = 0;
     this.hearthp = this.hearthp2 = this.hp; this.prevHp = 680; this.mercy = this.murder ? 8000 : 0; this.status = INTRO;
     this.enemy.setPosition(125, 21).setScale(.5).setVisible(false);
@@ -48,6 +50,8 @@ export class PapyrusBattle extends MultiBattle {
   }
   async create() { await super.create(); if (this.music) this.music.setVolume(this.musicVolume); }
   update(time, delta) {
+    this.dustElapsed = Math.min(200, this.dustElapsed + delta);
+    while (this.dustElapsed >= 1000 / 30) { this.dustElapsed -= 1000 / 30; this.dusts = this.dusts.filter((dust) => { if (!dust.step()) return true; dust.destroy(); return false; }); }
     if (this.mode === 'pages' && (this.wave instanceof PapyrusBlueAttack || this.wave instanceof PapyrusSpecialIntro || this.wave instanceof PapyrusCapture)) {
       this.speechWaveElapsed = Math.min(200, (this.speechWaveElapsed ?? 0) + delta);
       while (this.speechWaveElapsed >= 1000 / 30 && this.mode === 'pages') { this.speechWaveElapsed -= 1000 / 30; this.wave.step(); }
@@ -127,10 +131,10 @@ export class PapyrusBattle extends MultiBattle {
     this.time.delayedCall(30 * 1000 / 30, () => {
       this.tweens.add({ targets: head, x: head.x + 22, y: head.y + 35, duration: 32 * 1000 / 30, ease: 'Quad.easeIn' });
       this.time.delayedCall(60 * 1000 / 30, () => this.bossPages([this.murder ? " W-WELL, THAT'S\n NOT WHAT I\n EXPECTED..." : ' ALAS, POOR\n PAPYRUS!'], () => {
-        body.destroy(); this.time.delayedCall(30 * 1000 / 30, () => {
+        this.dusts.push(new PapyrusDust(this, 'body', body.x, body.y)); body.destroy(); this.time.delayedCall(30 * 1000 / 30, () => {
           this.tweens.add({ targets: head, y: head.y + 32.5, duration: 30 * 1000 / 30, ease: 'Quad.easeIn' });
           this.time.delayedCall(80 * 1000 / 30, () => this.bossPages(this.murder ? [' BUT...', ' ST... STILL!\n I BELIEVE IN\n YOU!', ' YOU CAN DO A\n LITTLE BETTER!', " EVEN IF YOU\n DON'T THINK SO!", ' I...\n I PROMISE...'] : [' WELL, AT LEAST I\n STILL HAVE MY\n HEAD!'], () => {
-            this.time.delayedCall(100 * 1000 / 30, () => { head.destroy(); this.previousScene.xp += 200; this.previousScene.kills++; this.time.delayedCall(150 * 1000 / 30, () => this.finishPapyrus(true)); });
+            this.time.delayedCall(100 * 1000 / 30, () => { this.dusts.push(new PapyrusDust(this, 'head', head.x - 1, head.y - 1)); head.destroy(); this.previousScene.xp += 200; this.previousScene.kills++; this.time.delayedCall(150 * 1000 / 30, () => this.finishPapyrus(true)); });
           }));
         });
       }));

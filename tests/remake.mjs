@@ -81,6 +81,7 @@ import { testPapyrusRegularAttack } from './remake-papyrus-regular-attack.mjs';
 import { testPapyrusCapture } from './remake-papyrus-capture.mjs';
 import { testPapyrusTurn } from './remake-papyrus-turn.mjs';
 import { testPapyrusBattle } from './remake-papyrus-battle.mjs';
+import { testPapyrusDust } from './remake-papyrus-dust.mjs';
 import { testPapyrusGarage } from './remake-papyrus-garage.mjs';
 import { testSnowdinFog } from './remake-snowdin-fog.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
@@ -498,6 +499,7 @@ try {
   await testPapyrusCapture(page);
   await testPapyrusTurn();
   await testPapyrusBattle(page);
+  await testPapyrusDust(page);
   await testPapyrusGarage(page);
   await testSnowdinFog(page);
   await testGreaterDog(page);

@@ -54,10 +54,10 @@ export async function testPapyrusBattle(page) {
   assert.deepEqual(await page.evaluate(() => [__remake.scene.mode,__remake.scene.fighto,__remake.scene.status,__remake.scene.soul.texture.key.startsWith('spr_heartblue:')]), ['menu',16,'* Papyrus is sparing you.',true]);
   await page.evaluate(() => {__remake.scene.menuIndex=3;}); await key('z'); await key('z'); await page.waitForFunction(() => __remake.phase==='running');
   assert.deepEqual(await page.evaluate(() => {const w=__remake.scene;return [w.flags[67],w.plot,w.xp,w.kills];}), [0,100,0,0]);
-  await start(); await page.evaluate(() => {const s=__remake.scene; localStorage.removeItem('undertale-remake-papyrus-kills'); s.enemies[0].hp=s.enemyHp=1; s.menuIndex=0; s.time.timeScale=100;});
+  await start(); await page.evaluate(() => {const s=__remake.scene; localStorage.removeItem('undertale-remake-papyrus-kills'); s.enemies[0].hp=s.enemyHp=1; s.menuIndex=0; s.time.timeScale=10;});
   await key('z'); await key('z'); await page.evaluate(() => {const s=__remake.scene;s.attackX=156;s.attackSpeed=0;}); await key('z'); assert.match(await page.evaluate(() => __remake.scene.message.text), /\d/); await key('z');
-  await page.waitForFunction(() => __remake.scene.mode==='pages' && /ALAS/.test(__remake.scene.message.text)); await key('z');
-  await page.waitForFunction(() => __remake.scene.mode==='pages' && /STILL HAVE/.test(__remake.scene.message.text)); await key('z'); await page.waitForFunction(() => __remake.phase==='running');
+  await page.waitForFunction(() => __remake.scene.mode==='pages' && /ALAS/.test(__remake.scene.message.text)); await key('z'); await page.waitForFunction(() => __remake.scene.dusts.some((d) => d.key==='body'));
+  await page.waitForFunction(() => __remake.scene.mode==='pages' && /STILL HAVE/.test(__remake.scene.message.text)); await key('z'); await page.waitForFunction(() => __remake.scene.dusts.some((d) => d.key==='head')); await page.waitForFunction(() => __remake.phase==='running');
   assert.deepEqual(await page.evaluate(() => {const w=__remake.scene;const memory=localStorage.getItem('undertale-remake-papyrus-kills');localStorage.removeItem('undertale-remake-papyrus-kills');w.game.scene.getScene('PapyrusBattle').time.timeScale=1;return [w.flags[67],w.plot,w.xp,w.kills,memory];}), [1,100,200,1,'1']);
   await start({26:7});
   assert.deepEqual(await page.evaluate(() => {const s=__remake.scene;return [s.murder,s.enemies[0].def,s.previousScene.flags[290],s.spareable()];}), [true,-20000,1,true]);
