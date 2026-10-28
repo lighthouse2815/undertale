@@ -713,6 +713,7 @@ class World extends Scene {
       if (this.snowdinDangerBridge?.checkTrigger()) return;
       if (this.papyrusFogEncounter?.checkTrigger()) return;
       this.waterfallGrass?.syncPlayer();
+      if (this.waterfallShyrenHall?.checkTrigger()) return;
       if (this.waterfallFriendlyHub?.checkTrigger()) return;
       if (this.waterfallUndyne?.checkTrigger() || this.waterfallUndyne?.checkWalk(previous) || this.waterfallUndyneChase?.checkTrigger()) return;
       if (this.waterfallPapyrusPhone?.checkTrigger()) return;

@@ -1129,3 +1129,7 @@ Một kiểm thử Onionsan tái hiện phím bị bỏ qua dù scene đã báo 
 ### Scene trận Shyren
 
 Đã ghép ACT, đạn nhạc, hình, thưởng và các kết quả tha/giết/hoàn thành buổi diễn vào scene trận mở trực tiếp. `remake-shyren-battle.mjs` kiểm Hum, vào đợt, tha, buổi diễn và giết; hồi quy đạn, check/build qua. Chưa nối trigger hành lang; chưa kiểm toàn trận bằng thao tác thực và cần đối chiếu chi tiết nhạc/hoạt ảnh. Bộ tổng `test-remake-timer.log` đã vượt cảnh Undyne nhưng thất bại ở kiểm thử nhạc cửa 3→4 do phòng 3 giữ `mus_ambientwater`; cần kiểm tra fixture và cách xử lý nhạc.
+
+### Trigger trận Shyren
+
+Đã nối vùng kích hoạt phòng 14 tới scene Shyren, cập nhật plot 111 và lưu snapshot tạm; không kích hoạt lại sau khi rời trận hoặc vào phòng lần nữa. `remake-shyren-trigger.mjs` kiểm va chạm bằng phím, trốn và không lặp; hồi quy scene trận/bia, check/build qua. Chưa kiểm toàn bộ đường từ Onionsan đến trận; cửa phòng 14 còn thiếu và chi tiết trận cần đối chiếu thêm.

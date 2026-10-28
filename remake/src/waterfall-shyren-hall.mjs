@@ -1,4 +1,4 @@
-import { inInteractionRange } from './npc.mjs';
+import { inInteractionRange, touchesObject } from './npc.mjs';
 import { startWaterfallMusic } from './waterfall-music.mjs';
 
 const signs = {
@@ -8,7 +8,7 @@ const signs = {
 };
 export class WaterfallShyrenHall {
   constructor(world) {
-    this.world=world; this.elapsed=0; this.anim=0;
+    this.world=world; this.elapsed=0; this.anim=0; this.trigger=world.plot<=110 ? world.dataSource.room.GameObjects.find(e=>e.ObjectName==='obj_shyrentrigger') : null;
     this.signs=world.roomObjects.filter(e=>signs[e.item.ObjectName]);
     this.falls=world.roomObjects.filter(e=>e.item.ObjectName==='obj_foreground_waterfall').map(e=>{
       e.image.destroy();return {x:e.item.X,y:e.item.Y,tiles:Array.from({length:20},()=>world.add.image(0,0,'spr_waterfall_anim:0').setOrigin(0).setScale(2).setAlpha(.2).setDepth(-e.object.Depth))};
@@ -18,6 +18,10 @@ export class WaterfallShyrenHall {
   }
   update(delta) {this.elapsed=Math.min(200,this.elapsed+delta);while(this.elapsed>=1000/30){this.elapsed-=1000/30;this.anim=(this.anim+3)%180;}this.drawFalls();}
   drawFalls() {const c=this.world.cameras.main, view=Math.max(0,Math.min(this.world.dataSource.room.Width-320,c.scrollX));for(const f of this.falls)for(const [i,tile] of f.tiles.entries())tile.setPosition(f.x-view*.5,f.y-210+i*30+this.anim);}
+  checkTrigger() {
+    const w=this.world;if(!this.trigger||w.dialogue||!touchesObject(w,w.player,this.trigger,1,12))return false;
+    this.trigger=null;w.plot=Math.max(w.plot,111);w.saveGame(true);w.release();window.__remake.startBattle('shyren');return true;
+  }
   interact() {const w=this.world,e=this.signs.find(e=>inInteractionRange(w,e));if(!e)return false;w.showDialogue(signs[e.item.ObjectName]);return true;}
   destroy() {for(const f of this.falls)for(const tile of f.tiles)tile.destroy();}
 }
