@@ -801,3 +801,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Old Tutu
 
 Đã thêm vật phẩm 24 với tên, INFO và hành vi trang bị giáp DF 10, hoán đổi giáp cũ trong túi và phát âm thanh; kiểm thử riêng xác nhận trang bị/đổi lại và hồi quy BOX, check/build qua. Phòng nhặt Tutu chưa được nối. Push `e6b3b82` thành công; bộ tổng snapshot `e6b3b82` đang chạy để điều tra lỗi cửa fog của snapshot trước, chưa gồm vật phẩm này.
+
+### Phòng bí mật Old Tutu
+
+Đã chuyển hai nấm phát sáng bật/tắt và Old Tutu tại `room_water3A`: lựa chọn nhận/từ chối, kiểm túi đầy, cờ 105 và xóa vật phẩm sau khi nhận. Kiểm thử riêng qua các nhánh, nấm và vào lại phòng; hồi quy thác phòng 3, check/build qua. Phòng còn mở trực tiếp, chưa nối cửa qua thác; bộ tổng snapshot `e6b3b82` đang chạy với chẩn đoán lỗi cửa fog, chưa gồm phần này. Push `5f9a3a5` thành công.
