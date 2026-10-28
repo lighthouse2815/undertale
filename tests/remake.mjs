@@ -133,6 +133,7 @@ import { testWoshuaMoldbyggBattle } from './remake-woshua-moldbygg-battle.mjs';
 import { testMoldsmalGroup } from './remake-moldsmal-group.mjs';
 import { testWaterfallGroup } from './remake-waterfall-group.mjs';
 import { testWaterfallEncounter } from './remake-waterfall-encounter.mjs';
+import { testWaterfallLateEncounter } from './remake-waterfall-late-encounter.mjs';
 import { testWaterfallBridgePath } from './remake-waterfall-bridge-path.mjs';
 import { testWaterfallWishingFlowers } from './remake-waterfall-wishing-flowers.mjs';
 import { testWaterfallTelescope } from './remake-waterfall-telescope.mjs';
@@ -695,6 +696,7 @@ try {
   await testMoldsmalGroup(page);
   await testWaterfallGroup(page);
   await testWaterfallEncounter(page);
+  await testWaterfallLateEncounter(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
   await testWaterfallTelescope(page);

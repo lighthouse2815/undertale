@@ -11,6 +11,11 @@ export async function testWaterfallEncounter(page) {
     world.flags[357] = 10; for (const [roll, expected] of [[.3, 'aaron'], [.5, 'moldsmalGroup53'], [.9, 'woshua']]) { Math.random = () => roll; assert.equal(encounter.select(), expected); }
     world.flags[204] = 17; Math.random = () => 0; assert.equal(encounter.threshold(340, 380), 2720);
     world.flags[204] = 18; assert.equal(encounter.threshold(340, 380), 20); assert.equal(encounter.select(), 'nobody'); encounter.empty = 2; assert.equal(encounter.threshold(340, 380), 2650);
+    const lateWorld = { flags: {}, plot: 117, dataSource: { name: 'room_water15' } };
+    const late = new WaterfallEncounter(lateWorld);
+    assert.deepEqual([late.select(), late.select(), late.select(), late.select()], ['temmie', 'moldbyggGroup42', 'waterfallGroup54', 'moldbyggGroup55']);
+    for (const [roll, expected] of [[0, 'temmie'], [.3, 'moldbyggGroup55'], [.8, 'waterfallGroup54']]) { Math.random = () => roll; assert.equal(late.select(), expected); }
+    Math.random = () => 0; lateWorld.flags[26] = 10; assert.equal(new WaterfallEncounter(lateWorld).steps, 60);
     world.flags[204] = 0; world.plot = 122; assert.equal(new WaterfallEncounter(world).disabled, true);
   } finally { Math.random = random; }
   await page.evaluate(async () => { const w = __remake.game.scene.getScene('World'); w.flags = {}; w.plot = 106; w.hp = w.maxHp = 20; w.lv = 1; w.xp = w.kills = w.gold = 0; w.weapon = 3; w.weaponStrength = 0; w.armor = 4; w.armorDefense = 0; w.inventory = []; await w.openRoom('room_water5', 'obj_markerA'); });

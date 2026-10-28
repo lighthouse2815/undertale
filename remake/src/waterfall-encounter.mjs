@@ -5,8 +5,10 @@ export class WaterfallEncounter {
   constructor(world, spawnName = 'obj_mainchara') {
     this.world = world; this.count = 0; this.empty = 0;
     this.firstEntrance = world.dataSource.name === 'room_water5' && !(world.flags[357] ?? 0) && spawnName === 'obj_markerA';
-    const base = world.dataSource.name === 'room_water5' ? this.firstEntrance ? 20 : 340 : world.dataSource.name === 'room_water6' ? 110 : 360;
-    this.steps = this.threshold(base, 30);
+    this.late = world.dataSource.name === 'room_water15';
+    const violent = this.late && murderLevel(world.flags) >= 10 && !world.flags[27];
+    const base = violent ? 60 : world.dataSource.name === 'room_water5' ? this.firstEntrance ? 20 : 340 : world.dataSource.name === 'room_water6' ? 110 : 360;
+    this.steps = this.threshold(base, violent ? 20 : 30);
     this.disabled = !(world.flags[204] ?? 0) && world.plot > 121;
   }
   threshold(base, spread) {
@@ -17,7 +19,13 @@ export class WaterfallEncounter {
   }
   step() { if (!this.disabled) this.count++; }
   select() {
-    const flags = this.world.flags, roll = Math.floor(Math.random() * 15), seen = flags[357] ?? 0;
+    const flags = this.world.flags, roll = Math.floor(Math.random() * 15);
+    if (this.late) {
+      const seen = flags[358] ?? 0;
+      const group = ['temmie', 'moldbyggGroup42', 'waterfallGroup54', 'moldbyggGroup55'][seen] ?? (roll < 4 ? 'temmie' : roll < 10 ? 'moldbyggGroup55' : 'waterfallGroup54');
+      flags[358] = seen + 1; return this.empty ? 'nobody' : group;
+    }
+    const seen = flags[357] ?? 0;
     let group = roll < 4 ? 'waterfallGroup54' : roll < 7 ? 'aaron' : roll < 11 ? 'moldsmalGroup53' : 'woshua';
     if (seen === 0) group = 'aaron'; else if (seen === 1) group = 'woshua'; else if (seen === 2) group = 'moldsmalGroup53';
     flags[357] = seen + 1; return this.empty ? 'nobody' : group;
@@ -25,7 +33,8 @@ export class WaterfallEncounter {
   update() {
     const world = this.world;
     if (this.disabled || window.__remake.phase !== 'running' || world.dialogue || this.count <= this.steps || this.timer) return;
-    this.steps = this.threshold(world.dataSource.name === 'room_water6' ? 1040 : 340, 380); this.count = 0;
+    const violent = this.late && murderLevel(world.flags) >= 10 && !world.flags[27];
+    this.steps = this.threshold(violent ? 120 : this.late ? 640 : world.dataSource.name === 'room_water6' ? 1040 : 340, violent ? 50 : 380); this.count = 0;
     const config = this.select();
     if (this.empty === 1) { world.flags[223] = 1; this.empty = 2; return; }
     window.__remake.phase = 'encounter'; world.sound.play('snd_b');
