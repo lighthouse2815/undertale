@@ -199,7 +199,9 @@ const ROOM_EXITS = {
   room_water5: { B: 'room_water4', A: 'room_water5A', C: 'room_water6' },
   room_water5A: { B: 'room_water5' },
   room_water6: { D: 'room_water5', A: 'room_water7' },
-  room_water7: { B: 'room_water6' },
+  room_water7: { B: 'room_water6', A: 'room_water8' },
+  room_water8: { B: 'room_water7', A: 'room_water9' },
+  room_water9: { B: 'room_water8' },
   room_water3A: { B: 'room_water3' },
   room_tundra_library: { u: 'room_tundra_town' },
   room_tundra_grillby: { w: 'room_tundra_town' },
@@ -233,6 +235,7 @@ class World extends Scene {
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
+    if (name === 'room_water9' && this.waterfallUndyneChase?.music) { this.chaseMusic = this.waterfallUndyneChase.music; this.waterfallUndyneChase.music = null; }
     // Dừng tween trước khi audio cũ bị hủy bởi đổi phòng.
     this.roomMusicFade?.stop(); this.roomMusicFade = null;
     // Tuyến kết thúc giữ cùng Reunited khi qua cửa không fade giữa rừng và thị trấn.
@@ -242,7 +245,7 @@ class World extends Scene {
     if (!BASEMENT_ROOMS.includes(name)) stopBasementMusic(this);
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
     if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_tundra_grillby'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
-    if (this.waterfallMusic && !(name === 'room_water1' && this.waterfallMusic.key === 'mus_ambientwater') && !(name === 'room_water2' && this.waterfallMusic.key === 'mus_muscle') && !(['room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7'].includes(name) && ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key))) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
+    if (this.waterfallMusic && !(name === 'room_water1' && this.waterfallMusic.key === 'mus_ambientwater') && !(name === 'room_water2' && this.waterfallMusic.key === 'mus_muscle') && !(['room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9'].includes(name) && ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key))) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
     if (name !== 'room_tundra_grillby') { this.grillbyMusic?.destroy(); this.grillbyMusic = null; }
     this.scene.stop('FieldMenu');
     this.scene.stop('ItemBox');

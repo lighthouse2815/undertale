@@ -981,3 +981,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Truy đuổi và cảnh Kid phòng 9
 
 Đã ghép generator giáo, cỏ, chặn lối về, trận nhanh khi trúng, giảm nhịp sau x=460 và cảnh Kid/plot 110 vào phòng 9. `test-undyne-second-v3.log` kiểm generator, va chạm nhân tạo vào trận, trở về, các giai đoạn cảnh và tháo vật cản; hồi quy phòng 8, check/build qua. Mới mở phòng trực tiếp; chưa nối cửa, chưa kiểm toàn hành trình bằng phím, và cần đối chiếu mask/nhạc/hoạt hình/timing với gốc. Tương tác người chở đò còn thiếu. Push cảnh Kid `a50ebbe` thành công; bộ tổng `test-remake-4022c4c.log` đang chạy, không gồm phần này.
+
+### Cửa tuyến truy đuổi
+
+Đã nối 7↔8↔9, giữ nhạc khi chuyển từ phòng 8 sang 9. `test-chase-path-v4-1` đến `v4-3` kiểm cửa bằng phím, marker và nhạc; hồi quy phòng 9, check/build qua. Để kiểm cửa 8→9, test đặt nhân vật tại lối ra và tăng nhanh cảnh đầu; chưa xác nhận người chơi vượt trọn đợt giáo. Cửa tiếp theo từ phòng 9 và người chở đò chưa được chuyển, cùng các hạn chế timing/mask ở trên. Push phòng 9 `3f89812` thành công; bộ tổng `test-remake-4022c4c.log` vẫn đang chạy, không gồm phần này.
