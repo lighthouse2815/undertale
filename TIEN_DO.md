@@ -779,3 +779,7 @@ Dùng lại cơ chế chó của town cho Greater Dog trong quán: sprite thư�
 ### Bữa ăn cùng Sans tại Grillby
 
 Đã nối cảnh khi cờ 89=1: dẫn Frisk tới quầy, chào khách/câu đùa, ngồi, năm lựa chọn món/Papyrus/ketchup/hoa/hóa đơn, Grillby đi nấu và phục vụ, hai sprite món ăn, nhánh đổ/uống ketchup, đoạn phòng tối và Sans rời đi; cờ món 391, cờ 89=2 và lời sau bữa được cập nhật. `test-grillby-date-v3.log` chạy cả hai nhánh lựa chọn, kiểm vị trí Grillby/món, đoạn hoa, kết cảnh và cờ; chuỗi chó/quán `test-grillby-date-dogs-chain-v1.log`, `test-grillby-date-room-v1.log`, check/build qua. Phần này còn cần đối chiếu hoạt ảnh các khách, biểu cảm/đổi màu writer, fade nhạc và timing chi tiết; mới kích hoạt khi mở phòng trực tiếp với cờ 89=1, Sans tại trạm và đường mời chưa nối. Bộ tổng snapshot `605ea64` đã qua; push `7b2a749` thành công.
+
+### Sans tại trạm và đường tắt Grillby
+
+Đã mở cửa A/B có fade giữa `room_water1` và trạm `room_water2`; Sans có collider, lời mời Yes/No, nhánh tuyến giết/đã đi ăn, điều kiện ẩn theo 67/413/plot, đi qua trạm rồi chuyển sang Grillby với cờ 89=1. `test-waterfall-sans-v2.log` đi bộ hai cửa, kiểm cả hai lựa chọn, đường tắt và chạy toàn bộ bữa ăn tới cờ 89=2; còn kiểm các điều kiện ẩn. Chuỗi `test-waterfall-sans-station-v1.log`, `test-waterfall-sans-date-v1.log`, check/build qua. Chưa nối đường phía đông trạm tới Waterfall tiếp theo; cảnh Grillby vẫn có các giới hạn biểu cảm, writer và timing đã ghi ở trên. Full snapshot `605ea64` qua, không bao gồm phần này; push `065d15d` thành công.

@@ -191,7 +191,7 @@ export async function loadRoom(scene, name) {
   if (town) for (const key of Object.keys(townDialogue.sprites)) spriteNames.add(key);
   if (town) for (const key of Object.keys(townNpcDialogue.sprites)) spriteNames.add(key);
   if (name === 'room_tundra_grillby') for (const key of ['spr_npc_saddog', 'spr_heartsmall', 'spr_face_sans', 'spr_sans_d', 'spr_sans_u', 'spr_sans_l', 'spr_sans_r', 'spr_sans_shrug2', 'spr_sans_stool_u', 'spr_sans_stool_l', 'spr_sans_stoolcomb', 'spr_sans_stool_chup', 'spr_sans_stool_buttscratch', 'spr_grillby_l', 'spr_grillby_r', 'spr_grillby_u', 'spr_grillby_d', 'spr_sansfries', 'spr_sansburger', 'spr_grillbyshadow', 'spr_grillbycounter']) spriteNames.add(key);
-  if (name === 'room_water2') for (const key of ['spr_fishnpc_echo', 'spr_mkid_dt', 'spr_mkid_ut', 'spr_mkid_lt', 'spr_mkid_rt', ...['topleft', 'midtop', 'topright', 'midleft', 'midmid', 'midright', 'bottomleft', 'bottommid', 'bottomright'].map((part) => `spr_waterfall_${part}`)]) spriteNames.add(key);
+  if (name === 'room_water2') for (const key of ['spr_face_sans', 'spr_sans_d', 'spr_sans_u', 'spr_sans_l', 'spr_sans_r', 'spr_heartsmall', 'spr_fishnpc_echo', 'spr_mkid_dt', 'spr_mkid_ut', 'spr_mkid_lt', 'spr_mkid_rt', ...['topleft', 'midtop', 'topright', 'midleft', 'midmid', 'midright', 'bottomleft', 'bottommid', 'bottomright'].map((part) => `spr_waterfall_${part}`)]) spriteNames.add(key);
   if (fogRoom) for (const key of ['spr_papyrus_lt', 'spr_papyrus_l', 'spr_papyrus_rt', 'spr_papyrus_shadowl', 'spr_papyrus_shadowr', 'spr_maincharar_shadow', 'spr_face_papyrus', 'spr_face_papyrusmad', 'spr_heartsmall']) spriteNames.add(key);
   if (dangerBridge) for (const key of Object.keys(dangerBridgeDialogue.sprites)) spriteNames.add(key);
   if (greaterDogRoom) for (const key of Object.keys(greaterDogRoomDialogue.sprites)) spriteNames.add(key);
@@ -227,7 +227,7 @@ export async function loadRoom(scene, name) {
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
-  if (name === 'room_tundra_grillby' || fogRoom || garage || forest || checkpoint || ice || maze || niceCream || crossword || spaghetti || xoxo || colorTiles || town || dangerBridge || gyftrotRoom) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
+  if (name === 'room_water2' || name === 'room_tundra_grillby' || fogRoom || garage || forest || checkpoint || ice || maze || niceCream || crossword || spaghetti || xoxo || colorTiles || town || dangerBridge || gyftrotRoom) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
     forestFonts.set(key, await json(`fonts/${key}/${key}.json`)); images.set(key, `fonts/${key}/${key}.png`);
   }
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),

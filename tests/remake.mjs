@@ -98,6 +98,7 @@ import { testGrillbyNpcs } from './remake-grillby-npcs.mjs';
 import { testGrillbyBigdog } from './remake-grillby-bigdog.mjs';
 import { testGrillbyRoom } from './remake-grillby-room.mjs';
 import { testGrillbyDate } from './remake-grillby-date.mjs';
+import { testWaterfallSans } from './remake-waterfall-sans.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -529,6 +530,7 @@ try {
   await testGrillbyBigdog(page);
   await testGrillbyRoom(page);
   await testGrillbyDate(page);
+  await testWaterfallSans(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);
