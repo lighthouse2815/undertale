@@ -181,6 +181,7 @@ import { testWaterfallShopItems } from './remake-waterfall-shop-items.mjs';
 import { testWaterfallShop } from './remake-waterfall-shop.mjs';
 import { testWaterfallBlookyard } from './remake-waterfall-blookyard.mjs';
 import { testBlookHouseObjects } from './remake-waterfall-blookhouse-objects.mjs';
+import { testWaterfallBlookHouse } from './remake-waterfall-blookhouse.mjs';
 import { testMadDummyEnding } from './remake-mad-dummy-ending.mjs';
 import { testMadDummyFullBattle } from './remake-mad-dummy-full-battle.mjs';
 import { testMadDummyShot } from './remake-mad-dummy-shot.mjs';
@@ -713,6 +714,7 @@ try {
   await testWaterfallShop(page);
   await testWaterfallBlookyard(page);
   await testBlookHouseObjects(page);
+  await testWaterfallBlookHouse(page);
   await testGladDummyBattle(page);
   await testMadDummyBattle(page);
   await testMadDummyEnding(page);

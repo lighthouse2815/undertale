@@ -143,6 +143,7 @@ export async function loadRoom(scene, name) {
     }
   };
   await Promise.all([...new Set(room.GameObjects.map((item) => item.ObjectName))].map(object));
+  if (name === 'room_water_blookhouse') await object('obj_napstablook_actor');
   if (inn) await object('obj_zzz');
   if (town) await object('obj_undyne_friendc');
   if (dangerBridge) await object('obj_sans_room');
@@ -197,6 +198,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water_waterfall') for (const key of ['spr_mkid_d','spr_mkid_u','spr_mkid_l','spr_mkid_r','spr_mkid_dt','spr_mkid_lt','spr_mkid_rt','spr_mkid_dfall','spr_mkid_ufall','spr_mkid_lfall','spr_mkid_rfall','spr_mkid_rtfall','spr_statuedrop','spr_statueplink',...['d','u','l','r'].flatMap(d=>[`spr_mainchara${d}_fall`,`spr_mainchara${d}_umbrellafall`])]) spriteNames.add(key);
   if (name === 'room_water_trashzone2') for (const key of ['spr_rustbike','spr_watercomputer','spr_heartsmall','spr_dummymad','spr_dummymad_toot','spr_dummysurprise','spr_dummyglad','spr_napstablook_d','spr_centeredhole']) spriteNames.add(key);
   if (['room_water_shop','room_water_blookhouse'].includes(name)) spriteNames.add('spr_heartsmall');
+  if (name === 'room_water_blookhouse') for (const key of ['spr_napstablook_d_headphone','spr_napstablook_u_headphone','spr_napstablook_l_headphone','spr_napstablook_r_headphone','spr_napstablook_grsm_headphones','spr_maincharar_liedown','spr_st']) spriteNames.add(key);
   if (name === 'room_water_blookyard') for (const key of ['spr_napstablook_d_headphone','spr_mettex_npc']) spriteNames.add(key);
   if (['room_water_trashzone1','room_water_trashsavepoint'].includes(name)) for (const part of ['topleft','midtop','topright','midleft','midmid','midright','bottomleft','bottommid','bottomright']) spriteNames.add(`spr_waterfall_${part}`);
   if (name === 'room_water_undynebridgeend') for (const key of ['spr_nospear2','spr_tilespear','spr_undynea_starkr','spr_undynespear',...['d','u','l','r'].map(d=>`spr_mainchara${d}_stark`)]) spriteNames.add(key);
@@ -309,7 +311,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
     ...(name === 'room_water12' ? ['snd_b', 'snd_phone', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(['room_water_friendlyhub','room_water_shop','room_water_blookyard'].includes(name) ? ['mus_waterquiet', 'mus_toomuch'] : []),
-    ...(name === 'room_water_blookhouse' ? ['mus_napstahouse','mus_spoopy','mus_spoopy_wave','mus_spoopy_holiday'] : []),
+    ...(name === 'room_water_blookhouse' ? ['mus_napstahouse','mus_spoopy','mus_spoopy_wave','mus_spoopy_holiday','mus_napstachords'] : []),
     ...(name === 'room_water_bird' ? ['mus_birdsong', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water11' ? ['snd_squeak', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water_savepoint1' ? ['snd_movemenu', 'mus_waterquiet', 'mus_toomuch'] : []),

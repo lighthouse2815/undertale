@@ -24,6 +24,7 @@ import { WaterfallWishesRoom } from './waterfall-wishes-room.mjs';
 import { WaterfallFriendlyHub } from './waterfall-friendly-hub.mjs';
 import { WaterfallShopRoad } from './waterfall-shop-road.mjs';
 import { WaterfallBlookYard } from './waterfall-blookyard.mjs';
+import { WaterfallBlookHouse } from './waterfall-blookhouse.mjs';
 import { WaterfallShop } from './waterfall-shop.mjs';
 import { WaterfallBird } from './waterfall-bird.mjs';
 import { WaterfallMystery } from './waterfall-mystery.mjs';
@@ -256,7 +257,8 @@ const ROOM_EXITS = {
   room_water_shoe: { B: 'room_water12' },
   room_water_bird: { t: 'room_water11', s: 'room_water_friendlyhub' },
   room_water_friendlyhub: { B: 'room_water_trashzone2', s: 'room_water_bird', t: 'room_water_shop', w: 'room_water_blookyard' },
-  room_water_blookyard: { w: 'room_water_friendlyhub' },
+  room_water_blookyard: { w: 'room_water_friendlyhub', A: 'room_water_blookhouse' },
+  room_water_blookhouse: { B: 'room_water_blookyard' },
   room_water_shop: { t: 'room_water_friendlyhub', X: 'room_shop2' },
   room_mysteryman: { s: 'room_water_fakehallway' },
   room_water3A: { B: 'room_water3' },
@@ -351,6 +353,7 @@ class World extends Scene {
     this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoSmall = null;
     this.snowdinXoxoBig?.destroy(); this.snowdinXoxoBig = null;
     this.snowdinColorTiles?.destroy(); this.snowdinColorTiles = null; this.snowdinDogHouse = null;
+    this.waterfallBlookHouse?.destroy(); this.waterfallBlookHouse = null;
     this.waterfallBlookYard?.destroy(); this.waterfallBlookYard = null;
     this.waterfallShopRoad = null;
     this.waterfallDummyEncounter?.destroy(); this.waterfallDummyEncounter = null;
@@ -529,6 +532,7 @@ class World extends Scene {
     if (name === 'room_water_friendlyhub') this.waterfallFriendlyHub = new WaterfallFriendlyHub(this);
     if (name === 'room_water_shop') this.waterfallShopRoad = new WaterfallShopRoad(this);
     if (name === 'room_water_blookyard') this.waterfallBlookYard = new WaterfallBlookYard(this);
+    if (name === 'room_water_blookhouse') this.waterfallBlookHouse = new WaterfallBlookHouse(this);
     if (name === 'room_water_bird') this.waterfallBird = new WaterfallBird(this, spawnName);
     if (name === 'room_water11') this.waterfallStarRoom = new WaterfallStarRoom(this);
     if (name === 'room_water_savepoint1') this.waterfallCrystalRoom = new WaterfallCrystalRoom(this);
@@ -710,6 +714,7 @@ class World extends Scene {
     const raftLocked = this.waterfallRaft?.update(delta);
     const trashStartLocked = this.waterfallTrashStart?.update(delta);
     const dummyEncounterLocked = this.waterfallDummyEncounter?.update(delta);
+    const blookHouseLocked = this.waterfallBlookHouse?.update(delta);
     const bridgeEndLocked = this.waterfallUndyneBridgeEnd?.update(delta);
     const bridgeChaseLocked = this.waterfallUndyneBridge?.update(delta);
     const chaseLocked = this.waterfallUndyneChase?.update(delta);
@@ -737,7 +742,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || blookHouseLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -784,6 +789,7 @@ class World extends Scene {
       if (this.waterfallRainKid?.checkTrigger(previous)) return;
       if (this.waterfallShyrenHall?.checkTrigger()) return;
       if (this.waterfallDummyEncounter?.checkTrigger()) return;
+      if (this.waterfallBlookHouse?.checkTrigger()) return;
       if (this.waterfallFriendlyHub?.checkTrigger()) return;
       if (this.waterfallUndyne?.checkTrigger() || this.waterfallUndyne?.checkWalk(previous) || this.waterfallUndyneChase?.checkTrigger() || this.waterfallUndyneBridge?.checkTrigger() || this.waterfallUndyneBridgeEnd?.checkTrigger()) return;
       if (this.waterfallPapyrusPhone?.checkTrigger()) return;
@@ -861,6 +867,7 @@ class World extends Scene {
     if (this.waterfallFriendlyHub?.interact()) return;
     if (this.waterfallShopRoad?.interact()) return;
     if (this.waterfallBlookYard?.interact()) return;
+    if (this.waterfallBlookHouse?.interact()) return;
     if (this.waterfallBird?.interact()) return;
     if (this.waterfallMystery?.interact()) return;
     if (this.waterfallStarRoom?.interact()) return;

@@ -9,7 +9,7 @@ const cdMusic=['mus_spoopy','mus_spoopy_wave','mus_spoopy_holiday'];
 export class WaterfallBlookHouseObjects {
   constructor(world,{ghost=null,onSandwich=()=>{}}={}){
     this.world=world;this.ghost=ghost;this.onSandwich=onSandwich;this.objects=world.roomObjects.filter(e=>['obj_napstablook_cd','obj_papcomputer','obj_napstafridge','obj_readable_room3'].includes(e.item.ObjectName));
-    this.cds=this.objects.filter(e=>e.item.ObjectName==='obj_napstablook_cd');this.cdBuffer=0;world.flags[94]=0;
+    this.cds=this.objects.filter(e=>e.item.ObjectName==='obj_napstablook_cd');this.cdBuffer=0;this.music=null;world.flags[94]=0;
     for(const e of this.objects.filter(e=>['obj_napstablook_cd','obj_papcomputer','obj_napstafridge'].includes(e.item.ObjectName)))world.colliders.push(createCollider(world.dataSource,e.item));
     if(world.flags[7]!==1)this.play(0);
   }
@@ -24,7 +24,8 @@ export class WaterfallBlookHouseObjects {
     if(e.item.ObjectName==='obj_readable_room3'){w.showDialogue(this.ghost?['* oh... that\'s my tv...','* there\'s a show i like to\n  watch on it...\n* sometimes...']:['* (It\'s a spooky old TV.)\n* (Most of the buttons are\n  worn away...)','* (Though the channel changing\n  buttons look good as new.)']);return true;}
     if(e.item.ObjectName==='obj_napstafridge'){
       if(!this.ghost||murderLevel(w.flags)>=10){w.showDialogue(["* (It's merely a fridge.)"]);return true;}
-      w.showChoice('* (Look inside the fridge?)',['Open it','No'],choice=>{if(choice!==0)return;if((w.flags[93]??0)<2)w.showDialogue(["* (There's a lonely sandwich\n  inside.)"],{onClose:this.onSandwich});else w.showDialogue(["* (It's empty.)"]);});return true;
+      if((w.flags[93]??0)<2){this.onSandwich();return true;}
+      w.showChoice('* (Look inside the fridge?)',['Open it','No'],choice=>{if(choice===0)w.showDialogue(["* (It's empty.)"]);});return true;
     }
     const index=this.cds.indexOf(e),number=index+1,playing=w.flags[94]===number;
     if(this.cdBuffer>0){w.showDialogue(['* (You still need to recover\n  after all that lying down.)']);return true;}

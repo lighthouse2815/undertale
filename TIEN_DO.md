@@ -1347,3 +1347,5 @@ Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm th�
 Đã nối Quiet Area ↔ Blook Acres, cửa nhà khóa theo cờ 433 và hai nhân vật sau kết thúc với các lời lặp/cờ. `remake-waterfall-blookyard.mjs` kiểm cửa, nhạc, khóa và các nhánh nhân vật; check/build qua. Nhà Napstablook, nhà bên cạnh, đường sang nông trại và sự kiện hẹn vẫn chưa chuyển.
 
 Đã chuyển tương tác TV, máy tính, tủ lạnh và ba đĩa nhạc trong nhà Napstablook; `remake-waterfall-blookhouse-objects.mjs` kiểm chọn/phát/dừng nhạc, lời thoại và callback bánh sandwich. Các đối tượng chưa nối vào phòng và cửa: cần hoàn thiện cảnh hẹn, trạng thái và chuyển phòng trước khi chơi được.
+
+Đã nối nhà Napstablook với Blook Acres và các vật thể, lời chào, sandwich, lựa chọn nằm hoặc từ chối, nhạc và cờ 17/93/94/458. `remake-waterfall-blookhouse.mjs` kiểm đường cửa, tương tác tủ lạnh, hai nhánh, nằm/chờ/đứng dậy và trở lại; hồi quy vật thể/khu nhà, check/build qua. Cần đối chiếu thêm tốc độ di chuyển, camera và hiệu ứng sóng khi nằm với game gốc; nhà bên cạnh và nông trại vẫn chưa chuyển.
