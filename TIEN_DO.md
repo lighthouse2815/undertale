@@ -941,3 +941,7 @@ Theo `obj_aaron` Alarm 5, khung đợt né là border 7 (đỉnh 200), không ph
 ### Bè qua phòng lịch sử
 
 Đã chuyển kích hoạt bè khi bước lên, lưu tạm, đi 480 pixel, chờ 8 frame, trả điều khiển, bè quay lại, đổi nhạc và thay bằng vật cản sau plot 108. `test-waterfall-raft-v4.log` kiểm bước lên bằng phím và mô phỏng đủ chuyến/nhánh plot; hồi quy bia, check/build qua. Chưa kiểm trọn chuyến bằng phím và đối chiếu fade nhạc với gốc; các NPC/cửa phòng vẫn chưa hoàn thiện. Push bia `807b987` thành công; bộ tổng `test-remake-a1ddb3a.log` đang chạy, chưa gồm phần này.
+
+### Đồng bộ kiểm thử cửa town–fog
+
+Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau `resume()` trước khi gửi phím. Một kiểm thử bè tái hiện được phím bị bỏ qua khi gửi ngay sau resume và qua sau khi chờ; chuỗi `test-fog-resume-v1.log` (trận Papyrus, phòng giam, sương, encounter và cửa) qua, check/build qua. Đây là nguyên nhân có khả năng của timeout bộ tổng trước, cần xác nhận bằng bộ tổng hoàn chỉnh. Push bè `5646484` thành công; bộ tổng `test-remake-a1ddb3a.log` đã khởi chạy trước sửa này.

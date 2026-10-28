@@ -40,6 +40,7 @@ export async function testPapyrusFogEncounter(page) {
   for (const n of [13,7,4]) { assert.equal(await stepTo(['talking']), 'talking'); assert.equal(await page.evaluate(() => __remake.scene.dialogue.lines.length), n); await close(); }
   assert.equal(await stepTo(['beforeBattle']), 'beforeBattle');
   await page.evaluate(() => {const w=__remake.scene;w.scene.resume();});
+  await page.waitForFunction(() => __remake.scene.scene.isActive());
 
   await page.evaluate(async () => {const w=__remake.scene;w.flags={};w.plot=101;await w.openRoom('room_tundra_town');});
   assert.deepEqual(await page.evaluate(() => __remake.scene.doors.filter(d=>d.destination==='room_fogroom').map(d=>[d.marker,d.musicFade])), Array(4).fill(['obj_markerX',true]));
