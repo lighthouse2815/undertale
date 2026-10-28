@@ -6,7 +6,7 @@ import { LEVEL_THRESHOLDS } from './levels.mjs';
 
 // Battlegroup 53: hai Moldsmal thường ở Waterfall.
 export class MoldsmalGroupBattle extends MultiBattle {
-  constructor() { super('MoldsmalGroupBattle'); }
+  constructor(key = 'MoldsmalGroupBattle') { super(key); }
   preload() {
     super.preload(); loadMoldsmalWaveAssets(this); const base = new URL('../assets/', import.meta.url);
     for (const [key, count] of [['spr_moldsmal', 2], ['spr_blconsm', 1]]) {
