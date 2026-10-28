@@ -1037,3 +1037,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Cảnh Napstablook khu yên tĩnh
 
 Đã chuyển trigger, hai nhánh thoại, Napstablook quay/rời đi, plot 117 và cờ 17/389. `remake-waterfall-friendly-nap.mjs` kích hoạt bằng phím và kiểm cả hai nhánh, trạng thái khi vào lại; hồi quy Quiet Area/cửa, check/build qua. Chưa đối chiếu chuyển động nổi/timing với gốc; trigger trận đặc biệt và các cửa khác chưa chuyển. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Hoa vọng âm phòng Waterfall 12
+
+Đã chuyển bốn hoa, bia SOUL, nhạc và encounter phòng 12 theo logic hiện có. `remake-waterfall-wishes-room.mjs` kiểm nội dung theo vị trí/tuyến, bia, nhạc và ngưỡng gặp quái; check/build qua. Phòng mở trực tiếp, chưa nối cửa, cuộc gọi Papyrus/Flowey hay hiệu ứng thác sáng; kiểm thử mới chưa vào trận thật tại phòng này. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
