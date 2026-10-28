@@ -67,6 +67,7 @@ export async function loadRoom(scene, name) {
   const dogHouse = name === 'room_tundra_lesserdog';
   const icePuzzle = name === 'room_tundra_iceentrance';
   const iceHole = name === 'room_tundra_icehole';
+  const fogRoom = name === 'room_fogroom';
   const garage = name === 'room_tundra_garage';
   const inn = ['room_tundra_inn', 'room_tundra_inn_2f'].includes(name);
   const innDialogue = inn ? await json(new URL('./snowdin-inn.json', import.meta.url).href) : null;
@@ -164,6 +165,7 @@ export async function loadRoom(scene, name) {
   if (crossword) await Promise.all(['obj_puzzlewall2', 'obj_sans_room'].map(object));
   if (ruinsHome || torielHall || torielCorridor || living || basement) await object('obj_toroverworld3');
   const spriteNames = new Set([...objects.values()].flatMap((data) => [data.Sprite, data.MaskSprite]).filter(Boolean));
+  if (fogRoom) spriteNames.add('spr_tundrafog');
   if (ruinsStart) spriteNames.add('spr_exc');
   if (snowdinEncounter) for (const key of ['spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (ruinsStart) for (const page of [...ruinsStartDialogue.call, ...ruinsStartDialogue.afterDog]) if (page.portrait) spriteNames.add(page.portrait);
