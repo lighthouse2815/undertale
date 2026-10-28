@@ -873,3 +873,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### ACT Woshua
 
 Đã chuyển Check, Touch, Clean, Joke, ảnh hưởng đến Aaron và thứ tự lời trạng thái Woshua. Kiểm thử riêng các nhánh và ngưỡng, check/build qua; chưa có scene trận, đạn, va chạm giọt xanh hoặc encounter Woshua. Push trận Aaron `0756fcc` thành công.
+
+### Quy tắc đợt tấn công Woshua
+
+Đã chuyển chọn xoắn nước/bong bóng, thời lượng và nhịp theo số quái, ảnh hưởng Joke, yêu cầu Clean và hiệu ứng giọt xanh hồi 1 HP/cho phép tha. Kiểm thử các nhánh và giới hạn HP, check/build qua. Chưa chuyển generator, va chạm, scene trận hay encounter; đây mới là quy tắc dữ liệu. Push ACT Woshua `52ee79e` thành công. Bộ tổng `test-remake-52ee79e-v2.log` đang chạy, chưa có kết quả cuối và không gồm phần quy tắc mới.
