@@ -28,6 +28,11 @@ export function itemAction(world, index, action, text, { scene = world, health =
     return [line];
   }
   if (id === 27) { world.inventory.splice(index,1); return [item.use]; }
+  if (id === 60) {
+    if (scene === world && world.waterfallBlookYard) { world.flags[433]=1;world.waterfallBlookYard.unlock();world.inventory.splice(index,1);scene.sound.play('snd_item');return item.open; }
+    if (scene === world && world.dataSource.name === 'room_icecave1') return item.fail;
+    return [item.use];
+  }
   if (id >= 29 && id <= 34) {
     const hadSpace=world.inventory.length<8; world.inventory.splice(index,1);
     while(world.inventory.length<8)world.inventory.push(28+Math.floor(Math.random()*7));

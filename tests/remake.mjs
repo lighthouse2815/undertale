@@ -183,6 +183,7 @@ import { testWaterfallBlookyard } from './remake-waterfall-blookyard.mjs';
 import { testBlookHouseObjects } from './remake-waterfall-blookhouse-objects.mjs';
 import { testWaterfallBlookHouse } from './remake-waterfall-blookhouse.mjs';
 import { testWaterfallBlookDiary } from './remake-waterfall-blookdiary.mjs';
+import { testWaterfallMysteryKey } from './remake-waterfall-mystery-key.mjs';
 import { testWaterfallSnailFarm } from './remake-waterfall-snail-farm.mjs';
 import { testMadDummyEnding } from './remake-mad-dummy-ending.mjs';
 import { testMadDummyFullBattle } from './remake-mad-dummy-full-battle.mjs';
@@ -718,6 +719,7 @@ try {
   await testBlookHouseObjects(page);
   await testWaterfallBlookHouse(page);
   await testWaterfallBlookDiary(page);
+  await testWaterfallMysteryKey(page);
   await testWaterfallSnailFarm(page);
   await testGladDummyBattle(page);
   await testMadDummyBattle(page);

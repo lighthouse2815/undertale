@@ -366,6 +366,24 @@
         "* \"Torn Notebook\" - Weapon AT 2\n* Contains illegible scrawls.\n* Increases INV by 6.",
         "* (After you get hurt by an\n  attack, you stay invulnerable\n  for longer.)"
       ]
+    },
+    "60": {
+      "name": "Mystery Key",
+      "battleName": "MystryKey",
+      "seriousName": "Key",
+      "use": "* You used the Mystery Key.\n* But nothing happened.",
+      "info": [
+        "* \"Mystery Key\" Unique\n* It is too bent to fit on\n  your keychain."
+      ],
+      "open": [
+        "* You used the Mystery Key.\n* The red house's door\n  was unlocked.",
+        "* The key disappeared."
+      ],
+      "fail": [
+        "* You used the Mystery Key.\n* The door's lock clicks...",
+        "* ... as you fail to fit the\n  key into it.",
+        "* Nothing happened."
+      ]
     }
   },
   "actions": [

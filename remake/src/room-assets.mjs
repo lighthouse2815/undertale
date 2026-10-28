@@ -313,6 +313,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
     ...(name === 'room_water12' ? ['snd_b', 'snd_phone', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(['room_water_friendlyhub','room_water_shop','room_water_blookyard'].includes(name) ? ['mus_waterquiet', 'mus_toomuch'] : []),
+    ...(name === 'room_water_blookyard' ? ['snd_item'] : []),
     ...(name === 'room_water_farm' ? ['mus_muscle','mus_race','snd_b'] : []),
     ...(name === 'room_water_blookhouse' ? ['mus_napstahouse','mus_spoopy','mus_spoopy_wave','mus_spoopy_holiday','mus_napstachords'] : []),
     ...(name === 'room_water_bird' ? ['mus_birdsong', 'mus_waterquiet', 'mus_toomuch'] : []),
