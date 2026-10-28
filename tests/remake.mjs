@@ -122,6 +122,7 @@ import { testAaronBattle } from './remake-aaron-battle.mjs';
 import { testWoshuaAct } from './remake-woshua-act.mjs';
 import { testWoshuaAttack } from './remake-woshua-attack.mjs';
 import { testWoshuaSpiral } from './remake-woshua-spiral.mjs';
+import { testWoshuaSoap } from './remake-woshua-soap.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -577,6 +578,7 @@ try {
   await testWoshuaAct();
   await testWoshuaAttack();
   await testWoshuaSpiral(page);
+  await testWoshuaSoap(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);
