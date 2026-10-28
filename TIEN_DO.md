@@ -877,3 +877,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Quy tắc đợt tấn công Woshua
 
 Đã chuyển chọn xoắn nước/bong bóng, thời lượng và nhịp theo số quái, ảnh hưởng Joke, yêu cầu Clean và hiệu ứng giọt xanh hồi 1 HP/cho phép tha. Kiểm thử các nhánh và giới hạn HP, check/build qua. Chưa chuyển generator, va chạm, scene trận hay encounter; đây mới là quy tắc dữ liệu. Push ACT Woshua `52ee79e` thành công. Bộ tổng `test-remake-52ee79e-v2.log` đang chạy, chưa có kết quả cuối và không gồm phần quy tắc mới.
+
+### Đợt xoắn nước Woshua
+
+Đã chuyển generator xoắn, nhịp sinh và tăng tốc, đạn xanh chỉ gây sát thương khi di chuyển, giọt Clean hồi 1 HP và đặt trạng thái tha, va chạm với mask tim và dọn đạn. `test-woshua-spiral-v3.log` kiểm sinh đạn, giọt xanh khi đang bất tử và đạn xanh đứng yên/di chuyển; check/build qua. Cần đối chiếu thời gian, phép biến đổi mask với game gốc và kiểm trong scene trận; đợt bong bóng, scene và encounter Woshua chưa được nối. Push quy tắc tấn công `f0aa252` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm thay đổi này.
