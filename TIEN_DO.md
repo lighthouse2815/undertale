@@ -1109,3 +1109,7 @@ Bộ tổng `test-remake-6e47e0b.log` thất bại sớm khi chờ 200 ms thực
 ### Đường tới Onionsan
 
 Đã nối cửa Waterfall 12 ↔ phòng Onionsan, marker và chuyển nhạc qua fade; nhánh kết thúc giữ Reunited. `remake-waterfall-onionsan-path.mjs` kiểm hai chiều bằng phím và hai nhánh nhạc; hồi quy cảnh, check/build qua. Cửa sang phòng 14 và đối chiếu chuyển động/timing cảnh còn thiếu. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### Chờ khung hình sau khi tiếp tục scene
+
+Một kiểm thử Onionsan tái hiện phím bị bỏ qua dù scene đã báo hoạt động ngay sau `resume()`; chờ thêm hai khung game giúp kiểm thử qua. Áp dụng cùng cách chờ cho kiểm thử Undyne; chuỗi cỏ/SAVE/Undyne riêng và check/build qua. Đây là khả năng gây timeout bộ tổng trước, chưa xác nhận bằng bộ tổng mới; `test-remake-timer.log` đã khởi chạy trước thay đổi này.
