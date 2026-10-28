@@ -6,7 +6,7 @@ import { readSave } from './save.mjs';
 import { pauseSnowdinMusicForBattle } from './snowdin-start.mjs';
 
 const SPRITES = { spr_froggit: 4, spr_froghead: 2, spr_froglegs: 2, spr_whimsun: 2, spr_whimsunhurt: 1,
-  spr_flybullet: 2, spr_smallfrogbullet: 2, spr_butterflybllt: 2, spr_heart: 2, spr_heartbreak: 1,
+  spr_flybullet: 2, spr_smallfrogbullet: 2, spr_butterflybllt: 2, spr_heart: 2, spr_heartblue: 2, spr_heartbreak: 1,
   spr_heartshards: 4, spr_gameoverbg: 1, spr_target: 1, spr_targetchoice: 2,
   spr_fightbt: 2, spr_talkbt: 2, spr_itembt: 2, spr_sparebt: 2 };
 
@@ -51,7 +51,7 @@ export class RuinsBattle extends DummyBattle {
   async create() {
     await super.create();
     if (window.__remake.phase === 'error') return;
-    this.invFrames = 0; this.soulElapsed = 0; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
+    this.invFrames = 0; this.soulElapsed = 0; this.soulMovement = 1; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
     this.previousScene.flags[30] = this.monster === 'froggit' ? 1 : this.previousScene.flags[30] ?? 0;
     this.enemyParts = [];
     this.setupEnemy();
@@ -175,9 +175,22 @@ export class RuinsBattle extends DummyBattle {
       const speed = (this.soulSpeed ?? 4) / (this.keys.shift.isDown ? 4 : 2);
       const input = (name) => this.keys[name].isDown || [...this.previousScene.touch.values()].some((pointer) => pointer.direction === name);
       this.soul.x = Math.max(this.arena.x + 2, Math.min(this.arena.x + this.arena.width - 8, this.soul.x + (input('right') ? speed : 0) - (input('left') ? speed : 0)));
-      this.soul.y = Math.max(this.arena.y + 2, Math.min(this.arena.y + this.arena.height - 8, this.soul.y + (input('down') ? speed : 0) - (input('up') ? speed : 0)));
+      if (this.soulMovement === 2) {
+        // obj_heart: trọng lực trong Step, sau đó xử lý phím lên và vận tốc.
+        if (this.soulJumpStage === 2) {
+          if (!input('up') && this.soulVSpeed <= -1) this.soulVSpeed = -1;
+          if (this.soulVSpeed > .5 && this.soulVSpeed < 8) this.soulVSpeed += .6;
+          if (this.soulVSpeed > -1 && this.soulVSpeed <= .5) this.soulVSpeed += .2;
+          if (this.soulVSpeed > -4 && this.soulVSpeed <= -1) this.soulVSpeed += .5;
+          if (this.soulVSpeed <= -4) this.soulVSpeed += .2;
+        }
+        if (input('up') && this.soulJumpStage === 1 && this.soulVSpeed === 0) { this.soulJumpStage = 2; this.soulVSpeed = -6; }
+        this.soul.y += this.soulVSpeed / 2;
+        if (this.soul.y <= this.arena.y + 2) { this.soul.y = this.arena.y + 2; if (this.soulVSpeed < 0) this.soulVSpeed = 0; }
+        if (this.soul.y >= this.arena.y + this.arena.height - 8) { this.soul.y = this.arena.y + this.arena.height - 8; this.soulJumpStage = 1; this.soulVSpeed = 0; }
+      } else this.soul.y = Math.max(this.arena.y + 2, Math.min(this.arena.y + this.arena.height - 8, this.soul.y + (input('down') ? speed : 0) - (input('up') ? speed : 0)));
       const done = this.wave.step(); this.bullets = this.wave.bullets;
-      this.soul.setTexture(`spr_heart:${this.invFrames > 0 ? Math.floor(this.invFrames * .5) % 2 : 0}`);
+      this.soul.setTexture(`${this.soulMovement === 2 ? 'spr_heartblue' : 'spr_heart'}:${this.invFrames > 0 ? Math.floor(this.invFrames * .5) % 2 : 0}`);
       if (this.hp <= 0) { this.die(); break; }
       if (done) this.finishSoul();
     }

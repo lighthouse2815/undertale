@@ -572,4 +572,10 @@ Push c752be9 và aba6101 đã thành công (remote f1d64af2→aba61016). Bộ t�
 
 Trong kiểm thử đầu tái hiện lỗi Phaser `Cannot set properties of null (setting volume)`: hiệu ứng giảm âm còn hoạt động khi audio cũ đã bị hủy ở đổi phòng (`test-town-entrance-v1.log`). `World` giữ handle tween fade và dừng nó trước khi hủy nhạc lúc mở phòng hoặc shutdown; vẫn giữ hiệu ứng fade khi cửa hoạt động. Không tắt âm thanh hoặc che lỗi. `tests/remake-snowdin-town-entrance.mjs` nối tổng: bước qua cả hai cửa/marker/plot-GOLD, nhạc thường và Reunited cùng instance. Riêngv2 và chuỗi Papyrus7→cửaTown (`test-town-entrance-chain-v1.log`) xanh, không có lỗi JS/console; check/build qua (`build-town-entrance-final.log`). Cửa town→fog/Papyrusboss, nhà Papyrus, cửa hàng, Grillby, Town2 và các tuyến/kết thúc vẫn chưa chuyển đủ.
 
-Push Snowed Inn f24f7e6 đã thành công (remote aba61016→f24f7e6d). Bộ tổng snapshot f1d64af vẫn chạy, đã qua phòng Gyftrot và đạn GreaterDog; chưa có kết quả cuối, không gồm Library/Sansbasement/Inn/cửaTown mới.
+Push Snowed Inn f24f7e6 và cửa cầu→town f7fe082 đã thành công.
+
+### Tim xanh cho trận Papyrus
+
+Đã thêm chế độ di chuyển tim xanh vào `RuinsBattle`: giữ/nhả phím lên thay đổi độ cao nhảy, trọng lực và vận tốc tính 30 lần/giây theo các điều kiện độc lập của `obj_heart`; phím xuống không di chuyển, trái/phải và Shift giữ tốc độ như tim đỏ. Va chạm trần dừng vận tốc hướng lên, chạm sàn đặt lại trạng thái nhảy; dùng sprite tim xanh thật và nhấp nháy khi bất tử. Chế độ tim đỏ vẫn mặc định khi bắt đầu trận. Đây mới là thành phần điều khiển, **chưa có trận Papyrus, đạn xương, cảnh phòng sương hoặc đường nối town→fog**; không coi trận hay game đã hoàn thành.
+
+`tests/remake-blue-soul.mjs` kiểm tra trên scene trận thật: giữ/nhả, trọng lực, trần/sàn, Shift, phím xuống và trở lại tim đỏ. Test riêng (`test-blue-soul-v1.log`), chuỗi đạn GreaterDog→tim xanh (`test-blue-soul-chain-v1.log`), check và build đã qua. Bộ test tổng snapshot `f1d64af` đã kết thúc thành công (`test-town-undyne-full-v1.log`), không bao gồm Library, phòng bí mật Sans, nhà trọ, cửa cầu→town hay tim xanh được thêm sau đó.

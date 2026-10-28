@@ -73,6 +73,7 @@ import { testGyftrotWaves } from './remake-gyftrot-waves.mjs';
 import { testGyftrot } from './remake-gyftrot.mjs';
 import { testGyftrotRoom } from './remake-gyftrot-room.mjs';
 import { testGreaterDogWaves } from './remake-greater-dog-waves.mjs';
+import { testBlueSoul } from './remake-blue-soul.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -480,6 +481,7 @@ try {
   await testGyftrot(page);
   await testGyftrotRoom(page);
   await testGreaterDogWaves(page);
+  await testBlueSoul(page);
   await testGreaterDog(page);
   await testGreaterDogRoom(page);
   await testSnowdinDangerBridge(page);
