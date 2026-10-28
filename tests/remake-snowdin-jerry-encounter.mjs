@@ -18,11 +18,18 @@ export async function testSnowdinJerryEncounter(page) {
   const open = (flags = {}, plot = 51) => page.evaluate(async ({ flags, plot }) => { const w = __remake.game.scene.getScene('World'); await w.openRoom('room_area1'); w.flags = flags; w.plot = plot; w.gold = 100; w.kills = w.xp = 0; w.lv = 1; w.hp = w.maxHp = 20; w.weapon = 3; w.weaponStrength = 0; w.armor = 4; w.armorDefense = 0; w.inventory = [16]; await w.openRoom('room_tundra_snowpuzz'); w.player.setPosition(90, 140); }, { flags, plot });
   const flee = async () => { await page.evaluate(() => { __remake.scene.menuIndex = 3; }); await key('z'); await key('ArrowDown'); await key('z'); while (await page.evaluate(() => __remake.phase === 'battle')) await key('z'); await page.evaluate(() => new Promise((resolve) => __remake.game.events.once('poststep', resolve))); };
   const trigger = async (roll, expected) => {
-    await page.evaluate((roll) => { const w = __remake.scene; window.jerryRandom = Math.random; Math.random = () => roll; w.snowdinEncounter.count = w.snowdinEncounter.steps - 2; }, roll);
+    await page.evaluate((roll) => {
+      const w = __remake.scene, e = w.snowdinEncounter; window.jerryRandom = Math.random; Math.random = () => roll; e.count = e.steps - 2;
+      // Giữ timer ngay lúc nó được tạo để kiểm khóa bằng phím thật trước khi15–20frame kết thúc.
+      // Độ trễ RPC giữa waitForFunction và phím C không phải thời gian của game cần kiểm.
+      const update = e.update;
+      e.update = function () { update.call(this); if (__remake.phase === 'encounter' && this.timer) { this.timer.paused = true; this.update = update; } };
+    }, roll);
     await page.keyboard.down('ArrowRight'); await page.waitForFunction(() => __remake.phase === 'encounter'); await page.keyboard.up('ArrowRight');
     await page.evaluate(() => { Math.random = jerryRandom; });
     const pos = await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y]); await key('c'); assert.equal(await page.evaluate(() => __remake.phase), 'encounter');
     assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y]), pos);
+    const delay = await page.evaluate(() => { const timer = __remake.scene.snowdinEncounter.timer; const delay = timer.delay; timer.paused = false; return delay; }); assert.ok(delay >= 500 && delay <= 20 * 1000 / 30);
     await page.waitForFunction(() => __remake.phase === 'battle' && !!__remake.scene.music);
     assert.equal(await page.evaluate(() => __remake.game.registry.get('battleConfig')), expected);
     assert.equal(await page.evaluate(() => __remake.scene.previousScene.flags[200]), 203);
