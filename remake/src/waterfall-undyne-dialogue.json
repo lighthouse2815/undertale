@@ -1,0 +1,126 @@
+{
+  "report": [
+    {
+      "text": "H... HI, UNDYNE!\nI'M HERE WITH MY\nDAILY REPORT...",
+      "emotion": 5
+    },
+    {
+      "text": "UHHH... REGARDING THAT\nHUMAN I CALLED YOU\nABOUT EARLIER...",
+      "emotion": 5
+    },
+    {
+      "text": "... HUH?\nDID I FIGHT THEM?",
+      "emotion": 6
+    },
+    {
+      "text": "Y-YES!\nOF COURSE I DID!",
+      "emotion": 4
+    },
+    {
+      "text": "I FOUGHT THEM\nVALIANTLY!",
+      "emotion": 4
+    },
+    {
+      "text": "...WHAT? \nDID I CAPTURE THEM...?",
+      "emotion": 1
+    },
+    {
+      "text": "W-W-WELL...",
+      "emotion": 0
+    },
+    {
+      "text": "NO.",
+      "emotion": 1
+    },
+    {
+      "text": "I TRIED VERY HARD,\nUNDYNE, BUT IN THE\nEND...",
+      "emotion": 1
+    },
+    {
+      "text": "I FAILED.",
+      "emotion": 0
+    },
+    {
+      "text": "... W-WHAT?",
+      "emotion": 6
+    },
+    {
+      "text": "YOU'RE GOING TO TAKE\nTHE HUMAN'S SOUL\nYOURSELF...",
+      "emotion": 1
+    },
+    {
+      "text": "BUT UNDYNE, YOU DON'T\nH-HAVE TO DESTROY\nTHEM! YOU SEE...",
+      "emotion": 0
+    },
+    {
+      "text": "YOU SEE...",
+      "emotion": 1
+    }
+  ],
+  "reportEnd": [
+    {
+      "text": "...",
+      "emotion": 0
+    },
+    {
+      "text": "... I UNDERSTAND.",
+      "emotion": 1
+    },
+    {
+      "text": "I'LL HELP YOU IN\nANY WAY I CAN.",
+      "emotion": 1
+    }
+  ],
+  "kid": [
+    {
+      "text": "* Yo... did you see the\n  way she was staring at\n  you...?",
+      "emotion": 0
+    },
+    {
+      "text": "* That...",
+      "emotion": 0
+    },
+    {
+      "text": "* ... was AWESOME!",
+      "emotion": 0
+    },
+    {
+      "text": "* I'm SOOOO jealous!",
+      "emotion": 0
+    },
+    {
+      "text": "* What'd you do to get her\n  attention...?\n* Ha ha.",
+      "emotion": 0
+    },
+    {
+      "text": "* C'mon!\n* Let's go watch her beat\n  up some bad guys!",
+      "emotion": 0
+    }
+  ],
+  "kidNoPapyrus": [
+    {
+      "text": "* Yo... did you see the\n  way she was staring at\n  you...?",
+      "emotion": 0
+    },
+    {
+      "text": "* That...",
+      "emotion": 0
+    },
+    {
+      "text": "* ... was AWESOME!",
+      "emotion": 0
+    },
+    {
+      "text": "* I'm SOOOO jealous!",
+      "emotion": 0
+    },
+    {
+      "text": "* She was just standing there\n  waiting FOREVER, and\n  then you just...!!!",
+      "emotion": 0
+    },
+    {
+      "text": "* C'mon!\n* Let's go watch her beat\n  up some bad guys!",
+      "emotion": 0
+    }
+  ]
+}

@@ -813,3 +813,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Cỏ phòng gặp Undyne
 
 Đã chuyển 16 bụi cỏ `room_water4`: đổi khung theo va chạm chân Frisk, giữ khung hai frame và âm thanh dùng chung có thời gian chờ; test riêng kiểm va chạm, hồi và dọn, check/build qua. Chỉ mở phòng trực tiếp để kiểm; cảnh Undyne/Papyrus, ánh sáng, SAVE và lối từ phòng 3 còn thiếu. Push `7b6a3bd` thành công; bộ tổng snapshot `e6b3b82` vẫn đang chạy và chưa gồm phần này.
+
+### Lời cuộc gặp Undyne
+
+Đã chuyển dữ liệu báo cáo Papyrus với mã biểu cảm `\M`, giữ thứ tự ghi đè trang 157 bằng 158 và tách writer kết thúc ở 169 khỏi ba trang tiếp theo; thêm hai nhánh lời Monster Kid theo cờ Papyrus. Kiểm thử riêng số trang, biểu cảm và lựa chọn nhánh qua, check/build qua. Chưa nối vào hoạt cảnh/camera/nhạc và phòng 4 chưa có đường vào. Push `8721849` thành công; bộ tổng snapshot `e6b3b82` tiếp tục chạy, chưa gồm phần này.
