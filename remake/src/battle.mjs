@@ -22,6 +22,7 @@ export const BATTLE_CONFIGS = {
   papyrus: { name: 'Papyrus', asset: 'spr_papyrusboss', hp: 680, def: 2, xp: 200 },
   greaterDog: { name: 'Greater Dog', asset: 'spr_greatdog', hp: 105, def: 4, xp: 80 },
   aaron: { name: 'Aaron', asset: 'spr_aaron', hp: 98, def: 2, xp: 52 },
+  woshua: { name: 'Woshua', asset: 'spr_woshua', hp: 70, def: 1, xp: 52 },
   gyftrot: { name: 'Gyftrot', asset: 'spr_gyftrot', hp: 114, def: 3, xp: 35 },
   doggo: { name: 'Doggo', asset: 'spr_movedoge', hp: 70, def: 1, xp: 30 },
   nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },

@@ -885,3 +885,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Đợt bong bóng Woshua
 
 Đã chuyển bong bóng nảy, tăng tốc và sinh tia sáng thu nhỏ theo thời gian, sát thương và dọn; `test-woshua-soap-v1.log` kiểm nhịp, bật tường, va chạm, hết tuổi và dọn, check/build qua. Chưa ghép hai đợt vào scene và encounter; cần kiểm thêm va chạm/timing so với gốc trong trận thật. Push đợt xoắn `873672f` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không bao gồm đợt bong bóng.
+
+### Trận Woshua đơn
+
+Đã ghép hình các bộ phận và chuyển động, menu ACT, hai đợt đạn, FIGHT/ITEM/MERCY, thưởng và nhạc vào scene trận Woshua đơn. `test-woshua-battle-v3.log` kiểm bằng bàn phím Clean → giọt xanh → Spare, Joke → bong bóng → Flee, FIGHT/EXP/GOLD/cờ; check/build qua. Scene mới mở trực tiếp để kiểm thử, chưa nối encounter hay nhóm quái; hoạt hình, lời chim và timing/va chạm còn cần đối chiếu với gốc. Push đợt bong bóng `a571e6a` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không bao gồm scene này.
