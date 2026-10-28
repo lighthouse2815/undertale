@@ -210,7 +210,8 @@ const ROOM_EXITS = {
   room_water_savepoint1: { B: 'room_water9' },
   room_water_fakehallway: { u: 'room_water11' },
   room_water11: { t: 'room_water_bird' },
-  room_water_bird: { t: 'room_water11' },
+  room_water_bird: { t: 'room_water11', s: 'room_water_friendlyhub' },
+  room_water_friendlyhub: { s: 'room_water_bird' },
   room_mysteryman: { s: 'room_water_fakehallway' },
   room_water3A: { B: 'room_water3' },
   room_tundra_library: { u: 'room_tundra_town' },
@@ -725,6 +726,9 @@ class World extends Scene {
     }
     this.cameras.main.once('camerafadeoutcomplete', async () => {
       try {
+        if (musicFade && this.flags[7] !== 1 && ['room_water_bird', 'room_water_friendlyhub'].includes(this.dataSource.name) && ['room_water_bird', 'room_water_friendlyhub'].includes(destination)) {
+          this.roomMusicFade?.stop(); this.waterfallMusic?.destroy(); this.waterfallMusic = null;
+        }
         await this.openRoom(destination, marker);
         this.cameras.main.fadeIn(1000 / 30 / 0.08);
       } catch (error) { fail(error); }

@@ -1029,3 +1029,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Khu yên tĩnh Waterfall
 
 Đã thêm SAVE Quiet Area, biển và Clam Girl theo fun, tuyến, số lần nói và cờ 279. `remake-waterfall-friendly-hub.mjs` kiểm các nhánh, hồi HP và lưu file; check/build qua. Phòng hiện mở trực tiếp; các cửa, cảnh Napstablook/trigger và màu chữ tên Suzy chưa chuyển. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Cửa khu yên tĩnh
+
+Đã nối hai chiều phòng chim ↔ Quiet Area, fade/khởi động lại nhạc thường và giữ Reunited. `remake-waterfall-friendly-path.mjs` kiểm hai chiều bằng phím, marker và hai nhánh nhạc; hồi quy phòng chim/Quiet Area, check/build qua. Các cửa khác và cảnh trigger Quiet Area còn thiếu; bộ tổng `test-remake-fe0840e.log` chạy từ trước các phần này.
