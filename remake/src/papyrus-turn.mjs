@@ -31,3 +31,14 @@ export function preparePapyrusTurn(battle, command) {
   battle.command = command;
   return { speech, blueAttack, command };
 }
+
+// Step của obj_papyrusboss ghi đè trạng thái theo lệnh, ngày hẹn, HP và MERCY.
+export function papyrusTurnStatus(battle, command) {
+  let id = command >= 0 ? 1584 : null;
+  for (const [minimum, candidate] of [[16,1585], [20,1586], [30,1587], [40,1588], [60,1589], [80,1590], [90,1591], [97,1592]]) if (command >= minimum) id = candidate;
+  if (battle.previousScene.flags[66] === 1) battle.flirt2++;
+  if (battle.flirt2 > 0 && battle.flirt2 < 11) id = 1595 + battle.flirt2;
+  if (battle.enemyHp < 100) id = 1609;
+  if (battle.mercy >= 8000 || battle.murder) id = 1611;
+  return id === null ? battle.status : text[id];
+}
