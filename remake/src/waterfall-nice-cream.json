@@ -1,0 +1,15 @@
+{
+  "intro": ["* I relocated my store, but\n  there are still no\n  customers..."],
+  "customer": ["* Fortunately, I've thought\n  of a solution!!", "* Punch cards!!", "* Every time you buy a\n  Nice Cream, you can take a\n  punch card from the box.", "* If you have 3 cards, you\n  can trade them for a\n  free Nice Cream!", "* They're sure to get the\n  customers to come back!", "* Anyway..."],
+  "offer": ["* Hello!\n* Would you like some\n  Nice Cream?", "* It's the frozen treat\n  that warms your heart!"],
+  "offerAgain": ["* Nice Cream!\n* It's the frozen treat\n  that warms your heart!"],
+  "umbrella": ["* Hey, you have an umbrella,\n  just like my cart...", "* Such solidarity!\n* I have no choice but to\n  give you a deal!"],
+  "umbrellaAgain": ["* Umbrella solidarity!?\n* I guess I have to give\n  you a deal..."],
+  "redeem": ["* Hey!\n* You have 3 Punch Cards!", "* How about redeeming them\n  for some Nice Cream!?"],
+  "buy": ["* Super! Here you go!\n* Your Card's in the box!\n* (You got the Nice Cream.)"],
+  "free": ["* Here! A free Nice Cream!\n* (You lost 3 cards and got\n  a Nice Cream.)"],
+  "poor": ["* Huh? No money?\n* Sorry, I can't give it to\n  you for free."],
+  "poorDiscount": ["* Huh? You can't afford it\n  even with the discount?\n* I..."],
+  "full": ["* It looks like you're\n  holding too much stuff!\n* Oh well!"],
+  "no": ["* Well then...\n* Tell your friends...", "* There's ice cream...\n* Hidden in the depths of a\n  watery cavern..."]
+}

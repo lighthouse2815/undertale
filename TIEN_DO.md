@@ -1085,3 +1085,7 @@ Bộ tổng `test-remake-6e47e0b.log` thất bại sớm khi chờ 200 ms thực
 ### Hộp thẻ ở quầy Nice Cream Waterfall
 
 Đã chuyển hộp thẻ theo số lượng/cờ 80, nhận hoặc từ chối, xử lý túi đầy, biển và nấm. `remake-waterfall-nice-cream-room.mjs` kiểm các ngưỡng, lựa chọn và nhận thẻ; check/build qua. Phòng mở trực tiếp; người bán và cửa chưa chuyển. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.
+
+### Người bán Nice Cream Waterfall
+
+Đã chuyển hội thoại mở đầu, điều kiện xuất hiện, mua 25G, giảm giá với ô, cờ thẻ trong hộp và đổi ba thẻ lấy kem. `remake-waterfall-nice-cream-shop.mjs` kiểm các nhánh, túi đầy và cờ; hồi quy quầy Snowdin/hộp thẻ, check/build qua. Phòng chưa nối cửa; cần đối chiếu biểu cảm và timing. Bộ tổng `test-remake-timer.log` đang chạy từ trước phần này.

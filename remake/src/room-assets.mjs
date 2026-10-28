@@ -99,7 +99,7 @@ export async function loadRoom(scene, name) {
   const scentDialogue = scent ? await json(new URL('./snowdin-scent.json', import.meta.url).href) : null;
   const parkDialogue = niceCream ? await json(new URL('./snowdin-park.json', import.meta.url).href) : null;
   const golfDialogue = niceCream ? await json(new URL('./snow-golf.json', import.meta.url).href) : null;
-  const niceCreamDialogue = niceCream ? await json(new URL('./nice-cream.json', import.meta.url).href) : null;
+  const niceCreamDialogue = (niceCream || name === 'room_water_nicecream') ? await json(new URL('./nice-cream.json', import.meta.url).href) : null;
   const maze = name === 'room_tundra7';
   const mazeDialogue = maze ? await json(new URL('./electric-maze.json', import.meta.url).href) : null;
   const ice = name === 'room_tundra6';
@@ -193,7 +193,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
-  if (name === 'room_water_nicecream') for (const key of ['spr_chestbox','spr_heartsmall']) spriteNames.add(key);
+  if (name === 'room_water_nicecream') for (const key of ['spr_chestbox','spr_heartsmall','spr_icecreamguy_sad','spr_icecreamguy_anim','spr_icecreamguy_happy']) spriteNames.add(key);
   if (name === 'room_water_shoe') for (const key of ['spr_balletshoes', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water12') for (const key of ['spr_exc', 'spr_exc_f', 'spr_floweysink', 'spr_face_papyrus', ...['lt','mt','rt','lm','mm','rm','bl','bm','br'].map(part => `spr_waterfall_bright_${part}`)]) spriteNames.add(key);
   if (name === 'room_water_friendlyhub') for (const key of ['spr_clamgirl_b', 'spr_napstablook_u', 'spr_napstablook_d']) spriteNames.add(key);
@@ -276,7 +276,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
     ...(name === 'room_water_fakehallway' ? ['mus_dooropen'] : []),
     ...(name === 'room_mysteryman' ? ['snd_mysterygo'] : []),
-    ...(name === 'room_water_nicecream' ? ['snd_movemenu'] : []),
+    ...(name === 'room_water_nicecream' ? ['snd_movemenu','snd_squeak'] : []),
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
     ...(name === 'room_water12' ? ['snd_b', 'snd_phone', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water_friendlyhub' ? ['mus_waterquiet', 'mus_toomuch'] : []),

@@ -458,7 +458,7 @@ class World extends Scene {
       this.grillbyDate = new GrillbyDate(this);
     }
     if (['room_water_fakehallway', 'room_mysteryman'].includes(name)) this.waterfallMystery = new WaterfallMystery(this);
-    if (name === 'room_water_nicecream') this.waterfallNiceCreamRoom = new WaterfallNiceCreamRoom(this);
+    if (name === 'room_water_nicecream') { this.waterfallNiceCreamRoom = new WaterfallNiceCreamRoom(this); this.niceCream = new NiceCream(this); }
     if (name === 'room_water_shoe') { this.waterfallShoeRoom = new WaterfallShoeRoom(this); this.waterfallGrass = new WaterfallGrass(this); }
     if (name === 'room_water12') { this.waterfallWishesRoom = new WaterfallWishesRoom(this); this.waterfallPapyrusPhone = new WaterfallPapyrusPhone(this); this.waterfallEncounter = new WaterfallEncounter(this, spawnName); }
     if (name === 'room_water_friendlyhub') this.waterfallFriendlyHub = new WaterfallFriendlyHub(this);
