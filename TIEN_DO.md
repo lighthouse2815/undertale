@@ -897,3 +897,7 @@ Sửa cờ 386 được đặt khi `obj_bellblossom` khởi tạo, kể cả tuy
 ### Đạn Moldsmal
 
 Đã chuyển hai generator Moldsmal thường, nhịp theo số quái, viên rơi đảo hướng và viên tách chín mảnh, va chạm mask và dọn. `test-moldsmal-waves-v1.log` kiểm hai generator đồng thời, đảo hướng, tách mảnh, va chạm và dọn; check/build qua. Chưa ghép scene nhóm hoặc encounter, cần đối chiếu timing/va chạm với gốc trong trận thật. Push ACT Moldsmal `e58096f` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không bao gồm thay đổi này.
+
+### Trận hai Moldsmal Waterfall
+
+Đã ghép nhóm 53 gồm hai Moldsmal: chọn mục tiêu, ACT, hai generator đồng thời, tha/giết từng quái, thưởng, dân số và nhạc. `test-moldsmal-group-v1.log` kiểm điều khiển chọn ACT, tha cả hai, giết một rồi tha một, số generator và thưởng/cờ; check/build qua. Mới mở trực tiếp để kiểm thử, chưa nối encounter, cần đối chiếu animation, timing/va chạm với gốc. Push đạn Moldsmal `8654fda` thành công; bộ tổng `test-remake-52ee79e-v2.log` vẫn đang chạy, không gồm scene này.
