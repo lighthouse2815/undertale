@@ -1357,3 +1357,5 @@ Bộ tổng `test-remake-2102c41-workspace.log` kết thúc lỗi ở kiểm th�
 Đã nối nông trại với Blook Acres và Quiet Area, thêm NPC theo tuyến và cuộc đua Thundersnail với phí, cổ vũ, ba kết quả và thưởng. `remake-waterfall-snail-farm.mjs` kiểm cửa, lời NPC, phí, áp lực và thưởng; check/build qua. Cần đối chiếu thêm nhịp đếm ngược, biểu cảm và âm thanh cuộc đua với game gốc; các phòng sau Waterfall vẫn chưa chuyển.
 
 Đã thêm Mystery Key và tác dụng mở cửa nhà nhật ký trong Blook Acres: xóa chìa, cờ 433, bỏ va chạm và tạo cửa ngay. `remake-waterfall-mystery-key.mjs` kiểm dùng trong/ngoài phòng và lưu nạp; hồi quy nhà nhật ký, check/build qua. Cửa hàng bán chìa ở Hotland vẫn chưa chuyển nên chưa thể mua chìa trong tiến trình bình thường.
+
+Đã chuyển hai đợt tấn công Temmie: thân dài bốn chân bám SOUL và cánh tay nhiều đoạn đổi hướng/rút về. `remake-temmie-long-wave.mjs` và `remake-temmie-hand-wave.mjs` kiểm khung, chuyển động, sát thương và kết thúc; check/build qua. Chưa nối scene trận và encounter Waterfall 15; cần đối chiếu tiếp mask tay, thời điểm đổi hướng và hoạt ảnh.
