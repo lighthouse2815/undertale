@@ -12,8 +12,10 @@ export function loadMadDummyWaveAssets(scene){
 
 // obj_maddummy: đội hình theo con2 và HP; toạ độ gốc 640×480.
 export class MadDummyWave extends RuinsWave {
-  constructor(scene,{border={left:237,right:397,top:250,bottom:385},random=Math.random,onDummyHit=()=>{},phase=0,hp=300,damage=phase===0?0:7,type2=0}={}){
-    super(scene,'madDummy');this.border=border;this.onDummyHit=onDummyHit;this.spawners=[];this.shots=[];this.phase=phase;this.damage=damage;
+  constructor(scene,{border={left:237,right:397,top:250,bottom:385},random=Math.random,onDummyHit=()=>{},state=null,phase=0,hp=300,damage,type2=0}={}){
+    if(state)({phase,hp,type2}=state.beginWave());
+    damage ??= phase===0?0:7;
+    super(scene,'madDummy');this.border=border;this.onDummyHit=onDummyHit;this.state=state;this.spawners=[];this.shots=[];this.phase=phase;this.damage=damage;
     const b=border,top=(offset)=>this.spawn(b.left+random()*(b.right-b.left)-20,b.top-offset,2);
     const bottom=(offset)=>this.spawn(b.left+30+random()*(b.right-b.left-70),b.bottom+offset+random()*10,3);
     if(phase===0){this.duration=360;for(const offset of [40,45,50,130,135,140,220,225,230])top(offset);for(let i=0;i<6;i++)for(const offset of [310,360,410])bottom(offset);}
@@ -48,7 +50,7 @@ export class MadDummyWave extends RuinsWave {
       const shot=entry.actor;
       const hit=shot.step({heart,touchesHeart:()=>s.invFrames<=0&&this.touchesHeart({x:shot.x-(shot.type==='missile'?17:0),y:shot.y-(shot.type==='missile'?17:0),sprite:shot.type==='missile'?'spr_hotlandmissle':'spr_dummyshot'}),touchesDummy:()=>{const enemy=s.enemy,dx=enemy.x*2,dy=enemy.y*2,margin=shot.type==='missile'?3:8,size=shot.type==='missile'?3:12;return shot.x+size>=dx+5&&shot.x-margin<=dx+82&&shot.y+size>=dy&&shot.y-margin<=dy+103;},outside:()=>shot.x< -100||shot.x>740||shot.y< -100||shot.y>580});
       const key=shot.type==='missile'?(shot.explosion||shot.age<6?`spr_dummymissle_shot:${shot.explosion?Math.min(6,shot.explosion-1):6-shot.age}`:`spr_hotlandmissle:${shot.frame}`):`spr_dummyshot:${Math.floor(this.frames*.25)%3}`;entry.image.setPosition(shot.x/2,shot.y/2).setTexture(key).setAngle(shot.type==='missile'?shot.direction:0);
-      if(hit?.type==='dummyHit')this.onDummyHit();else if(hit?.type==='heartHit')s.hurt(hit.damage);
+      if(hit?.type==='dummyHit'){this.state?.hit();this.onDummyHit();}else if(hit?.type==='heartHit')s.hurt(hit.damage);
       if(shot.dead)entry.image.destroy();
     }
     this.shots=this.shots.filter(e=>!e.actor.dead);return this.frames>=this.duration;

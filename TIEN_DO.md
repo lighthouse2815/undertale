@@ -1301,3 +1301,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã thêm đội hình robot con2 14/15/16/17.5, hình tên lửa/nổ và va chạm; kiểm số lượng, chuyển mốc, hình tên lửa và dọn trong trình duyệt, check/build qua. Trận, HP và chuyển lượt chưa nối; cần đối chiếu mask xoay, timing và hiệu ứng tên lửa với game gốc.
 
 Đã thêm trạng thái HP nội bộ và các mốc chuyển đợt Mad Dummy; `remake-mad-dummy-state.mjs` kiểm ngưỡng, nhịp đợt và chuyển robot, check/build qua. Trạng thái chưa nối vào trận và chưa bao gồm toàn bộ cảnh giữa lượt.
+
+Đã nối tùy chọn trạng thái vào bộ đạn: bắt đầu lượt cập nhật HP và đạn trúng Dummy gọi `hit()`; kiểm tương tác thật trong fixture trình duyệt, check/build qua. Chưa có giao diện trận hoặc các cảnh chuyển giai đoạn. Bộ tổng `test-remake-d92715f.log` đã dừng mà không ghi mã thoát; chưa có kết quả hoàn chỉnh.
