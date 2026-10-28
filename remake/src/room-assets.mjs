@@ -269,7 +269,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water6' ? ['snd_squeak', 'snd_bluh', 'snd_b', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water7' ? ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water8' ? ['snd_arrow', 'snd_impact', 'snd_spearappear', 'snd_squeak', 'mus_fearsting', 'mus_undynefast'] : []),
-    ...(name === 'room_water11' ? ['mus_waterquiet', 'mus_toomuch'] : []),
+    ...(name === 'room_water11' ? ['snd_squeak', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water_savepoint1' ? ['snd_movemenu', 'mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water9' ? ['snd_arrow', 'snd_grab', 'snd_splash', 'mus_ambientwater', 'mus_waterfall', 'mus_toomuch', 'mus_undynefast'] : []),
     ...(name === 'room_water4' ? ['snd_splash', 'snd_b', 'snd_undynedis', 'mus_undynescary', 'mus_undynetheme', 'mus_waterfall', 'mus_toomuch'] : []),

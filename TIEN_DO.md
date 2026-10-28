@@ -997,3 +997,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Phòng sao Waterfall
 
 Đã chuyển Tonsil, bảng đá, lời kính lạ và nhạc nền phòng 11; tái sử dụng nhạc yên tĩnh với phòng Crystal. `test-waterfall-star-v1.log` kiểm các nhánh thoại/điều kiện Tonsil, bảng, kính và nhạc; hồi quy Crystal, check/build qua. Phòng mới mở trực tiếp; Sans, hộp đồ, các cửa và hiệu ứng còn thiếu. Push đường Crystal `8db38a3` thành công; bộ tổng `test-remake-4022c4c.log` vẫn đang chạy, không gồm phần này.
+
+### BOX phòng sao
+
+Đã nối BOX của phòng 11 với kho vật phẩm chung và collider. `test-star-box-v2.log` kiểm mở hộp bằng phím, rút găng tay và cập nhật túi; hồi quy tương tác phòng sao, check/build qua. Sans, hiệu ứng và các cửa phòng sao còn thiếu. Push tương tác phòng sao `0c12a2e` thành công; bộ tổng `test-remake-4022c4c.log` đang chạy, không gồm phần này.

@@ -2,6 +2,8 @@ import { createCollider } from './movement.mjs';
 import { inInteractionRange } from './npc.mjs';
 import { startWaterfallQuietMusic } from './waterfall-music.mjs';
 import data from './waterfall-star-dialogue.json' with { type: 'json' };
+import { showItemBox } from './box-road.mjs';
+import boxData from './box-road.json' with { type: 'json' };
 
 // room_water11: Tonsil, bảng đá và kính thiên văn lạ.
 export class WaterfallStarRoom {
@@ -9,15 +11,17 @@ export class WaterfallStarRoom {
     this.world = world; this.npc = world.roomObjects.find(e => e.item.ObjectName === 'obj_npc_room');
     this.signs = world.roomObjects.filter(e => e.item.ObjectName === 'obj_readable_room2');
     this.telescope = world.roomObjects.find(e => e.item.ObjectName === 'obj_telescope');
+    this.box = world.roomObjects.find(e => e.item.ObjectName === 'obj_sansbox'); world.flags[300] ??= 14;
     if (this.npc) {
       this.npc.item = { ...this.npc.item, Y: this.npc.item.Y + 10 }; this.npc.object = { ...this.npc.object, Sprite: 'spr_tonsildude' }; this.npc.sprite = world.dataSource.sprites.get('spr_tonsildude');
       world.dataSource.objects.set('obj_npc_room', this.npc.object); this.npc.image.setPosition(this.npc.item.X, this.npc.item.Y).setTexture('spr_tonsildude:0').setOrigin(0).setDepth(this.npc.item.Y + this.npc.sprite.Height);
       world.colliders.push(createCollider(world.dataSource, this.npc.item));
     }
-    world.colliders.push(createCollider(world.dataSource, this.telescope.item)); startWaterfallQuietMusic(world);
+    for (const e of [this.telescope, this.box]) world.colliders.push(createCollider(world.dataSource, e.item)); startWaterfallQuietMusic(world);
   }
   interact() {
     const w = this.world;
+    if (inInteractionRange(w, this.box)) { showItemBox(w, boxData.box); return true; }
     if (this.npc && inInteractionRange(w, this.npc)) {
       let ids = [300, 301, 302, 303, 304, 305];
       if (w.flags[85] === 1) ids = [308];

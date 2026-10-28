@@ -148,6 +148,7 @@ import { testWaterfallChasePath } from './remake-waterfall-chase-path.mjs';
 import { testWaterfallCrystalRoom } from './remake-waterfall-crystal-room.mjs';
 import { testWaterfallCrystalPath } from './remake-waterfall-crystal-path.mjs';
 import { testWaterfallStarRoom } from './remake-waterfall-star-room.mjs';
+import { testWaterfallStarBox } from './remake-waterfall-star-box.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -629,6 +630,7 @@ try {
   await testWaterfallCrystalRoom(page);
   await testWaterfallCrystalPath(page);
   await testWaterfallStarRoom(page);
+  await testWaterfallStarBox(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);
