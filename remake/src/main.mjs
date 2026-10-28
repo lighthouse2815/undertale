@@ -12,6 +12,7 @@ import { WaterfallMusicStatue } from './waterfall-music-statue.mjs';
 import { WaterfallDogRoom } from './waterfall-dog-room.mjs';
 import { WaterfallPianoRoom } from './waterfall-piano-room.mjs';
 import { ShyrenBattle } from './shyren-battle.mjs';
+import { MadDummyBattle } from './mad-dummy-battle.mjs';
 import { WaterfallShyrenHall } from './waterfall-shyren-hall.mjs';
 import { WaterfallOnionsan } from './waterfall-onionsan.mjs';
 import { WaterfallGlowParticles } from './waterfall-glow-particles.mjs';
@@ -1111,7 +1112,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, ShyrenBattle, WoshuaBattle, MoldsmalGroupBattle, WaterfallGroupBattle, UndyneQuickBattle, SaveMenu, FieldMenu, ItemBox],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, ShyrenBattle, MadDummyBattle, WoshuaBattle, MoldsmalGroupBattle, WaterfallGroupBattle, UndyneQuickBattle, SaveMenu, FieldMenu, ItemBox],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
@@ -1120,7 +1121,7 @@ state.startBattle = (config = 'dummy') => {
   const world = state.scene;
   state.phase = 'loading';
   world.scene.pause();
-  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : ['snowdrake', 'chilldrake'].includes(config) ? 'DrakeBattle' : ['icecap', 'ice'].includes(config) ? 'IceCapBattle' : config === 'lesserDog' ? 'LesserDogBattle' : config === 'doggo' ? 'DoggoBattle' : config === 'dogi' ? 'DogPairBattle' : config === 'gyftrot' ? 'GyftrotBattle' : config === 'greaterDog' ? 'GreaterDogBattle' : config === 'shyren' ? 'ShyrenBattle' : config === 'aaron' ? 'AaronBattle' : config === 'woshua' ? 'WoshuaBattle' : config === 'moldsmalGroup53' ? 'MoldsmalGroupBattle' : config === 'waterfallGroup54' ? 'WaterfallGroupBattle' : config === 'undyneQuick' ? 'UndyneQuickBattle' : config === 'papyrus' ? 'PapyrusBattle' : ['snowdinGroup35', 'snowdinGroup36'].includes(config) ? 'SnowdinGroupBattle' : 'RuinsBattle');
+  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : ['snowdrake', 'chilldrake'].includes(config) ? 'DrakeBattle' : ['icecap', 'ice'].includes(config) ? 'IceCapBattle' : config === 'lesserDog' ? 'LesserDogBattle' : config === 'doggo' ? 'DoggoBattle' : config === 'dogi' ? 'DogPairBattle' : config === 'gyftrot' ? 'GyftrotBattle' : config === 'greaterDog' ? 'GreaterDogBattle' : config === 'shyren' ? 'ShyrenBattle' : config === 'madDummy' ? 'MadDummyBattle' : config === 'aaron' ? 'AaronBattle' : config === 'woshua' ? 'WoshuaBattle' : config === 'moldsmalGroup53' ? 'MoldsmalGroupBattle' : config === 'waterfallGroup54' ? 'WaterfallGroupBattle' : config === 'undyneQuick' ? 'UndyneQuickBattle' : config === 'papyrus' ? 'PapyrusBattle' : ['snowdinGroup35', 'snowdinGroup36'].includes(config) ? 'SnowdinGroupBattle' : 'RuinsBattle');
 };
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);
