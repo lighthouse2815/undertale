@@ -206,6 +206,15 @@
       "prelab": "* (Maybe if you check the lab\n  door, you can slide it\n  underneath...)",
       "undyneUse": "* OH MY GOD!!!\n* I'M GONNA FREAKIN' KILL\n  YOU!!",
       "drop": "* (The letter is too powerful to\n  throw away.)\n* (It gets the better of you.)"
+    },
+    "24": {
+      "name": "Old Tutu",
+      "battleName": "Old Tutu",
+      "seriousName": "Old Tutu",
+      "use": "* You equipped the Old Tutu.",
+      "info": [
+        "* \"Old Tutu\" - Armor DF 10\n* Finally, a protective piece\n  of armor."
+      ]
     }
   },
   "actions": [

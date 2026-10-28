@@ -797,3 +797,7 @@ Dùng lại cơ chế chó của town cho Greater Dog trong quán: sprite thư�
 Đã dùng lại lớp vẽ thác cho bốn instance trong phòng 3, bổ sung màn nước phản ứng với va chạm Frisk, gợn nước crop theo vùng và tiếng nước; test riêng kiểm vị trí, khung, va chạm, crop và dọn, kiểm hồi quy thác trạm, check/build qua. Chưa nối đường phòng 3; các chi tiết vẽ và timing vẫn cần đối chiếu thực tế. Push `a7cee67` thành công.
 
 Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua cửa town→fog sau các bài khác (`test-waterfall-sans-full-v1.log`); chuỗi rút gọn trận Papyrus, garage, fog và cảnh gặp chạy lại qua (`test-fog-full-repro-v3.log`). Nguyên nhân chưa xác định; cần chạy lại bộ tổng có chẩn đoán trạng thái, không coi snapshot này đã qua.
+
+### Old Tutu
+
+Đã thêm vật phẩm 24 với tên, INFO và hành vi trang bị giáp DF 10, hoán đổi giáp cũ trong túi và phát âm thanh; kiểm thử riêng xác nhận trang bị/đổi lại và hồi quy BOX, check/build qua. Phòng nhặt Tutu chưa được nối. Push `e6b3b82` thành công; bộ tổng snapshot `e6b3b82` đang chạy để điều tra lỗi cửa fog của snapshot trước, chưa gồm vật phẩm này.
