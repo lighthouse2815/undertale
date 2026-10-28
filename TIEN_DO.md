@@ -645,3 +645,9 @@ Chuỗi `test-papyrus-turn-14-v2.log` kiểm biên 19/20/39/40, bố trí, timer
 Đã chuyển `obj_papyrusboss` Alarm 7 thành `papyrus-special-intro.mjs`: tim xanh, khung 50, chó nhai xương tại vị trí gốc, chờ 80 frame, năm nhóm lời Papyrus, chó ngạc nhiên hai khung rồi vừa chạy vừa hoạt họa; khung trở về border 5 ở nhóm thoại cuối, dọn chó khi cảnh xong. Scene boss tương lai hiển thị từng nhóm thoại qua callback và nhận trạng thái kết thúc, hiện chưa nối; chưa có đợt regular attack, kết quả trận hoặc phòng sương.
 
 `test-papyrus-special-intro.mjs` kiểm thời gian, từng trạng thái sprite, chờ xác nhận, dịch chuyển, khung và dọn. Chuỗi `test-papyrus-special-chain-v1.log` qua cùng tim/xương/cảnh chuyển xanh/phòng giam/GreaterDog; check/build qua. Full snapshot `4261ced` vẫn chạy và không bao gồm các phần mới. Push `583468b` và `c1cecd2` đang thử lại sau lỗi GitHub 443.
+
+### Cảnh Papyrus bắt người chơi
+
+Đã chuyển chuỗi Alarm 2–6 của xương vào `papyrus-capture.mjs`: ba nhóm lời theo cờ 67=-1/-2/-3, giảm nhạc, đợi hết thoại, fade và âm thanh, chờ 50 frame rồi hồi HP tối đa và báo scene boss quay về phòng đang đánh. Scene boss cần nối callback thoại và chuyển về phòng sương, sau đó `obj_papyrus8` đưa người chơi tới garage; chưa tự chuyển phòng hoặc giả vờ trận đã hoàn chỉnh.
+
+`tests/remake-papyrus-capture.mjs` kiểm ba nhóm lời, không chuyển khi thoại chưa hết, mốc fade/chờ 50 frame và hồi HP; chuỗi `test-papyrus-capture-chain-v1.log` qua cùng cảnh chó, chuyển xanh, phòng giam và các hồi quy trước; check/build qua. Full snapshot `4261ced` vẫn chạy, không gồm các phần sau snapshot. Push các commit đến `2a10cc0` đã thành công sau khi kết nối GitHub phục hồi.
