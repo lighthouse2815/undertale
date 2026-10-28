@@ -137,6 +137,7 @@ import { testWaterfallWishingPath } from './remake-waterfall-wishing-path.mjs';
 import { testWaterfallHistoryRoom } from './remake-waterfall-history-room.mjs';
 import { testWaterfallRaft } from './remake-waterfall-raft.mjs';
 import { testWaterfallGoner } from './remake-waterfall-goner.mjs';
+import { testWaterfallHistoryPath } from './remake-waterfall-history-path.mjs';
 import { testGreaterDog } from './remake-greater-dog.mjs';
 import { testGreaterDogRoom } from './remake-greater-dog-room.mjs';
 import { testSnowdinDangerBridge } from './remake-snowdin-danger-bridge.mjs';
@@ -607,6 +608,7 @@ try {
   await testWaterfallHistoryRoom(page);
   await testWaterfallRaft(page);
   await testWaterfallGoner(page);
+  await testWaterfallHistoryPath(page);
   await testPapyrusFogDialogue();
   await testGreaterDog(page);
   await testGreaterDogRoom(page);

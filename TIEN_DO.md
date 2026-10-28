@@ -949,3 +949,7 @@ Kiểm thử Papyrus fog giờ chờ scene World thực sự hoạt động sau 
 ### Nhân vật ẩn phòng lịch sử
 
 Đã chuyển điều kiện xuất hiện, tương tác và cờ của nhân vật bí mật; ẩn người chở đò khi chưa đến plot hoặc theo tuyến gốc. `test-waterfall-goner-v3.log` kiểm điều kiện và các nhánh, check/build qua. Người chở đò chưa có tương tác; phòng lịch sử chưa nối cửa. Push kiểm thử town–fog `76e0097` thành công. Bộ tổng `test-remake-76e0097.log` bị gián đoạn khi môi trường kết thúc, không có kết quả cuối.
+
+### Nối phòng lịch sử
+
+Đã nối cửa Wishing Room ↔ phòng lịch sử, marker và nhạc. `test-waterfall-history-path-v1.log` kiểm hai chiều bằng phím và đi trọn chuyến bè; hồi quy Wishing Room/phòng lịch sử, check/build qua. Cửa tiếp sang phòng 8 và tương tác người chở đò chưa chuyển; bè còn cần đối chiếu fade nhạc. Push nhân vật ẩn `1dd1b05` thành công.
