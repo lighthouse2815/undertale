@@ -1,3 +1,4 @@
+import { WaterfallStarViewer } from './waterfall-star-viewer.mjs';
 import { createCollider } from './movement.mjs';
 import { inInteractionRange } from './npc.mjs';
 import { startWaterfallQuietMusic } from './waterfall-music.mjs';
@@ -8,7 +9,11 @@ import boxData from './box-road.json' with { type: 'json' };
 // room_water11: Tonsil, bảng đá và kính thiên văn lạ.
 export class WaterfallStarRoom {
   constructor(world) {
-    this.world = world; this.npc = world.roomObjects.find(e => e.item.ObjectName === 'obj_npc_room');
+    this.world = world; this.viewer = new WaterfallStarViewer(world, 'spr_starcheckeredit2');
+    this.sans = world.roomObjects.find(e => e.item.ObjectName === 'obj_sans_room');
+    if (this.sans && (world.flags[413] > 0 || world.flags[67] === 1 || world.plot > 200)) { this.sans.image.destroy(); this.sans = null; }
+    if (this.sans) { this.sans.image.setDepth(this.sans.item.Y + this.sans.sprite.MarginBottom - this.sans.sprite.OriginY); world.colliders.push(createCollider(world.dataSource, this.sans.item)); }
+    this.npc = world.roomObjects.find(e => e.item.ObjectName === 'obj_npc_room');
     this.signs = world.roomObjects.filter(e => e.item.ObjectName === 'obj_readable_room2');
     this.telescope = world.roomObjects.find(e => e.item.ObjectName === 'obj_telescope');
     this.box = world.roomObjects.find(e => e.item.ObjectName === 'obj_sansbox'); world.flags[300] ??= 14;
@@ -19,8 +24,21 @@ export class WaterfallStarRoom {
     }
     for (const e of [this.telescope, this.box]) world.colliders.push(createCollider(world.dataSource, e.item)); startWaterfallQuietMusic(world);
   }
+  update(delta) { return this.viewer.update(delta); }
+  closeViewer() { this.viewer.closeViewer(); }
+  destroy() { this.viewer.destroy(); }
   interact() {
     const w = this.world;
+    if (this.sans && inInteractionRange(w, { ...this.sans, item: { ...this.sans.item, X: this.sans.item.X - this.sans.sprite.OriginX, Y: this.sans.item.Y - this.sans.sprite.OriginY } })) {
+      const show = (lines, onClose) => w.showDialogue(lines, { portrait: 'spr_face_sans', onPage: () => w.dialogueText.setFont('fnt_comicsans', 10), onClose });
+      if (w.flags[85] === 1) show(['* dang, i wish i brought\n  a parasol.', "* i'm getting a nasty burn\n  from all this sun."]);
+      else if (w.player.pranked) show(["* huh?\n* you aren't satisfied?", "* don't worry.", "* i'll give you a\n  full refund."]);
+      else show(["* i'm thinking about\n  getting into the\n  telescope business.", "* it's normally 50000G\n  to use this premium\n  telescope...", '* but...\n* since i know you,\n  you can use it for free.', '* howzabout it?'], () => w.showChoice('* (Use the telescope?)', ['Yes', 'No'], choice => {
+        if (choice === 0) { w.player.pranked = true; this.viewer.openViewer(); }
+        else show(['* well, come back\n  whenever you want.']);
+      }));
+      return true;
+    }
     if (inInteractionRange(w, this.box)) { showItemBox(w, boxData.box); return true; }
     if (this.npc && inInteractionRange(w, this.npc)) {
       let ids = [300, 301, 302, 303, 304, 305];

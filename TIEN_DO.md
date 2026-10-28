@@ -1017,3 +1017,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Tái sử dụng màn kính thiên văn
 
 Đã tách màn nhìn sao khỏi Wishing Room để dùng tiếp cho kính của Sans. Hồi quy lựa chọn, điều khiển, khóa và âm lượng kính Wishing Room cùng check/build qua; kính Sans chưa được nối. Bộ tổng `test-remake-fe0840e.log` tiếp tục chạy từ trước các thay đổi mới.
+
+### Sans và kính phòng sao
+
+Đã chuyển điều kiện xuất hiện, lời thoại theo cờ, lựa chọn kính, kính premium, trò đùa thay sprite và lời hoàn tiền khi nói lại. `remake-waterfall-star-sans.mjs` kiểm các nhánh, điều khiển kính, âm lượng và sprite; hồi quy phòng sao/kính Wishing Room, check/build qua. Cần đối chiếu chân dung/timing với gốc; các cửa khác và hiệu ứng phòng sao chưa đầy đủ. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.

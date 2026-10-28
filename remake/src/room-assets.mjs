@@ -193,7 +193,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water5A') for (const key of ['spr_bench', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water6') for (const key of ['spr_starpattern', 'spr_starcheckeredit', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_water7') spriteNames.add('spr_mkid_goner_lt');
-  if (name === 'room_water11') spriteNames.add('spr_tonsildude');
+  if (name === 'room_water11') for (const key of ['spr_tonsildude', 'spr_face_sans', 'spr_heartsmall', 'spr_starpattern', 'spr_starcheckeredit2', 'spr_maincharad_pranked', 'spr_maincharal_pranked']) spriteNames.add(key);
   if (name === 'room_water_savepoint1') for (const key of ['spr_crystaltable', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water9') for (const key of ['spr_undyne_starkd', 'spr_undynespear', 'spr_undynea_r', 'spr_undynea_l', 'spr_undynea_r_raise', 'spr_undynea_r_raiseup', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_trip_r']) spriteNames.add(key);
   if (name === 'room_water8') for (const key of ['spr_undyne_starkd', 'spr_undyne_starkd_arm', 'spr_undyne_shad', 'spr_undynespear', 'spr_undynespear_stabbed', 'spr_magicstar']) spriteNames.add(key);
@@ -238,7 +238,7 @@ export async function loadRoom(scene, name) {
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
-  if (name === 'room_water5' || name === 'room_water4' || name === 'room_water2' || name === 'room_tundra_grillby' || fogRoom || garage || forest || checkpoint || ice || maze || niceCream || crossword || spaghetti || xoxo || colorTiles || town || dangerBridge || gyftrotRoom) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
+  if (name === 'room_water11' || name === 'room_water5' || name === 'room_water4' || name === 'room_water2' || name === 'room_tundra_grillby' || fogRoom || garage || forest || checkpoint || ice || maze || niceCream || crossword || spaghetti || xoxo || colorTiles || town || dangerBridge || gyftrotRoom) for (const key of ['fnt_comicsans', 'fnt_papyrus']) if (!scene.cache.bitmapFont.exists(key)) {
     forestFonts.set(key, await json(`fonts/${key}/${key}.json`)); images.set(key, `fonts/${key}/${key}.png`);
   }
   const sounds = [...(dummyLesson || spikeGuide || candyRoom ? ['snd_power', 'snd_swallow', 'snd_spooky', 'snd_item'] : []),
