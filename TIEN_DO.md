@@ -1057,3 +1057,7 @@ Bộ tổng `test-remake-4022c4c.log` thất bại khi gửi phím kích hoạt 
 ### Vũ khí Ballet Shoes
 
 Đã thêm thông tin, trang bị và AT 7 của Ballet Shoes, giữ vũ khí cũ trong túi và lưu chỉ số. `remake-ballet-shoes.mjs` kiểm INFO, trang bị và lưu; check/build qua. Chưa chuyển hoạt ảnh đánh riêng của giày và vị trí nhặt trong phòng shoe. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
+
+### Phòng Ballet Shoes
+
+Đã chuyển giày ẩn, nhặt/từ chối/túi đầy, cờ 106, nấm và cỏ. `remake-waterfall-shoe-room.mjs` kiểm các nhánh và vật thể; hồi quy trang bị Ballet Shoes, check/build qua. Phòng mở trực tiếp, chưa nối cửa; hoạt ảnh đánh riêng của giày chưa chuyển. Bộ tổng `test-remake-fe0840e.log` đang chạy từ trước phần này.
