@@ -14,10 +14,10 @@ export function loadMadDummyWaveAssets(scene){
 
 // obj_maddummy: đội hình theo con2 và HP; toạ độ gốc 640×480.
 export class MadDummyWave extends RuinsWave {
-  constructor(scene,{border={left:237,right:397,top:250,bottom:385},random=Math.random,onDummyHit=()=>{},onFirstHit=()=>{},onHelpersDismissal=()=>{},state=null,phase=0,hp=300,damage,type2=0}={}){
+  constructor(scene,{border={left:237,right:397,top:250,bottom:385},random=Math.random,onDummyHit=()=>{},onFirstHit=()=>{},onHelpersDismissal=()=>{},onFinalAttack=()=>{},state=null,phase=0,hp=300,damage,type2=0}={}){
     if(state)({phase,hp,type2}=state.beginWave());
     damage ??= phase===0?0:7;
-    super(scene,'madDummy');this.border=border;this.onDummyHit=onDummyHit;this.onFirstHit=onFirstHit;this.onHelpersDismissal=onHelpersDismissal;this.firstHitTimer=null;this.state=state;this.spawners=[];this.shots=[];this.phase=phase;this.damage=damage;
+    super(scene,'madDummy');this.border=border;this.onDummyHit=onDummyHit;this.onFirstHit=onFirstHit;this.onHelpersDismissal=onHelpersDismissal;this.onFinalAttack=onFinalAttack;this.firstHitTimer=null;this.state=state;this.spawners=[];this.shots=[];this.phase=phase;this.damage=damage;
     const b=border,top=(offset)=>this.spawn(b.left+random()*(b.right-b.left)-20,b.top-offset,2);
     const bottom=(offset)=>this.spawn(b.left+30+random()*(b.right-b.left-70),b.bottom+offset+random()*10,3);
     if(phase===0){this.duration=360;for(const offset of [40,45,50,130,135,140,220,225,230])top(offset);for(let i=0;i<6;i++)for(const offset of [310,360,410])bottom(offset);}
@@ -64,7 +64,9 @@ export class MadDummyWave extends RuinsWave {
       if(hit?.type==='dummyHit'){const previous=this.state?.phase;if(previous===0)this.firstHitTimer=30;this.state?.hit();if(previous===5&&this.state.phase===6){this.duration+=80;this.onHelpersDismissal();}this.onDummyHit();}else if(hit?.type==='heartHit')s.hurt(hit.damage);
       if(shot.dead)entry.image.destroy();
     }
-    this.shots=this.shots.filter(e=>!e.actor.dead);return this.frames>=this.duration&&this.firstHitTimer===null&&![1,6,7,8,9,10,11,12,13].includes(this.state?.phase);
+    this.shots=this.shots.filter(e=>!e.actor.dead);
+    if(this.state?.phase===17&&this.duration-this.frames<30){this.state.phase=18;this.onFinalAttack();}
+    return this.frames>=this.duration&&this.firstHitTimer===null&&![1,6,7,8,9,10,11,12,13].includes(this.state?.phase)&&!(this.state?.phase>=18);
   }
   destroy(){for(const e of [...this.spawners,...this.shots])e.image.destroy();this.spawners=[];this.shots=[];super.destroy();}
 }

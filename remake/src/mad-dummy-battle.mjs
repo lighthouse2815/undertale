@@ -5,6 +5,7 @@ import { madDummyAct } from './mad-dummy-act.mjs';
 import { MadDummyState } from './mad-dummy-state.mjs';
 import { MadDummyWave, loadMadDummyWaveAssets } from './mad-dummy-waves.mjs';
 import { MadDummyHelpersSequence } from './mad-dummy-helpers-sequence.mjs';
+import { MadDummyEnding } from './mad-dummy-ending.mjs';
 
 const intro = '* Mad Dummy blocks the way!';
 const speech = ['Foolish.\nFoolish!\nFOOLISH!', 'Futile.\nFutile!\nFUTILE!', 'Pitiful.\nPitiful!\nPITIFUL!', 'Feeble.\nFeeble!\nFEEBLE!'];
@@ -17,10 +18,12 @@ export class MadDummyBattle extends RuinsBattle {
   constructor(){super('MadDummyBattle');}
   preload(){
     super.preload();loadMadDummyWaveAssets(this);const base=new URL('../assets/',import.meta.url);
-    for(const [key,count] of [['spr_dummybattle',2],['spr_maddum_base',1],['spr_maddum_torso',1],['spr_maddum_leg',1],['spr_maddum_head',4],['spr_blconwd',1],['spr_blconsm',1]])
+    for(const [key,count] of [['spr_dummybattle',2],['spr_maddum_base',1],['spr_maddum_torso',1],['spr_maddum_leg',1],['spr_maddum_head',4],['spr_blconwd',1],['spr_blconsm',1],['spr_dummyknife',1],['spr_teardrop',1],['spr_napstabattle_leg',2]])
       for(let i=0;i<count;i++)if(!this.textures.exists(`${key}:${i}`))this.load.image(`${key}:${i}`,new URL(`sprites/${key}/${key}_${i}.png`,base).href);
+    if(!this.cache.json.exists('spr_dummyknife'))this.load.json('spr_dummyknife',new URL('sprites/spr_dummyknife/spr_dummyknife.json',base).href);
     if(!this.cache.bitmapFont.exists('fnt_plain')){this.load.json('fnt_plain',new URL('fonts/fnt_plain/fnt_plain.json',base).href);this.load.image('fnt_plain',new URL('fonts/fnt_plain/fnt_plain.png',base).href);}
     if(!this.cache.audio.exists('mus_dummybattle'))this.load.audio('mus_dummybattle',new URL('sounds/mus_dummybattle/mus_dummybattle.ogg',base).href);
+    for(const key of ['snd_bell','snd_arrow','snd_slidewhist'])if(!this.cache.audio.exists(key))this.load.audio(key,new URL(`sounds/${key}/${key}.wav`,base).href);
   }
   loadBattleData(){
     super.loadBattleData();if(!this.cache.bitmapFont.exists('fnt_plain'))registerBitmapFont(this,'fnt_plain',{...this.cache.json.get('fnt_plain'),LineHeight:20});colorBitmapFont(this,'fnt_plain','black','#000000');
@@ -28,10 +31,10 @@ export class MadDummyBattle extends RuinsBattle {
   }
   setupEnemy(){
     const music=this.previousScene.waterfallMusic;music?.pause();this.events.once('shutdown',()=>{if(music===this.previousScene.waterfallMusic&&music?.isPaused)music.resume();});
-    this.musicKey='mus_dummybattle';this.dummyState=new MadDummyState();this.storyTurn=0;this.attacked=false;this.face=0;this.anim=0;
+    this.musicKey='mus_dummybattle';this.dummyState=new MadDummyState();this.storyTurn=0;this.attacked=false;this.face=0;this.anim=0;this.robotSiner=0;this.motionElapsed=0;this.wave=null;this.helpers=null;this.ending=null;this.overlay=null;
     this.enemy.setPosition(135,40).setVisible(false);
     this.enemyParts=['spr_maddum_base','spr_maddum_torso','spr_maddum_leg','spr_maddum_head'].map(key=>this.add.image(0,0,`${key}:0`));
-    this.events.once('shutdown',()=>this.clearOverlay());this.drawDummy();
+    this.events.once('shutdown',()=>{this.clearOverlay();this.ending?.destroy();});this.drawDummy();
   }
   spareable(){return false;}
   updateMenu(){
@@ -64,7 +67,7 @@ export class MadDummyBattle extends RuinsBattle {
   }
   beginWave(){
     this.mode='soul';this.soul.setVisible(true);this.soulElapsed=0;
-    this.wave=new MadDummyWave(this,{state:this.dummyState,onFirstHit:pages=>this.showOverlay(pages,{onClose:()=>this.dummyState.finishFirstHitDialogue()}),onHelpersDismissal:()=>{
+    this.wave=new MadDummyWave(this,{state:this.dummyState,onFirstHit:pages=>this.showOverlay(pages,{onClose:()=>this.dummyState.finishFirstHitDialogue()}),onFinalAttack:()=>{this.endingElapsed=0;this.ending=new MadDummyEnding(this);},onHelpersDismissal:()=>{
       this.helpersElapsed=0;
       this.helpers=new MadDummyHelpersSequence({state:this.dummyState,wave:this.wave,show:(pages,options)=>this.showOverlay(pages,options),returnToStart:()=>Math.abs(this.enemy.x-135)<1&&Math.abs(this.enemy.y-40)<1});
     }});this.bullets=this.wave.bullets;
@@ -85,9 +88,15 @@ export class MadDummyBattle extends RuinsBattle {
   }
   animateEnemy(){}
   update(time,delta){
+    if(window.__remake.phase!=='battle'||window.__remake.scene!==this)return;
     const advance=this.mode==='soul'&&this.overlay&&this.confirmPressed;super.update(time,delta);
     if(advance)this.advanceOverlay();
-    if(this.mode==='soul'&&this.helpers){this.helpersElapsed=Math.min(200,this.helpersElapsed+delta);while(this.helpersElapsed>=1000/30){this.helpersElapsed-=1000/30;this.enemy.x+=(135-this.enemy.x)*.25;this.enemy.y+=(40-this.enemy.y)*.25;this.helpers.step();}}
-    if(this.mode!=='dead'&&this.enemyParts?.length){this.anim+=delta*30/1000;this.drawDummy();}
+    if(this.mode==='soul'&&this.helpers&&this.helpers.stage!=='done'){this.helpersElapsed=Math.min(200,this.helpersElapsed+delta);while(this.helpersElapsed>=1000/30){this.helpersElapsed-=1000/30;this.enemy.x+=(135-this.enemy.x)*.25;this.enemy.y+=(40-this.enemy.y)*.25;this.helpers.step();}}
+    if(this.mode==='soul'){this.motionElapsed=Math.min(200,this.motionElapsed+delta);while(this.motionElapsed>=1000/30){this.motionElapsed-=1000/30;const phase=this.dummyState.phase;
+      if(phase>=14&&phase<=17.5){this.robotSiner+=.2;this.enemy.x=135+Math.sin(this.robotSiner/2)*30;this.enemy.y-=Math.sin(this.robotSiner*2)*4;}
+      else if(phase>=18&&phase<20){const dx=135-this.enemy.x,dy=40-this.enemy.y,d=Math.hypot(dx,dy);if(d>0){const speed=Math.min(5,d);this.enemy.x+=dx/d*speed;this.enemy.y+=dy/d*speed;}}
+    }}
+    if(this.mode==='soul'&&this.ending){this.endingElapsed=Math.min(200,this.endingElapsed+delta);while(this.endingElapsed>=1000/30&&this.ending.stage!=='done'){this.endingElapsed-=1000/30;this.ending.step();}}
+    if(window.__remake.phase==='battle'&&window.__remake.scene===this&&this.mode!=='dead'&&this.enemyParts?.length){this.anim+=delta*30/1000;this.drawDummy();}
   }
 }

@@ -1321,3 +1321,5 @@ Mã gốc giữ nhạc đang phát khi vào phòng 3; bộ tổng trước để
 Đã nối cửa hai chiều giữa khu rác và Quiet Area, giữ cửa phía khu rác đóng đến sau plot 115. `remake-waterfall-trash-objects.mjs` kiểm điều kiện cửa và vị trí xuất hiện hai chiều; check/build qua. Trận Mad Dummy vẫn chưa được nối nên chưa thể đạt mốc này bằng tiến trình thông thường.
 
 Đã tạo scene trận Mad Dummy có thể gọi trực tiếp để kiểm thử: menu, ACT, FIGHT không gây sát thương, nhạc, hình ghép, bộ đạn, lời khi đạn trúng và chuỗi trợ thủ. `remake-mad-dummy-battle.mjs` kiểm ACT và đạn trúng trong scene thật. Scene chưa được kích hoạt từ phòng: còn thiếu cảnh vào trận, chuyển động và kết thúc giai đoạn robot/dao/Napstablook, cùng nhánh tuyến giết; không coi trận đã hoàn chỉnh.
+
+Đã nối mốc cuối lượt robot với chuyển động Dummy, dao, nước mắt, lời Napstablook và trở lại phòng. `remake-mad-dummy-ending.mjs` kiểm các mốc, đạn và kết thúc trong scene; hồi quy scene/đội hình, check/build qua. Cần nối cảnh trước/sau trận trong phòng, nhánh tuyến giết, và đối chiếu thêm animation, mask dao, nhịp thoại và chuyển động thực tế.
