@@ -833,3 +833,7 @@ Bộ tổng snapshot `13ca033` kết thúc lỗi tại bước kiểm đi qua c�
 ### Quy tắc cầu hạt Waterfall
 
 Đã chuyển phần nhận diện bốn hạt đã dừng liên tiếp theo hàng/cột và tọa độ cầu có sẵn theo plot và hướng vào phòng 5. Kiểm thử riêng bao gồm thứ tự hạt, khoảng trống, hạt chưa dừng, cầu ngang/dọc và các điều kiện vào phòng; check/build qua. Chưa nối vào phòng 5: thao tác mang/thả, dòng nước, chuông đặt lại, va chạm và encounter vẫn cần chuyển. Push `9401df5` thành công. Bộ tổng snapshot `9401df5` đang chạy (`test-undyne-full-v2.log`); chưa có kết quả cuối.
+
+### Đặt và trôi hạt cầu
+
+Đã chuyển phép chọn điểm đặt hạt theo bốn hướng, kiểm tra nước/vật cản và bước trôi 2 pixel cùng điểm dò/dừng, căn lưới theo `obj_waterboard`. Kiểm thử riêng qua bốn hướng và ô bị chặn/không có nước; check/build qua. Logic chưa nối tương tác thực tế trong phòng 5, tiếp tục cần chuông, vật cản, chuyển cầu và encounter. Push `0d2f981` thành công; bộ tổng `test-undyne-full-v2.log` vẫn đang chạy, không gồm phần này.
