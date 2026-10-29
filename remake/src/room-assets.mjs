@@ -216,6 +216,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water_onionsan') for (const key of ['spr_onionblue','spr_oniontblue','spr_onionsan_kawaii','spr_onionsan_yhear','spr_onionsan_wistful','spr_onionsan_disappoint','spr_oniont_l','spr_oniont_r','spr_oniont_coyl','spr_oniont_coyd','spr_oniont_bye','spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_nicecream') for (const key of ['spr_chestbox','spr_heartsmall','spr_icecreamguy_sad','spr_icecreamguy_anim','spr_icecreamguy_happy']) spriteNames.add(key);
   if (name === 'room_water_shoe') for (const key of ['spr_balletshoes', 'spr_heartsmall']) spriteNames.add(key);
+  if (name === 'room_water19') for (const key of ['spr_waterripple', 'spr_floweysink']) spriteNames.add(key);
   if (name === 'room_water18') for (const key of ['spr_darkhalo_big', 'spr_waterripple', 'spr_heartsmall', 'spr_undynea_r', 'spr_undyne_rushfade', 'spr_undyne_rush', 'spr_undyne_cheektug', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_d', 'spr_mkid_dt', 'spr_mkid_rt']) spriteNames.add(key);
   if (name === 'room_water17') for (const key of ['spr_exc', 'spr_exc_f', 'spr_darkhalo_big']) spriteNames.add(key);
   if (name === 'room_water16') for (const key of ['spr_exc', 'spr_exc_f']) spriteNames.add(key);
@@ -315,6 +316,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water_onionsan' ? ['snd_splash','snd_squeak','mus_ambientwater'] : []),
     ...(name === 'room_water_nicecream' ? ['snd_movemenu','snd_squeak'] : []),
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
+    ...(name === 'room_water19' ? ['snd_splash', 'snd_noise', 'mus_ambientwater'] : []),
     ...(name === 'room_water18' ? ['snd_splash', 'snd_noise', 'snd_grab', 'snd_spearappear', 'snd_movemenu', 'mus_ambientwater'] : []),
     ...(name === 'room_water17' ? ['snd_b', 'snd_spearappear', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water16' ? ['snd_b', 'snd_movemenu', 'mus_waterfall', 'mus_toomuch'] : []),

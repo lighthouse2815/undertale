@@ -1,0 +1,48 @@
+{
+  "160": [
+    "* (You hear a passing\n  conversation.)",
+    "* Sorry, it's just funny...",
+    "* That's my wish, too."
+  ],
+  "240": [
+    "* (You hear laughter.)",
+    "* ... hey, you said you wouldn't\n  laugh at it!"
+  ],
+  "320": [
+    "* (You hear a passing\n  conversation.)",
+    "* Someday, I'd like to climb\n  this mountain we're all\n  buried under.",
+    "* Standing under the sky, looking\n  at the world all around...\n* That's my wish."
+  ],
+  "420": [
+    "* (You hear a passing\n  conversation.)",
+    "* Of course I won't laugh!"
+  ],
+  "460": [
+    "* (You hear a passing\n  conversation.)",
+    "* ... hmmm... if I say my wish...\n* You promise you won't\n  laugh at me?"
+  ],
+  "flowey": [
+    "* Where oh where could that\n  child be...?",
+    "* I've been looking all over\n  for them...",
+    "S* ...",
+    "F* Hee hee hee.",
+    "* THAT'S not true.",
+    "* She'll find another kid, and\n  instantly forget about you.",
+    "* You'll NEVER see her again."
+  ],
+  "flowey_genocide": [
+    "* Where am I...?",
+    "* It's so cold here...\n* And so dark...",
+    "* Someone help me...\n* Anyone... please...\n* Help me...",
+    "F* ...",
+    "* But nobody came."
+  ],
+  "silent": [
+    "* (It's strangely silent.)"
+  ],
+  "sign": [
+    "* However...\n* There is a prophecy.",
+    "* The Angel...\n* The One Who Has Seen The\n  Surface...",
+    "* They will return.\n* And the underground will go\n  empty."
+  ]
+}
