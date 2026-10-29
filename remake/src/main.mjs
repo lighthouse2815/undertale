@@ -53,6 +53,7 @@ import { WaterfallWishingRoom } from './waterfall-wishing-room.mjs';
 import { WaterfallHistoryRoom } from './waterfall-history-room.mjs';
 import { WaterfallRaft } from './waterfall-raft.mjs';
 import { UndyneQuickBattle } from './undyne-quick-battle.mjs';
+import { UndyneBattle } from './undyne-battle.mjs';
 import { WaterfallUndyneChase } from './waterfall-undyne-chase.mjs';
 import { WaterfallUndyneSecond } from './waterfall-undyne-second.mjs';
 import { WaterfallCrystalRoom } from './waterfall-crystal-room.mjs';
@@ -1208,7 +1209,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, TemmieBattle, ShyrenBattle, MadDummyBattle, GladDummyBattle, WoshuaBattle, MoldsmalGroupBattle, MoldbyggGroupBattle, WoshuaMoldbyggBattle, WaterfallGroupBattle, UndyneQuickBattle, WaterfallShop, TemShop, SaveMenu, FieldMenu, ItemBox],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, TemmieBattle, ShyrenBattle, MadDummyBattle, GladDummyBattle, WoshuaBattle, MoldsmalGroupBattle, MoldbyggGroupBattle, WoshuaMoldbyggBattle, WaterfallGroupBattle, UndyneQuickBattle, UndyneBattle, WaterfallShop, TemShop, SaveMenu, FieldMenu, ItemBox],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);
@@ -1217,7 +1218,7 @@ state.startBattle = (config = 'dummy') => {
   const world = state.scene;
   state.phase = 'loading';
   world.scene.pause();
-  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : ['snowdrake', 'chilldrake'].includes(config) ? 'DrakeBattle' : ['icecap', 'ice'].includes(config) ? 'IceCapBattle' : config === 'lesserDog' ? 'LesserDogBattle' : config === 'doggo' ? 'DoggoBattle' : config === 'dogi' ? 'DogPairBattle' : config === 'gyftrot' ? 'GyftrotBattle' : config === 'greaterDog' ? 'GreaterDogBattle' : config === 'shyren' ? 'ShyrenBattle' : config === 'madDummy' ? 'MadDummyBattle' : config === 'gladDummy' ? 'GladDummyBattle' : config === 'temmie' ? 'TemmieBattle' : config === 'aaron' ? 'AaronBattle' : config === 'woshua' ? 'WoshuaBattle' : config === 'moldbyggGroup55' ? 'WoshuaMoldbyggBattle' : config === 'moldbyggGroup42' ? 'MoldbyggGroupBattle' : config === 'moldsmalGroup53' ? 'MoldsmalGroupBattle' : config === 'waterfallGroup54' ? 'WaterfallGroupBattle' : config === 'undyneQuick' ? 'UndyneQuickBattle' : config === 'papyrus' ? 'PapyrusBattle' : ['snowdinGroup35', 'snowdinGroup36'].includes(config) ? 'SnowdinGroupBattle' : 'RuinsBattle');
+  world.scene.launch(config === 'dummy' ? 'DummyBattle' : config === 'tutorialFroggit' ? 'TutorialFroggit' : config === 'napstablook' ? 'NapstablookBattle' : config === 'vegetoid' ? 'VegetoidBattle' : config === 'toriel' ? 'TorielBattle' : ['snowdrake', 'chilldrake'].includes(config) ? 'DrakeBattle' : ['icecap', 'ice'].includes(config) ? 'IceCapBattle' : config === 'lesserDog' ? 'LesserDogBattle' : config === 'doggo' ? 'DoggoBattle' : config === 'dogi' ? 'DogPairBattle' : config === 'gyftrot' ? 'GyftrotBattle' : config === 'greaterDog' ? 'GreaterDogBattle' : config === 'shyren' ? 'ShyrenBattle' : config === 'madDummy' ? 'MadDummyBattle' : config === 'gladDummy' ? 'GladDummyBattle' : config === 'temmie' ? 'TemmieBattle' : config === 'aaron' ? 'AaronBattle' : config === 'woshua' ? 'WoshuaBattle' : config === 'moldbyggGroup55' ? 'WoshuaMoldbyggBattle' : config === 'moldbyggGroup42' ? 'MoldbyggGroupBattle' : config === 'moldsmalGroup53' ? 'MoldsmalGroupBattle' : config === 'waterfallGroup54' ? 'WaterfallGroupBattle' : config === 'undyne' ? 'UndyneBattle' : config === 'undyneQuick' ? 'UndyneQuickBattle' : config === 'papyrus' ? 'PapyrusBattle' : ['snowdinGroup35', 'snowdinGroup36'].includes(config) ? 'SnowdinGroupBattle' : 'RuinsBattle');
 };
 document.getElementById('fullscreen').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen().catch(fail);

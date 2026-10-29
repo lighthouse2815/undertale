@@ -54,3 +54,5 @@ export function undyneBattleStatus({ hp, maxHp, order, command }) {
   if (order >= -40 && order <= -36) id = 1118 + order + 40;
   return id === null ? null : { id, line: text[id] };
 }
+
+export function undyneBattleLines(ids) { return ids.map(id => text[id]); }

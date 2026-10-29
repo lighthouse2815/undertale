@@ -9,8 +9,8 @@ export function loadUndyneAttackTurnAssets(scene) {
 
 // Một lượt né của Undyne; scene boss quyết định menu, lời thoại và pha tiếp theo.
 export class UndyneAttackTurn {
-  constructor(scene, { kind, lesson = 1, rating = 16, damage = 7, firingRate, duration, undying = false, order = 0, onComplete } = {}) {
-    this.scene = scene; this.kind = kind; this.onComplete = onComplete; this.elapsed = 0; this.hits = 0; this.shieldHits = 0; this.finished = false; this.lesson = lesson; this.undying = undying; this.phase = 'wave';
+  constructor(scene, { kind, lesson = 1, rating = 16, damage = 7, firingRate, duration, undying = false, order = 0, onComplete, onColorChange } = {}) {
+    this.scene = scene; this.kind = kind; this.onComplete = onComplete; this.onColorChange = onColorChange; this.elapsed = 0; this.hits = 0; this.shieldHits = 0; this.finished = false; this.lesson = lesson; this.undying = undying; this.phase = 'wave';
     const options = { damage, undying, order };
     if (duration !== undefined) options.duration = duration;
     if (firingRate !== undefined) options.firingRate = firingRate;
@@ -43,13 +43,13 @@ export class UndyneAttackTurn {
     let done;
     if (this.phase === 'switch') {
       if (--this.switchFrames === 0) {
-        this.phase = 'red'; this.redFrames = 60;
+        this.phase = 'red'; this.redFrames = 60; this.onColorChange?.(false);
         this.spear = { x: -10, y: s.soul.y * 2, speed: { 6: 11, 11: 13, 20: 14 }[this.lesson] };
         this.spear.image = s.add.image(-5, s.soul.y, 'spr_undynespear_r:0').setOrigin(0).setScale(.5).setDepth(1000);
       }
       done = false;
     } else if (this.phase === 'returnGreen' || this.phase === 'green') {
-      if (--this.switchFrames === 15) this.phase = 'green';
+      if (--this.switchFrames === 15) { this.phase = 'green'; this.onColorChange?.(true); }
       done = this.switchFrames <= 0;
     } else if (this.phase === 'red') {
       const spear = this.spear; spear.x += spear.speed; spear.image.setX(spear.x / 2);

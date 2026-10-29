@@ -31,6 +31,7 @@ export const BATTLE_CONFIGS = {
   moldbyggGroup42: { name: 'Moldsmal', asset: 'spr_moldsmal', hp: 50, def: 0, xp: 3 },
   moldsmalGroup53: { name: 'Moldsmal', asset: 'spr_moldsmal', hp: 50, def: 0, xp: 3 },
   waterfallGroup54: { name: 'Woshua', asset: 'spr_woshua', hp: 70, def: 1, xp: 52 },
+  undyne: { name: 'Undyne', asset: 'spr_undyneb_noanim', hp: 1500, def: 0, xp: 500 },
   undyneQuick: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
   gyftrot: { name: 'Gyftrot', asset: 'spr_gyftrot', hp: 114, def: 3, xp: 35 },
   doggo: { name: 'Doggo', asset: 'spr_movedoge', hp: 70, def: 1, xp: 30 },

@@ -1,3 +1,4 @@
+import { testUndyneBattle } from './remake-undyne-battle.mjs';
 import { testUndyneBattleDialogue } from './remake-undyne-battle-dialogue.mjs';
 import { testUndyneBossBody } from './remake-undyne-boss-body.mjs';
 import { testUndyneBattleRules } from './remake-undyne-battle-rules.mjs';
@@ -744,6 +745,7 @@ try {
   await testUndyneGreenWave(page);
   await testUndyneFollowSpearWave(page);
   await testUndyneRisingSpearWave(page);
+  await testUndyneBattle(page);
   await testUndyneBossBody(page);
   await testUndyneAttackTurn(page);
   testUndyneBattleRules();
