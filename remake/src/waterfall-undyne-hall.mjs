@@ -1,5 +1,6 @@
 import { createCollider } from './movement.mjs';
 import { inInteractionRange } from './npc.mjs';
+import { WaterfallUndyneCutscene } from './waterfall-undyne-cutscene.mjs';
 import flowerText from './waterfall-undyne-flower.json' with { type: 'json' };
 
 export class WaterfallUndyneHall {
@@ -17,15 +18,17 @@ export class WaterfallUndyneHall {
     for (const layer of this.layers) layer.setVisible(open);
     if (this.blocker) this.blocker.disabled = open;
   }
-  update() {
-    if (!this.halo) return;
+  update(delta = 0) {
+    if (this.cutscene?.locked) return this.cutscene.update(delta);
+    if (!this.halo) return false;
     const w = this.world, p = w.player;
     this.halo.setPosition(p.x - 10, p.y - 5).setAlpha(Math.min(1, .5 + p.x / 1200));
     if (w.waterfallMusic) w.waterfallMusic.setVolume(Math.max(0, 1 - p.x / 600));
   }
   interact() {
-    if (this.world.plot <= 117 || !inInteractionRange(this.world, this.flower)) return false;
+    if (!inInteractionRange(this.world, this.flower)) return false;
+    if (this.world.plot <= 117) { this.cutscene = new WaterfallUndyneCutscene(this.world, this); return true; }
     this.world.showDialogue(flowerText); return true;
   }
-  destroy() { this.halo?.destroy(); }
+  destroy() { this.cutscene?.destroy(); this.halo?.destroy(); }
 }

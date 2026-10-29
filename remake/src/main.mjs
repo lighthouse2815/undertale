@@ -677,7 +677,7 @@ class World extends Scene {
       this.snowdinDogHouse?.update(delta);
       this.snowdinIcePuzzle?.update(delta);
       this.snowdinIceHole?.update(delta);
-      this.snowdinFog?.update(delta); this.papyrusFogEncounter?.update(delta); this.waterfallEntrance?.update(delta); this.waterfallSentryNpcs?.update(delta); this.waterfallSentryVisuals?.update(delta); this.grillbyNpcs?.update(delta); this.grillbyDate?.update(delta); this.waterfallSans?.update(delta); this.waterfallRockStream?.update(delta, true); this.waterfallUndyneHall?.update(); this.waterfallDarknessPuzzle?.update(delta); this.waterfallGlowflies?.update(delta); this.waterfallRoomTiles?.update(delta); this.waterfallFalls?.update(delta); this.waterfallGrass?.update(delta); this.waterfallUndyne?.update(delta); this.waterfallBridgeRoom?.update(delta); this.waterfallPapyrusPhone?.update(delta); this.waterfallQuicheRoom?.update(delta);
+      this.snowdinFog?.update(delta); this.papyrusFogEncounter?.update(delta); this.waterfallEntrance?.update(delta); this.waterfallSentryNpcs?.update(delta); this.waterfallSentryVisuals?.update(delta); this.grillbyNpcs?.update(delta); this.grillbyDate?.update(delta); this.waterfallSans?.update(delta); this.waterfallRockStream?.update(delta, true); this.waterfallUndyneHall?.update(delta); this.waterfallDarknessPuzzle?.update(delta); this.waterfallGlowflies?.update(delta); this.waterfallRoomTiles?.update(delta); this.waterfallFalls?.update(delta); this.waterfallGrass?.update(delta); this.waterfallUndyne?.update(delta); this.waterfallBridgeRoom?.update(delta); this.waterfallPapyrusPhone?.update(delta); this.waterfallQuicheRoom?.update(delta);
       this.snowdinInn?.update(delta); this.snowdinInnSleep?.update(delta);
       this.snowdinLibrary?.update(delta);
       this.snowdinTownUndyne?.update(delta);
@@ -724,7 +724,7 @@ class World extends Scene {
     const grillbyDateLocked = this.grillbyDate?.update(delta);
     const waterfallSansLocked = this.waterfallSans?.update(delta);
     const waterfallRockLocked = this.waterfallRockStream?.update(delta);
-    this.waterfallUndyneHall?.update(); this.waterfallDarknessPuzzle?.update(delta); this.waterfallGlowflies?.update(delta); this.waterfallRoomTiles?.update(delta); this.waterfallFalls?.update(delta); this.waterfallGrass?.update(delta);
+    const undyneHallLocked = this.waterfallUndyneHall?.update(delta); this.waterfallDarknessPuzzle?.update(delta); this.waterfallGlowflies?.update(delta); this.waterfallRoomTiles?.update(delta); this.waterfallFalls?.update(delta); this.waterfallGrass?.update(delta);
     const waterfallUndyneLocked = this.waterfallUndyne?.update(delta);
     const waterfallBridgeLocked = this.waterfallBridgeRoom?.update(delta);
     this.waterfallMystery?.update(delta);
@@ -773,7 +773,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || blookHouseLocked || snailFarmLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || blookHouseLocked || snailFarmLocked || undyneHallLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
