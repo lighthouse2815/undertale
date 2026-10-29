@@ -1,3 +1,4 @@
+import { testUndyneRisingSpearWave } from './remake-undyne-rising-spear-wave.mjs';
 import { testUndyneFollowSpearWave } from './remake-undyne-follow-spear-wave.mjs';
 import { testUndyneGreenWave } from './remake-undyne-green-wave.mjs';
 import { testUndyneGreenSpear } from './remake-undyne-green-spear.mjs';
@@ -738,6 +739,7 @@ try {
   await testUndyneGreenSpear(page);
   await testUndyneGreenWave(page);
   await testUndyneFollowSpearWave(page);
+  await testUndyneRisingSpearWave(page);
   await testTemShop(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
