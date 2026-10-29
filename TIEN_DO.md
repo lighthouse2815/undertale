@@ -1409,3 +1409,5 @@ Bộ tổng `test-remake-0148c1e.log` kết thúc lỗi ở Waterfall 9: tween g
 Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuyển Waterfall 7→8: kiểm thử gửi phím khi scene World còn đang được resume bất đồng bộ từ kiểm thử trước. Đã chờ scene hoạt động trước khi mở phòng và xác nhận lại liên tiếp kiểm thử phòng Waterfall 9 → đường 7–9 trong trình duyệt; check/build qua. Bộ tổng này kiểm phiên bản cũ, cần chạy lại trên phiên bản mới.
 
 Đã chuyển bộ điều khiển hướng khiên SOUL xanh: ưu tiên phím, xoay theo góc gốc, chặn giáo theo bốn hướng và nháy khi chặn; kiểm thử `remake-undyne-green-shield.mjs`, check/build qua. Đây mới là logic riêng, chưa vẽ SOUL/khiên, sinh giáo hay nối trận Undyne; cần tiếp tục những phần đó.
+
+Đã thêm hình SOUL xanh và vẽ khiên theo góc gốc, nối bộ hướng vào đối tượng scene riêng; kiểm tải sprite, vị trí, chặn và dọn trong scene trận, hồi quy truy đuổi và check/build qua. Chưa có giáo, xử lý phím trong vòng trận hoặc trận Undyne; hiệu ứng chặn cần tiếp tục đối chiếu.
