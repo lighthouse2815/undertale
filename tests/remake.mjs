@@ -1,3 +1,4 @@
+import { testWaterfallPapyrusFinalCall } from './remake-waterfall-papyrus-final-call.mjs';
 import { testWaterfallUndyneChaseRoom } from './remake-waterfall-undyne-chase-room.mjs';
 import { testWaterfallUndyneEncounter } from './remake-waterfall-undyne-encounter.mjs';
 import { testWaterfallUndyneFinal } from './remake-waterfall-undyne-final.mjs';
@@ -758,6 +759,7 @@ try {
   await testWaterfallUndyneFinal(page);
   await testWaterfallUndyneEncounter(page);
   await testWaterfallUndyneChaseRoom(page);
+  testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
