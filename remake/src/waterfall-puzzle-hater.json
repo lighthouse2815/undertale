@@ -1,0 +1,44 @@
+{
+  "kid": [
+    "* Undyne...\n* You....\n* You saved me!",
+    "* Huh?\n* They ran away?",
+    "* Yo, you're wrong...",
+    "* They went to get help!",
+    "* They'll be back any second!!",
+    "* O-okay, I'll go home..."
+  ],
+  "npc_first": [
+    "* Bah! Today's monsters don't\n  appreciate what makes\n  puzzles great!",
+    "* Nowadays \"puzzles\" are nothing\n  but lasers and moving rocks...",
+    "* Bahh!!!",
+    "* There's no ART in that\n  actiony, mindless schlock!\n* It's just timing-based drivel!",
+    "* Give me something that\n  challenges the deepest\n  reaches of my mind...",
+    "* You!\n* You're young!\n* You've still got hope!",
+    "* Geh heh heh...!\n* Here... try solving this\n  block-pushing puzzle!"
+  ],
+  "npc_wait": [
+    "* So?\n* What are you waiting for!?"
+  ],
+  "npc_done": [
+    "* Bahh!!!\n* Nevermind!!"
+  ],
+  "npc_ending": [
+    "* Geh?\n* Who are you?",
+    "* Freedom? What? Bah!\n* You're pullin' my leg!"
+  ],
+  "npc_ending_done": [
+    "* You again!?\n* Bah! I don't care about\n  going free!",
+    "* ...",
+    "* Do you think humans could\n  appreciate the details\n  of classic puzzles...?"
+  ],
+  "box_initial": [
+    "* (It's a box.)\n* (Presumably to be pushed.)"
+  ],
+  "box_first": [
+    "* What...?\n* WHAT are you doing!?\n* You're pushing it ALL WRONG!",
+    "* Bah, forget it!\n* This generation is REALLY\n  hopeless!"
+  ],
+  "box_repeat": [
+    "* Bah!"
+  ]
+}

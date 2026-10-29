@@ -144,6 +144,7 @@ import { testWaterfallUndyneHall } from './remake-waterfall-undyne-hall.mjs';
 import { testWaterfallUndyneCutscene } from './remake-waterfall-undyne-cutscene.mjs';
 import { testWaterfallFlowerHall } from './remake-waterfall-flower-hall.mjs';
 import { testWaterfallKidBridge } from './remake-waterfall-kid-bridge.mjs';
+import { testWaterfallPuzzleHater } from './remake-waterfall-puzzle-hater.mjs';
 import { testWaterfallBridgePath } from './remake-waterfall-bridge-path.mjs';
 import { testWaterfallWishingFlowers } from './remake-waterfall-wishing-flowers.mjs';
 import { testWaterfallTelescope } from './remake-waterfall-telescope.mjs';
@@ -717,6 +718,7 @@ try {
   await testWaterfallUndyneCutscene(page);
   await testWaterfallFlowerHall(page);
   await testWaterfallKidBridge(page);
+  await testWaterfallPuzzleHater(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
   await testWaterfallTelescope(page);
