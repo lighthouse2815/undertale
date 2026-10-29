@@ -1447,3 +1447,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã nối kết quả lượt né với quy tắc Undyne thường: dùng số giáo xuyên khiên để chỉnh rating, áp lesson sau chuyển pha và trả trạng thái màu SOUL. Kiểm chuỗi xanh → hai lượt đỏ → xanh trong scene thật, cùng kiểm quy tắc và hồi quy giáo/truy đuổi; check/build qua. Scene boss, hội thoại và đường chơi vẫn chưa tích hợp.
 
 Đã chuyển quy tắc khởi tạo lần đầu và gặp lại Undyne thường: HP lần đầu/theo cờ, giữ HP sau chạy thoát, biểu cảm, màu SOUL và lesson/order theo số lần. Kiểm các lần gặp, HP và tuyến đầu, check/build qua. Quy tắc chưa nối cảnh gặp lại, chạy thoát hay scene trận.
+
+Đã bổ sung điều chỉnh phòng thủ Undyne thường khi sang SOUL đỏ cuối trận, theo sáu mốc HP và chỉ áp dụng một lần. Kiểm các mốc và không áp lặp, check/build qua. Scene trận chưa dùng giá trị phòng thủ này.

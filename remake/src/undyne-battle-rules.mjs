@@ -1,7 +1,7 @@
 // Quy tắc lượt của Undyne thường; scene chịu trách nhiệm lời thoại và chuyển cảnh.
 export class UndyneBattleRules {
   constructor() {
-    this.order = 1; this.lesson = 1; this.rating = 16; this.ratingb = 0; this.berserk = false; this.hitfirst = 0; this.lastShieldHits = 0;
+    this.order = 1; this.lesson = 1; this.rating = 16; this.ratingb = 0; this.berserk = false; this.hitfirst = 0; this.lastShieldHits = 0; this.defAdjusted = false;
   }
   enter({ flag99, flag98, hp }) {
     flag99++;
@@ -21,13 +21,23 @@ export class UndyneBattleRules {
     }
     if (this.order === 12 && flag99 < 2) flag99 = 2;
     if (this.order === 22 && flag99 < 3) flag99 = 3;
+    let defense = null;
+    if (!green && this.lesson > 19 && !this.defAdjusted) {
+      defense = -15;
+      if (hp > maxHp * .3) defense = -25;
+      if (hp > maxHp * .4) defense = -35;
+      if (hp > maxHp * .5) defense = -50;
+      if (hp > maxHp * .75) defense = -70;
+      if (hp === maxHp) defense = -90;
+      this.defAdjusted = true;
+    }
     let earlyReaction = 0;
     if (this.order === 2 && this.lastShieldHits > 0 && this.hitfirst < 4) {
       earlyReaction = ++this.hitfirst;
       if (earlyReaction === 4) { this.rating = 6; this.berserk = true; this.order = 12; this.lesson = 11; }
       else { this.order = 1; this.lesson = 1; }
     }
-    return { damageCause, flag99, earlyReaction };
+    return { damageCause, flag99, earlyReaction, defense };
   }
   prepareAttack({ green, command }) {
     const lesson = this.lesson;

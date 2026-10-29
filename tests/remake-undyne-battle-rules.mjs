@@ -16,14 +16,14 @@ export function testUndyneBattleRules() {
   rules.rating = 6; rules.ratingb = 6; assert.equal(rules.challenge(), false); assert.equal(rules.plead(), false);
   rules.ratingb = 9; assert.equal(rules.prepareAttack({ green: false, command: 0 }).firingRate, 10);
   const threshold = new UndyneBattleRules();
-  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 75, maxHp: 100 }), { damageCause: 0, flag99: 0, earlyReaction: 0 });
-  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 74, maxHp: 100 }), { damageCause: 1, flag99: 0, earlyReaction: 0 });
+  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 75, maxHp: 100 }), { damageCause: 0, flag99: 0, earlyReaction: 0, defense: null });
+  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 74, maxHp: 100 }), { damageCause: 1, flag99: 0, earlyReaction: 0, defense: null });
   assert.deepEqual([threshold.lesson, threshold.order], [6, 6]);
-  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 49, maxHp: 100 }), { damageCause: 2, flag99: 2, earlyReaction: 0 });
-  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 19, maxHp: 100, flag99: 4 }), { damageCause: 3, flag99: 4, earlyReaction: 0 });
+  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 49, maxHp: 100 }), { damageCause: 2, flag99: 2, earlyReaction: 0, defense: null });
+  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 19, maxHp: 100, flag99: 4 }), { damageCause: 3, flag99: 4, earlyReaction: 0, defense: null });
   assert.deepEqual([threshold.lesson, threshold.order, threshold.rating], [20, 22, 18]);
   const redThreshold = new UndyneBattleRules();
-  assert.deepEqual(redThreshold.prepareDialogue({ green: false, hp: 1, maxHp: 100 }), { damageCause: 0, flag99: 0, earlyReaction: 0 });
+  assert.deepEqual(redThreshold.prepareDialogue({ green: false, hp: 1, maxHp: 100 }), { damageCause: 0, flag99: 0, earlyReaction: 0, defense: null });
   assert.deepEqual([redThreshold.lesson, redThreshold.order], [1, 1]);
   const skipped = new UndyneBattleRules();
   assert.equal(skipped.prepareDialogue({ green: true, hp: 1, maxHp: 100 }).damageCause, 3);
@@ -34,6 +34,11 @@ export function testUndyneBattleRules() {
     const resumed = new UndyneBattleRules();
     assert.deepEqual(resumed.enter({ flag99: oldFlag, flag98: 0, hp: 850 }), { flag99: oldFlag + 1, hp: 850, emotion, green });
     assert.deepEqual([resumed.lesson, resumed.order], [lesson, order]);
+  }
+  for (const [hp, expected] of [[30, -15], [31, -25], [41, -35], [51, -50], [76, -70], [100, -90]]) {
+    const defense = new UndyneBattleRules(); defense.lesson = 20;
+    assert.equal(defense.prepareDialogue({ green: false, hp, maxHp: 100 }).defense, expected);
+    assert.equal(defense.prepareDialogue({ green: false, hp: 1, maxHp: 100 }).defense, null);
   }
   const colors = new UndyneBattleRules(); colors.lesson = 7;
   assert.equal(colors.finishAttack({ kind: 'green', shieldHits: 0, refuse: true }), false);
