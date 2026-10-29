@@ -1,3 +1,4 @@
+import { testWaterfallUndyneFinalDialogue } from './remake-waterfall-undyne-final-dialogue.mjs';
 import { testUndyneBattle } from './remake-undyne-battle.mjs';
 import { testUndyneBattleDialogue } from './remake-undyne-battle-dialogue.mjs';
 import { testUndyneBossBody } from './remake-undyne-boss-body.mjs';
@@ -750,6 +751,7 @@ try {
   await testUndyneAttackTurn(page);
   testUndyneBattleRules();
   testUndyneBattleDialogue();
+  testWaterfallUndyneFinalDialogue();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
