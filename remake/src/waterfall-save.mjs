@@ -1,3 +1,4 @@
+import { undyneFinalSaveLine } from './waterfall-undyne-final-dialogue.mjs';
 import villageText from './waterfall-tem-village.json' with { type: 'json' };
 import { colorBitmapFont } from './fonts.mjs';
 import { murderLevel } from './route.mjs';
@@ -11,6 +12,7 @@ export function showWaterfallSave(world) {
   colorBitmapFont(world, 'fnt_maintext', 'red', '#ff0000');
   world.hp = Math.max(world.hp, world.maxHp); world.sound.play('snd_power');
   const pages = !red && level < 16 && !(level >= 8 && !world.flags[27] && left === 0) && world.dataSource.name === 'room_water_savepoint1' ? ['* (Knowing the mouse might one\n  day extract the cheese from\n  the mystical crystal...)', '* (It fills you with\n  determination.)'] : [line];
+  if (world.dataSource.name === 'room_water_undynefinal' && !red && level < 16 && !(level >= 8 && !world.flags[27] && left === 0)) pages.splice(0, pages.length, undyneFinalSaveLine(world.flags));
   if (world.dataSource.name === 'room_water_temvillage' && !red && level < 16 && !(level >= 8 && !world.flags[27] && left === 0)) pages.splice(0, pages.length, ...villageText.save);
   if (world.dataSource.name === 'room_water_preundyne' && !red && level < 16 && !(level >= 8 && !world.flags[27] && left === 0)) pages.splice(0,pages.length,world.flags[86]===1 ? '* (The serene sound of a\n  distant music box...)' : '* (The sound of muffled rain\n  on the cavetop...)','* (It fills you with\n  determination.)');
   if (world.dataSource.name === 'room_water_trashsavepoint') { if (!red && level < 16 && !(level >= 8 && !world.flags[27] && left === 0)) pages.splice(0,pages.length,...(world.flags[91]===1 ? ['* (Partaking in worthless\n  garbage fills you\n  with determination.)'] : ['* (The waterfall here seems\n  to flow from the\n  ceiling of the cavern...)','* (Occasionally, a piece of\n  trash will flow\n  through...)','* (... and fall into the\n  bottomless abyss below.)','* (Viewing this endless\n  cycle of worthless\n  garbage...)','* (It fills you with\n  determination.)'])); world.flags[91]=1; }

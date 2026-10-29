@@ -1463,3 +1463,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Bộ tổng chạy từ ec2c1a8 dừng ở kiểm thử Waterfall 18→19: scene World vừa resume bất đồng bộ từ kiểm thử cảnh Undyne trước đó. Đã đợi scene hoạt động sau resume và kiểm lại liên tiếp hành lang → cảnh → phòng 19, check/build qua; bộ tổng cũ chạy trong lúc source thay đổi nên cần chạy lại trên phiên bản cố định.
 
 Đã chuyển lựa chọn thoại cảnh trước trận Undyne theo kill, Papyrus, Monster Kid, các cờ Snowdin và ký ức Undyne; gồm lời gặp lại khi bắt đầu trận. Kiểm số trang, thứ tự ưu tiên các nhánh và dữ liệu, check/build qua. Chưa có controller cảnh/đường phòng; biểu cảm từng câu và các hiệu ứng cảnh cần chuyển tiếp.
+
+Đã chuyển cảnh trước trận trong room_water_undynefinal: camera, hai nhánh Papyrus, thoại theo tuyến, hiệu ứng sáng/mắt, nhạc và điểm lưu động với ba lời theo cờ. Kiểm hai nhánh, plot 121, mở lại phòng và tương tác Save, hồi quy Waterfall 18–19; check/build qua. Phòng chưa nối cửa và chưa có trigger vào trận/truy đuổi; hiệu ứng zoom/rung, biểu cảm và nhịp còn cần đối chiếu.

@@ -29,3 +29,5 @@ export function undyneFinalSpeech({ kills = 0, flags = {}, undyneKilledBefore = 
 export function undyneFinalEncounterLines(encounteredBefore) {
   return undyneFinalLines(encounteredBefore ? [103] : [99,100], true);
 }
+
+export function undyneFinalSaveLine(flags) { return text[`SCR_TEXT_${flags[350] === 1 ? 170 : flags[99] > 0 ? 169 : 168}`]; }
