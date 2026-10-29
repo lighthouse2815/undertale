@@ -28,7 +28,7 @@ export class WaterfallKidBridge {
     const w = this.world, sprite = w.dataSource.sprites.get('spr_interactable');
     const entry = { item: { X: this.kid.x + 5, Y: this.kid.y + 10, ScaleX: .5, ScaleY: 1 }, object: { Sprite: 'spr_interactable' }, sprite };
     if (!inInteractionRange(w, entry)) return false;
-    this.locked = true; w.flags[17] = 0; w.release(); this.wait('rescueWait', 30); return true;
+    this.locked = true; w.flags[17] = 0; w.release(); this.removeEscapeDoors(); this.wait('rescueWait', 30); return true;
   }
   step() {
     const w = this.world, kid = this.kid, undyne = this.undyne;
@@ -42,7 +42,7 @@ export class WaterfallKidBridge {
         this.warned = true; w.showDialogue(dialogue.wait);
       }
       if ((this.choiceFrames > 500 || w.player.x < undyne.x + 40) && !w.dialogue) {
-        this.charge = w.player.x < undyne.x + 40; this.locked = true; w.flags[17] = 0; w.release(); this.say('slip', 'fallWait', 20);
+        this.charge = w.player.x < undyne.x + 40; this.locked = true; w.flags[17] = 0; w.release(); this.removeEscapeDoors(); this.say('slip', 'fallWait', 20);
       }
       return;
     }
@@ -91,7 +91,12 @@ export class WaterfallKidBridge {
       case 'spawnUndyne': this.undyne = this.sprite('spr_undynea_r', w.cameras.main.scrollX - 40, 82); this.wait('undyneEnter', 20); break;
       case 'undyneEnter': this.pose(this.undyne, 'spr_undynea_r'); this.wait('undynePause', 30); break;
       case 'undynePause': this.pose(this.undyne, 'spr_undyne_armraise'); w.sound.play('snd_spearappear'); this.wait('arm', 20); break;
-      case 'arm': this.pose(this.undyne, 'spr_undynea_r'); this.stage = 'choice'; this.locked = false; w.flags[17] = 1; this.choiceFrames = this.undyneTimer = 0; this.choiceX = w.player.x; break;
+      case 'arm': {
+        this.pose(this.undyne, 'spr_undynea_r'); this.stage = 'choice'; this.locked = false; w.flags[17] = 1; this.choiceFrames = this.undyneTimer = 0; this.choiceX = w.player.x;
+        const y = w.player.y + 10, x = w.cameras.main.scrollX;
+        this.escapeDoors = [['room_water19', 'B', x - 20, 'obj_markerB'], ['room_water21', 'A', x + 340, 'obj_markerA']].map(([destination, direction, left, marker]) => ({ destination, direction, marker, left, right: left + 19, top: y, bottom: y + 19, duration: 8 * 1000 / 30, musicFade: false }));
+        w.doors.push(...this.escapeDoors); break;
+      }
       case 'rescueWait': this.wait('rescueMove', 28); break;
       case 'rescueMove': this.pose(kid, w.player.x > kid.x ? 'spr_mkid_rt' : 'spr_mkid_lt'); this.wait('rescuePause', 40); break;
       case 'rescuePause': this.wait('rescueApproach', 16); break;
@@ -120,6 +125,7 @@ export class WaterfallKidBridge {
       case 'finishFall': w.flags[98] = 2; this.wait('cameraReturnFall', 1); break;
     }
   }
+  removeEscapeDoors() { if (this.escapeDoors) { this.world.doors = this.world.doors.filter(door => !this.escapeDoors.includes(door)); this.escapeDoors = null; } }
   finish() { this.world.plot = 120; this.world.flags[17] = 0; this.world.waterfallMusic?.destroy(); this.world.waterfallMusic = null; this.kid?.destroy(); this.undyne?.destroy(); this.kid = this.undyne = null; this.locked = false; this.stage = 'done'; this.world.release(); this.world.updateCamera(); }
-  destroy() { this.kid?.destroy(); this.undyne?.destroy(); if (this.world.flags[17] === 1) this.world.flags[17] = 0; }
+  destroy() { if (this.stage === 'choice' && this.world.waterfallMusic?.isPaused) { this.world.waterfallMusic.destroy(); this.world.waterfallMusic = null; } this.removeEscapeDoors(); this.kid?.destroy(); this.undyne?.destroy(); if (this.world.flags[17] === 1) this.world.flags[17] = 0; }
 }
