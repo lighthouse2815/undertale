@@ -39,6 +39,19 @@ export async function testUndyneAttackTurn(page) {
     const speed = turn.spear.speed; turn.destroy(); return [speed, turn.spear.image.active];
   }));
   assert.deepEqual(speeds, [[13, false], [14, false]]);
+  const sequence = await page.evaluate(async () => {
+    const s = __remake.scene, { UndyneBattleRules } = await import('/src/undyne-battle-rules.mjs');
+    const rules = new UndyneBattleRules(); rules.order = rules.lesson = 6; s.hp = 100; s.invFrames = 0;
+    let green = true; const states = [];
+    for (let i = 0; i < 3; i++) {
+      const options = rules.prepareAttack({ green, command: 0 });
+      const turn = new undyneAttack.UndyneAttackTurn(s, { ...options, duration: options.kind === 'green' ? 1 : 5, onComplete: result => { green = rules.finishAttack(result); } });
+      for (let j = 0; j < 100 && !turn.finished; j++) turn.step();
+      states.push([options.kind, options.order, green, rules.lesson, turn.finished]);
+    }
+    return states;
+  });
+  assert.deepEqual(sequence, [['green', 7, false, 7, true], ['follow', 8, false, 7, true], ['follow', 9, true, 8, true]]);
   await page.evaluate(() => { const s = __remake.scene; s.finishBattle(); }); await page.waitForFunction(() => __remake.phase === 'running');
   console.log('✓ Lượt Undyne: phím SOUL xanh/đỏ, trạng thái chuyển pha và dọn');
 }

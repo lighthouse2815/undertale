@@ -32,7 +32,9 @@ export class UndyneBattleRules {
     this.order++; this.lesson++;
     return { kind, lesson, rating: this.rating, firingRate, order: this.order };
   }
-  finishAttack(hits) {
+  finishAttack(result) {
+    const hits = result.shieldHits;
+    if (result.transition) this.lesson = result.transition.lesson;
     this.lastShieldHits = hits;
     if (hits > 0) {
       this.rating += hits === 1 ? 1 : 2;
@@ -42,6 +44,7 @@ export class UndyneBattleRules {
       else if (this.rating > 8) this.rating--;
       if (this.berserk && this.rating > 6) this.rating--;
     }
+    return result.kind === 'green' ? !result.refuse : !!result.transition;
   }
   challenge() {
     const next = { 8: 7, 9: 8, 10: 9, 11: 10, 12: 10, 13: 11, 14: 11, 15: 12, 16: 12 }[this.rating];

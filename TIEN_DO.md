@@ -1443,3 +1443,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã tách số lần giáo xanh xuyên khiên khỏi tổng số lần mất HP trong lượt Undyne, để điều chỉnh rating đúng: giáo đỏ hoặc giáo chuyển màu không tăng bộ đếm này. Kiểm va chạm giáo xanh và giáo chuyển màu trong scene, hồi quy các đợt giáo/truy đuổi, check/build qua. Bộ đếm chưa nối quy tắc rating vào scene trận.
 
 Đã bổ sung phản ứng khi để lọt giáo trong lượt đầu Undyne thường: ba lần lặp bài và lần thứ tư chuyển sang lesson 11/rating 6/berserk. Kiểm đủ bốn lần, ngưỡng máu và các quy tắc lượt; check/build qua. Lời thoại và scene trận chưa nối vào nhánh này.
+
+Đã nối kết quả lượt né với quy tắc Undyne thường: dùng số giáo xuyên khiên để chỉnh rating, áp lesson sau chuyển pha và trả trạng thái màu SOUL. Kiểm chuỗi xanh → hai lượt đỏ → xanh trong scene thật, cùng kiểm quy tắc và hồi quy giáo/truy đuổi; check/build qua. Scene boss, hội thoại và đường chơi vẫn chưa tích hợp.
