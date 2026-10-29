@@ -1,3 +1,4 @@
+import { testHotlandUndyneCollapse } from './remake-hotland-undyne-collapse.mjs';
 import { testHotlandSleepingSans } from './remake-hotland-sleeping-sans.mjs';
 import { testHotlandLava } from './remake-hotland-lava.mjs';
 import { testWaterfallHotlandSign } from './remake-waterfall-hotland-sign.mjs';
@@ -767,6 +768,7 @@ try {
   await testWaterfallHotlandSign(page);
   await testHotlandLava(page);
   await testHotlandSleepingSans(page);
+  await testHotlandUndyneCollapse(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);

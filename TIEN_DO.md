@@ -1483,3 +1483,5 @@ Bộ tổng chạy từ ec2c1a8 dừng ở kiểm thử Waterfall 18→19: scene
 Đã chuyển Sans ngủ ở phòng đầu Hotland: điều kiện biến mất theo plot/cờ, hoạt ảnh ngủ và ba chữ Z bay lặp, dọn khi chuyển phòng. Kiểm hoạt ảnh, các điều kiện và dọn; hồi quy nền/phòng Undyne, check/build qua. Tương tác của Undyne với Sans và đường tới Hotland chưa nối.
 
 Đã nối hai chiều hành lang Undyne ↔ phòng đầu Hotland; giữ nhạc khi Undyne truy đuổi, tiếp tục đuổi ngang, gặp lại sau Flee và dừng nhìn Sans trước khi đuổi tiếp. Kiểm cửa bằng phím, nhạc, truy đuổi, phản ứng Sans và hồi quy Sans ngủ; check/build qua. Cảnh Undyne kiệt sức, nước, cửa tới phòng Hotland tiếp theo và toàn bộ game vẫn chưa hoàn thành; cần đối chiếu thêm va chạm, nhịp và hiệu ứng của cảnh truy đuổi gốc.
+
+Đã nối phòng đầu Hotland ↔ phòng máy nước và chuyển cảnh Undyne kiệt sức: kích hoạt theo vùng, dừng nhạc, ba lần bước/nghỉ, lời thoại, ngã, collider và plot 122/cờ 350. Kiểm cửa, nhạc, thời điểm cảnh, cờ và mở lại phòng; check/build qua. Máy nước, hành động cứu Undyne, nhạc Hotland và lối đi tiếp chưa chuyển; không coi tuyến này đã hoàn chỉnh.
