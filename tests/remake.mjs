@@ -1,3 +1,4 @@
+import { testHotlandAutoWater } from './remake-hotland-auto-water.mjs';
 import { testHotlandUndyneCollapse } from './remake-hotland-undyne-collapse.mjs';
 import { testHotlandSleepingSans } from './remake-hotland-sleeping-sans.mjs';
 import { testHotlandLava } from './remake-hotland-lava.mjs';
@@ -769,6 +770,7 @@ try {
   await testHotlandLava(page);
   await testHotlandSleepingSans(page);
   await testHotlandUndyneCollapse(page);
+  await testHotlandAutoWater(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);

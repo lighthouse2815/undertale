@@ -1487,3 +1487,5 @@ Bộ tổng chạy từ ec2c1a8 dừng ở kiểm thử Waterfall 18→19: scene
 Đã nối phòng đầu Hotland ↔ phòng máy nước và chuyển cảnh Undyne kiệt sức: kích hoạt theo vùng, dừng nhạc, ba lần bước/nghỉ, lời thoại, ngã, collider và plot 122/cờ 350. Kiểm cửa, nhạc, thời điểm cảnh, cờ và mở lại phòng; check/build qua. Máy nước, hành động cứu Undyne, nhạc Hotland và lối đi tiếp chưa chuyển; không coi tuyến này đã hoàn chỉnh.
 
 Đã thêm máy nước và nhánh cứu Undyne: lấy/đổ cốc, mức nước và vũng nước theo cờ, hình nhân vật cầm nước, lựa chọn cho Undyne và hoạt cảnh hồi phục/rời đi; cờ 350 trở về 0 và bỏ collider sau cảnh. Kiểm lấy nước, đổ nước, lấy lại, cứu, cờ/collider và hồi quy đường truy đuổi; check/build qua. Hiệu ứng nước và nhịp hoạt cảnh còn cần đối chiếu; xử lý cốc khi đổi phòng, nhạc Hotland và lối đi tiếp chưa chuyển.
+
+Đã chuyển obj_autowater: khi mang cốc sang phòng đầu Hotland, phòng máy nước hoặc trước phòng lab, sau ba frame hiện lời riêng và xóa cờ cốc khi đóng thoại. Kiểm ba phòng, trạng thái trước/sau thoại và hồi quy cứu Undyne; check/build qua. Lối tới phòng lab và nhạc Hotland vẫn cần nối.

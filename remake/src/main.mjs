@@ -1,3 +1,4 @@
+import { HotlandAutoWater } from './hotland-auto-water.mjs';
 import { HotlandUndyneCollapse } from './hotland-undyne-collapse.mjs';
 import { HotlandSleepingSans } from './hotland-sleeping-sans.mjs';
 import { HotlandLava } from './hotland-lava.mjs';
@@ -397,7 +398,7 @@ class World extends Scene {
     this.waterfallShopRoad = null;
     this.waterfallGlowshroomPuzzle = null;
     this.waterfallPuzzleHater = null;
-    this.hotlandUndyneCollapse?.destroy(); this.hotlandUndyneCollapse = null; this.hotlandSleepingSans?.destroy(); this.hotlandSleepingSans = null; this.hotlandLava?.destroy(); this.hotlandLava = null; this.waterfallHotlandSign?.destroy(); this.waterfallHotlandSign = null; this.waterfallUndyneFinal?.destroy(); this.waterfallUndyneFinal = null;
+    this.hotlandAutoWater = null; this.hotlandUndyneCollapse?.destroy(); this.hotlandUndyneCollapse = null; this.hotlandSleepingSans?.destroy(); this.hotlandSleepingSans = null; this.hotlandLava?.destroy(); this.hotlandLava = null; this.waterfallHotlandSign?.destroy(); this.waterfallHotlandSign = null; this.waterfallUndyneFinal?.destroy(); this.waterfallUndyneFinal = null;
     this.waterfallTemVillage?.destroy(); this.waterfallTemVillage = null;
     this.waterfallKidBridge?.destroy(); this.waterfallKidBridge = null;
     this.waterfallUndyneHall?.destroy(); this.waterfallUndyneHall = null;
@@ -588,6 +589,7 @@ class World extends Scene {
     if (name === 'room_water21') { startWaterfallMusic(this, true); this.waterfallPuzzleHater = new WaterfallPuzzleHater(this); }
     if (['room_water_undynefinal', 'room_water_undynefinal2', 'room_water_undynefinal3'].includes(name)) this.waterfallUndyneFinal = new WaterfallUndyneFinal(this, spawnName);
     if (name === 'room_fire1') { this.hotlandLava = new HotlandLava(this); this.hotlandSleepingSans = new HotlandSleepingSans(this); this.waterfallUndyneFinal = new WaterfallUndyneFinal(this, spawnName); }
+    if (['room_fire1', 'room_fire2', 'room_fire_prelab'].includes(name)) this.hotlandAutoWater = new HotlandAutoWater(this);
     if (name === 'room_fire2') { this.hotlandLava = new HotlandLava(this); this.hotlandUndyneCollapse = new HotlandUndyneCollapse(this); }
     if (name === 'room_water_undynefinal3') { this.waterfallPapyrusPhone = new WaterfallPapyrusPhone(this); this.waterfallHotlandSign = new WaterfallHotlandSign(this); }
     if (name === 'room_water19') { startWaterfallMusic(this, true); this.waterfallShallowWater = new WaterfallShallowWater(this); this.waterfallFlowerHall = new WaterfallFlowerHall(this); this.waterfallRoomTiles = new WaterfallSentryVisuals(this); }
@@ -735,6 +737,7 @@ class World extends Scene {
       return;
     }
     if (state.phase !== 'running') return;
+    this.hotlandAutoWater?.update(delta);
     const menuPressed = this.menuPressed; this.menuPressed = false;
     const guideLocked = this.spikeGuide?.update(delta);
     const holesLocked = this.ruinsHoles?.update(delta);
