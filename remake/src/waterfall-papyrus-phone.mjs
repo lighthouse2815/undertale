@@ -1,3 +1,4 @@
+import { waterfallPapyrusFinalCall } from './waterfall-papyrus-final-call.mjs';
 import { waterfallPapyrusSecondCall } from './waterfall-papyrus-second-call.mjs';
 import { touchesObject } from './npc.mjs';
 import { waterfallPapyrusCall } from './waterfall-papyrus-call.mjs';
@@ -7,7 +8,8 @@ export class WaterfallPapyrusPhone {
   constructor(world) {
     this.world = world; this.elapsed = 0; this.frames = 0; this.trigger = world.dataSource.room.GameObjects.find((e) => e.ObjectName === 'obj_phonecall_room');
     this.second = world.dataSource.name === 'room_water12';
-    this.done = this.second ? (world.flags[354] ?? 0) > 0 : world.plot > 106;
+    this.final = world.dataSource.name === 'room_water_undynefinal3';
+    this.done = this.final ? (world.flags[354] ?? 0) > 1 : this.second ? (world.flags[354] ?? 0) > 0 : world.plot > 106;
   }
   show(pages, next) {
     const w = this.world;
@@ -20,6 +22,11 @@ export class WaterfallPapyrusPhone {
     const w = this.world;
     if (this.done || w.dialogue || !touchesObject(w, w.player, this.trigger, 1, 5)) return false;
     this.done = true;
+    if (this.final) {
+      w.flags[354] = 2; if (w.waterfallUndyneFinal?.chaser) w.waterfallUndyneFinal.phoneApproach = true;
+      if (w.flags[67] === 1) return false;
+      w.sound.play('snd_phone'); w.release(); this.show(waterfallPapyrusFinalCall(w.flags), () => w.release()); return true;
+    }
     if (this.second) w.flags[354] = 1; else w.plot = 107;
     const [x,y] = this.second ? [380,40] : [40,340];
     this.flowey = w.add.image(x,y,'spr_floweysink:0').setOrigin(0).setDepth(y+25); this.floweyFrame = 0;

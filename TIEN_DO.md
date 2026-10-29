@@ -1473,3 +1473,5 @@ Bộ tổng chạy từ ec2c1a8 dừng ở kiểm thử Waterfall 18→19: scene
 Đã cô lập LV và giáp trong kiểm thử lượt Undyne, sau đó khôi phục trạng thái cũ: sát thương kỳ vọng không còn phụ thuộc trang bị từ kiểm thử trước. Kiểm lại chuỗi trận → cơ thể → lượt với LV 20 và Temmie Armor có sẵn, hồi quy giáo/truy đuổi, check/build qua. Cần chạy lại bộ tổng trên phiên bản cố định.
 
 Đã chuyển nội dung cuộc gọi Papyrus trước Hotland và hai nhánh theo cờ hẹn, kiểm thứ tự trang, nhánh và người nói; check/build qua. Cuộc gọi chưa nối phòng truy đuổi thứ ba, hiệu ứng tạm dừng Undyne khi nghe điện thoại còn cần chuyển.
+
+Đã nối phòng truy đuổi thứ hai ↔ hành lang Undyne: giữ nhạc, bố trí Undyne theo cửa vào, truy đuổi/đấu lại và cuộc gọi Papyrus theo cờ; Undyne tiến gần rồi dừng trong khi gọi. Kiểm hai chiều, nhạc, cuộc gọi, nhánh Papyrus vắng mặt và hồi quy cảnh/trận/phòng trước; check/build qua. Biển Hotland, cửa sang Hotland, lời/bong bóng truy đuổi và tuyến Undying còn thiếu; hành lang chưa thể hoàn tất đường chơi.

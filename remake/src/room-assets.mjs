@@ -218,7 +218,8 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water_nicecream') for (const key of ['spr_chestbox','spr_heartsmall','spr_icecreamguy_sad','spr_icecreamguy_anim','spr_icecreamguy_happy']) spriteNames.add(key);
   if (name === 'room_water_shoe') for (const key of ['spr_balletshoes', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_temvillage') for (const key of ['spr_temmie_egg', 'spr_temmie_hive', 'spr_temmie_hivetalk', 'spr_mushroomdance_prep', 'spr_mushroomdance_mid', 'spr_mushroomdance_end']) spriteNames.add(key);
-  if (name === 'room_water_undynefinal2') for (const direction of ['d','u','l','r']) spriteNames.add(`spr_undyne_helmet_${direction}`);
+  if (['room_water_undynefinal2', 'room_water_undynefinal3'].includes(name)) for (const direction of ['d','u','l','r']) spriteNames.add(`spr_undyne_helmet_${direction}`);
+  if (name === 'room_water_undynefinal3') spriteNames.add('spr_face_papyrus');
   if (name === 'room_water_undynefinal') for (const key of ['spr_undynea_starku', 'spr_undynea_d', 'spr_undynea_l', 'spr_undynea_r', 'spr_undyne_eyeding', 'spr_undyne_starkd_nomask', 'spr_face_undyne1', 'spr_undynedive', ...['d','u','l','r'].map(direction => `spr_undyne_helmet_${direction}`)]) spriteNames.add(key);
   if (name === 'room_water20') for (const key of ['spr_interactable', 'spr_mkid_r', 'spr_mkid_l', 'spr_mkid_u', 'spr_mkid_dt', 'spr_mkid_rt', 'spr_mkid_lt', 'spr_mkid_trip_l', 'spr_undynea_r', 'spr_undynea_l', 'spr_undyne_armraise', 'spr_undyne_jump0', 'spr_undyne_jump1']) spriteNames.add(key);
   if (name === 'room_water19') for (const key of ['spr_waterripple', 'spr_floweysink']) spriteNames.add(key);
@@ -323,7 +324,8 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
     ...(name === 'room_water_temvillage' ? ['mus_temvillage', 'mus_toomuch', 'snd_mushroomdance', 'snd_movemenu'] : []),
     ...(name === 'room_water_undynefinal' ? ['mus_undynetruetheme', 'mus_undynefast', 'snd_bell', 'snd_b', 'snd_undynestep'] : []),
-    ...(name === 'room_water_undynefinal2' ? ['mus_undynefast', 'snd_undynestep'] : []),
+    ...(['room_water_undynefinal2', 'room_water_undynefinal3'].includes(name) ? ['mus_undynefast', 'snd_undynestep'] : []),
+    ...(name === 'room_water_undynefinal3' ? ['snd_phone'] : []),
     ...(name === 'room_water21' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water20' ? ['snd_spearappear', 'snd_spearrise', 'snd_fall', 'snd_undynestep', 'snd_grab', 'mus_ambientwater'] : []),
     ...(name === 'room_water19' ? ['snd_splash', 'snd_noise', 'mus_ambientwater'] : []),
