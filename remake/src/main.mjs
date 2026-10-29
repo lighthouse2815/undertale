@@ -1,3 +1,4 @@
+import { HotlandLabGuards } from './hotland-lab-guards.mjs';
 import { showHotlandSave } from './hotland-save.mjs';
 import { HotlandAutoWater } from './hotland-auto-water.mjs';
 import { HotlandUndyneCollapse } from './hotland-undyne-collapse.mjs';
@@ -327,7 +328,7 @@ class World extends Scene {
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
     this.game.events.on('step', this.trackTime);
     this.events.once('shutdown', () => this.game.events.off('step', this.trackTime));
-    this.events.once('shutdown', () => { this.hotlandUndyneCollapse?.destroy(); this.hotlandSleepingSans?.destroy(); this.hotlandLava?.destroy(); this.waterfallHotlandSign?.destroy(); this.waterfallTemVillage?.destroy(); this.waterfallKidBridge?.destroy(); this.waterfallFlowerHall?.destroy(); this.waterfallUndyneHall?.destroy(); this.waterfallDarknessPuzzle?.destroy(); this.waterfallShallowWater?.destroy(); this.waterfallGlowflies?.destroy(); this.waterfallUndyneBridgeEnd?.destroy(); this.waterfallUndyneBridge?.destroy(); this.waterfallUndyneSecond?.destroy(); this.waterfallUndyneChase?.destroy(); this.waterfallRaft?.destroy(); this.waterfallWishingRoom?.destroy(); this.waterfallEncounter?.destroy(); this.waterfallPapyrusPhone?.destroy(); this.waterfallBridgeRoom?.destroy(); this.waterfallUndyne?.destroy(); this.waterfallRoomTiles?.destroy(); this.waterfallRockStream?.destroy(); this.waterfallSans?.destroy(); this.grillbyDate?.destroy(); this.grillbyNpcs?.destroy(); this.waterfallSentryVisuals?.destroy(); this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
+    this.events.once('shutdown', () => { this.hotlandLabGuards?.destroy(); this.hotlandUndyneCollapse?.destroy(); this.hotlandSleepingSans?.destroy(); this.hotlandLava?.destroy(); this.waterfallHotlandSign?.destroy(); this.waterfallTemVillage?.destroy(); this.waterfallKidBridge?.destroy(); this.waterfallFlowerHall?.destroy(); this.waterfallUndyneHall?.destroy(); this.waterfallDarknessPuzzle?.destroy(); this.waterfallShallowWater?.destroy(); this.waterfallGlowflies?.destroy(); this.waterfallUndyneBridgeEnd?.destroy(); this.waterfallUndyneBridge?.destroy(); this.waterfallUndyneSecond?.destroy(); this.waterfallUndyneChase?.destroy(); this.waterfallRaft?.destroy(); this.waterfallWishingRoom?.destroy(); this.waterfallEncounter?.destroy(); this.waterfallPapyrusPhone?.destroy(); this.waterfallBridgeRoom?.destroy(); this.waterfallUndyne?.destroy(); this.waterfallRoomTiles?.destroy(); this.waterfallRockStream?.destroy(); this.waterfallSans?.destroy(); this.grillbyDate?.destroy(); this.grillbyNpcs?.destroy(); this.waterfallSentryVisuals?.destroy(); this.waterfallSentryNpcs?.destroy(); this.waterfallEntrance?.destroy(); this.papyrusFogEncounter?.destroy(); this.snowdinFog?.destroy(); this.snowdinEncounter?.destroy(); this.snowdinCheckpoint?.destroy(); this.doggoRoom?.destroy(); this.dogPairRoom?.destroy(); this.snowdinXoxoSmall?.destroy(); this.snowdinXoxoBig?.destroy(); this.snowdinColorTiles?.destroy(); this.snowdinIcePuzzle?.destroy(); this.snowdinInnSleep?.destroy(); this.sansBasement?.destroy(); this.snowdinTownDogs?.destroy(); this.snowdinTown?.destroy(); this.snowdinTownNpcs?.destroy(); this.snowdinDangerBridge?.destroy(); this.greaterDogRoom?.destroy(); this.gyftrotRoom?.destroy(); this.electricMaze?.destroy(); this.niceCream?.destroy(); this.snowGolf?.destroy(); });
     this.events.once('shutdown', () => { this.roomMusicFade?.stop(); this.waterfallRain?.destroy(); this.waterfallRain = null; this.waterfallRainLight?.destroy(); this.waterfallRainLight = null; this.waterfallRainMix = null; this.townMusic?.destroy(); this.waterfallMusic?.destroy(); this.hotlandMusic?.destroy(); this.grillbyMusic?.destroy(); stopHouseMusic(this); stopBasementMusic(this); stopSnowdinMusic(this); this.snowdinForest?.destroy(); this.floweyExit?.destroy(); });
     this.openRoom('room_area1').catch(fail);
   }
@@ -401,7 +402,7 @@ class World extends Scene {
     this.waterfallShopRoad = null;
     this.waterfallGlowshroomPuzzle = null;
     this.waterfallPuzzleHater = null;
-    this.hotlandAutoWater = null; this.hotlandUndyneCollapse?.destroy(); this.hotlandUndyneCollapse = null; this.hotlandSleepingSans?.destroy(); this.hotlandSleepingSans = null; this.hotlandLava?.destroy(); this.hotlandLava = null; this.waterfallHotlandSign?.destroy(); this.waterfallHotlandSign = null; this.waterfallUndyneFinal?.destroy(); this.waterfallUndyneFinal = null;
+    this.hotlandAutoWater = null; this.hotlandLabGuards?.destroy(); this.hotlandLabGuards = null; this.hotlandUndyneCollapse?.destroy(); this.hotlandUndyneCollapse = null; this.hotlandSleepingSans?.destroy(); this.hotlandSleepingSans = null; this.hotlandLava?.destroy(); this.hotlandLava = null; this.waterfallHotlandSign?.destroy(); this.waterfallHotlandSign = null; this.waterfallUndyneFinal?.destroy(); this.waterfallUndyneFinal = null;
     this.waterfallTemVillage?.destroy(); this.waterfallTemVillage = null;
     this.waterfallKidBridge?.destroy(); this.waterfallKidBridge = null;
     this.waterfallUndyneHall?.destroy(); this.waterfallUndyneHall = null;
@@ -593,6 +594,7 @@ class World extends Scene {
     if (['room_water_undynefinal', 'room_water_undynefinal2', 'room_water_undynefinal3'].includes(name)) this.waterfallUndyneFinal = new WaterfallUndyneFinal(this, spawnName);
     if (name === 'room_fire1') { this.hotlandLava = new HotlandLava(this); this.hotlandSleepingSans = new HotlandSleepingSans(this); this.waterfallUndyneFinal = new WaterfallUndyneFinal(this, spawnName); }
     if (['room_fire1', 'room_fire2', 'room_fire_prelab'].includes(name)) this.hotlandAutoWater = new HotlandAutoWater(this);
+    if (name === 'room_fire_prelab') this.hotlandLabGuards = new HotlandLabGuards(this);
     if (name === 'room_fire2') { this.hotlandLava = new HotlandLava(this); this.hotlandUndyneCollapse = new HotlandUndyneCollapse(this); }
     if (['room_fire2', 'room_fire_prelab'].includes(name) && !this.hotlandMusic && !this.waterfallMusic && !(name === 'room_fire2' && this.hotlandUndyneCollapse.stage === 'waiting')) {
       const level = murderLevel(this.flags), key = this.flags[7] === 1 ? 'mus_reunited' : this.flags[224] && !this.flags[27] ? 'mus_toomuch' : 'mus_oogloop';
@@ -744,7 +746,7 @@ class World extends Scene {
       return;
     }
     if (state.phase !== 'running') return;
-    this.hotlandAutoWater?.update(delta);
+    this.hotlandAutoWater?.update(delta); this.hotlandLabGuards?.update(delta);
     const menuPressed = this.menuPressed; this.menuPressed = false;
     const guideLocked = this.spikeGuide?.update(delta);
     const holesLocked = this.ruinsHoles?.update(delta);
@@ -939,6 +941,7 @@ class World extends Scene {
   }
 
   tryInteract() {
+    if (this.hotlandLabGuards?.interact()) return;
     if (this.hotlandUndyneCollapse?.interact()) return;
     if (this.waterfallTrashObjects?.interact()) return;
     if (this.waterfallTrashStart?.interact()) return;

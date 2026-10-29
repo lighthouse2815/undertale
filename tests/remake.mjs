@@ -1,3 +1,4 @@
+import { testHotlandLabGuards } from './remake-hotland-lab-guards.mjs';
 import { testHotlandPrelab } from './remake-hotland-prelab.mjs';
 import { testHotlandAutoWater } from './remake-hotland-auto-water.mjs';
 import { testHotlandUndyneCollapse } from './remake-hotland-undyne-collapse.mjs';
@@ -773,6 +774,7 @@ try {
   await testHotlandUndyneCollapse(page);
   await testHotlandAutoWater(page);
   await testHotlandPrelab(page);
+  await testHotlandLabGuards(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
