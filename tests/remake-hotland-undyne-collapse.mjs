@@ -23,6 +23,29 @@ export async function testHotlandUndyneCollapse(page) {
     return [c.stage, c.locked, c.fallen.item.X, w.plot, w.flags[350], w.flags[17], !!w.waterfallMusic, w.colliders.includes(c.collider)];
   });
   assert.deepEqual(fallen, ['done', false, 40, 122, 2, 0, false, true]);
+  const water = await page.evaluate(() => {
+    const w = __remake.scene, c = w.hotlandUndyneCollapse;
+    w.player.setPosition(200, 60); w.player.facing = 'u'; const started = c.interact();
+    w.dialogue.choice.readyAt = 0; w.advanceDialogue(); w.advanceDialogue();
+    return [started, w.flags[366], w.flags[440], c.water.visible];
+  });
+  assert.deepEqual(water, [true, 1, 1, true]);
+  const spill = await page.evaluate(() => {
+    const w = __remake.scene, c = w.hotlandUndyneCollapse; c.interact(); w.dialogue.choice.readyAt = 0; w.advanceDialogue(); w.advanceDialogue();
+    const spilled = [w.flags[366], w.flags[353], w.flags[441], !!c.puddle];
+    c.interact(); w.dialogue.choice.readyAt = 0; w.advanceDialogue(); w.advanceDialogue();
+    return [...spilled, w.flags[366], w.flags[440]];
+  });
+  assert.deepEqual(spill, [0, 1, 1, true, 1, 2]);
+  const rescue = await page.evaluate(() => {
+    const w = __remake.scene, c = w.hotlandUndyneCollapse;
+    w.player.setPosition(80, 80); w.player.facing = 'l'; const started = c.interact();
+    w.dialogue.choice.readyAt = 0; w.advanceDialogue();
+    const pouring = [c.stage, c.locked, w.player.visible];
+    for (let i = 0; i < 740; i++) c.step();
+    return [started, pouring, c.stage, c.locked, w.player.visible, w.flags[366], w.flags[350], w.plot, c.fallen, w.colliders.includes(c.collider)];
+  });
+  assert.deepEqual(rescue, [true, ['pour', true, false], 'done', false, true, 0, 0, 122, null, false]);
   await page.evaluate(async () => { const w = __remake.scene; await w.openRoom('room_fire1', 'obj_markerB'); w.plot = 122; await w.openRoom('room_fire2', 'obj_markerA'); });
   assert.equal(await page.evaluate(() => __remake.scene.hotlandUndyneCollapse.stage), 'done');
   await page.evaluate(previous => { Object.assign(__remake.scene, previous); delete window.collapseMusic; }, previous);

@@ -55,7 +55,7 @@ export function movePlayer(scene, player, colliders, input, onMove) {
     if (scene.findDoor(x, y) || !blocked(scene, colliders, x, y)) player.setPosition(x, y);
   }
   const moved = player.x !== oldX || player.y !== oldY;
-  const sprite = `spr_mainchara${player.facing}${scene.flags[85] === 1 ? '_umbrella' : scene.waterfallCastle ? '_shadow' : scene.waterfallUndyneBridgeEnd?.darkPlayer ? '_stark' : player.pranked && ['d', 'l'].includes(player.facing) ? '_pranked' : ''}`;
+  const sprite = `spr_mainchara${player.facing}${scene.flags[85] === 1 ? '_umbrella' : scene.dataSource.name === 'room_fire2' && scene.flags[366] === 1 ? '_water' : scene.waterfallCastle ? '_shadow' : scene.waterfallUndyneBridgeEnd?.darkPlayer ? '_stark' : player.pranked && ['d', 'l'].includes(player.facing) ? '_pranked' : ''}`;
   player.frameIndex = moved ? (player.frameIndex + 0.2) % scene.dataSource.sprites.get(sprite).TextureCount : 0;
   const spriteData = scene.dataSource.sprites.get(sprite);
   player.setTexture(`${sprite}:${Math.floor(player.frameIndex)}`).setOrigin(spriteData.OriginX / spriteData.Width, spriteData.OriginY / spriteData.Height);

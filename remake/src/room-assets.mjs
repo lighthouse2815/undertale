@@ -220,7 +220,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water_shoe') for (const key of ['spr_balletshoes', 'spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_temvillage') for (const key of ['spr_temmie_egg', 'spr_temmie_hive', 'spr_temmie_hivetalk', 'spr_mushroomdance_prep', 'spr_mushroomdance_mid', 'spr_mushroomdance_end']) spriteNames.add(key);
   if (['room_water_undynefinal2', 'room_water_undynefinal3', 'room_fire1', 'room_fire2'].includes(name)) for (const direction of ['d','u','l','r']) spriteNames.add(`spr_undyne_helmet_${direction}`);
-  if (name === 'room_fire2') spriteNames.add('spr_face_undyne1');
+  if (name === 'room_fire2') for (const key of ['spr_face_undyne1', 'spr_heartsmall', 'spr_watercooler_water', 'spr_coolerpuddle', 'spr_mainchara_pourwater', ...['d','u','l','r'].map(direction => `spr_mainchara${direction}_water`)]) spriteNames.add(key);
   if (name === 'room_fire1') for (const key of ['spr_zzz', 'spr_undyne_helmet_d_pissed']) spriteNames.add(key);
   if (name === 'room_water_undynefinal3') for (const key of ['spr_face_papyrus', 'spr_hotlandsign', 'spr_hotlandcover']) spriteNames.add(key);
   if (name === 'room_water_undynefinal') for (const key of ['spr_undynea_starku', 'spr_undynea_d', 'spr_undynea_l', 'spr_undynea_r', 'spr_undyne_eyeding', 'spr_undyne_starkd_nomask', 'spr_face_undyne1', 'spr_undynedive', ...['d','u','l','r'].map(direction => `spr_undyne_helmet_${direction}`)]) spriteNames.add(key);
