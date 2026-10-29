@@ -1373,3 +1373,5 @@ Bộ tổng `test-remake-0148c1e.log` kết thúc lỗi ở Waterfall 9: tween g
 Đã nối cửa hai chiều khu cửa hàng ↔ Waterfall 15 và encounter theo `obj_encounterer_water2`: bốn nhóm đầu Temmie/42/54/55, chọn ngẫu nhiên sau đó, dân số và bước tuyến diệt chủng. `remake-waterfall-late-encounter.mjs` kiểm cửa, nhạc và vào bốn trận; kiểm thêm ngưỡng và chọn nhóm, hồi quy encounter cũ, check/build qua. Phòng 15 chưa hoàn chỉnh: ba bia lịch sử, hiệu ứng nước/đom đóm, cuộc gọi Undyne, cửa tới phòng 16 và các nhánh sau vẫn cần chuyển; các trận cũng còn giới hạn hoạt ảnh và đạn đã ghi ở trên.
 
 Đã nối ba bia lịch sử trong Waterfall 15, mỗi bia có hai vùng đọc và ba trang thoại; kiểm hướng nhìn, cả sáu vùng và dọn trạng thái khi rời phòng, hồi quy cửa/trận, check/build qua. Ghi chú trước gọi nhầm ba bia là hoa Echo. Hiệu ứng phòng, cuộc gọi Undyne và lối sang phòng 16 vẫn chưa chuyển.
+
+Đã tái dùng bộ hiển thị thác cho bốn thác ở Waterfall 15; kiểm vị trí, hoạt ảnh, dọn ảnh khi rời phòng và hồi quy thác ở trạm Waterfall, bia phòng 15, check/build qua. Đom đóm, nước khi đi qua, cuộc gọi Undyne và đường sang phòng 16 vẫn chưa chuyển.

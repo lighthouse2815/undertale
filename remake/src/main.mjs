@@ -542,7 +542,7 @@ class World extends Scene {
     if (name === 'room_water12') { this.waterfallWishesRoom = new WaterfallWishesRoom(this); this.waterfallPapyrusPhone = new WaterfallPapyrusPhone(this); this.waterfallEncounter = new WaterfallEncounter(this, spawnName); }
     if (name === 'room_water_friendlyhub') this.waterfallFriendlyHub = new WaterfallFriendlyHub(this);
     if (name === 'room_water_shop') this.waterfallShopRoad = new WaterfallShopRoad(this);
-    if (name === 'room_water15') { startWaterfallMusic(this); this.waterfallEncounter = new WaterfallEncounter(this, spawnName); this.waterfallLateSigns = new WaterfallLateSigns(this); }
+    if (name === 'room_water15') { startWaterfallMusic(this); this.waterfallEncounter = new WaterfallEncounter(this, spawnName); this.waterfallLateSigns = new WaterfallLateSigns(this); this.waterfallRoomTiles = new WaterfallSentryVisuals(this); }
     if (name === 'room_water_blookyard') this.waterfallBlookYard = new WaterfallBlookYard(this);
     if (name === 'room_water_blookhouse') this.waterfallBlookHouse = new WaterfallBlookHouse(this);
     if (name === 'room_water_hapstablook') this.waterfallBlookDiary = new WaterfallBlookDiary(this);

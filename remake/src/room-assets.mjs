@@ -202,7 +202,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water_blookhouse') for (const key of ['spr_napstablook_d_headphone','spr_napstablook_u_headphone','spr_napstablook_l_headphone','spr_napstablook_r_headphone','spr_napstablook_grsm_headphones','spr_maincharar_liedown','spr_st']) spriteNames.add(key);
   if (name === 'room_water_farm') for (const key of ['spr_snailr','spr_snailyellow','spr_snailyellow_hopeless','spr_snailyellow_hopeless2','spr_snailyellow_hopeless3','spr_snailred','spr_snailblue','spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_blookyard') for (const key of ['spr_napstablook_d_headphone','spr_mettex_npc']) spriteNames.add(key);
-  if (['room_water_trashzone1','room_water_trashsavepoint'].includes(name)) for (const part of ['topleft','midtop','topright','midleft','midmid','midright','bottomleft','bottommid','bottomright']) spriteNames.add(`spr_waterfall_${part}`);
+  if (['room_water_trashzone1','room_water_trashsavepoint','room_water15'].includes(name)) for (const part of ['topleft','midtop','topright','midleft','midmid','midright','bottomleft','bottommid','bottomright']) spriteNames.add(`spr_waterfall_${part}`);
   if (name === 'room_water_undynebridgeend') for (const key of ['spr_nospear2','spr_tilespear','spr_undynea_starkr','spr_undynespear',...['d','u','l','r'].map(d=>`spr_mainchara${d}_stark`)]) spriteNames.add(key);
   if (name === 'room_water_undynebridge') for (const key of ['spr_tilespear','spr_undyne_starkd','spr_undyne_shad']) spriteNames.add(key);
   if (name === 'room_water_waterfall3') for (const key of ['spr_twinklestar','spr_mkid_r_shadow','spr_mkid_l_shadow','spr_mkid_u_shadow',...['d','u','l','r'].map(d=>`spr_mainchara${d}_shadow`)]) spriteNames.add(key);
