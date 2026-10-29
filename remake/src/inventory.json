@@ -404,6 +404,17 @@
         "* \"temy armor\" - Armor DF 20\n* The things you can do with\n  a college education!",
         "* Raises ATTACK when worn.\n* Recovers HP every other turn.\n* INV up slightly."
       ]
+    },
+    "36": {
+      "name": "Instant Noodles",
+      "battleName": "InstaNood",
+      "seriousName": "I.Noodles",
+      "use": "* You eat the Instant Noodles.",
+      "seriousUse": "* They're better dry.",
+      "info": [
+        "* \"Instant Noodles\" Heals HP\n* Comes with everything you\n  need for a quick meal!"
+      ],
+      "heal": 15
     }
   },
   "actions": [

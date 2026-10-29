@@ -62,6 +62,7 @@ export function itemAction(world, index, action, text, { scene = world, health =
   }
   let line = item.use;
   let heal = item.heal;
+  if (id === 36 && scene !== world) { heal = scene.config?.serious ? 90 : 4; line = scene.config?.serious ? item.seriousUse : '* You ate the Instant Noodles.'; }
   if (id === 41 && scene !== world && (scene.soulSpeed ?? 4) < 8) { scene.soulSpeed = (scene.soulSpeed ?? 4) + 1; line += '\n* Your SPEED boosts!'; }
   if (id === 28) { const roll=Math.floor(Math.random()*4); heal=[30,10,2,999][roll]; line+=['\n* Oh. Tastes yappy...','\n* Oh. Fried tennis ball...','\n* Oh. There are bones...','\n* It\'s literally garbage???'][roll]; }
   if (id === 17) line = item.wrappers[Math.floor(Math.random() * 8)];

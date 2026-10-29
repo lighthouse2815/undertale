@@ -10,7 +10,7 @@ export const BATTLE_CONFIGS = {
   whimsun: { name: 'Whimsun', asset: 'spr_whimsun', hp: 10, def: 0, xp: 2 },
   vegetoid: { name: 'Vegetoid', asset: 'spr_vegetoid', hp: 72, def: 0, xp: 6 },
   napstablook: { name: 'Napstablook', asset: 'spr_napstabattle', hp: 88, def: 4, xp: 0 },
-  toriel: { name: 'Toriel', asset: 'spr_torielboss', hp: 440, def: 1, xp: 150 },
+  toriel: { name: 'Toriel', asset: 'spr_torielboss', hp: 440, def: 1, xp: 150, serious: true },
   snowdrake: { name: 'Snowdrake', asset: 'spr_snowdrake', hp: 74, def: 2, xp: 22 },
   chilldrake: { name: 'Chilldrake', asset: 'spr_snowdrake', hp: 74, def: 2, xp: 22 },
   icecap: { name: 'Ice Cap', asset: 'spr_icecap', hp: 48, def: 0, xp: 17 },

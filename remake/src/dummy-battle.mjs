@@ -1,3 +1,4 @@
+import { InstantNoodles } from './instant-noodles.mjs';
 import { Battle } from './battle.mjs';
 import { loadRoom } from './room-assets.mjs';
 import { itemAction, itemNames } from './inventory.mjs';
@@ -41,7 +42,8 @@ export class DummyBattle extends Battle {
 
   update(_time, delta) {
     if (window.__remake.phase !== 'battle' || window.__remake.scene !== this) return;
-    if (this.mode === 'menu') this.updateMenu();
+    if (this.mode === 'noodles') this.noodles.update(delta);
+    else if (this.mode === 'menu') this.updateMenu();
     else if (this.mode === 'submenu') this.updateSubmenu();
     else if (this.mode === 'fight') this.updateFight(delta);
     else if (this.mode === 'pages' && this.confirmPressed) {
@@ -116,6 +118,7 @@ export class DummyBattle extends Battle {
   }
 
   useInventory() {
+    if (this.previousScene.inventory[this.subIndex] === 36 && !this.config.serious) { this.noodles = new InstantNoodles(this); return; }
     const lines = itemAction(this.previousScene, this.subIndex, 'use', this.cache.json.get('inventory'), { scene: this, health: this });
     this.hpText.setText(`${this.previousScene.game.registry.get('charname')}  LV ${this.previousScene.lv}     HP ${this.hp}/${this.maxHp}`);
     this.showPages(lines, () => this.dummyTurn());
