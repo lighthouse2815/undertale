@@ -1441,3 +1441,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã thêm hình Undyne thường gồm bảy bộ phận, thứ tự lớp, biểu cảm, tóc và chuyển động nghỉ theo obj_undyneb_body. Kiểm vị trí, lớp, nhịp và dọn trong scene, hồi quy lượt Undyne/truy đuổi, check/build qua. Chưa nối scene trận; động tác nhảy, chém, tan và hoạt ảnh khi đổi pha chưa chuyển.
 
 Đã tách số lần giáo xanh xuyên khiên khỏi tổng số lần mất HP trong lượt Undyne, để điều chỉnh rating đúng: giáo đỏ hoặc giáo chuyển màu không tăng bộ đếm này. Kiểm va chạm giáo xanh và giáo chuyển màu trong scene, hồi quy các đợt giáo/truy đuổi, check/build qua. Bộ đếm chưa nối quy tắc rating vào scene trận.
+
+Đã bổ sung phản ứng khi để lọt giáo trong lượt đầu Undyne thường: ba lần lặp bài và lần thứ tư chuyển sang lesson 11/rating 6/berserk. Kiểm đủ bốn lần, ngưỡng máu và các quy tắc lượt; check/build qua. Lời thoại và scene trận chưa nối vào nhánh này.
