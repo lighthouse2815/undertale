@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 export async function testUndyneAttackTurn(page) {
-  await page.evaluate(async () => { const w = __remake.scene; w.flags = {}; w.hp = w.maxHp = 20; await w.openRoom('room_water1'); __remake.startBattle('froggit'); }); await page.waitForFunction(() => __remake.phase === 'battle');
+  await page.evaluate(async () => { const w = __remake.scene; window.undyneDefenseSnapshot = { lv: w.lv, armor: w.armor, armorDefense: w.armorDefense }; w.flags = {}; w.hp = w.maxHp = 20; w.lv = 1; w.armor = 4; w.armorDefense = 0; await w.openRoom('room_water1'); __remake.startBattle('froggit'); }); await page.waitForFunction(() => __remake.phase === 'battle');
   await page.evaluate(async () => { const s = __remake.scene; window.undyneAttack = await import('/src/undyne-attack-turn.mjs'); undyneAttack.loadUndyneAttackTurnAssets(s); if (s.load.list.size) await new Promise(resolve => { s.load.once('complete', resolve); s.load.start(); }); s.mode = 'fixture'; });
   await page.keyboard.down('ArrowRight');
   const green = await page.evaluate(() => { const s = __remake.scene; const turn = new undyneAttack.UndyneAttackTurn(s, { kind: 'green', lesson: 6, duration: 8, onComplete: result => { window.turnResult = result; } }); const x = s.soul.x; turn.update(34); const first = [s.soul.x === x, turn.wave.soul.shield.ideal, s.soul.texture.key]; for (let i = 0; i < 8; i++) turn.update(34); const switching = [turn.phase, turn.finished]; for (let i = 0; i < 75; i++) turn.update(34); return [first, switching, window.turnResult, turn.finished, s.bullets.length]; });
@@ -52,6 +52,7 @@ export async function testUndyneAttackTurn(page) {
     return states;
   });
   assert.deepEqual(sequence, [['green', 7, false, 7, true], ['follow', 8, false, 7, true], ['follow', 9, true, 8, true]]);
-  await page.evaluate(() => { const s = __remake.scene; s.finishBattle(); }); await page.waitForFunction(() => __remake.phase === 'running');
+  await page.evaluate(() => { const s = __remake.scene; s.finishBattle(); }); await page.waitForFunction(() => __remake.phase === 'running' && __remake.scene.scene.isActive());
+  await page.evaluate(() => { Object.assign(__remake.scene, window.undyneDefenseSnapshot); delete window.undyneDefenseSnapshot; });
   console.log('✓ Lượt Undyne: phím SOUL xanh/đỏ, trạng thái chuyển pha và dọn');
 }
