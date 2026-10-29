@@ -5,7 +5,7 @@ export class WaterfallEncounter {
   constructor(world, spawnName = 'obj_mainchara') {
     this.world = world; this.count = 0; this.empty = 0;
     this.firstEntrance = world.dataSource.name === 'room_water5' && !(world.flags[357] ?? 0) && spawnName === 'obj_markerA';
-    this.late = ['room_water15', 'room_water16'].includes(world.dataSource.name);
+    this.late = ['room_water15', 'room_water16', 'room_water17'].includes(world.dataSource.name);
     const violent = this.late && murderLevel(world.flags) >= 10 && !world.flags[27];
     const base = violent ? 60 : world.dataSource.name === 'room_water5' ? this.firstEntrance ? 20 : 340 : world.dataSource.name === 'room_water6' ? 110 : 360;
     this.steps = this.threshold(base, violent ? 20 : 30);

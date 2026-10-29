@@ -1381,3 +1381,5 @@ Bộ tổng `test-remake-0148c1e.log` kết thúc lỗi ở Waterfall 9: tween g
 Đã chuyển hai dải nước nông Waterfall 15: vùng vào/ra theo mask gốc, nhân vật chìm 5 pixel, gợn nước và tiếng bước. `remake-waterfall-shallow-water.mjs` kiểm cả hai dải, đi qua mép hai chiều bằng phím, âm thanh và dọn khi đổi phòng; hồi quy đom đóm/thác/bia, check/build qua. Cần đối chiếu thêm nhịp âm thanh và chuyển cảnh trong game gốc; cuộc gọi Undyne và đường sang phòng 16 vẫn chưa chuyển.
 
 Đã nối Waterfall 15 ↔ 16, encounter nhóm Waterfall muộn và câu đố bốn nấm: mỗi nấm đổi trạng thái/lớp đường, cờ 270 giữ hoàn thành và plot > 117 mở sẵn. Kiểm cửa, nhạc, các lớp, va chạm, cờ và vào lại, hồi quy nước/đom đóm/thác/bia, check/build qua. Hai cửa phòng 16 tới làng Temmie và phòng 17 chưa nối; cần tiếp tục nội dung các phòng này.
+
+Đã nối Waterfall 16 ↔ 17 và encounter khu muộn; phòng 17 có lớp tối theo sprite gốc, năm đèn giảm bóng tối tạm thời, tám đá phát sáng và bia. Kiểm cửa, nhịp tối/đèn, bia, dọn cảnh và hồi quy phòng 15–16, check/build qua. Cần tiếp tục lối sang phòng 18, làng Temmie và đối chiếu hiệu ứng ánh sáng khi chơi thực tế.
