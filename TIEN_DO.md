@@ -1475,3 +1475,5 @@ Bộ tổng chạy từ ec2c1a8 dừng ở kiểm thử Waterfall 18→19: scene
 Đã chuyển nội dung cuộc gọi Papyrus trước Hotland và hai nhánh theo cờ hẹn, kiểm thứ tự trang, nhánh và người nói; check/build qua. Cuộc gọi chưa nối phòng truy đuổi thứ ba, hiệu ứng tạm dừng Undyne khi nghe điện thoại còn cần chuyển.
 
 Đã nối phòng truy đuổi thứ hai ↔ hành lang Undyne: giữ nhạc, bố trí Undyne theo cửa vào, truy đuổi/đấu lại và cuộc gọi Papyrus theo cờ; Undyne tiến gần rồi dừng trong khi gọi. Kiểm hai chiều, nhạc, cuộc gọi, nhánh Papyrus vắng mặt và hồi quy cảnh/trận/phòng trước; check/build qua. Biển Hotland, cửa sang Hotland, lời/bong bóng truy đuổi và tuyến Undying còn thiếu; hành lang chưa thể hoàn tất đường chơi.
+
+Đã chuyển biển Hotland trong hành lang: chữ chạy, lớp ô che, ba viền đổi sáng và trạng thái mờ đứng yên sau khi hạ Undyne. Kiểm nhịp chạy/quay vòng, trạng thái sau trận và dọn khi đổi phòng, hồi quy đường Undyne; check/build qua. Lối sang Hotland và toàn bộ khu vực tiếp theo chưa hoàn thành.

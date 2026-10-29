@@ -1,3 +1,4 @@
+import { testWaterfallHotlandSign } from './remake-waterfall-hotland-sign.mjs';
 import { testWaterfallUndyneFinalHall } from './remake-waterfall-undyne-final-hall.mjs';
 import { testWaterfallPapyrusFinalCall } from './remake-waterfall-papyrus-final-call.mjs';
 import { testWaterfallUndyneChaseRoom } from './remake-waterfall-undyne-chase-room.mjs';
@@ -761,6 +762,7 @@ try {
   await testWaterfallUndyneEncounter(page);
   await testWaterfallUndyneChaseRoom(page);
   await testWaterfallUndyneFinalHall(page);
+  await testWaterfallHotlandSign(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
