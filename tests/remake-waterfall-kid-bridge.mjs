@@ -15,7 +15,7 @@ export async function testWaterfallKidBridge(page) {
       const output = { triggered, seen, stage: bridge.stage, plot: w.plot, flag: w.flags[98], menu: w.flags[17], locked: bridge.locked }; bridge.destroy(); return output;
     }, branch);
     assert.equal(result.triggered, true); assert.equal(result.stage, 'done'); assert.equal(result.plot, 120); assert.equal(result.flag, branch === 'rescue' ? 1 : 2); assert.equal(result.menu, 0); assert.equal(result.locked, false);
-    for (const stage of ['cameraLeft','approach1','approach2','trip','fall','undyneEnter','choice', ...(branch === 'rescue' ? ['rescueMove','undyneLeave','kidExit'] : ['fallFast','undyneJump','grabWait'])]) assert.ok(result.seen.includes(stage), stage);
+    for (const stage of ['cameraLeft','approach1','approach2','trip','fall','undyneEnter','choice', ...(branch === 'rescue' ? ['rescueMove','undyneLeave','kidExit','cameraReturnRescue'] : ['fallFast','undyneJump','grabWait','cameraReturnFall'])]) assert.ok(result.seen.includes(stage), stage);
   }
   await page.waitForFunction(() => !__remake.scene.scene.isActive()); await page.evaluate(async () => { const w = __remake.scene; w.scene.resume(); await w.openRoom('room_water19'); });
   console.log('✓ Cảnh Monster Kid: cứu và chờ rơi, hành động Undyne, plot/cờ');

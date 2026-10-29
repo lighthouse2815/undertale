@@ -60,7 +60,14 @@ export class WaterfallKidBridge {
     if (this.stage === 'undyneBack1' || this.stage === 'undyneBack2') { undyne.x -= .5; this.pose(undyne, 'spr_undynea_r', this.frame * .2); }
     if (this.stage === 'undyneLeave') { undyne.x -= 2; this.pose(undyne, 'spr_undynea_l', this.frame * .25); }
     if (this.stage === 'kidBack') { kid.x--; this.pose(kid, 'spr_mkid_l', this.frame * .25); }
-    if (this.stage === 'kidExit') { kid.x -= 4; this.pose(kid, 'spr_mkid_l', this.frame * .5); }
+    if (this.stage === 'kidExit' || this.stage === 'cameraReturnRescue') { kid.x -= 4; this.pose(kid, 'spr_mkid_l', this.frame * .5); }
+    if (this.stage === 'cameraReturnRescue' || this.stage === 'cameraReturnFall') {
+      const camera = w.cameras.main, target = Math.max(0, Math.min(w.dataSource.room.Width - 322, Math.round(w.player.x - 150)));
+      const speed = this.stage === 'cameraReturnRescue' ? 2 : 4, distance = target - camera.scrollX;
+      if (Math.abs(distance) <= speed) { camera.scrollX = target; this.finish(); }
+      else camera.scrollX += Math.sign(distance) * speed;
+      return;
+    }
     if (this.stage === 'fallWait') kid.y += .5;
     if (this.stage === 'fallFast') kid.y += 4;
     if (this.stage === 'undyneJump') { undyne.y += this.jumpVy; this.jumpVy += .6; undyne.x += .5; }
@@ -101,7 +108,7 @@ export class WaterfallKidBridge {
       case 'kidBack': this.pose(kid, 'spr_mkid_l'); this.wait('kidBackWait', 30); break;
       case 'kidBackWait': this.pose(kid, 'spr_mkid_rt'); this.wait('goodbyeWait', 30); break;
       case 'goodbyeWait': this.say('goodbye', 'kidExit', 40); break;
-      case 'kidExit': w.flags[98] = 1; this.finish(); break;
+      case 'kidExit': w.flags[98] = 1; this.wait('cameraReturnRescue', 1); break;
       case 'fallWait': this.wait('fallPause2', 30); break;
       case 'fallPause2': this.wait('fallFast', 30); break;
       case 'fallFast': this.pose(undyne, 'spr_undyne_jump0'); this.wait('jumpWait', 30); break;
@@ -110,7 +117,7 @@ export class WaterfallKidBridge {
       case 'landWait': w.sound.play('snd_undynestep'); this.wait('stepWait', 20); break;
       case 'stepWait': w.sound.play('snd_grab'); this.wait('grabWait', 80); break;
       case 'grabWait': { const lines = [...dialogue.aftermath]; if (this.charge) lines[4] = dialogue.charge[0]; this.say('aftermath', 'finishFall', 40, lines); break; }
-      case 'finishFall': w.flags[98] = 2; this.finish(); break;
+      case 'finishFall': w.flags[98] = 2; this.wait('cameraReturnFall', 1); break;
     }
   }
   finish() { this.world.plot = 120; this.world.flags[17] = 0; this.world.waterfallMusic?.destroy(); this.world.waterfallMusic = null; this.kid?.destroy(); this.undyne?.destroy(); this.kid = this.undyne = null; this.locked = false; this.stage = 'done'; this.world.release(); this.world.updateCamera(); }
