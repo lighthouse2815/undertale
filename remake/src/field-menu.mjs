@@ -21,7 +21,7 @@ export class FieldMenu extends Scene {
     for (const key of ['spr_heartsmall', 'spr_face_torielhappytalk', 'spr_face_torieltalkside', 'spr_face_torielembarrassed', 'spr_punchcard']) {
       if (!this.textures.exists(`${key}:0`)) this.load.image(`${key}:0`, new URL(`sprites/${key}/${key}_0.png`, base).href);
     }
-    for (const key of ['snd_squeak', 'snd_select', 'snd_phone', 'snd_power', 'snd_swallow', 'snd_spooky', 'snd_item', 'snd_dogresidue', 'snd_speedup']) if (!this.cache.audio.exists(key)) this.load.audio(key, new URL(`sounds/${key}/${key}.wav`, base).href);
+    for (const key of ['snd_squeak', 'snd_select', 'snd_phone', 'snd_power', 'snd_swallow', 'snd_spooky', 'snd_item', 'snd_dogresidue', 'snd_speedup', 'snd_dimbox']) if (!this.cache.audio.exists(key)) this.load.audio(key, new URL(`sounds/${key}/${key}.wav`, base).href);
     if (!this.cache.json.exists('inventory')) this.load.json('inventory', new URL('./inventory.json', import.meta.url).href);
     if (!this.cache.json.exists('phone-dialogue')) this.load.json('phone-dialogue', new URL('./phone.json', import.meta.url).href);
   }
@@ -128,7 +128,15 @@ export class FieldMenu extends Scene {
     } else if (['KeyZ', 'Enter'].includes(code)) {
       if (this.mode === 'phone') {
         const id = this.world.phone[this.phoneSelection];
-        this.close(); callToriel(this.world, id, this.text);
+        this.close();
+        if (id === 220 || id === 221) {
+          if (this.world.dataSource.name === 'room_water_dogroom') this.world.showDialogue([this.text.boxUnavailable]);
+          else {
+            this.world.phone.splice(this.world.phone.indexOf(id), 1); this.world.phone.unshift(id);
+            this.sound.play('snd_dimbox'); this.world.scene.launch('ItemBox', { boxBase: id === 220 ? 300 : 312 });
+            window.__remake.phase = 'loadingBox';
+          }
+        } else callToriel(this.world, id, this.text);
       } else if (this.mode === 'action') {
         const action = ['use', 'info', 'drop'][this.actionSelection];
         const id = this.world.inventory[this.itemSelection];

@@ -5,6 +5,8 @@ import { registerBitmapFont } from './fonts.mjs';
 export class ItemBox extends Scene {
   constructor() { super('ItemBox'); }
 
+  init({ boxBase = 300 } = {}) { this.boxBase = boxBase === 312 ? 312 : 300; }
+
   preload() {
     const base = new URL('../assets/', import.meta.url);
     if (!this.cache.bitmapFont.exists('fnt_maintext')) {
@@ -44,7 +46,7 @@ export class ItemBox extends Scene {
     this.add.bitmapText(235, 15, 'fnt_maintext', this.text.title, 12).setOrigin(.5, 0);
     this.add.rectangle(160, 46, 2, 150, 0xffffff).setOrigin(0);
     for (const column of [0, 1]) for (let row = 0; row < (column ? 10 : 8); row++) {
-      const id = column ? this.world.flags[300 + row] : this.world.inventory[row];
+      const id = column ? this.world.flags[this.boxBase + row] : this.world.inventory[row];
       const x = column ? 185 : 34, y = 36 + row * 16;
       if (id) this.add.bitmapText(x, y, 'fnt_maintext', this.items[id].name, 12);
       else this.add.rectangle(x + 5, y + 10, 90, 1, 0xff0000).setOrigin(0);
@@ -67,14 +69,14 @@ export class ItemBox extends Scene {
     const world = this.world;
     if (this.column === 0) {
       const id = world.inventory[this.row]; if (!id) return;
-      const slot = Array.from({ length: 10 }, (_, i) => i).find((i) => !world.flags[300 + i]);
+      const slot = Array.from({ length: 10 }, (_, i) => i).find((i) => !world.flags[this.boxBase + i]);
       if (slot === undefined) return;
-      world.flags[300 + slot] = id; world.inventory.splice(this.row, 1);
+      world.flags[this.boxBase + slot] = id; world.inventory.splice(this.row, 1);
     } else {
-      const id = world.flags[300 + this.row]; if (!id || world.inventory.length >= 8) return;
+      const id = world.flags[this.boxBase + this.row]; if (!id || world.inventory.length >= 8) return;
       world.inventory.push(id);
-      for (let i = this.row; i < 9; i++) world.flags[300 + i] = world.flags[301 + i] ?? 0;
-      world.flags[309] = 0;
+      for (let i = this.row; i < 9; i++) world.flags[this.boxBase + i] = world.flags[this.boxBase + i + 1] ?? 0;
+      world.flags[this.boxBase + 9] = 0;
     }
   }
 

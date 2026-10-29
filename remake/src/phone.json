@@ -21,7 +21,9 @@
     "203": "About Yourself",
     "204": "Call Her \"Mom\"",
     "205": "Flirt",
-    "206": "Toriel's Phone"
+    "206": "Toriel's Phone",
+    "220": "Dimensional Box A",
+    "221": "Dimensional Box B"
   },
   "equipmentNames": {
     "3": "Stick",
@@ -688,5 +690,6 @@
       "text": "* (Toriel has not sent any\n  more messages.)",
       "portrait": null
     }
-  ]
+  ],
+  "boxUnavailable": "* (The box is aclog with the\n  the hair of a dog.)"
 }
