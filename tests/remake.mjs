@@ -1,3 +1,4 @@
+import { testHotlandAlphysPhone } from './remake-hotland-alphys-phone.mjs';
 import { testDimensionalBoxes } from './remake-dimensional-boxes.mjs';
 import { testHotlandAlphysIntro } from './remake-hotland-alphys-intro.mjs';
 import { testMettatonQuiz } from './remake-mettaton-quiz.mjs';
@@ -781,6 +782,7 @@ try {
   await testMettatonQuiz(page);
   await testHotlandAlphysIntro(page);
   await testDimensionalBoxes(page);
+  await testHotlandAlphysPhone(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);

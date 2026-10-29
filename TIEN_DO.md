@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 29/10/2026, sau khi nối cảnh gặp Alphys và màn đố Mettaton. Mốc code trước phần cảnh lab: `2608fb1` trên `main`.
+Cập nhật: 30/10/2026, sau cảnh Alphys nâng cấp điện thoại. Mốc code trước phần này: `8915dfe` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -1502,3 +1502,6 @@ Bộ tổng chạy từ ec2c1a8 dừng ở kiểm thử Waterfall 18→19: scene
 Tạm dừng theo yêu cầu người dùng sau phần cảnh lab. Việc tiếp theo: chuyển obj_alphystrigger2 (nâng cấp điện thoại, plot 127), các đồ vật/camera/băng chuyền và phòng lab2, cửa sang Hotland tiếp theo; nhánh killerlab trên tuyến giết và sự kiện cửa khóa/đưa thư cuối game vẫn thiếu. Nhịp, ánh sáng disco/flash, rung/nhảy và âm chữ của màn giới thiệu còn cần đối chiếu kỹ; không coi toàn bộ game hoặc lab đã hoàn thiện.
 
 Đã nối hai hộp Dimensional Box A/B vào CELL, tái sử dụng ItemBox hiện có với ngăn A ở cờ 300–309 và ngăn B ở 312–321. Mục vừa dùng chuyển lên đầu danh sách điện thoại, có âm mở và lời chặn trong phòng chó; hộp vật lý vẫn dùng A mặc định. Kiểm gửi/rút qua phím, hai ngăn độc lập, quay lại hộp thường và phòng chó; check/build qua. Cảnh trao điện thoại của Alphys đang là bước kế tiếp; chưa coi phone upgrade hoàn chỉnh.
+
+
+Đã chuyển obj_alphystrigger2: chặn khi rời Alphys theo hai phía, tiến lại/thoại, dấu chấm than, chạy khỏi camera, tạm dừng nhạc và phát âm sửa máy 100 frame, quay lại trao điện thoại mở hộp A/B, mở cửa phòng tắm theo trang cuối rồi đi vào; chỉ kết thúc mới đặt plot 127. Khôi phục Alphys ngoài/sau cửa theo plot khi vào lại phòng hoặc nạp SAVE; chuyển collider theo trạng thái và dọn âm/cảnh khi đổi phòng. Kiểm hai phía, sửa máy/nhạc, mở hộp, plot/collider, không lặp qua mở phòng và lưu/nạp, hồi quy toàn chuỗi Hotland/quiz; check/build qua. Chưa chạy lại bộ tổng toàn game; hoạt ảnh/nội dung tin nhắn Hotland, camera lab/băng chuyền, đồ vật/lab2/lối đi tiếp và tuyến killerlab vẫn còn thiếu.

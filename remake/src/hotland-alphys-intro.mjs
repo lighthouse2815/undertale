@@ -19,6 +19,11 @@ export class HotlandAlphysIntro {
     this.confetti = [];
     const key = world.flags[7] === 1 ? 'mus_reunited' : world.plot > 125 && (world.flags[493] ?? 0) < 11 && murderLevel(world.flags) < 12 ? 'mus_lab' : 'mus_drone';
     world.labMusic = world.sound.add(key, { loop: true, volume: key === 'mus_drone' ? .5 : 1, rate: key === 'mus_drone' ? .5 : 1 }); world.labMusic.play();
+    if (world.plot >= 126 && murderLevel(world.flags) < 12) {
+      this.actor = this.sprite('spr_alphys_l', world.plot === 126 ? 815 : 890, world.plot === 126 ? 120 : 65);
+      if (world.plot > 126) this.actor.setDepth(-99999);
+      this.makeNpc();
+    }
   }
   sprite(key, x, y) { const d = this.world.dataSource.sprites.get(key); return this.world.add.image(x, y, `${key}:0`).setOrigin(d.OriginX / d.Width, d.OriginY / d.Height).setDepth(y + d.Height); }
   pose(actor, key, frame = 0) { const d = this.world.dataSource.sprites.get(key); actor.setTexture(`${key}:${Math.min(d.TextureCount - 1, Math.floor(frame) % d.TextureCount)}`).setOrigin(d.OriginX / d.Width, d.OriginY / d.Height); }
@@ -151,11 +156,11 @@ export class HotlandAlphysIntro {
   makeNpc() {
     const w = this.world, item = { ObjectName: 'obj_alphys_npc', X: this.actor.x, Y: this.actor.y, ScaleX: 1, ScaleY: 1 };
     const object = w.dataSource.objects.get(item.ObjectName), sprite = w.dataSource.sprites.get(object.Sprite);
-    this.npc = { item, object, sprite, image: this.actor, interactable: true }; w.roomObjects.push(this.npc); w.colliders.push(createCollider(w.dataSource, item));
+    this.npc = { item, object, sprite, image: this.actor, interactable: true }; w.roomObjects.push(this.npc); this.npcCollider = createCollider(w.dataSource, item); w.colliders.push(this.npcCollider);
   }
   interact() {
     if (!this.npc || !inInteractionRange(this.world, this.npc)) return false;
-    this.world.showDialogue([text.obj_alphys_npc_76.text, text.obj_alphys_npc_77.text], { portrait: 'spr_alphysface_8' }); return true;
+    this.world.showDialogue(this.world.plot > 126 ? [text.obj_alphys_npc_82.text] : [text.obj_alphys_npc_76.text, text.obj_alphys_npc_77.text], { portrait: this.world.plot > 126 ? false : 'spr_alphysface_8' }); return true;
   }
   clearShow() { for (const tween of this.bounces ?? []) tween.stop(); this.bounces = []; this.mettaton?.destroy(); this.mettaton = null; this.logo?.destroy(); this.logo = null; this.shadow?.destroy(); this.shadow = null; for (const ball of this.disco ?? []) ball.destroy(); this.disco = []; for (const p of this.confetti) p.image.destroy(); this.confetti = []; this.showMusic?.destroy(); this.showMusic = null; }
   destroy() { this.musicFade?.stop(); for (const tween of this.bounces ?? []) tween.stop(); this.clearShow(); this.actor?.destroy(); this.darkness?.destroy(); this.slidingPanel.destroy(); this.white?.destroy(); this.black?.destroy(); this.exclamation?.destroy(); }

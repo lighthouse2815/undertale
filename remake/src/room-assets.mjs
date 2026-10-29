@@ -336,7 +336,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water_undynefinal3' ? ['snd_phone'] : []),
     ...(name === 'room_fire2' ? ['snd_noise'] : []),
     ...(['room_fire_prelab', 'room_fire_lab1'].includes(name) ? ['snd_elecdoor_open', 'snd_elecdoor_close', 'snd_elecdoor_shut'] : []),
-    ...(name === 'room_fire_lab1' ? ['mus_lab', 'mus_drone', 'mus_reunited', 'mus_mettsmash', 'mus_mtgameshow', 'mus_mett_cheer', 'mus_mett_applause', 'snd_b', 'snd_noise', 'snd_laz', 'snd_drumroll', 'snd_bell'] : []),
+    ...(name === 'room_fire_lab1' ? ['mus_alphysfix', 'mus_lab', 'mus_drone', 'mus_reunited', 'mus_mettsmash', 'mus_mtgameshow', 'mus_mett_cheer', 'mus_mett_applause', 'snd_b', 'snd_noise', 'snd_laz', 'snd_drumroll', 'snd_bell'] : []),
     ...(['room_fire2', 'room_fire_prelab'].includes(name) ? ['mus_oogloop', 'mus_toomuch', 'mus_reunited'] : []),
     ...(name === 'room_water21' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water20' ? ['snd_spearappear', 'snd_spearrise', 'snd_fall', 'snd_undynestep', 'snd_grab', 'mus_ambientwater'] : []),
