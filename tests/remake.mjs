@@ -1,3 +1,4 @@
+import { testUndyneGreenSpear } from './remake-undyne-green-spear.mjs';
 import { testUndyneGreenSoul } from './remake-undyne-green-soul.mjs';
 import { testUndyneGreenShield } from './remake-undyne-green-shield.mjs';
 import assert from 'node:assert/strict';
@@ -732,6 +733,7 @@ try {
   testTemShopRules();
   testUndyneGreenShield();
   await testUndyneGreenSoul(page);
+  await testUndyneGreenSpear(page);
   await testTemShop(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);

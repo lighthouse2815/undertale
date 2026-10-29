@@ -1411,3 +1411,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã chuyển bộ điều khiển hướng khiên SOUL xanh: ưu tiên phím, xoay theo góc gốc, chặn giáo theo bốn hướng và nháy khi chặn; kiểm thử `remake-undyne-green-shield.mjs`, check/build qua. Đây mới là logic riêng, chưa vẽ SOUL/khiên, sinh giáo hay nối trận Undyne; cần tiếp tục những phần đó.
 
 Đã thêm hình SOUL xanh và vẽ khiên theo góc gốc, nối bộ hướng vào đối tượng scene riêng; kiểm tải sprite, vị trí, chặn và dọn trong scene trận, hồi quy truy đuổi và check/build qua. Chưa có giáo, xử lý phím trong vòng trận hoặc trận Undyne; hiệu ứng chặn cần tiếp tục đối chiếu.
+
+Đã thêm giáo thường cho SOUL xanh: bay từ bốn hướng, mask gốc chạm đường chắn/tâm, tiếng đỡ, sát thương và dọn. Kiểm cả bốn hướng, đỡ và lọt trong scene trận cùng hồi quy truy đuổi, check/build qua. Cần chuyển bộ phát theo các lượt, giáo vàng đổi hướng, vòng xử lý phím và ghép vào trận Undyne; va chạm/nhịp thực tế còn cần đối chiếu thêm.
