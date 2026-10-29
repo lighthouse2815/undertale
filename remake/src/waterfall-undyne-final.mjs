@@ -1,14 +1,28 @@
 import { createCollider } from './movement.mjs';
 import { touchesObject } from './npc.mjs';
+import { murderLevel } from './route.mjs';
 import { undyneFinalEncounterLines, undyneFinalLines, undyneFinalSpeech } from './waterfall-undyne-final-dialogue.mjs';
 
 // obj_undynetrigger_boss: cảnh đối mặt trước lần đấu đầu và điểm lưu sau cảnh.
 export class WaterfallUndyneFinal {
   constructor(world, spawnName) {
-    this.world = world; this.stage = world.plot <= 120 ? 'waiting' : world.plot === 121 ? 'ready' : 'done'; this.locked = false; this.elapsed = 0; this.frame = 0; this.save = null; this.encounterEnabled = spawnName !== 'obj_markerB';
+    this.world = world; this.room = world.dataSource.name; this.spawnName = spawnName;
+    this.stage = world.plot <= 120 ? 'waiting' : world.plot === 121 ? 'ready' : 'done'; this.locked = false; this.elapsed = 0; this.frame = 0; this.save = null; this.encounterEnabled = spawnName !== 'obj_markerB';
+    if (this.room === 'room_water_undynefinal2') {
+      const initial = world.roomObjects.find(entry => entry.item.ObjectName === 'obj_undynea_chaser');
+      if (initial) { initial.image.destroy(); world.roomObjects = world.roomObjects.filter(entry => entry !== initial); }
+      this.ice = world.roomObjects.find(entry => entry.item.ObjectName === 'obj_icegen_undynef2'); this.iceFrame = 0;
+      this.ice?.image.setDepth(-1100000);
+      if (this.ice && (world.flags[7] === 1 || murderLevel(world.flags) >= 7)) { this.ice.image.destroy(); world.roomObjects = world.roomObjects.filter(entry => entry !== this.ice); this.ice = null; }
+      if (world.plot <= 121) {
+        this.spawnChaser(140, world.player.y + (spawnName === 'obj_markerB' ? -100 : 100)); this.chaseDelay = 20; this.stage = 'chase';
+        if (!world.waterfallMusic) { world.waterfallMusic = world.sound.add('mus_undynefast', { loop: true, volume: 1 }); world.waterfallMusic.play(); }
+      } else { if (world.waterfallMusic?.key === 'mus_undynefast' && world.flags[7] !== 1) { world.waterfallMusic.destroy(); world.waterfallMusic = null; } world.flags[17] = 0; this.stage = 'done'; }
+      return;
+    }
     for (const glass of world.roomObjects.filter(e => e.item.ObjectName === 'obj_magicglass')) glass.image.setAlpha(0).setDepth(-700000);
     if (world.plot > 121 || world.plot === 121 && spawnName !== 'obj_markerB') this.spawnSave();
-    if (world.plot === 121) this.playTheme();
+    if (world.plot === 121 && !world.waterfallMusic?.isPlaying) this.playTheme();
   }
   playTheme() {
     const w = this.world;
@@ -53,6 +67,7 @@ export class WaterfallUndyneFinal {
   step() {
     const w = this.world;
     this.updateGlass();
+    if (this.ice) { this.iceFrame += .15; this.ice.image.x += 2; if (this.ice.image.x > w.dataSource.room.Width + 20) this.ice.image.x = -50; this.ice.image.setTexture(`spr_waterice:${Math.floor(this.iceFrame) % this.ice.sprite.TextureCount}`); }
     if (this.stage === 'chase') { this.stepChase(); return; }
     if (!this.locked || this.stage === 'dialogue') return;
     this.frame++; this.timer--;
@@ -68,7 +83,11 @@ export class WaterfallUndyneFinal {
       else { this.spawnChaser(160, 620); this.wait('chaseReturn', 30); }
     } else if (this.stage === 'chaseBattle') {
       if (w.flags[350] === 1) { this.chaser?.destroy(); this.chaser = null; w.waterfallMusic?.destroy(); w.waterfallMusic = null; w.flags[17] = 0; w.plot = 122; this.locked = false; this.stage = 'done'; }
-      else { this.spawnChaser(160, w.player.y > 600 ? 500 : 640); this.locked = false; this.stage = 'chase'; }
+      else {
+        const x = this.room === 'room_water_undynefinal2' ? 140 : 160;
+        const y = this.room === 'room_water_undynefinal2' ? w.player.y + (this.spawnName === 'obj_markerB' ? -100 : 130) : w.player.y > 600 ? 500 : 640;
+        this.spawnChaser(x, y); this.locked = false; this.stage = 'chase';
+      }
     } else if (this.stage === 'chaseReturn') {
       this.stepChase();
       if (this.stage === 'chaseReturn' && this.timer <= 0) { if (w.waterfallMusic && !w.waterfallMusic.isPlaying) w.waterfallMusic.play(); w.flags[352] = 1; this.locked = false; this.stage = 'chase'; }
@@ -136,5 +155,5 @@ export class WaterfallUndyneFinal {
       if (this.chaser?.active && touchesObject(w, this.chaser, glass.item)) { glass.hold = 3; glass.image.setAlpha(Math.min(1, glass.image.alpha + .2)); }
     }
   }
-  destroy() { this.actor?.destroy(); this.white?.destroy(); this.dive?.destroy(); this.chaser?.destroy(); }
+  destroy() { this.actor?.destroy(); this.white?.destroy(); this.dive?.destroy(); if (this.chaser) { this.chaser.destroy(); this.world.flags[17] = 0; } }
 }

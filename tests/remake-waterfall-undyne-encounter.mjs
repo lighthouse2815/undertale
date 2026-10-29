@@ -22,7 +22,7 @@ export async function testWaterfallUndyneEncounter(page) {
   assert.deepEqual(encounter, [true, 'battle', false]);
   await page.waitForFunction(() => __remake.phase === 'battle' || __remake.phase === 'error');
   assert.equal(await page.evaluate(() => __remake.scene.scene.key), 'UndyneBattle');
-  await page.evaluate(() => { const s = __remake.scene; s.green = false; s.choose('mercy', ['Spare','Flee']); s.subIndex = 1; s.confirmPressed = true; s.updateSubmenu(); });
+  await page.evaluate(() => { const s = __remake.scene; s.previousScene.player.setPosition(150, 580); s.green = false; s.choose('mercy', ['Spare','Flee']); s.subIndex = 1; s.confirmPressed = true; s.updateSubmenu(); });
   await page.waitForFunction(() => __remake.phase === 'running' && __remake.scene.scene.isActive());
   await page.waitForFunction(() => __remake.scene.waterfallUndyneFinal?.stage === 'chase', { timeout: 5000 });
   const chase = await page.evaluate(() => {

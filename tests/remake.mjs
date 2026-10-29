@@ -1,3 +1,4 @@
+import { testWaterfallUndyneChaseRoom } from './remake-waterfall-undyne-chase-room.mjs';
 import { testWaterfallUndyneEncounter } from './remake-waterfall-undyne-encounter.mjs';
 import { testWaterfallUndyneFinal } from './remake-waterfall-undyne-final.mjs';
 import { testWaterfallUndyneFinalDialogue } from './remake-waterfall-undyne-final-dialogue.mjs';
@@ -756,6 +757,7 @@ try {
   testWaterfallUndyneFinalDialogue();
   await testWaterfallUndyneFinal(page);
   await testWaterfallUndyneEncounter(page);
+  await testWaterfallUndyneChaseRoom(page);
   await testTemShop(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
