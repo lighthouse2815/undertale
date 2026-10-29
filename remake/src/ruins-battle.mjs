@@ -31,7 +31,7 @@ export class RuinsBattle extends DummyBattle {
       this.load.json('fnt_maintext', new URL('fonts/fnt_maintext/fnt_maintext.json', base).href);
       this.load.image('fnt_maintext', new URL('fonts/fnt_maintext/fnt_maintext.png', base).href);
     }
-    for (const key of ['snd_select', 'snd_damage', 'snd_ehurt1', 'snd_hurt1', 'snd_escaped', 'snd_levelup', 'snd_break1', 'snd_break2'])
+    for (const key of ['snd_power', 'snd_select', 'snd_damage', 'snd_ehurt1', 'snd_hurt1', 'snd_escaped', 'snd_levelup', 'snd_break1', 'snd_break2'])
       if (!this.cache.audio.exists(key)) this.load.audio(key, new URL(`sounds/${key}/${key}.wav`, base).href);
     for (const key of ['mus_battle1', 'mus_gameover']) if (!this.cache.audio.exists(key)) this.load.audio(key, new URL(`sounds/${key}/${key}.ogg`, base).href);
     if (!this.cache.json.exists('ruins-battle')) this.load.json('ruins-battle', new URL('./ruins-battle.json', import.meta.url).href);
@@ -51,7 +51,7 @@ export class RuinsBattle extends DummyBattle {
   async create() {
     await super.create();
     if (window.__remake.phase === 'error') return;
-    this.invFrames = 0; this.soulElapsed = 0; this.soulMovement = 1; this.soulSpeed = 4; this.soulColor = null; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
+    this.armorHealTurn = null; this.invFrames = 0; this.soulElapsed = 0; this.soulMovement = 1; this.soulSpeed = 4; this.soulColor = null; this.pendingOutcome = null; this.mercyModifier = this.monster === 'froggit' ? 3 : 99;
     this.previousScene.flags[30] = this.monster === 'froggit' ? 1 : this.previousScene.flags[30] ?? 0;
     this.enemyParts = [];
     this.setupEnemy();
@@ -84,6 +84,9 @@ export class RuinsBattle extends DummyBattle {
 
   update(time, delta) {
     if (window.__remake.phase !== 'battle' || window.__remake.scene !== this) return;
+    if (this.mode === 'menu' && this.previousScene.armor === 64 && this.turn % 2 === 1 && this.armorHealTurn !== this.turn) {
+      this.armorHealTurn = this.turn; this.hp = Math.min(this.maxHp, this.hp + 1); this.refreshHp(); this.sound.play('snd_power');
+    }
     if (this.mode === 'soul') this.updateSoul(delta);
     else if (this.mode === 'speech') {
       this.speechTime -= delta;
@@ -200,7 +203,7 @@ export class RuinsBattle extends DummyBattle {
     if (this.invFrames > 0) return;
     const df = this.previousScene.lv === 20 ? 99 : 9 + Math.ceil(this.previousScene.lv / 4);
     this.hp = Math.max(0, this.hp - Math.max(1, Math.round(damage - (df + this.previousScene.armorDefense) / 5)));
-    this.invFrames = 30 + (this.previousScene.armor === 44 ? 30 : 0) + (this.previousScene.weapon === 45 ? 15 : 0); this.sound.play('snd_hurt1'); this.cameras.main.shake(1000 / 15, .006); this.refreshHp();
+    this.invFrames = 30 + (this.previousScene.armor === 44 ? 30 : this.previousScene.armor === 64 ? 15 : 0) + (this.previousScene.weapon === 45 ? 15 : 0); this.sound.play('snd_hurt1'); this.cameras.main.shake(1000 / 15, .006); this.refreshHp();
   }
 
   refreshHp() { this.hpText.setText(`${this.previousScene.game.registry.get('charname')}  LV ${this.previousScene.lv}     HP ${this.hp}/${this.maxHp}`); }

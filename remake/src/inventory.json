@@ -221,7 +221,9 @@
       "battleName": "TemFlakes",
       "seriousName": "TemFlakes",
       "use": "* You eat the Temmie Flakes.",
-      "info": ["* \"Temmie Flakes\" - Heals 2 HP\n* It's just torn up pieces\n  of colored construction paper."],
+      "info": [
+        "* \"Temmie Flakes\" - Heals 2 HP\n* It's just torn up pieces\n  of colored construction paper."
+      ],
       "heal": 2
     },
     "23": {
@@ -391,6 +393,16 @@
         "* You used the Mystery Key.\n* The door's lock clicks...",
         "* ... as you fail to fit the\n  key into it.",
         "* Nothing happened."
+      ]
+    },
+    "64": {
+      "name": "temy armor",
+      "battleName": "Temmie AR",
+      "seriousName": "Tem.Armor",
+      "use": "* You donned the Temmie Armor.",
+      "info": [
+        "* \"temy armor\" - Armor DF 20\n* The things you can do with\n  a college education!",
+        "* Raises ATTACK when worn.\n* Recovers HP every other turn.\n* INV up slightly."
       ]
     }
   },
