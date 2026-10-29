@@ -145,7 +145,8 @@ export async function loadRoom(scene, name) {
   await Promise.all([...new Set(room.GameObjects.map((item) => item.ObjectName))].map(object));
   if (name === 'room_water_undynefinal') await object('obj_savepoint');
   if (name === 'room_fire2') await object('obj_undynefall');
-  if (name === 'room_fire_prelab') await object('obj_kitchenforcefield');
+  if (name === 'room_fire_prelab') for (const key of ['obj_kitchenforcefield', 'obj_doorCmusicfade']) await object(key);
+  if (name === 'room_fire_lab1') await object('obj_alphys_npc');
   if (name === 'room_water_blookhouse') await object('obj_napstablook_actor');
   if (name === 'room_water_blookyard') await object('obj_doorCmusicfade');
   if (inn) await object('obj_zzz');
@@ -222,6 +223,8 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water_temvillage') for (const key of ['spr_temmie_egg', 'spr_temmie_hive', 'spr_temmie_hivetalk', 'spr_mushroomdance_prep', 'spr_mushroomdance_mid', 'spr_mushroomdance_end']) spriteNames.add(key);
   if (['room_water_undynefinal2', 'room_water_undynefinal3', 'room_fire1', 'room_fire2'].includes(name)) for (const direction of ['d','u','l','r']) spriteNames.add(`spr_undyne_helmet_${direction}`);
   if (name === 'room_fire_prelab') for (const key of ['spr_royalguard_dragon_d', 'spr_forcefield_right', 'spr_forcefield_right_middle']) spriteNames.add(key);
+  if (name === 'room_fire_lab1') for (const key of ['spr_slidingdoor', 'spr_darkhalo_big', 'spr_exc', 'spr_alphys_freaked', 'spr_conveyorbelt_d_blue', ...['d','u','l','r','dt','ut','lt','rt'].map(d => `spr_alphys_${d}`), ...Array.from({length:10}, (_,i) => `spr_alphysface_${i}`), ...['talk','wave','holdarm','clap','pointingup','cackle','silent','silent_behind'].map(p => `spr_mettaton_${p}`), 'spr_gameshowlogo', 'spr_discoball', 'spr_confetti']) spriteNames.add(key);
+  if (name === 'room_fire_prelab') for (const key of ['spr_labdoor_hang', 'spr_alabdoor_piece']) spriteNames.add(key);
   if (name === 'room_fire2') for (const key of ['spr_face_undyne1', 'spr_heartsmall', 'spr_watercooler_water', 'spr_coolerpuddle', 'spr_mainchara_pourwater', ...['d','u','l','r'].map(direction => `spr_mainchara${direction}_water`)]) spriteNames.add(key);
   if (name === 'room_fire1') for (const key of ['spr_zzz', 'spr_undyne_helmet_d_pissed']) spriteNames.add(key);
   if (name === 'room_water_undynefinal3') for (const key of ['spr_face_papyrus', 'spr_hotlandsign', 'spr_hotlandcover']) spriteNames.add(key);
@@ -277,7 +280,7 @@ export async function loadRoom(scene, name) {
     ...room.Backgrounds.filter((item) => item.Enabled || childBedroom).map((item) => item.BackgroundAsset),
     ...room.Tiles.map((item) => item.Asset),
   ])) if (key) images.set(key, `backgrounds/${key}/${key}.png`);
-  const font = (['room_water21', 'room_water20', 'room_water18', 'room_water17', 'room_water15', 'room_water_waterfall', 'room_water_waterfall2', 'room_water_waterfall4', 'room_water_undynebridgeend', 'room_water_trashzone1', 'room_water_trashzone2', 'room_water_shop', 'room_water_blookyard', 'room_water_blookhouse', 'room_water_hapstablook', 'room_water_farm'].includes(name) || name === 'room_water_prewaterfall' || name === 'room_water_statue' || name === 'room_water_dogroom' || name === 'room_water_piano' || name === 'room_water14' || name === 'room_water_onionsan' || name === 'room_water_nicecream' || name === 'room_water_shoe' || name === 'room_water12' || name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || ['room_fire1', 'room_fire2', 'room_fire_prelab'].includes(name) || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
+  const font = (['room_water21', 'room_water20', 'room_water18', 'room_water17', 'room_water15', 'room_water_waterfall', 'room_water_waterfall2', 'room_water_waterfall4', 'room_water_undynebridgeend', 'room_water_trashzone1', 'room_water_trashzone2', 'room_water_shop', 'room_water_blookyard', 'room_water_blookhouse', 'room_water_hapstablook', 'room_water_farm'].includes(name) || name === 'room_water_prewaterfall' || name === 'room_water_statue' || name === 'room_water_dogroom' || name === 'room_water_piano' || name === 'room_water14' || name === 'room_water_onionsan' || name === 'room_water_nicecream' || name === 'room_water_shoe' || name === 'room_water12' || name === 'room_water_bird' || name === 'room_water11' || name === 'room_water9' || name === 'room_water7' || name === 'room_water6' || name === 'room_water5A' || name === 'room_water5' || name === 'room_water3A' || name === 'room_water3' || name === 'room_tundra_grillby' || name === 'room_water2' || fogRoom || garage || inn || sansBasement || library || town || ['room_fire1', 'room_fire2', 'room_fire_prelab', 'room_fire_lab1'].includes(name) || hasSavepoint || ruinsTutorial || ruinsSwitches || dummyLesson || spikeGuide || corridorLesson || candyRoom || ruins12 || ruins13 || ruins14 || perspective || outlook || torielHall || torielCorridor || childBedroom || torielBedroom || living || basement || floweyExit || snowdinStart || forest || boxRoad || checkpoint || doggoRoom || ice || snowman || maze || niceCream || xoxo || colorTiles || iceHole || dangerBridge || greaterDogRoom || gyftrotRoom || goofyrock || name === 'room_ruins10') && !scene.cache.bitmapFont.exists('fnt_maintext')
     ? await json('fonts/fnt_maintext/fnt_maintext.json') : null;
   if (font) images.set('fnt_maintext', 'fonts/fnt_maintext/fnt_maintext.png');
   const forestFonts = new Map();
@@ -332,6 +335,8 @@ export async function loadRoom(scene, name) {
     ...(['room_water_undynefinal2', 'room_water_undynefinal3', 'room_fire1'].includes(name) ? ['mus_undynefast', 'snd_undynestep'] : []),
     ...(name === 'room_water_undynefinal3' ? ['snd_phone'] : []),
     ...(name === 'room_fire2' ? ['snd_noise'] : []),
+    ...(['room_fire_prelab', 'room_fire_lab1'].includes(name) ? ['snd_elecdoor_open', 'snd_elecdoor_close', 'snd_elecdoor_shut'] : []),
+    ...(name === 'room_fire_lab1' ? ['mus_lab', 'mus_drone', 'mus_reunited', 'mus_mettsmash', 'mus_mtgameshow', 'mus_mett_cheer', 'mus_mett_applause', 'snd_b', 'snd_noise', 'snd_laz', 'snd_drumroll', 'snd_bell'] : []),
     ...(['room_fire2', 'room_fire_prelab'].includes(name) ? ['mus_oogloop', 'mus_toomuch', 'mus_reunited'] : []),
     ...(name === 'room_water21' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water20' ? ['snd_spearappear', 'snd_spearrise', 'snd_fall', 'snd_undynestep', 'snd_grab', 'mus_ambientwater'] : []),
@@ -384,7 +389,7 @@ export async function loadRoom(scene, name) {
     scene.load.on('loaderror', failed);
     scene.load.once('complete', complete);
     for (const [key, path] of queued) scene.load.image(key, new URL(path, base).href);
-    for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.${['snd_fall2', 'snd_mushroomdance'].includes(key) || key.startsWith('mus_') && key !== 'mus_sfx_generate' && !key.startsWith('mus_piano') ? 'ogg' : 'wav'}`, base).href);
+    for (const key of sounds) scene.load.audio(key, new URL(`sounds/${key}/${key}.${['snd_fall2', 'snd_mushroomdance'].includes(key) || key.startsWith('mus_') && !['mus_sfx_generate', 'mus_mettsmash'].includes(key) && !key.startsWith('mus_piano') ? 'ogg' : 'wav'}`, base).href);
     scene.load.start();
   });
   if (font) registerBitmapFont(scene, 'fnt_maintext', font);

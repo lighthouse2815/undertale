@@ -1,6 +1,6 @@
 # Bàn giao bản viết lại Undertale
 
-Cập nhật: 28/10/2026, sau khi nối cầu tới thị trấn Snowdin. Mốc code trước phần này: `f24f7e6` trên `main`.
+Cập nhật: 29/10/2026, sau khi nối cảnh gặp Alphys và màn đố Mettaton. Mốc code trước phần cảnh lab: `2608fb1` trên `main`.
 Xem `git log` để lấy mã commit triển khai mới nhất và kiểm tra trạng thái đồng bộ remote.
 Luôn kiểm tra commit và source mới hơn trước khi tiếp tục; đây là ghi chú bàn giao, không thay thế kiểm tra implementation.
 
@@ -1495,3 +1495,8 @@ Bộ tổng chạy từ ec2c1a8 dừng ở kiểm thử Waterfall 18→19: scene
 Đã hoàn thiện phần lính gác trước lab: thêm người bạn rồng, vật cản thang máy, ba lượt thoại và phản ứng khi nói; thay bằng hàng rào có va chạm/hoạt ảnh/lời đọc trên tuyến giết, bỏ lính khi plot/cờ yêu cầu. Sửa vị trí ghép ba mảnh hàng rào để không bị hở. Kiểm hội thoại, các nhánh xuất hiện/biến mất, dọn ảnh khi đổi phòng và hồi quy Hotland trong trình duyệt; check/build qua. Cảnh gặp Alphys, màn đố Mettaton và cửa lab chưa chuyển; nhịp/lớp hoạt ảnh cần kiểm thêm bằng mắt.
 
 Đã thêm scene màn đố Mettaton (battlegroup 48), mở qua startBattle: FIGHT không gây sát thương, Check/Cry, ITEM/MERCY, mười câu gốc, chọn đáp án bằng va chạm SOUL, gợi ý Alphys, đếm giờ/mất nửa HP, chuyển tới câu 9 khi còn 1 HP, câu ma/số chữ tăng, Alphys chen vào và bốn nhánh cuối. Kết thúc không thưởng XP/GOLD hay tăng kill. Kiểm phím thật, FIGHT/ITEM, trả lời đúng/sai/hết giờ, HP 1, các câu đặc biệt và bốn kết thúc; hồi quy Hotland, check/build qua, đã xem ảnh trong trình duyệt. Scene chưa nối cảnh gặp Alphys; bong bóng, pháo giấy, giật điện, hình phóng to câu 6 và nhịp chuyển động còn cần đối chiếu, không coi toàn màn trình diễn đã giống từng khung.
+
+
+Đã nối cửa tự động ngoài lab ↔ room_fire_lab1 và cảnh obj_alphystrigger1: camera, Alphys bước ra/bật đèn/giới thiệu, lời và biểu cảm theo trang, nhánh ký ức AD, Mettaton phá tường/giới thiệu chương trình, chuyển vào scene quiz rồi trả về hậu cảnh. Plot chỉ lên 126 sau hậu cảnh; tạo Alphys có va chạm/tương tác, giữ khóa điều khiển trong cảnh và không lặp khi vào lại phòng. Sửa tải mus_mettsmash dùng WAV và dọn các chuyển động khi chuyển sang trận. Kiểm cửa bằng phím thật, chuỗi cảnh → quiz → hậu cảnh, cờ/plot, vào lại phòng và hồi quy các phần Hotland/Mettaton; check/build qua, đã xem hình trong trình duyệt. Chưa chạy lại toàn bộ bộ hồi quy của toàn game trên commit này.
+
+Tạm dừng theo yêu cầu người dùng sau phần cảnh lab. Việc tiếp theo: chuyển obj_alphystrigger2 (nâng cấp điện thoại, plot 127), các đồ vật/camera/băng chuyền và phòng lab2, cửa sang Hotland tiếp theo; nhánh killerlab trên tuyến giết và sự kiện cửa khóa/đưa thư cuối game vẫn thiếu. Nhịp, ánh sáng disco/flash, rung/nhảy và âm chữ của màn giới thiệu còn cần đối chiếu kỹ; không coi toàn bộ game hoặc lab đã hoàn thiện.

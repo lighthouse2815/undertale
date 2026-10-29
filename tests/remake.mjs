@@ -1,3 +1,4 @@
+import { testHotlandAlphysIntro } from './remake-hotland-alphys-intro.mjs';
 import { testMettatonQuiz } from './remake-mettaton-quiz.mjs';
 import { testHotlandLabGuards } from './remake-hotland-lab-guards.mjs';
 import { testHotlandPrelab } from './remake-hotland-prelab.mjs';
@@ -777,6 +778,7 @@ try {
   await testHotlandPrelab(page);
   await testHotlandLabGuards(page);
   await testMettatonQuiz(page);
+  await testHotlandAlphysIntro(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
