@@ -42,3 +42,15 @@ export function undyneBattleAct(rules, action, dying = false) {
   } else throw new RangeError(`ACT không hợp lệ: ${action}`);
   return { ids, lines: ids.map(id => text[id]) };
 }
+
+// Step khi sinh đợt giáo: lời trạng thái phụ thuộc HP, thứ tự và lệnh ngẫu nhiên.
+export function undyneBattleStatus({ hp, maxHp, order, command }) {
+  let id = null;
+  if (hp < maxHp) for (const [minimum, candidate] of [[0,1085],[20,1086],[40,1087],[60,1088],[80,1089]]) if (command >= minimum) id = candidate;
+  if (hp >= maxHp / 2) {
+    for (let i = 0; i < 10; i++) if (command >= i * 10) id = 1094 + i;
+    if (order > 22) for (const [minimum, candidate] of [[0,1107],[25,1108],[50,1109],[75,1110],[90,1111]]) if (command >= minimum) id = candidate;
+  }
+  if (order >= -40 && order <= -36) id = 1118 + order + 40;
+  return id === null ? null : { id, line: text[id] };
+}

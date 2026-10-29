@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { undyneBattleSpeech, undyneBattleAct } from '../remake/src/undyne-battle-dialogue.mjs';
+import { undyneBattleSpeech, undyneBattleAct, undyneBattleStatus } from '../remake/src/undyne-battle-dialogue.mjs';
 
 import { UndyneBattleRules } from '../remake/src/undyne-battle-rules.mjs';
 
@@ -16,6 +16,13 @@ export function testUndyneBattleDialogue() {
   assert.deepEqual(select(30).ids, [672]);
   assert.equal(select(6).uncancellable, true); assert.equal(select(3).uncancellable, false);
   for (let order = -40; order <= 30; order++) assert.ok(select(order).lines.every(line => typeof line === 'string'));
+  const status = (hp, order, command) => undyneBattleStatus({ hp, maxHp: 100, order, command });
+  assert.equal(status(49, 8, 39).id, 1086);
+  assert.equal(status(50, 8, 39).id, 1097);
+  assert.equal(status(100, 23, 89).id, 1110);
+  assert.equal(status(100, 23, 90).id, 1111);
+  assert.equal(status(49, -39, 0).id, 1119);
+  assert.equal(status(49, 2, -1), null);
   const rules = new UndyneBattleRules();
   assert.deepEqual(undyneBattleAct(rules, 'check').ids, [1145]);
   assert.deepEqual(undyneBattleAct(rules, 'challenge').ids, [1174]);
