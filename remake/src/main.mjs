@@ -1,4 +1,5 @@
-import { WaterfallTemVillage } from './waterfall-tem-village.mjs';
+import { TemShop } from './tem-shop.mjs';
+import { WaterfallTemVillage, startTemVillageMusic } from './waterfall-tem-village.mjs';
 import { WaterfallKidBridge } from './waterfall-kid-bridge.mjs';
 import { WaterfallPuzzleHater } from './waterfall-puzzle-hater.mjs';
 import { WaterfallFlowerHall } from './waterfall-flower-hall.mjs';
@@ -279,7 +280,7 @@ const ROOM_EXITS = {
   room_water_shop: { t: 'room_water_friendlyhub', X: 'room_shop2', C: 'room_water15' },
   room_water15: { D: 'room_water_shop', A: 'room_water16' },
   room_water16: { B: 'room_water15', C: 'room_water17', A: 'room_water_temvillage' },
-  room_water_temvillage: { B: 'room_water16' },
+  room_water_temvillage: { B: 'room_water16', X: 'room_shop5' },
   room_water17: { D: 'room_water16', A: 'room_water18' },
   room_water18: { B: 'room_water17', A: 'room_water19' },
   room_water19: { B: 'room_water18', A: 'room_water20' },
@@ -568,7 +569,7 @@ class World extends Scene {
     if (name === 'room_water_friendlyhub') this.waterfallFriendlyHub = new WaterfallFriendlyHub(this);
     if (name === 'room_water_shop') this.waterfallShopRoad = new WaterfallShopRoad(this);
     if (name === 'room_water_temvillage') {
-      if (!this.waterfallMusic && !this.townMusic && this.flags[7] !== 1 && !this.flags[94]) { const key = this.flags[223] && !this.flags[27] ? 'mus_toomuch' : 'mus_temvillage'; this.waterfallMusic = this.sound.add(key, { loop: true }); this.waterfallMusic.play({ rate: key === 'mus_temvillage' && murderLevel(this.flags) >= 10 && !this.flags[27] ? .5 : 1 }); }
+      startTemVillageMusic(this);
       this.waterfallTemVillage = new WaterfallTemVillage(this); this.waterfallRoomTiles = new WaterfallSentryVisuals(this);
     }
     if (name === 'room_water20') { startWaterfallMusic(this, true); if (murderLevel(this.flags) < 11 || this.flags[27]) this.waterfallKidBridge = new WaterfallKidBridge(this); }
@@ -881,9 +882,9 @@ class World extends Scene {
     }
     this.cameras.main.once('camerafadeoutcomplete', async () => {
       try {
-        if (destination === 'room_shop2') {
+        if (destination === 'room_shop2' || destination === 'room_shop5') {
           if (this.flags[7] !== 1) { this.roomMusicFade?.stop(); this.waterfallMusic?.destroy(); this.waterfallMusic = null; }
-          this.release(); this.scene.pause(); this.scene.launch('WaterfallShop'); state.phase = 'loading'; return;
+          this.release(); this.scene.pause(); this.scene.launch(destination === 'room_shop2' ? 'WaterfallShop' : 'TemShop'); state.phase = 'loading'; return;
         }
         if (musicFade && this.flags[7] !== 1 && ((['room_water16', 'room_water_temvillage'].includes(this.dataSource.name) && ['room_water16', 'room_water_temvillage'].includes(destination)) || (['room_water17', 'room_water18'].includes(this.dataSource.name) && ['room_water17', 'room_water18'].includes(destination)) || (['room_water_shop', 'room_water15'].includes(this.dataSource.name) && ['room_water_shop', 'room_water15'].includes(destination)) || (['room_water_bird', 'room_water_blookyard'].includes(this.dataSource.name) && destination === 'room_water_friendlyhub' || this.dataSource.name === 'room_water_friendlyhub' && ['room_water_bird', 'room_water_blookyard'].includes(destination)) || (['room_water11', 'room_water12'].includes(this.dataSource.name) && ['room_water11', 'room_water12'].includes(destination)) || (['room_water12', 'room_water_onionsan'].includes(this.dataSource.name) && ['room_water12', 'room_water_onionsan'].includes(destination)))) {
           this.roomMusicFade?.stop(); this.waterfallMusic?.destroy(); this.waterfallMusic = null;
@@ -1207,7 +1208,7 @@ class Name extends Scene {
 }
 
 state.game = new Game({ type: CANVAS, width: 320, height: 240, parent: 'game', backgroundColor: '#000000',
-  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, TemmieBattle, ShyrenBattle, MadDummyBattle, GladDummyBattle, WoshuaBattle, MoldsmalGroupBattle, MoldbyggGroupBattle, WoshuaMoldbyggBattle, WaterfallGroupBattle, UndyneQuickBattle, WaterfallShop, SaveMenu, FieldMenu, ItemBox],
+  pixelArt: true, antialias: false, banner: false, scene: [Intro, Title, Name, ChapterTitle, World, Battle, DummyBattle, TutorialFroggit, RuinsBattle, NapstablookBattle, VegetoidBattle, TorielBattle, DrakeBattle, IceCapBattle, LesserDogBattle, DoggoBattle, DogPairBattle, SnowdinGroupBattle, GyftrotBattle, GreaterDogBattle, PapyrusBattle, AaronBattle, TemmieBattle, ShyrenBattle, MadDummyBattle, GladDummyBattle, WoshuaBattle, MoldsmalGroupBattle, MoldbyggGroupBattle, WoshuaMoldbyggBattle, WaterfallGroupBattle, UndyneQuickBattle, WaterfallShop, TemShop, SaveMenu, FieldMenu, ItemBox],
   scale: { mode: Scale.FIT, autoCenter: Scale.CENTER_BOTH } });
 state.startBattle = (config = 'dummy') => {
   if (!BATTLE_CONFIGS[config]) throw new Error(`Không có cấu hình quái ${config}.`);

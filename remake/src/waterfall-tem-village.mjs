@@ -5,6 +5,14 @@ import { showItemBox } from './box-road.mjs';
 import boxText from './box-road.json' with { type: 'json' };
 import dialogue from './waterfall-tem-village.json' with { type: 'json' };
 
+
+export function startTemVillageMusic(world) {
+  if (world.waterfallMusic || world.townMusic || world.flags[7] === 1 || world.flags[94]) return;
+  const key = world.flags[223] && !world.flags[27] ? 'mus_toomuch' : 'mus_temvillage';
+  world.waterfallMusic = world.sound.add(key, { loop: true });
+  world.waterfallMusic.play({ rate: key === 'mus_temvillage' && murderLevel(world.flags) >= 10 && !world.flags[27] ? .5 : 1 });
+}
+
 export class WaterfallTemVillage {
   constructor(world) {
     this.world = world; this.elapsed = 0; this.frame = 0; this.locked = false; this.judgeTalked = 0;

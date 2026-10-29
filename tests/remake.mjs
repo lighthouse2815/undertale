@@ -149,6 +149,7 @@ import { testWaterfallKidPath } from './remake-waterfall-kid-path.mjs';
 import { testWaterfallTemVillage } from './remake-waterfall-tem-village.mjs';
 import { testTemArmor } from './remake-tem-armor.mjs';
 import { testTemShopRules } from './remake-tem-shop-rules.mjs';
+import { testTemShop } from './remake-tem-shop.mjs';
 import { testWaterfallBridgePath } from './remake-waterfall-bridge-path.mjs';
 import { testWaterfallWishingFlowers } from './remake-waterfall-wishing-flowers.mjs';
 import { testWaterfallTelescope } from './remake-waterfall-telescope.mjs';
@@ -727,6 +728,7 @@ try {
   await testWaterfallTemVillage(page);
   await testTemArmor(page);
   testTemShopRules();
+  await testTemShop(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
   await testWaterfallTelescope(page);

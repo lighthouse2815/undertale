@@ -11,7 +11,7 @@ const range=(a,b)=>Array.from({length:b-a+1},(_,i)=>dialogue[`obj_shop2_${a+i}`]
 
 // obj_shop2: cửa hàng Gerson, bao gồm nhánh tuyến giết và sau kết thúc.
 export class WaterfallShop extends Scene {
-  constructor(){super('WaterfallShop');}
+  constructor(key = 'WaterfallShop'){super(key);}
   preload(){
     const base=new URL('../assets/',import.meta.url);
     for(const [key,count] of [['spr_shop2_bg',1],['spr_shopkeeper2_body',1],['spr_shopkeeper2_arm',1],['spr_shopkeeper2_mouthbottom',1],['spr_shopkeeper2_mouthtop',1],['spr_shopkeeper2_eyes',5],['spr_heartsmall',1]])for(let i=0;i<count;i++)if(!this.textures.exists(`${key}:${i}`))this.load.image(`${key}:${i}`,new URL(`sprites/${key}/${key}_${i}.png`,base).href);
