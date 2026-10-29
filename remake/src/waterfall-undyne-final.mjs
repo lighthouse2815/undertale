@@ -8,14 +8,15 @@ export class WaterfallUndyneFinal {
   constructor(world, spawnName) {
     this.world = world; this.room = world.dataSource.name; this.spawnName = spawnName;
     this.stage = world.plot <= 120 ? 'waiting' : world.plot === 121 ? 'ready' : 'done'; this.locked = false; this.elapsed = 0; this.frame = 0; this.save = null; this.encounterEnabled = spawnName !== 'obj_markerB';
-    if (['room_water_undynefinal2', 'room_water_undynefinal3'].includes(this.room)) {
+    if (['room_water_undynefinal2', 'room_water_undynefinal3', 'room_fire1'].includes(this.room)) {
       const initial = world.roomObjects.find(entry => entry.item.ObjectName === 'obj_undynea_chaser');
       if (initial) { initial.image.destroy(); world.roomObjects = world.roomObjects.filter(entry => entry !== initial); }
       this.ice = world.roomObjects.find(entry => entry.item.ObjectName === 'obj_icegen_undynef2'); this.iceFrame = 0;
       this.ice?.image.setDepth(-1100000);
       if (this.ice && (world.flags[7] === 1 || murderLevel(world.flags) >= 7)) { this.ice.image.destroy(); world.roomObjects = world.roomObjects.filter(entry => entry !== this.ice); this.ice = null; }
       if (world.plot <= 121) {
-        if (this.room === 'room_water_undynefinal3') this.spawnChaser(world.player.x + (spawnName === 'obj_markerB' ? 100 : -100), 100);
+        if (this.room === 'room_fire1') { this.spawnChaser(world.player.x + (spawnName === 'obj_markerB' ? 60 : -60), 80); this.sansSeen = world.flags[67] === 1 || !world.hotlandSleepingSans?.sans; }
+        else if (this.room === 'room_water_undynefinal3') this.spawnChaser(world.player.x + (spawnName === 'obj_markerB' ? 100 : -100), 100);
         else this.spawnChaser(140, world.player.y + (spawnName === 'obj_markerB' ? -100 : 100));
         this.chaseDelay = 20; this.stage = 'chase';
         if (!world.waterfallMusic) { world.waterfallMusic = world.sound.add('mus_undynefast', { loop: true, volume: 1 }); world.waterfallMusic.play(); }
@@ -86,8 +87,8 @@ export class WaterfallUndyneFinal {
     } else if (this.stage === 'chaseBattle') {
       if (w.flags[350] === 1) { this.chaser?.destroy(); this.chaser = null; w.waterfallMusic?.destroy(); w.waterfallMusic = null; w.flags[17] = 0; w.plot = 122; this.locked = false; this.stage = 'done'; }
       else {
-        const x = this.room === 'room_water_undynefinal3' ? w.player.x + (this.spawnName === 'obj_markerB' ? 100 : -100) : this.room === 'room_water_undynefinal2' ? 140 : 160;
-        const y = this.room === 'room_water_undynefinal3' ? 100 : this.room === 'room_water_undynefinal2' ? w.player.y + (this.spawnName === 'obj_markerB' ? -100 : 130) : w.player.y > 600 ? 500 : 640;
+        const x = this.room === 'room_fire1' ? w.player.x + (this.spawnName === 'obj_markerB' ? 60 : -60) : this.room === 'room_water_undynefinal3' ? w.player.x + (this.spawnName === 'obj_markerB' ? 100 : -100) : this.room === 'room_water_undynefinal2' ? 140 : 160;
+        const y = this.room === 'room_fire1' ? 80 : this.room === 'room_water_undynefinal3' ? 100 : this.room === 'room_water_undynefinal2' ? w.player.y + (this.spawnName === 'obj_markerB' ? -100 : 130) : w.player.y > 600 ? 500 : 640;
         this.spawnChaser(x, y); this.locked = false; this.stage = 'chase';
       }
     } else if (this.stage === 'chaseReturn') {
@@ -137,8 +138,20 @@ export class WaterfallUndyneFinal {
       if (w.dialogue) return;
       this.phoneApproach = false;
     }
+    if (this.sansPause > 0) {
+      this.sansPause--;
+      if (this.sansPause === 60) c.setTexture('spr_undyne_helmet_u:0');
+      if (this.sansPause === 30) c.setTexture('spr_undyne_helmet_d_pissed:0');
+      else if (this.sansPause < 30) c.setTexture(`spr_undyne_helmet_d_pissed:${Math.floor(this.sansPause * .2) % w.dataSource.sprites.get('spr_undyne_helmet_d_pissed').TextureCount}`);
+      return;
+    }
     if (this.chaseDelay > 0) this.chaseDelay--;
-    else {
+    else if (this.room === 'room_fire1') {
+      const right = w.player.x > c.x + 20; c.x += right ? 3 : -3;
+      const frame = Math.floor(this.chaseFrames * .2) % 4; c.setTexture(`spr_undyne_helmet_${right ? 'r' : 'l'}:${frame}`).setDepth(c.y + 54);
+      if (frame !== this.chaseFrame && (frame === 1 || frame === 3)) w.sound.play('snd_undynestep'); this.chaseFrame = frame;
+      if (!this.sansSeen && c.x > 140 && c.x < 160) { this.sansSeen = true; this.sansPause = 75; }
+    } else {
       const dx = w.player.x - 4 - c.x, dy = w.player.y - 20 - c.y, length = Math.hypot(dx, dy) || 1, speed = (w.flags[99] ?? 0) > 3 ? 4 : 5;
       c.x += dx / length * speed; c.y += dy / length * speed;
       const direction = Math.abs(dy) > Math.abs(dx) ? dy < 0 ? 'u' : 'd' : dx < 0 ? 'l' : 'r';
