@@ -1,0 +1,64 @@
+{
+  "calling": [
+    "* Yo!"
+  ],
+  "speech": [
+    "* Yo, I know I'm not supposed\n  to be here, but...",
+    "* I wanna ask you something.",
+    "* ...",
+    "* Man, I've never had to ask\n  anyone this before...",
+    "* Umm...",
+    "* Yo... You're human, right?\n* Haha.",
+    "* Man! I knew it!",
+    "* ... well, I know it now,\n  I mean...",
+    "* Undyne told me, um, \"stay\n  away from that human.\"",
+    "* So, like, ummm...",
+    "* I guess that makes us enemies\n  or something.",
+    "* But I kinda stink at that,\n  haha.",
+    "* Yo, say something mean so\n  I can hate you?",
+    "* Please? \n \n         Yes         No ",
+    " "
+  ],
+  "fall": [
+    "* Yo, w-w-wait!\n* Help!\n* I tripped!"
+  ],
+  "wait": [
+    "* Wh-what are you standing\n  around for?\n* Get over here, dude!"
+  ],
+  "rescue": [
+    "* Y... y... yo... dude...",
+    "* If... If y-you wanna hurt\n  my friend...",
+    "* You're gonna have to get\n  through me, first."
+  ],
+  "thanks": [
+    "* She's gone...",
+    "* Yo, you really saved my skin.",
+    "* Guess being enemies was just\n  a nice thought, haha.",
+    "* We'll just have to be friends\n  instead.",
+    "* ... man, I should REALLY go\n  home...",
+    "* I bet my parents are worried\n  sick about me!"
+  ],
+  "goodbye": [
+    "* Later, dude!"
+  ],
+  "slip": [
+    "* I...\n* I'm slipping!"
+  ],
+  "aftermath": [
+    "* Undyne... you saved me...?",
+    "* Yo, I thought I was a\n  goner, haha...",
+    "* ... wait, are you okay?\n* It looks like you fell\n  pretty hard...",
+    "* Th-this is my fault.\n* I should have stayed away from\n  them, like you said.",
+    "* They just stood there...\n* Watching...\n* Waiting for me to fall.",
+    "* They just went straight to\n  fight you instead of\n  helping me...",
+    "* I was so scared, and you...",
+    "* What?\n* You're gonna go fight them\n  now?",
+    "* But you look hurt...\n* You should rest, haha...",
+    "* ...",
+    "* W-warriors don't rest, huh?",
+    "* Undyne... you're really cool."
+  ],
+  "charge": [
+    "* They just went straight to\n  fight you instead of\n  helping me..."
+  ]
+}
