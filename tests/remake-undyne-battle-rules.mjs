@@ -15,5 +15,18 @@ export function testUndyneBattleRules() {
   rules.rating = 7; rules.ratingb = 9; assert.equal(rules.plead(), true); assert.deepEqual([rules.rating, rules.ratingb], [9, 7]);
   rules.rating = 6; rules.ratingb = 6; assert.equal(rules.challenge(), false); assert.equal(rules.plead(), false);
   rules.ratingb = 9; assert.equal(rules.prepareAttack({ green: false, command: 0 }).firingRate, 10);
+  const threshold = new UndyneBattleRules();
+  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 75, maxHp: 100 }), { damageCause: 0, flag99: 0 });
+  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 74, maxHp: 100 }), { damageCause: 1, flag99: 0 });
+  assert.deepEqual([threshold.lesson, threshold.order], [6, 6]);
+  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 49, maxHp: 100 }), { damageCause: 2, flag99: 2 });
+  assert.deepEqual(threshold.prepareDialogue({ green: true, hp: 19, maxHp: 100, flag99: 4 }), { damageCause: 3, flag99: 4 });
+  assert.deepEqual([threshold.lesson, threshold.order, threshold.rating], [20, 22, 18]);
+  const redThreshold = new UndyneBattleRules();
+  assert.deepEqual(redThreshold.prepareDialogue({ green: false, hp: 1, maxHp: 100 }), { damageCause: 0, flag99: 0 });
+  assert.deepEqual([redThreshold.lesson, redThreshold.order], [1, 1]);
+  const skipped = new UndyneBattleRules();
+  assert.equal(skipped.prepareDialogue({ green: true, hp: 1, maxHp: 100 }).damageCause, 3);
+  assert.deepEqual([skipped.lesson, skipped.order, skipped.rating], [20, 22, 18]);
   console.log('✓ Undyne: thứ tự lượt, nhịp giáo và quy tắc Challenge/Plead');
 }

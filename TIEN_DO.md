@@ -1431,3 +1431,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã thêm bộ điều khiển lượt tấn công Undyne: phím và di chuyển SOUL xanh/đỏ, thời gian bất tử, kết quả refuse/chuyển pha và dọn tài nguyên; kiểm phím thật, kết thúc hai loại lượt và hồi quy giáo/truy đuổi, check/build qua. Bộ điều khiển chưa nối vào scene trận hoặc tiến trình; sát thương liên tục và toàn bộ chuyển pha vẫn cần kiểm khi tích hợp.
 
 Đã chuyển quy tắc lượt Undyne thường: tăng order/lesson, chọn giáo đỏ và nhịp theo ratingb, điều chỉnh rating sau đòn, Challenge/Plead. Kiểm các mốc và hai loại giáo đỏ, check/build qua. Đây mới là logic riêng, chưa tích hợp scene trận, chuyển màu SOUL, ngưỡng máu hay lời thoại.
+
+Đã bổ sung ngưỡng máu Undyne thường: đổi lesson/order ở dưới 75%, 50% và 20%, cập nhật cờ tiến trình và rating theo logic gốc. Kiểm mốc biên, nhảy nhiều ngưỡng và SOUL đỏ, check/build qua. Quy tắc chưa nối scene trận.
