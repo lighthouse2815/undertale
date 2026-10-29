@@ -6,6 +6,13 @@ import text from './hotland-alphys-intro.json' with { type: 'json' };
 const range = (first, last) => Array.from({ length: last - first + 1 }, (_, i) => first + i);
 const mettatonPoses = ['talk', 'wave', 'holdarm', 'clap', 'pointingup', 'cackle', 'silent', 'silent_behind'];
 
+// obj_labmusic: nhạc theo tiến trình, dùng chung giữa hai tầng lab.
+export function startLabMusic(world) {
+  const key = world.flags[7] === 1 ? 'mus_reunited' : world.plot > 125 && (world.flags[493] ?? 0) < 11 && murderLevel(world.flags) < 12 ? 'mus_lab' : 'mus_drone';
+  if (world.labMusic?.key === key) return;
+  world.labMusic?.destroy(); world.labMusic = world.sound.add(key, { loop: true, volume: key === 'mus_drone' ? .5 : 1, rate: key === 'mus_drone' ? .5 : 1 }); world.labMusic.play();
+}
+
 // obj_alphystrigger1: gặp Alphys, màn giới thiệu chương trình và hậu cảnh sau quiz.
 export class HotlandAlphysIntro {
   constructor(world) {
@@ -17,8 +24,7 @@ export class HotlandAlphysIntro {
     this.hole = world.roomObjects.find(e => e.item.ObjectName === 'obj_mettwallhole'); this.hole.image.setDepth(-100000).setVisible(world.plot >= 126 || murderLevel(world.flags) >= 12);
     if (this.stage === 'waiting') this.darkness = this.sprite('spr_darkhalo_big', world.player.x - 10, world.player.y - 5).setAlpha(.5).setDepth(99000);
     this.confetti = [];
-    const key = world.flags[7] === 1 ? 'mus_reunited' : world.plot > 125 && (world.flags[493] ?? 0) < 11 && murderLevel(world.flags) < 12 ? 'mus_lab' : 'mus_drone';
-    world.labMusic = world.sound.add(key, { loop: true, volume: key === 'mus_drone' ? .5 : 1, rate: key === 'mus_drone' ? .5 : 1 }); world.labMusic.play();
+    startLabMusic(world);
     if (world.plot >= 126 && murderLevel(world.flags) < 12) {
       this.actor = this.sprite('spr_alphys_l', world.plot === 126 ? 815 : 890, world.plot === 126 ? 120 : 65);
       if (world.plot > 126) this.actor.setDepth(-99999);
@@ -56,10 +62,6 @@ export class HotlandAlphysIntro {
     if (this.slideDirection) {
       this.slide = Math.max(0, Math.min(40, this.slide + this.slideDirection * 5)); this.slidingPanel.x = 880 + this.slide;
       if (this.slide === 0 || this.slide === 40) { this.slideDirection = 0; w.sound.play('snd_elecdoor_shut'); }
-    }
-    for (const belt of w.roomObjects.filter(e => e.item.ObjectName === 'obj_alphysconveyor')) {
-      const key = 'spr_conveyorbelt_d_blue', count = w.dataSource.sprites.get(key).TextureCount;
-      belt.image.setTexture(`${key}:${(belt.item.X < 550 ? this.frames : -this.frames % count + count) % count}`).setScale(1, 4.8).setDepth(-50000);
     }
     if (this.mettaton) this.pose(this.mettaton, this.mettatonPose ?? 'spr_mettaton_talk', this.frames * (this.stage === 'applause' ? .5 : .2));
     this.stepConfetti();

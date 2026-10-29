@@ -1,3 +1,4 @@
+import { testHotlandLabConveyors } from './remake-hotland-lab-conveyors.mjs';
 import { testHotlandAlphysPhone } from './remake-hotland-alphys-phone.mjs';
 import { testDimensionalBoxes } from './remake-dimensional-boxes.mjs';
 import { testHotlandAlphysIntro } from './remake-hotland-alphys-intro.mjs';
@@ -783,6 +784,7 @@ try {
   await testHotlandAlphysIntro(page);
   await testDimensionalBoxes(page);
   await testHotlandAlphysPhone(page);
+  await testHotlandLabConveyors(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
