@@ -1375,3 +1375,5 @@ Bộ tổng `test-remake-0148c1e.log` kết thúc lỗi ở Waterfall 9: tween g
 Đã nối ba bia lịch sử trong Waterfall 15, mỗi bia có hai vùng đọc và ba trang thoại; kiểm hướng nhìn, cả sáu vùng và dọn trạng thái khi rời phòng, hồi quy cửa/trận, check/build qua. Ghi chú trước gọi nhầm ba bia là hoa Echo. Hiệu ứng phòng, cuộc gọi Undyne và lối sang phòng 16 vẫn chưa chuyển.
 
 Đã tái dùng bộ hiển thị thác cho bốn thác ở Waterfall 15; kiểm vị trí, hoạt ảnh, dọn ảnh khi rời phòng và hồi quy thác ở trạm Waterfall, bia phòng 15, check/build qua. Đom đóm, nước khi đi qua, cuộc gọi Undyne và đường sang phòng 16 vẫn chưa chuyển.
+
+Đã thêm 11 đom đóm Waterfall 15: chuyển động theo vận tốc, ma sát và trọng lực, lớp sáng, hoạt ảnh và hai âm thanh tương tác có thời gian chờ. Kiểm chuyển động, âm thanh, dọn ảnh và hồi quy thác/bia trong trình duyệt; check/build qua. Cần đối chiếu thêm quỹ đạo và nhịp vật lý với game gốc; nước khi đi qua, cuộc gọi Undyne và đường sang phòng 16 vẫn chưa chuyển.
