@@ -1455,3 +1455,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã nối Check/Challenge/Plead của Undyne thường với bộ quy tắc và phản hồi theo rating, kể cả nhánh cuối trận. Kiểm các lựa chọn, thay đổi rating, lời tương ứng và ACT không hợp lệ; check/build qua. Menu ACT và scene trận vẫn chưa tích hợp.
 
 Đã chuyển lựa chọn lời trạng thái Undyne theo HP, order và lệnh ngẫu nhiên, gồm nhánh cuối trận. Kiểm biên nửa HP, các mốc ngẫu nhiên và lượt âm; check/build qua. Lời chưa nối vào menu scene trận.
+
+Đã thêm trạng thái Undyne cạn HP: chuyển order/lesson sang -40 một lần, tiếp tục đợt giáo và không áp lại ngưỡng máu khi đã vào pha này. Kiểm chuyển pha, lượt kế tiếp và không khởi tạo lặp; check/build qua. Hội thoại, hiệu ứng và kết thúc pha cạn HP chưa nối scene.

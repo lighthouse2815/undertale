@@ -40,6 +40,11 @@ export function testUndyneBattleRules() {
     assert.equal(defense.prepareDialogue({ green: false, hp, maxHp: 100 }).defense, expected);
     assert.equal(defense.prepareDialogue({ green: false, hp: 1, maxHp: 100 }).defense, null);
   }
+  const fatal = new UndyneBattleRules();
+  assert.equal(fatal.startDeath(), true); assert.deepEqual([fatal.died, fatal.order, fatal.lesson], [true, -40, -40]);
+  assert.equal(fatal.prepareDialogue({ green: true, hp: 0, maxHp: 100 }).damageCause, 0);
+  assert.deepEqual(fatal.prepareAttack({ green: false, command: 0 }), { kind: 'follow', lesson: -40, rating: 16, firingRate: 18, order: -39 });
+  assert.equal(fatal.startDeath(), false); assert.equal(fatal.order, -39);
   const colors = new UndyneBattleRules(); colors.lesson = 7;
   assert.equal(colors.finishAttack({ kind: 'green', shieldHits: 0, refuse: true }), false);
   assert.equal(colors.finishAttack({ kind: 'follow', shieldHits: 0, transition: null }), false);

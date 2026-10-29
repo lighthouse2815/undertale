@@ -1,7 +1,12 @@
 // Quy tắc lượt của Undyne thường; scene chịu trách nhiệm lời thoại và chuyển cảnh.
 export class UndyneBattleRules {
   constructor() {
-    this.order = 1; this.lesson = 1; this.rating = 16; this.ratingb = 0; this.berserk = false; this.hitfirst = 0; this.lastShieldHits = 0; this.defAdjusted = false;
+    this.order = 1; this.lesson = 1; this.rating = 16; this.ratingb = 0; this.berserk = false; this.hitfirst = 0; this.lastShieldHits = 0; this.defAdjusted = false; this.died = false;
+  }
+  startDeath() {
+    if (this.died) return false;
+    this.died = true; this.order = -40; this.lesson = -40;
+    return true;
   }
   enter({ flag99, flag98, hp }) {
     flag99++;
@@ -14,7 +19,7 @@ export class UndyneBattleRules {
   }
   prepareDialogue({ green, hp, maxHp, flag99 = 0 }) {
     let damageCause = 0;
-    if (green) {
+    if (green && !this.died) {
       if (hp < maxHp * .75 && this.lesson < 5) { this.lesson = 6; this.order = 6; damageCause = 1; }
       if (hp < maxHp * .5 && this.lesson < 11) { this.lesson = 11; this.order = 12; damageCause = 2; }
       if (hp < maxHp * .2 && this.lesson < 20) { this.lesson = 20; this.order = 22; damageCause = 3; this.rating += 2; }
