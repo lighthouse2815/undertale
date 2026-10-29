@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 export async function testWaterfallChasePath(page) {
+  await page.waitForFunction(() => __remake.game.scene.getScene('World').scene.isActive());
   await page.evaluate(async () => { const w = __remake.game.scene.getScene('World'); w.flags = {}; w.plot = 108; w.hp = w.maxHp = 20; await w.openRoom('room_water7'); w.player.setPosition(1060, 120); window.beforeChaseMusic = w.waterfallMusic; });
   await page.keyboard.down('ArrowRight'); await page.waitForFunction(() => __remake.phase === 'transition'); await page.keyboard.up('ArrowRight'); await page.waitForFunction(() => __remake.phase === 'running' && __remake.room === 'room_water8');
   assert.deepEqual(await page.evaluate(() => [__remake.scene.player.x, __remake.scene.player.y, __remake.scene.waterfallMusic === window.beforeChaseMusic]), [10, 190, true]);
