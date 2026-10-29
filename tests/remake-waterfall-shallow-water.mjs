@@ -17,6 +17,7 @@ export async function testWaterfallShallowWater(page) {
   });
   assert.deepEqual(result, { start: [false, false], enter: [true, true], wetVisual: [25, -1 / 6, 445, 130], repeated: 1, splashes: 2,
     leave: [false, false], dryVisual: [false, 0], enterBack: [true, true], leaveBack: [false, false], secondPool: [[true, true], [false, false]] });
+  await page.waitForFunction(() => !__remake.scene.scene.isActive());
   await page.evaluate(() => { const w = __remake.scene; w.waterfallEncounter.disabled = true; w.player.setPosition(400, 120); w.waterfallShallowWater.step(); w.scene.resume(); });
   await page.waitForFunction(() => __remake.scene.scene.isActive());
   await page.keyboard.down('ArrowRight'); await page.waitForFunction(() => __remake.scene.waterfallShallowWater.inWater); await page.keyboard.up('ArrowRight');

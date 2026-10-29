@@ -140,6 +140,7 @@ import { testWaterfallGlowflies } from './remake-waterfall-glowflies.mjs';
 import { testWaterfallShallowWater } from './remake-waterfall-shallow-water.mjs';
 import { testWaterfallGlowshroomPuzzle } from './remake-waterfall-glowshroom-puzzle.mjs';
 import { testWaterfallDarknessPuzzle } from './remake-waterfall-darkness-puzzle.mjs';
+import { testWaterfallUndyneHall } from './remake-waterfall-undyne-hall.mjs';
 import { testWaterfallBridgePath } from './remake-waterfall-bridge-path.mjs';
 import { testWaterfallWishingFlowers } from './remake-waterfall-wishing-flowers.mjs';
 import { testWaterfallTelescope } from './remake-waterfall-telescope.mjs';
@@ -709,6 +710,7 @@ try {
   await testWaterfallShallowWater(page);
   await testWaterfallGlowshroomPuzzle(page);
   await testWaterfallDarknessPuzzle(page);
+  await testWaterfallUndyneHall(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
   await testWaterfallTelescope(page);
