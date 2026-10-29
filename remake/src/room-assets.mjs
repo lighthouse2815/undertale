@@ -115,7 +115,7 @@ export async function loadRoom(scene, name) {
   const ruins13 = ['room_ruins12B', 'room_ruins13'].includes(name);
   const ruins13Dialogue = ruins13 ? await json(new URL('./ruins13.json', import.meta.url).href) : null;
   const ruinsStartDialogue = ruinsStart ? await json(new URL('./ruins-start.json', import.meta.url).href) : null;
-  if ((dummyLesson || spikeGuide || candyRoom || boxRoad || snowman || niceCream) && !scene.cache.json.exists('inventory')) scene.cache.json.add('inventory',
+  if ((dummyLesson || spikeGuide || candyRoom || boxRoad || snowman || niceCream || ['room_fire_lab1','room_fire_lab2'].includes(name)) && !scene.cache.json.exists('inventory')) scene.cache.json.add('inventory',
     await json(new URL('./inventory.json', import.meta.url).href));
   const tutorialDialogue = ruinsTutorial ? await json(new URL('./ruins-tutorial.json', import.meta.url).href) : null;
   const switchDialogue = ruinsSwitches ? await json(new URL('./ruins-switches.json', import.meta.url).href) : null;
@@ -224,6 +224,8 @@ export async function loadRoom(scene, name) {
   if (['room_water_undynefinal2', 'room_water_undynefinal3', 'room_fire1', 'room_fire2'].includes(name)) for (const direction of ['d','u','l','r']) spriteNames.add(`spr_undyne_helmet_${direction}`);
   if (name === 'room_fire_prelab') for (const key of ['spr_royalguard_dragon_d', 'spr_forcefield_right', 'spr_forcefield_right_middle']) spriteNames.add(key);
   if (name === 'room_fire_lab1') for (const key of ['spr_slidingdoor', 'spr_darkhalo_big', 'spr_exc', 'spr_alphys_freaked', 'spr_conveyorbelt_d_blue', ...['d','u','l','r','dt','ut','lt','rt'].map(d => `spr_alphys_${d}`), ...Array.from({length:10}, (_,i) => `spr_alphysface_${i}`), ...['talk','wave','holdarm','clap','pointingup','cackle','silent','silent_behind'].map(p => `spr_mettaton_${p}`), 'spr_gameshowlogo', 'spr_discoball', 'spr_confetti']) spriteNames.add(key);
+  if (['room_fire_lab1','room_fire_lab2'].includes(name)) spriteNames.add('spr_heartsmall');
+  if (name === 'room_fire_lab2') spriteNames.add('spr_mett_o_upperbody');
   if (name === 'room_fire_lab2') for (const key of ['spr_conveyorbelt_d_blue', 'spr_conveyorbelt_r_blue']) spriteNames.add(key);
   if (name === 'room_fire_prelab') for (const key of ['spr_labdoor_hang', 'spr_alabdoor_piece']) spriteNames.add(key);
   if (name === 'room_fire2') for (const key of ['spr_face_undyne1', 'spr_heartsmall', 'spr_watercooler_water', 'spr_coolerpuddle', 'spr_mainchara_pourwater', ...['d','u','l','r'].map(direction => `spr_mainchara${direction}_water`)]) spriteNames.add(key);
@@ -336,6 +338,7 @@ export async function loadRoom(scene, name) {
     ...(['room_water_undynefinal2', 'room_water_undynefinal3', 'room_fire1'].includes(name) ? ['mus_undynefast', 'snd_undynestep'] : []),
     ...(name === 'room_water_undynefinal3' ? ['snd_phone'] : []),
     ...(name === 'room_fire2' ? ['snd_noise'] : []),
+    ...(['room_fire_lab1','room_fire_lab2'].includes(name) ? ['snd_item'] : []),
     ...(name === 'room_fire_lab2' ? ['mus_lab', 'mus_drone', 'mus_reunited'] : []),
     ...(['room_fire_prelab', 'room_fire_lab1'].includes(name) ? ['snd_elecdoor_open', 'snd_elecdoor_close', 'snd_elecdoor_shut'] : []),
     ...(name === 'room_fire_lab1' ? ['mus_alphysfix', 'mus_lab', 'mus_drone', 'mus_reunited', 'mus_mettsmash', 'mus_mtgameshow', 'mus_mett_cheer', 'mus_mett_applause', 'snd_b', 'snd_noise', 'snd_laz', 'snd_drumroll', 'snd_bell'] : []),
