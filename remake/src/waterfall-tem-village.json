@@ -1,0 +1,99 @@
+{
+  "tem0": [
+    "obj_temnpc_72\", \"* hOI!!\n* im temmie!!!",
+    "obj_temnpc_73\", \"* and dis is my friend...\n* temmie!!!"
+  ],
+  "tem1": [
+    "obj_temnpc_82\", \"* hOI!!\n* im temmie!!!",
+    "obj_temnpc_83\", \"* don forget my friend!"
+  ],
+  "tem2": [
+    "obj_temnpc_93\", \"* Hi.",
+    "obj_temnpc_94\", \"* I'm Bob."
+  ],
+  "tem3": [
+    "obj_temnpc_103\", \"* awawawawah!!",
+    "obj_temnpc_104\", \"* humans...\n* such a...",
+    "obj_temnpc_105\", \"* CUTE!!!!"
+  ],
+  "tem4": [
+    "obj_temnpc_116\", \"* tem... WATCH EGG!!!",
+    "obj_temnpc_117\", \"* eg... wil HATCH!!!",
+    "obj_temnpc_118\", \"* tem... PROUD PARENT!!"
+  ],
+  "end0": [
+    "obj_temnpc_77\", \"* woa... tem hear news...\n* VERY GOODS!!!"
+  ],
+  "end1": [
+    "obj_temnpc_87\", \"* yaYA!!!\n* tems can go free!!"
+  ],
+  "end2": [
+    "obj_temnpc_98\", \"* A pleasing development, no?"
+  ],
+  "end3": [
+    "obj_temnpc_109\", \"* woa...\n* if tems can go on surface,\n  can see,",
+    "obj_temnpc_110\", \"* LOT OF CUTES HUNAN!!!"
+  ],
+  "end4": [
+    "obj_temnpc_122\", \"* everyones go free...\n* BUT TEM!!!",
+    "obj_temnpc_123\", \"* TEM NOT LEAV!!!\n* TEM WATCH EG!!!",
+    "obj_temnpc_124\", \"* tem will be happily fambily,"
+  ],
+  "sign1": [
+    "obj_sign_room_220\", \"* hOI!!\n* welcom to...\n* TEM VILLAGE!!!"
+  ],
+  "sign2": [
+    "obj_sign_room_221\", \"* hOI!!\n* u shud check out...\n* TEM SHOP!!!"
+  ],
+  "sign3": [
+    "obj_sign_room_222\", \"* yaYA!! i AGREES!!\n* shud check...\n* TEM SHOP!!!"
+  ],
+  "read1": [
+    "obj_readable_room1_652\", \"* (Rich history of Tem.)"
+  ],
+  "read2": [
+    "obj_readable_room2_560\", \"* (Feeling of being watched.)"
+  ],
+  "read2end": [
+    "obj_readable_room2_563\", \"* (She's waiting for someone to\n  let her out.)"
+  ],
+  "read3": [
+    "obj_readable_room3_325\", \"* (Statue of tem... very famus)\n* (VERY!!!!!!!!!)"
+  ],
+  "egg": [
+    "obj_npc_room_817\", \"* (It's hard-boiled.)"
+  ],
+  "hivefirst": [
+    "obj_hivestem_103\", \"* p...\n* tem heard human allergics\n  to tem...",
+    "obj_hivestem_104\", \"* dat OK...\n* tem understan...",
+    "obj_hivestem_105\", \"* tem...\n* ALSO allergic to tem!!!"
+  ],
+  "hive": [
+    "obj_hivestem_99\", \"* hOIVS!"
+  ],
+  "dance": [
+    "obj_judgeshroom_187\", \"* Mushroom dance\n* Mushroom dance\n* Whatever could it mean"
+  ],
+  "dancefirst": [
+    "obj_judgeshroom_213\", \"* It symbolizes my inner\n  torment, trapped here\n  by my hyphae.",
+    "obj_judgeshroom_214\", \"* My struggle to pull away.\n* My struggle to escape.\n* But alas, to no avail."
+  ],
+  "dancerepeat": [
+    "obj_judgeshroom_218\", \"* If only I could see the\n  world above.",
+    "obj_judgeshroom_219\", \"* But even if the barrier\n  was open, how would I\n  leave...?"
+  ],
+  "dancekill": [
+    "obj_judgeshroom_224\", \"* It means you've lived a\n  life of sin."
+  ],
+  "dancekillrepeat": [
+    "obj_judgeshroom_226\", \"* It means...\n* Don't talk to me."
+  ],
+  "danceending": [
+    "obj_judgeshroom_231\", \"* It symbolizes my unbridled\n  happiness.",
+    "obj_judgeshroom_232\", \"* The government told me\n  they are willing to\n  transplant me outside!",
+    "obj_judgeshroom_233\", \"* Why didn't you smile at my\n  dance? It almost feels\n  a little rude..."
+  ],
+  "save": [
+    "SCR_TEXT_165\", \"* (You feel... something.)\n* (You're filled with\n  detemmienation.)"
+  ]
+}

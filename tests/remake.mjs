@@ -146,6 +146,7 @@ import { testWaterfallFlowerHall } from './remake-waterfall-flower-hall.mjs';
 import { testWaterfallKidBridge } from './remake-waterfall-kid-bridge.mjs';
 import { testWaterfallPuzzleHater } from './remake-waterfall-puzzle-hater.mjs';
 import { testWaterfallKidPath } from './remake-waterfall-kid-path.mjs';
+import { testWaterfallTemVillage } from './remake-waterfall-tem-village.mjs';
 import { testWaterfallBridgePath } from './remake-waterfall-bridge-path.mjs';
 import { testWaterfallWishingFlowers } from './remake-waterfall-wishing-flowers.mjs';
 import { testWaterfallTelescope } from './remake-waterfall-telescope.mjs';
@@ -721,6 +722,7 @@ try {
   await testWaterfallKidBridge(page);
   await testWaterfallPuzzleHater(page);
   await testWaterfallKidPath(page);
+  await testWaterfallTemVillage(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
   await testWaterfallTelescope(page);
