@@ -1479,3 +1479,5 @@ Bộ tổng chạy từ ec2c1a8 dừng ở kiểm thử Waterfall 18→19: scene
 Đã chuyển biển Hotland trong hành lang: chữ chạy, lớp ô che, ba viền đổi sáng và trạng thái mờ đứng yên sau khi hạ Undyne. Kiểm nhịp chạy/quay vòng, trạng thái sau trận và dọn khi đổi phòng, hồi quy đường Undyne; check/build qua. Lối sang Hotland và toàn bộ khu vực tiếp theo chưa hoàn thành.
 
 Đã chuyển nền phòng đầu Hotland với năm lớp dung nham chuyển động khác tốc độ/độ mờ và lớp bóng đá, dọn khi đổi phòng. Kiểm vị trí, tốc độ, độ mờ, dọn và hồi quy hành lang Undyne; check/build qua. Phòng mới chỉ mở trực tiếp để kiểm thử, cửa, truy đuổi, Sans, nước và các phòng Hotland còn chưa chuyển.
+
+Đã chuyển Sans ngủ ở phòng đầu Hotland: điều kiện biến mất theo plot/cờ, hoạt ảnh ngủ và ba chữ Z bay lặp, dọn khi chuyển phòng. Kiểm hoạt ảnh, các điều kiện và dọn; hồi quy nền/phòng Undyne, check/build qua. Tương tác của Undyne với Sans và đường tới Hotland chưa nối.
