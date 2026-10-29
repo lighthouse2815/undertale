@@ -13,13 +13,13 @@ const patterns = [
 export function loadUndyneGreenWaveAssets(scene) { loadUndyneGreenSoulAssets(scene); loadUndyneGreenSpearAssets(scene); }
 
 export class UndyneGreenWave {
-  constructor(scene, lesson, { rating = 10, damage = 7, duration = 200 } = {}) {
+  constructor(scene, lesson, { rating = 10, damage = 7, duration = lesson < 0 ? 300 : 200 } = {}) {
     const key = lesson > 20 ? 21 : lesson;
     let pattern = patterns[key] ?? laterPatterns[key];
     if (lesson === 9) pattern = [[0,0,2,3 / (rating >= 11 ? rating - 1 : rating)], ...[3,1,2,3,1,2].map(site => [site,0,1,1.5])];
     if (lesson === 10) pattern = [[0,0,.1,1], [0,0,.1,1.5], [0,0,2 + (rating <= 11 ? .5 : 0),2], [1,0,.1,1], [1,0,.1,1.5], [1,0,2 + (rating <= 11 ? .5 : 0),2], ...[2,3,2,3].map(site => [site,0,1,2])];
     if (!pattern) throw new RangeError(`Chưa có chuỗi giáo ${lesson}`);
-    this.refuse = [6, 11, 20].includes(lesson);
+    this.refuse = [6, 11, 20, -7, -10, -14].includes(lesson);
     this.scene = scene; this.soul = new UndyneGreenSoul(scene); this.frames = 0; this.rating = rating; this.damage = damage; this.duration = duration;
     this.sequence = pattern.map(([site, type, time, speed]) => ({ site: site === 4 ? Math.floor(Math.random() * 4) : site, type: type === 3 ? Math.floor(Math.random() * 2) : type, time: time || (type === 2 ? 0 : 1), speed: speed || 1 }));
     this.index = 0; this.next = 5; this.bullets = []; this.done = false;
