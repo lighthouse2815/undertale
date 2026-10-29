@@ -28,3 +28,17 @@ export function undyneBattleSpeech({ order, command, damageCause = 0, earlyReact
   }
   return { ids, lines: ids.map(id => text[id]), longBubble, uncancellable };
 }
+
+// ACT dùng trực tiếp bộ quy tắc để trạng thái và lời phản hồi luôn cùng một nhánh.
+export function undyneBattleAct(rules, action, dying = false) {
+  let ids;
+  if (action === 'check') ids = [1145];
+  else if (action === 'challenge') {
+    const changed = rules.challenge();
+    ids = [dying ? 1182 : !changed ? 1168 : rules.rating === 7 ? 1176 : 1174];
+  } else if (action === 'plead') {
+    const changed = rules.plead();
+    ids = dying ? [1215] : changed ? [1209,1210] : [1205];
+  } else throw new RangeError(`ACT không hợp lệ: ${action}`);
+  return { ids, lines: ids.map(id => text[id]) };
+}

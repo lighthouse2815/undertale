@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
-import { undyneBattleSpeech } from '../remake/src/undyne-battle-dialogue.mjs';
+import { undyneBattleSpeech, undyneBattleAct } from '../remake/src/undyne-battle-dialogue.mjs';
+
+import { UndyneBattleRules } from '../remake/src/undyne-battle-rules.mjs';
 
 export function testUndyneBattleDialogue() {
   const select = (order, extra = {}) => undyneBattleSpeech({ order, command: 50, ...extra });
@@ -14,5 +16,15 @@ export function testUndyneBattleDialogue() {
   assert.deepEqual(select(30).ids, [672]);
   assert.equal(select(6).uncancellable, true); assert.equal(select(3).uncancellable, false);
   for (let order = -40; order <= 30; order++) assert.ok(select(order).lines.every(line => typeof line === 'string'));
+  const rules = new UndyneBattleRules();
+  assert.deepEqual(undyneBattleAct(rules, 'check').ids, [1145]);
+  assert.deepEqual(undyneBattleAct(rules, 'challenge').ids, [1174]);
+  assert.equal(rules.rating, 12);
+  rules.rating = 8; assert.deepEqual(undyneBattleAct(rules, 'challenge').ids, [1176]);
+  assert.deepEqual(undyneBattleAct(rules, 'plead').ids, [1209,1210]);
+  rules.rating = 6; rules.ratingb = 0; assert.deepEqual(undyneBattleAct(rules, 'plead').ids, [1205]);
+  assert.deepEqual(undyneBattleAct(rules, 'challenge', true).ids, [1182]);
+  assert.deepEqual(undyneBattleAct(rules, 'plead', true).ids, [1215]);
+  assert.throws(() => undyneBattleAct(rules, 'unknown'), RangeError);
   console.log('✓ Undyne: chọn hội thoại theo lượt và nhánh trận');
 }

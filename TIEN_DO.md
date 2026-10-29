@@ -1451,3 +1451,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã bổ sung điều chỉnh phòng thủ Undyne thường khi sang SOUL đỏ cuối trận, theo sáu mốc HP và chỉ áp dụng một lần. Kiểm các mốc và không áp lặp, check/build qua. Scene trận chưa dùng giá trị phòng thủ này.
 
 Đã chuyển lựa chọn hội thoại lượt Undyne thường theo order, damagecause, MERCY, lần gặp lại và phản ứng lọt giáo; gồm các lượt âm cuối trận, loại hộp và khóa bỏ qua. Kiểm các nhánh chọn và dữ liệu, check/build qua. Chưa nối bộ chọn vào scene boss; màu chữ, tiếng và hoạt ảnh hội thoại còn cần đối chiếu.
+
+Đã nối Check/Challenge/Plead của Undyne thường với bộ quy tắc và phản hồi theo rating, kể cả nhánh cuối trận. Kiểm các lựa chọn, thay đổi rating, lời tương ứng và ACT không hợp lệ; check/build qua. Menu ACT và scene trận vẫn chưa tích hợp.
