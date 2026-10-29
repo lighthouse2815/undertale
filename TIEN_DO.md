@@ -1413,3 +1413,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã thêm hình SOUL xanh và vẽ khiên theo góc gốc, nối bộ hướng vào đối tượng scene riêng; kiểm tải sprite, vị trí, chặn và dọn trong scene trận, hồi quy truy đuổi và check/build qua. Chưa có giáo, xử lý phím trong vòng trận hoặc trận Undyne; hiệu ứng chặn cần tiếp tục đối chiếu.
 
 Đã thêm giáo thường cho SOUL xanh: bay từ bốn hướng, mask gốc chạm đường chắn/tâm, tiếng đỡ, sát thương và dọn. Kiểm cả bốn hướng, đỡ và lọt trong scene trận cùng hồi quy truy đuổi, check/build qua. Cần chuyển bộ phát theo các lượt, giáo vàng đổi hướng, vòng xử lý phím và ghép vào trận Undyne; va chạm/nhịp thực tế còn cần đối chiếu thêm.
+
+Đã thêm giáo vàng SOUL xanh: bay vào, vòng 10 frame sang phía đối diện theo tốc độ/rating và dùng mask riêng; chỉnh va chạm dựa trên đường chắn thực tế. Kiểm quỹ đạo, đỡ bốn hướng, đỡ sai gây sát thương và dọn trong scene, hồi quy giáo thường/SOUL/truy đuổi, check/build qua. Bộ phát theo lượt và trận Undyne chưa nối; cần đối chiếu thêm mask, nhịp và va chạm nhiều giáo.
