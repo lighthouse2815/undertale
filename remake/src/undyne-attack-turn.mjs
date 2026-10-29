@@ -10,7 +10,7 @@ export function loadUndyneAttackTurnAssets(scene) {
 // Một lượt né của Undyne; scene boss quyết định menu, lời thoại và pha tiếp theo.
 export class UndyneAttackTurn {
   constructor(scene, { kind, lesson = 1, rating = 16, damage = 7, firingRate, duration, undying = false, order = 0, onComplete } = {}) {
-    this.scene = scene; this.kind = kind; this.onComplete = onComplete; this.elapsed = 0; this.hits = 0; this.finished = false; this.lesson = lesson; this.undying = undying; this.phase = 'wave';
+    this.scene = scene; this.kind = kind; this.onComplete = onComplete; this.elapsed = 0; this.hits = 0; this.shieldHits = 0; this.finished = false; this.lesson = lesson; this.undying = undying; this.phase = 'wave';
     const options = { damage, undying, order };
     if (duration !== undefined) options.duration = duration;
     if (firingRate !== undefined) options.firingRate = firingRate;
@@ -60,7 +60,7 @@ export class UndyneAttackTurn {
       }
       done = --this.redFrames <= 0;
     } else done = this.wave.step({ up: input('up'), down: input('down'), left: input('left'), right: input('right') });
-    if (s.hp < hp) this.hits++;
+    if (s.hp < hp) { this.hits++; if (this.kind === 'green' && this.phase === 'wave') this.shieldHits++; }
     s.bullets = this.wave.bullets;
     s.soul.setTexture(`${(this.kind === 'green' && this.phase !== 'red' || this.phase === 'green') ? 'spr_heartgreen' : 'spr_heart'}:${s.invFrames > 0 ? Math.floor(s.invFrames * .5) % 2 : 0}`);
     if (s.hp <= 0) { this.finished = true; this.wave.destroy(); this.spear?.image.destroy(); s.die(); return true; }
@@ -68,7 +68,7 @@ export class UndyneAttackTurn {
     if (done && this.phase === 'wave' && this.kind !== 'green' && this.wave.transition && !this.undying) { this.phase = 'returnGreen'; this.switchFrames = this.wave.transition.delay - 8; return false; }
     if (done && this.phase === 'wave' && this.kind === 'green' && this.wave.refuse && !this.undying && [6, 11, 20].includes(this.lesson)) { this.phase = 'switch'; this.switchFrames = 10; return false; }
     if (done) {
-      this.spear?.image.destroy(); this.finished = true; const result = { kind: this.kind, hits: this.hits, refuse: this.wave.refuse ?? false, transition: this.wave.transition ?? null };
+      this.spear?.image.destroy(); this.finished = true; const result = { kind: this.kind, hits: this.hits, shieldHits: this.shieldHits, refuse: this.wave.refuse ?? false, transition: this.wave.transition ?? null };
       this.wave.destroy(); s.bullets = []; this.onComplete?.(result); return true;
     }
     return false;
