@@ -28,6 +28,13 @@ export function testUndyneBattleRules() {
   const skipped = new UndyneBattleRules();
   assert.equal(skipped.prepareDialogue({ green: true, hp: 1, maxHp: 100 }).damageCause, 3);
   assert.deepEqual([skipped.lesson, skipped.order, skipped.rating], [20, 22, 18]);
+  const first = new UndyneBattleRules();
+  assert.deepEqual(first.enter({ flag99: 0, flag98: 2, hp: 0 }), { flag99: 1, hp: 1400, emotion: 0, green: true });
+  for (const [oldFlag, lesson, order, emotion, green] of [[1, 8, 9, 1, true], [2, 13, 15, 4, true], [3, 22, 22, 5, false], [5, 22, 22, 5, false]]) {
+    const resumed = new UndyneBattleRules();
+    assert.deepEqual(resumed.enter({ flag99: oldFlag, flag98: 0, hp: 850 }), { flag99: oldFlag + 1, hp: 850, emotion, green });
+    assert.deepEqual([resumed.lesson, resumed.order], [lesson, order]);
+  }
   const colors = new UndyneBattleRules(); colors.lesson = 7;
   assert.equal(colors.finishAttack({ kind: 'green', shieldHits: 0, refuse: true }), false);
   assert.equal(colors.finishAttack({ kind: 'follow', shieldHits: 0, transition: null }), false);

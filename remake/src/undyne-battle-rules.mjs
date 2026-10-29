@@ -3,6 +3,15 @@ export class UndyneBattleRules {
   constructor() {
     this.order = 1; this.lesson = 1; this.rating = 16; this.ratingb = 0; this.berserk = false; this.hitfirst = 0; this.lastShieldHits = 0;
   }
+  enter({ flag99, flag98, hp }) {
+    flag99++;
+    if (flag99 === 1) hp = flag98 === 2 ? 1400 : 1500;
+    const emotion = flag99 === 2 ? 1 : flag99 === 3 ? 4 : flag99 > 3 ? 5 : 0;
+    if (flag99 === 2) { this.lesson = 8; this.order = 9; }
+    else if (flag99 === 3) { this.lesson = 13; this.order = 15; }
+    else if (flag99 >= 4) { this.lesson = 22; this.order = 22; }
+    return { flag99, hp, emotion, green: flag99 < 4 };
+  }
   prepareDialogue({ green, hp, maxHp, flag99 = 0 }) {
     let damageCause = 0;
     if (green) {
