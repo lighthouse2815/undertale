@@ -1449,3 +1449,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã chuyển quy tắc khởi tạo lần đầu và gặp lại Undyne thường: HP lần đầu/theo cờ, giữ HP sau chạy thoát, biểu cảm, màu SOUL và lesson/order theo số lần. Kiểm các lần gặp, HP và tuyến đầu, check/build qua. Quy tắc chưa nối cảnh gặp lại, chạy thoát hay scene trận.
 
 Đã bổ sung điều chỉnh phòng thủ Undyne thường khi sang SOUL đỏ cuối trận, theo sáu mốc HP và chỉ áp dụng một lần. Kiểm các mốc và không áp lặp, check/build qua. Scene trận chưa dùng giá trị phòng thủ này.
+
+Đã chuyển lựa chọn hội thoại lượt Undyne thường theo order, damagecause, MERCY, lần gặp lại và phản ứng lọt giáo; gồm các lượt âm cuối trận, loại hộp và khóa bỏ qua. Kiểm các nhánh chọn và dữ liệu, check/build qua. Chưa nối bộ chọn vào scene boss; màu chữ, tiếng và hoạt ảnh hội thoại còn cần đối chiếu.
