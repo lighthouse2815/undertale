@@ -330,6 +330,7 @@ export async function loadRoom(scene, name) {
     ...(['room_water_undynefinal2', 'room_water_undynefinal3', 'room_fire1'].includes(name) ? ['mus_undynefast', 'snd_undynestep'] : []),
     ...(name === 'room_water_undynefinal3' ? ['snd_phone'] : []),
     ...(name === 'room_fire2' ? ['snd_noise'] : []),
+    ...(['room_fire2', 'room_fire_prelab'].includes(name) ? ['mus_oogloop', 'mus_toomuch', 'mus_reunited'] : []),
     ...(name === 'room_water21' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water20' ? ['snd_spearappear', 'snd_spearrise', 'snd_fall', 'snd_undynestep', 'snd_grab', 'mus_ambientwater'] : []),
     ...(name === 'room_water19' ? ['snd_splash', 'snd_noise', 'mus_ambientwater'] : []),
