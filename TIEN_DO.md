@@ -1429,3 +1429,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã chuyển đợt giáo mọc SOUL đỏ: ba cột không lặp liên tiếp, báo trước, lao, giữ/mờ, clip khung, sát thương và mốc chuyển lại SOUL xanh. `remake-undyne-rising-spear-wave.mjs` kiểm nhịp/cột, hai hướng, sát thương và dọn trong scene; hồi quy giáo đuổi/SOUL xanh/truy đuổi, check/build qua. Chưa nối vào trận; cần đối chiếu từng frame, vùng va chạm và chơi liên tục.
 
 Đã thêm bộ điều khiển lượt tấn công Undyne: phím và di chuyển SOUL xanh/đỏ, thời gian bất tử, kết quả refuse/chuyển pha và dọn tài nguyên; kiểm phím thật, kết thúc hai loại lượt và hồi quy giáo/truy đuổi, check/build qua. Bộ điều khiển chưa nối vào scene trận hoặc tiến trình; sát thương liên tục và toàn bộ chuyển pha vẫn cần kiểm khi tích hợp.
+
+Đã chuyển quy tắc lượt Undyne thường: tăng order/lesson, chọn giáo đỏ và nhịp theo ratingb, điều chỉnh rating sau đòn, Challenge/Plead. Kiểm các mốc và hai loại giáo đỏ, check/build qua. Đây mới là logic riêng, chưa tích hợp scene trận, chuyển màu SOUL, ngưỡng máu hay lời thoại.
