@@ -1421,3 +1421,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã bổ sung chuỗi giáo xanh Undyne thường lesson 4–20 và chuỗi lặp >20, hướng ngẫu nhiên, hai nhánh rating và dấu hiệu refuse ở 6/11/20. Kiểm số lượng/thứ tự chuỗi, điều kiện rating/ngẫu nhiên và hồi quy SOUL/giáo/truy đuổi trong scene; check/build qua. Dấu refuse chưa nối hành vi boss, còn các chuỗi lesson âm của Undyne the Undying, đếm ảnh giáo, nhịp/va chạm thực tế và tích hợp trận.
 
 Đã bổ sung chuỗi giáo xanh Undyne the Undying lesson -5 đến -14, thời hạn 300 frame, hướng ngẫu nhiên và dấu refuse tại -7/-10/-14. Kiểm số lượng giáo/tuyến refuse/ngẫu nhiên, hồi quy các chuỗi thường và va chạm trong scene, check/build qua. Chưa nối trận, phần chuyển SOUL đỏ/xanh, các chuỗi giáo khác và biểu cảm boss vẫn cần chuyển.
+
+Đã thêm đếm thứ tự ảnh giáo trắng: giáo đầu nổi bật, các giáo sau chuyển ảnh khi giáo trước bị đỡ/trúng; tín hiệu áp dụng frame kế tiếp và cả giáo vàng cùng tồn tại. Kiểm hai giáo/đổi ảnh, hồi quy chuỗi SOUL xanh và truy đuổi trong trình duyệt, check/build qua. Cần đối chiếu thêm trường hợp nhiều giáo bị xử lý cùng frame và tích hợp trận Undyne.

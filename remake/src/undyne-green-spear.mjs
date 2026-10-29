@@ -22,7 +22,7 @@ export class UndyneGreenSpear {
     this.centerX = (scene.soul.x + 4) * 2; this.centerY = (scene.soul.y + 4) * 2;
     this.x = this.centerX + offset[0]; this.y = this.centerY + offset[1];
     this.vx = -Math.sign(offset[0]) * 8 * speed; this.vy = -Math.sign(offset[1]) * 8 * speed;
-    this.key = `spr_bullet_test_${['l', 'r', 'u', 'd'][site]}`; this.frame = highlighted ? 1 : 0;
+    this.key = `spr_bullet_test_${['l', 'r', 'u', 'd'][site]}`; this.frame = highlighted ? 1 : 0; this.countdown = highlighted ? 1 : 2; this.pendingAdvance = false;
     const sprite = scene.cache.json.get(this.key);
     this.image = scene.add.image(this.x / 2, this.y / 2, `${this.key}:${this.frame}`).setOrigin(sprite.OriginX / sprite.Width, sprite.OriginY / sprite.Height).setScale(.5).setDepth(1000).setAlpha(0);
   }
@@ -35,6 +35,8 @@ export class UndyneGreenSpear {
   }
   step() {
     if (this.done) return true;
+    if (this.pendingAdvance) { this.countdown--; this.pendingAdvance = false; }
+    if (this.countdown <= 1 && this.mask === 'spr_bullet_test:mask' && this.frame !== 1) { this.frame = 1; this.image.setTexture(`${this.key}:1`); }
     this.age++; this.x += this.vx; this.y += this.vy;
     this.image.setPosition(this.x / 2, this.y / 2).setAlpha(Math.min(1, this.age * .2));
     const x = this.centerX, y = this.centerY, ideal = this.greenSoul.shield.ideal;

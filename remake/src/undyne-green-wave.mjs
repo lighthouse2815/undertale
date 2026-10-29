@@ -32,15 +32,19 @@ export class UndyneGreenWave {
       if (entry.type === 2) {
         // Giáo vàng nhận site=time và speed mặc định; giáo thường nhận site/speed của scr_sr.
         this.bullets.push(new UndyneGreenYellowSpear(this.scene, this.soul, entry.time, { damage: this.damage, rating: this.rating }));
-        this.bullets.push(new UndyneGreenSpear(this.scene, this.soul, entry.site, options));
+        const white = new UndyneGreenSpear(this.scene, this.soul, entry.site, { ...options, highlighted: false }); white.countdown = this.bullets.length + 1; this.bullets.push(white);
       } else {
         const Type = entry.type === 1 ? UndyneGreenYellowSpear : UndyneGreenSpear;
-        this.bullets.push(new Type(this.scene, this.soul, entry.site, options));
+        const white = new Type(this.scene, this.soul, entry.site, { ...options, highlighted: this.bullets.length === 0 });
+        if (entry.type === 0) white.countdown = this.bullets.length + 1;
+        this.bullets.push(white);
       }
       this.next = this.frames + Math.max(1, Math.round(this.rating * (entry.type === 2 ? 2 : entry.time)));
       if (this.rating > 8) this.rating--;
     }
-    for (const bullet of this.bullets) bullet.step();
+    let removed = false;
+    for (const bullet of this.bullets) if (bullet.step()) removed = true;
+    if (removed) for (const bullet of this.bullets) if (!bullet.done) bullet.pendingAdvance = true;
     this.bullets = this.bullets.filter(bullet => !bullet.done);
     this.done = this.frames >= this.duration || this.frames > 30 && this.index === this.sequence.length && !this.bullets.length;
     if (this.done) this.destroy();
