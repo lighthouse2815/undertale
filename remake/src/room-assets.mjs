@@ -216,7 +216,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_water_onionsan') for (const key of ['spr_onionblue','spr_oniontblue','spr_onionsan_kawaii','spr_onionsan_yhear','spr_onionsan_wistful','spr_onionsan_disappoint','spr_oniont_l','spr_oniont_r','spr_oniont_coyl','spr_oniont_coyd','spr_oniont_bye','spr_heartsmall']) spriteNames.add(key);
   if (name === 'room_water_nicecream') for (const key of ['spr_chestbox','spr_heartsmall','spr_icecreamguy_sad','spr_icecreamguy_anim','spr_icecreamguy_happy']) spriteNames.add(key);
   if (name === 'room_water_shoe') for (const key of ['spr_balletshoes', 'spr_heartsmall']) spriteNames.add(key);
-  if (name === 'room_water15') for (const key of ['spr_exc', 'spr_exc_f']) spriteNames.add(key);
+  if (name === 'room_water15') for (const key of ['spr_exc', 'spr_exc_f', 'spr_waterripple']) spriteNames.add(key);
   if (name === 'room_water12') for (const key of ['spr_exc', 'spr_exc_f', 'spr_floweysink', 'spr_face_papyrus', ...['lt','mt','rt','lm','mm','rm','bl','bm','br'].map(part => `spr_waterfall_bright_${part}`)]) spriteNames.add(key);
   if (name === 'room_water_friendlyhub') for (const key of ['spr_clamgirl_b', 'spr_napstablook_u', 'spr_napstablook_d']) spriteNames.add(key);
   if (name === 'room_water_bird') for (const key of ['spr_smallbird_fly', 'spr_heartsmall']) spriteNames.add(key);
@@ -312,7 +312,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water_onionsan' ? ['snd_splash','snd_squeak','mus_ambientwater'] : []),
     ...(name === 'room_water_nicecream' ? ['snd_movemenu','snd_squeak'] : []),
     ...(name === 'room_water_shoe' ? ['snd_movemenu', 'snd_splash'] : []),
-    ...(name === 'room_water15' ? ['snd_b', 'snd_oddtalk1', 'snd_oddtalk2', 'mus_waterfall', 'mus_toomuch'] : []),
+    ...(name === 'room_water15' ? ['snd_b', 'snd_oddtalk1', 'snd_oddtalk2', 'snd_splash', 'snd_noise', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(name === 'room_water12' ? ['snd_b', 'snd_phone', 'mus_waterfall', 'mus_toomuch'] : []),
     ...(['room_water_friendlyhub','room_water_shop','room_water_blookyard'].includes(name) ? ['mus_waterquiet', 'mus_toomuch'] : []),
     ...(name === 'room_water_blookyard' ? ['snd_item'] : []),

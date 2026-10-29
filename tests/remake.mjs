@@ -137,6 +137,7 @@ import { testWaterfallLateEncounter } from './remake-waterfall-late-encounter.mj
 import { testWaterfallLateSigns } from './remake-waterfall-late-signs.mjs';
 import { testWaterfallLateFalls } from './remake-waterfall-late-falls.mjs';
 import { testWaterfallGlowflies } from './remake-waterfall-glowflies.mjs';
+import { testWaterfallShallowWater } from './remake-waterfall-shallow-water.mjs';
 import { testWaterfallBridgePath } from './remake-waterfall-bridge-path.mjs';
 import { testWaterfallWishingFlowers } from './remake-waterfall-wishing-flowers.mjs';
 import { testWaterfallTelescope } from './remake-waterfall-telescope.mjs';
@@ -703,6 +704,7 @@ try {
   await testWaterfallLateSigns(page);
   await testWaterfallLateFalls(page);
   await testWaterfallGlowflies(page);
+  await testWaterfallShallowWater(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
   await testWaterfallTelescope(page);
