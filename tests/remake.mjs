@@ -1,3 +1,4 @@
+import { testUndyneGreenShield } from './remake-undyne-green-shield.mjs';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
@@ -728,6 +729,7 @@ try {
   await testWaterfallTemVillage(page);
   await testTemArmor(page);
   testTemShopRules();
+  testUndyneGreenShield();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
   await testWaterfallWishingFlowers(page);
