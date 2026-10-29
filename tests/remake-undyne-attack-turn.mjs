@@ -7,8 +7,16 @@ export async function testUndyneAttackTurn(page) {
   const green = await page.evaluate(() => { const s = __remake.scene; const turn = new undyneAttack.UndyneAttackTurn(s, { kind: 'green', lesson: 6, duration: 8, onComplete: result => { window.turnResult = result; } }); const x = s.soul.x; turn.update(34); const first = [s.soul.x === x, turn.wave.soul.shield.ideal, s.soul.texture.key]; for (let i = 0; i < 8; i++) turn.update(34); const switching = [turn.phase, turn.finished]; for (let i = 0; i < 75; i++) turn.update(34); return [first, switching, window.turnResult, turn.finished, s.bullets.length]; });
   await page.keyboard.up('ArrowRight'); assert.deepEqual(green, [[true, 180, 'spr_heartgreen:0'], ['switch', false], { kind: 'green', hits: 0, refuse: true, transition: null }, true, 0]);
   await page.keyboard.down('ArrowLeft');
-  const red = await page.evaluate(() => { const s = __remake.scene; const turn = new undyneAttack.UndyneAttackTurn(s, { kind: 'follow', order: 9, duration: 5, onComplete: result => { window.turnResult = result; } }); const x = s.soul.x; turn.update(34); const first = [s.soul.x < x, s.soul.texture.key]; for (let i = 0; i < 6; i++) turn.update(34); return [first, window.turnResult, turn.finished, s.bullets.length]; });
-  await page.keyboard.up('ArrowLeft'); assert.deepEqual(red, [[true, 'spr_heart:0'], { kind: 'follow', hits: 0, refuse: false, transition: { lesson: 8, delay: 30 } }, true, 0]);
+  const red = await page.evaluate(() => { const s = __remake.scene; const turn = new undyneAttack.UndyneAttackTurn(s, { kind: 'follow', order: 9, duration: 5, onComplete: result => { window.turnResult = result; } }); const x = s.soul.x; turn.update(34); const first = [s.soul.x < x, s.soul.texture.key]; for (let i = 0; i < 6; i++) turn.update(34); const switching = [turn.phase, turn.finished]; for (let i = 0; i < 25; i++) turn.update(34); return [first, switching, s.soul.texture.key, window.turnResult, turn.finished, s.bullets.length]; });
+  await page.keyboard.up('ArrowLeft'); assert.deepEqual(red, [[true, 'spr_heart:0'], ['returnGreen', false], 'spr_heartgreen:0', { kind: 'follow', hits: 0, refuse: false, transition: { lesson: 8, delay: 30 } }, true, 0]);
+  const backToGreen = await page.evaluate(() => {
+    const s = __remake.scene; const turn = new undyneAttack.UndyneAttackTurn(s, { kind: 'rising', order: 15, duration: 5 });
+    for (let i = 0; i < 12; i++) turn.step();
+    s.keys.right.isDown = true; const x = s.soul.x; turn.step(); s.keys.right.isDown = false;
+    const result = [turn.phase, s.soul.texture.key, s.soul.x === x, turn.wave.transition.lesson];
+    turn.destroy(); return result;
+  });
+  assert.deepEqual(backToGreen, ['green', 'spr_heartgreen:0', true, 13]);
   const transition = await page.evaluate(() => {
     const s = __remake.scene; s.arena.setPosition(0, 0).setSize(320, 240); s.hp = 20; s.invFrames = 0;
     const turn = new undyneAttack.UndyneAttackTurn(s, { kind: 'green', lesson: 6, duration: 1 });

@@ -34,7 +34,7 @@ export class UndyneAttackTurn {
     if (this.finished) return true;
     const s = this.scene, input = direction => s.keys[direction].isDown || [...s.previousScene.touch.values()].some(p => p.direction === direction);
     s.invFrames--;
-    if (this.kind !== 'green' || this.phase === 'red') {
+    if (this.kind !== 'green' && this.phase !== 'green' || this.phase === 'red') {
       const speed = (s.soulSpeed ?? 4) / (s.keys.shift.isDown ? 4 : 2), arena = s.arena;
       s.soul.x = Math.max(arena.x + 2, Math.min(arena.x + arena.width - 8, s.soul.x + (input('right') ? speed : 0) - (input('left') ? speed : 0)));
       s.soul.y = Math.max(arena.y + 2, Math.min(arena.y + arena.height - 8, s.soul.y + (input('down') ? speed : 0) - (input('up') ? speed : 0)));
@@ -48,6 +48,9 @@ export class UndyneAttackTurn {
         this.spear.image = s.add.image(-5, s.soul.y, 'spr_undynespear_r:0').setOrigin(0).setScale(.5).setDepth(1000);
       }
       done = false;
+    } else if (this.phase === 'returnGreen' || this.phase === 'green') {
+      if (--this.switchFrames === 15) this.phase = 'green';
+      done = this.switchFrames <= 0;
     } else if (this.phase === 'red') {
       const spear = this.spear; spear.x += spear.speed; spear.image.setX(spear.x / 2);
       const left = Math.max(0, Math.ceil(spear.x - s.soul.x * 2)), right = Math.min(15, Math.floor(spear.x + 52 - s.soul.x * 2));
@@ -59,8 +62,10 @@ export class UndyneAttackTurn {
     } else done = this.wave.step({ up: input('up'), down: input('down'), left: input('left'), right: input('right') });
     if (s.hp < hp) this.hits++;
     s.bullets = this.wave.bullets;
-    s.soul.setTexture(`${this.kind === 'green' && this.phase !== 'red' ? 'spr_heartgreen' : 'spr_heart'}:${s.invFrames > 0 ? Math.floor(s.invFrames * .5) % 2 : 0}`);
+    s.soul.setTexture(`${(this.kind === 'green' && this.phase !== 'red' || this.phase === 'green') ? 'spr_heartgreen' : 'spr_heart'}:${s.invFrames > 0 ? Math.floor(s.invFrames * .5) % 2 : 0}`);
     if (s.hp <= 0) { this.finished = true; this.wave.destroy(); this.spear?.image.destroy(); s.die(); return true; }
+    // Bộ phát báo đổi màu trước khi kết thúc 3 frame; alarm[10]/[11] kết thúc sau 25 frame từ tín hiệu.
+    if (done && this.phase === 'wave' && this.kind !== 'green' && this.wave.transition && !this.undying) { this.phase = 'returnGreen'; this.switchFrames = this.wave.transition.delay - 8; return false; }
     if (done && this.phase === 'wave' && this.kind === 'green' && this.wave.refuse && !this.undying && [6, 11, 20].includes(this.lesson)) { this.phase = 'switch'; this.switchFrames = 10; return false; }
     if (done) {
       this.spear?.image.destroy(); this.finished = true; const result = { kind: this.kind, hits: this.hits, refuse: this.wave.refuse ?? false, transition: this.wave.transition ?? null };

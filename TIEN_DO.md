@@ -1435,3 +1435,5 @@ Bộ tổng `test-remake-003e6bf-retry.log` kết thúc lỗi tại bước chuy
 Đã bổ sung ngưỡng máu Undyne thường: đổi lesson/order ở dưới 75%, 50% và 20%, cập nhật cờ tiến trình và rating theo logic gốc. Kiểm mốc biên, nhảy nhiều ngưỡng và SOUL đỏ, check/build qua. Quy tắc chưa nối scene trận.
 
 Đã nối pha chuyển SOUL xanh sang đỏ của Undyne thường vào lượt né: chờ đổi màu, giáo ngang theo lesson, thời hạn 60 frame, sát thương và dọn. Kiểm cả ba tốc độ, va chạm, đổi màu, phím và hồi quy giáo/truy đuổi; check/build qua. Scene trận, hoạt ảnh chuyển màu và Undying vẫn chưa nối; bộ tổng đang chạy từ trước thay đổi này.
+
+Đã thêm chờ và chuyển SOUL đỏ về xanh tại order 9/15 của Undyne thường, giữ vị trí và khóa di chuyển sau đổi màu trước khi kết thúc lượt. Kiểm giáo đuổi/mọc, lesson, thời điểm và phím, hồi quy giáo/truy đuổi; check/build qua. Hoạt ảnh boss và scene trận vẫn cần nối, nhánh Undying chưa chuyển pha này.
