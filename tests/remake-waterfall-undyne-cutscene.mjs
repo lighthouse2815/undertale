@@ -18,6 +18,7 @@ export async function testWaterfallUndyneCutscene(page) {
   for (const stage of ['pan', 'walk1', 'walk2', 'rushfade', 'rushghost', 'rushwalk', 'rushfast', 'flash', 'kidfall', 'kidlook', 'kidlook2', 'grab', 'hold', 'exit', 'panback']) assert.ok(result.stages.includes(stage), stage);
   assert.deepEqual(result.lines, [1, 14, 1, 3, 2, 2]);
   await page.waitForFunction(() => !__remake.scene.scene.isActive()); await page.evaluate(async () => { const w = __remake.scene; w.scene.resume(); await w.openRoom('room_water18'); });
+  await page.waitForFunction(() => __remake.scene.scene.isActive());
   assert.deepEqual(await page.evaluate(() => [__remake.scene.plot, __remake.scene.waterfallUndyneHall.blocker.disabled]), [118, true]);
   console.log('✓ Hoa Echo: cảnh Undyne, chuyển trận giả, Monster Kid và mở lối');
 }
