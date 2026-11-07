@@ -1,6 +1,11 @@
 {
   "intro": ["* Vulkin strolls in."],
   "actions": ["Check", "Encourage", "Criticize", "Hug"],
+  "idle": ["* Vulkin parades around the\n  room.", "* Vulkin is making coffee\n  in its crater.", "* Vulkin is wiggling its\n  weird rump.", "* Vulkin makes a smoke hoop\n  and jumps through it.", "* Smells like a lava lamp."],
+  "idleHug": "* Vulkin's cheeks glow with\n  a bright heat.",
+  "idleEncourage": "* Vulkin parades around you\n  proudly.",
+  "idleCriticize": "* Vulkin stands in the corner.",
+  "idleCriticizeAgain": "* Little streams of lava come\n  from Vulkin's eyes.",
   "check": ["* VULKIN - ATK 25 DEF 0\n* Mistakenly believes its lava\n  can heal people."],
   "criticize": ["* You tell Vulkin that its\n  attacks are NOT helpful."],
   "criticizeAgain": ["* You tell Vulkin that its\n  rump looks like a sack\n  of trash."],
