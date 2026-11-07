@@ -1,3 +1,4 @@
+import { testHotlandConveyorEffects } from './remake-hotland-conveyor-effects.mjs';
 import { testHotlandConveyorPath } from './remake-hotland-conveyor-path.mjs';
 import { testHotlandVulkin } from './remake-hotland-vulkin.mjs';
 import { testHotlandConveyors } from './remake-hotland-conveyors.mjs';
@@ -797,6 +798,7 @@ try {
   await testHotlandConveyors(page);
   await testHotlandVulkin(page);
   await testHotlandConveyorPath(page);
+  await testHotlandConveyorEffects(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
