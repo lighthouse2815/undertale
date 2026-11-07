@@ -1,5 +1,17 @@
 import { RuinsWave } from './ruins-waves.mjs';
 
+export function touchesVulkinBullet(scene, bullet) {
+  const data=scene.cache.json.get(bullet.sprite), hx=scene.soul.x*2, hy=scene.soul.y*2;
+  const angle=bullet.image.rotation, c=Math.cos(angle), s=Math.sin(angle);
+  for (let x=0;x<16;x++) for (let y=0;y<16;y++) {
+    if (!(scene.textures.getPixel(x,y,'spr_heart:mask')?.red > 0)) continue;
+    const dx=hx+x-bullet.x, dy=hy+y-bullet.y;
+    const px=dx*c+dy*s+data.OriginX, py=-dx*s+dy*c+data.OriginY;
+    if (px>=data.MarginLeft && px<=data.MarginRight && py>=data.MarginTop && py<=data.MarginBottom) return true;
+  }
+  return false;
+}
+
 export function loadVulkinLavaAssets(scene) {
   const base = new URL('../assets/', import.meta.url);
   for (const [key,count] of [['spr_lavaside',2],['spr_lavaflame',1]]) {
@@ -48,15 +60,7 @@ export class VulkinLavaWave extends RuinsWave {
     this.bullets=this.bullets.filter(b=>!b.dead); return this.frames >= this.duration;
   }
   touchesLava(bullet) {
-    const scene=this.scene, data=scene.cache.json.get(bullet.sprite), hx=scene.soul.x*2, hy=scene.soul.y*2;
-    const angle=bullet.side?0:bullet.image.rotation, c=Math.cos(angle), s=Math.sin(angle);
-    for (let x=0;x<16;x++) for (let y=0;y<16;y++) {
-      if (!(scene.textures.getPixel(x,y,'spr_heart:mask')?.red > 0)) continue;
-      const dx=hx+x-bullet.x, dy=hy+y-bullet.y;
-      const px=dx*c+dy*s+data.OriginX, py=-dx*s+dy*c+data.OriginY;
-      if (px>=data.MarginLeft && px<=data.MarginRight && py>=data.MarginTop && py<=data.MarginBottom) return true;
-    }
-    return false;
+    return touchesVulkinBullet(this.scene,bullet);
   }
   destroy() { super.destroy(); this.mask.destroy(); this.clip.destroy(); }
 }

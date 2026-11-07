@@ -1,3 +1,4 @@
+import { testVulkinCloudWave } from './remake-vulkin-cloud-wave.mjs';
 import { testVulkinLavaWave } from './remake-vulkin-lava-wave.mjs';
 import { testVulkinRules } from './remake-vulkin-rules.mjs';
 import { testHotlandConveyorEffects } from './remake-hotland-conveyor-effects.mjs';
@@ -803,6 +804,7 @@ try {
   await testHotlandConveyorEffects(page);
   testVulkinRules();
   await testVulkinLavaWave(page);
+  await testVulkinCloudWave(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
