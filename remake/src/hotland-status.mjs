@@ -6,19 +6,25 @@ const statuses = [
   '* for now i gotta call up the\n  human and guide them =^0.^0=',
 ];
 
-// obj_notify_room trong room_fire3, cờ 369 = 2/3/4; cờ 368 tắt thông báo.
+// obj_notify_room: cờ 369 theo tiến trình bài đăng; cờ 368 tắt thông báo.
 export class HotlandStatus {
   constructor(world) { this.world = world; this.elapsed = 0; this.triggers = world.dataSource.room.GameObjects.filter(e => e.ObjectName === 'obj_notify_room').map(item => ({ item, done: false })); }
   checkTrigger() {
     const w = this.world; if (w.dialogue) return false;
     const trigger = this.triggers.find(e => !e.done && touchesObject(w, w.player, e.item)); if (!trigger) return false;
     trigger.done = true; const previous = w.flags[369] ?? 0;
-    if (previous > 3) return false;
-    const step = previous < 2 ? 0 : previous === 2 ? 1 : 2; w.flags[369] = step + 2;
+    let status;
+    if (w.dataSource.name === 'room_fire5') {
+      if (previous !== 4) return false;
+      w.flags[369] = 5; status = '* gonna call them in a\n  minute!!! =^0.^0=';
+    } else {
+      if (previous > 3) return false;
+      const step = previous < 2 ? 0 : previous === 2 ? 1 : 2; w.flags[369] = step + 2; status = statuses[step];
+    }
     if (w.flags[368] === 1) return false;
     w.sound.play('snd_textnoise'); w.release();
     this.note = w.add.image(w.player.x, w.player.y - 10, 'spr_musblc:0').setOrigin(0).setDepth(99999); this.noteTime = 30;
-    w.showDialogue(['\n' + statuses[step]], { onClose: () => { this.title?.destroy(); this.title = null; this.note?.destroy(); this.note = null; } });
+    w.showDialogue(['\n' + status], { onClose: () => { this.title?.destroy(); this.title = null; this.note?.destroy(); this.note = null; } });
     this.title = w.add.bitmapText(w.dialogueText.x, w.dialogueText.y, 'fnt_maintext', 'ALPHYS updated status.', 12).setTint(0xffff00).setScrollFactor(0).setDepth(100002);
     return true;
   }
