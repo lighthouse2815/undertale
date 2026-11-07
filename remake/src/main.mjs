@@ -1,3 +1,4 @@
+import { HotlandConveyors } from './hotland-conveyors.mjs';
 import { HotlandStatus } from './hotland-status.mjs';
 import { HotlandLabOutside } from './hotland-lab-outside.mjs';
 import { HotlandLabObjects } from './hotland-lab-objects.mjs';
@@ -413,7 +414,7 @@ class World extends Scene {
     this.waterfallShopRoad = null;
     this.waterfallGlowshroomPuzzle = null;
     this.waterfallPuzzleHater = null;
-    this.hotlandStatus?.destroy(); this.hotlandStatus = null; this.hotlandLabOutside?.destroy(); this.hotlandLabOutside = null; this.hotlandLabObjects?.destroy(); this.hotlandLabObjects = null; this.hotlandLabConveyors = null; this.hotlandAlphysPhone?.destroy(); this.hotlandAlphysPhone = null; this.hotlandAlphysIntro?.destroy(); this.hotlandAlphysIntro = null; this.hotlandLabEntrance?.destroy(); this.hotlandLabEntrance = null; this.hotlandAutoWater = null; this.hotlandLabGuards?.destroy(); this.hotlandLabGuards = null; this.hotlandUndyneCollapse?.destroy(); this.hotlandUndyneCollapse = null; this.hotlandSleepingSans?.destroy(); this.hotlandSleepingSans = null; this.hotlandLava?.destroy(); this.hotlandLava = null; this.waterfallHotlandSign?.destroy(); this.waterfallHotlandSign = null; this.waterfallUndyneFinal?.destroy(); this.waterfallUndyneFinal = null;
+    this.hotlandConveyors = null; this.hotlandStatus?.destroy(); this.hotlandStatus = null; this.hotlandLabOutside?.destroy(); this.hotlandLabOutside = null; this.hotlandLabObjects?.destroy(); this.hotlandLabObjects = null; this.hotlandLabConveyors = null; this.hotlandAlphysPhone?.destroy(); this.hotlandAlphysPhone = null; this.hotlandAlphysIntro?.destroy(); this.hotlandAlphysIntro = null; this.hotlandLabEntrance?.destroy(); this.hotlandLabEntrance = null; this.hotlandAutoWater = null; this.hotlandLabGuards?.destroy(); this.hotlandLabGuards = null; this.hotlandUndyneCollapse?.destroy(); this.hotlandUndyneCollapse = null; this.hotlandSleepingSans?.destroy(); this.hotlandSleepingSans = null; this.hotlandLava?.destroy(); this.hotlandLava = null; this.waterfallHotlandSign?.destroy(); this.waterfallHotlandSign = null; this.waterfallUndyneFinal?.destroy(); this.waterfallUndyneFinal = null;
     this.waterfallTemVillage?.destroy(); this.waterfallTemVillage = null;
     this.waterfallKidBridge?.destroy(); this.waterfallKidBridge = null;
     this.waterfallUndyneHall?.destroy(); this.waterfallUndyneHall = null;
@@ -607,6 +608,7 @@ class World extends Scene {
     if (['room_fire1', 'room_fire2', 'room_fire_prelab'].includes(name)) this.hotlandAutoWater = new HotlandAutoWater(this);
     if (name === 'room_fire_prelab') { this.hotlandLabGuards = new HotlandLabGuards(this); this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); }
     if (name === 'room_fire3') { this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); this.hotlandLabOutside = new HotlandLabOutside(this); this.hotlandStatus = new HotlandStatus(this); }
+    if (name === 'room_fire5') this.hotlandConveyors = new HotlandConveyors(this);
     if (name === 'room_fire_lab1') { this.hotlandAlphysIntro = new HotlandAlphysIntro(this); this.hotlandAlphysPhone = new HotlandAlphysPhone(this); }
     if (['room_fire_lab1', 'room_fire_lab2'].includes(name)) { this.hotlandLabConveyors = new HotlandLabConveyors(this); this.hotlandLabObjects = new HotlandLabObjects(this); }
     if (name === 'room_fire_lab2') startLabMusic(this);
@@ -722,6 +724,7 @@ class World extends Scene {
       this.torielCorridor?.animate();
     }
     if (['menu', 'loadingMenu', 'itemBox', 'loadingBox'].includes(state.phase)) {
+      this.hotlandConveyors?.update(delta);
       this.spikeGuide?.updateMotion(delta);
       this.corridorLesson?.updateFlowey();
       this.torielCorridor?.update(delta);
@@ -761,7 +764,7 @@ class World extends Scene {
       return;
     }
     if (state.phase !== 'running') return;
-    this.hotlandAutoWater?.update(delta); this.hotlandLabGuards?.update(delta); this.hotlandLabEntrance?.update(delta); this.hotlandLabOutside?.update(delta); this.hotlandStatus?.update(delta);
+    this.hotlandAutoWater?.update(delta); this.hotlandLabGuards?.update(delta); this.hotlandLabEntrance?.update(delta); this.hotlandLabOutside?.update(delta); this.hotlandStatus?.update(delta); this.hotlandConveyors?.update(delta);
     const alphysLocked = this.hotlandAlphysIntro?.update(delta); const phoneUpgradeLocked = this.hotlandAlphysPhone?.update(delta); const labConveyorLocked = this.hotlandLabConveyors?.update(delta);
     const menuPressed = this.menuPressed; this.menuPressed = false;
     const guideLocked = this.spikeGuide?.update(delta);
@@ -862,6 +865,7 @@ class World extends Scene {
       const input = (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction);
       if (!this.snowdinIce?.slide()) movePlayer(this, this.player, this.colliders, input,
         (x, y, dx, dy) => this.dialogue || this.ruinsRock?.tryMove(x, y, dx, dy) || this.ruinsGoofyrock?.tryMove(x, y));
+      this.hotlandConveyors?.step();
       this.waterfallShallowWater?.step();
       this.snowdinIce?.contact(previous, input);
       this.snowdinSnowpuzz?.stepSnow(previous);

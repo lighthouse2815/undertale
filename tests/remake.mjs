@@ -1,3 +1,4 @@
+import { testHotlandConveyors } from './remake-hotland-conveyors.mjs';
 import { testHotlandLabExit } from './remake-hotland-lab-exit.mjs';
 import { testHotlandLabObjects } from './remake-hotland-lab-objects.mjs';
 import { testInstantNoodles } from './remake-instant-noodles.mjs';
@@ -791,6 +792,7 @@ try {
   await testInstantNoodles(page);
   await testHotlandLabObjects(page);
   await testHotlandLabExit(page);
+  await testHotlandConveyors(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
