@@ -16,7 +16,7 @@ export async function testPyropeBattle(page){
   await act(2);await pages();await advance(90);assert.deepEqual(await page.evaluate(()=>[__remake.scene.rules.attackPower,__remake.scene.mercyModifier,__remake.scene.wave.kind,__remake.scene.wave.damage]),[6,-200,'pyropeBomb',6]);await finish();
   await act(1);await pages();await advance(0);assert.deepEqual(await page.evaluate(()=>[__remake.scene.rules.heat,__remake.scene.mercyModifier,__remake.scene.wave.kind]),[1,-170,'pyropeRope']);await finish();
   await act(1);await pages();await advance(90);assert.deepEqual(await page.evaluate(()=>[__remake.scene.rules.heat,__remake.scene.mercyModifier,__remake.scene.wave.kind]),[2,900,'pyropeBomb']);await finish();
-  assert.equal(await page.evaluate(()=>__remake.scene.spareable()),true);await choose(3);await key('z');await pages();await page.waitForFunction(()=>__remake.phase==='running');
+  assert.equal(await page.evaluate(()=>__remake.scene.spareable()),true);await choose(3);await key('z');await pages();await page.waitForFunction(()=>__remake.phase==='running'&&__remake.scene.hotlandMusic?.isPlaying);
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.kills,w.flags[150],w.hotlandMusic.isPlaying];}),[45,0,0,1,true]);
   await open();await page.evaluate(()=>{__remake.scene.enemyHp=1;});await choose(0);await key('z');await page.waitForFunction(()=>__remake.scene.mode==='fight');await page.evaluate(()=>{__remake.scene.attackX=156;});await key('z');await pages();await pages();await page.waitForFunction(()=>__remake.phase==='running');
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.kills,w.flags[205]];}),[40,80,1,1]);

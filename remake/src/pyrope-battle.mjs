@@ -2,6 +2,7 @@ import { RuinsBattle } from './ruins-battle.mjs';
 import { fightInput } from './fight-input.mjs';
 import { registerBitmapFont, colorBitmapFont } from './fonts.mjs';
 import { PyropeRules } from './pyrope-rules.mjs';
+import { PyropeHeatWave } from './pyrope-heat-wave.mjs';
 import { PyropeBody, loadPyropeBodyAssets } from './pyrope-body.mjs';
 import { PyropeRopeWave, loadPyropeRopeAssets } from './pyrope-rope-wave.mjs';
 import { PyropeBombWave, loadPyropeBombAssets } from './pyrope-bomb-wave.mjs';
@@ -18,11 +19,11 @@ export class PyropeBattle extends RuinsBattle{
   }
   loadBattleData(){super.loadBattleData();if(!this.cache.bitmapFont.exists('fnt_plain'))registerBitmapFont(this,'fnt_plain',{...this.cache.json.get('fnt_plain'),LineHeight:20});colorBitmapFont(this,'fnt_plain','black','#000000');return {battleDialogue:dialogue};}
   setupEnemy(){
-    const w=this.previousScene,music=w.hotlandMusic;music?.pause();this.events.once('shutdown',()=>{this.body?.destroy();if(music===w.hotlandMusic&&music?.isPaused)music.resume();});
+    const w=this.previousScene,music=w.hotlandMusic;music?.pause();this.events.once('shutdown',()=>{this.heatEffect?.destroy();this.body?.destroy();if(music===w.hotlandMusic&&music?.isPaused)music.resume();});
     this.populationFlag=205;this.rules=new PyropeRules();this.mercyModifier=this.rules.mercyModifier;this.enemy.setPosition(54,3.5).setVisible(false);
-    this.body=new PyropeBody(this);this.bodyElapsed=0;this.bodyEnded=false;this.command=0;
+    this.body=new PyropeBody(this);this.heatEffect=new PyropeHeatWave(this,this.rules);this.bodyElapsed=0;this.bodyEnded=false;this.command=0;
   }
-  update(time,delta){this.bodyElapsed=Math.min(200,this.bodyElapsed+delta);while(this.bodyElapsed>=1000/30){this.bodyElapsed-=1000/30;if(!this.bodyEnded&&this.body?.head.active)this.body.step();}super.update(time,delta);}
+  update(time,delta){this.bodyElapsed=Math.min(200,this.bodyElapsed+delta);while(this.bodyElapsed>=1000/30){this.bodyElapsed-=1000/30;if(!this.bodyEnded&&this.body?.head.active)this.body.step();this.heatEffect.step();}super.update(time,delta);}
   animateEnemy(){}
   updateSubmenu(){
     if(!['actTarget','act'].includes(this.kind)){super.updateSubmenu();return;}
