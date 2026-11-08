@@ -1,3 +1,4 @@
+import { testTsunderplaneRules } from './remake-tsunderplane-rules.mjs';
 import { testHotlandFirstEncounter } from './remake-hotland-first-encounter.mjs';
 import { testVulkinBattle } from './remake-vulkin-battle.mjs';
 import { testVulkinBody } from './remake-vulkin-body.mjs';
@@ -811,6 +812,7 @@ try {
   await testVulkinBody(page);
   await testVulkinBattle(page);
   await testHotlandFirstEncounter(page);
+  testTsunderplaneRules();
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);

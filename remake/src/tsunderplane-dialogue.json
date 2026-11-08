@@ -1,0 +1,23 @@
+{
+  "intro": ["* Tsunderplane gets in the way!\n* Not on purpose or anything."],
+  "actions": ["Check", "Approach", "Flirt"],
+  "check": ["* TSUNDERPLANE - ATK 25 DEF 26\n* Seems mean, but does\n  it secretly like you?"],
+  "approach": ["* You get close to Tsunderplane.\n* But not too close."],
+  "flirt0": ["* You tell Tsunderplane it has\n  an impressive wingspan."],
+  "flirt1": ["* You tell Tsunderplane it has\n  nice turbines."],
+  "flirt2": ["* You tell Tsunderplane it has\n  a powerful rudder."],
+  "flirt3": ["* You tell Tsunderplane that\n  you like its taste in\n  movies and books."],
+  "flirt4": ["* You tell Tsunderplane that\n  it has cute winglets."],
+  "speech0": "It's not\nlike I\nLIKE\nyou.", "speech1": "Id...\nIdiot!",
+  "speech2": "Hmph!\nDon't\nget in\nmy way.", "speech3": ">_<...\nHuman\n...",
+  "speechClose0": "...\nH-human\n...\n...?", "speechClose1": "Id...\nIdiot!",
+  "speechApproach": "Eeeeh?\nH-human\n...?", "speechApproachClose": "Human,\nI...",
+  "speechFlirt": "Huh!?\nY-you\nsicko!", "speechFlirtClose": "Ah...\nIs that\ntrue...?",
+  "speechCheck": "No way!\nWhy\nwould I\nlike YOU", "speechCheckClose": "Human,\nI...",
+  "idle0": "* Tsunderplane looks over,\n  then turns up its nose.",
+  "idle1": "* Tsunderplane shakes its\n  nose dimissively at you.",
+  "idle2": "* Tsunderplane \"accidentally\"\n  bumps you with its wing.",
+  "idle3": "* Tsunderplane gives you a\n  condescending barrel roll.",
+  "idle4": "* Smells like an airport\n  perfume counter.",
+  "idleShy": "* Tsunderplane is looking away\n  shyly.", "idleHurt": "* Tsunderplane's body is smoking."
+}
