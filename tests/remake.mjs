@@ -3,7 +3,7 @@ import { testTsunderplaneBody } from './remake-tsunderplane-body.mjs';
 import { testTsunderplaneBombs } from './remake-tsunderplane-bombs.mjs';
 import { testTsunderplanePlanes } from './remake-tsunderplane-planes.mjs';
 import { testTsunderplaneRules } from './remake-tsunderplane-rules.mjs';
-import { testHotlandFirstEncounter } from './remake-hotland-first-encounter.mjs';
+import { testHotlandEncounter } from './remake-hotland-encounter.mjs';
 import { testVulkinBattle } from './remake-vulkin-battle.mjs';
 import { testVulkinBody } from './remake-vulkin-body.mjs';
 import { testVulkinCloudWave } from './remake-vulkin-cloud-wave.mjs';
@@ -815,7 +815,7 @@ try {
   await testVulkinCloudWave(page);
   await testVulkinBody(page);
   await testVulkinBattle(page);
-  await testHotlandFirstEncounter(page);
+  await testHotlandEncounter(page);
   testTsunderplaneRules();
   await testTsunderplanePlanes(page);
   await testTsunderplaneBombs(page);
