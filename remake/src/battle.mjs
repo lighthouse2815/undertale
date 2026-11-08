@@ -35,6 +35,7 @@ export const BATTLE_CONFIGS = {
   undyne: { name: 'Undyne', asset: 'spr_undyneb_noanim', hp: 1500, def: 0, xp: 500 },
   undyneQuick: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
   vulkin: { name: 'Vulkin', asset: 'spr_vulkinhurt', hp: 20, def: -10, xp: 70 },
+  tsunderplane: { name: 'Tsunderplane', asset: 'spr_tsunderplane', hp: 80, def: 6, xp: 95 },
   gyftrot: { name: 'Gyftrot', asset: 'spr_gyftrot', hp: 114, def: 3, xp: 35 },
   doggo: { name: 'Doggo', asset: 'spr_movedoge', hp: 70, def: 1, xp: 30 },
   nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
