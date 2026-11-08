@@ -28,7 +28,7 @@ export async function testWaterfallUndyneFinal(page) {
   }
   const save = await page.evaluate(async () => {
     const w = __remake.scene, { undyneFinalSaveLine } = await import('/src/waterfall-undyne-final-dialogue.mjs');
-    w.player.setPosition(220, 650); w.player.facing = 'd'; w.interactionCooldown = 0; w.tryInteract();
+    w.hp = Math.max(0, w.maxHp - 1); w.player.setPosition(220, 650); w.player.facing = 'd'; w.interactionCooldown = 0; w.tryInteract();
     return [w.dialogue?.lines[0] === undyneFinalSaveLine(w.flags), w.hp === w.maxHp];
   });
   assert.deepEqual(save, [true, true]);
