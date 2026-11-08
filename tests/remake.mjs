@@ -1,3 +1,4 @@
+import { testPyropeRopeWave } from './remake-pyrope-rope-wave.mjs';
 import { testPyropeRules } from './remake-pyrope-rules.mjs';
 import { testTsunderplaneBattle } from './remake-tsunderplane-battle.mjs';
 import { testTsunderplaneBody } from './remake-tsunderplane-body.mjs';
@@ -823,6 +824,7 @@ try {
   await testTsunderplaneBody(page);
   await testTsunderplaneBattle(page);
   testPyropeRules();
+  await testPyropeRopeWave(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
