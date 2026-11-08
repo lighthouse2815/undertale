@@ -1551,3 +1551,5 @@ Tạm dừng theo yêu cầu người dùng sau phần cảnh lab. Việc tiếp
 Đã chuyển đợt dây Pyrope: hai đoạn dây chuyển động qua khung, ba ngọn lửa cam theo dây, mask thật và quy tắc lửa gây sát thương khi SOUL đứng yên; dọn lửa theo dây. Kiểm nhịp tạo, hai đoạn/ba lửa, di chuyển so với đứng yên, sát thương và dọn trong scene chiến đấu; hồi quy đạn Tsunderplane/Vulkin/lab, check/build qua. Còn đợt bom, thân, scene và encounter; va chạm, thứ tự alarm/chuyển động sát frame cần tiếp tục đối chiếu.
 
 Đã chuyển đợt bom Pyrope: bom vào từ bốn hướng, nảy, nhấp nháy và hẹn nổ; vụ nổ mở rộng, tính sát thương HP vượt mức và mờ dần. Kiểm bốn hướng, nảy/hẹn nổ, va chạm/sát thương, dọn trong scene chiến đấu và hồi quy đợt dây/máy bay/lab; check/build qua. Còn thân, hiệu ứng nhiệt, scene và encounter Pyrope; động lực học, mask và thời điểm sát frame cần tiếp tục đối chiếu.
+
+Đã chuyển hình thể Pyrope gồm sáu đốt dây, hai chân và đầu chuyển động, cùng mặt/nhịp phản ứng khi trúng đòn. Kiểm cấu trúc, hoạt ảnh, trạng thái trúng đòn và dọn trong scene chiến đấu; hồi quy hai đợt đạn/lab, check/build qua. Còn hiệu ứng nhiệt, scene và encounter; cần đối chiếu thêm biểu diễn sát frame.
