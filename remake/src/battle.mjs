@@ -38,6 +38,7 @@ export const BATTLE_CONFIGS = {
   tsunderplane: { name: 'Tsunderplane', asset: 'spr_tsunderplane', hp: 80, def: 6, xp: 95 },
   pyrope: { name: 'Pyrope', asset: 'spr_pyropehurt', hp: 110, def: 1, xp: 80 },
   hotlandGroup77: { name: 'Tsunderplane', asset: 'spr_tsunderplane', hp: 80, def: 6, xp: 95 },
+  hotlandGroup78: { name: 'Pyrope', asset: 'spr_pyropehurt', hp: 110, def: 1, xp: 80 },
   gyftrot: { name: 'Gyftrot', asset: 'spr_gyftrot', hp: 114, def: 3, xp: 35 },
   doggo: { name: 'Doggo', asset: 'spr_movedoge', hp: 70, def: 1, xp: 30 },
   nobody: { name: '', asset: 'spr_froggit', hp: 0, def: 0, xp: 0 },
