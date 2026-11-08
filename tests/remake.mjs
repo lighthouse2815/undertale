@@ -1,3 +1,4 @@
+import { testHotlandFirstEncounter } from './remake-hotland-first-encounter.mjs';
 import { testVulkinBattle } from './remake-vulkin-battle.mjs';
 import { testVulkinBody } from './remake-vulkin-body.mjs';
 import { testVulkinCloudWave } from './remake-vulkin-cloud-wave.mjs';
@@ -809,6 +810,7 @@ try {
   await testVulkinCloudWave(page);
   await testVulkinBody(page);
   await testVulkinBattle(page);
+  await testHotlandFirstEncounter(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
