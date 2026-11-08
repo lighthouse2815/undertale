@@ -1,6 +1,17 @@
 import { RuinsWave } from './ruins-waves.mjs';
 import { maskContains } from './collision-mask.mjs';
 
+export function touchesTsunderplane(scene,maskKey,x,y,sx=1,sy=1){
+  const data=scene.cache.json.get(maskKey),hx=scene.soul.x*2,hy=scene.soul.y*2;
+  for(let i=0;i<16;i++)for(let j=0;j<16;j++){
+    if(!maskContains(scene,'spr_heart:mask',i,j))continue;
+    const px=Math.floor((hx+i-x)/sx+data.OriginX),py=Math.floor((hy+j-y)/sy+data.OriginY);
+    if(px<data.MarginLeft||px>data.MarginRight||py<data.MarginTop||py>data.MarginBottom)continue;
+    if(data.CollisionKind!=='Precise'||maskContains(scene,`${maskKey}:mask`,px,py))return true;
+  }
+  return false;
+}
+
 export function loadTsunderplanePlaneAssets(scene){
   const base=new URL('../assets/',import.meta.url);
   for(const key of ['spr_vertplane','spr_vertplanemask','spr_vertplanegreen','spr_incendiaryflame']){
@@ -33,14 +44,7 @@ export class TsunderplanePlanes extends RuinsWave {
     return b;
   }
   touches(maskKey,x,y,sx=1,sy=1){
-    const s=this.scene,data=s.cache.json.get(maskKey),hx=s.soul.x*2,hy=s.soul.y*2;
-    for(let i=0;i<16;i++)for(let j=0;j<16;j++){
-      if(!maskContains(s,'spr_heart:mask',i,j))continue;
-      const px=Math.floor((hx+i-x)/sx+data.OriginX),py=Math.floor((hy+j-y)/sy+data.OriginY);
-      if(px<data.MarginLeft||px>data.MarginRight||py<data.MarginTop||py>data.MarginBottom)continue;
-      if(data.CollisionKind!=='Precise'||maskContains(s,`${maskKey}:mask`,px,py))return true;
-    }
-    return false;
+    return touchesTsunderplane(this.scene,maskKey,x,y,sx,sy);
   }
   step(){
     this.frames++;
