@@ -1,20 +1,27 @@
 import { murderLevel } from './route.mjs';
 
-// Ba nhóm đầu của obj_encount_fire1 ở room_fire5: Vulkin, Tsunderplane, Pyrope.
+// Ba nhóm đầu và nhánh cạn dân số của obj_encount_fire1 ở room_fire5.
 export class HotlandEncounter {
   constructor(world) {
     this.world=world;this.count=0;const flags=world.flags;flags[200]=205;
-    this.disabled=flags[7]===1||flags[8]===1||(flags[408]??0)>=3||(flags[205]??0)>=40;
-    this.steps=this.threshold((flags[408]??0)===0?80:220,30);
+    this.empty=(flags[205]??0)>=40?1:0;
+    this.disabled=flags[7]===1||flags[8]===1||(!this.empty&&(flags[408]??0)>=3);
+    this.steps=this.empty?20:this.threshold((flags[408]??0)===0?80:220,30);
   }
   threshold(base,spread){const remaining=40-(this.world.flags[205]??0);return (base+Math.round(Math.random()*spread))*Math.min(8,40/Math.max(1,remaining));}
-  step(){if(!this.disabled)this.count++;}
+  step(){
+    const flags=this.world.flags;
+    if(!this.empty&&(flags[205]??0)>=40&&flags[7]!==1&&flags[8]!==1){this.empty=1;this.disabled=false;this.count=0;this.steps=20;}
+    if(!this.disabled)this.count++;
+  }
   update(){
     const w=this.world;
     if(this.disabled||this.timer||this.count<=this.steps||window.__remake.phase!=='running'||w.dialogue)return;
-    if((w.flags[205]??0)>=40||(w.flags[408]??0)>=3){this.disabled=true;return;}
-    const group=['vulkin','tsunderplane','pyrope'][w.flags[408]??0];
-    this.steps=this.threshold(1040,680);this.count=0;w.flags[408]=(w.flags[408]??0)+1;this.disabled=w.flags[408]>=3;
+    if(!this.empty&&(w.flags[408]??0)>=3){this.disabled=true;return;}
+    const group=this.empty?'nobody':['vulkin','tsunderplane','pyrope'][w.flags[408]??0];
+    this.steps=this.empty===1?20:this.empty===2?6900:this.threshold(1040,680);this.count=0;w.flags[408]=(w.flags[408]??0)+1;
+    if(this.empty===1){w.flags[224]=1;this.empty=2;return;}
+    this.disabled=!this.empty&&w.flags[408]>=3;
     window.__remake.phase='encounter';w.sound.play('snd_b');
     const sprite=murderLevel(w.flags)>=8&&!w.flags[27]?'spr_exc_f':'spr_exc';
     this.icon=w.add.image(w.player.x,w.player.y-11,`${sprite}:0`).setOrigin(0).setDepth(w.player.depth);

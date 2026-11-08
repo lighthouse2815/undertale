@@ -36,7 +36,7 @@ export async function testHotlandEncounter(page) {
   await page.waitForFunction(()=>__remake.phase==='running');assert.equal(await page.evaluate(()=>__remake.scene.hotlandEncounter.disabled),true);
   const revisit=await page.evaluate(async()=>{const w=__remake.scene;w.flags={408:1};await w.openRoom('room_fire5','obj_markerA');return [w.hotlandEncounter.disabled,w.hotlandEncounter.steps];});
   assert.equal(revisit[0],false);assert.ok(revisit[1]>=220&&revisit[1]<=250);
-  for(const flags of [{7:1},{8:1},{408:3},{205:40}]){
+  for(const flags of [{7:1},{8:1},{408:3}]){
     const disabled=await page.evaluate(async flags=>{const w=__remake.scene;w.flags=flags;await w.openRoom('room_fire5','obj_markerA');return w.hotlandEncounter.disabled;},flags);
     assert.equal(disabled,true);
   }

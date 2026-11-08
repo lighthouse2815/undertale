@@ -60,6 +60,10 @@ export class RuinsBattle extends DummyBattle {
     window.__remake.room = `battle_${this.monster}`;
     if (this.monster === 'nobody') {
       if (this.previousScene.snowdinMusic) pauseSnowdinMusicForBattle(this);
+      if (this.previousScene.hotlandMusic) {
+        const world=this.previousScene,music=world.hotlandMusic;music.pause();
+        this.events.once('shutdown',()=>{if(music===world.hotlandMusic&&music.isPaused)music.resume();});
+      }
       this.enemy.setVisible(false); this.soul.setVisible(false); this.music.stop();
       this.showPages(this.dialogue.empty, () => this.finishBattle());
     }
