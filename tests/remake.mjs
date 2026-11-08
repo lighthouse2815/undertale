@@ -1,3 +1,4 @@
+import { testTsunderplaneBody } from './remake-tsunderplane-body.mjs';
 import { testTsunderplaneBombs } from './remake-tsunderplane-bombs.mjs';
 import { testTsunderplanePlanes } from './remake-tsunderplane-planes.mjs';
 import { testTsunderplaneRules } from './remake-tsunderplane-rules.mjs';
@@ -817,6 +818,7 @@ try {
   testTsunderplaneRules();
   await testTsunderplanePlanes(page);
   await testTsunderplaneBombs(page);
+  await testTsunderplaneBody(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
