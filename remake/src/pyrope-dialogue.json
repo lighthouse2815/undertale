@@ -1,0 +1,14 @@
+{
+  "intro": ["* Pyrope bounds towards you!"],
+  "actions": ["Check", "Heat Up", "Cool Down", "Invite"],
+  "check": ["* PYROPE - ATK 29 DEF 14\n* This mischievous monster\n  is never warm enough."],
+  "cool": ["* You blow on Pyrope.\n* Its flames die down.\n* Pyrope's ATTACK dropped!"],
+  "heat": ["* You crank up the thermostat.\n* Pyrope begins to get\n  excited."],
+  "heatAgain": ["* You crank up the thermostat.\n* It's super hot!\n* Pyrope looks satisfied."],
+  "heatMore": ["* You crank up the thermostat.\n* It's SOOOO hot!"],
+  "invite": ["* You invite Pyrope to hang\n  out."],
+  "speech0": "Burn,\nbaby,\nBURN!", "speech1": "Hot\nenough\nfor\nya!?", "speech2": "Feel\nthe\nheat.", "speech3": "Is it\ncold in\nhere?",
+  "speechError": "Hot!!!\nError.", "speechHeat": "Hot!!\nHOT!!\nHotter!\nHOTTER!!", "speechCool": "BRRRR!\nWhat's\nthe\ndeal!?", "speechInvite": "Sorry!!\nI'm all\ntied\nup!!",
+  "idle0": "* Pyrope is protected by its\n  winsome smile.", "idle1": "* Pyrope is pretending to\n  pull the fire alarm.", "idle2": "* Pyrope is chuckling through\n  its teeth.", "idle3": "* Pyrope is pretending to be\n  a candle.", "idle4": "* Smells like rope burn.",
+  "idleWarm": "* Pyrope wants more heat.", "idleHot": "* The room is sweltering!"
+}
