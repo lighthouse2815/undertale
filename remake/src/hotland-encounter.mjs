@@ -1,10 +1,10 @@
 import { murderLevel } from './route.mjs';
 
-// Hai nhóm đầu của obj_encount_fire1 ở room_fire5: Vulkin và Tsunderplane.
+// Ba nhóm đầu của obj_encount_fire1 ở room_fire5: Vulkin, Tsunderplane, Pyrope.
 export class HotlandEncounter {
   constructor(world) {
     this.world=world;this.count=0;const flags=world.flags;flags[200]=205;
-    this.disabled=flags[7]===1||flags[8]===1||(flags[408]??0)>=2||(flags[205]??0)>=40;
+    this.disabled=flags[7]===1||flags[8]===1||(flags[408]??0)>=3||(flags[205]??0)>=40;
     this.steps=this.threshold((flags[408]??0)===0?80:220,30);
   }
   threshold(base,spread){const remaining=40-(this.world.flags[205]??0);return (base+Math.round(Math.random()*spread))*Math.min(8,40/Math.max(1,remaining));}
@@ -12,9 +12,9 @@ export class HotlandEncounter {
   update(){
     const w=this.world;
     if(this.disabled||this.timer||this.count<=this.steps||window.__remake.phase!=='running'||w.dialogue)return;
-    if((w.flags[205]??0)>=40||(w.flags[408]??0)>=2){this.disabled=true;return;}
-    const group=(w.flags[408]??0)===0?'vulkin':'tsunderplane';
-    this.steps=this.threshold(1040,680);this.count=0;w.flags[408]=(w.flags[408]??0)+1;this.disabled=w.flags[408]>=2;
+    if((w.flags[205]??0)>=40||(w.flags[408]??0)>=3){this.disabled=true;return;}
+    const group=['vulkin','tsunderplane','pyrope'][w.flags[408]??0];
+    this.steps=this.threshold(1040,680);this.count=0;w.flags[408]=(w.flags[408]??0)+1;this.disabled=w.flags[408]>=3;
     window.__remake.phase='encounter';w.sound.play('snd_b');
     const sprite=murderLevel(w.flags)>=8&&!w.flags[27]?'spr_exc_f':'spr_exc';
     this.icon=w.add.image(w.player.x,w.player.y-11,`${sprite}:0`).setOrigin(0).setDepth(w.player.depth);
