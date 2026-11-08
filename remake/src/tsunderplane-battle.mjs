@@ -23,6 +23,7 @@ export class TsunderplaneBattle extends RuinsBattle{
     this.enemy.setVisible(false);this.body=new TsunderplaneBody(this,this.rules);this.bodyElapsed=0;this.bodyEnded=false;this.command=0;
   }
   update(time,delta){
+    if(window.__remake.phase!=='battle'||window.__remake.scene!==this)return;
     this.bodyElapsed=Math.min(200,this.bodyElapsed+delta);while(this.bodyElapsed>=1000/30){this.bodyElapsed-=1000/30;if(!this.bodyEnded&&this.body?.plane.active)this.body.step();}
     super.update(time,delta);this.mercyModifier=this.rules.mercyModifier;this.config.def=this.rules.defense;
   }

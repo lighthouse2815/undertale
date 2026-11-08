@@ -55,6 +55,7 @@ export class HotlandGroup77Battle extends MultiBattle{
     this.soul.setVisible(false);this.target.setVisible(false);this.bar.setVisible(false);
   }
   update(time,delta){
+    if(window.__remake.phase!=='battle'||window.__remake.scene!==this)return;
     this.animElapsed=Math.min(200,this.animElapsed+delta);while(this.animElapsed>=1000/30){this.animElapsed-=1000/30;for(const e of this.live())e.body.step();}
     if(this.mode==='speech'&&(this.speechTime<=delta||this.confirmPressed)){this.speechBoxes.forEach(p=>p.destroy());this.speechTexts.forEach(p=>p.destroy());}
     super.update(time,delta);

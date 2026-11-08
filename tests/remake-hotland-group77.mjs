@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 export async function testHotlandGroup77(page){
   const key=async code=>{await page.keyboard.press(code);await page.waitForTimeout(65);};
   const open=async()=>{
+    await page.waitForFunction(()=>__remake.phase==='running'&&__remake.scene.scene.isActive()&&!__remake.game.scene.isActive('HotlandGroup77Battle'));
     await page.evaluate(async()=>{const w=__remake.game.scene.getScene('World');w.flags={408:3};w.plot=127;w.hp=w.maxHp=20;w.lv=1;w.inventory=[];w.weapon=3;w.weaponStrength=0;w.armor=4;w.armorDefense=0;w.xp=w.gold=w.kills=0;await w.openRoom('room_fire5','obj_markerA');w.saveGame(true);__remake.startBattle('hotlandGroup77');});
     await page.waitForFunction(()=>__remake.phase==='battle'&&__remake.room==='battle_hotlandGroup77'&&!!__remake.scene.music);
   };
@@ -30,6 +31,7 @@ export async function testHotlandGroup77(page){
   await open();await page.evaluate(()=>{__remake.scene.enemies[1].hp=1;});await choose(0);await key('ArrowDown');await key('z');await page.waitForFunction(()=>__remake.scene.mode==='fight');await page.evaluate(()=>{__remake.scene.attackX=156;});await key('z');await pages();await advance();await finish();
   await choose(3);await key('ArrowDown');await key('z');await pages();await page.waitForFunction(()=>__remake.phase==='running');
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.kills,w.flags[205],w.flags[11]];}),[50,70,1,1,1]);
+  await page.evaluate(()=>__remake.game.scene.getScene('HotlandGroup77Battle').update(0,100));
   await open();await act(0,'down');await pages();await advance();
   const groupGraze=await page.evaluate(()=>{
     const s=__remake.scene,w=s.wave.waves[0];w.next=Infinity;s.invFrames=9999;const p=w.spawnPlane();p.x=280;p.y=290;p.vy=0;p.green.x=252;p.green.y=282;let found=false;

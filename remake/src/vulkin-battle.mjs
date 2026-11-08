@@ -25,6 +25,7 @@ export class VulkinBattle extends RuinsBattle {
     this.enemy.setPosition(53,62.5).setVisible(false);this.body=new VulkinBody(this);this.bodyElapsed=0;this.command=0;
   }
   update(time,delta){
+    if(window.__remake.phase!=='battle'||window.__remake.scene!==this)return;
     this.bodyElapsed=Math.min(200,this.bodyElapsed+delta);
     while(this.bodyElapsed>=1000/30){this.bodyElapsed-=1000/30;if(this.body?.body.active)this.body.step();}
     super.update(time,delta);
