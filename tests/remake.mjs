@@ -1,3 +1,4 @@
+import { testHotlandGroup77 } from './remake-hotland-group77.mjs';
 import { testHotlandEmpty } from './remake-hotland-empty.mjs';
 import { testPyropeHeatWave } from './remake-pyrope-heat-wave.mjs';
 import { testPyropeBattle } from './remake-pyrope-battle.mjs';
@@ -835,6 +836,7 @@ try {
   await testPyropeBattle(page);
   await testPyropeHeatWave(page);
   await testHotlandEmpty(page);
+  await testHotlandGroup77(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);
