@@ -18,6 +18,7 @@ import { MettatonQuizBattle } from './mettaton-quiz-battle.mjs';
 import { HotlandLabGuards } from './hotland-lab-guards.mjs';
 import { showHotlandSave } from './hotland-save.mjs';
 import { HotlandVents } from './hotland-vents.mjs';
+import { HotlandMagmaPhone } from './hotland-magma-phone.mjs';
 import { HotlandAutoWater } from './hotland-auto-water.mjs';
 import { HotlandUndyneCollapse } from './hotland-undyne-collapse.mjs';
 import { HotlandSleepingSans } from './hotland-sleeping-sans.mjs';
@@ -359,7 +360,7 @@ class World extends Scene {
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
-    this.hotlandVents?.destroy(); this.hotlandVents = null;
+    this.hotlandVents?.destroy(); this.hotlandVents = null; this.hotlandMagmaPhone = null;
     if (this.waterfallRain && (this.flags?.[7] === 1 || !['room_water_statue','room_water_prewaterfall','room_water_waterfall','room_water_waterfall2','room_water_waterfall3','room_water_waterfall4','room_water_preundyne','room_water_undynebridge'].includes(name))) { this.waterfallRain.destroy(); this.waterfallRain = null; this.waterfallRainLight?.destroy(); this.waterfallRainLight = null; this.waterfallRainMix = null; }
     if (name === 'room_water_undynebridgeend' && this.waterfallUndyneBridge?.music) { this.chaseMusic = this.waterfallUndyneBridge.music; this.waterfallUndyneBridge.music = null; }
     if (name === 'room_water9' && this.waterfallUndyneChase?.music) { this.chaseMusic = this.waterfallUndyneChase.music; this.waterfallUndyneChase.music = null; }
@@ -623,7 +624,7 @@ class World extends Scene {
     if (name === 'room_fire_prelab') { this.hotlandLabGuards = new HotlandLabGuards(this); this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); }
     if (name === 'room_fire3') { this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); this.hotlandLabOutside = new HotlandLabOutside(this); this.hotlandStatus = new HotlandStatus(this); }
     if (name === 'room_fire5') { this.hotlandConveyors = new HotlandConveyors(this); this.hotlandVulkin = new HotlandVulkin(this); this.hotlandStatus = new HotlandStatus(this); this.hotlandConveyorEffects = new HotlandConveyorEffects(this); this.hotlandEncounter = new HotlandEncounter(this); }
-    if (name === 'room_fire6') { this.hotlandEncounter = new HotlandEncounter(this); this.hotlandVents = new HotlandVents(this); this.hotlandStatus = new HotlandStatus(this); }
+    if (name === 'room_fire6') { this.hotlandEncounter = new HotlandEncounter(this); this.hotlandVents = new HotlandVents(this); this.hotlandStatus = new HotlandStatus(this); this.hotlandMagmaPhone = new HotlandMagmaPhone(this); }
     if (name === 'room_fire_lab1') { this.hotlandAlphysIntro = new HotlandAlphysIntro(this); this.hotlandAlphysPhone = new HotlandAlphysPhone(this); }
     if (['room_fire_lab1', 'room_fire_lab2'].includes(name)) { this.hotlandLabConveyors = new HotlandLabConveyors(this); this.hotlandLabObjects = new HotlandLabObjects(this); }
     if (name === 'room_fire_lab2') startLabMusic(this);
@@ -908,7 +909,7 @@ class World extends Scene {
       if (this.waterfallRainKid?.checkTrigger(previous)) return;
       if (this.waterfallKidBridge?.checkTrigger()) return;
       if (this.waterfallPuzzleHater?.checkTrigger()) return;
-      if (this.hotlandStatus?.checkTrigger()) return;
+      if (this.hotlandMagmaPhone?.checkTrigger() || this.hotlandStatus?.checkTrigger()) return;
       if (this.hotlandAlphysIntro?.checkTrigger() || this.hotlandAlphysPhone?.checkTrigger() || this.hotlandLabConveyors?.checkTrigger()) return;
       if (this.waterfallUndyneFinal?.checkTrigger() || this.hotlandUndyneCollapse?.checkTrigger()) return;
       if (this.waterfallFlowerHall?.checkTrigger()) return;

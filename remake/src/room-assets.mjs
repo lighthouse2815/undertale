@@ -345,7 +345,7 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_fire2' ? ['snd_noise'] : []),
     ...(['room_fire3', 'room_fire5', 'room_fire6'].includes(name) ? ['snd_textnoise'] : []),
     ...(['room_fire5','room_fire6'].includes(name) ? ['snd_b'] : []),
-    ...(name === 'room_fire6' ? ['snd_vaporized'] : []),
+    ...(name === 'room_fire6' ? ['snd_vaporized', 'snd_phone'] : []),
     ...(['room_fire_lab1','room_fire_lab2'].includes(name) ? ['snd_item'] : []),
     ...(name === 'room_fire_lab2' ? ['mus_lab', 'mus_drone', 'mus_reunited'] : []),
     ...(['room_fire_prelab', 'room_fire_lab1', 'room_fire3'].includes(name) ? ['snd_elecdoor_open', 'snd_elecdoor_close', 'snd_elecdoor_shut'] : []),
