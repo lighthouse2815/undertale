@@ -231,6 +231,7 @@ export async function loadRoom(scene, name) {
   if (name === 'room_fire_prelab') for (const key of ['spr_labdoor_hang', 'spr_alabdoor_piece']) spriteNames.add(key);
   if (name === 'room_fire3') for (const key of ['spr_alabdoor_piece_r', 'spr_musblc', 'spr_hotland_rededge_top', 'spr_redpipe_top', 'spr_redpipe_bottom', 'spr_redpipe_middle']) spriteNames.add(key);
   if (name === 'room_fire5') for (const key of ['spr_conveyorbelt_d', 'spr_conveyorbelt_r', 'spr_steamer_top', 'spr_bluejet', 'spr_exc', 'spr_exc_f']) spriteNames.add(key);
+  if (name === 'room_fire6') for (const key of ['spr_exc', 'spr_exc_f']) spriteNames.add(key);
   if (name === 'room_fire5') spriteNames.add('spr_musblc');
   if (name === 'room_fire2') for (const key of ['spr_face_undyne1', 'spr_heartsmall', 'spr_watercooler_water', 'spr_coolerpuddle', 'spr_mainchara_pourwater', ...['d','u','l','r'].map(direction => `spr_mainchara${direction}_water`)]) spriteNames.add(key);
   if (name === 'room_fire1') for (const key of ['spr_zzz', 'spr_undyne_helmet_d_pissed']) spriteNames.add(key);
@@ -343,12 +344,12 @@ export async function loadRoom(scene, name) {
     ...(name === 'room_water_undynefinal3' ? ['snd_phone'] : []),
     ...(name === 'room_fire2' ? ['snd_noise'] : []),
     ...(['room_fire3', 'room_fire5'].includes(name) ? ['snd_textnoise'] : []),
-    ...(name === 'room_fire5' ? ['snd_b'] : []),
+    ...(['room_fire5','room_fire6'].includes(name) ? ['snd_b'] : []),
     ...(['room_fire_lab1','room_fire_lab2'].includes(name) ? ['snd_item'] : []),
     ...(name === 'room_fire_lab2' ? ['mus_lab', 'mus_drone', 'mus_reunited'] : []),
     ...(['room_fire_prelab', 'room_fire_lab1', 'room_fire3'].includes(name) ? ['snd_elecdoor_open', 'snd_elecdoor_close', 'snd_elecdoor_shut'] : []),
     ...(name === 'room_fire_lab1' ? ['mus_alphysfix', 'mus_lab', 'mus_drone', 'mus_reunited', 'mus_mettsmash', 'mus_mtgameshow', 'mus_mett_cheer', 'mus_mett_applause', 'snd_b', 'snd_noise', 'snd_laz', 'snd_drumroll', 'snd_bell'] : []),
-    ...(['room_fire2', 'room_fire_prelab', 'room_fire3', 'room_fire5'].includes(name) ? [name === 'room_fire5' ? 'mus_anothermedium' : 'mus_oogloop', 'mus_toomuch', 'mus_reunited'] : []),
+    ...(['room_fire2', 'room_fire_prelab', 'room_fire3', 'room_fire5', 'room_fire6'].includes(name) ? [['room_fire5','room_fire6'].includes(name) ? 'mus_anothermedium' : 'mus_oogloop', 'mus_toomuch', 'mus_reunited'] : []),
     ...(name === 'room_water21' ? ['mus_ambientwater'] : []),
     ...(name === 'room_water20' ? ['snd_spearappear', 'snd_spearrise', 'snd_fall', 'snd_undynestep', 'snd_grab', 'mus_ambientwater'] : []),
     ...(name === 'room_water19' ? ['snd_splash', 'snd_noise', 'mus_ambientwater'] : []),

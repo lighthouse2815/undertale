@@ -319,7 +319,8 @@ const ROOM_EXITS = {
   room_fire2: { B: 'room_fire1', A: 'room_fire_prelab' },
   room_fire_prelab: { B: 'room_fire2' },
   room_fire3: { A: 'room_fire5' },
-  room_fire5: { B: 'room_fire3' },
+  room_fire5: { B: 'room_fire3', A: 'room_fire6' },
+  room_fire6: { B: 'room_fire5' },
   room_fire_lab1: { D: 'room_fire_prelab', A: 'room_fire_lab2', C: 'room_fire3' },
   room_fire_lab2: { B: 'room_fire_lab1' },
   room_mysteryman: { s: 'room_water_fakehallway' },
@@ -369,7 +370,7 @@ class World extends Scene {
     if (!['room_tundra1', 'room_tundra2', 'room_tundra3', 'room_tundra3A', 'room_tundra4', 'room_tundra5', 'room_tundra6', 'room_tundra6A', 'room_tundra7', 'room_tundra8', 'room_tundra8A', 'room_tundra9', 'room_tundra_spaghetti', 'room_tundra_snowpuzz', 'room_tundra_xoxosmall', 'room_tundra_xoxopuzz', 'room_tundra_randoblock', 'room_tundra_lesserdog', 'room_tundra_iceentrance', 'room_tundra_icehole', 'room_tundra_iceexit_new', 'room_tundra_poffzone', 'room_tundra_dangerbridge'].includes(name)) stopSnowdinMusic(this);
     if (!['room_tundra_town', 'room_tundra_library', 'room_tundra_inn', ...(this.flags?.[7] === 1 ? ['room_fogroom', 'room_water1', 'room_water2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9', 'room_water_savepoint1', 'room_water11', 'room_water_fakehallway', 'room_water_bird', 'room_water_friendlyhub', 'room_water_blookyard', 'room_water_blookhouse', 'room_water_hapstablook', 'room_water_farm', 'room_water_shop', 'room_water15', 'room_water16', 'room_water17', 'room_water18', 'room_water19', 'room_water20', 'room_water21', 'room_water_temvillage', 'room_water12', 'room_water_shoe', 'room_water_nicecream', 'room_water_onionsan', 'room_water14', 'room_water_piano', 'room_water_dogroom', 'room_water_statue', 'room_water_prewaterfall', 'room_water_waterfall', 'room_water_waterfall2', 'room_water_waterfall3', 'room_water_waterfall4', 'room_water_preundyne', 'room_water_undynebridge', 'room_water_undynebridgeend', 'room_water_trashzone1', 'room_water_trashsavepoint', 'room_water_trashzone2', 'room_tundra_grillby'] : [])].includes(name) && !(name === 'room_tundra_sansbasement' && this.flags[7] === 1)) { this.townMusic?.destroy(); this.townMusic = null; }
     if (this.waterfallMusic && !(name === 'room_water1' && this.waterfallMusic.key === 'mus_ambientwater') && !(name === 'room_water2' && this.waterfallMusic.key === 'mus_muscle') && !(name === 'room_water_temvillage' && ['mus_temvillage', 'mus_toomuch'].includes(this.waterfallMusic.key)) && !(['room_water18', 'room_water19', 'room_water20', 'room_water21'].includes(name) && this.waterfallMusic.key === 'mus_ambientwater') && !(['room_water11', 'room_water_bird', 'room_water_nicecream'].includes(name) && this.waterfallMusic.key === 'mus_waterfall') && !(['room_water_savepoint1', 'room_water11', 'room_water_fakehallway', 'room_water_bird', 'room_water_friendlyhub', 'room_water_nicecream', 'room_water_shop', 'room_water_blookyard'].includes(name) && ['mus_waterquiet', 'mus_toomuch'].includes(this.waterfallMusic.key)) && !(['room_water15', 'room_water16', 'room_water17'].includes(name) && ['mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key)) && !(['room_water_trashzone1', 'room_water_trashsavepoint', 'room_water_trashzone2', 'room_water3', 'room_water3A', 'room_water4', 'room_water5', 'room_water5A', 'room_water6', 'room_water7', 'room_water8', 'room_water9', 'room_water12', 'room_water_shoe', 'room_water_onionsan', 'room_water14'].includes(name) && ['mus_ambientwater', 'mus_waterfall', 'mus_toomuch'].includes(this.waterfallMusic.key)) && !(['room_water_undynefinal', 'room_water_undynefinal2', 'room_water_undynefinal3', 'room_fire1', 'room_fire2'].includes(name) && this.waterfallMusic.key === 'mus_undynefast')) { this.waterfallMusic.destroy(); this.waterfallMusic = null; }
-    if (!['room_fire1', 'room_fire2', 'room_fire_prelab', 'room_fire3', 'room_fire5'].includes(name)) { this.hotlandMusic?.destroy(); this.hotlandMusic = null; }
+    if (!['room_fire1', 'room_fire2', 'room_fire_prelab', 'room_fire3', 'room_fire5', 'room_fire6'].includes(name)) { this.hotlandMusic?.destroy(); this.hotlandMusic = null; }
     if (!['room_fire_lab1', 'room_fire_lab2'].includes(name)) { this.labMusic?.destroy(); this.labMusic = null; }
     if (name !== 'room_tundra_grillby') { this.grillbyMusic?.destroy(); this.grillbyMusic = null; }
     this.scene.stop('FieldMenu');
@@ -619,12 +620,13 @@ class World extends Scene {
     if (name === 'room_fire_prelab') { this.hotlandLabGuards = new HotlandLabGuards(this); this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); }
     if (name === 'room_fire3') { this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); this.hotlandLabOutside = new HotlandLabOutside(this); this.hotlandStatus = new HotlandStatus(this); }
     if (name === 'room_fire5') { this.hotlandConveyors = new HotlandConveyors(this); this.hotlandVulkin = new HotlandVulkin(this); this.hotlandStatus = new HotlandStatus(this); this.hotlandConveyorEffects = new HotlandConveyorEffects(this); this.hotlandEncounter = new HotlandEncounter(this); }
+    if (name === 'room_fire6') this.hotlandEncounter = new HotlandEncounter(this);
     if (name === 'room_fire_lab1') { this.hotlandAlphysIntro = new HotlandAlphysIntro(this); this.hotlandAlphysPhone = new HotlandAlphysPhone(this); }
     if (['room_fire_lab1', 'room_fire_lab2'].includes(name)) { this.hotlandLabConveyors = new HotlandLabConveyors(this); this.hotlandLabObjects = new HotlandLabObjects(this); }
     if (name === 'room_fire_lab2') startLabMusic(this);
     if (name === 'room_fire2') { this.hotlandLava = new HotlandLava(this); this.hotlandUndyneCollapse = new HotlandUndyneCollapse(this); }
-    if (['room_fire2', 'room_fire_prelab', 'room_fire3', 'room_fire5'].includes(name) && !this.hotlandMusic && !this.waterfallMusic && !(name === 'room_fire2' && this.hotlandUndyneCollapse.stage === 'waiting')) {
-      const level = murderLevel(this.flags), key = this.flags[7] === 1 ? 'mus_reunited' : this.flags[224] && !this.flags[27] ? 'mus_toomuch' : name === 'room_fire5' ? 'mus_anothermedium' : 'mus_oogloop';
+    if (['room_fire2', 'room_fire_prelab', 'room_fire3', 'room_fire5', 'room_fire6'].includes(name) && !this.hotlandMusic && !this.waterfallMusic && !(name === 'room_fire2' && this.hotlandUndyneCollapse.stage === 'waiting')) {
+      const level = murderLevel(this.flags), key = this.flags[7] === 1 ? 'mus_reunited' : this.flags[224] && !this.flags[27] ? 'mus_toomuch' : ['room_fire5','room_fire6'].includes(name) ? 'mus_anothermedium' : 'mus_oogloop';
       this.hotlandMusic = this.sound.add(key, { loop: true, volume: key === 'mus_oogloop' ? .7 : 1, rate: ['mus_oogloop', 'mus_anothermedium'].includes(key) && level >= 12 && !this.flags[27] ? .5 : key === 'mus_oogloop' ? .9 : 1 }); this.hotlandMusic.play();
     }
     if (name === 'room_water_undynefinal3') { this.waterfallPapyrusPhone = new WaterfallPapyrusPhone(this); this.waterfallHotlandSign = new WaterfallHotlandSign(this); }
@@ -1085,7 +1087,7 @@ class World extends Scene {
       .sort((a, b) => a.distance - b.distance)[0];
     if (!target) return;
     if (target.entry.item.ObjectName === 'obj_savepoint') {
-      if (this.dataSource.name === 'room_fire_prelab') { showHotlandSave(this); return; }
+      if (['room_fire_prelab','room_fire6'].includes(this.dataSource.name)) { showHotlandSave(this); return; }
       if (['room_water2', 'room_water4', 'room_water_savepoint1', 'room_water_friendlyhub', 'room_water_preundyne', 'room_water_trashsavepoint', 'room_water_temvillage', 'room_water_undynefinal'].includes(this.dataSource.name)) { showWaterfallSave(this); return; }
       this.hp = Math.max(this.hp, this.maxHp);
       this.sound.play('snd_power', { volume: 0.88 });

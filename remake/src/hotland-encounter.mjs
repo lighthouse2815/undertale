@@ -1,12 +1,13 @@
 import { murderLevel } from './route.mjs';
 
-// Các nhóm và nhánh cạn dân số của obj_encount_fire1 ở room_fire5.
+// Các nhóm và nhánh cạn dân số của obj_encount_fire1 ở Hotland.
 export class HotlandEncounter {
   constructor(world) {
     this.world=world;this.count=0;const flags=world.flags;flags[200]=205;
     this.empty=(flags[205]??0)>=40?1:0;
     this.disabled=flags[7]===1||flags[8]===1;
-    this.steps=this.empty?20:this.threshold((flags[408]??0)===0?80:220,30);
+    const seen=flags[408]??0,room=world.dataSource.name;
+    this.steps=this.empty?20:this.threshold(room==='room_fire5'&&seen===0?80:room==='room_fire6'&&seen<2?120:220,30);
   }
   threshold(base,spread){const remaining=40-(this.world.flags[205]??0);return (base+Math.round(Math.random()*spread))*Math.min(8,40/Math.max(1,remaining));}
   step(){
@@ -17,7 +18,8 @@ export class HotlandEncounter {
   update(){
     const w=this.world;
     if(this.disabled||this.timer||this.count<=this.steps||window.__remake.phase!=='running'||w.dialogue)return;
-    this.steps=this.empty===1?20:this.empty===2?6900:this.threshold(1040,680);this.count=0;w.flags[408]=(w.flags[408]??0)+1;
+    const conveyor=w.dataSource.name==='room_fire5';
+    this.steps=this.empty===1?20:this.empty===2?(conveyor?6900:2650):this.threshold(conveyor?1040:340,conveyor?680:380);this.count=0;w.flags[408]=(w.flags[408]??0)+1;
     const roll=Math.floor(Math.random()*15);
     const group=this.empty?'nobody':(['vulkin','tsunderplane','pyrope','hotlandGroup77','hotlandGroup78'][w.flags[408]-1]??(roll<6?'hotlandGroup77':roll<10?'hotlandGroup78':'tsunderplane'));
     if(this.empty===1){w.flags[224]=1;this.empty=2;return;}
