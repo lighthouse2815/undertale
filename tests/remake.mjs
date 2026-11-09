@@ -1,3 +1,4 @@
+import { testHotlandMagmaStatus } from './remake-hotland-magma-status.mjs';
 import { testHotlandVents } from './remake-hotland-vents.mjs';
 import { testHotlandMagma } from './remake-hotland-magma.mjs';
 import { testHotlandGroup78 } from './remake-hotland-group78.mjs';
@@ -843,6 +844,7 @@ try {
   await testHotlandGroup78(page);
   await testHotlandMagma(page);
   await testHotlandVents(page);
+  await testHotlandMagmaStatus(page);
   testWaterfallPapyrusFinalCall();
   await testTemShop(page);
   await testWaterfallBridgePath(page);

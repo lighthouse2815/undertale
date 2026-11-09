@@ -623,7 +623,7 @@ class World extends Scene {
     if (name === 'room_fire_prelab') { this.hotlandLabGuards = new HotlandLabGuards(this); this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); }
     if (name === 'room_fire3') { this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); this.hotlandLabOutside = new HotlandLabOutside(this); this.hotlandStatus = new HotlandStatus(this); }
     if (name === 'room_fire5') { this.hotlandConveyors = new HotlandConveyors(this); this.hotlandVulkin = new HotlandVulkin(this); this.hotlandStatus = new HotlandStatus(this); this.hotlandConveyorEffects = new HotlandConveyorEffects(this); this.hotlandEncounter = new HotlandEncounter(this); }
-    if (name === 'room_fire6') { this.hotlandEncounter = new HotlandEncounter(this); this.hotlandVents = new HotlandVents(this); }
+    if (name === 'room_fire6') { this.hotlandEncounter = new HotlandEncounter(this); this.hotlandVents = new HotlandVents(this); this.hotlandStatus = new HotlandStatus(this); }
     if (name === 'room_fire_lab1') { this.hotlandAlphysIntro = new HotlandAlphysIntro(this); this.hotlandAlphysPhone = new HotlandAlphysPhone(this); }
     if (['room_fire_lab1', 'room_fire_lab2'].includes(name)) { this.hotlandLabConveyors = new HotlandLabConveyors(this); this.hotlandLabObjects = new HotlandLabObjects(this); }
     if (name === 'room_fire_lab2') startLabMusic(this);
