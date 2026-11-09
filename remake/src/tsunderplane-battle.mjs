@@ -25,6 +25,7 @@ export class TsunderplaneBattle extends RuinsBattle{
   update(time,delta){
     if(window.__remake.phase!=='battle'||window.__remake.scene!==this)return;
     this.bodyElapsed=Math.min(200,this.bodyElapsed+delta);while(this.bodyElapsed>=1000/30){this.bodyElapsed-=1000/30;if(!this.bodyEnded&&this.body?.plane.active)this.body.step();}
+    if(this.mode==='crash'&&!this.body.crashing){this.bodyEnded=true;super.end('kill');}
     super.update(time,delta);this.mercyModifier=this.rules.mercyModifier;this.config.def=this.rules.defense;
   }
   animateEnemy(){}
@@ -57,6 +58,7 @@ export class TsunderplaneBattle extends RuinsBattle{
   rewardGold(outcome){return (outcome==='kill'?45:Math.floor(45*(this.enemyMaxHp-this.enemyHp)/this.enemyMaxHp))+this.rules.bonus(this.enemyHp,this.enemyMaxHp);}
   end(outcome){
     if(this.rules.bonus(this.enemyHp,this.enemyMaxHp))this.previousScene.flags[149]=1;
+    if(outcome==='kill'){this.mode='crash';this.message.setText('');this.menu.setText('');this.body.startCrash();return;}
     for(const p of [this.body.plane,this.body.hat,this.body.blush])p.setVisible(false);for(const p of this.body.smoke)p.image.setVisible(false);this.bodyEnded=true;
     super.end(outcome);
   }

@@ -56,7 +56,8 @@ export class HotlandGroup77Battle extends MultiBattle{
   }
   update(time,delta){
     if(window.__remake.phase!=='battle'||window.__remake.scene!==this)return;
-    this.animElapsed=Math.min(200,this.animElapsed+delta);while(this.animElapsed>=1000/30){this.animElapsed-=1000/30;for(const e of this.live())e.body.step();}
+    this.animElapsed=Math.min(200,this.animElapsed+delta);while(this.animElapsed>=1000/30){this.animElapsed-=1000/30;for(const e of this.enemies)if(e.alive||e.body.crashing)e.body.step();}
+    if(this.mode==='crash'&&!this.enemies[0].body.crashing)this.end();
     if(this.mode==='speech'&&(this.speechTime<=delta||this.confirmPressed)){this.speechBoxes.forEach(p=>p.destroy());this.speechTexts.forEach(p=>p.destroy());}
     super.update(time,delta);
   }
@@ -92,8 +93,10 @@ export class HotlandGroup77Battle extends MultiBattle{
   hurtEnemy(e){if(e.type==='plane')e.body.hurt=true;else e.body.pause=1;this.sound.play('snd_damage');this.time.delayedCall(11*1000/30,()=>this.sound.play(e.type==='plane'?'snd_ehurt1':'snd_vulkinhurt'));}
   removeEnemy(e,killed){
     if(!e.alive)return;e.alive=false;e.main.setVisible(false);
-    const parts=e.type==='plane'?[e.body.plane,e.body.hat,e.body.blush]:[e.body.back,e.body.body,e.body.lava,e.body.head,e.body.front];
-    for(const p of parts)p.setVisible(false);for(const p of e.body.smoke)p.image.setVisible(false);
+    if(e.type==='plane'&&killed)e.body.startCrash();else{
+      const parts=e.type==='plane'?[e.body.plane,e.body.hat,e.body.blush]:[e.body.back,e.body.body,e.body.lava,e.body.head,e.body.front];
+      for(const p of parts)p.setVisible(false);for(const p of e.body.smoke)p.image.setVisible(false);
+    }
     const reward=e.type==='plane'?45:50,bonus=e.rules.bonus(e.hp,e.maxHp),w=this.previousScene;
     this.goldReward+=(killed?reward:Math.floor(reward*(e.maxHp-e.hp)/e.maxHp))+bonus;
     if(bonus)w.flags[e.type==='plane'?149:148]=1;
@@ -101,6 +104,7 @@ export class HotlandGroup77Battle extends MultiBattle{
     else{w.flags[10]=1;w.flags[23]=(w.flags[23]??0)+1;if(e.type==='plane'&&this.enemies[1].alive)this.enemies[1].special=true;}
   }
   end(){
+    if(this.enemies[0].body.crashing){this.mode='crash';this.message.setText('');this.menu.setText('');return;}
     this.clearLabels();this.music.stop();let line=this.dialogue.win[0].replace(/\\\[1\]/g,String(this.xpReward)).replace(/\\\[2\]/g,String(this.goldReward));const w=this.previousScene;
     if(LEVEL_THRESHOLDS.filter(t=>w.xp+this.xpReward>=t).length>w.lv){line+=this.dialogue.levelUp[0];this.sound.play('snd_levelup');}
     this.showPages([line],()=>this.finishWith());

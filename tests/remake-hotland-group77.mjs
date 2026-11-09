@@ -44,5 +44,16 @@ export async function testHotlandGroup77(page){
   assert.match(await page.evaluate(()=>__remake.scene.message.text),/plane turning tiny/);
   await choose(3);await key('ArrowDown');await key('z');await pages();await page.waitForFunction(()=>__remake.phase==='running');
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.flags[149],w.flags[11]];}),[60,0,1,1]);
+  await open();await page.evaluate(()=>{__remake.scene.enemies[0].hp=1;});await choose(0);await key('z');await page.waitForFunction(()=>__remake.scene.mode==='fight');await page.evaluate(()=>{__remake.scene.attackX=156;});await key('z');await pages();
+  await page.waitForFunction(()=>__remake.scene.mode==='speech'&&__remake.scene.enemies[0].body.crashStage==='fall');
+  assert.deepEqual(await page.evaluate(()=>[__remake.scene.live().map(e=>e.name),__remake.scene.enemies[0].body.crashing]),[['Vulkin'],true]);
+  await page.waitForFunction(()=>__remake.scene.enemies[0].body.crashStage==='explosion');
+  await page.waitForFunction(()=>!__remake.scene.enemies[0].body.crashing);
+  await advance();await finish();await choose(3);await key('ArrowDown');await key('z');await pages();await page.waitForFunction(()=>__remake.phase==='running');
+  assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.kills,w.flags[205],w.flags[11]];}),[45,95,1,1,1]);
+  await open();await page.evaluate(()=>{__remake.scene.enemies[1].hp=1;});await choose(0);await key('ArrowDown');await key('z');await page.waitForFunction(()=>__remake.scene.mode==='fight');await page.evaluate(()=>{__remake.scene.attackX=156;});await key('z');await pages();await advance();await finish();
+  await page.evaluate(()=>{__remake.scene.enemies[0].hp=1;});await choose(0);await key('z');await page.waitForFunction(()=>__remake.scene.mode==='fight');await page.evaluate(()=>{__remake.scene.attackX=156;});await key('z');await pages();
+  await page.waitForFunction(()=>__remake.scene.mode==='crash'&&__remake.scene.enemies[0].body.crashing);await page.waitForFunction(()=>__remake.scene.mode==='pages');await pages();await page.waitForFunction(()=>__remake.phase==='running');
+  assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.kills,w.flags[205]];}),[95,165,2,2]);
   console.log('✓ Nhóm Hotland 77: chọn mục tiêu, hai đợt đồng thời, tha từng quái, FIGHT/Flee và thưởng');
 }

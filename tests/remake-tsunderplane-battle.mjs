@@ -27,7 +27,12 @@ export async function testTsunderplaneBattle(page){
   assert.deepEqual(grazes,[1,2,3,4]);await finish();assert.deepEqual(await page.evaluate(()=>[__remake.scene.mercyModifier,__remake.scene.config.def,__remake.scene.spareable()]),[100,-99,true]);
   await choose(3);await key('z');await pages();await page.waitForFunction(()=>__remake.phase==='running');
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.kills,w.flags[149],w.hotlandMusic.isPlaying];}),[60,0,0,1,true]);
-  await open();await page.evaluate(()=>{__remake.scene.enemyHp=1;});await choose(0);await key('z');await page.waitForFunction(()=>__remake.scene.mode==='fight');await page.evaluate(()=>{__remake.scene.attackX=156;});await key('z');await pages();await pages();await page.waitForFunction(()=>__remake.phase==='running');
+  await open();await page.evaluate(()=>{__remake.scene.enemyHp=1;});await choose(0);await key('z');await page.waitForFunction(()=>__remake.scene.mode==='fight');await page.evaluate(()=>{__remake.scene.attackX=156;});await key('z');await pages();
+  await page.waitForFunction(()=>__remake.scene.mode==='crash'&&__remake.scene.body.crashStage==='fall');
+  assert.equal(await page.evaluate(()=>__remake.scene.body.crashText.text),'B-but I\nnever\ngot to\n...!');
+  await page.waitForFunction(()=>__remake.scene.body.crashStage==='explosion');
+  assert.deepEqual(await page.evaluate(()=>[__remake.scene.body.plane.visible,__remake.scene.body.explosion.visible]),[false,true]);
+  await page.waitForFunction(()=>__remake.scene.mode==='pages');await pages();await page.waitForFunction(()=>__remake.phase==='running');
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.kills,w.flags[205]];}),[45,95,1,1]);
   await open();await choose(3);await key('ArrowDown');await key('z');await pages();await page.waitForFunction(()=>__remake.phase==='running');
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.gold,w.xp,w.kills,w.flags[11]];}),[0,0,0,1]);
