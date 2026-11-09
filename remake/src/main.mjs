@@ -17,6 +17,7 @@ import { HotlandLabEntrance } from './hotland-lab-entrance.mjs';
 import { MettatonQuizBattle } from './mettaton-quiz-battle.mjs';
 import { HotlandLabGuards } from './hotland-lab-guards.mjs';
 import { showHotlandSave } from './hotland-save.mjs';
+import { HotlandVents } from './hotland-vents.mjs';
 import { HotlandAutoWater } from './hotland-auto-water.mjs';
 import { HotlandUndyneCollapse } from './hotland-undyne-collapse.mjs';
 import { HotlandSleepingSans } from './hotland-sleeping-sans.mjs';
@@ -345,6 +346,7 @@ class World extends Scene {
 
   create() {
     this.game.registry.set('sourceCache', new Map());
+    this.events.once('shutdown', () => this.hotlandVents?.destroy());
     state.scene = this;
     this.setupInput();
     this.trackTime = (_time, delta) => { this.playTime = (this.playTime ?? 0) + delta; };
@@ -357,6 +359,7 @@ class World extends Scene {
 
   async openRoom(name, spawnName = 'obj_mainchara') {
     state.phase = 'loading';
+    this.hotlandVents?.destroy(); this.hotlandVents = null;
     if (this.waterfallRain && (this.flags?.[7] === 1 || !['room_water_statue','room_water_prewaterfall','room_water_waterfall','room_water_waterfall2','room_water_waterfall3','room_water_waterfall4','room_water_preundyne','room_water_undynebridge'].includes(name))) { this.waterfallRain.destroy(); this.waterfallRain = null; this.waterfallRainLight?.destroy(); this.waterfallRainLight = null; this.waterfallRainMix = null; }
     if (name === 'room_water_undynebridgeend' && this.waterfallUndyneBridge?.music) { this.chaseMusic = this.waterfallUndyneBridge.music; this.waterfallUndyneBridge.music = null; }
     if (name === 'room_water9' && this.waterfallUndyneChase?.music) { this.chaseMusic = this.waterfallUndyneChase.music; this.waterfallUndyneChase.music = null; }
@@ -620,7 +623,7 @@ class World extends Scene {
     if (name === 'room_fire_prelab') { this.hotlandLabGuards = new HotlandLabGuards(this); this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); }
     if (name === 'room_fire3') { this.hotlandLabEntrance = new HotlandLabEntrance(this, spawnName); this.hotlandLabOutside = new HotlandLabOutside(this); this.hotlandStatus = new HotlandStatus(this); }
     if (name === 'room_fire5') { this.hotlandConveyors = new HotlandConveyors(this); this.hotlandVulkin = new HotlandVulkin(this); this.hotlandStatus = new HotlandStatus(this); this.hotlandConveyorEffects = new HotlandConveyorEffects(this); this.hotlandEncounter = new HotlandEncounter(this); }
-    if (name === 'room_fire6') this.hotlandEncounter = new HotlandEncounter(this);
+    if (name === 'room_fire6') { this.hotlandEncounter = new HotlandEncounter(this); this.hotlandVents = new HotlandVents(this); }
     if (name === 'room_fire_lab1') { this.hotlandAlphysIntro = new HotlandAlphysIntro(this); this.hotlandAlphysPhone = new HotlandAlphysPhone(this); }
     if (['room_fire_lab1', 'room_fire_lab2'].includes(name)) { this.hotlandLabConveyors = new HotlandLabConveyors(this); this.hotlandLabObjects = new HotlandLabObjects(this); }
     if (name === 'room_fire_lab2') startLabMusic(this);
@@ -777,6 +780,7 @@ class World extends Scene {
     }
     if (state.phase !== 'running') return;
     this.hotlandAutoWater?.update(delta); this.hotlandLabGuards?.update(delta); this.hotlandLabEntrance?.update(delta); this.hotlandLabOutside?.update(delta); this.hotlandStatus?.update(delta); this.hotlandConveyors?.update(delta); this.hotlandVulkin?.update(delta); this.hotlandConveyorEffects?.update(delta);
+    const ventsLocked = this.hotlandVents?.update(delta);
     const alphysLocked = this.hotlandAlphysIntro?.update(delta); const phoneUpgradeLocked = this.hotlandAlphysPhone?.update(delta); const labConveyorLocked = this.hotlandLabConveyors?.update(delta);
     const menuPressed = this.menuPressed; this.menuPressed = false;
     const guideLocked = this.spikeGuide?.update(delta);
@@ -854,7 +858,7 @@ class World extends Scene {
       if (this.justConfirmed()) this.advanceDialogue();
       return;
     }
-    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || blookHouseLocked || snailFarmLocked || undyneHallLocked || puzzleHaterLocked || alphysLocked || phoneUpgradeLocked || labConveyorLocked || undyneFinalLocked || collapseLocked || kidBridgeLocked || temVillageLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
+    if (this.corridorLesson?.update(delta) || guideLocked || holesLocked || rockLocked || homeLocked || bedroomLocked || sleepLocked || livingLocked || basementLocked || gateLocked || floweyLocked || forestLocked || checkpointLocked || doggoLocked || dogPairLocked || xoxoSmallLocked || xoxoBigLocked || colorTilesLocked || icePuzzleLocked || iceHoleLocked || grillbyDateLocked || waterfallSansLocked || waterfallRockLocked || waterfallUndyneLocked || waterfallBridgeLocked || wishingLocked || starViewerLocked || birdLocked || friendlyLocked || onionsanLocked || shyrenHallLocked || pianoLocked || dogRoomLocked || rainKidLocked || ledgeLocked || raftLocked || trashStartLocked || dummyEncounterLocked || blookHouseLocked || snailFarmLocked || undyneHallLocked || puzzleHaterLocked || alphysLocked || phoneUpgradeLocked || labConveyorLocked || ventsLocked || undyneFinalLocked || collapseLocked || kidBridgeLocked || temVillageLocked || bridgeEndLocked || bridgeChaseLocked || chaseLocked || secondChaseLocked || papyrusFogLocked || innLocked || townPapyrusLocked || townDogsLocked || townLocked || dangerBridgeLocked || greaterDogLocked || gyftrotLocked || mazeLocked || crosswordLocked || creamLocked) return;
     if (this.ruinsTutorial?.update()) return;
     if (this.ruinsSwitches?.update()) return;
     if (this.dummyLesson?.update()) return;
@@ -877,6 +881,7 @@ class World extends Scene {
       const input = (direction) => this.keys[direction].isDown || [...this.touch.values()].some((pointer) => pointer.direction === direction);
       if (!this.snowdinIce?.slide()) movePlayer(this, this.player, this.colliders, input,
         (x, y, dx, dy) => this.dialogue || this.ruinsRock?.tryMove(x, y, dx, dy) || this.ruinsGoofyrock?.tryMove(x, y));
+      if (this.hotlandVents?.checkTrigger()) { this.elapsed = 0; return; }
       this.hotlandConveyors?.step();
       this.waterfallShallowWater?.step();
       this.snowdinIce?.contact(previous, input);
