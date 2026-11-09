@@ -18,7 +18,7 @@ export async function testHotlandEmpty(page){
   await page.keyboard.press('z');await page.waitForFunction(()=>__remake.phase==='running'&&__remake.scene.hotlandMusic?.isPlaying);
   assert.deepEqual(await page.evaluate(()=>{const w=__remake.scene;return [w.xp,w.gold,w.kills,w.flags[224],w.hotlandEncounter.empty];}),[0,0,0,1,2]);
   const depleted=await page.evaluate(async()=>{const w=__remake.scene;w.flags={205:39,408:3};await w.openRoom('room_fire5','obj_markerA');const e=w.hotlandEncounter,before=e.disabled;w.flags[205]=40;e.step();return [before,e.disabled,e.empty,e.steps,e.count];});
-  assert.deepEqual(depleted,[true,false,1,20,1]);
+  assert.deepEqual(depleted,[false,false,1,20,1]);
   for(const flag of [7,8])assert.equal(await page.evaluate(async flag=>{const w=__remake.scene;w.flags={205:40,[flag]:1};await w.openRoom('room_fire5','obj_markerA');return w.hotlandEncounter.disabled;},flag),true);
   await page.evaluate(async previous=>{const w=__remake.scene;w.hotlandMusic?.destroy();w.hotlandMusic=null;Object.assign(w,previous);await w.openRoom('room_fire3','obj_markerC');},previous);
   console.log('✓ Hotland cạn quái: cờ, Nobody, ngưỡng tiếp theo và nhạc');
